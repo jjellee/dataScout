@@ -20,8 +20,8 @@ echo "Step 2: Generating cumulative investor charts and uploading to Telegram...
 
 # 3. Git commit & push data and charts to GitHub
 echo "Step 3: Committing and pushing to GitHub..."
-git add data/ draw/ .env telegram_reporter.py run_daily.sh
-git commit -m "auto: daily market data & charts update [skip ci]"
+git add data/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore
+git commit -m "auto: daily market data update [skip ci]"
 git push origin main
 
 echo "================================================================="
