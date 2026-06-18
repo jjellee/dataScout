@@ -22,10 +22,14 @@ echo "Step 2: Generating cumulative investor charts and uploading to Telegram...
 echo "Step 3: Running stock supply-demand screener..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python screener.py
 
-# 4. Git commit & push data and charts to GitHub
-echo "Step 4: Committing and pushing to GitHub..."
-git add data/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py
-git commit -m "auto: daily market data and screening update [skip ci]"
+# 4. Run DART daily disclosure collector
+echo "Step 4: Collecting daily DART disclosures..."
+/home/inhyuk/projects/ExportImportAutomation/venv/bin/python dart_collector.py
+
+# 5. Git commit & push data and charts to GitHub
+echo "Step 5: Committing and pushing to GitHub..."
+git add data/ data_dart/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py
+git commit -m "auto: daily market data, screening, and DART update [skip ci]"
 git push origin main
 
 echo "================================================================="
