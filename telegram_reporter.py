@@ -266,7 +266,7 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
 
 # ----------------- Telegram Upload & Forward ----------------- #
 
-async def upload_reports_to_telegram(charts_data, target_date_str):
+async def upload_reports_to_telegram(charts_data, target_date_str, test_mode=False):
     """Uploads the generated chart images to Telegram and forwards them."""
     # Get config from env
     api_id_str = os.getenv("TELEGRAM_API_ID")
@@ -278,8 +278,14 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
     
     main_token = bot_token4 if bot_token4 else bot_token
     
-    # Channel IDs (Main channel: JJANG_GU / FORWARD_ENABLED_CHAT_ID)
-    main_chat_id_str = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or os.getenv("TELEGRAM_FORWARD_ENABLED_CHAT_ID") or "-1003757683939"
+    # Channel IDs (Main channel: JJANG_GU or TEST_CHAT_ID)
+    if test_mode:
+        main_chat_id_str = os.getenv("TELEGRAM_TEST_CHAT_ID") or "-1003843549676"
+        logger.info(f"Running in TEST mode. Target channel ID: {main_chat_id_str}")
+    else:
+        main_chat_id_str = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or os.getenv("TELEGRAM_FORWARD_ENABLED_CHAT_ID") or "-1003757683939"
+        logger.info(f"Running in PRODUCTION mode. Target channel ID: {main_chat_id_str}")
+        
     beon_chat_id = int(main_chat_id_str)
     forward_chat_2 = -1003914558430
     forward_chat_3 = -1003998918208
@@ -407,6 +413,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Telegram Reporter for Cumulative Stock Charts")
     parser.add_argument("--ticker", type=str, help="Only process this specific ticker symbol")
+    parser.add_argument("--test", action="store_true", help="Run in test mode, uploading to the test channel")
     args = parser.parse_args()
 
     date_dirs = get_sorted_date_dirs()
@@ -443,7 +450,7 @@ def main():
         return
         
     # Upload to Telegram using asyncio
-    asyncio.run(upload_reports_to_telegram(charts_data, latest_date_str))
+    asyncio.run(upload_reports_to_telegram(charts_data, latest_date_str, test_mode=args.test))
 
 if __name__ == '__main__':
     main()
