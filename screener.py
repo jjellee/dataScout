@@ -74,24 +74,25 @@ def main():
     parser.add_argument("--test", action="store_true", help="Send to Telegram test channel only")
     args = parser.parse_args()
 
-    date_dirs = get_sorted_date_dirs(limit=5)
+    date_dirs = get_sorted_date_dirs(limit=25)
     if not date_dirs:
         logger.error("No data available for screening.")
         sys.exit(1)
 
     if args.date:
         target_date = args.date.replace("-", "")
-        if target_date in date_dirs:
-            # Realign date_dirs up to target_date
-            idx = date_dirs.index(target_date)
-            date_dirs = date_dirs[max(0, idx-4):idx+1]
+        all_avail_dirs = get_sorted_date_dirs(limit=500)
+        if target_date in all_avail_dirs:
+            idx = all_avail_dirs.index(target_date)
+            date_dirs = all_avail_dirs[max(0, idx-24):idx+1]
         else:
             logger.error(f"Requested date {target_date} is not available in data.")
             sys.exit(1)
 
     latest_date_str = date_dirs[-1]
+    lookback_dates = date_dirs[-5:]
     formatted_date = f"{latest_date_str[:4]}-{latest_date_str[4:6]}-{latest_date_str[6:]}"
-    logger.info(f"Screening stocks for date: {formatted_date} (Lookback: {date_dirs})")
+    logger.info(f"Screening stocks for date: {formatted_date} (Lookback: {lookback_dates})")
 
     # Load DataFrames for all lookback days
     data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
@@ -114,6 +115,21 @@ def main():
 
     latest_df = dfs[latest_date_str]
 
+    # Calculate 20-day SMA for trend filtering
+    sma20_dates = date_dirs[-20:]
+    price_series_list = []
+    for d in sma20_dates:
+        if d in dfs:
+            price_series_list.append(dfs[d]['종가'])
+    
+    if price_series_list:
+        prices_df = pd.concat(price_series_list, axis=1)
+        sma20_series = prices_df.mean(axis=1)
+        valid_sma20 = prices_df.notna().all(axis=1)
+        sma20_series = sma20_series[valid_sma20]
+    else:
+        sma20_series = pd.Series(dtype=float)
+
     # Create reports
     report_lines = [
         f"📋 *[{formatted_date}] 수급 우량주 포커스 스크리닝*",
@@ -121,7 +137,7 @@ def main():
     ]
 
     # ----------------------------------------------------
-    # Rule 1: 외국인 & 기관 쌍끌이 파워 수급 (당일 거래대금 대비 15% 이상 순매수)
+    # Rule 1: 외국인 & 기관 쌍끌이 파워 수급 (당일 거래대금 대비 20% 이상 순매수 & 거래대금 30억+ & 가격 >= SMA20)
     # ----------------------------------------------------
     logger.info("Running Rule 1: Dual Heavy Buying...")
     try:
@@ -129,16 +145,24 @@ def main():
         r1_df['Net_Sum'] = r1_df['외국인_순매수대금'] + r1_df['기관합계_순매수대금']
         r1_df['Ratio'] = r1_df['Net_Sum'] / r1_df['거래대금']
         
-        # Criteria: Dual net buying, min volume (10억), and ratio >= 15%
+        # Upgraded filters: Net buying, volume >= 30억, ratio >= 20%
         r1_filtered = r1_df[
             (r1_df['외국인_순매수대금'] > 0) & 
             (r1_df['기관합계_순매수대금'] > 0) & 
-            (r1_df['거래대금'] >= 10e8) & 
-            (r1_df['Ratio'] >= 0.15)
+            (r1_df['거래대금'] >= 30e8) & 
+            (r1_df['Ratio'] >= 0.20)
         ]
+        
+        # Apply trend filter: Price >= SMA20 (using aligned index to prevent label alignment errors)
+        sma20_aligned = sma20_series.reindex(r1_filtered.index)
+        r1_filtered = r1_filtered[
+            sma20_aligned.notna() & 
+            (r1_filtered['종가'] >= sma20_aligned)
+        ]
+        
         r1_sorted = r1_filtered.sort_values(by='Ratio', ascending=False).head(5)
         
-        report_lines.append("🔥 *1. 외인/기관 쌍끌이 파워 수급 (거래대금 대비 15%+)*")
+        report_lines.append("🔥 *1. 외인/기관 쌍끌이 파워 수급 (거래대금 대비 20%+, 거래대금 30억+, 가격 >= SMA20)*")
         if r1_sorted.empty:
             report_lines.append("  • (해당 종목이 없습니다)")
         else:
@@ -164,7 +188,7 @@ def main():
             five_day_sum = 0.0
             
             # Check all lookback days
-            for d in date_dirs:
+            for d in lookback_dates:
                 if d not in dfs or ticker not in dfs[d].index:
                     consecutive = False
                     break
@@ -241,7 +265,7 @@ def main():
             retail_sum = 0.0
             smart_sum = 0.0
             
-            for d in date_dirs:
+            for d in lookback_dates:
                 if d not in dfs or ticker not in dfs[d].index:
                     consecutive_sell = False
                     break
