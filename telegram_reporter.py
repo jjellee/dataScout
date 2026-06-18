@@ -268,7 +268,7 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
 import requests
 
 def fetch_latest_news_headlines(company_name):
-    """Fetches the top 2 news headlines for a company from Naver Search."""
+    """Fetches the top 2 news headlines and their URLs for a company from Naver Search."""
     if not company_name:
         return []
     
@@ -285,20 +285,23 @@ def fetch_latest_news_headlines(company_name):
             from bs4 import BeautifulSoup
             soup = BeautifulSoup(r.text, 'html.parser')
             links = soup.find_all('a', attrs={'data-heatmap-target': '.tit'})
-            titles = []
+            articles = []
+            seen_titles = set()
             for a in links:
                 title = a.text.strip()
-                if title and title not in titles:
-                    titles.append(title)
-                    if len(titles) >= 2:
+                link_url = a.get('href', '')
+                if title and title not in seen_titles and link_url:
+                    seen_titles.add(title)
+                    articles.append((title, link_url))
+                    if len(articles) >= 2:
                         break
-            return titles
+            return articles
     except Exception as e:
         logger.error(f"Error fetching news for {company_name}: {e}")
     return []
 
 def format_telegram_caption(ticker, name, date_str, latest_row):
-    """Formats a beautiful, data-rich caption for Telegram with stock stats and news."""
+    """Formats a beautiful, data-rich caption for Telegram with stock stats and news with hyperlinks."""
     import math
     formatted_date = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}"
     
@@ -353,8 +356,9 @@ def format_telegram_caption(ticker, name, date_str, latest_row):
     headlines = fetch_latest_news_headlines(name)
     if headlines:
         caption += f"\n📰 최근 관련 뉴스\n"
-        for h in headlines:
-            caption += f"  ▪️ {h}\n"
+        for title, link_url in headlines:
+            cleaned_title = title.replace('[', '(').replace(']', ')')
+            caption += f"  ▪️ [{cleaned_title}]({link_url})\n"
             
     return caption
 
