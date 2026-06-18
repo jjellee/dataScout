@@ -376,6 +376,39 @@ def main():
     except Exception as e:
         logger.error(f"Error executing Rule 5: {e}")
 
+    report_lines.append("")
+
+    # ----------------------------------------------------
+    # Rule 6: 낙폭과대 저가 매수 유입 종목 (당일 등락률 -5% 이하, 거래대금 20억+, 외인/기관 합산 순매수 5억+)
+    # ----------------------------------------------------
+    logger.info("Running Rule 6: Oversold Dip-Buying Inflow...")
+    try:
+        r6_df = latest_df.copy()
+        r6_df['Smart_Sum'] = r6_df['외국인_순매수대금'] + r6_df['기관합계_순매수대금']
+        
+        r6_filtered = r6_df[
+            (r6_df['등락률'] <= -5.0) &
+            (r6_df['거래대금'] >= 20e8) &
+            ((r6_df['외국인_순매수대금'] > 0) | (r6_df['기관합계_순매수대금'] > 0)) &
+            (r6_df['Smart_Sum'] >= 5e8)
+        ]
+        
+        r6_sorted = r6_filtered.sort_values(by='Smart_Sum', ascending=False).head(10)
+        
+        report_lines.append("📉 *6. 낙폭과대 저가 매수 유입 (등락률 -5% 이하, 거래대금 20억+, 외인/기관 5억+)*")
+        if r6_sorted.empty:
+            report_lines.append("  • (해당 종목이 없습니다)")
+        else:
+            for ticker, row in r6_sorted.iterrows():
+                smart_100m = row['Smart_Sum'] / 1e8
+                trade_100m = row['거래대금'] / 1e8
+                report_lines.append(
+                    f"  • *{row['Name']} ({ticker})*\n"
+                    f"    종가: *{int(row['종가']):,}원* ({row['등락률']:.2f}% / 순매수 +{smart_100m:.1f}억 / 거래대금 {trade_100m:.1f}억)"
+                )
+    except Exception as e:
+        logger.error(f"Error executing Rule 6: {e}")
+
     report_lines.append("=============================")
     report_text = "\n".join(report_lines)
 
