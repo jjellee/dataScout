@@ -259,6 +259,8 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
             logger.info("Forwarding Client 2 started.")
             entity2 = await client2.get_entity(forward_chat_2)
             logger.info(f"Successfully resolved forward channel 2: {getattr(entity2, 'title', forward_chat_2)}")
+            # Cache the source channel in client2
+            await client2.get_entity(beon_chat_id)
         except Exception as e:
             logger.error(f"Failed to start/resolve Forwarding Client 2: {e}")
             client2_connected = False
@@ -273,6 +275,8 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
             logger.info("Forwarding Client 3 started.")
             entity3 = await client3.get_entity(forward_chat_3)
             logger.info(f"Successfully resolved forward channel 3: {getattr(entity3, 'title', forward_chat_3)}")
+            # Cache the source channel in client3
+            await client3.get_entity(beon_chat_id)
         except Exception as e:
             logger.error(f"Failed to start/resolve Forwarding Client 3: {e}")
             client3_connected = False
@@ -306,14 +310,14 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
                 forward_tasks.append(client2.forward_messages(
                     entity2,
                     sent_messages,
-                    main_entity
+                    beon_chat_id
                 ))
             if client3_connected and entity3:
                 logger.info(f"Scheduling forward to -1003998918208...")
                 forward_tasks.append(client3.forward_messages(
                     entity3,
                     sent_messages,
-                    main_entity
+                    beon_chat_id
                 ))
                 
             if forward_tasks:
