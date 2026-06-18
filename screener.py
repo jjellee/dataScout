@@ -303,6 +303,79 @@ def main():
     except Exception as e:
         logger.error(f"Error executing Rule 4: {e}")
 
+    report_lines.append("")
+
+    # ----------------------------------------------------
+    # Rule 5: 역사적 신고가 (ATH) 돌파 종목 (최근 12년 기준 최고가 돌파, 거래대금 20억+)
+    # ----------------------------------------------------
+    logger.info("Running Rule 5: All-Time High Breakout (ATH)...")
+    try:
+        # 1. Read closing prices for all historical dates in data_dir
+        all_hist_dirs = sorted([d for d in os.listdir(data_dir) if len(d) == 8 and d.isdigit()])
+        
+        price_series_list = []
+        for d in all_hist_dirs:
+            csv_path = os.path.join(data_dir, d, "all_stocks_investor_trend.csv")
+            if os.path.exists(csv_path):
+                df_temp = pd.read_csv(csv_path, dtype={'티커': str}).set_index('티커')
+                price_series_list.append(df_temp['종가'])
+                
+        if price_series_list:
+            prices_df = pd.concat(price_series_list, axis=1)
+            
+            # Identify tickers where today's close >= max of previous days
+            latest_prices = prices_df.iloc[:, -1]
+            max_prev_prices = prices_df.iloc[:, :-1].max(axis=1)
+            six_month_highs = prices_df.index[latest_prices >= max_prev_prices].tolist()
+            
+            # Filter by volume >= 20억
+            filtered_candidates = []
+            for ticker in six_month_highs:
+                if ticker in latest_df.index:
+                    if latest_df.loc[ticker, '거래대금'] >= 20e8:
+                        filtered_candidates.append(ticker)
+                        
+            # Query 12-year history via FinanceDataReader
+            ath_stocks = []
+            import FinanceDataReader as fdr
+            for ticker in filtered_candidates:
+                try:
+                    df_hist = fdr.DataReader(ticker, "2000-01-01")
+                    if len(df_hist) < 5:
+                        continue
+                    max_high = df_hist['High'].iloc[:-1].max()
+                    today_close = latest_df.loc[ticker, '종가']
+                    if today_close >= max_high:
+                        ath_stocks.append({
+                            'ticker': ticker,
+                            'Name': latest_df.loc[ticker, 'Name'],
+                            'Close': today_close,
+                            'Change': latest_df.loc[ticker, '등락률'],
+                            'Volume': latest_df.loc[ticker, '거래대금']
+                        })
+                except Exception:
+                    pass
+            
+            report_lines.append("🏆 *5. 역사적 신고가 (ATH) 돌파 종목 (거래대금 20억+)*")
+            if not ath_stocks:
+                report_lines.append("  • (해당 종목이 없습니다)")
+            else:
+                # Sort by volume descending
+                ath_df = pd.DataFrame(ath_stocks)
+                ath_sorted = ath_df.sort_values(by='Volume', ascending=False).head(10)
+                for _, row in ath_sorted.iterrows():
+                    sum_100m = row['Volume'] / 1e8
+                    change_sign = "+" if row['Change'] > 0 else ""
+                    report_lines.append(
+                        f"  • *{row['Name']} ({row['ticker']})*\n"
+                        f"    종가: *{int(row['Close']):,}원* ({change_sign}{row['Change']:.2f}% / 거래대금 {sum_100m:.1f}억)"
+                    )
+        else:
+            report_lines.append("🏆 *5. 역사적 신고가 (ATH) 돌파 종목 (거래대금 20억+)*")
+            report_lines.append("  • (데이터가 부족합니다)")
+    except Exception as e:
+        logger.error(f"Error executing Rule 5: {e}")
+
     report_lines.append("=============================")
     report_text = "\n".join(report_lines)
 
