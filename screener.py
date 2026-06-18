@@ -160,7 +160,7 @@ def main():
             (r1_filtered['종가'] >= sma20_aligned)
         ]
         
-        r1_sorted = r1_filtered.sort_values(by='Ratio', ascending=False).head(5)
+        r1_sorted = r1_filtered.sort_values(by='Ratio', ascending=False).head(10)
         
         report_lines.append("🔥 *1. 외인/기관 쌍끌이 파워 수급 (거래대금 대비 20%+, 거래대금 30억+, 가격 >= SMA20)*")
         if r1_sorted.empty:
@@ -218,7 +218,7 @@ def main():
         if r2_df.empty:
             report_lines.append("  • (해당 종목이 없습니다)")
         else:
-            r2_sorted = r2_df.sort_values(by='5d_sum', ascending=False).head(5)
+            r2_sorted = r2_df.sort_values(by='5d_sum', ascending=False).head(10)
             for _, row in r2_sorted.iterrows():
                 sum_100m = row['5d_sum'] / 1e8
                 today_100m = row['today_val'] / 1e8
@@ -241,7 +241,7 @@ def main():
         if r3_df.empty:
             report_lines.append("  • (해당 종목이 없습니다)")
         else:
-            r3_sorted = r3_df.sort_values(by='5d_sum', ascending=False).head(5)
+            r3_sorted = r3_df.sort_values(by='5d_sum', ascending=False).head(10)
             for _, row in r3_sorted.iterrows():
                 sum_100m = row['5d_sum'] / 1e8
                 today_100m = row['today_val'] / 1e8
@@ -292,7 +292,7 @@ def main():
         if r4_df.empty:
             report_lines.append("  • (해당 종목이 없습니다)")
         else:
-            r4_sorted = r4_df.sort_values(by='smart_sum', ascending=False).head(5)
+            r4_sorted = r4_df.sort_values(by='smart_sum', ascending=False).head(10)
             for _, row in r4_sorted.iterrows():
                 smart_100m = row['smart_sum'] / 1e8
                 retail_100m = abs(row['retail_sum']) / 1e8
