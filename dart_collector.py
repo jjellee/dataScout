@@ -81,7 +81,7 @@ def fetch_daily_disclosures(target_date):
             
     return all_reports
 
-def download_disclosure_document(api_key, rcept_no, output_dir):
+def download_disclosure_document(api_key, rcept_no, output_dir, metadata=None):
     """
     DART Open API를 통해 특정 공시의 본문(document.xml)을 다운로드하고
     HTML 파일로 변환하여 저장합니다.
@@ -145,6 +145,39 @@ def download_disclosure_document(api_key, rcept_no, output_dir):
                 flags=re.IGNORECASE
             )
             
+            # Metadata header injection (회사명, 종목코드 등 상단에 표시)
+            if metadata:
+                corp_name = str(metadata.get("corp_name", "")).strip()
+                report_nm = str(metadata.get("report_nm", "")).strip()
+                corp_cls = str(metadata.get("corp_cls", "")).strip()
+                stock_code = str(metadata.get("stock_code", "")).strip()
+                corp_code = str(metadata.get("corp_code", "")).strip()
+                rcept_dt = str(metadata.get("rcept_dt", "")).strip()
+                flr_nm = str(metadata.get("flr_nm", "")).strip()
+                
+                market_name = {"Y": "코스피", "K": "코스닥", "N": "코넥스"}.get(corp_cls, "기타")
+                formatted_date = f"{rcept_dt[:4]}-{rcept_dt[4:6]}-{rcept_dt[6:]}" if len(rcept_dt) == 8 else rcept_dt
+                
+                header_html = f"""
+<!-- Antigravity Header Injection -->
+<div style="background-color: #f1f3f5; padding: 15px 20px; border-left: 5px solid #228be6; margin-bottom: 20px; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <h2 style="margin: 0 0 8px 0; color: #1c7ed6; font-size: 20px;">[{corp_name}] {report_nm}</h2>
+  <div style="margin: 0; color: #495057; font-size: 13px; line-height: 1.6;">
+    <span style="font-weight: bold; margin-right: 15px;">시장구분: <span style="color: #2b8a3e;">{market_name}</span></span>
+    <span style="font-weight: bold; margin-right: 15px;">종목코드: <span style="color: #ae3ec9;">{stock_code}</span></span>
+    <span style="font-weight: bold; margin-right: 15px;">회사고유코드: {corp_code}</span>
+    <br>
+    <span style="font-weight: bold; margin-right: 15px;">접수일자: {formatted_date}</span>
+    <span style="font-weight: bold; margin-right: 15px;">접수번호: {rcept_no}</span>
+    <span style="font-weight: bold;">제출인: {flr_nm}</span>
+  </div>
+</div>
+"""
+                body_match = re.search(r'(<body[^>]*>)', content_str, re.IGNORECASE)
+                if body_match:
+                    body_tag = body_match.group(1)
+                    content_str = content_str.replace(body_tag, body_tag + "\n" + header_html)
+            
             with open(html_path, "w", encoding="utf-8") as out_f:
                 out_f.write(content_str)
                 
@@ -197,7 +230,7 @@ def filter_and_save(reports, target_date):
             continue
             
         print(f"Downloading [{success_count + fail_count + skip_count + 1}/{total_docs}] {rcept_no}...")
-        success = download_disclosure_document(DART_API_KEY, rcept_no, output_dir)
+        success = download_disclosure_document(DART_API_KEY, rcept_no, output_dir, metadata=row.to_dict())
         if success:
             success_count += 1
         else:
