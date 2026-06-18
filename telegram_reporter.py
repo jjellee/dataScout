@@ -221,8 +221,9 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
     
     main_token = bot_token4 if bot_token4 else bot_token
     
-    # Channel IDs
-    beon_chat_id = int(os.getenv("TELEGRAM_BEON_CHAT_ID", "-1002695068357"))
+    # Channel IDs (Main channel: JJANG_GU / FORWARD_ENABLED_CHAT_ID)
+    main_chat_id_str = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or os.getenv("TELEGRAM_FORWARD_ENABLED_CHAT_ID") or "-1003757683939"
+    beon_chat_id = int(main_chat_id_str)
     forward_chat_2 = -1003914558430
     forward_chat_3 = -1003998918208
     
@@ -346,6 +347,11 @@ async def upload_reports_to_telegram(charts_data, target_date_str):
 # ----------------- Main Action ----------------- #
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Telegram Reporter for Cumulative Stock Charts")
+    parser.add_argument("--ticker", type=str, help="Only process this specific ticker symbol")
+    args = parser.parse_args()
+
     date_dirs = get_sorted_date_dirs()
     if not date_dirs:
         logger.error("No dates found to generate charts.")
@@ -354,8 +360,17 @@ def main():
     latest_date_str = date_dirs[-1]
     logger.info(f"Generating cumulative charts up to latest date: {latest_date_str}")
     
+    targets_to_process = TARGETS
+    if args.ticker:
+        target_ticker = str(args.ticker).zfill(6)
+        if target_ticker in TARGETS:
+            targets_to_process = {target_ticker: TARGETS[target_ticker]}
+        else:
+            logger.error(f"Ticker {target_ticker} is not in the registered target list.")
+            return
+
     charts_data = []
-    for ticker, name in TARGETS.items():
+    for ticker, name in targets_to_process.items():
         logger.info(f"Processing {name} ({ticker})...")
         df = build_ticker_data(ticker, date_dirs)
         if df.empty:
