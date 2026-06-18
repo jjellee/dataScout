@@ -141,6 +141,8 @@ def build_ticker_data(ticker, date_dirs):
     records = []
     ticker_str = str(ticker).zfill(6)
     
+    investors = ["개인", "외국인", "기관합계", "금융투자", "보험", "투신", "은행", "연기금", "사모", "기타법인", "기타외국인"]
+    
     for date_str in date_dirs:
         csv_path = os.path.join("data", date_str, "all_stocks_investor_trend.csv")
         if not os.path.exists(csv_path):
@@ -153,14 +155,17 @@ def build_ticker_data(ticker, date_dirs):
             
             if ticker_str in df.index:
                 row = df.loc[ticker_str]
-                records.append({
+                record = {
                     'Date': datetime.datetime.strptime(date_str, "%Y%m%d"),
                     'Price': float(row['종가']),
-                    '개인': float(row['개인_순매수대금']),
-                    '외국인': float(row['외국인_순매수대금']),
-                    '기관': float(row['기관합계_순매수대금']),
-                    '연기금': float(row['연기금_순매수대금'])
-                })
+                }
+                for inv in investors:
+                    col_name = f"{inv}_순매수대금"
+                    if col_name in row:
+                        record[inv] = float(row[col_name])
+                    else:
+                        record[inv] = 0.0
+                records.append(record)
         except Exception as e:
             logger.error(f"Error reading {csv_path} for ticker {ticker_str}: {e}")
             
@@ -171,11 +176,9 @@ def build_ticker_data(ticker, date_dirs):
     df_result = df_result.sort_values('Date').reset_index(drop=True)
     
     # Calculate cumulative sums in 100 Million KRW (억원)
-    df_result['개인_누적'] = df_result['개인'].cumsum() / 1e8
-    df_result['외국인_누적'] = df_result['외국인'].cumsum() / 1e8
-    df_result['기관_누적'] = df_result['기관'].cumsum() / 1e8
-    df_result['연기금_누적'] = df_result['연기금'].cumsum() / 1e8
-    
+    for inv in investors:
+        df_result[f'{inv}_누적'] = df_result[inv].cumsum() / 1e8
+        
     return df_result
 
 # ----------------- Plotting ----------------- #
@@ -191,18 +194,28 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
     # Set style
     plt.style.use('seaborn-v0_8-whitegrid')
     
-    fig, ax1 = plt.subplots(figsize=(12, 6.5), dpi=150)
+    fig, ax1 = plt.subplots(figsize=(13, 8), dpi=200)
     
     # Format dates for X axis
     dates = df['Date']
     date_labels = [d.strftime('%y-%m-%d') for d in dates]
     
-    # Set line styles and colors
-    # Premium Color Palette: Warm Red for Retail, Deep Blue for Foreigner, Green for Inst, Purple for Pension
-    ax1.plot(dates, df['개인_누적'], label='개인 누적', color='#e74c3c', linewidth=2.0)
-    ax1.plot(dates, df['외국인_누적'], label='외국인 누적', color='#2980b9', linewidth=2.0)
-    ax1.plot(dates, df['기관_누적'], label='기관 누적', color='#27ae60', linewidth=2.0)
-    ax1.plot(dates, df['연기금_누적'], label='연기금 누적', color='#8e44ad', linewidth=2.0)
+    # 1. Main categories
+    l_p1 = ax1.plot(dates, df['개인_누적'], label='개인', color='#e74c3c', linewidth=2.8)
+    l_p2 = ax1.plot(dates, df['외국인_누적'], label='외국인', color='#2ecc71', linewidth=2.8)
+    l_p3 = ax1.plot(dates, df['기타외국인_누적'], label='기타외국인 (별도)', color='#bdc3c7', linewidth=1.2)
+    l_p4 = ax1.plot(dates, df['기타법인_누적'], label='기타법인 (별도)', color='#16a085', linewidth=1.8, linestyle=':')
+    
+    # 2. Institutional total
+    l_p5 = ax1.plot(dates, df['기관합계_누적'], label='기관합계 (Total)', color='#2980b9', linewidth=2.5, linestyle='--')
+    
+    # 3. Institutional subgroups (indented labels)
+    l_p6 = ax1.plot(dates, df['금융투자_누적'], label='   └ 금융투자', color='#1abc9c', linewidth=1.0)
+    l_p7 = ax1.plot(dates, df['보험_누적'], label='   └ 보험', color='#e67e22', linewidth=1.0)
+    l_p8 = ax1.plot(dates, df['투신_누적'], label='   └ 투신', color='#f1c40f', linewidth=1.0)
+    l_p9 = ax1.plot(dates, df['은행_누적'], label='   └ 은행', color='#7f8c8d', linewidth=1.0)
+    l_p10 = ax1.plot(dates, df['연기금_누적'], label='   └ 연기금', color='#9b59b6', linewidth=1.5)
+    l_p11 = ax1.plot(dates, df['사모_누적'], label='   └ 사모', color='#34495e', linewidth=1.0)
     
     ax1.axhline(0, color='gray', linestyle='--', linewidth=0.8, alpha=0.7)
     
@@ -210,21 +223,16 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
     ax1.set_ylabel('누적 순매수대금 (억원)', fontproperties=font_prop, fontsize=11, labelpad=10)
     ax1.tick_params(axis='y', labelsize=10)
     
-    # Title & Legend
-    ax1.legend(loc='upper left', prop=font_prop, fontsize=10, frameon=True, facecolor='white', edgecolor='lightgray')
-    
     # Secondary Y-axis for stock price
     ax2 = ax1.twinx()
-    ax2.plot(dates, df['Price'], label='주가', color='#7f8c8d', linestyle='--', linewidth=1.5, alpha=0.8)
+    l_price = ax2.plot(dates, df['Price'], label='주가 (종가)', color='#2c3e50', linewidth=3.0, alpha=0.85)
     ax2.set_ylabel('주가 (원)', fontproperties=font_prop, fontsize=11, labelpad=10)
     ax2.tick_params(axis='y', labelsize=10)
     ax2.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
     
-    # Merge legends
-    lines1, labels1 = ax1.get_legend_handles_labels()
-    lines2, labels2 = ax2.get_legend_handles_labels()
-    ax1.get_legend().remove() # Remove original
-    ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left', prop=font_prop, fontsize=10, frameon=True, facecolor='white', edgecolor='lightgray')
+    # Merge legends with structured tree labels
+    lines = l_p1 + l_p2 + l_p3 + l_p4 + l_p5 + l_p6 + l_p7 + l_p8 + l_p9 + l_p10 + l_p11 + l_price
+    labels = [l.get_label() for l in lines]
     
     # Grid customization
     ax1.grid(True, which='both', linestyle=':', alpha=0.5, color='gray')
@@ -236,12 +244,16 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
     plt.title(f"{name} ({ticker}) 주체별 누적 순매수 & 주가 추이\n({start_date} ~ {end_date})", 
               fontproperties=font_bold_prop, fontsize=14, pad=15)
     
+    # Place Legend outside plot area to fit all 12 lines elegantly
+    ax1.legend(lines, labels, loc='upper left', bbox_to_anchor=(1.08, 1), prop=font_prop, fontsize=10, 
+               frameon=True, facecolor='white', edgecolor='lightgray')
+    
     # X-Axis ticks settings
     tick_step = max(1, len(dates) // 10)
     ax1.set_xticks(dates[::tick_step])
     ax1.set_xticklabels(date_labels[::tick_step], rotation=30, ha='right', fontsize=9)
     
-    # Layout adjustments
+    # Layout adjustments to make room for legend on the right
     plt.tight_layout()
     
     # Save Image
