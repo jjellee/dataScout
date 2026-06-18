@@ -169,9 +169,12 @@ def main():
             for ticker, row in r1_sorted.iterrows():
                 net_sum_100m = row['Net_Sum'] / 1e8
                 trade_100m = row['거래대금'] / 1e8
+                frgn_100m = row['외국인_순매수대금'] / 1e8
+                inst_100m = row['기관합계_순매수대금'] / 1e8
                 report_lines.append(
                     f"  • *{row['Name']} ({ticker})*\n"
-                    f"    비중: *{row['Ratio']*100:.1f}%* (순매수 +{net_sum_100m:.1f}억 / 거래대금 {trade_100m:.1f}억)"
+                    f"    비중: *{row['Ratio']*100:.1f}%* (순매수 +{net_sum_100m:.1f}억 / 거래대금 {trade_100m:.1f}억)\n"
+                    f"    수급: 외인 +{frgn_100m:.1f}억, 기관 +{inst_100m:.1f}억"
                 )
     except Exception as e:
         logger.error(f"Error executing Rule 1: {e}")
@@ -402,9 +405,12 @@ def main():
             for ticker, row in r6_sorted.iterrows():
                 smart_100m = row['Smart_Sum'] / 1e8
                 trade_100m = row['거래대금'] / 1e8
+                frgn_100m = row['외국인_순매수대금'] / 1e8
+                inst_100m = row['기관합계_순매수대금'] / 1e8
                 report_lines.append(
                     f"  • *{row['Name']} ({ticker})*\n"
-                    f"    종가: *{int(row['종가']):,}원* ({row['등락률']:.2f}% / 순매수 +{smart_100m:.1f}억 / 거래대금 {trade_100m:.1f}억)"
+                    f"    종가: *{int(row['종가']):,}원* ({row['등락률']:.2f}% / 거래대금 {trade_100m:.1f}억)\n"
+                    f"    수급: *+{smart_100m:.1f}억* (외인 {frgn_100m:+.1f}억, 기관 {inst_100m:+.1f}억)"
                 )
     except Exception as e:
         logger.error(f"Error executing Rule 6: {e}")
