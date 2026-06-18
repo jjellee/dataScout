@@ -215,6 +215,114 @@ def main():
 
     df_stocks = df_stocks.fillna(0)
 
+    # 5.5 Fetch ETF Data if any ETF ticker is in the watchlist
+    print("\n5.5. Checking watchlist for ETF tickers...")
+    try:
+        # Load watchlist
+        watchlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "watchlist.txt")
+        watchlist = []
+        if os.path.exists(watchlist_path):
+            with open(watchlist_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        watchlist.append(line.zfill(6))
+        
+        if watchlist:
+            # Get listing of all ETFs to verify which tickers are ETFs
+            print("  Fetching ETF ticker list to verify watchlist...")
+            etf_tickers = stock.get_etf_ticker_list(target_date)
+            time.sleep(0.5)
+            
+            etfs_in_watchlist = [t for t in watchlist if t in etf_tickers]
+            if etfs_in_watchlist:
+                print(f"  Found {len(etfs_in_watchlist)} ETF(s) in watchlist: {etfs_in_watchlist}")
+                
+                # Fetch price changes for all ETFs
+                print("  Fetching price changes for all ETFs...")
+                df_etf_change = stock.get_etf_price_change_by_ticker(target_date, target_date)
+                time.sleep(0.5)
+                
+                etf_rows = []
+                for ticker in etfs_in_watchlist:
+                    if ticker in df_stocks.index:
+                        continue
+                    
+                    print(f"  -> Fetching ETF details for: {ticker}")
+                    try:
+                        name = stock.get_etf_ticker_name(ticker)
+                        time.sleep(0.1)
+                        
+                        # Extract OHLCV
+                        if not df_etf_change.empty and ticker in df_etf_change.index:
+                            row_change = df_etf_change.loc[ticker]
+                            close = float(row_change['종가'])
+                            volume = float(row_change['거래량'])
+                            amount = float(row_change['거래대금'])
+                            change_rate = float(row_change['등락률'])
+                        else:
+                            close, volume, amount, change_rate = 0.0, 0.0, 0.0, 0.0
+                            
+                        # Fetch investor net purchases for this ETF
+                        df_etf_inv = stock.get_etf_trading_volume_and_value(target_date, target_date, ticker)
+                        time.sleep(0.5)
+                        
+                        # Map pykrx index to our investor columns
+                        inv_map = {
+                            "개인": "개인",
+                            "외국인": "외국인",
+                            "기관합계": "기관합계",
+                            "금융투자": "금융투자",
+                            "보험": "보험",
+                            "투신": "투신",
+                            "은행": "은행",
+                            "연기금": "연기금 등",
+                            "사모": "사모",
+                            "기타법인": "기타법인",
+                            "기타외국인": "기타외국인"
+                        }
+                        
+                        row_data = {
+                            'Name': name,
+                            'Market': 'ETF',
+                            'Sector': 'ETF',
+                            'Industry': 'ETF',
+                            '종가': close,
+                            '거래량': volume,
+                            '거래대금': amount,
+                            '등락률': change_rate,
+                            '공매도거래대금': 0.0,
+                            '공매도비중': 0.0
+                        }
+                        
+                        for inv in investors:
+                            pykrx_inv_name = inv_map[inv]
+                            if pykrx_inv_name in df_etf_inv.index:
+                                vol_net = df_etf_inv.loc[pykrx_inv_name, ('거래량', '순매수')]
+                                val_net = df_etf_inv.loc[pykrx_inv_name, ('거래대금', '순매수')]
+                                row_data[f'{inv}_순매수량'] = float(vol_net)
+                                row_data[f'{inv}_순매수대금'] = float(val_net)
+                            else:
+                                row_data[f'{inv}_순매수량'] = 0.0
+                                row_data[f'{inv}_순매수대금'] = 0.0
+                                
+                        df_single_row = pd.DataFrame([row_data], index=[ticker])
+                        df_single_row.index.name = '티커'
+                        etf_rows.append(df_single_row)
+                    except Exception as etf_err:
+                        print(f"  Warning: Failed to fetch ETF data for {ticker}: {etf_err}")
+                
+                if etf_rows:
+                    df_etfs = pd.concat(etf_rows)
+                    df_stocks = pd.concat([df_stocks, df_etfs])
+                    print(f"  Successfully appended {len(etf_rows)} ETF(s) to stock list.")
+            else:
+                print("  No ETF tickers found in watchlist.")
+        else:
+            print("  Watchlist file is empty.")
+    except Exception as e:
+        print(f"Warning: Failed during ETF watchlist check: {e}")
+
     # 6. Group by Sector to get sector-wide investor net purchases
     print("\n6. Grouping and summarizing by Sector...")
     investor_cols = []
