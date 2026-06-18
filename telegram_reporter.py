@@ -158,6 +158,7 @@ def build_ticker_data(ticker, date_dirs):
                 record = {
                     'Date': datetime.datetime.strptime(date_str, "%Y%m%d"),
                     'Price': float(row['종가']),
+                    'Change': float(row['등락률']) if '등락률' in row else 0.0,
                 }
                 for inv in investors:
                     col_name = f"{inv}_순매수대금"
@@ -264,7 +265,98 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
     logger.info(f"Successfully saved chart for {name} to {output_path}")
     return output_path
 
-# ----------------- Telegram Upload & Forward ----------------- #
+import requests
+
+def fetch_latest_news_headlines(company_name):
+    """Fetches the top 2 news headlines for a company from Naver Search."""
+    if not company_name:
+        return []
+    
+    # Clean company name (remove indicators like ETF or KODEX if it has it, but Naver search handles it well)
+    query_name = company_name
+    
+    url = f"https://search.naver.com/search.naver?where=news&query={query_name}"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    try:
+        r = requests.get(url, headers=headers, timeout=5)
+        if r.status_code == 200:
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(r.text, 'html.parser')
+            links = soup.find_all('a', attrs={'data-heatmap-target': '.tit'})
+            titles = []
+            for a in links:
+                title = a.text.strip()
+                if title and title not in titles:
+                    titles.append(title)
+                    if len(titles) >= 2:
+                        break
+            return titles
+    except Exception as e:
+        logger.error(f"Error fetching news for {company_name}: {e}")
+    return []
+
+def format_telegram_caption(ticker, name, date_str, latest_row):
+    """Formats a beautiful, data-rich caption for Telegram with stock stats and news."""
+    import math
+    formatted_date = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}"
+    
+    if latest_row is None:
+        return f"📊 [{name} ({ticker})] {formatted_date} 주체별 순매수 누적 차트"
+        
+    price = latest_row.get('Price', 0.0)
+    change = latest_row.get('Change', 0.0)
+    
+    if price is None or (isinstance(price, float) and math.isnan(price)):
+        price = 0.0
+    if change is None or (isinstance(change, float) and math.isnan(change)):
+        change = 0.0
+        
+    price_str = f"{int(price):,}원"
+    if change > 0:
+        change_icon = "🔺"
+        change_str = f"+{change:.2f}%"
+    elif change < 0:
+        change_icon = "🔻"
+        change_str = f"{change:.2f}%"
+    else:
+        change_icon = "▪️"
+        change_str = "0.00%"
+        
+    caption = f"📊 [{name} ({ticker})] {formatted_date} 마감\n"
+    caption += f"  종가: {price_str} ({change_icon} {change_str})\n\n"
+    
+    caption += f"✔️ 오늘 주요 수급 (순매수)\n"
+    
+    investors_to_show = [
+        ("개인", "개인"),
+        ("외국인", "외국인"),
+        ("기관합계", "기관합계"),
+        ("연기금", "ㄴ 연기금")
+    ]
+    
+    for key, label in investors_to_show:
+        val = latest_row.get(key, 0.0)
+        if val is None or (isinstance(val, float) and math.isnan(val)):
+            val = 0.0
+        val_in_100m = val / 1e8
+        if val_in_100m > 0:
+            val_str = f"+{val_in_100m:.1f}억"
+        elif val_in_100m < 0:
+            val_str = f"{val_in_100m:.1f}억"
+        else:
+            val_str = "0.0억"
+            
+        caption += f"   {label}: {val_str}\n"
+        
+    headlines = fetch_latest_news_headlines(name)
+    if headlines:
+        caption += f"\n📰 최근 관련 뉴스\n"
+        for h in headlines:
+            caption += f"  ▪️ {h}\n"
+            
+    return caption
 
 async def upload_reports_to_telegram(charts_data, target_date_str, test_mode=False):
     """Uploads the generated chart images to Telegram and forwards them."""
@@ -346,13 +438,11 @@ async def upload_reports_to_telegram(charts_data, target_date_str, test_mode=Fal
             client3_connected = False
             
     # Process each chart upload
-    formatted_date = f"{target_date_str[:4]}-{target_date_str[4:6]}-{target_date_str[6:]}"
-    
-    for ticker, name, img_path in charts_data:
+    for ticker, name, img_path, latest_row in charts_data:
         if not os.path.exists(img_path):
             continue
             
-        caption = f"📊 [{name} ({ticker})] {formatted_date} 주체별 순매수 누적 차트"
+        caption = format_telegram_caption(ticker, name, target_date_str, latest_row)
         logger.info(f"Uploading {name} chart to main channel...")
         
         try:
@@ -443,7 +533,7 @@ def main():
             
         img_path = plot_cumulative_chart(ticker, name, df)
         if img_path:
-            charts_data.append((ticker, name, img_path))
+            charts_data.append((ticker, name, img_path, df.iloc[-1] if not df.empty else None))
             
     if not charts_data:
         logger.warning("No charts generated.")
