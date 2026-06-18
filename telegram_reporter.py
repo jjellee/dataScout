@@ -41,17 +41,7 @@ def load_env():
 # Load env variables
 load_env()
 
-# Targets Tickers and Names
-TARGETS = {
-    '226950': '올릭스',
-    '310210': '보로노이',
-    '347850': '디앤디파마텍',
-    '491000': '리브스메드',
-    '376900': '로킷헬스케어',
-    '440110': '파두',
-    '005930': '삼성전자',
-    '000660': 'SK하이닉스'
-}
+# Targets dictionary will be loaded dynamically from watchlist.txt below
 
 # Matplotlib Font Setup
 FONT_PATH = '/home/inhyuk/Downloads/public/static/alternative/Pretendard-Regular.ttf'
@@ -90,6 +80,61 @@ def get_sorted_date_dirs():
     
     dirs.sort()
     return dirs
+
+def load_targets():
+    watchlist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "watchlist.txt")
+    if not os.path.exists(watchlist_path):
+        logger.warning("watchlist.txt not found. Using default targets.")
+        return {
+            '226950': '올릭스',
+            '310210': '보로노이',
+            '347850': '디앤디파마텍',
+            '491000': '리브스메드',
+            '376900': '로킷헬스케어',
+            '440110': '파두',
+            '005930': '삼성전자',
+            '000660': 'SK하이닉스'
+        }
+    
+    tickers = []
+    with open(watchlist_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#"):
+                tickers.append(line.zfill(6))
+                
+    # To get the names, look at the latest CSV
+    targets = {}
+    latest_csv = None
+    date_dirs = get_sorted_date_dirs()
+    if date_dirs:
+        latest_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", date_dirs[-1], "all_stocks_investor_trend.csv")
+        
+    df = None
+    if latest_csv and os.path.exists(latest_csv):
+        try:
+            df = pd.read_csv(latest_csv, dtype={'티커': str})
+            df = df.set_index('티커')
+        except Exception as e:
+            logger.error(f"Error reading latest CSV for names: {e}")
+            
+    for t in tickers:
+        if df is not None and t in df.index:
+            targets[t] = str(df.loc[t]['Name'])
+        else:
+            try:
+                from pykrx import stock
+                name = stock.get_market_ticker_name(t)
+                if name:
+                    targets[t] = name
+                else:
+                    targets[t] = f"종목_{t}"
+            except Exception:
+                targets[t] = f"종목_{t}"
+                
+    return targets
+
+TARGETS = load_targets()
 
 def build_ticker_data(ticker, date_dirs):
     """Builds a DataFrame containing historical prices and net purchases for a ticker."""
