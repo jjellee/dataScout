@@ -210,12 +210,12 @@ def plot_cumulative_chart(ticker, name, df, output_dir="draw"):
     l_p5 = ax1.plot(dates, df['기관합계_누적'], label='기관합계 (Total)', color='#2980b9', linewidth=2.5, linestyle='--')
     
     # 3. Institutional subgroups (indented labels)
-    l_p6 = ax1.plot(dates, df['금융투자_누적'], label='   └ 금융투자', color='#1abc9c', linewidth=1.0)
-    l_p7 = ax1.plot(dates, df['보험_누적'], label='   └ 보험', color='#e67e22', linewidth=1.0)
-    l_p8 = ax1.plot(dates, df['투신_누적'], label='   └ 투신', color='#f1c40f', linewidth=1.0)
-    l_p9 = ax1.plot(dates, df['은행_누적'], label='   └ 은행', color='#7f8c8d', linewidth=1.0)
-    l_p10 = ax1.plot(dates, df['연기금_누적'], label='   └ 연기금', color='#9b59b6', linewidth=1.5)
-    l_p11 = ax1.plot(dates, df['사모_누적'], label='   └ 사모', color='#34495e', linewidth=1.0)
+    l_p6 = ax1.plot(dates, df['금융투자_누적'], label='   ㄴ 금융투자', color='#1abc9c', linewidth=1.0)
+    l_p7 = ax1.plot(dates, df['보험_누적'], label='   ㄴ 보험', color='#e67e22', linewidth=1.0)
+    l_p8 = ax1.plot(dates, df['투신_누적'], label='   ㄴ 투신', color='#f1c40f', linewidth=1.0)
+    l_p9 = ax1.plot(dates, df['은행_누적'], label='   ㄴ 은행', color='#7f8c8d', linewidth=1.0)
+    l_p10 = ax1.plot(dates, df['연기금_누적'], label='   ㄴ 연기금', color='#9b59b6', linewidth=1.5)
+    l_p11 = ax1.plot(dates, df['사모_누적'], label='   ㄴ 사모', color='#34495e', linewidth=1.0)
     
     ax1.axhline(0, color='gray', linestyle='--', linewidth=0.8, alpha=0.7)
     
