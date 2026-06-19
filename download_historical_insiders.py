@@ -240,7 +240,14 @@ def main():
             # Color Column 6 (type) based on BUY/SELL and highlight meaningful values in Column 9 (value)
             for row_idx in range(2, worksheet.max_row + 1):
                 type_cell = worksheet.cell(row=row_idx, column=6)
+                shares_cell = worksheet.cell(row=row_idx, column=7)
+                price_cell = worksheet.cell(row=row_idx, column=8)
                 value_cell = worksheet.cell(row=row_idx, column=9)
+                
+                # Apply 3-digit comma formatting
+                shares_cell.number_format = '#,##0'
+                price_cell.number_format = '#,##0.00'
+                value_cell.number_format = '#,##0'
                 
                 if type_cell.value == "BUY":
                     type_cell.fill = buy_fill
