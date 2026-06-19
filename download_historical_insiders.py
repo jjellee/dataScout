@@ -53,8 +53,6 @@ def download_q1_dera():
     df['price'] = df['TRANS_PRICEPERSHARE'].astype(float)
     df['value'] = df['shares'] * df['price']
     
-    df['is_meaningful'] = ((df['type'] == 'BUY') & (df['value'] >= 30000)) | ((df['type'] == 'SELL') & (df['value'] >= 200000))
-    
     def make_filing_url(row):
         cik = str(row['ISSUERCIK']).zfill(10)
         acc = str(row['ACCESSION_NUMBER'])
@@ -63,7 +61,7 @@ def download_q1_dera():
         
     df['filing_url'] = df.apply(make_filing_url, axis=1)
     
-    final_cols = ['filing_date', 'ticker', 'company', 'insider', 'role', 'type', 'shares', 'price', 'value', 'is_meaningful', 'filing_url']
+    final_cols = ['filing_date', 'ticker', 'company', 'insider', 'role', 'type', 'shares', 'price', 'value', 'filing_url']
     df_final = df[final_cols]
     print(f"Processed {len(df_final)} transactions from Q1 2026.")
     return df_final
@@ -130,12 +128,6 @@ def scrape_openinsider_range(start_date, end_date):
             if value == 0:
                 continue
                 
-            is_meaningful = False
-            if trade_type == "BUY" and value >= 30000:
-                is_meaningful = True
-            elif trade_type == "SELL" and value >= 200000:
-                is_meaningful = True
-                
             transactions.append({
                 'filing_date': filing_date_str,
                 'ticker': ticker,
@@ -146,7 +138,6 @@ def scrape_openinsider_range(start_date, end_date):
                 'shares': shares,
                 'price': price,
                 'value': value,
-                'is_meaningful': is_meaningful,
                 'filing_url': filing_url
             })
         print(f"Successfully parsed {len(transactions)} transactions.")
@@ -233,12 +224,27 @@ def main():
     # Ensure directory exists
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
     
-    # Save to Excel with formatted column widths
+    # Save to Excel with formatted column widths and colored type cells
     from openpyxl.utils import get_column_letter
+    from openpyxl.styles import PatternFill
     try:
         with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
             df_combined.to_excel(writer, index=False, sheet_name='Transactions')
             worksheet = writer.sheets['Transactions']
+            
+            # Define fills
+            buy_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # soft green
+            sell_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid") # soft red
+            
+            # Color Column 6 (type) based on BUY/SELL
+            for row_idx in range(2, worksheet.max_row + 1):
+                cell = worksheet.cell(row=row_idx, column=6)
+                if cell.value == "BUY":
+                    cell.fill = buy_fill
+                elif cell.value == "SELL":
+                    cell.fill = sell_fill
+            
+            # Adjust column widths
             for col_idx, col in enumerate(worksheet.columns, 1):
                 max_len = 0
                 col_letter = get_column_letter(col_idx)

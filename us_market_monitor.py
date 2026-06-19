@@ -271,11 +271,15 @@ def save_insider_transactions_to_excel(transactions):
     excel_path = os.path.join(output_dir, "us_insider_transactions.xlsx")
     
     df_new = pd.DataFrame(transactions)
+    if 'is_meaningful' in df_new.columns:
+        df_new = df_new.drop(columns=['is_meaningful'])
     
     old_row_count = 0
     if os.path.exists(excel_path):
         try:
             df_old = pd.read_excel(excel_path)
+            if 'is_meaningful' in df_old.columns:
+                df_old = df_old.drop(columns=['is_meaningful'])
             old_row_count = len(df_old)
             # Combine old and new
             df_combined = pd.concat([df_old, df_new], ignore_index=True)
@@ -298,10 +302,25 @@ def save_insider_transactions_to_excel(transactions):
         
     try:
         from openpyxl.utils import get_column_letter
+        from openpyxl.styles import PatternFill
         with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
             df_combined.to_excel(writer, index=False, sheet_name='Transactions')
             
             worksheet = writer.sheets['Transactions']
+            
+            # Define fills
+            buy_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # soft green
+            sell_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid") # soft red
+            
+            # Color Column 6 (type) based on BUY/SELL
+            for row_idx in range(2, worksheet.max_row + 1):
+                cell = worksheet.cell(row=row_idx, column=6)
+                if cell.value == "BUY":
+                    cell.fill = buy_fill
+                elif cell.value == "SELL":
+                    cell.fill = sell_fill
+            
+            # Adjust column widths
             for col_idx, col in enumerate(worksheet.columns, 1):
                 max_len = 0
                 col_letter = get_column_letter(col_idx)
