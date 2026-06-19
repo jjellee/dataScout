@@ -86,7 +86,8 @@ def classify_disclosure(report_nm):
         return "신규시설투자"
         
     # 4. 자금조달_증자
-    if any(k in nm for k in ["전환사채권발행결정", "신주인수권부사채권발행결정", "교환사채권발행결정", "유상증자결정", "무상증자결정", "사채발행결정", "사채발행"]):
+    if any(k in nm for k in ["유상증자결정", "무상증자결정", "사채발행결정", "사채발행"]) or \
+       (any(k in nm for k in ["전환사채", "신주인수권부사채", "교환사채"]) and "발행" in nm):
         return "자금조달_증자"
         
     # 5. 영업활동_계약
