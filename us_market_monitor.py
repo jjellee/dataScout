@@ -311,14 +311,29 @@ def save_insider_transactions_to_excel(transactions):
             # Define fills
             buy_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # soft green
             sell_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid") # soft red
+            meaningful_fill = PatternFill(start_color="FFE699", end_color="FFE699", fill_type="solid") # soft yellow/gold
             
-            # Color Column 6 (type) based on BUY/SELL
+            # Color Column 6 (type) based on BUY/SELL and highlight meaningful values in Column 9 (value)
             for row_idx in range(2, worksheet.max_row + 1):
-                cell = worksheet.cell(row=row_idx, column=6)
-                if cell.value == "BUY":
-                    cell.fill = buy_fill
-                elif cell.value == "SELL":
-                    cell.fill = sell_fill
+                type_cell = worksheet.cell(row=row_idx, column=6)
+                value_cell = worksheet.cell(row=row_idx, column=9)
+                
+                if type_cell.value == "BUY":
+                    type_cell.fill = buy_fill
+                    try:
+                        val_num = float(value_cell.value)
+                        if val_num >= 30000:
+                            value_cell.fill = meaningful_fill
+                    except (ValueError, TypeError):
+                        pass
+                elif type_cell.value == "SELL":
+                    type_cell.fill = sell_fill
+                    try:
+                        val_num = float(value_cell.value)
+                        if val_num >= 200000:
+                            value_cell.fill = meaningful_fill
+                    except (ValueError, TypeError):
+                        pass
             
             # Adjust column widths
             for col_idx, col in enumerate(worksheet.columns, 1):
@@ -361,6 +376,30 @@ def main():
     # 1. Get market movers
     gainers, losers = get_us_market_movers()
     
+    # Fetch short interest for movers
+    logger.info("Fetching short interest data for movers...")
+    for item in gainers + losers:
+        ticker_symbol = item['ticker']
+        try:
+            ticker = yf.Ticker(ticker_symbol)
+            info = ticker.info
+            short_percent = info.get("shortPercentOfFloat")
+            short_ratio = info.get("shortRatio")
+            
+            if short_percent is not None:
+                item['short_percent'] = float(short_percent) * 100
+            else:
+                item['short_percent'] = None
+                
+            if short_ratio is not None:
+                item['short_ratio'] = float(short_ratio)
+            else:
+                item['short_ratio'] = None
+        except Exception as e:
+            logger.error(f"Failed to fetch short interest for {ticker_symbol}: {e}")
+            item['short_percent'] = None
+            item['short_ratio'] = None
+            
     # 2. Get insider transactions
     insiders = get_sec_insider_transactions()
     
@@ -390,14 +429,26 @@ def main():
     report_lines.append("📈 *S&P 500 상승 TOP 5*")
     if gainers:
         for idx, item in enumerate(gainers):
-            report_lines.append(f"{idx+1}. *{item['ticker']}* | ${item['price']:.2f} (+{item['change']:.2f}%)")
+            short_str = ""
+            if item.get('short_percent') is not None:
+                short_str = f" (공매도 비율: {item['short_percent']:.2f}%"
+                if item.get('short_ratio') is not None:
+                    short_str += f", Ratio: {item['short_ratio']:.1f}"
+                short_str += ")"
+            report_lines.append(f"{idx+1}. *{item['ticker']}* | ${item['price']:.2f} (+{item['change']:.2f}%){short_str}")
     else:
         report_lines.append("- 데이터 없음")
         
     report_lines.append("\n📉 *S&P 500 하락 TOP 5*")
     if losers:
         for idx, item in enumerate(losers):
-            report_lines.append(f"{idx+1}. *{item['ticker']}* | ${item['price']:.2f} ({item['change']:.2f}%)")
+            short_str = ""
+            if item.get('short_percent') is not None:
+                short_str = f" (공매도 비율: {item['short_percent']:.2f}%"
+                if item.get('short_ratio') is not None:
+                    short_str += f", Ratio: {item['short_ratio']:.1f}"
+                short_str += ")"
+            report_lines.append(f"{idx+1}. *{item['ticker']}* | ${item['price']:.2f} ({item['change']:.2f}%){short_str}")
     else:
         report_lines.append("- 데이터 없음")
         

@@ -235,14 +235,29 @@ def main():
             # Define fills
             buy_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # soft green
             sell_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid") # soft red
+            meaningful_fill = PatternFill(start_color="FFE699", end_color="FFE699", fill_type="solid") # soft yellow/gold
             
-            # Color Column 6 (type) based on BUY/SELL
+            # Color Column 6 (type) based on BUY/SELL and highlight meaningful values in Column 9 (value)
             for row_idx in range(2, worksheet.max_row + 1):
-                cell = worksheet.cell(row=row_idx, column=6)
-                if cell.value == "BUY":
-                    cell.fill = buy_fill
-                elif cell.value == "SELL":
-                    cell.fill = sell_fill
+                type_cell = worksheet.cell(row=row_idx, column=6)
+                value_cell = worksheet.cell(row=row_idx, column=9)
+                
+                if type_cell.value == "BUY":
+                    type_cell.fill = buy_fill
+                    try:
+                        val_num = float(value_cell.value)
+                        if val_num >= 30000:
+                            value_cell.fill = meaningful_fill
+                    except (ValueError, TypeError):
+                        pass
+                elif type_cell.value == "SELL":
+                    type_cell.fill = sell_fill
+                    try:
+                        val_num = float(value_cell.value)
+                        if val_num >= 200000:
+                            value_cell.fill = meaningful_fill
+                    except (ValueError, TypeError):
+                        pass
             
             # Adjust column widths
             for col_idx, col in enumerate(worksheet.columns, 1):
