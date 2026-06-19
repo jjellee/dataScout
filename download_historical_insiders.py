@@ -244,10 +244,10 @@ def main():
                 price_cell = worksheet.cell(row=row_idx, column=8)
                 value_cell = worksheet.cell(row=row_idx, column=9)
                 
-                # Apply 3-digit comma formatting
+                # Apply 3-digit comma formatting and currency units ($)
                 shares_cell.number_format = '#,##0'
-                price_cell.number_format = '#,##0.00'
-                value_cell.number_format = '#,##0'
+                price_cell.number_format = '$#,##0.00'
+                value_cell.number_format = '$#,##0'
                 
                 if type_cell.value == "BUY":
                     type_cell.fill = buy_fill
