@@ -350,7 +350,10 @@ def save_insider_transactions_to_excel(transactions):
                     val = str(cell.value or '')
                     if len(val) > max_len:
                         max_len = len(val)
-                worksheet.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 50)
+                width = min(max(max_len + 3, 10), 50)
+                if col_idx in [3, 4, 5]: # company, insider, role
+                    width = width / 2
+                worksheet.column_dimensions[col_letter].width = width
                 
         logger.info(f"Successfully saved {len(df_combined)} cumulative insider transactions to {excel_path}")
         if len(df_combined) > old_row_count:

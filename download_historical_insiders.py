@@ -274,7 +274,10 @@ def main():
                     val = str(cell.value or '')
                     if len(val) > max_len:
                         max_len = len(val)
-                worksheet.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 50)
+                width = min(max(max_len + 3, 10), 50)
+                if col_idx in [3, 4, 5]: # company, insider, role
+                    width = width / 2
+                worksheet.column_dimensions[col_letter].width = width
         print(f"Successfully saved cumulative insider transactions to {excel_path}")
     except Exception as e:
         print(f"Failed to save cumulative Excel file: {e}")
