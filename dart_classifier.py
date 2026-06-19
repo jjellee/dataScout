@@ -101,8 +101,12 @@ def classify_disclosure(report_nm):
     if any(k in nm for k in ["최대주주변경", "합병결정", "회사분할결정", "분할결정", "주식교환", "영업양수결정", "영업양도결정", "경영권분쟁", "주주총회"]):
         return "경영권_지배구조"
         
+    # 8. 재무_자기주식
+    if any(k in nm for k in ["자기주식취득결정", "자기주식취득신탁계약", "자기주식신탁계약체결결정", "자기주식소각결정", "주식소각결정", "신탁계약체결결정"]):
+        return "재무_자기주식"
+        
     return "기타공시"
-
+ 
 def identify_base_report_type(report_nm):
     """Identifies the fine-grained document type."""
     nm = str(report_nm).replace(" ", "").strip()
@@ -124,7 +128,15 @@ def identify_base_report_type(report_nm):
         return "채무보증"
     elif "금전대여결정" in nm:
         return "금전대여"
+    elif "자기주식취득결정" in nm:
+        return "자기주식취득"
+    elif "자기주식취득신탁계약" in nm or "신탁계약체결결정" in nm:
+        return "자기주식신탁"
+    elif "자기주식소각결정" in nm or "주식소각결정" in nm:
+        return "자기주식소각"
     return "기타"
+
+
 
 def clean_numeric(val):
     """Cleans numeric values from OpenDART API for calculation/formatting in Excel."""
@@ -370,6 +382,99 @@ def parse_mezzanine_html_fallback(html_path, m_type):
                 res[k] = f"{y}-{int(m):02d}-{int(d):02d}"
     except Exception as e:
         logger.error(f"Error parsing fallback mezzanine HTML: {e}")
+    return res
+
+def parse_treasury_html_fallback(html_path, base_type):
+    res = {
+        "total_amount": None,
+        "shares_count": None,
+        "start_date": "-",
+        "end_date": "-",
+        "cancellation_date": "-",
+        "method": "-",
+        "broker": "-",
+        "purpose": "-"
+    }
+    if not os.path.exists(html_path):
+        return res
+        
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            soup = BeautifulSoup(f.read(), 'html.parser')
+            
+        current_primary_key = ""
+        in_period = False
+        
+        for table in soup.find_all('table'):
+            in_period = False
+            for r in table.find_all('tr'):
+                children = r.find_all(recursive=False)
+                cols = [c.get_text().strip().replace('\n', ' ') for c in children]
+                cols = [re.sub(r'\s+', ' ', col) for col in cols]
+                if len(cols) >= 2:
+                    first_cell = cols[0].replace(" ", "")
+                    if first_cell:
+                        is_period_key = any(k in first_cell for k in ["취득예상기간", "취득예정기간", "취득기간", "계약기간", "소각을위한자기주식취득예정기간"])
+                        is_sub_key = first_cell in ["시작일", "시작", "종료일", "종료", "시작일자", "종료일자"]
+                        
+                        if is_period_key:
+                            in_period = True
+                            current_primary_key = first_cell.replace("ㆍ", "").replace(".", "")
+                        elif is_sub_key and in_period:
+                            pass
+                        else:
+                            in_period = False
+                            current_primary_key = first_cell.replace("ㆍ", "").replace(".", "")
+                            
+                    key = current_primary_key
+                    
+                    if "취득예정금액" in key or "계약금액" in key or "소각예정금액" in key:
+                        val = clean_numeric(cols[-1])
+                        if val is not None:
+                            res["total_amount"] = val
+                    if any(k in key for k in ["취득예정주식", "소각할주식의종류와수", "소각할주식수", "소각예정주식"]):
+                        val = clean_numeric(cols[-1])
+                        if val is not None:
+                            res["shares_count"] = val
+                    if "취득방법" in key or "소각할주식의취득방법" in key:
+                        res["method"] = cols[-1]
+                    if "위탁투자" in key or "계약체결기관" in key or "자기주식취득위탁" in key:
+                        res["broker"] = cols[-1]
+                    if "취득목적" in key or "계약목적" in key or "소각목적" in key or "목적" in key:
+                        res["purpose"] = cols[-1]
+                    if "소각예정일" in key or "소각일" in key:
+                        res["cancellation_date"] = cols[-1]
+                        
+                    # Period processing
+                    if in_period:
+                        row_text = "".join(cols).replace(" ", "")
+                        if "시작" in row_text:
+                            dates = extract_dates(cols[-1])
+                            res["start_date"] = dates[0] if dates else cols[-1]
+                        elif "종료" in row_text:
+                            dates = extract_dates(cols[-1])
+                            res["end_date"] = dates[0] if dates else cols[-1]
+                        elif len(cols) == 2:
+                            dates = extract_dates(cols[1])
+                            if len(dates) >= 2:
+                                res["start_date"] = dates[0]
+                                res["end_date"] = dates[1]
+                            elif len(dates) == 1:
+                                res["start_date"] = dates[0]
+                                
+        # Date normalization
+        for k in ["start_date", "end_date", "cancellation_date"]:
+            if res[k] and res[k] != "-":
+                d_match = re.search(r'(\d{4})[-년\s\.]*(\d{1,2})[-월\s\.]*(\d{1,2})', res[k])
+                if d_match:
+                    y, m, d = d_match.groups()
+                    res[k] = f"{y}-{int(m):02d}-{int(d):02d}"
+                    
+        # Apply helpful defaults for cancellation purpose
+        if base_type == "자기주식소각" and res["purpose"] == "-":
+            res["purpose"] = "주주가치 제고 및 주식소각"
+    except Exception as e:
+        logger.error(f"Error parsing fallback treasury HTML: {e}")
     return res
 
 def fetch_mezzanine_details(api_key, corp_code, date, rcept_no, report_nm):
@@ -720,6 +825,24 @@ def send_telegram_document(token, chat_id, file_path, caption=None):
         logger.error(f"Failed to send telegram document: {e}")
         return False
 
+def send_telegram_message(token, chat_id, text):
+    """Sends a plain text message via Telegram Bot API."""
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": text
+    }
+    try:
+        r = requests.post(url, json=payload, timeout=15)
+        if r.status_code == 200:
+            logger.info(f"Telegram text message sent successfully to chat {chat_id}")
+            return True
+        else:
+            logger.error(f"Failed to send telegram message: HTTP {r.status_code}, {r.text}")
+    except Exception as e:
+        logger.error(f"Failed to send telegram message: {e}")
+    return False
+
 def build_excel_summary(workspace_dir):
     """Scans disclosures, aggregates them, processes mezzanine/contracts/investments option info, resolves amendments, creates formatted Excel."""
     logger.info("Scanning disclosures in data_dart directory...")
@@ -773,6 +896,29 @@ def build_excel_summary(workspace_dir):
         # Check cache
         if rcept_no in cache:
             record_detail = cache[rcept_no]
+            
+            # Auto-healing cache: if it is a treasury share disclosure but is classified as "기타" or "기타공시",
+            # or has empty data dictionary, re-parse and update it.
+            is_treasury = base_type in ["자기주식취득", "자기주식신탁", "자기주식소각"]
+            cached_is_other = record_detail.get("base_type") == "기타" or record_detail.get("category") == "기타공시"
+            
+            if is_treasury and (cached_is_other or not record_detail.get("data")):
+                record_detail["category"] = "재무_자기주식"
+                record_detail["base_type"] = base_type
+                html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                t_data = parse_treasury_html_fallback(html_path, base_type)
+                record_detail["data"] = {
+                    "total_amount": t_data["total_amount"],
+                    "shares_count": t_data["shares_count"],
+                    "start_date": t_data["start_date"],
+                    "end_date": t_data["end_date"],
+                    "cancellation_date": t_data["cancellation_date"],
+                    "method": t_data["method"],
+                    "broker": t_data["broker"],
+                    "purpose": t_data["purpose"]
+                }
+                cache[rcept_no] = record_detail
+                
             # Re-run option date extraction to apply the new request start date logic
             if base_type in ["CB", "BW", "EB"]:
                 html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -952,6 +1098,20 @@ def build_excel_summary(workspace_dir):
                 "start_date": g_data["start_date"],
                 "end_date": g_data["end_date"],
                 "purpose": g_data["purpose"]
+            }
+            
+        # 6. Treasury Shares Parsing (자기주식 취득/신탁/소각)
+        elif base_type in ["자기주식취득", "자기주식신탁", "자기주식소각"]:
+            t_data = parse_treasury_html_fallback(html_path, base_type)
+            record_detail["data"] = {
+                "total_amount": t_data["total_amount"],
+                "shares_count": t_data["shares_count"],
+                "start_date": t_data["start_date"],
+                "end_date": t_data["end_date"],
+                "cancellation_date": t_data["cancellation_date"],
+                "method": t_data["method"],
+                "broker": t_data["broker"],
+                "purpose": t_data["purpose"]
             }
             
         # Cache and save
@@ -1155,6 +1315,39 @@ def build_excel_summary(workspace_dir):
         df_fin = pd.DataFrame(fin_data_list)
         df_fin.to_excel(writer, sheet_name="재무_채무보증", index=False)
         format_financial_sheet(writer.sheets["재무_채무보증"])
+        
+        # Sheet 6-2: 재무_자기주식 (Treasury Shares columns)
+        treasury_rows = [r for r in active_records if r["category"] == "재무_자기주식"]
+        treasury_data_list = []
+        for r in treasury_rows:
+            d = r["data"]
+            f_type = r["base_type"]
+            if f_type == "자기주식취득": type_lbl = "자기주식취득결정"
+            elif f_type == "자기주식신탁": type_lbl = "신탁계약체결결정"
+            elif f_type == "자기주식소각": type_lbl = "자기주식소각결정"
+            else: type_lbl = f_type
+            
+            treasury_data_list.append({
+                "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
+                "회사명": r["corp_name"],
+                "시장구분": map_market(r["corp_cls"]),
+                "종목코드": r["stock_code"],
+                "공시명": r["report_nm"],
+                "유형": type_lbl,
+                "예정금액": d.get("total_amount"),
+                "예정주식수": d.get("shares_count"),
+                "취득방법": d.get("method", "-"),
+                "시작일": fmt_date(str(d.get("start_date", "-"))),
+                "종료일": fmt_date(str(d.get("end_date", "-"))),
+                "소각예정일": fmt_date(str(d.get("cancellation_date", "-"))),
+                "위탁투자업자/수탁기관": d.get("broker", "-"),
+                "목적": d.get("purpose", "-"),
+                "접수번호": r["rcept_no"],
+                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
+            })
+        df_treasury = pd.DataFrame(treasury_data_list)
+        df_treasury.to_excel(writer, sheet_name="재무_자기주식", index=False)
+        format_treasury_sheet(writer.sheets["재무_자기주식"])
         
         # Sheet 7: 경영권_지배구조
         gov_rows = [r for r in active_records if r["category"] == "경영권_지배구조"]
@@ -1505,6 +1698,70 @@ def format_financial_sheet(ws):
             
     ws.auto_filter.ref = ws.dimensions
 
+def format_treasury_sheet(ws):
+    """Styles the detailed financial treasury shares sheet."""
+    header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid") # Deep navy
+    data_font = Font(name="Malgun Gothic", size=9)
+    link_font = Font(name="Malgun Gothic", size=9, color="0000FF", underline="single")
+    
+    border_side = Side(border_style="thin", color="D3D3D3")
+    data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
+    
+    for col_idx in range(1, ws.max_column + 1):
+        cell = ws.cell(row=1, column=col_idx)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        
+    ws.row_dimensions[1].height = 25
+    
+    for row_idx in range(2, ws.max_row + 1):
+        ws.row_dimensions[row_idx].height = 36
+        
+        for col_idx in range(1, ws.max_column + 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.font = data_font
+            cell.border = data_border
+            
+            if col_idx in [1, 3, 4, 6, 10, 11, 12, 15]:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            elif col_idx == 16:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.font = link_font
+            elif col_idx in [5, 13, 14]: # 공시명, 위탁/수탁기관, 목적
+                cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+                
+            if col_idx == 7: # 예정금액
+                cell.number_format = '₩#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 8: # 예정주식수
+                cell.number_format = '#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+                
+    for col_idx, col in enumerate(ws.columns, 1):
+        col_letter = get_column_letter(col_idx)
+        if col_idx == 5: # 공시명
+            ws.column_dimensions[col_letter].width = 30
+        elif col_idx == 14: # 목적
+            ws.column_dimensions[col_letter].width = 35
+        elif col_idx == 13: # 위탁투자업자/수탁기관
+            ws.column_dimensions[col_letter].width = 25
+        else:
+            max_len = 0
+            for cell in col:
+                val = str(cell.value or '')
+                if val.startswith("="):
+                    val = "공시열람"
+                if len(val) > max_len:
+                    max_len = len(val)
+            width = min(max(max_len * 1.4 + 3, 10), 30)
+            ws.column_dimensions[col_letter].width = width
+            
+    ws.auto_filter.ref = ws.dimensions
+
 def main():
     parser = argparse.ArgumentParser(description="DART Disclosure Classifier & Mezzanine/Contracts/Investments Parser")
     parser.add_argument("--upload", action="store_true", help="Upload the compiled Excel to Telegram")
@@ -1523,7 +1780,7 @@ def main():
             logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_JJANG_GU_CHAT_ID in env.")
             return
             
-        caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 채무보증/금전대여 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
+        caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 채무보증/금전대여, 자기주식취득/신탁/소각 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
         
         logger.info("Uploading Excel to Telegram...")
         telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, excel_path, caption=caption)
@@ -1531,6 +1788,62 @@ def main():
             logger.info("Excel successfully uploaded to Telegram.")
         else:
             logger.error("Failed to upload Excel to Telegram.")
+            
+        # 3. Find other important disclosures to report via Telegram
+        logger.info("Collecting other important disclosures for Telegram notification...")
+        json_paths = sorted(glob.glob(os.path.join(workspace_dir, "data_dart", "202*", "disclosures.json")))
+        all_discls = []
+        for p in json_paths:
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    for item in json.load(f):
+                        all_discls.append(item)
+            except Exception:
+                pass
+        
+        # De-duplicate by rcept_no
+        unique_discls = {item["rcept_no"]: item for item in all_discls}.values()
+        # Sort chronologically by rcept_dt
+        unique_discls = sorted(unique_discls, key=lambda x: x["rcept_dt"], reverse=True)
+        
+        important_items = []
+        for item in unique_discls:
+            nm = item["report_nm"].replace(" ", "")
+            is_important = False
+            label = ""
+            if "공개매수" in nm:
+                is_important = True
+                label = "📢 공개매수"
+            elif any(k in nm for k in ["주식분할", "주식병합", "액면분할", "액면병합"]):
+                is_important = True
+                label = "✂️ 주식 분할/병합"
+            elif any(k in nm for k in ["합병결정", "분할결정"]):
+                is_important = True
+                label = "🤝 합병/분할"
+            elif any(k in nm for k in ["타법인주식및출자증권취득", "타법인주식및출자증권처분"]):
+                is_important = True
+                label = "💼 타법인 지분 취득/처분"
+                
+            if is_important:
+                dt_str = item["rcept_dt"]
+                dt_fmt = f"{dt_str[:4]}-{dt_str[4:6]}-{dt_str[6:]}" if len(dt_str) == 8 else dt_str
+                # Check if it is an amendment
+                prefix = "[정정] " if any(k in item["report_nm"] for k in ["[기재정정]", "[첨부정정]", "정정보고서", "정정공시"]) else ""
+                important_items.append(f"• [{dt_fmt}] {item['corp_name']} | {label}\n  └ {prefix}{item['report_nm'].strip()}\n  └ DART링크: https://dart.fss.or.kr/dsaf001/main.do?rcpNo={item['rcept_no']}")
+                
+        if important_items:
+            intro_msg = "🔔 [DART 기타 주요 공시 실시간 요약]\n*엑셀 시트에 포함되지 않은 지배구조 개편 및 자산거래 관련 주요 공시 내역입니다.*\n\n"
+            msg = intro_msg
+            count = 0
+            for it in important_items:
+                if len(msg) + len(it) > 4000:
+                    send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, msg)
+                    msg = "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n"
+                msg += it + "\n\n"
+                count += 1
+            if msg != "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n":
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, msg)
+            logger.info(f"Sent {count} important other disclosures to Telegram.")
 
 if __name__ == "__main__":
     main()
