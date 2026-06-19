@@ -114,6 +114,10 @@ def main():
         inst_buy = float(row['기관합계_순매수대금']) / 1e8
         pension_buy = float(row['연기금_순매수대금']) / 1e8
         
+        # Short selling values
+        short_val = float(row['공매도거래대금']) / 1e8 if '공매도거래대금' in row and pd.notna(row['공매도거래대금']) else 0.0
+        short_ratio = float(row['공매도비중']) if '공매도비중' in row and pd.notna(row['공매도비중']) else 0.0
+        
         # Formatted string
         stock_summary = (
             f"📍 *{name} ({ticker})*\n"
@@ -121,6 +125,7 @@ def main():
             f"  • 개인: {prsn_buy:+.1f}억 원\n"
             f"  • 외국인: {frgn_buy:+.1f}억 원\n"
             f"  • 기관합계: {inst_buy:+.1f}억 원 (연기금: {pension_buy:+.1f}억)\n"
+            f"  • 공매도: {short_val:.1f}억 원 ({short_ratio:.1f}%)\n"
         )
         message_lines.append(stock_summary)
         

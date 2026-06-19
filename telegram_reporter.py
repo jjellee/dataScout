@@ -159,6 +159,8 @@ def build_ticker_data(ticker, date_dirs):
                     'Date': datetime.datetime.strptime(date_str, "%Y%m%d"),
                     'Price': float(row['종가']),
                     'Change': float(row['등락률']) if '등락률' in row else 0.0,
+                    '공매도거래대금': float(row['공매도거래대금']) if '공매도거래대금' in row and pd.notna(row['공매도거래대금']) else 0.0,
+                    '공매도비중': float(row['공매도비중']) if '공매도비중' in row and pd.notna(row['공매도비중']) else 0.0,
                 }
                 for inv in investors:
                     col_name = f"{inv}_순매수대금"
@@ -353,6 +355,14 @@ def format_telegram_caption(ticker, name, date_str, latest_row):
             
         caption += f"   {label}: {val_str}\n"
         
+    short_val = latest_row.get('공매도거래대금', 0.0)
+    short_ratio = latest_row.get('공매도비중', 0.0)
+    if short_val is None or (isinstance(short_val, float) and math.isnan(short_val)):
+        short_val = 0.0
+    if short_ratio is None or (isinstance(short_ratio, float) and math.isnan(short_ratio)):
+        short_ratio = 0.0
+    caption += f"   공매도: {short_val / 1e8:.1f}억 ({short_ratio:.1f}%)\n"
+    
     headlines = fetch_latest_news_headlines(name)
     if headlines:
         caption += f"\n📰 최근 관련 뉴스\n"
