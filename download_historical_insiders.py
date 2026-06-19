@@ -278,6 +278,10 @@ def main():
                 if col_idx in [3, 4, 5]: # company, insider, role
                     width = width / 2
                 worksheet.column_dimensions[col_letter].width = width
+                
+            # Apply AutoFilter
+            worksheet.auto_filter.ref = worksheet.dimensions
+            
         print(f"Successfully saved cumulative insider transactions to {excel_path}")
     except Exception as e:
         print(f"Failed to save cumulative Excel file: {e}")

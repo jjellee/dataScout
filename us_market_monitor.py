@@ -355,6 +355,9 @@ def save_insider_transactions_to_excel(transactions):
                     width = width / 2
                 worksheet.column_dimensions[col_letter].width = width
                 
+            # Apply AutoFilter
+            worksheet.auto_filter.ref = worksheet.dimensions
+                
         logger.info(f"Successfully saved {len(df_combined)} cumulative insider transactions to {excel_path}")
         if len(df_combined) > old_row_count:
             return True
