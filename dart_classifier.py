@@ -141,20 +141,41 @@ def clean_numeric(val):
     except Exception:
         return val
 
-def extract_option_start_date(text):
-    """Extracts the first valid date from option text snippet to serve as the start date."""
+def extract_dates(text):
+    if not text:
+        return []
+    found_dates = []
+    # Pattern 1: YYYY년 MM월 DD일
+    for m in re.finditer(r'(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일', text):
+        date_str = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+        found_dates.append((m.start(), date_str))
+    # Pattern 2: YYYY-MM-DD
+    for m in re.finditer(r'(\d{4})-(\d{2})-(\d{2})', text):
+        date_str = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+        found_dates.append((m.start(), date_str))
+    # Sort by start position
+    found_dates.sort(key=lambda x: x[0])
+    return [d[1] for d in found_dates]
+
+def extract_option_start_date(text, opt_type="call"):
+    """Extracts the first valid option request start date (청구일) from option text snippet."""
     if not text or text in ["N/A", "N/A (HTML 파일 없음)", "N/A (파일 에러)"] or text.replace(" ", "") in ["해당사항없음", "해당없음", "미해당", "없음"]:
         return "-"
-    # Match YYYY년 MM월 DD일
-    matches = re.findall(r'(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일', text)
-    if matches:
-        y, m, d = matches[0]
-        return f"{y}-{int(m):02d}-{int(d):02d}"
-    # Match YYYY-MM-DD
-    matches_dash = re.findall(r'(\d{4})-(\d{2})-(\d{2})', text)
-    if matches_dash:
-        y, m, d = matches_dash[0]
-        return f"{y}-{m}-{d}"
+    
+    text_clean = re.sub(r'\s+', ' ', text)
+    keywords = ["청구기간", "청구 시작", "청구일", "행사기간", "행사 시작"] if opt_type == "put" else ["행사기간", "청구기간", "청구일", "매도청구기간", "행사 시작"]
+    
+    for kw in keywords:
+        pos = text_clean.find(kw)
+        if pos != -1:
+            sub = text_clean[pos:pos+500]
+            dates = extract_dates(sub)
+            if dates:
+                return dates[0]
+                
+    dates = extract_dates(text)
+    if dates:
+        return dates[0]
     return "-"
 
 def find_original_date_from_html(html_path):
@@ -718,7 +739,20 @@ def build_excel_summary(workspace_dir):
         
         # Check cache
         if rcept_no in cache:
-            parsed_records.append(cache[rcept_no])
+            record_detail = cache[rcept_no]
+            # Re-run option date extraction to apply the new request start date logic
+            if base_type in ["CB", "BW", "EB"]:
+                html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                call_opt, put_opt = parse_html_options(html_path)
+                call_start = extract_option_start_date(call_opt, "call")
+                put_start = extract_option_start_date(put_opt, "put")
+                
+                if "data" in record_detail:
+                    record_detail["data"]["call_start"] = call_start
+                    record_detail["data"]["put_start"] = put_start
+                    record_detail["data"]["call_option_info"] = call_opt
+                    record_detail["data"]["put_option_info"] = put_opt
+            parsed_records.append(record_detail)
             continue
             
         html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -795,8 +829,8 @@ def build_excel_summary(workspace_dir):
                 share_type = fallback["share_type"]
                 
             # Extract Option Dates
-            call_start = extract_option_start_date(call_opt)
-            put_start = extract_option_start_date(put_opt)
+            call_start = extract_option_start_date(call_opt, "call")
+            put_start = extract_option_start_date(put_opt, "put")
             
             record_detail["data"] = {
                 "total_amount": total_amount,
@@ -949,35 +983,7 @@ def build_excel_summary(workspace_dir):
     
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
         
-        # Sheet 1: 정기공시
-        reg_rows = [r for r in active_records if r["category"] == "정기공시"]
-        df_reg = pd.DataFrame([{
-            "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
-            "회사명": r["corp_name"],
-            "시장구분": map_market(r["corp_cls"]),
-            "종목코드": r["stock_code"],
-            "공시명": r["report_nm"],
-            "제출인": r["flr_nm"],
-            "접수번호": r["rcept_no"],
-            "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
-        } for r in reg_rows])
-        df_reg.to_excel(writer, sheet_name="정기공시", index=False)
-        format_category_sheet(writer.sheets["정기공시"])
-        
-        # Sheet 2: 지분공시
-        ins_rows = [r for r in active_records if r["category"] == "지분공시"]
-        df_ins = pd.DataFrame([{
-            "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
-            "회사명": r["corp_name"],
-            "시장구분": map_market(r["corp_cls"]),
-            "종목코드": r["stock_code"],
-            "공시명": r["report_nm"],
-            "제출인": r["flr_nm"],
-            "접수번호": r["rcept_no"],
-            "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
-        } for r in ins_rows])
-        df_ins.to_excel(writer, sheet_name="지분공시", index=False)
-        format_category_sheet(writer.sheets["지분공시"])
+        # (Sheets for 정기공시 and 지분공시 have been removed as requested)
         
         # Sheet 3: 자금조달_증자 (Contains detailed columns for Capital Increases & Mezzanine CB/BW/EB)
         fund_rows = [r for r in active_records if r["category"] == "자금조달_증자"]
@@ -1008,8 +1014,8 @@ def build_excel_summary(workspace_dir):
                 "상장예정일/청구시작일": fmt_date(str(d.get("listing_date", "-"))),
                 "주식총수대비": d.get("ratio"),
                 "조달목적": d.get("purpose", "-"),
-                "콜옵션 시작일": d.get("call_start", "-"),
-                "풋옵션 시작일": d.get("put_start", "-"),
+                "콜옵션 청구일": d.get("call_start", "-"),
+                "풋옵션 청구일": d.get("put_start", "-"),
                 "접수번호": r["rcept_no"],
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
