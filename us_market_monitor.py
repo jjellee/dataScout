@@ -128,18 +128,21 @@ def get_sec_insider_transactions():
         return []
 
     # Filter for unique index links (Issuer and Reporting share same links)
-    unique_links = set()
+    unique_links = {}
     for entry in entries:
         link_tag = entry.find("link")
+        updated_tag = entry.find("updated")
         if link_tag and link_tag.get("href"):
-            unique_links.add(link_tag["href"])
+            link_href = link_tag["href"]
+            updated_time = updated_tag.get_text().strip() if updated_tag else datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            unique_links[link_href] = updated_time
             
     logger.info(f"Unique Form 4 index URLs to process: {len(unique_links)}")
     
     transactions = []
     
     # Process each index link (limit to first 30 unique links to stay fast and avoid rate limits)
-    for index_url in list(unique_links)[:30]:
+    for index_url, filing_date in list(unique_links.items())[:30]:
         try:
             # 1. Fetch index page
             time.sleep(0.15)  # Obey SEC rate limits (< 10 reqs/sec)
@@ -211,28 +214,25 @@ def get_sec_insider_transactions():
                 
                 total_value = shares * price
                 
-                # Filter meaningful transactions: Buy > $30,000 or Sell > $200,000
-                if acq_disp == "A" and total_value >= 30000:
+                if acq_disp in ["A", "D"] and total_value > 0:
+                    is_meaningful = False
+                    if acq_disp == "A" and total_value >= 30000:
+                        is_meaningful = True
+                    elif acq_disp == "D" and total_value >= 200000:
+                        is_meaningful = True
+                        
                     transactions.append({
+                        'filing_date': filing_date,
                         'ticker': ticker_symbol,
                         'company': issuer_name,
                         'insider': insider_name,
                         'role': relationship,
-                        'type': 'BUY',
+                        'type': 'BUY' if acq_disp == 'A' else 'SELL',
                         'shares': int(shares),
                         'price': price,
-                        'value': total_value
-                    })
-                elif acq_disp == "D" and total_value >= 200000:
-                    transactions.append({
-                        'ticker': ticker_symbol,
-                        'company': issuer_name,
-                        'insider': insider_name,
-                        'role': relationship,
-                        'type': 'SELL',
-                        'shares': int(shares),
-                        'price': price,
-                        'value': total_value
+                        'value': total_value,
+                        'is_meaningful': is_meaningful,
+                        'filing_url': xml_url
                     })
         except Exception as e:
             logger.error(f"Failed to process Form 4 index {index_url}: {e}")
@@ -256,6 +256,50 @@ def send_telegram_message(token, chat_id, text):
         logger.error(f"Failed to send telegram request: {e}")
         return None
 
+def save_insider_transactions_to_excel(transactions):
+    """
+    Saves the list of insider transactions cumulatively into an Excel file.
+    Deduplicates based on filing_url, ticker, insider, shares, price, and type.
+    """
+    if not transactions:
+        return
+        
+    workspace_dir = os.path.dirname(os.path.abspath(__file__))
+    output_dir = os.path.join(workspace_dir, "data")
+    os.makedirs(output_dir, exist_ok=True)
+    excel_path = os.path.join(output_dir, "us_insider_transactions.xlsx")
+    
+    df_new = pd.DataFrame(transactions)
+    
+    if os.path.exists(excel_path):
+        try:
+            df_old = pd.read_excel(excel_path)
+            # Combine old and new
+            df_combined = pd.concat([df_old, df_new], ignore_index=True)
+        except Exception as e:
+            logger.error(f"Failed to read existing Excel file: {e}")
+            df_combined = df_new
+    else:
+        df_combined = df_new
+        
+    # Deduplicate
+    # Columns to check for duplicates: filing_url, ticker, insider, shares, price, type
+    dup_cols = ['ticker', 'insider', 'shares', 'price', 'type']
+    if 'filing_url' in df_combined.columns:
+        dup_cols.append('filing_url')
+        
+    df_combined = df_combined.drop_duplicates(subset=dup_cols, keep='first')
+    
+    # Sort by filing_date descending (if available)
+    if 'filing_date' in df_combined.columns:
+        df_combined = df_combined.sort_values(by='filing_date', ascending=False)
+        
+    try:
+        df_combined.to_excel(excel_path, index=False)
+        logger.info(f"Successfully saved {len(df_combined)} cumulative insider transactions to {excel_path}")
+    except Exception as e:
+        logger.error(f"Failed to save cumulative Excel file: {e}")
+
 def main():
     logger.info("Starting Daily US Market Monitor...")
     
@@ -264,6 +308,12 @@ def main():
     
     # 2. Get insider transactions
     insiders = get_sec_insider_transactions()
+    
+    # Save all parsed transactions to Excel
+    save_insider_transactions_to_excel(insiders)
+    
+    # Filter for meaningful transactions to send to Telegram
+    meaningful_insiders = [item for item in insiders if item.get('is_meaningful')]
     
     # 3. Format Telegram Report
     report_lines = []
@@ -286,9 +336,9 @@ def main():
         
     # B. Insider Trading Section
     report_lines.append("\n🕵️ *주요 기업 내부자 지분 변동 (SEC Form 4)*")
-    if insiders:
+    if meaningful_insiders:
         # Sort by value descending
-        insiders_sorted = sorted(insiders, key=lambda x: x['value'], reverse=True)
+        insiders_sorted = sorted(meaningful_insiders, key=lambda x: x['value'], reverse=True)
         # Limit to top 10 insider trades
         for item in insiders_sorted[:10]:
             action_emoji = "🟢 매수" if item['type'] == 'BUY' else "🔴 매도"
