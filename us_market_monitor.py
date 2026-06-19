@@ -260,9 +260,10 @@ def save_insider_transactions_to_excel(transactions):
     """
     Saves the list of insider transactions cumulatively into an Excel file.
     Deduplicates based on filing_url, ticker, insider, shares, price, and type.
+    Returns True if new transactions were added.
     """
     if not transactions:
-        return
+        return False
         
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
     output_dir = os.path.join(workspace_dir, "data_us")
@@ -271,9 +272,11 @@ def save_insider_transactions_to_excel(transactions):
     
     df_new = pd.DataFrame(transactions)
     
+    old_row_count = 0
     if os.path.exists(excel_path):
         try:
             df_old = pd.read_excel(excel_path)
+            old_row_count = len(df_old)
             # Combine old and new
             df_combined = pd.concat([df_old, df_new], ignore_index=True)
         except Exception as e:
@@ -283,7 +286,6 @@ def save_insider_transactions_to_excel(transactions):
         df_combined = df_new
         
     # Deduplicate
-    # Columns to check for duplicates: filing_url, ticker, insider, shares, price, type
     dup_cols = ['ticker', 'insider', 'shares', 'price', 'type']
     if 'filing_url' in df_combined.columns:
         dup_cols.append('filing_url')
@@ -297,8 +299,29 @@ def save_insider_transactions_to_excel(transactions):
     try:
         df_combined.to_excel(excel_path, index=False)
         logger.info(f"Successfully saved {len(df_combined)} cumulative insider transactions to {excel_path}")
+        if len(df_combined) > old_row_count:
+            return True
     except Exception as e:
         logger.error(f"Failed to save cumulative Excel file: {e}")
+        
+    return False
+
+def send_telegram_document(token, chat_id, file_path, caption=None):
+    """Sends a document/file to Telegram."""
+    url = f"https://api.telegram.org/bot{token}/sendDocument"
+    data = {"chat_id": chat_id}
+    if caption:
+        data["caption"] = caption
+        data["parse_mode"] = "Markdown"
+        
+    try:
+        with open(file_path, "rb") as f:
+            files = {"document": f}
+            resp = requests.post(url, data=data, files=files, timeout=300)
+            return resp.json()
+    except Exception as e:
+        logger.error(f"Failed to send telegram document: {e}")
+        return None
 
 def main():
     logger.info("Starting Daily US Market Monitor...")
@@ -309,9 +332,21 @@ def main():
     # 2. Get insider transactions
     insiders = get_sec_insider_transactions()
     
-    # Save all parsed transactions to Excel
-    save_insider_transactions_to_excel(insiders)
+    # Save all parsed transactions to Excel and check if updated
+    is_updated = save_insider_transactions_to_excel(insiders)
     
+    if is_updated:
+        workspace_dir = os.path.dirname(os.path.abspath(__file__))
+        excel_path = os.path.join(workspace_dir, "data_us", "us_insider_transactions.xlsx")
+        if TELEGRAM_BOT4_TOKEN and TELEGRAM_JJANG_GU_CHAT_ID:
+            logger.info(f"Uploading updated Excel sheet to Telegram chat: {TELEGRAM_JJANG_GU_CHAT_ID}...")
+            caption_text = "📁 *[미국 내부자 지분 변동 Excel 업데이트]*\n새로운 내부자 거래가 추가되어 누적 엑셀 파일을 업로드합니다."
+            res_file = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, excel_path, caption=caption_text)
+            if res_file and res_file.get("ok"):
+                logger.info("Successfully uploaded Excel sheet to Telegram.")
+            else:
+                logger.error(f"Failed to upload Excel sheet to Telegram: {res_file}")
+                
     # Filter for meaningful transactions to send to Telegram
     meaningful_insiders = [item for item in insiders if item.get('is_meaningful')]
     
