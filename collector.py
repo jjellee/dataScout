@@ -380,7 +380,7 @@ def main():
 
     # 9. Save all data to CSV
     print("\n9. Saving data files...")
-    data_dir = os.path.join("data", target_date)
+    data_dir = os.path.join("data_kr", target_date)
     os.makedirs(data_dir, exist_ok=True)
     
     # All stocks

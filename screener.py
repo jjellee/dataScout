@@ -38,7 +38,7 @@ load_env()
 
 def get_sorted_date_dirs(limit=5):
     """Returns the last N sorted date directories from the data folder."""
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_kr")
     if not os.path.exists(data_dir):
         logger.error(f"Data directory not found at: {data_dir}")
         return []
@@ -95,7 +95,7 @@ def main():
     logger.info(f"Screening stocks for date: {formatted_date} (Lookback: {lookback_dates})")
 
     # Load DataFrames for all lookback days
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_kr")
     dfs = {}
     for d in date_dirs:
         csv_path = os.path.join(data_dir, d, "all_stocks_investor_trend.csv")

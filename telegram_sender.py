@@ -67,9 +67,9 @@ def main():
         
     # Get latest data directory
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dirs = sorted(glob.glob(os.path.join(workspace_dir, "data", "202[56]*")))
+    data_dirs = sorted(glob.glob(os.path.join(workspace_dir, "data_kr", "202[56]*")))
     if not data_dirs:
-        print("Error: No collected data found in 'data/' directory.")
+        print("Error: No collected data found in 'data_kr/' directory.")
         sys.exit(1)
         
     latest_dir = data_dirs[-1]

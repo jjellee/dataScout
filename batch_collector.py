@@ -51,7 +51,7 @@ def get_trading_days(months_back=6):
 
 def is_already_collected(date_str):
     """Checks if data for the date is already collected successfully."""
-    data_dir = os.path.join("data", date_str)
+    data_dir = os.path.join("data_kr", date_str)
     required_files = [
         "all_stocks_investor_trend.csv",
         "sector_investor_trend.csv",

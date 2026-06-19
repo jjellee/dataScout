@@ -265,7 +265,7 @@ def save_insider_transactions_to_excel(transactions):
         return
         
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
-    output_dir = os.path.join(workspace_dir, "data")
+    output_dir = os.path.join(workspace_dir, "data_us")
     os.makedirs(output_dir, exist_ok=True)
     excel_path = os.path.join(output_dir, "us_insider_transactions.xlsx")
     

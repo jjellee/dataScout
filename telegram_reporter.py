@@ -68,7 +68,7 @@ plt.rcParams['axes.unicode_minus'] = False  # Avoid minus sign rendering bugs
 
 def get_sorted_date_dirs():
     """Returns a sorted list of date directories in YYYYMMDD format."""
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_kr")
     if not os.path.exists(data_dir):
         logger.error(f"Data directory not found at: {data_dir}")
         return []
@@ -108,7 +108,7 @@ def load_targets():
     latest_csv = None
     date_dirs = get_sorted_date_dirs()
     if date_dirs:
-        latest_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", date_dirs[-1], "all_stocks_investor_trend.csv")
+        latest_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_kr", date_dirs[-1], "all_stocks_investor_trend.csv")
         
     df = None
     if latest_csv and os.path.exists(latest_csv):
@@ -144,7 +144,7 @@ def build_ticker_data(ticker, date_dirs):
     investors = ["개인", "외국인", "기관합계", "금융투자", "보험", "투신", "은행", "연기금", "사모", "기타법인", "기타외국인"]
     
     for date_str in date_dirs:
-        csv_path = os.path.join("data", date_str, "all_stocks_investor_trend.csv")
+        csv_path = os.path.join("data_kr", date_str, "all_stocks_investor_trend.csv")
         if not os.path.exists(csv_path):
             continue
         

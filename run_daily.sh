@@ -28,7 +28,7 @@ echo "Step 4: Collecting daily DART disclosures..."
 
 # 5. Git commit & push data and charts to GitHub
 echo "Step 5: Committing and pushing to GitHub..."
-git add data/ data_dart/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py
+git add data_kr/ data_us/ data_dart/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py
 git commit -m "auto: daily market data, screening, and DART update [skip ci]"
 git push origin main
 
