@@ -233,9 +233,23 @@ def main():
     # Ensure directory exists
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
     
-    # Save to Excel
-    df_combined.to_excel(excel_path, index=False)
-    print(f"Successfully saved cumulative insider transactions to {excel_path}")
+    # Save to Excel with formatted column widths
+    from openpyxl.utils import get_column_letter
+    try:
+        with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+            df_combined.to_excel(writer, index=False, sheet_name='Transactions')
+            worksheet = writer.sheets['Transactions']
+            for col_idx, col in enumerate(worksheet.columns, 1):
+                max_len = 0
+                col_letter = get_column_letter(col_idx)
+                for cell in col:
+                    val = str(cell.value or '')
+                    if len(val) > max_len:
+                        max_len = len(val)
+                worksheet.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 50)
+        print(f"Successfully saved cumulative insider transactions to {excel_path}")
+    except Exception as e:
+        print(f"Failed to save cumulative Excel file: {e}")
 
 if __name__ == "__main__":
     main()
