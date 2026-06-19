@@ -153,6 +153,10 @@ def extract_dates(text):
     for m in re.finditer(r'(\d{4})-(\d{2})-(\d{2})', text):
         date_str = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
         found_dates.append((m.start(), date_str))
+    # Pattern 3: YYYY.MM.DD
+    for m in re.finditer(r'(\d{4})\s*\.\s*(\d{1,2})\s*\.\s*(\d{1,2})', text):
+        date_str = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+        found_dates.append((m.start(), date_str))
     # Sort by start position
     found_dates.sort(key=lambda x: x[0])
     return [d[1] for d in found_dates]
@@ -303,13 +307,30 @@ def parse_mezzanine_html_fallback(html_path, m_type):
         with open(html_path, "r", encoding="utf-8") as f:
             soup = BeautifulSoup(f.read(), 'html.parser')
             
+        current_primary_key = ""
         for table in soup.find_all('table'):
+            in_claim_period = False
             for r in table.find_all('tr'):
                 children = r.find_all(recursive=False)
                 cols = [c.get_text().strip().replace('\n', ' ') for c in children]
                 cols = [re.sub(r'\s+', ' ', col) for col in cols]
                 if len(cols) >= 2:
-                    key = cols[0].replace(" ", "").replace("ㆍ", "").replace(".", "")
+                    first_cell = cols[0].replace(" ", "")
+                    if first_cell:
+                        is_claim_key = any(k in first_cell for k in ["전환청구기간", "신주인수권행사기간", "교환청구기간", "행사청구기간", "전환청구일", "행사기간", "전환기간", "교환기간"])
+                        is_sub_key = first_cell in ["시작일", "시작", "종료일", "종료", "시작일자", "종료일자", "행사시작일", "행사종료일", "전환시작일", "전환종료일"]
+                        
+                        if is_claim_key:
+                            in_claim_period = True
+                            current_primary_key = first_cell.replace("ㆍ", "").replace(".", "")
+                        elif is_sub_key and in_claim_period:
+                            # Keep current claim key as primary key
+                            pass
+                        else:
+                            in_claim_period = False
+                            current_primary_key = first_cell.replace("ㆍ", "").replace(".", "")
+                    
+                    key = current_primary_key
                     
                     if "사채의권면총액" in key or "권면총액" in key:
                         res["total_amount"] = clean_numeric(cols[-1])
@@ -321,17 +342,29 @@ def parse_mezzanine_html_fallback(html_path, m_type):
                         res["maturity_date"] = cols[-1]
                     if any(k in key for k in ["전환가액", "행사가액", "교환가액"]):
                         res["conversion_price"] = clean_numeric(cols[-1])
-                    for idx, val in enumerate(cols):
-                        val_clean = val.replace(" ", "")
-                        if "시작일" in val_clean and idx + 1 < len(cols) and "청구" in val_clean:
-                            res["claim_start"] = cols[idx+1]
-                        if "종료일" in val_clean and idx + 1 < len(cols) and "청구" in val_clean:
-                            res["claim_end"] = cols[idx+1]
+                        
+                    # Parse Conversion Request Start & End dates
+                    if any(k in key for k in ["전환청구기간", "신주인수권행사기간", "교환청구기간", "행사청구기간", "전환청구일", "행사기간", "전환기간", "교환기간"]):
+                        row_text = "".join(cols).replace(" ", "")
+                        if "시작" in row_text:
+                            dates = extract_dates(cols[-1])
+                            res["claim_start"] = dates[0] if dates else cols[-1]
+                        elif "종료" in row_text:
+                            dates = extract_dates(cols[-1])
+                            res["claim_end"] = dates[0] if dates else cols[-1]
+                        elif len(cols) == 2:
+                            dates = extract_dates(cols[1])
+                            if len(dates) >= 2:
+                                res["claim_start"] = dates[0]
+                                res["claim_end"] = dates[1]
+                            elif len(dates) == 1:
+                                res["claim_start"] = dates[0]
+                                
                     if any(k in key for k in ["전환에따라발행할주식의종류", "신주인수권행사에따라발행할주식의종류", "교환대상주식의종류", "발행할주식의종류"]):
                         res["share_type"] = cols[-1]
                         
         for k in ["maturity_date", "claim_start", "claim_end"]:
-            d_match = re.search(r'(\d{4})[-년\s]*(\d{1,2})[-월\s]*(\d{1,2})', res[k])
+            d_match = re.search(r'(\d{4})[-년\s\.]*(\d{1,2})[-월\s\.]*(\d{1,2})', res[k])
             if d_match:
                 y, m, d = d_match.groups()
                 res[k] = f"{y}-{int(m):02d}-{int(d):02d}"
@@ -747,11 +780,30 @@ def build_excel_summary(workspace_dir):
                 call_start = extract_option_start_date(call_opt, "call")
                 put_start = extract_option_start_date(put_opt, "put")
                 
+                # Parse fallback claim dates in case they are missing from cache
+                fallback = parse_mezzanine_html_fallback(html_path, base_type)
+                
                 if "data" in record_detail:
                     record_detail["data"]["call_start"] = call_start
                     record_detail["data"]["put_start"] = put_start
                     record_detail["data"]["call_option_info"] = call_opt
                     record_detail["data"]["put_option_info"] = put_opt
+                    
+                    # Fill claim_start and claim_end
+                    fb_start = fallback.get("claim_start", "-")
+                    fb_end = fallback.get("claim_end", "-")
+                    
+                    if fb_start and fb_start != "-":
+                        record_detail["data"]["claim_start"] = fb_start
+                    else:
+                        record_detail["data"]["claim_start"] = record_detail["data"].get("claim_start", "-")
+                        
+                    if fb_end and fb_end != "-":
+                        record_detail["data"]["claim_end"] = fb_end
+                    else:
+                        record_detail["data"]["claim_end"] = record_detail["data"].get("claim_end", "-")
+                        
+                    record_detail["data"]["listing_date"] = "-"
             parsed_records.append(record_detail)
             continue
             
@@ -838,7 +890,9 @@ def build_excel_summary(workspace_dir):
                 "share_type": share_type,
                 "new_shares_count": clean_numeric(details.get("cvisstk_cnt")) if details else None,
                 "payment_date": details.get("pymd", "-") if details else "-",
-                "listing_date": claim_start, # Request start date serves as the target date
+                "listing_date": "-",
+                "claim_start": claim_start,
+                "claim_end": claim_end,
                 "ratio": clean_numeric(details.get("cvisstk_tisstk_vs")) if details else None,
                 "purpose": "-", # Summarize later
                 "call_start": call_start,
@@ -1011,7 +1065,9 @@ def build_excel_summary(workspace_dir):
                 "신주종류": d.get("share_type", "-"),
                 "신주발행수": d.get("new_shares_count"),
                 "납입일": fmt_date(str(d.get("payment_date", "-"))),
-                "상장예정일/청구시작일": fmt_date(str(d.get("listing_date", "-"))),
+                "상장예정일": fmt_date(str(d.get("listing_date", "-"))) if r["base_type"] in ["유상증자", "무상증자"] else "-",
+                "전환청구시작일": fmt_date(str(d.get("claim_start", "-"))),
+                "전환청구종료일": fmt_date(str(d.get("claim_end", "-"))),
                 "주식총수대비": d.get("ratio"),
                 "조달목적": d.get("purpose", "-"),
                 "콜옵션 청구일": d.get("call_start", "-"),
@@ -1215,12 +1271,12 @@ def format_fundraising_sheet(ws):
             cell.border = data_border
             
             # Alignments
-            if col_idx in [1, 3, 4, 5, 9, 11, 12, 15, 16, 17]: # Dates, codes, types, opt dates
+            if col_idx in [1, 3, 4, 5, 9, 11, 12, 13, 14, 17, 18, 19]: # Dates, codes, types, opt dates, claim dates
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 18: # DARTLink
+            elif col_idx == 20: # DARTLink
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx == 14: # 조달목적 (Wrap text)
+            elif col_idx == 16: # 조달목적 (Wrap text)
                 cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
             else:
                 cell.alignment = Alignment(horizontal="left", vertical="center")
@@ -1232,9 +1288,10 @@ def format_fundraising_sheet(ws):
             elif col_idx == 10: # 신주발행수
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 13: # 주식총수대비 (%)
+            elif col_idx == 15: # 주식총수대비 (%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00"%"'
+                    cell.alignment = Alignment(horizontal="right", vertical="center")
                     
         # Apply highlight to the type cell
         t_val = str(type_cell.value)
@@ -1249,7 +1306,7 @@ def format_fundraising_sheet(ws):
             
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
-        if col_idx == 14: # 조달목적 (wider)
+        if col_idx == 16: # 조달목적 (wider)
             ws.column_dimensions[col_letter].width = 45
         else:
             max_len = 0
