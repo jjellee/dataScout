@@ -331,6 +331,34 @@ def download_kr_prices(expected_date):
     logger.info(f"Downloaded price changes for {len(all_results)} KR stocks.")
     return pd.DataFrame(all_results)
 
+def load_kr_investor_trend(expected_date):
+    """Load investor trend CSV collected by collector.py for a given date."""
+    workspace_dir = os.path.dirname(os.path.abspath(__file__))
+    date_str = expected_date.strftime("%Y%m%d")
+    csv_path = os.path.join(workspace_dir, "data_kr", date_str, "all_stocks_investor_trend.csv")
+    
+    if not os.path.exists(csv_path):
+        logger.warning(f"Investor trend CSV not found: {csv_path}")
+        return None
+    
+    try:
+        df = pd.read_csv(csv_path, encoding='utf-8-sig')
+        # Standardize ticker column
+        df = df.rename(columns={'티커': 'Symbol'})
+        df['Symbol'] = df['Symbol'].astype(str).str.zfill(6)
+        logger.info(f"Loaded investor trend data: {len(df)} stocks from {csv_path}")
+        return df
+    except Exception as e:
+        logger.error(f"Failed to load investor trend CSV: {e}")
+        return None
+
+def format_억(val):
+    """Format a KRW value (원) to 억원 for readability."""
+    억 = val / 1e8
+    if abs(억) >= 1:
+        return f"{억:+,.0f}억"
+    return f"{억:+,.1f}억"
+
 def download_prices_bulk(symbols):
     logger.info(f"Downloading daily prices for {len(symbols)} tickers in chunks of 300...")
     all_results = []
@@ -589,6 +617,63 @@ def main():
             top_stocks = sector_stocks.sort_values(by='Change', ascending=False).head(2)
             stocks_str = ", ".join([f"{r.Name[:8]}({r.Change:+.1f}%)" for r in top_stocks.itertuples()])
             report_lines.append(f"- *{row.Industry}*: {row.Change:+.2f}% (상위: {stocks_str})")
+    
+    # KR Supply/Demand (수급) Analysis
+    if market == "KR":
+        df_investor = load_kr_investor_trend(expected_date)
+        if df_investor is not None:
+            # Merge investor data with WICS industry classification
+            inv_cols = ['Symbol', '외국인_순매수대금', '기관합계_순매수대금', '개인_순매수대금', '공매도비중']
+            df_inv = df_investor[[c for c in inv_cols if c in df_investor.columns]].copy()
+            df_supply = df_merged.merge(df_inv, on='Symbol', how='left')
+            
+            # Fill NaN with 0
+            for col in ['외국인_순매수대금', '기관합계_순매수대금', '개인_순매수대금', '공매도비중']:
+                if col in df_supply.columns:
+                    df_supply[col] = df_supply[col].fillna(0)
+            
+            report_lines.append("\n💰 *외국인·기관 수급 분석*")
+            
+            # Sector-level foreign flow
+            if '외국인_순매수대금' in df_supply.columns:
+                sector_foreign = df_supply.groupby('Industry')['외국인_순매수대금'].sum().reset_index()
+                sector_foreign = sector_foreign.sort_values('외국인_순매수대금', ascending=False)
+                
+                top_buy_sectors = sector_foreign.head(3)
+                top_sell_sectors = sector_foreign.tail(3)
+                
+                report_lines.append("\n🏦 *섹터별 외국인 순매수 TOP 3*")
+                for idx, row in enumerate(top_buy_sectors.itertuples(), start=1):
+                    sec_change = sector_perf[sector_perf['Industry'] == row.Industry]['Change'].values
+                    chg_str = f" (주가 {sec_change[0]:+.1f}%)" if len(sec_change) > 0 else ""
+                    report_lines.append(f"{idx}. *{row.Industry}*: {format_억(row.외국인_순매수대금)}{chg_str}")
+                
+                report_lines.append("\n📉 *섹터별 외국인 순매도 TOP 3*")
+                for idx, row in enumerate(reversed(list(top_sell_sectors.itertuples())), start=1):
+                    sec_change = sector_perf[sector_perf['Industry'] == row.Industry]['Change'].values
+                    chg_str = f" (주가 {sec_change[0]:+.1f}%)" if len(sec_change) > 0 else ""
+                    report_lines.append(f"{idx}. *{row.Industry}*: {format_억(row.외국인_순매수대금)}{chg_str}")
+                
+                # Contrarian signals: stocks down >2% but foreign/institutional buying
+                contrarian = df_supply[
+                    (df_supply['Change'] <= -2.0) &
+                    (df_supply['외국인_순매수대금'] > 1e8) &  # >1억원 순매수
+                    (df_supply['Industry'] != '기타')
+                ].sort_values('외국인_순매수대금', ascending=False).head(5)
+                
+                if not contrarian.empty:
+                    report_lines.append("\n🎯 *역발상 시그널 (하락 중 외국인 순매수)*")
+                    for row in contrarian.itertuples():
+                        기관 = getattr(row, '기관합계_순매수대금', 0)
+                        기관_str = f", 기관 {format_억(기관)}" if abs(기관) > 1e8 else ""
+                        report_lines.append(f"- *{row.Name[:10]}* {row.Change:+.1f}% | 외국인 {format_억(row.외국인_순매수대금)}{기관_str}")
+                
+                # Top foreign net buy stocks
+                top_foreign_buy = df_supply[df_supply['외국인_순매수대금'] > 0].sort_values('외국인_순매수대금', ascending=False).head(5)
+                if not top_foreign_buy.empty:
+                    report_lines.append("\n👤 *외국인 순매수 TOP 5*")
+                    for idx, row in enumerate(top_foreign_buy.itertuples(), start=1):
+                        report_lines.append(f"{idx}. *{row.Name[:10]}* ({row.Change:+.1f}%) | {format_억(row.외국인_순매수대금)}")
             
     # Stock movers
     report_lines.append("\n🚀 *개별 종목 상승 TOP 5*")
