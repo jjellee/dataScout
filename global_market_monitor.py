@@ -13,6 +13,7 @@ import asyncio
 import pandas as pd
 import yfinance as yf
 import FinanceDataReader as fdr
+from pykrx import stock as pykrx_stock
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
@@ -48,6 +49,7 @@ def load_interest_sectors(market):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "interest_sectors.txt")
     default_us = ["반도체", "소프트웨어", "생명 공학 및 의학 연구", "백화점", "자동차 및 트럭 제조", "온라인 서비스"]
     default_jp = ["Electric Appliances", "Information & Communication", "Transportation Equipment", "Pharmaceutical", "Chemicals"]
+    default_kr = ["반도체", "자동차", "IT가전", "제약", "2차전지", "은행"]
     
     if not os.path.exists(path):
         try:
@@ -60,9 +62,14 @@ def load_interest_sectors(market):
                 f.write("[JP]\n")
                 for s in default_jp:
                     f.write(f"{s}\n")
+                f.write("\n# --- KR Market Interest Sectors (Match with FDR 'Industry' column) ---\n")
+                f.write("[KR]\n")
+                for s in default_kr:
+                    f.write(f"{s}\n")
         except Exception as e:
             logger.error(f"Failed to create default interest_sectors.txt: {e}")
-        return default_us if market == "US" else default_jp
+        defaults = {"US": default_us, "JP": default_jp, "KR": default_kr}
+        return defaults.get(market, default_us)
         
     sectors = []
     current_section = None
@@ -77,13 +84,18 @@ def load_interest_sectors(market):
                     continue
                 elif line == "[JP]":
                     current_section = "JP"
+                elif line == "[KR]":
+                    current_section = "KR"
                     continue
                 if current_section == market:
                     sectors.append(line)
     except Exception as e:
         logger.error(f"Error loading interest_sectors.txt: {e}")
         
-    return sectors if sectors else (default_us if market == "US" else default_jp)
+    if sectors:
+        return sectors
+    defaults = {"US": default_us, "JP": default_jp, "KR": default_kr}
+    return defaults.get(market, default_us)
 
 def send_telegram_document(token, chat_id, file_path, caption=None):
     url = f"https://api.telegram.org/bot{token}/sendDocument"
@@ -136,7 +148,7 @@ def check_market_holiday(market):
         except Exception as e:
             logger.error(f"US holiday check error: {e}")
             return False, expected_date
-    else: # JP
+    elif market == "JP":
         # Expected trade date is today (run date)
         expected_date = now.date()
         try:
@@ -149,6 +161,24 @@ def check_market_holiday(market):
                 return False, expected_date
         except Exception as e:
             logger.error(f"JP holiday check error: {e}")
+            return False, expected_date
+    else: # KR
+        # Expected trade date is today (run after market close)
+        expected_date = now.date()
+        try:
+            # Search last 7 days to find the actual last trading date
+            start = (now - datetime.timedelta(days=7)).strftime("%Y%m%d")
+            end = expected_date.strftime("%Y%m%d")
+            df = pykrx_stock.get_market_ohlcv_by_date(start, end, "005930")
+            if df.empty:
+                return True, expected_date
+            last_trade_date = df.index[-1].date()
+            if last_trade_date != expected_date:
+                # Return the actual last trading date so test mode can use it
+                return True, last_trade_date
+            return False, expected_date
+        except Exception as e:
+            logger.error(f"KR holiday check error: {e}")
             return False, expected_date
             
     return False, now.date()
@@ -199,6 +229,81 @@ def get_jp_stock_list():
     except Exception as e:
         logger.error(f"Failed to fetch JP stock list: {e}")
         return pd.DataFrame()
+
+def get_kr_stock_list():
+    """Fetch KOSPI/KOSDAQ stock list with sector mapping from pykrx index portfolios."""
+    logger.info("Fetching KOSPI/KOSDAQ stock list and sector mappings from pykrx...")
+    try:
+        today_str = datetime.datetime.now().strftime("%Y%m%d")
+        
+        # Get all tickers and names
+        all_data = []
+        for mkt in ["KOSPI", "KOSDAQ"]:
+            tickers = pykrx_stock.get_market_ticker_list(today_str, market=mkt)
+            for t in tickers:
+                name = pykrx_stock.get_market_ticker_name(t)
+                all_data.append({'Symbol': t, 'Name': name, 'Market': mkt})
+        
+        df_all = pd.DataFrame(all_data)
+        logger.info(f"Total KR tickers: {len(df_all)} (building sector map...)")
+        
+        # Build ticker→sector map from KRX sector indices
+        ticker_sector_map = {}
+        skip_indices = ["코스피", "코스피 대형주", "코스피 중형주", "코스피 소형주",
+                        "코스닥", "코스닥 대형주", "코스닥 중형주", "코스닥 소형주"]
+        
+        for mkt_idx in ["KOSPI", "KOSDAQ"]:
+            try:
+                sector_tickers = pykrx_stock.get_index_ticker_list(today_str, market=mkt_idx)
+                for st in sector_tickers:
+                    sector_name = pykrx_stock.get_index_ticker_name(st)
+                    if sector_name in skip_indices or any(c.isdigit() for c in sector_name if sector_name not in ["2차전지"]):
+                        continue
+                    try:
+                        portfolio = pykrx_stock.get_index_portfolio_deposit_file(st)
+                        for ticker in portfolio:
+                            if ticker not in ticker_sector_map:
+                                ticker_sector_map[ticker] = sector_name
+                    except Exception:
+                        continue
+            except Exception as e:
+                logger.warning(f"Failed to get sector indices for {mkt_idx}: {e}")
+        
+        # Map sectors to tickers
+        df_all['Industry'] = df_all['Symbol'].map(ticker_sector_map).fillna('기타')
+        logger.info(f"Sector mapped: {len(ticker_sector_map)} tickers, unmapped: {(df_all['Industry'] == '기타').sum()}")
+        
+        return df_all[['Symbol', 'Name', 'Industry']]
+    except Exception as e:
+        logger.error(f"Failed to fetch KR stock list: {e}")
+        return pd.DataFrame()
+
+def download_kr_prices(expected_date):
+    """Download all KR stock prices for a given date using pykrx (single API call per market)."""
+    date_str = expected_date.strftime("%Y%m%d")
+    logger.info(f"Downloading KR prices for {date_str} using pykrx...")
+    
+    all_results = []
+    for mkt in ["KOSPI", "KOSDAQ"]:
+        try:
+            df_mkt = pykrx_stock.get_market_ohlcv_by_ticker(date_str, market=mkt)
+            if df_mkt.empty:
+                logger.warning(f"No pykrx data for {mkt} on {date_str}")
+                continue
+            for ticker in df_mkt.index:
+                close = df_mkt.loc[ticker, '종가']
+                change = df_mkt.loc[ticker, '등락률']
+                if close > 0:
+                    all_results.append({
+                        'Symbol': str(ticker),
+                        'Price': float(close),
+                        'Change': float(change)
+                    })
+        except Exception as e:
+            logger.error(f"Failed to download {mkt} prices: {e}")
+    
+    logger.info(f"Downloaded price changes for {len(all_results)} KR stocks.")
+    return pd.DataFrame(all_results)
 
 def download_prices_bulk(symbols):
     logger.info(f"Downloading daily prices for {len(symbols)} tickers in chunks of 300...")
@@ -261,7 +366,8 @@ def save_to_formatted_excel(df, output_path, market):
             border_side = Side(border_style="thin", color="D3D3D3")
             data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
             
-            currency_format = '$#,##0.00' if market == "US" else '¥#,##0'
+            currency_map = {"US": '$#,##0.00', "JP": '¥#,##0', "KR": '₩#,##0'}
+            currency_format = currency_map.get(market, '#,##0')
             
             # Format Headers
             for col_idx in range(1, ws.max_column + 1):
@@ -329,7 +435,7 @@ def save_to_formatted_excel(df, output_path, market):
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Global Market Price Monitor")
-    parser.add_argument("--market", type=str, required=True, choices=["US", "JP"], help="Target market: US or JP")
+    parser.add_argument("--market", type=str, required=True, choices=["US", "JP", "KR"], help="Target market: US, JP, or KR")
     parser.add_argument("--test", action="store_true", help="Run in test mode")
     args = parser.parse_args()
     
@@ -351,7 +457,8 @@ def main():
     logger.info(f"Processing trading date: {expected_date}")
     
     # 2. Load Stock List Metadata
-    df_list = get_us_stock_list() if market == "US" else get_jp_stock_list()
+    stock_list_funcs = {"US": get_us_stock_list, "JP": get_jp_stock_list, "KR": get_kr_stock_list}
+    df_list = stock_list_funcs[market]()
     if df_list.empty:
         logger.error("Failed to load stock list metadata. Exiting.")
         return
@@ -359,27 +466,28 @@ def main():
     logger.info(f"Total metadata stocks loaded: {len(df_list)}")
     
     # 3. Download Prices in Bulk
-    symbols = df_list['Symbol'].tolist()
-    if test_mode:
-        logger.info("[Test Mode] Limiting symbol list to 30 popular/sample symbols for rapid testing.")
-        # Select some popular tickers to ensure we cover diverse sectors
-        test_symbols_subset = []
-        if market == "US":
-            known_tickers = ["AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "GOOGL", "META", "AMD", "INTC", "AVGO"]
-            test_symbols_subset = [sym for sym in known_tickers if sym in symbols]
-        else: # JP
-            known_tickers = ["7203.T", "9984.T", "6758.T", "8035.T", "6857.T", "6501.T", "4502.T", "7974.T"]
-            test_symbols_subset = [sym for sym in known_tickers if sym in symbols]
-        
-        # Fill rest from the beginning of symbols
-        for sym in symbols:
-            if len(test_symbols_subset) >= 30:
-                break
-            if sym not in test_symbols_subset:
-                test_symbols_subset.append(sym)
-        symbols = test_symbols_subset
-        
-    df_prices = download_prices_bulk(symbols)
+    if market == "KR":
+        # KR uses pykrx (single API call per market, no chunking needed)
+        df_prices = download_kr_prices(expected_date)
+    else:
+        symbols = df_list['Symbol'].tolist()
+        if test_mode:
+            logger.info("[Test Mode] Limiting symbol list to 30 popular/sample symbols for rapid testing.")
+            test_symbols_subset = []
+            if market == "US":
+                known_tickers = ["AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "GOOGL", "META", "AMD", "INTC", "AVGO"]
+                test_symbols_subset = [sym for sym in known_tickers if sym in symbols]
+            else: # JP
+                known_tickers = ["7203.T", "9984.T", "6758.T", "8035.T", "6857.T", "6501.T", "4502.T", "7974.T"]
+                test_symbols_subset = [sym for sym in known_tickers if sym in symbols]
+            for sym in symbols:
+                if len(test_symbols_subset) >= 30:
+                    break
+                if sym not in test_symbols_subset:
+                    test_symbols_subset.append(sym)
+            symbols = test_symbols_subset
+        df_prices = download_prices_bulk(symbols)
+    
     if df_prices.empty:
         logger.error("No stock prices downloaded. Exiting.")
         return
@@ -422,9 +530,12 @@ def main():
     interest_perf = sector_perf[sector_perf['Industry'].isin(interest_sectors)].sort_values(by='Change', ascending=False)
     
     # 7. Formulate Telegram Report
-    market_flag = "🇺🇸" if market == "US" else "🇯🇵"
-    market_name = "미국 증시" if market == "US" else "일본 증시"
-    currency_symbol = "$" if market == "US" else "¥"
+    flag_map = {"US": "🇺🇸", "JP": "🇯🇵", "KR": "🇰🇷"}
+    name_map = {"US": "미국 증시", "JP": "일본 증시", "KR": "한국 증시"}
+    currency_map_sym = {"US": "$", "JP": "¥", "KR": "₩"}
+    market_flag = flag_map[market]
+    market_name = name_map[market]
+    currency_symbol = currency_map_sym[market]
     
     report_lines = []
     report_lines.append(f"{market_flag} *[{market_name} 마감 일일 리포트]* {market_flag}")
@@ -446,8 +557,8 @@ def main():
             # Find top 2 gainers in this interest sector
             sector_stocks = df_merged[df_merged['Industry'] == row.Industry]
             top_stocks = sector_stocks.sort_values(by='Change', ascending=False).head(2)
-            stocks_str = ", ".join([f"{r.Symbol}(+{r.Change:.1f}%)" for r in top_stocks.itertuples()])
-            report_lines.append(f"- *{row.Industry}*: {row.Change:+.2f}% (상위종목: {stocks_str})")
+            stocks_str = ", ".join([f"{r.Name[:8]}({r.Change:+.1f}%)" for r in top_stocks.itertuples()])
+            report_lines.append(f"- *{row.Industry}*: {row.Change:+.2f}% (상위: {stocks_str})")
             
     # Stock movers
     report_lines.append("\n🚀 *개별 종목 상승 TOP 5*")
