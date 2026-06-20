@@ -386,6 +386,21 @@ def send_telegram_document(token, chat_id, file_path, caption=None):
 def main():
     logger.info("Starting Daily US Market Monitor...")
     
+    # Check if the US market was open on the expected trading date (yesterday)
+    try:
+        expected_date = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
+        spy = yf.Ticker("SPY")
+        hist = spy.history(period="1d")
+        if not hist.empty:
+            last_date = hist.index[-1].date()
+            if last_date != expected_date:
+                logger.info(f"US market was closed on expected trading date {expected_date} (Last available: {last_date}). Skipping report.")
+                return
+        else:
+            logger.warning("Failed to fetch SPY trading history. Proceeding with report.")
+    except Exception as e:
+        logger.error(f"Error checking US market holiday: {e}. Proceeding with report.")
+    
     # 1. Get market movers
     gainers, losers = get_us_market_movers()
     

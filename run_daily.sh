@@ -6,6 +6,26 @@
 # Move to the project directory
 cd /home/inhyuk/projects/dataScout || exit 1
 
+# Check if the Korean market was open today (skips holidays and weekends)
+/home/inhyuk/projects/ExportImportAutomation/venv/bin/python -c "
+import FinanceDataReader as fdr
+import datetime
+import sys
+try:
+    df = fdr.DataReader('005930', datetime.date.today() - datetime.timedelta(days=7))
+    if not df.empty:
+        last_date = df.index[-1].date()
+        today = datetime.date.today()
+        if last_date != today:
+            sys.exit(1)
+except Exception:
+    sys.exit(0)
+"
+if [ $? -ne 0 ]; then
+    echo "Today is a Korean market holiday or weekend. Skipping daily run."
+    exit 0
+fi
+
 echo "================================================================="
 echo " Starting Daily Run: $(date)"
 echo "================================================================="
