@@ -49,7 +49,7 @@ def load_interest_sectors(market):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "interest_sectors.txt")
     default_us = ["반도체", "소프트웨어", "생명 공학 및 의학 연구", "백화점", "자동차 및 트럭 제조", "온라인 서비스"]
     default_jp = ["Electric Appliances", "Information & Communication", "Transportation Equipment", "Pharmaceutical", "Chemicals"]
-    default_kr = ["반도체", "자동차", "IT가전", "제약", "2차전지", "은행"]
+    default_kr = ["반도체와반도체장비", "자동차와부품", "제약과생물공학", "소프트웨어와서비스", "미디어와엔터테인먼트", "은행"]
     
     if not os.path.exists(path):
         try:
@@ -230,48 +230,74 @@ def get_jp_stock_list():
         logger.error(f"Failed to fetch JP stock list: {e}")
         return pd.DataFrame()
 
-def get_kr_stock_list():
-    """Fetch KOSPI/KOSDAQ stock list with sector mapping from pykrx index portfolios."""
-    logger.info("Fetching KOSPI/KOSDAQ stock list and sector mappings from pykrx...")
+def get_kr_stock_list(trade_date=None):
+    """Fetch KOSPI/KOSDAQ stock list with WICS (WiseIndex) industry classification."""
+    logger.info("Fetching KR stock list with WICS industry classification from WiseIndex...")
     try:
-        today_str = datetime.datetime.now().strftime("%Y%m%d")
+        date_str = trade_date.strftime("%Y%m%d") if trade_date else datetime.datetime.now().strftime("%Y%m%d")
         
-        # Get all tickers and names
-        all_data = []
-        for mkt in ["KOSPI", "KOSDAQ"]:
-            tickers = pykrx_stock.get_market_ticker_list(today_str, market=mkt)
-            for t in tickers:
-                name = pykrx_stock.get_market_ticker_name(t)
-                all_data.append({'Symbol': t, 'Name': name, 'Market': mkt})
+        # WICS 중분류 (28 sectors) - more granular than KRX's ~25 sectors
+        wics_mid_sectors = [
+            'G1010', 'G1510', 'G2010', 'G2020', 'G2030',
+            'G2510', 'G2520', 'G2530', 'G2550', 'G2560',
+            'G3010', 'G3020', 'G3030',
+            'G3510', 'G3520',
+            'G4010', 'G4020', 'G4030', 'G4040', 'G4050',
+            'G4510', 'G4520', 'G4530', 'G4535', 'G4540',
+            'G5010', 'G5020',
+            'G5510',
+        ]
         
-        df_all = pd.DataFrame(all_data)
-        logger.info(f"Total KR tickers: {len(df_all)} (building sector map...)")
+        url = "http://www.wiseindex.com/Index/GetIndexComponets"
+        all_stocks = []
         
-        # Build ticker→sector map from KRX sector indices
-        ticker_sector_map = {}
-        skip_indices = ["코스피", "코스피 대형주", "코스피 중형주", "코스피 소형주",
-                        "코스닥", "코스닥 대형주", "코스닥 중형주", "코스닥 소형주"]
-        
-        for mkt_idx in ["KOSPI", "KOSDAQ"]:
+        for code in wics_mid_sectors:
             try:
-                sector_tickers = pykrx_stock.get_index_ticker_list(today_str, market=mkt_idx)
-                for st in sector_tickers:
-                    sector_name = pykrx_stock.get_index_ticker_name(st)
-                    if sector_name in skip_indices or any(c.isdigit() for c in sector_name if sector_name not in ["2차전지"]):
-                        continue
-                    try:
-                        portfolio = pykrx_stock.get_index_portfolio_deposit_file(st)
-                        for ticker in portfolio:
-                            if ticker not in ticker_sector_map:
-                                ticker_sector_map[ticker] = sector_name
-                    except Exception:
-                        continue
+                params = {'ceil_yn': 0, 'dt': date_str, 'sec_cd': code}
+                resp = requests.get(url, params=params, timeout=15)
+                items = resp.json().get('list', [])
+                if not items:
+                    continue
+                sector_name = items[0].get('IDX_NM_KOR', '').replace('WICS ', '')
+                for item in items:
+                    all_stocks.append({
+                        'Symbol': item['CMP_CD'],
+                        'Name': item['CMP_KOR'],
+                        'Industry': sector_name,
+                    })
             except Exception as e:
-                logger.warning(f"Failed to get sector indices for {mkt_idx}: {e}")
+                logger.warning(f"Failed to fetch WICS sector {code}: {e}")
+                continue
         
-        # Map sectors to tickers
-        df_all['Industry'] = df_all['Symbol'].map(ticker_sector_map).fillna('기타')
-        logger.info(f"Sector mapped: {len(ticker_sector_map)} tickers, unmapped: {(df_all['Industry'] == '기타').sum()}")
+        if not all_stocks:
+            logger.error("WICS API returned no data. Falling back to pykrx ticker list.")
+            # Fallback: get tickers from pykrx without sector mapping
+            for mkt in ["KOSPI", "KOSDAQ"]:
+                tickers = pykrx_stock.get_market_ticker_list(date_str, market=mkt)
+                for t in tickers:
+                    name = pykrx_stock.get_market_ticker_name(t)
+                    all_stocks.append({'Symbol': t, 'Name': name, 'Industry': '기타'})
+        
+        df_all = pd.DataFrame(all_stocks).drop_duplicates(subset=['Symbol'])
+        logger.info(f"WICS classification loaded: {len(df_all)} stocks, {df_all['Industry'].nunique()} sectors")
+        
+        # Also add pykrx tickers not covered by WICS (small/micro caps)
+        wics_symbols = set(df_all['Symbol'].tolist())
+        extra_stocks = []
+        for mkt in ["KOSPI", "KOSDAQ"]:
+            try:
+                tickers = pykrx_stock.get_market_ticker_list(date_str, market=mkt)
+                for t in tickers:
+                    if t not in wics_symbols:
+                        name = pykrx_stock.get_market_ticker_name(t)
+                        extra_stocks.append({'Symbol': t, 'Name': name, 'Industry': '기타'})
+            except Exception:
+                continue
+        
+        if extra_stocks:
+            df_extra = pd.DataFrame(extra_stocks)
+            df_all = pd.concat([df_all, df_extra], ignore_index=True)
+            logger.info(f"Added {len(extra_stocks)} extra tickers from pykrx (classified as '기타'). Total: {len(df_all)}")
         
         return df_all[['Symbol', 'Name', 'Industry']]
     except Exception as e:
@@ -457,8 +483,12 @@ def main():
     logger.info(f"Processing trading date: {expected_date}")
     
     # 2. Load Stock List Metadata
-    stock_list_funcs = {"US": get_us_stock_list, "JP": get_jp_stock_list, "KR": get_kr_stock_list}
-    df_list = stock_list_funcs[market]()
+    if market == "KR":
+        df_list = get_kr_stock_list(trade_date=expected_date)
+    elif market == "JP":
+        df_list = get_jp_stock_list()
+    else:
+        df_list = get_us_stock_list()
     if df_list.empty:
         logger.error("Failed to load stock list metadata. Exiting.")
         return
