@@ -1,0 +1,50 @@
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-22 16:00:01,948 - INFO - Loading environment variables from .env file...
+2026-06-22 16:00:01,949 - INFO - ==================================================
+2026-06-22 16:00:01,949 - INFO -  Starting Daily KR Market Monitor (Test: False)
+2026-06-22 16:00:01,949 - INFO - ==================================================
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-06-22 16:00:02
+  만료 시간: 2026-06-22 17:00:02
+2026-06-22 16:00:02,873 - INFO - Processing trading date: 2026-06-22
+2026-06-22 16:00:02,873 - INFO - Fetching KR stock list with WICS industry classification from WiseIndex...
+2026-06-22 16:00:04,715 - ERROR - WICS API returned no data. Falling back to pykrx ticker list.
+2026-06-22 16:00:19,613 - INFO - WICS classification loaded: 2768 stocks, 1 sectors
+2026-06-22 16:00:20,464 - INFO - Total metadata stocks loaded: 2768
+2026-06-22 16:00:20,465 - INFO - Downloading KR prices for 20260622 using pykrx...
+2026-06-22 16:00:21,474 - INFO - Downloaded price changes for 2768 KR stocks.
+2026-06-22 16:00:21,475 - INFO - Successfully downloaded price changes for 2768 stocks.
+2026-06-22 16:00:21,477 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_kr/daily_prices/kr_prices_20260622.xlsx...
+2026-06-22 16:00:21,879 - WARNING - Investor trend CSV not found: /home/inhyuk/projects/dataScout/data_kr/20260622/all_stocks_investor_trend.csv
+2026-06-22 16:00:21,879 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-22 16:00:22,926 - INFO - Report text sent successfully to Telegram.
+2026-06-22 16:00:22,926 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-22 16:00:25,449 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇰🇷 *[한국 증시 마감 일일 리포트]* 🇰🇷
+📅 *기준일자: 2026-06-22*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *기타* (+-1.87%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *기타* (-1.87%)
+
+🚀 *개별 종목 상승 TOP 5*
+1. *002070* (비비안) | ₩8,450 (*+30.00%*)
+2. *475430* (키스트론) | ₩6,110 (*+30.00%*)
+3. *034940* (조아제약) | ₩659 (*+29.98%*)
+4. *446070* (유니드비티플러스) | ₩2,950 (*+29.96%*)
+5. *177350* (베셀) | ₩690 (*+29.94%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *227100* (프로브잇) | ₩18 (*-97.06%*)
+2. *032980* (바이온) | ₩19 (*-96.85%*)
+3. *106520* (노블엠앤비) | ₩24 (*-94.16%*)
+4. *101390* (아이엠) | ₩45 (*-88.64%*)
+5. *085620* (미래에셋생명) | ₩24,200 (*-29.96%*)
+
+📂 *전체 2,768개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
