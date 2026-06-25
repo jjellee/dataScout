@@ -14,7 +14,22 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from matplotlib.patches import FancyBboxPatch
+from matplotlib import font_manager as fm
 import logging
+
+# Korean font setup
+_kr_font_path = None
+for fp in fm.findSystemFonts():
+    if 'NotoSansMonoCJK-Regular' in fp or 'NotoSansCJK-Regular' in fp:
+        _kr_font_path = fp
+        break
+if _kr_font_path:
+    _kr_font = fm.FontProperties(fname=_kr_font_path)
+    plt.rcParams['font.family'] = _kr_font.get_name()
+else:
+    # Fallback: try font name directly
+    plt.rcParams['font.family'] = ['Noto Sans Mono CJK KR', 'Noto Sans CJK KR', 'DejaVu Sans Mono']
+plt.rcParams['axes.unicode_minus'] = False
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -244,7 +259,7 @@ def create_heatmap_chart(returns_df, save_path):
     date_str = datetime.date.today().strftime("%Y-%m-%d")
     ax.text(0.5, 1.0 - row_h * 0.3, f"Market Indicators Dashboard  ({date_str})",
             transform=ax.transAxes, fontsize=16, fontweight='bold', color='#e6edf3',
-            ha='center', va='top', fontfamily='monospace')
+            ha='center', va='top')
 
     # Column headers
     y_header = 1.0 - row_h * 1.5
@@ -252,7 +267,7 @@ def create_heatmap_chart(returns_df, save_path):
     for i, h in enumerate(headers):
         ax.text(col_x[i] + 0.01, y_header, h,
                 transform=ax.transAxes, fontsize=9, fontweight='bold',
-                color='#8b949e', va='center', fontfamily='monospace')
+                color='#8b949e', va='center')
 
     # Draw separator line
     sep_y = y_header - row_h * 0.3
@@ -270,23 +285,23 @@ def create_heatmap_chart(returns_df, save_path):
                                         facecolor='#161b22', edgecolor='none'))
             ax.text(0.01, y, row['label'],
                     transform=ax.transAxes, fontsize=10, fontweight='bold',
-                    color='#58a6ff', va='center', fontfamily='monospace')
+                    color='#58a6ff', va='center')
         else:
             # Data row - alternating bg
             # Ticker
             ax.text(col_x[0] + 0.01, y, row['ticker'][:8],
                     transform=ax.transAxes, fontsize=8.5, fontweight='bold',
-                    color='#c9d1d9', va='center', fontfamily='monospace')
+                    color='#c9d1d9', va='center')
             # Name
             ax.text(col_x[1] + 0.01, y, row['name'][:14],
                     transform=ax.transAxes, fontsize=8, color='#8b949e',
-                    va='center', fontfamily='monospace')
+                    va='center')
             # Price
             price = row['price']
             price_str = f"${price:,.2f}" if price < 10000 else f"${price:,.0f}"
             ax.text(col_x[2] + 0.01, y, price_str,
                     transform=ax.transAxes, fontsize=8.5, color='#c9d1d9',
-                    va='center', fontfamily='monospace')
+                    va='center')
 
             # Return cells
             for pi, period in enumerate(periods):
@@ -306,7 +321,7 @@ def create_heatmap_chart(returns_df, save_path):
                 ax.text(cell_x + cell_w / 2, y, val_str,
                         transform=ax.transAxes, fontsize=8.5, fontweight='bold',
                         color=text_color(val), va='center', ha='center',
-                        fontfamily='monospace')
+                        )
 
         y -= row_h
 
@@ -317,86 +332,189 @@ def create_heatmap_chart(returns_df, save_path):
     logger.info(f"Heatmap saved: {save_path}")
     return True
 
+# ---- Trend Comment Generator ---- #
+def generate_comment(d1, w1, m1, m3, ytd):
+    """Generate a brief Korean trend comment based on multi-timeframe returns."""
+    parts = []
 
-def create_trend_charts(close_df, save_path):
-    """Create multi-panel normalized price trend charts by category."""
+    # 1) Long-term trend (3M)
+    if np.isnan(m3):
+        parts.append("데이터 부족")
+    elif m3 > 30:
+        parts.append(f"3개월 +{m3:.0f}% 급등세")
+    elif m3 > 10:
+        parts.append(f"3개월 +{m3:.0f}% 상승 추세")
+    elif m3 > -5:
+        parts.append("3개월 횡보 구간")
+    elif m3 > -15:
+        parts.append(f"3개월 {m3:.0f}% 하락 추세")
+    else:
+        parts.append(f"3개월 {m3:.0f}% 급락세")
+
+    # 2) Short-term momentum (1W vs 1M)
+    if not np.isnan(w1) and not np.isnan(m1):
+        if w1 > 3 and m1 > 5:
+            parts.append("단기 강세 가속")
+        elif w1 > 0 and m1 < -3:
+            parts.append("반등 시도 중")
+        elif w1 < -3 and m1 > 3:
+            parts.append("고점 후 조정")
+        elif w1 < -5:
+            parts.append(f"1주 {w1:.1f}% 급락")
+        elif w1 > 5:
+            parts.append(f"1주 +{w1:.1f}% 급등")
+
+    # 3) Today's action
+    if not np.isnan(d1):
+        if d1 > 5:
+            parts.append(f"금일 +{d1:.1f}% 급등")
+        elif d1 > 2:
+            parts.append(f"금일 +{d1:.1f}% 상승")
+        elif d1 < -5:
+            parts.append(f"금일 {d1:.1f}% 급락")
+        elif d1 < -2:
+            parts.append(f"금일 {d1:.1f}% 하락")
+
+    return ". ".join(parts) + "." if parts else "데이터 부족."
+
+
+# ---- Individual Chart Cards by Category ---- #
+def create_category_charts(close_df, returns_df, chart_dir, date_str):
+    """Create individual chart cards for each indicator, grouped by category."""
     # Build global ticker→name map
     name_map = {}
     for cat_tickers in INDICATORS.values():
         for ticker, name in cat_tickers.items():
             name_map[ticker] = name
 
-    # Select key categories for trend charts
-    trend_categories = {
-        "Broad Market": ["SPY", "QQQ", "IWM", "RSP", "DIA"],
-        "Sectors": ["XLF", "XLI", "XLE", "XLV", "XLU", "ITB"],
-        "Tech & Semi": ["SOXX", "DRAM", "IGV", "MAGS", "ROBO"],
-        "Thematic": ["LIT", "URA", "ICLN", "SHLD", "GDX", "SLX"],
-        "Macro": ["BTC-USD", "GLD", "TLT", "UUP", "HYG"],
-    }
+    chart_paths = []
 
-    fig, axes = plt.subplots(3, 2, figsize=(16, 14))
-    fig.patch.set_facecolor('#0d1117')
+    for cat_name, tickers_dict in INDICATORS.items():
+        tickers = list(tickers_dict.keys())
+        valid_tickers = [t for t in tickers if t in close_df.columns]
+        if not valid_tickers:
+            continue
 
-    colors = ['#58a6ff', '#f78166', '#3fb950', '#d2a8ff', '#f0883e',
-              '#7ee787', '#79c0ff', '#ffa657', '#ff7b72', '#a5d6ff']
+        n_tickers = len(valid_tickers)
+        n_cols = 2
+        n_rows = (n_tickers + 1) // 2
 
-    flat_axes = axes.flatten()
-    plot_idx = 0
+        fig_h = max(5, n_rows * 3.8 + 1.5)
+        fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, fig_h))
+        fig.patch.set_facecolor('#0d1117')
 
-    for cat_name, tickers in trend_categories.items():
-        if plot_idx >= len(flat_axes):
-            break
-        ax = flat_axes[plot_idx]
-        ax.set_facecolor('#161b22')
-        ax.set_title(cat_name, color='#e6edf3', fontsize=12, fontweight='bold',
-                     fontfamily='monospace', pad=10)
+        # Ensure axes is always 2D
+        if n_rows == 1 and n_cols == 1:
+            axes = np.array([[axes]])
+        elif n_rows == 1:
+            axes = axes.reshape(1, -1)
+        elif n_cols == 1:
+            axes = axes.reshape(-1, 1)
 
-        for i, ticker in enumerate(tickers):
-            if ticker not in close_df.columns:
-                continue
+        for idx, ticker in enumerate(valid_tickers):
+            row_i, col_i = divmod(idx, n_cols)
+            ax = axes[row_i][col_i]
+            ax.set_facecolor('#161b22')
+
             series = close_df[ticker].dropna()
-            if len(series) < 20:
+            if len(series) < 10:
+                ax.text(0.5, 0.5, 'No Data', transform=ax.transAxes,
+                        ha='center', va='center', color='#484f58', fontsize=12)
+                ax.axis('off')
                 continue
+
             # Use last 3 months
             series_3m = series.iloc[-66:] if len(series) >= 66 else series
-            # Normalize to 100
-            normalized = series_3m / series_3m.iloc[0] * 100
-            # Descriptive legend label
-            short_ticker = ticker.replace('-USD', '')
+
+            # Get returns
+            match = returns_df[returns_df['Ticker'] == ticker]
+            if match.empty:
+                continue
+            r = match.iloc[0]
+            d1, w1, m1, m3, ytd = r['1D'], r['1W'], r['1M'], r['3M'], r['YTD']
+            price = r['Price']
+
+            # Determine line color based on 3M trend
+            if np.isnan(m3):
+                line_color = '#8b949e'
+            elif m3 > 5:
+                line_color = '#3fb950'
+            elif m3 > -5:
+                line_color = '#58a6ff'
+            else:
+                line_color = '#f85149'
+
+            # Fill color
+            fill_alpha = 0.15
+            ax.fill_between(series_3m.index, series_3m.values,
+                            series_3m.values.min(), color=line_color, alpha=fill_alpha)
+            ax.plot(series_3m.index, series_3m.values,
+                    color=line_color, linewidth=2.0, alpha=0.9)
+
+            # Title: TICKER (Name)
             desc = name_map.get(ticker, '')
-            legend_label = f"{short_ticker} ({desc})" if desc else short_ticker
-            ax.plot(normalized.index, normalized.values,
-                    label=legend_label, color=colors[i % len(colors)],
-                    linewidth=1.8, alpha=0.9)
+            short_ticker = ticker.replace('-USD', '')
+            title_text = f"{short_ticker}  ({desc})" if desc else short_ticker
+            ax.set_title(title_text, color='#e6edf3', fontsize=11, fontweight='bold',
+                         loc='left', pad=8)
 
-        ax.axhline(y=100, color='#30363d', linewidth=0.5, linestyle='--')
-        ax.legend(fontsize=7.5, loc='upper left', framealpha=0.3,
-                  labelcolor='#c9d1d9', facecolor='#21262d', edgecolor='#30363d')
-        ax.tick_params(colors='#8b949e', labelsize=7)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['bottom'].set_color('#30363d')
-        ax.spines['left'].set_color('#30363d')
-        ax.grid(True, alpha=0.15, color='#8b949e')
-        ax.set_ylabel('Indexed (100)', fontsize=8, color='#8b949e')
-        plot_idx += 1
+            # Price on right side of title
+            price_str = f"${price:,.2f}" if price < 100000 else f"${price:,.0f}"
+            ax.set_title(price_str, color='#c9d1d9', fontsize=10,
+                         loc='right', pad=8)
 
-    # Hide unused subplot
-    for i in range(plot_idx, len(flat_axes)):
-        flat_axes[i].set_visible(False)
+            # Stats text box
+            def fmt_pct(v, label):
+                if np.isnan(v):
+                    return f"{label}: --"
+                color_marker = '+' if v >= 0 else ''
+                return f"{label}:{color_marker}{v:.1f}%"
 
-    date_str = datetime.date.today().strftime("%Y-%m-%d")
-    fig.suptitle(f"3-Month Trend Charts ({date_str})",
-                 color='#e6edf3', fontsize=15, fontweight='bold',
-                 fontfamily='monospace', y=1.02)
+            stats_line = f"{fmt_pct(d1,'1D')}  {fmt_pct(w1,'1W')}  {fmt_pct(m1,'1M')}  {fmt_pct(m3,'3M')}  {fmt_pct(ytd,'YTD')}"
 
-    plt.tight_layout(pad=1.5)
-    fig.savefig(save_path, dpi=180, bbox_inches='tight',
-                facecolor='#0d1117', edgecolor='none')
-    plt.close(fig)
-    logger.info(f"Trend charts saved: {save_path}")
-    return True
+            # Place stats at bottom
+            ax.text(0.02, 0.04, stats_line,
+                    transform=ax.transAxes, fontsize=7.5,
+                    color='#8b949e', va='bottom')
+
+            # Generate & place comment
+            comment = generate_comment(d1, w1, m1, m3, ytd)
+            comment_color = '#3fb950' if (not np.isnan(m3) and m3 > 0) else '#f85149' if (not np.isnan(m3) and m3 < -5) else '#8b949e'
+            ax.text(0.98, 0.04, comment,
+                    transform=ax.transAxes, fontsize=7.5,
+                    color=comment_color,
+                    va='bottom', ha='right')
+
+            # Style
+            ax.tick_params(colors='#484f58', labelsize=6.5)
+            ax.spines['top'].set_visible(False)
+            ax.spines['right'].set_visible(False)
+            ax.spines['bottom'].set_color('#21262d')
+            ax.spines['left'].set_color('#21262d')
+            ax.grid(True, alpha=0.1, color='#8b949e')
+            ax.set_xlim(series_3m.index[0], series_3m.index[-1])
+
+        # Hide unused subplots
+        for idx in range(len(valid_tickers), n_rows * n_cols):
+            row_i, col_i = divmod(idx, n_cols)
+            axes[row_i][col_i].set_visible(False)
+
+        # Category title
+        clean_cat = cat_name.strip('[]')
+        fig.suptitle(clean_cat,
+                     color='#58a6ff', fontsize=14, fontweight='bold',
+                     y=1.01)
+
+        plt.tight_layout(pad=1.0, h_pad=2.5)
+        safe_name = clean_cat.replace(' ', '_').replace('/', '_').lower()
+        save_path = os.path.join(chart_dir, f"chart_{date_str}_{safe_name}.png")
+        fig.savefig(save_path, dpi=180, bbox_inches='tight',
+                    facecolor='#0d1117', edgecolor='none')
+        plt.close(fig)
+        chart_paths.append((clean_cat, save_path))
+        logger.info(f"Category chart saved: {save_path}")
+
+    return chart_paths
 
 
 # ---- Main ---- #
@@ -429,36 +547,37 @@ def main():
     os.makedirs(chart_dir, exist_ok=True)
 
     date_str = datetime.date.today().strftime("%Y%m%d")
-    heatmap_path = os.path.join(chart_dir, f"heatmap_{date_str}.png")
-    trend_path = os.path.join(chart_dir, f"trends_{date_str}.png")
 
+    # 1) Heatmap overview
+    heatmap_path = os.path.join(chart_dir, f"heatmap_{date_str}.png")
     heatmap_ok = create_heatmap_chart(returns_df, heatmap_path)
-    trend_ok = create_trend_charts(close_df, trend_path)
+
+    # 2) Category individual charts
+    category_charts = create_category_charts(close_df, returns_df, chart_dir, date_str)
 
     # Send to Telegram
     chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
     token = TELEGRAM_BOT4_TOKEN
 
     if token and chat_id:
+        # Send heatmap first
         if heatmap_ok:
             logger.info("Sending heatmap to Telegram...")
             res = send_telegram_photo(token, chat_id, heatmap_path,
-                                       caption=f"📊 *Market Indicators Dashboard* ({date_str})")
-            if res and res.get("ok"):
-                logger.info("Heatmap sent.")
-            else:
-                logger.error(f"Heatmap send failed: {res}")
+                                       caption=f"Market Indicators Overview ({date_str})")
+            logger.info(f"Heatmap: {'sent' if res and res.get('ok') else 'FAILED'}")
+            time.sleep(1)
 
-        time.sleep(1)
-
-        if trend_ok:
-            logger.info("Sending trend charts to Telegram...")
-            res = send_telegram_photo(token, chat_id, trend_path,
-                                       caption=f"📈 *3-Month Trend Charts* ({date_str})")
+        # Send each category chart
+        for cat_name, chart_path in category_charts:
+            logger.info(f"Sending {cat_name}...")
+            res = send_telegram_photo(token, chat_id, chart_path,
+                                       caption=f"{cat_name} ({date_str})")
             if res and res.get("ok"):
-                logger.info("Trend charts sent.")
+                logger.info(f"  {cat_name} sent.")
             else:
-                logger.error(f"Trend charts send failed: {res}")
+                logger.error(f"  {cat_name} failed: {res}")
+            time.sleep(0.5)
     else:
         logger.error("Telegram credentials missing.")
 
@@ -467,10 +586,11 @@ def main():
     print(f"Market Indicators Summary ({date_str})")
     print("="*70)
     for _, row in returns_df.iterrows():
+        comment = generate_comment(row['1D'], row['1W'], row['1M'], row['3M'], row['YTD'])
         print(f"  {row['Ticker']:10s} ${row['Price']:>10,.2f}  "
               f"1D:{row['1D']:+6.1f}%  1W:{row['1W']:+6.1f}%  "
               f"1M:{row['1M']:+6.1f}%  3M:{row['3M']:+6.1f}%  "
-              f"YTD:{row['YTD']:+6.1f}%")
+              f"YTD:{row['YTD']:+6.1f}%  | {comment}")
     print("="*70)
 
 
