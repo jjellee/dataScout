@@ -28,6 +28,7 @@ if os.path.exists(env_path):
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
+TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
 
 # ---- Telegram ---- #
 def send_telegram_message(token, chat_id, text):
@@ -389,6 +390,7 @@ def process_jp():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--market", nargs="+", default=["US", "KR", "JP"], choices=["US", "KR", "JP"])
+    parser.add_argument("--test", action="store_true", help="Send to test channel")
     args = parser.parse_args()
 
     results = {}
@@ -404,7 +406,7 @@ def main():
 
             # Send to Telegram
             if TELEGRAM_BOT4_TOKEN and report:
-                chat_id = TELEGRAM_TEST_CHAT_ID
+                chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
                 # Split if too long
                 if len(report) > 4000:
                     parts = report.split("\n\n")
