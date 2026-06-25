@@ -242,7 +242,7 @@ def create_heatmap_chart(returns_df, save_path):
 
     # Title
     date_str = datetime.date.today().strftime("%Y-%m-%d")
-    ax.text(0.5, 1.0 - row_h * 0.3, f"📊 Market Indicators Dashboard  ({date_str})",
+    ax.text(0.5, 1.0 - row_h * 0.3, f"Market Indicators Dashboard  ({date_str})",
             transform=ax.transAxes, fontsize=16, fontweight='bold', color='#e6edf3',
             ha='center', va='top', fontfamily='monospace')
 
@@ -320,6 +320,12 @@ def create_heatmap_chart(returns_df, save_path):
 
 def create_trend_charts(close_df, save_path):
     """Create multi-panel normalized price trend charts by category."""
+    # Build global ticker→name map
+    name_map = {}
+    for cat_tickers in INDICATORS.values():
+        for ticker, name in cat_tickers.items():
+            name_map[ticker] = name
+
     # Select key categories for trend charts
     trend_categories = {
         "Broad Market": ["SPY", "QQQ", "IWM", "RSP", "DIA"],
@@ -356,12 +362,16 @@ def create_trend_charts(close_df, save_path):
             series_3m = series.iloc[-66:] if len(series) >= 66 else series
             # Normalize to 100
             normalized = series_3m / series_3m.iloc[0] * 100
+            # Descriptive legend label
+            short_ticker = ticker.replace('-USD', '')
+            desc = name_map.get(ticker, '')
+            legend_label = f"{short_ticker} ({desc})" if desc else short_ticker
             ax.plot(normalized.index, normalized.values,
-                    label=ticker.replace('-USD', ''), color=colors[i % len(colors)],
+                    label=legend_label, color=colors[i % len(colors)],
                     linewidth=1.8, alpha=0.9)
 
         ax.axhline(y=100, color='#30363d', linewidth=0.5, linestyle='--')
-        ax.legend(fontsize=7, loc='upper left', framealpha=0.3,
+        ax.legend(fontsize=7.5, loc='upper left', framealpha=0.3,
                   labelcolor='#c9d1d9', facecolor='#21262d', edgecolor='#30363d')
         ax.tick_params(colors='#8b949e', labelsize=7)
         ax.spines['top'].set_visible(False)
@@ -377,7 +387,7 @@ def create_trend_charts(close_df, save_path):
         flat_axes[i].set_visible(False)
 
     date_str = datetime.date.today().strftime("%Y-%m-%d")
-    fig.suptitle(f"📈 3-Month Trend Charts ({date_str})",
+    fig.suptitle(f"3-Month Trend Charts ({date_str})",
                  color='#e6edf3', fontsize=15, fontweight='bold',
                  fontfamily='monospace', y=1.02)
 
