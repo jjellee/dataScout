@@ -72,6 +72,7 @@ INDICATORS = {
         "PAVE": "Infra/PAVE",
         "JETS": "Airlines",
         "XRT": "Retail",
+        "XLY": "Consumer Disc",
     },
     "[Sector Defensive]": {
         "XLV": "Healthcare",
