@@ -56,15 +56,22 @@ def find_52w_highs_yf(symbols, chunk_size=200):
 
             multi = isinstance(df.columns, pd.MultiIndex)
 
+            # Determine the most recent trading date across all tickers
+            latest_date = df.index[-1].date()
+
             for ticker in chunk:
                 try:
                     if multi:
-                        # yfinance MultiIndex: ('Price', 'Ticker') order
                         close = df['Close'][ticker].dropna()
                     else:
                         close = df['Close'].dropna()
 
                     if len(close) < 50:
+                        continue
+
+                    # Skip stale data (last date not the latest → suspended/halted)
+                    ticker_last_date = close.index[-1].date()
+                    if ticker_last_date < latest_date:
                         continue
 
                     latest = float(close.iloc[-1])
@@ -73,6 +80,9 @@ def find_52w_highs_yf(symbols, chunk_size=200):
 
                     if latest >= max_52w and latest > 0 and prev > 0:
                         change_pct = (latest - prev) / prev * 100
+                        # Skip 0% change (likely suspended or no real trading)
+                        if abs(change_pct) < 0.001:
+                            continue
                         highs.append({
                             'Symbol': ticker,
                             'Close': latest,
@@ -310,8 +320,17 @@ def process_kr():
         raw_ticker, mkt = ticker_map.get(yf_sym, (yf_sym, ""))
         h['RawTicker'] = raw_ticker
         h['MarketCap'] = mcap_map.get(raw_ticker, 0)
-        h['Sector'] = wics_sectors.get(raw_ticker, '기타')
+        h['Sector'] = wics_sectors.get(raw_ticker, '')
         h['Name'] = pykrx_stock.get_market_ticker_name(raw_ticker) or raw_ticker
+
+    # Fallback: get sector from yfinance for stocks missing WICS sector
+    missing_sector = [h for h in highs if not h['Sector']]
+    if missing_sector:
+        logger.info(f"WICS missing for {len(missing_sector)} stocks, falling back to yfinance...")
+        yf_infos = get_yf_info_batch([h['Symbol'] for h in missing_sector], fields=('sector',))
+        for h in missing_sector:
+            yf_sector = (yf_infos.get(h['Symbol'], {}).get('sector') or '')
+            h['Sector'] = yf_sector if yf_sector else '기타'
 
     # Filter: market cap >= 1000억 (100B KRW)
     highs = [h for h in highs if h['MarketCap'] >= 1e11]
