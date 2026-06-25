@@ -100,6 +100,36 @@ def get_yf_info_batch(tickers, fields=('sector', 'marketCap', 'country')):
     return result
 
 
+def get_news_summary(ticker):
+    """Get the most recent news summary for a ticker from yfinance."""
+    try:
+        news = yf.Ticker(ticker).news
+        if not news:
+            return None
+        for item in news[:3]:
+            content = item.get('content', {})
+            summary = content.get('summary', '')
+            title = content.get('title', '')
+            if summary and len(summary) > 10:
+                return summary[:150]
+            if title and len(title) > 5:
+                return title[:150]
+    except Exception:
+        pass
+    return None
+
+
+def get_news_batch(tickers, max_count=30):
+    """Fetch news summaries for a batch of tickers (limited to top N)."""
+    news_map = {}
+    for t in tickers[:max_count]:
+        summary = get_news_summary(t)
+        if summary:
+            news_map[t] = summary
+        time.sleep(0.1)  # rate limit
+    return news_map
+
+
 # ---- Formatting ---- #
 def fmt_mcap_usd(val):
     if not val or val <= 0:
@@ -168,6 +198,12 @@ def process_us():
     highs.sort(key=lambda x: x['Change'], reverse=True)
     logger.info(f"US after mcap filter: {len(highs)}")
 
+    # Fetch news for top stocks
+    top_tickers = [h['Symbol'] for h in highs[:30]]
+    logger.info(f"Fetching news for {len(top_tickers)} US stocks...")
+    news_map = get_news_batch(top_tickers)
+    logger.info(f"Got news for {len(news_map)} stocks")
+
     # Sector summary
     sec_counts = {}
     for h in highs:
@@ -183,7 +219,11 @@ def process_us():
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['Symbol']}")
         lines.append(f"{h['Sector']} / {h['Country']}")
-        lines.append(f"종가 {h['Close']:,.2f} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_usd(h['MarketCap'])}\n")
+        lines.append(f"종가 {h['Close']:,.2f} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_usd(h['MarketCap'])}")
+        news = news_map.get(h['Symbol'])
+        if news:
+            lines.append(f"💬 {news}")
+        lines.append("")
 
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
@@ -289,11 +329,21 @@ def process_kr():
     lines = [f"🇰🇷 *52주 신고가 달성 주식 ({date_str})*"]
     lines.append(f"📊 섹터 집계: {sec_str}\n")
 
+    # Fetch news for top KR stocks
+    top_yf_tickers = [h['Symbol'] for h in highs[:30]]
+    logger.info(f"Fetching news for {len(top_yf_tickers)} KR stocks...")
+    news_map = get_news_batch(top_yf_tickers)
+    logger.info(f"Got news for {len(news_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['RawTicker']}")
         lines.append(f"{h['Sector']} / Korea")
-        lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_krw(h['MarketCap'])}\n")
+        lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_krw(h['MarketCap'])}")
+        news = news_map.get(h['Symbol'])
+        if news:
+            lines.append(f"💬 {news}")
+        lines.append("")
 
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
@@ -373,12 +423,22 @@ def process_jp():
     lines = [f"🇯🇵 *52주 신고가 달성 주식 ({date_str})*"]
     lines.append(f"📊 섹터 집계: {sec_str}\n")
 
+    # Fetch news for top JP stocks
+    top_jp_tickers = [h['Symbol'] for h in highs[:30]]
+    logger.info(f"Fetching news for {len(top_jp_tickers)} JP stocks...")
+    news_map = get_news_batch(top_jp_tickers)
+    logger.info(f"Got news for {len(news_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         ticker_short = h['Symbol'].replace('.T', '')
         lines.append(f"{i}. {h['Name'][:25]} #{ticker_short}")
         lines.append(f"{h['Sector']} / Japan")
-        lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 ¥{fmt_mcap_usd(h['MarketCap'])}\n")
+        lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 ¥{fmt_mcap_usd(h['MarketCap'])}")
+        news = news_map.get(h['Symbol'])
+        if news:
+            lines.append(f"💬 {news}")
+        lines.append("")
 
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
