@@ -232,6 +232,72 @@ def _resolve_ixbrl_url(url):
             return urljoin("https://www.sec.gov", doc_path)
     return url
 
+def _extract_substantive_content(full_text):
+    """
+    Extracts the substantive body content from an SEC filing's full text,
+    skipping the boilerplate cover page (company name, address, commission numbers, etc.)
+    and stopping before the SIGNATURES section.
+    
+    For 8-K, 10-K, 10-Q filings: finds 'Item X.XX' sections which contain the actual content.
+    For Form 4 (insider trading): finds the transaction details.
+    Falls back to stripping known boilerplate patterns.
+    """
+    # 1. Cut off SIGNATURES section and everything after it
+    sig_patterns = ["\nSIGNATURES\n", "\nSIGNATURE\n", "\nPursuant to the requirements of the Securities Exchange Act"]
+    end_idx = len(full_text)
+    for pat in sig_patterns:
+        idx = full_text.find(pat)
+        if idx > 0 and idx < end_idx:
+            end_idx = idx
+    body = full_text[:end_idx].strip()
+    
+    # 2. Try to find Item sections (8-K, 10-K, 10-Q)
+    # Pattern matches "Item 1.01", "Item 3.02", "ITEM 5.02", etc.
+    item_pattern = re.compile(r'^Item\s+\d+\.\d+', re.IGNORECASE | re.MULTILINE)
+    item_matches = list(item_pattern.finditer(body))
+    
+    if item_matches:
+        # Start from the first Item section
+        start_idx = item_matches[0].start()
+        substantive = body[start_idx:].strip()
+        # Clean up: join lines into flowing text
+        lines = [l.strip() for l in substantive.split("\n") if l.strip()]
+        return " ".join(lines)
+    
+    # 3. For Form 4 (insider transactions): look for transaction table content
+    form4_markers = ["Transaction Date", "Shares Acquired", "Shares Disposed", 
+                     "Direct Owner", "Indirect Owner", "Table I", "Table II"]
+    for marker in form4_markers:
+        idx = body.find(marker)
+        if idx > 0:
+            substantive = body[idx:].strip()
+            lines = [l.strip() for l in substantive.split("\n") if l.strip()]
+            return " ".join(lines)
+    
+    # 4. Fallback: skip known SEC cover page boilerplate
+    # Find the end of the cover page by looking for common end markers
+    cover_end_markers = [
+        "Emerging growth company",      # Last checkbox on cover page
+        "Indicate by check mark",       # Another cover page element
+        "Securities registered pursuant" # Section 12(b) table
+    ]
+    best_skip = 0
+    for marker in cover_end_markers:
+        idx = body.find(marker)
+        if idx > 0:
+            # Find the end of the line containing this marker
+            eol = body.find("\n", idx)
+            if eol > 0 and eol > best_skip:
+                best_skip = eol + 1
+    
+    if best_skip > 0 and best_skip < len(body):
+        substantive = body[best_skip:].strip()
+    else:
+        substantive = body
+    
+    lines = [l.strip() for l in substantive.split("\n") if l.strip()]
+    return " ".join(lines)
+
 def fetch_filing_content(index_url):
     """
     Fetches the SEC filing index page, finds the primary document,
@@ -290,25 +356,20 @@ def fetch_filing_content(index_url):
                     
                 text = doc_soup.get_text()
                 lines = [line.strip() for line in text.split("\n") if line.strip()]
-                cleaned_text = " ".join(lines)
-                
-                # Strip leading XBRL metadata noise (e.g., "false 0000804328 QUALCOMM INC/DE ...")
-                # Look for the start of the actual SEC document content
-                for marker in ["UNITED STATES SECURITIES", "SECURITIES AND EXCHANGE COMMISSION", "FORM "]:
-                    idx = cleaned_text.find(marker)
-                    if idx > 0 and idx < 500:
-                        cleaned_text = cleaned_text[idx:]
-                        break
+                full_text = "\n".join(lines)
                 
                 # Filter out XBRL viewer boilerplate that slipped through
                 xbrl_markers = ["XBRL Viewer", "inline XBRL", "JavaScript를 활성화", "enable JavaScript"]
-                if any(marker.lower() in cleaned_text.lower() for marker in xbrl_markers) and len(cleaned_text) < 300:
+                if any(marker.lower() in full_text.lower() for marker in xbrl_markers) and len(full_text) < 300:
                     logger.warning(f"Extracted content appears to be XBRL viewer boilerplate. Skipping.")
                     return ""
                 
-                if len(cleaned_text) > 1200:
-                    return cleaned_text[:1200] + "..."
-                return cleaned_text
+                # Extract substantive content, skipping SEC boilerplate cover pages
+                substantive_text = _extract_substantive_content(full_text)
+                
+                if len(substantive_text) > 1500:
+                    return substantive_text[:1500] + "..."
+                return substantive_text
     except Exception as e:
         logger.warning(f"Error fetching/parsing SEC filing content: {e}")
     return ""
