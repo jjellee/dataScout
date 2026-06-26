@@ -125,6 +125,75 @@ def extract_report_details(detail_url):
         'core_points': core_points
     }
 
+def split_report_messages(title, report_type, publish_date, core_points, detail_url, max_caption_len=1000, max_text_len=4000):
+    """
+    Formulates KOTRA report messages into HTML format.
+    If the combined message fits within max_caption_len, returns ([], combined_html).
+    Otherwise, splits core_points by paragraphs such that the last part (including the footer)
+    fits in max_caption_len, and the preceding parts are grouped into text messages
+    of max_text_len (with the header in the first message).
+    Returns (preceding_html_messages, pdf_caption_html).
+    """
+    import html
+    
+    escaped_title = html.escape(title)
+    escaped_report_type = html.escape(report_type)
+    escaped_publish_date = html.escape(publish_date)
+    escaped_url = html.escape(detail_url)
+    
+    paragraphs = []
+    for p in core_points.split("\n"):
+        paragraphs.append(html.escape(p))
+        
+    header = (
+        f"🔔 <b>[KOTRA 신규 보고서]</b>\n\n"
+        f"📌 <b>{escaped_title}</b>\n\n"
+        f"📂 <b>유형:</b> {escaped_report_type} | 📅 <b>발간일:</b> {escaped_publish_date}\n\n"
+        f"📝 <b>핵심 요약:</b>\n"
+    )
+    footer = f"\n\n=============================\n🔗 보고서 상세 보기: {escaped_url}"
+    
+    combined_core = "\n".join(paragraphs)
+    combined_html = header + combined_core + footer
+    if len(combined_html) <= max_caption_len:
+        return [], combined_html
+        
+    pdf_paragraphs = []
+    pdf_len = len(footer)
+    split_idx = len(paragraphs)
+    
+    for idx in range(len(paragraphs) - 1, -1, -1):
+        p = paragraphs[idx]
+        added_len = len(p) + (1 if pdf_paragraphs else 0)
+        if pdf_len + added_len <= max_caption_len:
+            pdf_paragraphs.insert(0, p)
+            pdf_len += added_len
+            split_idx = idx
+        else:
+            break
+            
+    pdf_caption = "\n".join(pdf_paragraphs) + footer if pdf_paragraphs else footer
+    preceding_paragraphs = paragraphs[:split_idx]
+    
+    text_messages = []
+    current_msg = header
+    
+    for p in preceding_paragraphs:
+        added_len = len(p) + (1 if current_msg else 0)
+        if len(current_msg) + added_len <= max_text_len:
+            if current_msg and not current_msg.endswith("\n"):
+                current_msg += "\n"
+            current_msg += p
+        else:
+            if current_msg:
+                text_messages.append(current_msg)
+            current_msg = p
+            
+    if current_msg:
+        text_messages.append(current_msg)
+        
+    return text_messages, pdf_caption
+
 def download_file(download_url, save_path):
     """Downloads a file and saves it locally. Returns True if successful."""
     try:
@@ -145,7 +214,7 @@ def send_telegram_document(token, chat_id, file_path, filename, caption, retries
     payload = {
         "chat_id": chat_id,
         "caption": caption,
-        "parse_mode": "Markdown"
+        "parse_mode": "HTML"
     }
     for attempt in range(retries):
         try:
@@ -167,12 +236,12 @@ def send_telegram_document(token, chat_id, file_path, filename, caption, retries
     return None
 
 def send_telegram_message(token, chat_id, text, retries=3, delay=3):
-    """Sends a markdown-formatted message to Telegram, including retry mechanism."""
+    """Sends an HTML-formatted message to Telegram, including retry mechanism."""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         "chat_id": chat_id,
         "text": text,
-        "parse_mode": "Markdown",
+        "parse_mode": "HTML",
         "disable_web_page_preview": True
     }
     for attempt in range(retries):
@@ -284,28 +353,24 @@ def main():
             
         logger.info(f"Found {len(attachments)} PDF attachment(s) and core points (len: {len(core_points)}) for report {rpt_no}.")
         
-        # 2. Formulate caption text with core summary points (safe 1024-char limit truncation)
-        caption_base = (
-            f"🔔 *[KOTRA 신규 보고서]*\n\n"
-            f"📌 *{title}*\n\n"
-            f"📂 *유형:* {report_type} | 📅 *발간일:* {publish_date}\n\n"
+        # 2. Formulate caption text and determine if we need to split it
+        text_messages, pdf_caption = split_report_messages(
+            title=title,
+            report_type=report_type,
+            publish_date=publish_date,
+            core_points=core_points,
+            detail_url=detail_url
         )
         
-        summary_header = "📝 *핵심 요약:*\n"
-        footer_text = f"\n\n=============================\n🔗 보고서 상세 보기: {detail_url}"
-        
-        # Total Telegram caption limit is 1024. We use 1000 to be safe.
-        available_len = 1000 - len(caption_base) - len(summary_header) - len(footer_text)
-        if available_len > 100 and core_points:
-            if len(core_points) > available_len:
-                truncated_summary = core_points[:available_len - 3] + "..."
-            else:
-                truncated_summary = core_points
-            caption = caption_base + summary_header + truncated_summary + footer_text
-        else:
-            caption = caption_base + footer_text
+        # Send preceding text messages first (if any)
+        chat_id = TELEGRAM_TEST_CHAT_ID
+        if text_messages and TELEGRAM_BOT4_TOKEN and chat_id:
+            for idx, msg in enumerate(text_messages):
+                logger.info(f"Sending preceding text summary part {idx+1}/{len(text_messages)} for report {rpt_no}...")
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
+                time.sleep(1.5) # Sleep briefly to preserve chronological order in Telegram chat
 
-        # 3. Download and upload each PDF attachment
+        # 3. Download and upload each PDF attachment (this will be the last message)
         success_all = True
         for att in attachments:
             file_sn = att['atfilesn']
@@ -317,10 +382,9 @@ def main():
             logger.info(f"Downloading PDF attachment '{filename}'...")
             if download_file(download_url, save_path):
                 logger.info(f"PDF downloaded to {save_path}. Uploading to Telegram...")
-                chat_id = TELEGRAM_TEST_CHAT_ID
                 
                 if TELEGRAM_BOT4_TOKEN and chat_id:
-                    result = send_telegram_document(TELEGRAM_BOT4_TOKEN, chat_id, save_path, filename, caption)
+                    result = send_telegram_document(TELEGRAM_BOT4_TOKEN, chat_id, save_path, filename, pdf_caption)
                     if not result:
                         success_all = False
                 else:

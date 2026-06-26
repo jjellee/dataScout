@@ -15,8 +15,10 @@ import logging
 import re
 import xml.etree.ElementTree as ET
 from html import unescape
-from urllib.parse import quote
+import html
+from urllib.parse import quote, urljoin
 import requests
+from bs4 import BeautifulSoup
 
 # Setup logging
 logging.basicConfig(
@@ -210,13 +212,67 @@ def translate_filing_title(title):
     else:
         return translate_en_to_ko(title)
 
+def fetch_filing_content(index_url):
+    """
+    Fetches the SEC filing index page, finds the primary document,
+    and extracts the first 1200 characters of its text content.
+    """
+    try:
+        resp = requests.get(index_url, headers=SEC_HEADERS, timeout=15)
+        if resp.status_code != 200:
+            logger.warning(f"Failed to fetch index page: {index_url}. HTTP {resp.status_code}")
+            return ""
+            
+        soup = BeautifulSoup(resp.content, "html.parser")
+        table = soup.find("table", class_="tableFile") or soup.find("table")
+        primary_doc_url = ""
+        
+        if table:
+            rows = table.find_all("tr")
+            for row in rows[1:]:
+                cols = row.find_all("td")
+                if len(cols) >= 3:
+                    link_elem = cols[2].find("a")
+                    if link_elem:
+                        href = link_elem.get("href", "")
+                        if href and not primary_doc_url:
+                            primary_doc_url = urljoin("https://www.sec.gov", href)
+                            break
+                            
+        if not primary_doc_url:
+            for a in soup.find_all("a"):
+                href = a.get("href", "")
+                if "/Archives/edgar/data/" in href and not href.endswith("-index.htm") and not href.endswith("-index.html"):
+                    primary_doc_url = urljoin("https://www.sec.gov", href)
+                    break
+                    
+        if primary_doc_url:
+            logger.info(f"Fetching primary document: {primary_doc_url}")
+            doc_resp = requests.get(primary_doc_url, headers=SEC_HEADERS, timeout=15)
+            if doc_resp.status_code == 200:
+                doc_soup = BeautifulSoup(doc_resp.content, "html.parser")
+                
+                for tag in doc_soup(["script", "style"]):
+                    tag.decompose()
+                    
+                text = doc_soup.get_text()
+                lines = [line.strip() for line in text.split("\n") if line.strip()]
+                cleaned_text = " ".join(lines)
+                
+                if len(cleaned_text) > 1200:
+                    return cleaned_text[:1200] + "..."
+                return cleaned_text
+    except Exception as e:
+        logger.warning(f"Error fetching/parsing SEC filing content: {e}")
+    return ""
+
 def send_telegram_message(token, chat_id, text):
-    """Sends a markdown-formatted message to Telegram."""
+    """Sends an HTML-formatted message to Telegram."""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         "chat_id": chat_id,
         "text": text,
-        "parse_mode": "Markdown",
+        "parse_mode": "HTML",
         "disable_web_page_preview": True
     }
     try:
@@ -327,31 +383,59 @@ def main():
         
         logger.info(f"Processing filing alert for {ticker}: {title}")
         
-        # Translate the title/description into Korean
+        # 1. Skip Form 144 (내부자 주식 매도 계획 보고서)
+        parts = title.split(' - ', 1)
+        if len(parts) == 2:
+            ftype = parts[0].strip()
+            if ftype == '144':
+                logger.info(f"Skipping Form 144 filing for {ticker}: {title}")
+                continue
+                
+        # 2. Translate the title/description into Korean
         translated_title = translate_filing_title(title)
         
         # Friendly date in KST
-        kst_date = parse_pub_date = parse_filing_date(updated)
+        kst_date = parse_filing_date(updated)
         
-        # Parse summary for extra details (like File Date, Size)
-        # e.g., "<b>Filed:</b> 2026-06-17 <b>AccNo:</b> 0001140361-26-025622 <b>Size:</b> 9 KB"
-        # We can extract size or clean HTML
+        # Parse summary for extra details
         clean_summary = re.sub('<[^<]+?>', '', f['summary'])
         clean_summary = " ".join(clean_summary.split())
         
-        # Format Telegram alert
+        # 3. Fetch and translate filing content
+        content_summary = fetch_filing_content(link)
+        translated_content = ""
+        if content_summary:
+            logger.info(f"Translating filing content for {ticker}...")
+            translated_content = translate_en_to_ko(content_summary)
+            
+        # 4. Format Telegram alert using HTML
+        escaped_ticker = html.escape(ticker)
+        escaped_company_name = html.escape(company_name)
+        escaped_translated_title = html.escape(translated_title)
+        escaped_title = html.escape(title)
+        escaped_summary = html.escape(clean_summary)
+        escaped_kst_date = html.escape(kst_date)
+        
         telegram_msg = (
-            f"🇺🇸 *[미국 기업 공시 알림]*\n\n"
-            f"📍 *{ticker} ({company_name})*\n"
-            f"📄 *공시 종류:* {translated_title}\n"
-            f"({title})\n\n"
-            f"ℹ️ *상세 내용:*\n"
-            f"  • {clean_summary}\n"
-            f"  • 공시 일시: {kst_date}\n\n"
-            f"🔗 [SEC 공시 원문 보기]({link})"
+            f"🇺🇸 <b>[미국 기업 공시 알림]</b>\n\n"
+            f"📍 <b>{escaped_ticker} ({escaped_company_name})</b>\n"
+            f"📄 <b>공시 종류:</b> {escaped_translated_title}\n"
+            f"({escaped_title})\n\n"
+            f"ℹ️ <b>기본 정보:</b>\n"
+            f"  • {escaped_summary}\n"
+            f"  • 공시 일시: {escaped_kst_date}\n\n"
         )
         
-        # Send Telegram message
+        if translated_content:
+            escaped_translated_content = html.escape(translated_content)
+            telegram_msg += (
+                f"📝 <b>공시 본문 요약 (번역):</b>\n"
+                f"{escaped_translated_content}\n\n"
+            )
+            
+        telegram_msg += f"🔗 <a href=\"{link}\">SEC 공시 원문 보기</a>"
+        
+        # 5. Send Telegram message
         chat_id = TELEGRAM_TEST_CHAT_ID
         if TELEGRAM_BOT4_TOKEN and chat_id:
             logger.info(f"Sending SEC alert for {ticker} to Telegram chat {chat_id}...")
