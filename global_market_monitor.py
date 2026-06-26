@@ -395,6 +395,36 @@ def download_prices_bulk(symbols):
         
     return pd.DataFrame(all_results)
 
+
+def get_news_summary(ticker):
+    """Get the most recent news summary for a ticker from yfinance."""
+    try:
+        news = yf.Ticker(ticker).news
+        if not news:
+            return None
+        for item in news[:3]:
+            content = item.get('content', {})
+            summary = content.get('summary', '')
+            title = content.get('title', '')
+            if summary and len(summary) > 10:
+                return summary[:120]
+            if title and len(title) > 5:
+                return title[:120]
+    except Exception:
+        pass
+    return None
+
+
+def get_news_batch(tickers, max_count=50):
+    """Fetch news summaries for a batch of tickers."""
+    news_map = {}
+    for t in tickers[:max_count]:
+        summary = get_news_summary(t)
+        if summary:
+            news_map[t] = summary
+        time.sleep(0.1)
+    return news_map
+
 # ----------------- Excel Formatting ----------------- #
 
 def save_to_formatted_excel(df, output_path, market):
@@ -479,6 +509,22 @@ def save_to_formatted_excel(df, output_path, market):
                 
             ws.auto_filter.ref = ws.dimensions
             
+            # Style Comment column if present
+            comment_col_idx = None
+            for col_idx in range(1, ws.max_column + 1):
+                if ws.cell(row=1, column=col_idx).value == 'Comment':
+                    comment_col_idx = col_idx
+                    break
+            
+            if comment_col_idx:
+                comment_font = Font(name="Malgun Gothic", size=8, color="555555")
+                for row_idx in range(2, ws.max_row + 1):
+                    cell = ws.cell(row=row_idx, column=comment_col_idx)
+                    cell.font = comment_font
+                    cell.alignment = Alignment(horizontal="left", wrap_text=True)
+                    cell.border = data_border
+                ws.column_dimensions[get_column_letter(comment_col_idx)].width = 60
+            
         return True
     except Exception as e:
         logger.error(f"Failed to save Excel file: {e}")
@@ -561,7 +607,34 @@ def main():
         logger.error("No records matched after merging metadata and prices. Exiting.")
         return
         
-    # 5. Format and Save Excel
+    # 5. Add news commentary for sharp movers (±5%)
+    logger.info("Fetching news for sharp movers (±5%)...")
+    sharp_movers = df_merged[df_merged['Change'].abs() >= 5.0]
+    if not sharp_movers.empty:
+        mover_symbols = sharp_movers['Symbol'].tolist()
+        # For KR market, yfinance needs .KS/.KQ suffix
+        if market == "KR":
+            yf_symbols = [f"{s}.KS" for s in mover_symbols]
+        else:
+            yf_symbols = mover_symbols
+        
+        news_map = get_news_batch(yf_symbols, max_count=50)
+        logger.info(f"Got news for {len(news_map)} out of {len(mover_symbols)} sharp movers")
+        
+        # Map back to original symbols
+        comment_map = {}
+        if market == "KR":
+            for orig, yf_sym in zip(mover_symbols, yf_symbols):
+                if yf_sym in news_map:
+                    comment_map[orig] = news_map[yf_sym]
+        else:
+            comment_map = news_map
+        
+        df_merged['Comment'] = df_merged['Symbol'].map(comment_map).fillna('')
+    else:
+        df_merged['Comment'] = ''
+    
+    # 6. Format and Save Excel
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
     date_str = expected_date.strftime("%Y%m%d")
     market_lower = market.lower()
