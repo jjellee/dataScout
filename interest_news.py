@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
 interest_news.py - Daily news digest for interest watchlist companies.
-Collects recent news for each company and sends a categorized digest to Telegram.
+Uses Google News RSS to search by company name AND product keywords.
 """
 
 import os, sys, json, time, datetime, argparse
+import xml.etree.ElementTree as ET
+from html import unescape
+from urllib.parse import quote
+import re
 import pandas as pd
 import yfinance as yf
 import logging
@@ -31,7 +35,10 @@ TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
-MAX_ARTICLES_PER_TICKER = 3  # Top N articles per company
+MAX_ARTICLES_PER_TICKER = 3
+GNEWS_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+}
 
 
 def send_telegram_message(token, chat_id, text):
@@ -52,99 +59,43 @@ def load_watchlist():
         return json.load(f)
 
 
-def fetch_news(ticker, company_name="", max_articles=MAX_ARTICLES_PER_TICKER):
-    """Fetch and score recent news articles by relevance to the company."""
-    candidates = []
+def search_google_news(query, num_results=10, lang="en"):
+    """Search Google News RSS and return parsed articles."""
+    encoded = quote(query)
+    url = f"https://news.google.com/rss/search?q={encoded}&hl={lang}&gl=US&ceid=US:en"
+    if lang == "ko":
+        url = f"https://news.google.com/rss/search?q={encoded}&hl=ko&gl=KR&ceid=KR:ko"
+    elif lang == "ja":
+        url = f"https://news.google.com/rss/search?q={encoded}&hl=ja&gl=JP&ceid=JP:ja"
+
+    articles = []
     try:
-        news = yf.Ticker(ticker).news
-        if not news:
-            return candidates
+        resp = requests.get(url, headers=GNEWS_HEADERS, timeout=15)
+        if resp.status_code != 200:
+            return articles
 
-        # Extract company keywords from name for matching
-        # e.g. "코닝 (Corning)" -> ["코닝", "corning"]
-        name_keywords = []
-        if company_name:
-            for part in company_name.replace('(', ' ').replace(')', ' ').split():
-                cleaned = part.strip()
-                if len(cleaned) >= 2:
-                    name_keywords.append(cleaned.lower())
+        root = ET.fromstring(resp.content)
+        for item in root.iter('item'):
+            title = item.findtext('title', '')
+            link = item.findtext('link', '')
+            pub_date = item.findtext('pubDate', '')
+            source = item.findtext('source', '')
 
-        # Ticker variants for matching
-        raw_ticker = ticker.replace('.T', '').replace('.MI', '')
-        ticker_variants = [raw_ticker.lower(), ticker.lower()]
-
-        for item in news[:max_articles * 5]:  # fetch more, score and filter
-            content = item.get('content', {})
-            title = content.get('title', '')
-            summary = content.get('summary', '')
-            pub_date = content.get('pubDate', '')
-            provider = content.get('provider', {}).get('displayName', '')
-            url = content.get('canonicalUrl', {}).get('url', '')
-
-            if not title or len(title) < 5:
+            if not title:
                 continue
 
-            # --- Relevance Scoring ---
-            score = 0
-            title_lower = title.lower()
-            summary_lower = summary.lower() if summary else ''
-            text = title_lower + ' ' + summary_lower
-
-            # +10: Company name or ticker appears in title
-            for kw in name_keywords:
-                if kw in title_lower:
-                    score += 10
-                    break
-            for tv in ticker_variants:
-                if tv in title_lower:
-                    score += 10
-                    break
-
-            # +5: Company name in summary
-            for kw in name_keywords:
-                if kw in summary_lower:
-                    score += 5
-                    break
-
-            # +3: Business-critical keywords
-            biz_keywords = [
-                'earnings', 'revenue', 'profit', 'loss', 'guidance',
-                'contract', 'deal', 'acquisition', 'acquire', 'merger',
-                'shortage', 'supply', 'demand', 'backlog', 'order',
-                'price increase', 'price hike', 'pricing',
-                'product', 'launch', 'patent', 'fda', 'approval',
-                'partnership', 'joint venture', 'competitor',
-                'restructuring', 'layoff', 'dividend', 'buyback',
-                'upgrade', 'downgrade', 'target', 'rating',
-                'ipo', 'offering', 'debt', 'lawsuit', 'investigation',
-                'ai ', 'data center', 'semiconductor', 'fiber', 'optical',
-                '실적', '매출', '영업이익', '계약', '인수', '합병',
-                '수주', '단가', '공급', '부족', '특허', '경쟁',
-            ]
-            for bkw in biz_keywords:
-                if bkw in text:
-                    score += 3
-                    break
-
-            # -15: Generic market roundup (not company-specific)
-            generic_patterns = [
-                'asian stock markets', 'european equities traded',
-                'market talk', 'roundup', 'stock markets churned',
-                'stock markets fell', 'stock markets gained',
-                'american depositary receipts',
-                'nasdaq 100 listing', 'dividend stocks to buy',
-                'reliable dividend stocks',
-            ]
-            for gp in generic_patterns:
-                if gp in text:
-                    score -= 15
-                    break
+            # Clean HTML entities
+            title = unescape(title)
+            # Remove source suffix from title (Google News adds " - Source" at end)
+            if ' - ' in title and source:
+                title = title.rsplit(' - ', 1)[0]
 
             # Parse date
             date_display = ''
             if pub_date:
                 try:
-                    dt = datetime.datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
+                    dt = datetime.datetime.strptime(pub_date, '%a, %d %b %Y %H:%M:%S %Z')
+                    dt = dt.replace(tzinfo=datetime.timezone.utc)
                     now = datetime.datetime.now(datetime.timezone.utc)
                     diff = now - dt
                     if diff.days == 0:
@@ -156,46 +107,120 @@ def fetch_news(ticker, company_name="", max_articles=MAX_ARTICLES_PER_TICKER):
                         date_display = f"{diff.days}일 전"
                     else:
                         date_display = dt.strftime('%m/%d')
-                    # Recency bonus
-                    if diff.days <= 1:
-                        score += 2
                 except Exception:
                     pass
 
-            if summary and len(summary) > 150:
-                summary = summary[:147] + "..."
-
-            candidates.append({
-                'title': title[:120],
-                'summary': summary,
+            articles.append({
+                'title': title[:140],
+                'url': link,
                 'date': date_display,
-                'provider': provider,
-                'url': url,
-                'score': score,
+                'provider': source,
+                'days_old': (datetime.datetime.now(datetime.timezone.utc) -
+                             datetime.datetime.strptime(pub_date, '%a, %d %b %Y %H:%M:%S %Z').replace(
+                                 tzinfo=datetime.timezone.utc)).days if pub_date else 999,
             })
 
-    except Exception as e:
-        logger.debug(f"News fetch error for {ticker}: {e}")
+            if len(articles) >= num_results:
+                break
 
-    # Sort by score descending, return top N
-    candidates.sort(key=lambda x: x['score'], reverse=True)
-    # Only return articles with positive relevance
-    relevant = [a for a in candidates if a['score'] > 0]
-    return relevant[:max_articles] if relevant else candidates[:max_articles]
+    except Exception as e:
+        logger.debug(f"Google News error for '{query}': {e}")
+
+    return articles
+
+
+def fetch_news_for_company(company_name, keywords, max_articles=MAX_ARTICLES_PER_TICKER):
+    """
+    Search Google News using company name and product keywords.
+    Deduplicates and returns the most relevant, recent articles.
+    """
+    all_articles = []
+    seen_titles = set()
+
+    # Extract the English name for search (e.g. "코닝 (Corning)" -> "Corning")
+    en_name = company_name
+    match = re.search(r'\(([^)]+)\)', company_name)
+    if match:
+        en_name = match.group(1)
+
+    # Search 1: Company name (English)
+    logger.debug(f"  Searching: {en_name}")
+    results = search_google_news(f'"{en_name}" stock', num_results=5)
+    for a in results:
+        title_key = a['title'][:60].lower()
+        if title_key not in seen_titles:
+            seen_titles.add(title_key)
+            a['source_query'] = 'company'
+            all_articles.append(a)
+    time.sleep(0.3)
+
+    # Search 2: Product keywords (pick top 2 most specific)
+    specific_kw = [kw for kw in keywords if kw.lower() != en_name.lower()][:2]
+    for kw in specific_kw:
+        logger.debug(f"  Searching keyword: {kw}")
+        results = search_google_news(kw, num_results=3)
+        for a in results:
+            title_key = a['title'][:60].lower()
+            if title_key not in seen_titles:
+                seen_titles.add(title_key)
+                a['source_query'] = 'keyword'
+                all_articles.append(a)
+        time.sleep(0.3)
+
+    # Score and rank
+    for a in all_articles:
+        score = 0
+        title_lower = a['title'].lower()
+
+        # Company name in title
+        if en_name.lower() in title_lower:
+            score += 10
+
+        # Any keyword in title
+        for kw in keywords:
+            if kw.lower() in title_lower:
+                score += 5
+                break
+
+        # Business keywords
+        biz_terms = ['earnings', 'revenue', 'contract', 'shortage', 'supply',
+                     'demand', 'acquisition', 'deal', 'price', 'launch',
+                     'partnership', 'upgrade', 'downgrade', 'target',
+                     'semiconductor', 'fiber', 'optical', 'AI ', 'data center',
+                     '실적', '계약', '수주', '단가', '공급', '부족']
+        for bt in biz_terms:
+            if bt.lower() in title_lower:
+                score += 3
+                break
+
+        # Recency bonus
+        if a['days_old'] <= 1:
+            score += 5
+        elif a['days_old'] <= 3:
+            score += 2
+
+        # Penalize very old articles
+        if a['days_old'] > 14:
+            score -= 5
+
+        a['score'] = score
+
+    # Sort by score, then recency
+    all_articles.sort(key=lambda x: (x['score'], -x['days_old']), reverse=True)
+
+    return all_articles[:max_articles]
 
 
 def send_chunked_messages(token, chat_id, messages):
-    """Send messages, splitting if too long for Telegram (4096 char limit)."""
+    """Send messages, splitting if too long for Telegram."""
     current_chunk = ""
     for msg in messages:
-        # Check if adding this message would exceed limit
         if current_chunk and len(current_chunk) + len(msg) + 2 > 4000:
             send_telegram_message(token, chat_id, current_chunk)
             time.sleep(1)
             current_chunk = msg
         else:
             current_chunk = current_chunk + "\n\n" + msg if current_chunk else msg
-
     if current_chunk:
         send_telegram_message(token, chat_id, current_chunk)
 
@@ -234,19 +259,19 @@ def main():
     total_articles = 0
     tickers_with_news = 0
 
-    # Header
     all_sections.append(f"📰 *관심 기업 뉴스 다이제스트 ({today})*")
 
     for category, tickers in watchlist.items():
         cat_lines = [f"\n━━━━━━━━━━━━━━━━━━━━━━", f"*▸ {category}*"]
         has_news = False
 
-        for ticker, name in tickers.items():
+        for ticker, info in tickers.items():
+            name = info['name']
+            keywords = info.get('keywords', [])
             display_ticker = ticker.replace('.T', '').replace('.MI', '')
-            logger.info(f"Fetching news for {display_ticker} ({name})...")
 
-            articles = fetch_news(ticker, company_name=name)
-            time.sleep(0.2)  # Rate limiting
+            logger.info(f"Fetching news for {display_ticker} ({name})...")
+            articles = fetch_news_for_company(name, keywords)
 
             if not articles:
                 continue
@@ -254,6 +279,7 @@ def main():
             has_news = True
             tickers_with_news += 1
 
+            # Price change
             change = prices.get(ticker)
             if change is not None:
                 icon = "🟢" if change >= 0 else "🔴"
@@ -261,14 +287,15 @@ def main():
             else:
                 change_str = ""
             cat_lines.append(f"\n🔹 *{display_ticker}* {name}{change_str}")
+
             for i, a in enumerate(articles, 1):
                 date_str = f" ({a['date']})" if a['date'] else ""
                 provider_str = f" - {a['provider']}" if a['provider'] else ""
-                cat_lines.append(f"  {i}. {a['title']}{date_str}{provider_str}")
+                # Mark keyword-sourced articles
+                kw_tag = " 🏷" if a.get('source_query') == 'keyword' else ""
+                cat_lines.append(f"  {i}. {a['title']}{date_str}{provider_str}{kw_tag}")
                 if a['url']:
                     cat_lines.append(f"     🔗 {a['url']}")
-                if a['summary']:
-                    cat_lines.append(f"     _{a['summary']}_")
                 total_articles += 1
 
         if not has_news:
@@ -276,10 +303,9 @@ def main():
 
         all_sections.append("\n".join(cat_lines))
 
-    # Footer
     all_sections.append(f"\n📊 총 {tickers_with_news}개 기업 / {total_articles}개 기사")
+    all_sections.append("💡 🏷 = 제품 키워드 검색 결과")
 
-    # Print full report
     full_report = "\n".join(all_sections)
     logger.info(f"\n{full_report}")
 

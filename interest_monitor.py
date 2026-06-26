@@ -159,7 +159,8 @@ def main():
 
         # Sort by change descending
         cat_data = []
-        for ticker, name in tickers.items():
+        for ticker, info in tickers.items():
+            name = info['name'] if isinstance(info, dict) else info
             if ticker in prices:
                 p = prices[ticker]
                 cat_data.append((ticker, name, p))
