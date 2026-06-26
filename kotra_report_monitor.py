@@ -284,15 +284,26 @@ def main():
             
         logger.info(f"Found {len(attachments)} PDF attachment(s) and core points (len: {len(core_points)}) for report {rpt_no}.")
         
-        # 2. Formulate caption text for the PDF document (keep it brief and under 1024 limit)
-        caption = (
+        # 2. Formulate caption text with core summary points (safe 1024-char limit truncation)
+        caption_base = (
             f"🔔 *[KOTRA 신규 보고서]*\n\n"
             f"📌 *{title}*\n\n"
-            f"📂 *유형:* {report_type}\n"
-            f"📅 *발간일:* {publish_date}\n\n"
-            f"=============================\n"
-            f"🔗 보고서 상세 보기: {detail_url}"
+            f"📂 *유형:* {report_type} | 📅 *발간일:* {publish_date}\n\n"
         )
+        
+        summary_header = "📝 *핵심 요약:*\n"
+        footer_text = f"\n\n=============================\n🔗 보고서 상세 보기: {detail_url}"
+        
+        # Total Telegram caption limit is 1024. We use 1000 to be safe.
+        available_len = 1000 - len(caption_base) - len(summary_header) - len(footer_text)
+        if available_len > 100 and core_points:
+            if len(core_points) > available_len:
+                truncated_summary = core_points[:available_len - 3] + "..."
+            else:
+                truncated_summary = core_points
+            caption = caption_base + summary_header + truncated_summary + footer_text
+        else:
+            caption = caption_base + footer_text
 
         # 3. Download and upload each PDF attachment
         success_all = True
@@ -328,18 +339,6 @@ def main():
                 
             # Brief sleep between multiple attachments
             time.sleep(2.0)
-            
-        # 4. Upload the detailed "core points" (핵심 요약) as a separate text message
-        if success_all and core_points:
-            summary_message = (
-                f"🔔 *[KOTRA 보고서 핵심 요약]*\n\n"
-                f"📌 *{title}*\n\n"
-                f"{core_points}\n\n"
-                f"=============================\n"
-                f"🔗 보고서 상세 보기: {detail_url}"
-            )
-            logger.info("Sending detailed core summary text to Telegram...")
-            send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_message)
             
         if success_all:
             processed_count += 1
