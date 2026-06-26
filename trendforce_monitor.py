@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 trendforce_monitor.py - Monitor TrendForce news page for new articles,
-extract full content, translate to Korean, and notify via Telegram.
+extract full content from HTML, translate to Korean, and notify via Telegram.
 """
 
 import os
@@ -12,8 +12,7 @@ import time
 import datetime
 import argparse
 import logging
-import email.utils
-import xml.etree.ElementTree as ET
+import re
 from html import unescape
 from urllib.parse import quote
 import requests
@@ -45,7 +44,7 @@ TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
-RSS_URL = "https://www.trendforce.com/news/feed/"
+MAIN_URL = "https://www.trendforce.com/news/"
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
@@ -74,61 +73,125 @@ def translate_en_to_ko(text):
         logger.warning(f"Translation error: {e}")
     return text
 
-def clean_html_and_translate_full_content(html_content):
+def fetch_latest_news_links():
     """
-    Parses the HTML content using BeautifulSoup, extracts
-    all paragraphs, translates them, and returns them as a list of paragraphs.
+    Scrapes the main news page to get the list of recent article URLs, titles, and dates.
+    Returns a list of dicts ordered from newest to oldest: [{'link': url, 'title': title, 'date': date}]
     """
-    if not html_content:
-        return []
-        
+    articles = []
     try:
-        soup = BeautifulSoup(html_content, 'html.parser')
+        resp = requests.get(MAIN_URL, headers=HEADERS, timeout=15)
+        if resp.status_code != 200:
+            logger.error(f"Failed to fetch main news page. HTTP {resp.status_code}")
+            return articles
+            
+        soup = BeautifulSoup(resp.content, 'html.parser')
+        wrappers = soup.find_all('div', class_='insight-list-wrapper')
         
-        # Filter and collect all paragraphs
-        paragraphs = []
-        for p in soup.find_all('p'):
-            p_text = p.get_text().strip()
-            # Ignore very short lines, recommendations, photo credits, and citations
-            if len(p_text) < 15:
+        for w in wrappers:
+            title_link = w.find('a', class_='title-link')
+            if not title_link:
                 continue
-            if p_text.lower().startswith("read more") or p_text.lower().startswith("photo credit"):
-                continue
-            if "please note that this article cites" in p_text.lower():
-                continue
-            
-            # Remove redundant whitespaces
-            p_text = " ".join(p_text.split())
-            paragraphs.append(p_text)
-            
-        # If no paragraphs found in p tags, fallback to body text
-        if not paragraphs:
-            text = soup.get_text().strip()
-            lines = [line.strip() for line in text.split('\n\n') if len(line.strip()) > 15]
-            paragraphs = lines
-            
-        # Translate all paragraphs
-        translated_paras = []
-        for p in paragraphs:
-            # Limit paragraph size to be safe with translation length limits
-            if len(p) > 1000:
-                sub_chunks = [p[i:i+1000] for i in range(0, len(p), 1000)]
-                translated_sub = []
-                for sc in sub_chunks:
-                    tr = translate_en_to_ko(sc)
-                    if tr:
-                        translated_sub.append(tr)
-                translated_p = " ".join(translated_sub)
-            else:
-                translated_p = translate_en_to_ko(p)
                 
-            if translated_p:
-                translated_paras.append(translated_p)
-                
-        return translated_paras
+            link = title_link.get('href', '').strip()
+            title = title_link.get_text().strip()
+            
+            # Extract date using regex to be robust against HTML nesting
+            date = ""
+            tag_divs = w.find_all('div', class_='insight-tag')
+            for td in tag_divs:
+                text_content = td.get_text()
+                match = re.search(r'\d{4}-\d{2}-\d{2}', text_content)
+                if match:
+                    date = match.group(0)
+                    break
+                    
+            if link and title:
+                articles.append({
+                    'link': link,
+                    'title': title,
+                    'date': date
+                })
     except Exception as e:
-        logger.error(f"Error translating full content: {e}")
-        return []
+        logger.error(f"Error scraping main news page: {e}")
+        
+    return articles
+
+def fetch_full_article_content(article_url):
+    """
+    Fetches the article page and extracts the title, date, and paragraphs from the <article> tag.
+    """
+    try:
+        resp = requests.get(article_url, headers=HEADERS, timeout=15)
+        if resp.status_code != 200:
+            logger.error(f"Failed to fetch article page: {article_url}. HTTP {resp.status_code}")
+            return None
+            
+        soup = BeautifulSoup(resp.content, 'html.parser')
+        article_tag = soup.find('article', class_='presscenter')
+        if not article_tag:
+            logger.error(f"Could not find <article class='presscenter'> on page {article_url}")
+            return None
+            
+        # Extract title
+        title_tag = article_tag.find('h1')
+        title = title_tag.get_text().strip() if title_tag else ""
+        
+        # Extract date
+        tag_row = article_tag.find('div', class_='tag-row')
+        date_str = ""
+        if tag_row:
+            match = re.search(r'\d{4}-\d{2}-\d{2}', tag_row.get_text())
+            if match:
+                date_str = match.group(0)
+                
+        # Extract paragraphs
+        paragraphs = []
+        for child in article_tag.children:
+            if child.name == 'p':
+                p_text = child.get_text().strip()
+                if not p_text:
+                    continue
+                # Ignore credits or boilerplates
+                if p_text.lower().startswith("read more") or p_text.lower().startswith("photo credit"):
+                    continue
+                if "(photo credit:" in p_text.lower():
+                    continue
+                # Remove redundant whitespaces
+                p_text = " ".join(p_text.split())
+                paragraphs.append(p_text)
+            elif child.name == 'div' and 'article_highlight-area-BG_wrap' in child.get('class', []):
+                highlight_text = child.get_text().strip()
+                if highlight_text and not highlight_text.lower().startswith("please note"):
+                    paragraphs.append(f"💡 {highlight_text}")
+                    
+        return {
+            'title': title,
+            'date': date_str,
+            'paragraphs': paragraphs
+        }
+    except Exception as e:
+        logger.error(f"Error fetching full article content from {article_url}: {e}")
+        return None
+
+def translate_paragraphs(paragraphs):
+    """Translates a list of paragraphs to Korean."""
+    translated_paras = []
+    for p in paragraphs:
+        if len(p) > 1000:
+            sub_chunks = [p[i:i+1000] for i in range(0, len(p), 1000)]
+            translated_sub = []
+            for sc in sub_chunks:
+                tr = translate_en_to_ko(sc)
+                if tr:
+                    translated_sub.append(tr)
+            translated_p = " ".join(translated_sub)
+        else:
+            translated_p = translate_en_to_ko(p)
+            
+        if translated_p:
+            translated_paras.append(translated_p)
+    return translated_paras
 
 def send_telegram_message(token, chat_id, text):
     """Sends a markdown-formatted message to Telegram."""
@@ -175,17 +238,6 @@ def send_telegram_article(token, chat_id, header, paragraphs, footer):
     if current_chunk.strip():
         send_telegram_message(token, chat_id, current_chunk.strip())
 
-def parse_pub_date(pub_date_str):
-    """Parses pubDate string and converts it to a friendly KST string."""
-    try:
-        dt = email.utils.parsedate_to_datetime(pub_date_str)
-        # Convert to KST (UTC+9)
-        kst_tz = datetime.timezone(datetime.timedelta(hours=9))
-        dt_kst = dt.astimezone(kst_tz)
-        return dt_kst.strftime('%Y-%m-%d %H:%M') + " KST"
-    except Exception:
-        return pub_date_str
-
 def main():
     parser = argparse.ArgumentParser(description="TrendForce News Monitor")
     parser.add_argument("--test", action="store_true", help="Run in test mode, sending alerts to the test channel.")
@@ -210,34 +262,20 @@ def main():
     else:
         logger.info("Seen state file does not exist. It will be created.")
 
-    # Fetch RSS feed
-    logger.info("Fetching TrendForce RSS feed...")
-    try:
-        resp = requests.get(RSS_URL, headers=HEADERS, timeout=15)
-        if resp.status_code != 200:
-            logger.error(f"Failed to fetch RSS. HTTP status: {resp.status_code}")
-            return
-    except Exception as e:
-        logger.error(f"Network error fetching RSS: {e}")
+    # Scrape main news page
+    logger.info("Scraping TrendForce main news page...")
+    fetched_articles = fetch_latest_news_links()
+    if not fetched_articles:
+        logger.error("No articles found on main news page.")
         return
-
-    # Parse RSS XML
-    try:
-        root = ET.fromstring(resp.content)
-    except Exception as e:
-        logger.error(f"XML parse error: {e}")
-        return
-
-    items = root.findall('.//item')
-    logger.info(f"Found {len(items)} articles in feed.")
+    logger.info(f"Found {len(fetched_articles)} articles on page.")
 
     # If seen file didn't exist and --init is NOT specified, we default to initializing
     # to avoid spamming the channel on the first run.
     is_first_run = not os.path.exists(state_file)
     if is_first_run or args.init:
         logger.info("First run or --init specified. Initializing seen articles without alerts.")
-        current_links = [item.findtext('link', '').strip() for item in items if item.findtext('link')]
-        # Save state
+        current_links = [item['link'] for item in fetched_articles]
         try:
             with open(state_file, "w", encoding="utf-8") as f:
                 json.dump(current_links, f, indent=2, ensure_ascii=False)
@@ -246,88 +284,96 @@ def main():
             logger.error(f"Failed to write state file: {e}")
         return
 
-    # We process items in reverse order (oldest first) so that Telegram alerts arrive in chronological order
-    new_articles_count = 0
+    # Find new articles (preserving chronological order: oldest to newest)
+    new_articles = []
+    for item in reversed(fetched_articles):
+        link = item['link']
+        if link not in seen_articles:
+            new_articles.append(item)
+
+    if not new_articles:
+        logger.info("No new articles detected.")
+        return
+
+    # Safeguard: Process at most 2 new articles in a single run to avoid spamming
+    # if the script was stopped or during feed transition.
+    max_to_process = 2
+    if len(new_articles) > max_to_process:
+        logger.info(f"Detected {len(new_articles)} new articles. Limiting to the {max_to_process} most recent ones to avoid spam.")
+        articles_to_process = new_articles[-max_to_process:]
+    else:
+        articles_to_process = new_articles
+
     new_seen_list = list(seen_articles)
-    
-    # Namespaces for WordPress RSS
-    content_ns = "{http://purl.org/rss/1.0/modules/content/}encoded"
+    new_articles_count = 0
 
-    for item in reversed(items):
-        link = item.findtext('link', '').strip()
-        if not link:
+    for item in articles_to_process:
+        link = item['link']
+        title = item['title']
+        
+        logger.info(f"Processing new article: {title}")
+        
+        # Fetch full article details
+        details = fetch_full_article_content(link)
+        if not details:
+            logger.warning(f"Failed to fetch content for {link}. Skipping.")
             continue
-
-        if link in seen_articles:
-            continue
-
-        # Found a new article!
-        title = unescape(item.findtext('title', '')).strip()
-        pub_date = item.findtext('pubDate', '').strip()
-        html_content = item.findtext(content_ns, '')
-        
-        logger.info(f"New article detected: {title}")
-        
-        # Translate title
-        translated_title = translate_en_to_ko(title)
-        
-        # Parse and translate all paragraphs (full-text translation)
-        translated_paragraphs = clean_html_and_translate_full_content(html_content)
-        if not translated_paragraphs:
-            # Fallback to description if full content extraction failed
-            desc = item.findtext('description', '')
-            import re
-            clean_desc = re.sub('<[^<]+?>', '', desc)
-            clean_desc = unescape(clean_desc).strip()
-            translated_p = translate_en_to_ko(clean_desc)
-            if translated_p:
-                translated_paragraphs = [translated_p]
             
-        # Friendly date
-        pub_date_display = parse_pub_date(pub_date)
+        # Translate title
+        translated_title = translate_en_to_ko(details['title'])
         
+        # Translate full content paragraphs
+        translated_paragraphs = translate_paragraphs(details['paragraphs'])
+        if not translated_paragraphs:
+            logger.warning(f"No content translated for {link}. Skipping.")
+            continue
+            
+        # Formulate date
+        date_display = details['date'] if details['date'] else item['date']
+        if date_display:
+            date_display += " (EST)" # TrendForce articles are typically dated in EST/EDT
+            
         # Formulate Header and Footer
         header_text = (
             f"🔔 *[TrendForce 뉴스 - 전문 번역]*\n\n"
             f"📌 *{translated_title}*\n"
-            f"({title})"
+            f"({details['title']})"
         )
         footer_text = (
             f"=============================\n"
             f"🔗 [기사 원문 보기]({link})\n"
-            f"📅 {pub_date_display}"
+            f"📅 {date_display}"
         )
         
         # Send Telegram message (chunked if necessary)
-        chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+        chat_id = TELEGRAM_TEST_CHAT_ID
         if TELEGRAM_BOT4_TOKEN and chat_id:
-            logger.info(f"Sending full-text alert for '{title}' to Telegram chat {chat_id}...")
+            logger.info(f"Sending full-text alert to Telegram chat {chat_id}...")
             send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
             logger.info("Telegram alert sent successfully.")
         else:
             logger.warning("Telegram bot token or chat ID is missing. Alert skipped.")
             
-        # Add to seen list
-        new_seen_list.append(link)
         new_articles_count += 1
         
-        # Sleep briefly between messages to avoid Telegram rate limits
+        # Sleep briefly between articles to avoid rate limits
         time.sleep(2.0)
 
+    # Regardless of whether we processed them all or limited them, we mark all detected new articles as seen
+    for item in new_articles:
+        if item['link'] not in new_seen_list:
+            new_seen_list.append(item['link'])
+
     # Save updated seen state
-    if new_articles_count > 0:
-        # Keep only the last 100 articles in the seen list to prevent the state file from growing indefinitely
-        if len(new_seen_list) > 100:
-            new_seen_list = new_seen_list[-100:]
-            
-        try:
-            with open(state_file, "w", encoding="utf-8") as f:
-                json.dump(new_seen_list, f, indent=2, ensure_ascii=False)
-            logger.info(f"State saved. Added {new_articles_count} new articles.")
-        except Exception as e:
-            logger.error(f"Failed to save state file: {e}")
-    else:
-        logger.info("No new articles detected.")
+    if len(new_seen_list) > 100:
+        new_seen_list = new_seen_list[-100:]
+        
+    try:
+        with open(state_file, "w", encoding="utf-8") as f:
+            json.dump(new_seen_list, f, indent=2, ensure_ascii=False)
+        logger.info(f"State saved. Added {len(new_articles)} articles to seen list (processed {new_articles_count}).")
+    except Exception as e:
+        logger.error(f"Failed to save state file: {e}")
 
 if __name__ == "__main__":
     main()
