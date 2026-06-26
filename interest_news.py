@@ -52,15 +52,28 @@ def load_watchlist():
         return json.load(f)
 
 
-def fetch_news(ticker, max_articles=MAX_ARTICLES_PER_TICKER):
-    """Fetch recent news articles for a ticker from yfinance."""
-    articles = []
+def fetch_news(ticker, company_name="", max_articles=MAX_ARTICLES_PER_TICKER):
+    """Fetch and score recent news articles by relevance to the company."""
+    candidates = []
     try:
         news = yf.Ticker(ticker).news
         if not news:
-            return articles
+            return candidates
 
-        for item in news[:max_articles * 2]:  # fetch more, filter later
+        # Extract company keywords from name for matching
+        # e.g. "코닝 (Corning)" -> ["코닝", "corning"]
+        name_keywords = []
+        if company_name:
+            for part in company_name.replace('(', ' ').replace(')', ' ').split():
+                cleaned = part.strip()
+                if len(cleaned) >= 2:
+                    name_keywords.append(cleaned.lower())
+
+        # Ticker variants for matching
+        raw_ticker = ticker.replace('.T', '').replace('.MI', '')
+        ticker_variants = [raw_ticker.lower(), ticker.lower()]
+
+        for item in news[:max_articles * 5]:  # fetch more, score and filter
             content = item.get('content', {})
             title = content.get('title', '')
             summary = content.get('summary', '')
@@ -71,7 +84,63 @@ def fetch_news(ticker, max_articles=MAX_ARTICLES_PER_TICKER):
             if not title or len(title) < 5:
                 continue
 
-            # Parse date to relative format
+            # --- Relevance Scoring ---
+            score = 0
+            title_lower = title.lower()
+            summary_lower = summary.lower() if summary else ''
+            text = title_lower + ' ' + summary_lower
+
+            # +10: Company name or ticker appears in title
+            for kw in name_keywords:
+                if kw in title_lower:
+                    score += 10
+                    break
+            for tv in ticker_variants:
+                if tv in title_lower:
+                    score += 10
+                    break
+
+            # +5: Company name in summary
+            for kw in name_keywords:
+                if kw in summary_lower:
+                    score += 5
+                    break
+
+            # +3: Business-critical keywords
+            biz_keywords = [
+                'earnings', 'revenue', 'profit', 'loss', 'guidance',
+                'contract', 'deal', 'acquisition', 'acquire', 'merger',
+                'shortage', 'supply', 'demand', 'backlog', 'order',
+                'price increase', 'price hike', 'pricing',
+                'product', 'launch', 'patent', 'fda', 'approval',
+                'partnership', 'joint venture', 'competitor',
+                'restructuring', 'layoff', 'dividend', 'buyback',
+                'upgrade', 'downgrade', 'target', 'rating',
+                'ipo', 'offering', 'debt', 'lawsuit', 'investigation',
+                'ai ', 'data center', 'semiconductor', 'fiber', 'optical',
+                '실적', '매출', '영업이익', '계약', '인수', '합병',
+                '수주', '단가', '공급', '부족', '특허', '경쟁',
+            ]
+            for bkw in biz_keywords:
+                if bkw in text:
+                    score += 3
+                    break
+
+            # -15: Generic market roundup (not company-specific)
+            generic_patterns = [
+                'asian stock markets', 'european equities traded',
+                'market talk', 'roundup', 'stock markets churned',
+                'stock markets fell', 'stock markets gained',
+                'american depositary receipts',
+                'nasdaq 100 listing', 'dividend stocks to buy',
+                'reliable dividend stocks',
+            ]
+            for gp in generic_patterns:
+                if gp in text:
+                    score -= 15
+                    break
+
+            # Parse date
             date_display = ''
             if pub_date:
                 try:
@@ -80,38 +149,39 @@ def fetch_news(ticker, max_articles=MAX_ARTICLES_PER_TICKER):
                     diff = now - dt
                     if diff.days == 0:
                         hours = diff.seconds // 3600
-                        if hours == 0:
-                            date_display = f"{diff.seconds // 60}분 전"
-                        else:
-                            date_display = f"{hours}시간 전"
+                        date_display = f"{diff.seconds // 60}분 전" if hours == 0 else f"{hours}시간 전"
                     elif diff.days == 1:
                         date_display = "어제"
                     elif diff.days <= 7:
                         date_display = f"{diff.days}일 전"
                     else:
                         date_display = dt.strftime('%m/%d')
+                    # Recency bonus
+                    if diff.days <= 1:
+                        score += 2
                 except Exception:
                     pass
 
-            # Truncate summary
             if summary and len(summary) > 150:
                 summary = summary[:147] + "..."
 
-            articles.append({
+            candidates.append({
                 'title': title[:120],
                 'summary': summary,
                 'date': date_display,
                 'provider': provider,
                 'url': url,
+                'score': score,
             })
-
-            if len(articles) >= max_articles:
-                break
 
     except Exception as e:
         logger.debug(f"News fetch error for {ticker}: {e}")
 
-    return articles
+    # Sort by score descending, return top N
+    candidates.sort(key=lambda x: x['score'], reverse=True)
+    # Only return articles with positive relevance
+    relevant = [a for a in candidates if a['score'] > 0]
+    return relevant[:max_articles] if relevant else candidates[:max_articles]
 
 
 def send_chunked_messages(token, chat_id, messages):
@@ -175,7 +245,7 @@ def main():
             display_ticker = ticker.replace('.T', '').replace('.MI', '')
             logger.info(f"Fetching news for {display_ticker} ({name})...")
 
-            articles = fetch_news(ticker)
+            articles = fetch_news(ticker, company_name=name)
             time.sleep(0.2)  # Rate limiting
 
             if not articles:
