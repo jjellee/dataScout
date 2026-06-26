@@ -5,6 +5,7 @@ Collects recent news for each company and sends a categorized digest to Telegram
 """
 
 import os, sys, json, time, datetime, argparse
+import pandas as pd
 import yfinance as yf
 import logging
 import requests
@@ -137,6 +138,28 @@ def main():
     watchlist = load_watchlist()
     today = datetime.date.today().strftime('%Y-%m-%d')
 
+    # Fetch daily prices for all tickers
+    all_tickers = []
+    for cat, tks in watchlist.items():
+        all_tickers.extend(tks.keys())
+    logger.info(f"Fetching prices for {len(all_tickers)} tickers...")
+    prices = {}
+    try:
+        df = yf.download(" ".join(all_tickers), period="5d", progress=False, actions=False, threads=True)
+        if not df.empty:
+            multi = isinstance(df.columns, pd.MultiIndex)
+            for ticker in all_tickers:
+                try:
+                    close = df['Close'][ticker].dropna() if multi else df['Close'].dropna()
+                    if len(close) >= 2:
+                        change = (float(close.iloc[-1]) - float(close.iloc[-2])) / float(close.iloc[-2]) * 100
+                        prices[ticker] = change
+                except Exception:
+                    pass
+    except Exception as e:
+        logger.warning(f"Price fetch error: {e}")
+    logger.info(f"Got prices for {len(prices)} tickers")
+
     all_sections = []
     total_articles = 0
     tickers_with_news = 0
@@ -161,7 +184,13 @@ def main():
             has_news = True
             tickers_with_news += 1
 
-            cat_lines.append(f"\n🔹 *{display_ticker}* {name}")
+            change = prices.get(ticker)
+            if change is not None:
+                icon = "🟢" if change >= 0 else "🔴"
+                change_str = f" {icon} {change:+.2f}%"
+            else:
+                change_str = ""
+            cat_lines.append(f"\n🔹 *{display_ticker}* {name}{change_str}")
             for i, a in enumerate(articles, 1):
                 date_str = f" ({a['date']})" if a['date'] else ""
                 provider_str = f" - {a['provider']}" if a['provider'] else ""
