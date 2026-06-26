@@ -74,34 +74,56 @@ def fetch_latest_reports():
         logger.error(f"Error fetching reports list: {e}")
     return []
 
-def extract_pdf_attachments(detail_url):
+def extract_report_details(detail_url):
     """
-    Fetches the report detail page and parses it to extract PDF attachments.
-    Returns a list of dicts: [{'atfilesn': file_sn, 'filename': filename}]
+    Fetches the report detail page and parses it to extract PDF attachments and core summary points.
+    Returns a dict: {'attachments': [...], 'core_points': str}
     """
     attachments = []
+    core_points = ""
     try:
         resp = requests.get(detail_url, headers=HEADERS, timeout=15)
         if resp.status_code != 200:
             logger.error(f"Failed to fetch report detail page: {detail_url}. HTTP {resp.status_code}")
-            return attachments
+            return {'attachments': attachments, 'core_points': core_points}
             
         soup = BeautifulSoup(resp.content, 'html.parser')
-        pdf_tags = soup.find_all("a", class_=lambda x: x and ("file_pdf" in x or "btn_fileDown" in x))
         
+        # 1. Extract PDF attachments
+        pdf_tags = soup.find_all("a", class_=lambda x: x and ("file_pdf" in x or "btn_fileDown" in x))
         for tag in pdf_tags:
             file_sn = tag.get("data-atfilesn")
             filename = tag.get("data-filename") or tag.get("title")
             if file_sn and filename:
-                # Deduplicate just in case
                 if not any(a['atfilesn'] == file_sn for a in attachments):
                     attachments.append({
                         'atfilesn': file_sn,
                         'filename': filename.strip()
                     })
+                    
+        # 2. Extract core summary points (sumBox or sumBoxArea)
+        sum_box = soup.find(class_="sumBox") or soup.find(class_="sumBoxArea")
+        if sum_box:
+            text = sum_box.get_text()
+            lines = []
+            for line in text.split("\n"):
+                stripped = line.strip()
+                if stripped:
+                    lines.append(stripped)
+                else:
+                    if lines and lines[-1] != "":
+                        lines.append("")
+            while lines and lines[-1] == "":
+                lines.pop()
+            core_points = "\n".join(lines).strip()
+            
     except Exception as e:
-        logger.error(f"Error extracting PDF attachments from {detail_url}: {e}")
-    return attachments
+        logger.error(f"Error extracting report details from {detail_url}: {e}")
+        
+    return {
+        'attachments': attachments,
+        'core_points': core_points
+    }
 
 def download_file(download_url, save_path):
     """Downloads a file and saves it locally. Returns True if successful."""
@@ -142,6 +164,28 @@ def send_telegram_document(token, chat_id, file_path, filename, caption, retries
             logger.warning(f"Attempt {attempt+1}/{retries} failed to upload document: {e}. Retrying in {delay}s...")
         time.sleep(delay)
     logger.error("Failed to upload document to Telegram after all retries.")
+    return None
+
+def send_telegram_message(token, chat_id, text, retries=3, delay=3):
+    """Sends a markdown-formatted message to Telegram, including retry mechanism."""
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": text,
+        "parse_mode": "Markdown",
+        "disable_web_page_preview": True
+    }
+    for attempt in range(retries):
+        try:
+            resp = requests.post(url, json=payload, timeout=30)
+            if resp.status_code == 200:
+                return resp.json()
+            else:
+                logger.warning(f"Telegram API returned HTTP {resp.status_code}: {resp.text}. Retrying in {delay}s (Attempt {attempt+1}/{retries})...")
+        except Exception as e:
+            logger.warning(f"Attempt {attempt+1}/{retries} failed to send telegram message: {e}. Retrying in {delay}s...")
+        time.sleep(delay)
+    logger.error("Failed to send telegram message after all retries.")
     return None
 
 def main():
@@ -221,46 +265,34 @@ def main():
     for item in reports_to_process:
         rpt_no = int(item['RPT_NO'])
         title = item.get('RPT_SJ', '').strip()
-        # Decode HTML entities in title
         title = unescape(title)
         report_type = item.get('RPT_TY_CD', '').strip()
         publish_date = item.get('PBLCT_DE', '').strip() or item.get('OTHBC_DT', '').strip()
-        summary = item.get('SMMAR_INFO_CN', '').strip()
-        summary = unescape(summary)
         
         detail_url = f"https://dream.kotra.or.kr/kotranews/cms/indReport/actionIndReportDetail.do?pageNo=1&pagePerCnt=16&MENU_ID=280&CONTENTS_NO=1&pRptNo={rpt_no}&pHotClipTyName=DEEP"
         
         logger.info(f"Processing new report: {title} (ID: {rpt_no})")
         
-        # 1. Extract PDF attachments from the detail page
-        attachments = extract_pdf_attachments(detail_url)
+        # 1. Extract PDF attachments and core summary points from detail page
+        details = extract_report_details(detail_url)
+        attachments = details['attachments']
+        core_points = details['core_points']
+        
         if not attachments:
             logger.warning(f"No PDF attachments found on detail page for report {rpt_no}. Skipping.")
             continue
             
-        logger.info(f"Found {len(attachments)} PDF attachment(s) for report {rpt_no}.")
+        logger.info(f"Found {len(attachments)} PDF attachment(s) and core points (len: {len(core_points)}) for report {rpt_no}.")
         
-        # 2. Formulate caption text with safe 1024-char limit truncation
-        caption_base = (
+        # 2. Formulate caption text for the PDF document (keep it brief and under 1024 limit)
+        caption = (
             f"🔔 *[KOTRA 신규 보고서]*\n\n"
             f"📌 *{title}*\n\n"
             f"📂 *유형:* {report_type}\n"
             f"📅 *발간일:* {publish_date}\n\n"
+            f"=============================\n"
+            f"🔗 보고서 상세 보기: {detail_url}"
         )
-        
-        summary_header = "📝 *요약:*\n"
-        footer_text = f"\n\n=============================\n🔗 보고서 상세 보기: {detail_url}"
-        
-        # Total limit is 1024. We use 1000 to be safe and accommodate entities/formatting.
-        available_len = 1000 - len(caption_base) - len(summary_header) - len(footer_text)
-        if available_len > 100 and summary:
-            if len(summary) > available_len:
-                truncated_summary = summary[:available_len - 3] + "..."
-            else:
-                truncated_summary = summary
-            caption = caption_base + summary_header + truncated_summary + footer_text
-        else:
-            caption = caption_base + footer_text
 
         # 3. Download and upload each PDF attachment
         success_all = True
@@ -296,6 +328,18 @@ def main():
                 
             # Brief sleep between multiple attachments
             time.sleep(2.0)
+            
+        # 4. Upload the detailed "core points" (핵심 요약) as a separate text message
+        if success_all and core_points:
+            summary_message = (
+                f"🔔 *[KOTRA 보고서 핵심 요약]*\n\n"
+                f"📌 *{title}*\n\n"
+                f"{core_points}\n\n"
+                f"=============================\n"
+                f"🔗 보고서 상세 보기: {detail_url}"
+            )
+            logger.info("Sending detailed core summary text to Telegram...")
+            send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_message)
             
         if success_all:
             processed_count += 1
