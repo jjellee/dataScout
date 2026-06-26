@@ -285,3 +285,47 @@
 - *ANET* (Arista Networks, Inc.) 
   └ 🔴 매도 | Duda Kenneth (Director) 
   └ 수량: 3,590주 | 평단가: $174.37 | 총액: *$625,983*
+2026-06-26 08:00:01,936 - INFO - Loading environment variables from .env file...
+2026-06-26 08:00:01,936 - INFO - Starting Daily US Market Monitor...
+2026-06-26 08:00:03,274 - INFO - Fetching S&P 500 stock list from FinanceDataReader...
+2026-06-26 08:00:03,749 - INFO - Downloading daily price data for 503 stocks using yfinance...
+2026-06-26 08:00:06,018 - ERROR - $BFB: possibly delisted; no price data found  (period=2d) (Yahoo error = "No data found, symbol may be delisted")
+2026-06-26 08:00:08,520 - ERROR - $BRKB: possibly delisted; no price data found  (period=2d) (Yahoo error = "No data found, symbol may be delisted")
+2026-06-26 08:00:16,202 - ERROR - 
+2 Failed downloads:
+2026-06-26 08:00:16,202 - ERROR - ['BFB', 'BRKB']: possibly delisted; no price data found  (period=2d) (Yahoo error = "No data found, symbol may be delisted")
+2026-06-26 08:00:28,978 - ERROR - $REGN: possibly delisted; no price data found  (period=2d)
+2026-06-26 08:00:29,316 - ERROR - $SPGI: possibly delisted; no price data found  (period=2d)
+2026-06-26 08:00:29,486 - ERROR - $KMB: possibly delisted; no price data found  (period=2d)
+2026-06-26 08:00:29,489 - ERROR - 
+3 Failed downloads:
+2026-06-26 08:00:29,489 - ERROR - ['REGN', 'SPGI', 'KMB']: possibly delisted; no price data found  (period=2d)
+2026-06-26 08:00:30,896 - INFO - Fetching short interest data for movers...
+2026-06-26 08:00:35,466 - INFO - Fetching SEC current Form 4 Atom feed...
+2026-06-26 08:00:35,836 - INFO - Found 100 entries in SEC Atom feed.
+2026-06-26 08:00:35,837 - INFO - Unique Form 4 index URLs to process: 100
+2026-06-26 08:00:59,006 - INFO - Successfully saved 82783 cumulative insider transactions to /home/inhyuk/projects/dataScout/data_us/us_insider_transactions.xlsx
+2026-06-26 08:00:59,010 - INFO - Uploading updated Excel sheet to Telegram chat: -1003877753638...
+2026-06-26 08:01:15,993 - INFO - Successfully uploaded Excel sheet to Telegram.
+2026-06-26 08:01:15,993 - INFO - Uploading US Market Report to Telegram chat: -1003877753638...
+2026-06-26 08:01:17,000 - INFO - Successfully uploaded report to Telegram.
+
+--- Generated Report ---
+🇺🇸 *[미국 증시 일일 요약 리포트]* 🇺🇸
+
+📈 *S&P 500 상승 TOP 5*
+1. *SNDK* | $2335.00 (+21.97%) (공매도 비율: 9.71%, Ratio: 0.6)
+2. *TECH* | $70.70 (+20.07%) (공매도 비율: 10.09%, Ratio: 4.0)
+3. *MU* | $1213.56 (+15.74%) (공매도 비율: 3.34%, Ratio: 0.7)
+4. *AMAT* | $668.00 (+13.42%) (공매도 비율: 2.52%, Ratio: 2.7)
+5. *GLW* | $228.01 (+10.78%) (공매도 비율: 2.81%, Ratio: 1.4)
+
+📉 *S&P 500 하락 TOP 5*
+1. *AAPL* | $275.15 (-6.12%) (공매도 비율: 1.06%, Ratio: 3.1)
+2. *TJX* | $155.19 (-6.04%) (공매도 비율: 1.59%, Ratio: 2.8)
+3. *ROST* | $215.13 (-5.89%) (공매도 비율: 3.05%, Ratio: 2.5)
+4. *DELL* | $409.45 (-5.67%) (공매도 비율: 6.28%, Ratio: 2.1)
+5. *MSCI* | $544.56 (-5.67%) (공매도 비율: 2.78%, Ratio: 2.5)
+
+🕵️ *주요 기업 내부자 지분 변동 (SEC Form 4)*
+- 당일 $30,000 이상의 내부자 매매 내역 없음
