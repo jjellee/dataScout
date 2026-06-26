@@ -166,6 +166,8 @@ def main():
                 date_str = f" ({a['date']})" if a['date'] else ""
                 provider_str = f" - {a['provider']}" if a['provider'] else ""
                 cat_lines.append(f"  {i}. {a['title']}{date_str}{provider_str}")
+                if a['url']:
+                    cat_lines.append(f"     🔗 {a['url']}")
                 if a['summary']:
                     cat_lines.append(f"     _{a['summary']}_")
                 total_articles += 1
