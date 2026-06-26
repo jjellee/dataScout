@@ -242,10 +242,24 @@ def _extract_substantive_content(full_text):
     For Form 4 (insider trading): finds the transaction details.
     Falls back to stripping known boilerplate patterns.
     """
-    # 1. Cut off SIGNATURES section and everything after it
-    sig_patterns = ["\nSIGNATURES\n", "\nSIGNATURE\n", "\nPursuant to the requirements of the Securities Exchange Act"]
+    # 1. Cut off SIGNATURES and trailing boilerplate sections
+    # These patterns mark the end of substantive content
+    cutoff_patterns = [
+        "\nSIGNATURES\n",
+        "\nSIGNATURE\n",
+        "\nPursuant to the requirements of the Securities Exchange Act",
+        # Forward-Looking Statements disclaimers (appear in nearly every filing)
+        "Note Regarding Forward-Looking",
+        "Forward-Looking Statements",
+        "Cautionary Note Regarding Forward",
+        "Cautionary Statement",
+        "Safe Harbor Statement",
+        "Safe Harbor Compliance",
+        "\nAbout QUALCOMM",
+        "\nAbout the Company",
+    ]
     end_idx = len(full_text)
-    for pat in sig_patterns:
+    for pat in cutoff_patterns:
         idx = full_text.find(pat)
         if idx > 0 and idx < end_idx:
             end_idx = idx
