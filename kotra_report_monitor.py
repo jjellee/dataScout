@@ -249,7 +249,7 @@ def main():
         )
         
         summary_header = "📝 *요약:*\n"
-        footer_text = f"\n\n=============================\n🔗 [보고서 상세 보기]({detail_url})"
+        footer_text = f"\n\n=============================\n🔗 보고서 상세 보기: {detail_url}"
         
         # Total limit is 1024. We use 1000 to be safe and accommodate entities/formatting.
         available_len = 1000 - len(caption_base) - len(summary_header) - len(footer_text)

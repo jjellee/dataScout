@@ -352,7 +352,7 @@ def main():
         )
         footer_text = (
             f"=============================\n"
-            f"🔗 [기사 원문 보기]({link})\n"
+            f"🔗 기사 원문 보기: {link}\n"
             f"📅 {date_display} (KST)"
         )
         
