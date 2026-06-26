@@ -42,11 +42,9 @@ echo "Step 2: Generating cumulative investor charts and uploading to Telegram...
 echo "Step 3: Running stock supply-demand screener..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python screener.py
 
-# 4. Run DART daily disclosure collector & Korean insider trading collector
-echo "Step 4: Collecting daily DART disclosures and Korean insider trades..."
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python dart_collector.py
+# 4. Run Korean insider trading collector
+echo "Step 4: Collecting Korean insider trades..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python kr_insider_collector.py
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python dart_classifier.py --upload
 
 # 5. Git commit & push data and charts to GitHub
 echo "Step 5: Committing and pushing to GitHub..."
