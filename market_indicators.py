@@ -88,8 +88,12 @@ INDICATORS = {
         "MAGS": "Mag 7",
         "ROBO": "Robotics/AI",
     },
+    "[Lithium / Resources]": {
+        "LIT": "Lithium/Battery ETF",
+        "ALB": "Albemarle (리튬)",
+        "SQM": "SQM (리튬)",
+    },
     "[Thematic]": {
-        "LIT": "Lithium/Battery",
         "URA": "Uranium",
         "ICLN": "Clean Energy",
         "GRID": "Grid Infra",
