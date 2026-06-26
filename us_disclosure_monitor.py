@@ -352,7 +352,7 @@ def main():
         )
         
         # Send Telegram message
-        chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+        chat_id = TELEGRAM_TEST_CHAT_ID
         if TELEGRAM_BOT4_TOKEN and chat_id:
             logger.info(f"Sending SEC alert for {ticker} to Telegram chat {chat_id}...")
             result = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, telegram_msg)
