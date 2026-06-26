@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 trendforce_monitor.py - Monitor TrendForce news page for new articles,
-extract content, translate to Korean, and notify via Telegram.
+extract full content, translate to Korean, and notify via Telegram.
 """
 
 import os
@@ -74,54 +74,61 @@ def translate_en_to_ko(text):
         logger.warning(f"Translation error: {e}")
     return text
 
-def clean_html_and_extract_summary(html_content):
+def clean_html_and_translate_full_content(html_content):
     """
-    Parses the HTML content using BeautifulSoup and extracts
-    the first two substantial paragraphs for translation.
+    Parses the HTML content using BeautifulSoup, extracts
+    all paragraphs, translates them, and returns them as a list of paragraphs.
     """
     if not html_content:
-        return ""
+        return []
         
     try:
         soup = BeautifulSoup(html_content, 'html.parser')
         
-        # Filter paragraphs
+        # Filter and collect all paragraphs
         paragraphs = []
         for p in soup.find_all('p'):
             p_text = p.get_text().strip()
-            # Ignore short paragraphs, credits, read-more recommendations, and disclosures
-            if len(p_text) < 40:
+            # Ignore very short lines, recommendations, photo credits, and citations
+            if len(p_text) < 15:
                 continue
             if p_text.lower().startswith("read more") or p_text.lower().startswith("photo credit"):
                 continue
             if "please note that this article cites" in p_text.lower():
                 continue
             
+            # Remove redundant whitespaces
+            p_text = " ".join(p_text.split())
             paragraphs.append(p_text)
-            if len(paragraphs) >= 2:
-                break
-                
-        # If no paragraphs found in p tags, try direct text or description fallback
+            
+        # If no paragraphs found in p tags, fallback to body text
         if not paragraphs:
             text = soup.get_text().strip()
-            # Split by double newlines to find paragraphs
-            lines = [line.strip() for line in text.split('\n\n') if len(line.strip()) > 40]
-            paragraphs = lines[:2]
+            lines = [line.strip() for line in text.split('\n\n') if len(line.strip()) > 15]
+            paragraphs = lines
             
-        # Translate the paragraphs
+        # Translate all paragraphs
         translated_paras = []
         for p in paragraphs:
             # Limit paragraph size to be safe with translation length limits
-            if len(p) > 500:
-                p = p[:500] + "..."
-            translated_p = translate_en_to_ko(p)
+            if len(p) > 1000:
+                sub_chunks = [p[i:i+1000] for i in range(0, len(p), 1000)]
+                translated_sub = []
+                for sc in sub_chunks:
+                    tr = translate_en_to_ko(sc)
+                    if tr:
+                        translated_sub.append(tr)
+                translated_p = " ".join(translated_sub)
+            else:
+                translated_p = translate_en_to_ko(p)
+                
             if translated_p:
                 translated_paras.append(translated_p)
                 
-        return "\n\n".join(translated_paras)
+        return translated_paras
     except Exception as e:
-        logger.error(f"Error extracting summary: {e}")
-        return ""
+        logger.error(f"Error translating full content: {e}")
+        return []
 
 def send_telegram_message(token, chat_id, text):
     """Sends a markdown-formatted message to Telegram."""
@@ -138,6 +145,35 @@ def send_telegram_message(token, chat_id, text):
     except Exception as e:
         logger.error(f"Failed to send telegram request: {e}")
         return None
+
+def send_telegram_article(token, chat_id, header, paragraphs, footer):
+    """
+    Sends the article content to Telegram, chunking if it exceeds the limit.
+    """
+    # Telegram's character limit is 4096. We'll use 4000 to be safe.
+    limit = 4000
+    
+    current_chunk = header + "\n\n"
+    
+    for p in paragraphs:
+        # If adding this paragraph exceeds the limit, send the current chunk and start a new one
+        if len(current_chunk) + len(p) + 2 > limit:
+            send_telegram_message(token, chat_id, current_chunk.strip())
+            time.sleep(1.0)
+            current_chunk = p + "\n\n"
+        else:
+            current_chunk += p + "\n\n"
+            
+    # Add footer to the last chunk if it fits, otherwise send current chunk and send footer separately
+    if len(current_chunk) + len(footer) + 2 > limit:
+        send_telegram_message(token, chat_id, current_chunk.strip())
+        time.sleep(1.0)
+        current_chunk = footer
+    else:
+        current_chunk += footer
+        
+    if current_chunk.strip():
+        send_telegram_message(token, chat_id, current_chunk.strip())
 
 def parse_pub_date(pub_date_str):
     """Parses pubDate string and converts it to a friendly KST string."""
@@ -196,7 +232,7 @@ def main():
     logger.info(f"Found {len(items)} articles in feed.")
 
     # If seen file didn't exist and --init is NOT specified, we default to initializing
-    # to avoid spamming the channel with 20 old articles on the first run.
+    # to avoid spamming the channel on the first run.
     is_first_run = not os.path.exists(state_file)
     if is_first_run or args.init:
         logger.info("First run or --init specified. Initializing seen articles without alerts.")
@@ -235,39 +271,39 @@ def main():
         # Translate title
         translated_title = translate_en_to_ko(title)
         
-        # Parse and translate summary paragraphs
-        summary_ko = clean_html_and_extract_summary(html_content)
-        if not summary_ko:
+        # Parse and translate all paragraphs (full-text translation)
+        translated_paragraphs = clean_html_and_translate_full_content(html_content)
+        if not translated_paragraphs:
             # Fallback to description if full content extraction failed
             desc = item.findtext('description', '')
             import re
             clean_desc = re.sub('<[^<]+?>', '', desc)
             clean_desc = unescape(clean_desc).strip()
-            summary_ko = translate_en_to_ko(clean_desc)
+            translated_p = translate_en_to_ko(clean_desc)
+            if translated_p:
+                translated_paragraphs = [translated_p]
             
         # Friendly date
         pub_date_display = parse_pub_date(pub_date)
         
-        # Format Telegram message
-        telegram_msg = (
-            f"🔔 *[TrendForce 뉴스]*\n\n"
+        # Formulate Header and Footer
+        header_text = (
+            f"🔔 *[TrendForce 뉴스 - 전문 번역]*\n\n"
             f"📌 *{translated_title}*\n"
-            f"({title})\n\n"
-            f"📝 *주요 내용 요약:*\n"
-            f"{summary_ko}\n\n"
+            f"({title})"
+        )
+        footer_text = (
+            f"=============================\n"
             f"🔗 [기사 원문 보기]({link})\n"
             f"📅 {pub_date_display}"
         )
         
-        # Send Telegram message
+        # Send Telegram message (chunked if necessary)
         chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
         if TELEGRAM_BOT4_TOKEN and chat_id:
-            logger.info(f"Sending alert for '{title}' to Telegram chat {chat_id}...")
-            result = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, telegram_msg)
-            if result and result.get("ok"):
-                logger.info("Telegram alert sent successfully.")
-            else:
-                logger.error(f"Telegram API error: {result}")
+            logger.info(f"Sending full-text alert for '{title}' to Telegram chat {chat_id}...")
+            send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
+            logger.info("Telegram alert sent successfully.")
         else:
             logger.warning("Telegram bot token or chat ID is missing. Alert skipped.")
             
@@ -276,7 +312,7 @@ def main():
         new_articles_count += 1
         
         # Sleep briefly between messages to avoid Telegram rate limits
-        time.sleep(1.5)
+        time.sleep(2.0)
 
     # Save updated seen state
     if new_articles_count > 0:
