@@ -212,10 +212,31 @@ def translate_filing_title(title):
     else:
         return translate_en_to_ko(title)
 
+def _resolve_ixbrl_url(url):
+    """
+    If the URL is an Inline XBRL viewer URL (e.g., /ix?doc=/Archives/...),
+    extract the actual document path and return a direct URL.
+    The XBRL viewer requires JavaScript so it cannot be scraped with requests.
+    """
+    from urllib.parse import urlparse, parse_qs
+    parsed = urlparse(url)
+    # Pattern 1: https://www.sec.gov/ix?doc=/Archives/edgar/data/...
+    if parsed.path == '/ix' and 'doc' in parse_qs(parsed.query):
+        doc_path = parse_qs(parsed.query)['doc'][0]
+        return urljoin("https://www.sec.gov", doc_path)
+    # Pattern 2: href="/ix?doc=..." (relative)
+    if '/ix?' in url and 'doc=' in url:
+        match = re.search(r'doc=([^&]+)', url)
+        if match:
+            doc_path = match.group(1)
+            return urljoin("https://www.sec.gov", doc_path)
+    return url
+
 def fetch_filing_content(index_url):
     """
     Fetches the SEC filing index page, finds the primary document,
     and extracts the first 1200 characters of its text content.
+    Handles Inline XBRL viewer URLs by resolving them to direct document URLs.
     """
     try:
         resp = requests.get(index_url, headers=SEC_HEADERS, timeout=15)
@@ -245,19 +266,45 @@ def fetch_filing_content(index_url):
                 if "/Archives/edgar/data/" in href and not href.endswith("-index.htm") and not href.endswith("-index.html"):
                     primary_doc_url = urljoin("https://www.sec.gov", href)
                     break
-                    
+        
         if primary_doc_url:
+            # Resolve Inline XBRL viewer URLs to direct document URLs
+            resolved_url = _resolve_ixbrl_url(primary_doc_url)
+            if resolved_url != primary_doc_url:
+                logger.info(f"Resolved iXBRL viewer URL to direct document: {resolved_url}")
+            primary_doc_url = resolved_url
+            
             logger.info(f"Fetching primary document: {primary_doc_url}")
             doc_resp = requests.get(primary_doc_url, headers=SEC_HEADERS, timeout=15)
             if doc_resp.status_code == 200:
                 doc_soup = BeautifulSoup(doc_resp.content, "html.parser")
                 
+                # Remove script, style, and iXBRL metadata elements
                 for tag in doc_soup(["script", "style"]):
+                    tag.decompose()
+                # Remove iXBRL hidden header/context elements
+                for tag in doc_soup.find_all(["ix:header", "ix:hidden"]):
+                    tag.decompose()
+                for tag in doc_soup.find_all("div", style=lambda s: s and "display:none" in s.replace(" ", "").lower()):
                     tag.decompose()
                     
                 text = doc_soup.get_text()
                 lines = [line.strip() for line in text.split("\n") if line.strip()]
                 cleaned_text = " ".join(lines)
+                
+                # Strip leading XBRL metadata noise (e.g., "false 0000804328 QUALCOMM INC/DE ...")
+                # Look for the start of the actual SEC document content
+                for marker in ["UNITED STATES SECURITIES", "SECURITIES AND EXCHANGE COMMISSION", "FORM "]:
+                    idx = cleaned_text.find(marker)
+                    if idx > 0 and idx < 500:
+                        cleaned_text = cleaned_text[idx:]
+                        break
+                
+                # Filter out XBRL viewer boilerplate that slipped through
+                xbrl_markers = ["XBRL Viewer", "inline XBRL", "JavaScript를 활성화", "enable JavaScript"]
+                if any(marker.lower() in cleaned_text.lower() for marker in xbrl_markers) and len(cleaned_text) < 300:
+                    logger.warning(f"Extracted content appears to be XBRL viewer boilerplate. Skipping.")
+                    return ""
                 
                 if len(cleaned_text) > 1200:
                     return cleaned_text[:1200] + "..."
