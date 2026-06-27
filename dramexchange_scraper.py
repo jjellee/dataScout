@@ -261,11 +261,7 @@ def main():
         "data": current_data
     }
     history["snapshots"].append(snapshot)
-
-    # Keep last 365 days of snapshots (roughly 1095 at 3x/day)
-    max_snapshots = 1095
-    if len(history["snapshots"]) > max_snapshots:
-        history["snapshots"] = history["snapshots"][-max_snapshots:]
+    # Keep all snapshots indefinitely for long-term charting
 
     save_history(history)
 
