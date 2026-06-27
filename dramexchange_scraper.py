@@ -1,0 +1,289 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+dramexchange_scraper.py - Scrape DRAMeXchange homepage spot/module/SSD prices
+using Selenium headless Chrome, and append to a historical JSON data store.
+
+Update Schedule (DRAMeXchange):
+  - DRAM / NAND Flash / Memory Card Spot: 3x daily
+  - Module / GDDR Spot: Weekly
+  - SSD Street Price: Bi-weekly
+  
+Recommended cron: every 8 hours (3x daily)
+"""
+
+import os
+import sys
+import json
+import datetime
+import argparse
+import logging
+import time
+import re
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+logger = logging.getLogger("dramexchange_scraper")
+
+# Data directory
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_us", "dramexchange")
+os.makedirs(DATA_DIR, exist_ok=True)
+
+HISTORY_FILE = os.path.join(DATA_DIR, "price_history.json")
+URL = "https://www.dramexchange.com/"
+
+
+def scrape_homepage():
+    """
+    Opens DRAMeXchange homepage with headless Chrome,
+    waits for JS-loaded price tables, and extracts all price data.
+    Returns a dict of category -> list of product dicts.
+    """
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36')
+
+    driver = webdriver.Chrome(options=options)
+    all_data = {}
+
+    try:
+        logger.info("Loading DRAMeXchange homepage with headless Chrome...")
+        driver.get(URL)
+        time.sleep(8)  # Wait for JS to render all price tables
+
+        # Define which tables to scrape and their column structure
+        table_configs = {
+            "dram_spot": {
+                "selector": "#tb_NationalDramSpotPrice",
+                "columns": ["item", "daily_high", "daily_low", "session_high", "session_low", "session_avg", "change_pct"],
+                "freq": "daily"
+            },
+            "nand_spot": {
+                "selector": "#tb_NationalFlashSpotPrice",
+                "columns": ["item", "daily_high", "daily_low", "session_high", "session_low", "session_avg", "change_pct"],
+                "freq": "daily"
+            },
+            "memcard_spot": {
+                "selector": "#tb_MemCardSpotPrice",
+                "columns": ["item", "daily_high", "daily_low", "session_high", "session_low", "session_avg", "change_pct"],
+                "freq": "daily"
+            },
+        }
+
+        # Module spot has multiple sub-tables under the same ID
+        module_selectors = [
+            ("#tb_ModuleSpotPrice", "module_spot"),
+        ]
+
+        for category, config in table_configs.items():
+            try:
+                elements = driver.find_elements(By.CSS_SELECTOR, config["selector"])
+                if not elements:
+                    logger.warning(f"Table '{config['selector']}' not found.")
+                    continue
+
+                table_el = elements[0]
+                rows = table_el.find_elements(By.CSS_SELECTOR, "tr")
+                products = []
+
+                for row in rows:
+                    cells = row.find_elements(By.TAG_NAME, "td")
+                    if not cells or len(cells) < 6:
+                        continue
+
+                    cell_texts = []
+                    for c in cells:
+                        # Handle the chart link column (History) - skip it
+                        text = c.text.strip().replace('\n', ' ')
+                        cell_texts.append(text)
+
+                    if len(cell_texts) >= 6:
+                        item_name = cell_texts[0]
+                        # Skip header rows
+                        if item_name.lower() in ('item', '', 'brand'):
+                            continue
+                        # Parse numeric values
+                        def parse_num(s):
+                            s = s.replace(',', '').replace('%', '').strip()
+                            try:
+                                return float(s)
+                            except ValueError:
+                                return None
+
+                        product = {
+                            "item": item_name,
+                            "daily_high": parse_num(cell_texts[1]),
+                            "daily_low": parse_num(cell_texts[2]),
+                            "session_high": parse_num(cell_texts[3]),
+                            "session_low": parse_num(cell_texts[4]),
+                            "session_avg": parse_num(cell_texts[5]),
+                            "change_pct": parse_num(cell_texts[6]) if len(cell_texts) > 6 else None,
+                        }
+                        products.append(product)
+
+                if products:
+                    all_data[category] = products
+                    logger.info(f"  {category}: {len(products)} products scraped.")
+
+            except Exception as e:
+                logger.error(f"Error scraping {category}: {e}")
+
+        # Module/GDDR/NAND Wafer tables (3 sub-tables under same ID)
+        try:
+            module_tables = driver.find_elements(By.CSS_SELECTOR, "#tb_ModuleSpotPrice")
+            sub_names = ["module_spot", "gddr_spot", "nand_wafer_spot"]
+            for idx, table_el in enumerate(module_tables):
+                cat_name = sub_names[idx] if idx < len(sub_names) else f"module_sub_{idx}"
+                rows = table_el.find_elements(By.CSS_SELECTOR, "tr")
+                products = []
+
+                for row in rows:
+                    cells = row.find_elements(By.TAG_NAME, "td")
+                    if not cells or len(cells) < 6:
+                        continue
+                    cell_texts = [c.text.strip().replace('\n', ' ') for c in cells]
+
+                    if len(cell_texts) >= 6:
+                        item_name = cell_texts[0]
+                        # Skip header rows
+                        if item_name.lower() in ('item', '', 'brand'):
+                            continue
+                        def parse_num(s):
+                            s = s.replace(',', '').replace('%', '').strip()
+                            try:
+                                return float(s)
+                            except ValueError:
+                                return None
+
+                        product = {
+                            "item": cell_texts[0],
+                            "weekly_high": parse_num(cell_texts[1]),
+                            "weekly_low": parse_num(cell_texts[2]),
+                            "session_high": parse_num(cell_texts[3]),
+                            "session_low": parse_num(cell_texts[4]),
+                            "session_avg": parse_num(cell_texts[5]),
+                            "change_pct": parse_num(cell_texts[6]) if len(cell_texts) > 6 else None,
+                        }
+                        products.append(product)
+
+                if products:
+                    all_data[cat_name] = products
+                    logger.info(f"  {cat_name}: {len(products)} products scraped.")
+
+        except Exception as e:
+            logger.error(f"Error scraping module tables: {e}")
+
+    finally:
+        driver.quit()
+
+    return all_data
+
+
+def load_history():
+    """Load existing price history from JSON file."""
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"Failed to load history: {e}")
+    return {}
+
+
+def save_history(history):
+    """Save price history to JSON file."""
+    try:
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump(history, f, indent=2, ensure_ascii=False)
+        logger.info(f"History saved to {HISTORY_FILE}")
+    except Exception as e:
+        logger.error(f"Failed to save history: {e}")
+
+
+def is_data_changed(old_snapshot, new_data):
+    """
+    Check if the scraped data differs from the last saved snapshot.
+    Compares session_avg values to detect actual price updates.
+    """
+    if not old_snapshot:
+        return True
+
+    old_data = old_snapshot.get("data", {})
+    for category, products in new_data.items():
+        old_products = old_data.get(category, [])
+        if len(products) != len(old_products):
+            return True
+        for new_p, old_p in zip(products, old_products):
+            if new_p.get("session_avg") != old_p.get("session_avg"):
+                return True
+    return False
+
+
+def main():
+    parser = argparse.ArgumentParser(description="DRAMeXchange Price Scraper")
+    parser.add_argument("--force", action="store_true", help="Save even if data hasn't changed")
+    args = parser.parse_args()
+
+    # Scrape current prices
+    current_data = scrape_homepage()
+    if not current_data:
+        logger.error("No data scraped. Exiting.")
+        return
+
+    total_products = sum(len(v) for v in current_data.values())
+    logger.info(f"Scraped {total_products} products across {len(current_data)} categories.")
+
+    # Load existing history
+    history = load_history()
+    # history format: { "snapshots": [ { "timestamp": "...", "data": {...} }, ... ] }
+    if "snapshots" not in history:
+        history["snapshots"] = []
+
+    # Check if data actually changed
+    last_snapshot = history["snapshots"][-1] if history["snapshots"] else None
+    if not args.force and not is_data_changed(last_snapshot, current_data):
+        logger.info("Data unchanged from last snapshot. Skipping save.")
+        return
+
+    # Create new snapshot
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    snapshot = {
+        "timestamp": now,
+        "data": current_data
+    }
+    history["snapshots"].append(snapshot)
+
+    # Keep last 365 days of snapshots (roughly 1095 at 3x/day)
+    max_snapshots = 1095
+    if len(history["snapshots"]) > max_snapshots:
+        history["snapshots"] = history["snapshots"][-max_snapshots:]
+
+    save_history(history)
+
+    # Print summary
+    print(f"\n{'='*60}")
+    print(f"DRAMeXchange Price Snapshot ({now})")
+    print(f"{'='*60}")
+    for category, products in current_data.items():
+        print(f"\n[{category.upper().replace('_', ' ')}]")
+        for p in products:
+            avg = p.get('session_avg') or p.get('weekly_avg') or 0
+            if avg == 0:
+                continue
+            chg = p.get('change_pct', 0) or 0
+            chg_str = f"{chg:+.2f}%" if chg else "0.00%"
+            print(f"  {p['item']:<45s} Avg: ${avg:<10.3f} Change: {chg_str}")
+    print(f"{'='*60}")
+
+
+if __name__ == "__main__":
+    main()
