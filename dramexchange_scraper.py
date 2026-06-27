@@ -311,20 +311,21 @@ def _update_ddr5_csv(current_data, timestamp_str):
         with open(csv_path, "r", encoding="utf-8") as f:
             existing_lines = f.read().strip().split("\n")
     
-    # Check if today's date already exists -> update it
-    updated = False
-    for i in range(len(existing_lines) - 1, -1, -1):
-        if existing_lines[i].startswith(today + ","):
-            old_price = existing_lines[i].split(",")[1]
-            existing_lines[i] = f"{today},{ddr5_price}"
-            logger.info(f"Updated DDR5 CSV: {today} ${old_price} -> ${ddr5_price}")
-            updated = True
+    # Find the last date in the CSV
+    last_date = ""
+    for line in reversed(existing_lines):
+        if line and "," in line and not line.startswith("Date"):
+            last_date = line.split(",")[0]
             break
     
-    if not updated:
-        # Append new row
-        existing_lines.append(f"{today},{ddr5_price}")
-        logger.info(f"Appended DDR5 CSV: {today} ${ddr5_price}")
+    # Only append if today is AFTER the last date in the CSV
+    # Never modify existing data
+    if today <= last_date:
+        logger.info(f"DDR5 CSV already has data through {last_date}. Skipping (today={today}).")
+        return
+    
+    existing_lines.append(f"{today},{ddr5_price}")
+    logger.info(f"Appended DDR5 CSV: {today} ${ddr5_price}")
     
     # Write back
     with open(csv_path, "w", encoding="utf-8") as f:
