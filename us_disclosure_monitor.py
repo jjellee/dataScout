@@ -505,12 +505,13 @@ def main():
         
         logger.info(f"Processing filing alert for {ticker}: {title}")
         
-        # 1. Skip Form 144 (내부자 주식 매도 계획 보고서)
+        # 1. Skip insider-related filings (Form 144, Form 3, Form 4, Form 5)
         parts = title.split(' - ', 1)
         if len(parts) == 2:
             ftype = parts[0].strip()
-            if ftype == '144':
-                logger.info(f"Skipping Form 144 filing for {ticker}: {title}")
+            # 144: 내부자 주식 매도 계획, 3: 최초 지분 등록, 4: 지분 변동, 5: 연간 지분 변동
+            if ftype in ('144', '3', '4', '5', '4/A', '3/A', '5/A'):
+                logger.info(f"Skipping insider filing (Form {ftype}) for {ticker}: {title}")
                 continue
                 
         # 2. Translate the title/description into Korean
