@@ -1,0 +1,519 @@
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-22 15:30:01,899 - INFO - Loading environment variables from .env file...
+2026-06-22 15:30:01,900 - INFO - ==================================================
+2026-06-22 15:30:01,900 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-06-22 15:30:01,900 - INFO - ==================================================
+2026-06-22 15:30:02,801 - INFO - Processing trading date: 2026-06-22
+2026-06-22 15:30:02,801 - INFO - Scraping JPX listed issues Excel URL...
+2026-06-22 15:30:03,011 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-06-22 15:30:03,231 - INFO - Total metadata stocks loaded: 3739
+2026-06-22 15:30:03,231 - INFO - Downloading daily prices for 3739 tickers in chunks of 300...
+2026-06-22 15:30:06,181 - ERROR - $1726.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:07,004 - ERROR - 
+1 Failed download:
+2026-06-22 15:30:07,004 - ERROR - ['1726.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:19,781 - ERROR - $3059.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:19,784 - ERROR - 
+1 Failed download:
+2026-06-22 15:30:19,785 - ERROR - ['3059.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:20,414 - ERROR - $3294.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:31,426 - ERROR - 
+1 Failed download:
+2026-06-22 15:30:31,426 - ERROR - ['3294.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:37,254 - ERROR - $4556.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:47,610 - ERROR - $4365.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:47,612 - ERROR - 
+2 Failed downloads:
+2026-06-22 15:30:47,612 - ERROR - ['4556.T', '4365.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:30:50,548 - ERROR - $4974.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:00,434 - ERROR - 
+1 Failed download:
+2026-06-22 15:31:00,434 - ERROR - ['4974.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:01,438 - ERROR - $6201.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:03,204 - ERROR - $6173.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:04,590 - ERROR - 
+2 Failed downloads:
+2026-06-22 15:31:04,591 - ERROR - ['6201.T', '6173.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:20,494 - ERROR - $7229.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:23,509 - ERROR - 
+1 Failed download:
+2026-06-22 15:31:23,509 - ERROR - ['7229.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:36,544 - ERROR - $7501.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:37,145 - ERROR - $7482.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:37,150 - ERROR - 
+2 Failed downloads:
+2026-06-22 15:31:37,150 - ERROR - ['7501.T', '7482.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:38,420 - ERROR - $7999.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:41,229 - ERROR - 
+1 Failed download:
+2026-06-22 15:31:41,229 - ERROR - ['7999.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:44,302 - ERROR - $9067.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:51,990 - ERROR - $9163.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:54,908 - ERROR - $9033.T: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:54,917 - ERROR - 
+3 Failed downloads:
+2026-06-22 15:31:54,917 - ERROR - ['9067.T', '9163.T', '9033.T']: possibly delisted; no price data found  (period=5d)
+2026-06-22 15:31:57,565 - INFO - Successfully downloaded price changes for 3722 stocks.
+2026-06-22 15:31:57,579 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260622.xlsx...
+2026-06-22 15:31:58,037 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-22 15:31:59,239 - INFO - Report text sent successfully to Telegram.
+2026-06-22 15:31:59,239 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-22 15:32:02,049 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-06-22*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *Nonferrous Metals* (+3.21%)
+2. *Precision Instruments* (+2.14%)
+3. *Glass and Ceramics Products* (+1.89%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *Air Transportation* (-0.68%)
+2. *Oil and Coal Products* (-0.64%)
+3. *Retail Trade* (-0.43%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *Electric Appliances*: +1.45% (상위: PowerX,I(+22.2%), QD Laser(+19.8%))
+- *Information & Communication*: +0.78% (상위: ENECHANG(+19.8%), GMO inte(+17.8%))
+- *Chemicals*: +0.62% (상위: SANWAYUK(+11.0%), ARAKAWA (+9.1%))
+- *Pharmaceutical*: +0.14% (상위: Immuno-B(+7.4%), Renascie(+7.3%))
+- *Transportation Equipment*: -0.06% (상위: Sanoh In(+7.4%), MUSASHI (+6.0%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *5216.T* (KURAMOTO CO.,LTD.) | ¥177 (*+39.37%*)
+2. *6433.T* (HEPHAIST CO.,LTD.) | ¥1,441 (*+26.29%*)
+3. *485A.T* (PowerX,Inc.) | ¥2,200 (*+22.22%*)
+4. *5817.T* (JMACS Japan Co.,Ltd.) | ¥1,270 (*+21.07%*)
+5. *6613.T* (QD Laser,Inc.) | ¥3,020 (*+19.84%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *5856.T* (Life Intelligent Ent) | ¥3 (*-40.00%*)
+2. *3681.T* (V-cube,Inc.) | ¥11 (*-15.38%*)
+3. *9941.T* (TAIYO BUSSAN KAISHA,) | ¥1,268 (*-14.73%*)
+4. *6561.T* (HANATOUR JAPAN CO.,L) | ¥795 (*-13.40%*)
+5. *7412.T* (ATOM CORPORATION) | ¥321 (*-11.33%*)
+
+📂 *전체 3,722개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-23 15:30:02,235 - INFO - Loading environment variables from .env file...
+2026-06-23 15:30:02,237 - INFO - ==================================================
+2026-06-23 15:30:02,237 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-06-23 15:30:02,237 - INFO - ==================================================
+2026-06-23 15:30:03,103 - INFO - Processing trading date: 2026-06-23
+2026-06-23 15:30:03,103 - INFO - Scraping JPX listed issues Excel URL...
+2026-06-23 15:30:03,281 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-06-23 15:30:03,647 - INFO - Total metadata stocks loaded: 3739
+2026-06-23 15:30:03,647 - INFO - Downloading daily prices for 3739 tickers in chunks of 300...
+2026-06-23 15:30:07,379 - ERROR - $1726.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:15,245 - ERROR - 
+1 Failed download:
+2026-06-23 15:30:15,245 - ERROR - ['1726.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:21,045 - ERROR - $3294.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:31,365 - ERROR - 
+1 Failed download:
+2026-06-23 15:30:31,365 - ERROR - ['3294.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:47,622 - ERROR - $4556.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:47,659 - ERROR - 
+1 Failed download:
+2026-06-23 15:30:47,659 - ERROR - ['4556.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:51,333 - ERROR - $4974.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:30:59,891 - ERROR - 
+1 Failed download:
+2026-06-23 15:30:59,891 - ERROR - ['4974.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:01,343 - ERROR - $6173.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:02,803 - ERROR - $6201.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:06,953 - ERROR - 
+2 Failed downloads:
+2026-06-23 15:31:06,953 - ERROR - ['6173.T', '6201.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:09,976 - ERROR - $6670.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:17,348 - ERROR - $6599.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:20,052 - ERROR - $6339.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:20,502 - ERROR - $6743.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:20,504 - ERROR - 
+4 Failed downloads:
+2026-06-23 15:31:20,504 - ERROR - ['6670.T', '6599.T', '6339.T', '6743.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:21,980 - ERROR - $7229.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:25,541 - ERROR - 
+1 Failed download:
+2026-06-23 15:31:25,541 - ERROR - ['7229.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:38,764 - ERROR - $7685.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:38,984 - ERROR - $7833.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:38,993 - ERROR - 
+2 Failed downloads:
+2026-06-23 15:31:38,993 - ERROR - ['7685.T', '7833.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:41,288 - ERROR - $7999.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:51,557 - ERROR - 
+1 Failed download:
+2026-06-23 15:31:51,558 - ERROR - ['7999.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:53,084 - ERROR - $9067.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:54,832 - ERROR - $9338.T: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:55,521 - ERROR - 
+2 Failed downloads:
+2026-06-23 15:31:55,521 - ERROR - ['9067.T', '9338.T']: possibly delisted; no price data found  (period=5d)
+2026-06-23 15:31:58,122 - INFO - Successfully downloaded price changes for 3722 stocks.
+2026-06-23 15:31:58,124 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260623.xlsx...
+2026-06-23 15:31:58,549 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-23 15:31:59,595 - INFO - Report text sent successfully to Telegram.
+2026-06-23 15:31:59,595 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-23 15:32:03,358 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-06-23*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *Marine Transportation* (+0.81%)
+2. *Land Transportation* (+0.55%)
+3. *Foods* (+0.30%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *Nonferrous Metals* (-4.38%)
+2. *Machinery* (-2.23%)
+3. *Precision Instruments* (-2.19%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *Pharmaceutical*: -0.90% (상위: OncoTher(+5.3%), KYORIN P(+3.4%))
+- *Information & Communication*: -1.20% (상위: TOSHIN H(+29.7%), Thinca C(+21.4%))
+- *Transportation Equipment*: -1.28% (상위: SERENDIP(+3.6%), SAKURAI (+2.4%))
+- *Chemicals*: -1.37% (상위: AIR WATE(+6.7%), NIPPON S(+3.2%))
+- *Electric Appliances*: -2.06% (상위: MEDIA LI(+20.8%), TWINBIRD(+20.5%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *9444.T* (TOSHIN HOLDINGS CO.,) | ¥262 (*+29.70%*)
+2. *149A.T* (Thinca Co.,Ltd.) | ¥850 (*+21.43%*)
+3. *6659.T* (MEDIA LINKS CO.,LTD.) | ¥64 (*+20.75%*)
+4. *6897.T* (TWINBIRD CORPORATION) | ¥471 (*+20.46%*)
+5. *3544.T* (SATUDORA HOLDINGS CO) | ¥963 (*+18.45%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *6217.T* (TSUDAKOMA Corp.) | ¥1,144 (*-19.04%*)
+2. *6085.T* (ARCHITECTS STUDIO JA) | ¥303 (*-16.99%*)
+3. *278A.T* (Terra Drone Corporat) | ¥7,930 (*-15.82%*)
+4. *5801.T* (Furukawa Electric Co) | ¥48,900 (*-15.69%*)
+5. *6433.T* (HEPHAIST CO.,LTD.) | ¥1,223 (*-15.13%*)
+
+📂 *전체 3,722개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-24 15:30:01,770 - INFO - Loading environment variables from .env file...
+2026-06-24 15:30:01,771 - INFO - ==================================================
+2026-06-24 15:30:01,771 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-06-24 15:30:01,771 - INFO - ==================================================
+2026-06-24 15:30:02,745 - INFO - Processing trading date: 2026-06-24
+2026-06-24 15:30:02,745 - INFO - Scraping JPX listed issues Excel URL...
+2026-06-24 15:30:02,977 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-06-24 15:30:03,181 - INFO - Total metadata stocks loaded: 3739
+2026-06-24 15:30:03,181 - INFO - Downloading daily prices for 3739 tickers in chunks of 300...
+2026-06-24 15:30:04,787 - ERROR - $1726.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:15,955 - ERROR - $173A.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:15,959 - ERROR - 
+2 Failed downloads:
+2026-06-24 15:30:15,960 - ERROR - ['1726.T', '173A.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:21,915 - ERROR - $3294.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:31,366 - ERROR - $3491.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:31,711 - ERROR - $3302.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:31,711 - ERROR - $3137.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:34,136 - ERROR - $3148.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:34,137 - ERROR - 
+5 Failed downloads:
+2026-06-24 15:30:34,137 - ERROR - ['3294.T', '3491.T', '3302.T', '3137.T', '3148.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:41,113 - ERROR - $4556.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:51,652 - ERROR - $4615.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:51,661 - ERROR - 
+2 Failed downloads:
+2026-06-24 15:30:51,661 - ERROR - ['4556.T', '4615.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:53,554 - ERROR - $4974.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:55,703 - ERROR - 
+1 Failed download:
+2026-06-24 15:30:55,703 - ERROR - ['4974.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:58,114 - ERROR - $6173.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:30:59,446 - ERROR - $6201.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:05,375 - ERROR - 
+2 Failed downloads:
+2026-06-24 15:31:05,376 - ERROR - ['6173.T', '6201.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:08,864 - ERROR - $6670.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:17,880 - ERROR - $6800.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:17,952 - ERROR - $6699.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:17,961 - ERROR - 
+3 Failed downloads:
+2026-06-24 15:31:17,961 - ERROR - ['6670.T', '6800.T', '6699.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:19,765 - ERROR - $7229.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:21,887 - ERROR - 
+1 Failed download:
+2026-06-24 15:31:21,888 - ERROR - ['7229.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:32,840 - ERROR - $7774.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:32,879 - ERROR - $7898.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:33,697 - ERROR - 
+2 Failed downloads:
+2026-06-24 15:31:33,697 - ERROR - ['7774.T', '7898.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:36,487 - ERROR - $7999.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:47,007 - ERROR - 
+1 Failed download:
+2026-06-24 15:31:47,008 - ERROR - ['7999.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:50,091 - ERROR - $9338.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:50,314 - ERROR - $9067.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:57,728 - ERROR - $9143.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:31:58,294 - ERROR - $9433.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:32:00,449 - ERROR - $9612.T: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:32:00,451 - ERROR - 
+5 Failed downloads:
+2026-06-24 15:32:00,451 - ERROR - ['9338.T', '9067.T', '9143.T', '9433.T', '9612.T']: possibly delisted; no price data found  (period=5d)
+2026-06-24 15:32:02,990 - INFO - Successfully downloaded price changes for 3712 stocks.
+2026-06-24 15:32:02,992 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260624.xlsx...
+2026-06-24 15:32:03,431 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-24 15:32:04,458 - INFO - Report text sent successfully to Telegram.
+2026-06-24 15:32:04,458 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-24 15:32:07,220 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-06-24*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *Air Transportation* (+0.50%)
+2. *Pharmaceutical* (+0.39%)
+3. *Marine Transportation* (+0.38%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *Insurance* (-1.67%)
+2. *Banks* (-1.21%)
+3. *Nonferrous Metals* (-0.90%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *Pharmaceutical*: +0.39% (상위: Perseus (+9.7%), D.Wester(+6.0%))
+- *Information & Communication*: -0.02% (상위: Informet(+15.7%), BRANU In(+10.2%))
+- *Electric Appliances*: -0.05% (상위: TWINBIRD(+31.4%), Japan Di(+22.4%))
+- *Chemicals*: -0.31% (상위: KANTO DE(+6.3%), HOKKO CH(+4.9%))
+- *Transportation Equipment*: -0.56% (상위: DAIDO ME(+8.7%), TOYODA G(+3.1%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *6181.T* (Tameny Inc.) | ¥100 (*+42.86%*)
+2. *6897.T* (TWINBIRD CORPORATION) | ¥724 (*+31.40%*)
+3. *6740.T* (Japan Display Inc.) | ¥60 (*+22.45%*)
+4. *4664.T* (JAPAN RELIANCE SERVI) | ¥909 (*+19.61%*)
+5. *9256.T* (Succeed co.,ltd.) | ¥4,440 (*+18.72%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *5856.T* (Life Intelligent Ent) | ¥2 (*-33.33%*)
+2. *4265.T* (Institution for a Gl) | ¥321 (*-15.53%*)
+3. *149A.T* (Thinca Co.,Ltd.) | ¥849 (*-15.10%*)
+4. *4069.T* (BlueMeme Inc.) | ¥670 (*-14.87%*)
+5. *4381.T* (BPLATS,Inc.) | ¥197 (*-14.35%*)
+
+📂 *전체 3,712개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-25 15:30:01,747 - INFO - Loading environment variables from .env file...
+2026-06-25 15:30:01,749 - INFO - ==================================================
+2026-06-25 15:30:01,749 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-06-25 15:30:01,749 - INFO - ==================================================
+2026-06-25 15:30:02,582 - INFO - Processing trading date: 2026-06-25
+2026-06-25 15:30:02,582 - INFO - Scraping JPX listed issues Excel URL...
+2026-06-25 15:30:02,764 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-06-25 15:30:03,016 - INFO - Total metadata stocks loaded: 3739
+2026-06-25 15:30:03,016 - INFO - Downloading daily prices for 3739 tickers in chunks of 300...
+2026-06-25 15:30:03,821 - ERROR - $1726.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:06,795 - ERROR - 
+1 Failed download:
+2026-06-25 15:30:06,796 - ERROR - ['1726.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:08,113 - ERROR - $2540.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:18,525 - ERROR - $2984.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:18,831 - ERROR - $2983.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:19,726 - ERROR - $2493.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:19,912 - ERROR - 
+4 Failed downloads:
+2026-06-25 15:30:19,912 - ERROR - ['2540.T', '2984.T', '2983.T', '2493.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:23,847 - ERROR - $3294.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:31,306 - ERROR - 
+1 Failed download:
+2026-06-25 15:30:31,307 - ERROR - ['3294.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:36,765 - ERROR - $4556.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:46,893 - ERROR - $4259.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:47,704 - ERROR - 
+2 Failed downloads:
+2026-06-25 15:30:47,704 - ERROR - ['4556.T', '4259.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:49,619 - ERROR - $4974.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:51,868 - ERROR - 
+1 Failed download:
+2026-06-25 15:30:51,868 - ERROR - ['4974.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:52,600 - ERROR - $6173.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:30:55,452 - ERROR - $6201.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:03,481 - ERROR - $5900.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:03,486 - ERROR - 
+3 Failed downloads:
+2026-06-25 15:31:03,486 - ERROR - ['6173.T', '6201.T', '5900.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:07,014 - ERROR - $6670.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:16,293 - ERROR - 
+1 Failed download:
+2026-06-25 15:31:16,293 - ERROR - ['6670.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:16,928 - ERROR - $7229.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:20,441 - ERROR - 
+1 Failed download:
+2026-06-25 15:31:20,441 - ERROR - ['7229.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:33,623 - ERROR - $7483.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:33,633 - ERROR - 
+1 Failed download:
+2026-06-25 15:31:33,633 - ERROR - ['7483.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:35,177 - ERROR - $7999.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:45,649 - ERROR - 
+1 Failed download:
+2026-06-25 15:31:45,649 - ERROR - ['7999.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:46,260 - ERROR - $9338.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:47,641 - ERROR - $9067.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:59,035 - ERROR - $9404.T: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:31:59,045 - ERROR - 
+3 Failed downloads:
+2026-06-25 15:31:59,045 - ERROR - ['9338.T', '9067.T', '9404.T']: possibly delisted; no price data found  (period=5d)
+2026-06-25 15:32:01,661 - INFO - Successfully downloaded price changes for 3718 stocks.
+2026-06-25 15:32:01,663 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260625.xlsx...
+2026-06-25 15:32:02,157 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-25 15:32:03,195 - INFO - Report text sent successfully to Telegram.
+2026-06-25 15:32:03,195 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-25 15:32:06,031 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-06-25*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *Electric Appliances* (+2.45%)
+2. *Precision Instruments* (+2.01%)
+3. *Chemicals* (+1.73%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *Mining* (-1.17%)
+2. *Insurance* (-0.99%)
+3. *Oil and Coal Products* (-0.47%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *Electric Appliances*: +2.45% (상위: QD Laser(+18.1%), MEDIA LI(+17.5%))
+- *Chemicals*: +1.73% (상위: Sakai Ch(+15.1%), ReproCEL(+9.2%))
+- *Transportation Equipment*: +0.76% (상위: AISAN IN(+9.2%), TANAKA S(+8.9%))
+- *Pharmaceutical*: +0.40% (상위: Heartsee(+5.8%), Perseus (+5.7%))
+- *Information & Communication*: +0.31% (상위: Smartval(+25.3%), SOFTTEX (+20.3%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *5721.T* (S Crypto Energy Inc.) | ¥71 (*+26.79%*)
+2. *9417.T* (Smartvalue Co.,Ltd.) | ¥391 (*+25.32%*)
+3. *2962.T* (TECNISCO,LTD.) | ¥1,669 (*+21.91%*)
+4. *550A.T* (SOFTTEX Co.,Ltd.) | ¥2,368 (*+20.33%*)
+5. *7352.T* (TWOSTONE&Sons Inc.) | ¥365 (*+20.07%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *5856.T* (Life Intelligent Ent) | ¥1 (*-66.67%*)
+2. *6181.T* (Tameny Inc.) | ¥81 (*-19.00%*)
+3. *4833.T* (Def consulting,inc.) | ¥34 (*-17.07%*)
+4. *6897.T* (TWINBIRD CORPORATION) | ¥650 (*-10.96%*)
+5. *6753.T* (Sharp Corporation) | ¥593 (*-10.76%*)
+
+📂 *전체 3,718개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-26 15:30:01,791 - INFO - Loading environment variables from .env file...
+2026-06-26 15:30:01,793 - INFO - ==================================================
+2026-06-26 15:30:01,793 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-06-26 15:30:01,793 - INFO - ==================================================
+2026-06-26 15:30:07,601 - INFO - Processing trading date: 2026-06-26
+2026-06-26 15:30:07,601 - INFO - Scraping JPX listed issues Excel URL...
+2026-06-26 15:30:08,053 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-06-26 15:30:08,652 - INFO - Total metadata stocks loaded: 3739
+2026-06-26 15:30:08,652 - INFO - Downloading daily prices for 3739 tickers in chunks of 300...
+2026-06-26 15:30:11,974 - ERROR - $1726.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:13,229 - ERROR - 
+1 Failed download:
+2026-06-26 15:30:13,230 - ERROR - ['1726.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:15,185 - ERROR - $2540.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:26,109 - ERROR - $2480.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:26,112 - ERROR - 
+2 Failed downloads:
+2026-06-26 15:30:26,112 - ERROR - ['2540.T', '2480.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:27,703 - ERROR - $3294.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:39,351 - ERROR - 
+1 Failed download:
+2026-06-26 15:30:39,352 - ERROR - ['3294.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:55,265 - ERROR - $4556.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:56,530 - ERROR - $4659.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:57,930 - ERROR - 
+2 Failed downloads:
+2026-06-26 15:30:57,930 - ERROR - ['4556.T', '4659.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:30:59,588 - ERROR - $4974.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:08,591 - ERROR - 
+1 Failed download:
+2026-06-26 15:31:08,591 - ERROR - ['4974.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:10,846 - ERROR - $6201.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:12,715 - ERROR - $6173.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:14,299 - ERROR - 
+2 Failed downloads:
+2026-06-26 15:31:14,299 - ERROR - ['6201.T', '6173.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:16,570 - ERROR - $6670.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:24,690 - ERROR - $6333.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:24,698 - ERROR - 
+2 Failed downloads:
+2026-06-26 15:31:24,698 - ERROR - ['6670.T', '6333.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:27,551 - ERROR - $7229.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:38,249 - ERROR - $6859.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:39,146 - ERROR - $6929.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:39,149 - ERROR - 
+3 Failed downloads:
+2026-06-26 15:31:39,149 - ERROR - ['7229.T', '6859.T', '6929.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:53,023 - ERROR - $7808.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:53,454 - ERROR - $7803.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:53,458 - ERROR - 
+2 Failed downloads:
+2026-06-26 15:31:53,459 - ERROR - ['7808.T', '7803.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:31:55,118 - ERROR - $7999.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:00,795 - ERROR - 
+1 Failed download:
+2026-06-26 15:32:00,796 - ERROR - ['7999.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:02,932 - ERROR - $9338.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:03,559 - ERROR - $9067.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:13,096 - ERROR - $9434.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:13,839 - ERROR - 
+3 Failed downloads:
+2026-06-26 15:32:13,839 - ERROR - ['9338.T', '9067.T', '9434.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:15,908 - ERROR - $9927.T: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:16,735 - ERROR - 
+1 Failed download:
+2026-06-26 15:32:16,735 - ERROR - ['9927.T']: possibly delisted; no price data found  (period=5d)
+2026-06-26 15:32:17,076 - INFO - Successfully downloaded price changes for 3713 stocks.
+2026-06-26 15:32:17,078 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260626.xlsx...
+2026-06-26 15:32:17,593 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-26 15:32:18,717 - INFO - Report text sent successfully to Telegram.
+2026-06-26 15:32:18,717 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-26 15:32:22,384 - INFO - Excel document sent successfully to Telegram.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-06-26*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *Banks* (+0.81%)
+2. *Warehousing and Harbor Transportation Service* (+0.67%)
+3. *Construction* (+0.44%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *Electric Appliances* (-2.21%)
+2. *Nonferrous Metals* (-2.11%)
+3. *Machinery* (-1.47%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *Transportation Equipment*: -0.30% (상위: TEIN,INC(+2.7%), TOYODA G(+2.5%))
+- *Information & Communication*: -0.61% (상위: CERES IN(+19.7%), G-NEXT I(+17.4%))
+- *Pharmaceutical*: -0.80% (상위: Chiome B(+4.5%), Oncolys (+3.4%))
+- *Chemicals*: -0.90% (상위: ISE CHEM(+19.0%), Kao Corp(+5.0%))
+- *Electric Appliances*: -2.21% (상위: JAPAN RE(+7.3%), Japan Di(+7.3%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *3696.T* (CERES INC.) | ¥2,033 (*+19.66%*)
+2. *4107.T* (ISE CHEMICALS CORPOR) | ¥4,385 (*+19.00%*)
+3. *4179.T* (G-NEXT Inc.) | ¥539 (*+17.43%*)
+4. *4664.T* (JAPAN RELIANCE SERVI) | ¥1,240 (*+16.98%*)
+5. *9256.T* (Succeed co.,ltd.) | ¥5,410 (*+14.86%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *5856.T* (Life Intelligent Ent) | ¥1 (*-66.67%*)
+2. *3133.T* (kaihan co.,Ltd.) | ¥71 (*-41.32%*)
+3. *8746.T* (unbanked inc.) | ¥146 (*-25.51%*)
+4. *6072.T* (Jibannet Holdings Co) | ¥925 (*-21.48%*)
+5. *2354.T* (YE DIGITAL Corporati) | ¥769 (*-15.21%*)
+
+📂 *전체 3,713개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*

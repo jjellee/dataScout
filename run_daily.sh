@@ -46,14 +46,14 @@ echo "Step 3: Running stock supply-demand screener..."
 echo "Step 4: Collecting Korean insider trades..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python kr_insider_collector.py
 
-# 5. Run Japan MLCC national export update check
-echo "Step 5: Checking for Japan MLCC national export updates..."
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python fetch_japan_mlcc.py
+# 5. Run Japan multi-HS-code export tracker (16 codes: MLCC, Memory, InP, AlN, Photoresists, Si Wafer, ABF, Optical Fiber/Cable, Semi Equipment, etc.)
+echo "Step 5: Checking for Japan export data updates (16 HS codes)..."
+/home/inhyuk/projects/ExportImportAutomation/venv/bin/python fetch_japan_exports.py
 
 # 6. Git commit & push data and charts to GitHub
 echo "Step 6: Committing and pushing to GitHub..."
-git add data_kr/ data_us/ data_dart/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png
-git commit -m "auto: daily market data, screening, DART, KR insider and Japan MLCC update [skip ci]"
+git add data_kr/ data_us/ data_dart/ data_jp/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_exports.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png us_disclosure_watchlist.json user_requested_hs_codes_list.md
+git commit -m "auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]"
 git push origin main
 
 echo "================================================================="
