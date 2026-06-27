@@ -304,15 +304,12 @@ def generate_chart(prefix, name_kr, name_en):
     ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
     fig.autofmt_xdate()
 
-    plt.title(f"일본 월별 수출 추이: {name_kr}\n[HS Code: {name_en}]",
+    plt.title(f"일본 월별 수출 추이: {name_kr}",
               fontsize=13, fontweight='bold', pad=12)
 
     lines1, labels1 = ax1.get_legend_handles_labels()
     ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left',
                frameon=True, facecolor='white', edgecolor='none', fontsize=9)
-
-    plt.figtext(0.13, 0.01, "출처: 일본 재무성 무역통계 (전국 합계 기준)",
-                fontsize=7, color='gray', style='italic')
 
     plt.tight_layout()
     chart_path = os.path.join(DATA_DIR, f"chart_{prefix}.png")
@@ -496,12 +493,9 @@ def main():
 
                 caption = (
                     f"📈 *일본 수출 데이터 업데이트: {name_kr}*\n"
-                    f"HS Code: `{stat9}`\n"
                     f"━━━━━━━━━━━━━━━\n"
                     f"📅 최신 월: {latest_date}\n"
-                    f"💰 수출액: {latest_val:.2f}십억 엔\n"
-                    f"━━━━━━━━━━━━━━━\n"
-                    f"_출처: 일본 재무성 무역통계_"
+                    f"💰 수출액: {latest_val:.2f}십억 엔"
                 )
 
                 ok = send_telegram_photo(chart_path, caption)
