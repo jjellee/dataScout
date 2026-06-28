@@ -396,7 +396,7 @@ def main():
             else:
                 translated_title = translate_zh_to_ko(details['title'])
 
-                # Gemini AI summary
+                # Gemini AI summary (generated in parallel with translation)
                 gemini_summary = ""
                 body_for_summary = details['title'] + "\n" + "\n".join(details['paragraphs'])
                 gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
@@ -417,12 +417,9 @@ def main():
                     f"({details['title']})"
                 )
 
-                # Prepend Gemini AI summary first, then original summary
-                if gemini_summary:
-                    translated_paragraphs.insert(0, f"🤖 *AI 요약:*\n{gemini_summary}")
+                # Prepend original summary if available
                 if translated_summary:
-                    idx = 1 if gemini_summary else 0
-                    translated_paragraphs.insert(idx, f"📋 *요약:* {translated_summary}")
+                    translated_paragraphs.insert(0, f"📋 *요약:* {translated_summary}")
 
                 footer_text = (
                     f"=============================\n"
@@ -435,6 +432,12 @@ def main():
                     logger.info(f"Sending full-text alert to Telegram...")
                     send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
                     logger.info("Full-text alert sent.")
+
+                    # Send Gemini AI summary as a separate follow-up message
+                    if gemini_summary:
+                        summary_msg = f"🤖 *AI 요약: {translated_title}*\n\n{gemini_summary}"
+                        send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
+                        logger.info("Gemini AI summary sent.")
 
         processed_count += 1
         time.sleep(2.0)
