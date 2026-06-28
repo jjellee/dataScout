@@ -536,16 +536,48 @@ def main():
                 df_monthly = convert_cumulative_to_monthly(df)
                 if df_monthly.empty:
                     continue
-                latest = df_monthly.sort_values('Date').iloc[-1]
+                df_monthly = df_monthly.sort_values('Date')
+                latest = df_monthly.iloc[-1]
                 latest_date = latest['Date'].strftime('%Y-%m')
                 latest_val = latest['Value_Thousand_JPY'] / 1_000_000.0
+                latest_wt = latest['Weight_KG']
+                latest_unit = (latest['Value_Thousand_JPY'] / latest_wt) if latest_wt > 0 else 0
 
-                caption = (
-                    f"📈 *일본 수출 데이터 업데이트: {name_kr}*\n"
-                    f"━━━━━━━━━━━━━━━\n"
-                    f"📅 최신 월: {latest_date}\n"
-                    f"💰 수출액: {latest_val:.2f}십억 엔"
-                )
+                # MoM: compare with previous month
+                mom_str = ""
+                if len(df_monthly) >= 2:
+                    prev = df_monthly.iloc[-2]
+                    prev_val = prev['Value_Thousand_JPY']
+                    if prev_val > 0:
+                        mom_pct = (latest['Value_Thousand_JPY'] - prev_val) / prev_val * 100
+                        arrow = "🔺" if mom_pct > 0 else "🔻" if mom_pct < 0 else "➖"
+                        mom_str = f"{arrow} MoM: {mom_pct:+.1f}%"
+
+                # YoY: compare with same month last year
+                yoy_str = ""
+                latest_dt = latest['Date']
+                yoy_target = df_monthly[
+                    (df_monthly['Date'].dt.year == latest_dt.year - 1) &
+                    (df_monthly['Date'].dt.month == latest_dt.month)
+                ]
+                if not yoy_target.empty:
+                    yoy_val = yoy_target.iloc[0]['Value_Thousand_JPY']
+                    if yoy_val > 0:
+                        yoy_pct = (latest['Value_Thousand_JPY'] - yoy_val) / yoy_val * 100
+                        arrow = "🔺" if yoy_pct > 0 else "🔻" if yoy_pct < 0 else "➖"
+                        yoy_str = f"{arrow} YoY: {yoy_pct:+.1f}%"
+
+                caption = f"📈 *일본 수출 데이터 업데이트: {name_kr}*\n"
+                caption += f"━━━━━━━━━━━━━━━\n"
+                caption += f"📅 최신 월: {latest_date}\n"
+                caption += f"💰 수출액: {latest_val:.1f}십억 엔\n"
+                if latest_unit > 0:
+                    caption += f"📦 수출 단가: {latest_unit:.1f}천엔/KG\n"
+                caption += f"━━━━━━━━━━━━━━━\n"
+                if yoy_str:
+                    caption += f"{yoy_str}\n"
+                if mom_str:
+                    caption += f"{mom_str}"
 
                 ok = send_telegram_photo(chart_path, caption)
                 status = "✅" if ok else "❌"
