@@ -543,41 +543,52 @@ def main():
                 latest_wt = latest['Weight_KG']
                 latest_unit = (latest['Value_Thousand_JPY'] / latest_wt) if latest_wt > 0 else 0
 
-                # MoM: compare with previous month
-                mom_str = ""
+                # Helper: compute unit price for a row
+                def _unit(row):
+                    return row['Value_Thousand_JPY'] / row['Weight_KG'] if row['Weight_KG'] > 0 else 0
+
+                # Helper: format change %
+                def _fmt(pct):
+                    arrow = "🔺" if pct > 0 else "🔻" if pct < 0 else "➖"
+                    return f"{arrow}{pct:+.1f}%"
+
+                # MoM
+                val_mom, unit_mom = "", ""
                 if len(df_monthly) >= 2:
                     prev = df_monthly.iloc[-2]
-                    prev_val = prev['Value_Thousand_JPY']
-                    if prev_val > 0:
-                        mom_pct = (latest['Value_Thousand_JPY'] - prev_val) / prev_val * 100
-                        arrow = "🔺" if mom_pct > 0 else "🔻" if mom_pct < 0 else "➖"
-                        mom_str = f"{arrow} MoM: {mom_pct:+.1f}%"
+                    if prev['Value_Thousand_JPY'] > 0:
+                        val_mom = _fmt((latest['Value_Thousand_JPY'] - prev['Value_Thousand_JPY']) / prev['Value_Thousand_JPY'] * 100)
+                    prev_u = _unit(prev)
+                    if prev_u > 0 and latest_unit > 0:
+                        unit_mom = _fmt((latest_unit - prev_u) / prev_u * 100)
 
-                # YoY: compare with same month last year
-                yoy_str = ""
+                # YoY
+                val_yoy, unit_yoy = "", ""
                 latest_dt = latest['Date']
                 yoy_target = df_monthly[
                     (df_monthly['Date'].dt.year == latest_dt.year - 1) &
                     (df_monthly['Date'].dt.month == latest_dt.month)
                 ]
                 if not yoy_target.empty:
-                    yoy_val = yoy_target.iloc[0]['Value_Thousand_JPY']
-                    if yoy_val > 0:
-                        yoy_pct = (latest['Value_Thousand_JPY'] - yoy_val) / yoy_val * 100
-                        arrow = "🔺" if yoy_pct > 0 else "🔻" if yoy_pct < 0 else "➖"
-                        yoy_str = f"{arrow} YoY: {yoy_pct:+.1f}%"
+                    yoy_row = yoy_target.iloc[0]
+                    if yoy_row['Value_Thousand_JPY'] > 0:
+                        val_yoy = _fmt((latest['Value_Thousand_JPY'] - yoy_row['Value_Thousand_JPY']) / yoy_row['Value_Thousand_JPY'] * 100)
+                    yoy_u = _unit(yoy_row)
+                    if yoy_u > 0 and latest_unit > 0:
+                        unit_yoy = _fmt((latest_unit - yoy_u) / yoy_u * 100)
 
                 caption = f"📈 *일본 수출 데이터 업데이트: {name_kr}*\n"
                 caption += f"━━━━━━━━━━━━━━━\n"
-                caption += f"📅 최신 월: {latest_date}\n"
-                caption += f"💰 수출액: {latest_val:.1f}십억 엔\n"
+                caption += f"📅 최신 월: {latest_date}\n\n"
+                caption += f"💰 *수출액:* {latest_val:.1f}십억 엔"
+                if val_yoy or val_mom:
+                    parts = [p for p in [val_yoy and f"YoY {val_yoy}", val_mom and f"MoM {val_mom}"] if p]
+                    caption += f"\n   {' / '.join(parts)}"
                 if latest_unit > 0:
-                    caption += f"📦 수출 단가: {latest_unit:.1f}천엔/KG\n"
-                caption += f"━━━━━━━━━━━━━━━\n"
-                if yoy_str:
-                    caption += f"{yoy_str}\n"
-                if mom_str:
-                    caption += f"{mom_str}"
+                    caption += f"\n📦 *수출 단가:* {latest_unit:.1f}천엔/KG"
+                    if unit_yoy or unit_mom:
+                        parts = [p for p in [unit_yoy and f"YoY {unit_yoy}", unit_mom and f"MoM {unit_mom}"] if p]
+                        caption += f"\n   {' / '.join(parts)}"
 
                 ok = send_telegram_photo(chart_path, caption)
                 status = "✅" if ok else "❌"
