@@ -57,36 +57,36 @@ if os.path.exists(env_path):
                 os.environ[k.strip()] = v.strip().strip("'\"")
 
 # ---- HS Code Configuration ---- #
-# Each entry: (search_6digit, stat_9digit_or_pattern, name_kr, name_en, csv_prefix)
+# Each entry: (search_6digit, stat_9digit_or_pattern, name_kr, name_en, csv_prefix, companies)
 # stat_9digit: exact code to match, or "SUM:XXXX.XX" to sum ALL subdivisions under that prefix
 HS_CODES = [
     # -- Components & Materials --
-    ("853224", "SUM:8532.24", "MLCC (적층 세라믹 콘덴서)", "MLCC", "mlcc"),
-    ("854232", "SUM:8542.32", "기억소자 (메모리 반도체)", "Memory Semiconductors", "memory"),
-    ("381800", "3818.00-900", "InP 웨이퍼 (화합물 기판)", "InP Wafer (Compound)", "inp_wafer"),
-    ("381800", "3818.00-100", "실리콘 웨이퍼", "Silicon Wafers", "si_wafer"),
-    ("285000", "SUM:2850.00", "질화알루미늄 (AlN)", "Aluminum Nitride (AlN)", "aln"),
-    ("370790", "SUM:3707.90", "포토레지스트 (감광액)", "Photoresists", "photoresist"),
-    ("390730", "SUM:3907.30", "고기능 에폭시 수지 (ABF)", "Epoxy Resins (ABF)", "abf_epoxy"),
+    ("853224", "SUM:8532.24", "MLCC (적층 세라믹 콘덴서)", "MLCC", "mlcc", "무라타, TDK, 태양유전"),
+    ("854232", "SUM:8542.32", "기억소자 (메모리 반도체)", "Memory Semiconductors", "memory", "키옥시아, 마이크론 히로시마"),
+    ("381800", "3818.00-900", "InP 웨이퍼 (화합물 기판)", "InP Wafer (Compound)", "inp_wafer", "스미토모 전공"),
+    ("381800", "3818.00-100", "실리콘 웨이퍼", "Silicon Wafers", "si_wafer", "신에츠 화학, SUMCO"),
+    ("285000", "SUM:2850.00", "질화알루미늄 (AlN)", "Aluminum Nitride (AlN)", "aln", "토쿠야마, 도요알루미늄"),
+    ("370790", "SUM:3707.90", "포토레지스트 (감광액)", "Photoresists", "photoresist", "JSR, 신에츠 화학, TOK"),
+    ("390730", "SUM:3907.30", "고기능 에폭시 수지 (ABF)", "Epoxy Resins (ABF)", "abf_epoxy", "아지노모토, 쇼와덴코"),
     # -- Optical Networks --
-    ("900110", "SUM:9001.10", "광섬유 (Optical Fiber)", "Optical Fiber", "optical_fiber"),
-    ("854470", "SUM:8544.70", "광케이블 (Optical Cables)", "Optical Fiber Cables", "optical_cable"),
+    ("900110", "SUM:9001.10", "광섬유 (Optical Fiber)", "Optical Fiber", "optical_fiber", "후루카와 전공, 스미토모 전공"),
+    ("854470", "SUM:8544.70", "광케이블 (Optical Cables)", "Optical Fiber Cables", "optical_cable", "후지쿠라, 스미토모 전공"),
     # -- Semiconductor Equipment (8486.20 has only one subdivision: -000) --
-    ("848620", "8486.20-000", "반도체 제조장비 (통합)", "Semiconductor Mfg Equipment", "semi_equip"),
+    ("848620", "8486.20-000", "반도체 제조장비 (통합)", "Semiconductor Mfg Equipment", "semi_equip", "TEL, 스크린, 히타치 하이테크"),
     # -- Tester --
-    ("903082", "SUM:9030.82", "측정·검사 장비 (Tester)", "Wafer/Device Tester", "tester"),
+    ("903082", "SUM:9030.82", "측정·검사 장비 (Tester)", "Wafer/Device Tester", "tester", "어드반테스트"),
     # -- Other Equipment --
-    ("848640", "SUM:8486.40", "다이싱/어셈블리 (DISCO)", "Dicing/Assembly", "dicing"),
-    ("851580", "SUM:8515.80", "본딩 기기 (Bonding)", "Bonding Machines", "bonding"),
+    ("848640", "SUM:8486.40", "다이싱/어셈블리 (DISCO)", "Dicing/Assembly", "dicing", "디스코 (DISCO)"),
+    ("851580", "SUM:8515.80", "본딩 기기 (Bonding)", "Bonding Machines", "bonding", "신카와, ASM PT"),
 ]
 
 # Group by 6-digit search code to minimize requests
 def group_by_search_code():
     groups = {}
-    for search6, stat9, name_kr, name_en, prefix in HS_CODES:
+    for search6, stat9, name_kr, name_en, prefix, companies in HS_CODES:
         if search6 not in groups:
             groups[search6] = []
-        groups[search6].append((stat9, name_kr, name_en, prefix))
+        groups[search6].append((stat9, name_kr, name_en, prefix, companies))
     return groups
 
 # ---- HTTP Session ---- #
@@ -404,7 +404,7 @@ def main():
     # Find the earliest "last fetched month" across all codes
     last_dates = {}
     for search6, entries in groups.items():
-        for stat9, name_kr, name_en, prefix in entries:
+        for stat9, name_kr, name_en, prefix, companies in entries:
             df = load_existing_data(prefix)
             if not df.empty:
                 last_date = df['Date'].max()
@@ -431,7 +431,7 @@ def main():
             q_month = 1
 
     # Collect new data
-    new_data = {prefix: [] for _, entries in groups.items() for _, _, _, prefix in entries}
+    new_data = {prefix: [] for _, entries in groups.items() for _, _, _, prefix, _ in entries}
     new_records_count = 0
 
     if months_to_query:
@@ -454,7 +454,7 @@ def main():
                 # Collect all target stat codes for this batch
                 target_stats = []
                 for s6 in batch:
-                    for stat9, _, _, _ in groups[s6]:
+                    for stat9, _, _, _, _ in groups[s6]:
                         target_stats.append(stat9)
 
                 print(f"  [{req_count}/{total_requests}] {y}-{m:02d} batch {batch_idx+1}...", end="", flush=True)
@@ -465,7 +465,7 @@ def main():
                     if parsed:
                         month_has_data = True
                         for s6 in batch:
-                            for stat9, name_kr, name_en, prefix in groups[s6]:
+                            for stat9, name_kr, name_en, prefix, companies in groups[s6]:
                                 if stat9 in parsed:
                                     d = parsed[stat9]
                                     # Check if this month is actually new for this prefix
@@ -499,7 +499,7 @@ def main():
     # Save new data
     codes_updated = []
     for search6, entries in groups.items():
-        for stat9, name_kr, name_en, prefix in entries:
+        for stat9, name_kr, name_en, prefix, companies in entries:
             if new_data[prefix]:
                 existing_df = load_existing_data(prefix)
                 new_df = pd.DataFrame(new_data[prefix])
@@ -513,19 +513,19 @@ def main():
                     combined = new_df.sort_values('Date')
 
                 save_data(prefix, combined.to_dict('records'))
-                codes_updated.append((prefix, name_kr, name_en, stat9))
+                codes_updated.append((prefix, name_kr, name_en, stat9, companies))
                 logger.info(f"  Saved {len(new_data[prefix])} new records for {name_kr}")
 
     # Generate charts and upload
     if codes_updated or args.force:
         targets = codes_updated if codes_updated else [
-            (prefix, name_kr, name_en, stat9)
+            (prefix, name_kr, name_en, stat9, companies)
             for _, entries in groups.items()
-            for stat9, name_kr, name_en, prefix in entries
+            for stat9, name_kr, name_en, prefix, companies in entries
         ]
 
         logger.info(f"\nGenerating {len(targets)} charts...")
-        for prefix, name_kr, name_en, stat9 in targets:
+        for prefix, name_kr, name_en, stat9, companies in targets:
             chart_path = generate_chart(prefix, name_kr, name_en)
             if chart_path:
                 logger.info(f"  Chart saved: {chart_path}")
@@ -578,6 +578,7 @@ def main():
                         unit_yoy = _fmt((latest_unit - yoy_u) / yoy_u * 100)
 
                 caption = f"📈 *일본 수출 데이터 업데이트: {name_kr}*\n"
+                caption += f"🏭 {companies}\n"
                 caption += f"━━━━━━━━━━━━━━━\n"
                 caption += f"📅 최신 월: {latest_date}\n\n"
                 caption += f"💰 *수출액:* {latest_val:.1f}십억 엔"
