@@ -65,7 +65,11 @@ def summarize_with_gemini(title, body_text):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.3, "maxOutputTokens": 500}
+            "generationConfig": {
+                "temperature": 0.3,
+                "maxOutputTokens": 2048,
+                "thinkingConfig": {"thinkingBudget": 1024}
+            }
         }
         resp = requests.post(url, json=payload, timeout=30)
         if resp.status_code == 200:
