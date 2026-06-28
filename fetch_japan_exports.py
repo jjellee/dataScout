@@ -261,6 +261,46 @@ CHART_COLORS = {
     'line': '#f15a24',
 }
 
+def convert_cumulative_to_monthly(df):
+    """Convert year-to-date cumulative data to single-month values.
+    
+    The Japan customs M=29 search returns YTD cumulative totals.
+    January = single month value (reset), February = Jan+Feb, etc.
+    To get monthly values: month_value = cumulative[m] - cumulative[m-1]
+    (for January, just use the value as-is since it resets).
+    """
+    df = df.sort_values('Date').copy()
+    df['Year'] = df['Date'].dt.year
+    df['Month'] = df['Date'].dt.month
+    
+    monthly_vals = []
+    for _, row in df.iterrows():
+        year, month = row['Year'], row['Month']
+        if month == 1:
+            # January: already single-month value
+            monthly_vals.append({
+                'Date': row['Date'],
+                'Quantity': row['Quantity'],
+                'Weight_KG': row['Weight_KG'],
+                'Value_Thousand_JPY': row['Value_Thousand_JPY'],
+            })
+        else:
+            # Find previous month's cumulative value in the same year
+            prev = df[(df['Year'] == year) & (df['Month'] == month - 1)]
+            if not prev.empty:
+                prev_row = prev.iloc[0]
+                monthly_vals.append({
+                    'Date': row['Date'],
+                    'Quantity': max(0, row['Quantity'] - prev_row['Quantity']),
+                    'Weight_KG': max(0, row['Weight_KG'] - prev_row['Weight_KG']),
+                    'Value_Thousand_JPY': max(0, row['Value_Thousand_JPY'] - prev_row['Value_Thousand_JPY']),
+                })
+            else:
+                # No previous month data (incomplete year), skip
+                continue
+    
+    return pd.DataFrame(monthly_vals)
+
 def generate_chart(prefix, name_kr, name_en):
     csv_path = get_csv_path(prefix)
     if not os.path.exists(csv_path):
@@ -272,6 +312,12 @@ def generate_chart(prefix, name_kr, name_en):
 
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.sort_values('Date')
+    
+    # Convert cumulative YTD to monthly values
+    df = convert_cumulative_to_monthly(df)
+    if df.empty or len(df) < 2:
+        return None
+    
     df['Value_Billion_JPY'] = df['Value_Thousand_JPY'] / 1_000_000.0
 
     fig, ax1 = plt.subplots(figsize=(12, 6), dpi=150)
@@ -484,10 +530,13 @@ def main():
             if chart_path:
                 logger.info(f"  Chart saved: {chart_path}")
 
-                # Build Telegram caption
+                # Build Telegram caption (use monthly values, not cumulative)
                 df = pd.read_csv(get_csv_path(prefix))
                 df['Date'] = pd.to_datetime(df['Date'])
-                latest = df.sort_values('Date').iloc[-1]
+                df_monthly = convert_cumulative_to_monthly(df)
+                if df_monthly.empty:
+                    continue
+                latest = df_monthly.sort_values('Date').iloc[-1]
                 latest_date = latest['Date'].strftime('%Y-%m')
                 latest_val = latest['Value_Thousand_JPY'] / 1_000_000.0
 
