@@ -580,9 +580,9 @@ def main():
         if f['link'] not in new_seen_list:
             new_seen_list.append(f['link'])
 
-    # Save updated seen state (keep last 200 entries to prevent infinite growth)
-    if len(new_seen_list) > 200:
-        new_seen_list = new_seen_list[-200:]
+    # Save updated seen state (keep last 1000 entries to prevent infinite growth)
+    if len(new_seen_list) > 1000:
+        new_seen_list = new_seen_list[-1000:]
         
     try:
         with open(state_file, "w", encoding="utf-8") as f:
