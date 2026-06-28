@@ -41,11 +41,45 @@ load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
+# Gemini API
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+
 BASE_URL = "https://wallstreetcn.com"
 NEWS_URL = f"{BASE_URL}/news/global"
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
 }
+
+
+def summarize_with_gemini(title, body_text):
+    """Use Gemini 2.5 Flash to generate a concise Korean summary of the article."""
+    if not GEMINI_API_KEY:
+        return ""
+    try:
+        prompt = (
+            "다음 중국어 금융/경제 기사를 읽고, 핵심 내용을 한국어로 3~5문장으로 요약해줘. "
+            "투자자 관점에서 중요한 포인트 위주로 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
+            f"제목: {title}\n\n"
+            f"본문:\n{body_text[:4000]}"
+        )
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.3, "maxOutputTokens": 500}
+        }
+        resp = requests.post(url, json=payload, timeout=30)
+        if resp.status_code == 200:
+            data = resp.json()
+            candidates = data.get("candidates", [])
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts", [])
+                if parts:
+                    return parts[0].get("text", "").strip()
+        else:
+            logger.warning(f"Gemini API error: HTTP {resp.status_code}")
+    except Exception as e:
+        logger.warning(f"Gemini summarization failed: {e}")
+    return ""
 
 
 def translate_zh_to_ko(text):
@@ -358,6 +392,13 @@ def main():
             else:
                 translated_title = translate_zh_to_ko(details['title'])
 
+                # Gemini AI summary
+                gemini_summary = ""
+                body_for_summary = details['title'] + "\n" + "\n".join(details['paragraphs'])
+                gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
+                if gemini_summary:
+                    logger.info("Gemini summary generated.")
+
                 # Translate summary
                 translated_summary = ""
                 if details['summary']:
@@ -372,9 +413,12 @@ def main():
                     f"({details['title']})"
                 )
 
-                # Prepend summary if available
+                # Prepend Gemini AI summary first, then original summary
+                if gemini_summary:
+                    translated_paragraphs.insert(0, f"🤖 *AI 요약:*\n{gemini_summary}")
                 if translated_summary:
-                    translated_paragraphs.insert(0, f"📋 *요약:* {translated_summary}")
+                    idx = 1 if gemini_summary else 0
+                    translated_paragraphs.insert(idx, f"📋 *요약:* {translated_summary}")
 
                 footer_text = (
                     f"=============================\n"
