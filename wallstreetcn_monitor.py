@@ -74,67 +74,53 @@ def translate_zh_to_ko(text):
 
 def fetch_news_list():
     """
-    Scrapes the wallstreetcn.com/news/global page to get the list of articles.
+    Fetches the latest global news articles from the wallstreetcn API.
     Returns a list of dicts: [{'id': str, 'link': str, 'title': str, 'time': str, 'is_vip': bool}]
     """
     articles = []
+    api_url = "https://api-one.wallstcn.com/apiv1/content/articles?channel=global-channel&accept=article&limit=20"
     try:
-        resp = requests.get(NEWS_URL, headers=HEADERS, timeout=15)
+        resp = requests.get(api_url, headers=HEADERS, timeout=15)
         if resp.status_code != 200:
-            logger.error(f"Failed to fetch news page. HTTP {resp.status_code}")
+            logger.error(f"Failed to fetch news API. HTTP {resp.status_code}")
             return articles
 
-        soup = BeautifulSoup(resp.content, 'html.parser')
+        data = resp.json()
+        items = data.get('data', {}).get('items', [])
 
-        # The news list is inside a <ul> tag containing article links
-        ul_tag = None
-        for ul in soup.find_all('ul'):
-            if ul.find('a', href=re.compile(r'/articles/\d+')):
-                ul_tag = ul
-                break
-        if not ul_tag:
-            logger.error("Could not find news list <ul> element.")
-            return articles
+        seen_ids = set()
+        for item in items:
+            article_id = str(item.get('id', ''))
+            if not article_id or article_id in seen_ids:
+                continue
+            seen_ids.add(article_id)
 
-        for item_div in ul_tag.find_all('div', recursive=False):
-            link_tag = item_div.find('a', href=re.compile(r'/articles/\d+'))
-            if not link_tag:
+            title = item.get('title', '').strip()
+            if not title:
                 continue
 
-            href = link_tag.get('href', '').strip()
-            if not href:
-                continue
+            uri = item.get('uri', '')
+            is_vip = '/premium/' in uri or '/member/' in uri
+            full_link = uri if uri.startswith('http') else f"{BASE_URL}/articles/{article_id}"
 
-            # Extract article ID
-            id_match = re.search(r'/articles/(\d+)', href)
-            if not id_match:
-                continue
-            article_id = id_match.group(1)
+            # Convert display_time (unix timestamp) to readable string
+            display_time = item.get('display_time', 0)
+            if display_time:
+                from datetime import datetime, timezone, timedelta
+                dt = datetime.fromtimestamp(display_time, tz=timezone(timedelta(hours=8)))
+                time_str = dt.strftime('%H:%M')
+            else:
+                time_str = ""
 
-            # Determine if VIP
-            is_vip = '/member/' in href
-
-            # Full link
-            full_link = href if href.startswith('http') else f"{BASE_URL}{href}"
-
-            # Extract title from h2
-            h2_tag = item_div.find('h2')
-            title = h2_tag.get_text().strip() if h2_tag else ""
-
-            # Extract time
-            time_tag = item_div.find('time')
-            time_str = time_tag.get_text().strip() if time_tag else ""
-
-            if title:
-                articles.append({
-                    'id': article_id,
-                    'link': full_link,
-                    'title': title,
-                    'time': time_str,
-                    'is_vip': is_vip,
-                })
+            articles.append({
+                'id': article_id,
+                'link': full_link,
+                'title': title,
+                'time': time_str,
+                'is_vip': is_vip,
+            })
     except Exception as e:
-        logger.error(f"Error scraping news page: {e}")
+        logger.error(f"Error fetching news API: {e}")
 
     return articles
 
