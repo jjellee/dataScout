@@ -38,6 +38,10 @@ echo "Step 1: Collecting daily market data..."
 echo "Step 2: Generating cumulative investor charts and uploading to Telegram..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python telegram_reporter.py
 
+# 2b. Run KOSDAQ Pharmaceutical & Biotech supply/demand reporter
+echo "Step 2b: Generating KOSDAQ Pharmaceutical & Biotech supply/demand chart and uploading to Telegram..."
+/home/inhyuk/projects/ExportImportAutomation/venv/bin/python kosdaq_bio_monitor.py
+
 # 3. Run stock supply-demand screener
 echo "Step 3: Running stock supply-demand screener..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python screener.py
@@ -52,7 +56,7 @@ echo "Step 5: Checking for Japan export data updates (16 HS codes)..."
 
 # 6. Git commit & push data and charts to GitHub
 echo "Step 6: Committing and pushing to GitHub..."
-git add data_kr/ data_us/ data_dart/ data_jp/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_exports.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png us_disclosure_watchlist.json user_requested_hs_codes_list.md
+git add data_kr/ data_us/ data_dart/ data_jp/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_exports.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png us_disclosure_watchlist.json user_requested_hs_codes_list.md kosdaq_bio_monitor.py
 git commit -m "auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]"
 git push origin main
 
