@@ -46,37 +46,40 @@ TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 def summarize_with_gemini(title, body_text):
-    """Use Gemini 3.5 Flash to generate a concise Korean summary of the report."""
+    """Use Gemini to generate a concise Korean summary. Falls back from 3.5-flash to 2.5-flash on error."""
     if not GEMINI_API_KEY:
         return ""
-    try:
-        prompt = (
-            "다음 한국어 KOTRA 해외시장 보고서를 읽고, 핵심 내용을 한국어로 요약해줘. "
-            "투자자 관점에서 중요한 포인트 위주로 충분히 상세하게 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
-            f"제목: {title}\n\n"
-            f"본문:\n{body_text[:4000]}"
-        )
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key={GEMINI_API_KEY}"
-        payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": 0.3,
-                "maxOutputTokens": 2048,
-                "thinkingConfig": {"thinkingBudget": 1024}
-            }
+    prompt = (
+        "다음 한국어 KOTRA 해외시장 보고서를 읽고, 핵심 내용을 한국어로 요약해줘. "
+        "투자자 관점에서 중요한 포인트 위주로 충분히 상세하게 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
+        f"제목: {title}\n\n"
+        f"본문:\n{body_text[:4000]}"
+    )
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.3,
+            "maxOutputTokens": 2048,
+            "thinkingConfig": {"thinkingBudget": 1024}
         }
-        resp = requests.post(url, json=payload, timeout=60)
-        if resp.status_code == 200:
-            data = resp.json()
-            candidates = data.get("candidates", [])
-            if candidates:
-                parts = candidates[0].get("content", {}).get("parts", [])
-                if parts:
-                    return parts[0].get("text", "").strip()
-        else:
-            logger.warning(f"Gemini API error: HTTP {resp.status_code}")
-    except Exception as e:
-        logger.warning(f"Gemini summarization failed: {e}")
+    }
+    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
+    for model in models:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+            resp = requests.post(url, json=payload, timeout=60)
+            if resp.status_code == 200:
+                data = resp.json()
+                candidates = data.get("candidates", [])
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts:
+                        logger.info(f"Gemini summary generated ({model}).")
+                        return parts[0].get("text", "").strip()
+            else:
+                logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
+        except Exception as e:
+            logger.warning(f"Gemini summarization failed ({model}): {e}")
     return ""
 
 
