@@ -73,21 +73,29 @@ def summarize_with_gemini(title, body_text):
     }
     models = ["gemini-3.5-flash", "gemini-2.5-flash"]
     for model in models:
-        try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-            resp = requests.post(url, json=payload, timeout=60)
-            if resp.status_code == 200:
-                data = resp.json()
-                candidates = data.get("candidates", [])
-                if candidates:
-                    parts = candidates[0].get("content", {}).get("parts", [])
-                    if parts:
-                        logger.info(f"Gemini summary generated ({model}).")
-                        return parts[0].get("text", "").strip()
-            else:
-                logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
-        except Exception as e:
-            logger.warning(f"Gemini summarization failed ({model}): {e}")
+        for attempt in range(2):
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+                resp = requests.post(url, json=payload, timeout=60)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    candidates = data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        if parts:
+                            logger.info(f"Gemini summary generated ({model}).")
+                            return parts[0].get("text", "").strip()
+                elif resp.status_code in (429, 503):
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
+                    if attempt == 0:
+                        time.sleep(5)
+                        continue
+                else:
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
+                    break
+            except Exception as e:
+                logger.warning(f"Gemini summarization failed ({model}): {e}")
+                break
     return ""
 
 
