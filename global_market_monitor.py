@@ -300,12 +300,29 @@ def get_kr_stock_list(trade_date=None):
             'G5510',
         ]
         
+        # WICS API might not have today's data updated yet.
+        # Find the latest date that actually returns data (try up to 7 days back)
         url = "http://www.wiseindex.com/Index/GetIndexComponets"
         all_stocks = []
+        valid_date_str = date_str
+        
+        # Test code 'G1010' (Energy) to find a working date
+        for day_offset in range(8):
+            test_date = (trade_date if trade_date else datetime.datetime.now()) - datetime.timedelta(days=day_offset)
+            test_date_str = test_date.strftime("%Y%m%d")
+            try:
+                params = {'ceil_yn': 0, 'dt': test_date_str, 'sec_cd': 'G1010'}
+                resp = requests.get(url, params=params, timeout=10)
+                if resp.status_code == 200 and resp.json().get('list'):
+                    valid_date_str = test_date_str
+                    logger.info(f"Found active WICS date: {valid_date_str} (offset: {day_offset} days)")
+                    break
+            except Exception:
+                pass
         
         for code in wics_mid_sectors:
             try:
-                params = {'ceil_yn': 0, 'dt': date_str, 'sec_cd': code}
+                params = {'ceil_yn': 0, 'dt': valid_date_str, 'sec_cd': code}
                 resp = requests.get(url, params=params, timeout=15)
                 items = resp.json().get('list', [])
                 if not items:
@@ -322,7 +339,7 @@ def get_kr_stock_list(trade_date=None):
                 continue
         
         if not all_stocks:
-            logger.error("WICS API returned no data. Falling back to pykrx ticker list.")
+            logger.error("WICS API returned no data even with date search. Falling back to pykrx ticker list.")
             # Fallback: get tickers from pykrx without sector mapping
             for mkt in ["KOSPI", "KOSDAQ"]:
                 tickers = pykrx_stock.get_market_ticker_list(date_str, market=mkt)
