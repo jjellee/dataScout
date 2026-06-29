@@ -250,3 +250,74 @@ KRX 로그인 완료.
 5. *038880* (아이에이) | ₩2,345 (*-30.00%*)
 
 📂 *전체 2,768개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-06-29 16:00:02,517 - INFO - Loading environment variables from .env file...
+2026-06-29 16:00:02,518 - INFO - ==================================================
+2026-06-29 16:00:02,525 - INFO -  Starting Daily KR Market Monitor (Test: False)
+2026-06-29 16:00:02,525 - INFO - ==================================================
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-06-29 16:00:03
+  만료 시간: 2026-06-29 17:00:03
+2026-06-29 16:00:03,521 - INFO - Processing trading date: 2026-06-29
+2026-06-29 16:00:03,521 - INFO - Fetching KR stock list with WICS industry classification from WiseIndex...
+2026-06-29 16:00:04,521 - INFO - Found active WICS date: 20260626 (offset: 3 days)
+2026-06-29 16:00:13,717 - INFO - WICS classification loaded: 2531 stocks, 28 sectors
+2026-06-29 16:00:40,951 - INFO - Added 238 extra tickers from pykrx (classified as '기타'). Total: 2769
+2026-06-29 16:00:40,952 - INFO - Total metadata stocks loaded: 2769
+2026-06-29 16:00:40,952 - INFO - Downloading KR prices for 20260629 using pykrx...
+2026-06-29 16:00:41,894 - INFO - Downloaded price changes for 2769 KR stocks.
+2026-06-29 16:00:41,895 - INFO - Successfully downloaded price changes for 2769 stocks.
+2026-06-29 16:00:41,897 - INFO - Fetching news for sharp movers (±5%)...
+2026-06-29 16:01:06,904 - INFO - Got news for 20 out of 1618 sharp movers
+2026-06-29 16:01:06,906 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_kr/daily_prices/kr_prices_20260629.xlsx...
+2026-06-29 16:01:07,400 - WARNING - Investor trend CSV not found: /home/inhyuk/projects/dataScout/data_kr/20260629/all_stocks_investor_trend.csv
+2026-06-29 16:01:07,400 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-06-29 16:01:08,486 - INFO - Report text sent successfully to Telegram.
+2026-06-29 16:01:08,486 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-06-29 16:01:11,111 - INFO - Excel document sent successfully to Telegram.
+2026-06-29 16:01:11,112 - INFO - Generating Gemini market analysis...
+2026-06-29 16:01:11,867 - WARNING - Gemini API error (gemini-3.5-flash): HTTP 503, retry 1/2
+2026-06-29 16:01:17,586 - WARNING - Gemini API error (gemini-3.5-flash): HTTP 503, retry 2/2
+2026-06-29 16:01:18,369 - WARNING - Gemini API error (gemini-2.5-flash): HTTP 503, retry 1/2
+2026-06-29 16:01:54,912 - WARNING - Gemini API error (gemini-2.5-flash): HTTP 503, retry 2/2
+2026-06-29 16:01:54,912 - WARNING - Gemini market analysis generation skipped or failed.
+
+--- Generated Report Summary ---
+🇰🇷 *[한국 증시 마감 일일 리포트]* 🇰🇷
+📅 *기준일자: 2026-06-29*
+
+🔥 *주요 상승 섹터/산업 TOP 3*
+1. *전자와 전기제품* (+9.10%)
+2. *제약과생물공학* (+8.60%)
+3. *건강관리장비와서비스* (+8.26%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 3*
+1. *기타* (0.98%)
+2. *부동산* (1.21%)
+3. *다각화된금융* (1.66%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *제약과생물공학*: +8.60% (상위: 박셀바이오(+29.8%), 에이비온(+26.9%))
+- *미디어와엔터테인먼트*: +7.73% (상위: 코퍼스코리아(+30.0%), 데브시스터즈(+30.0%))
+- *소프트웨어와서비스*: +7.17% (상위: 버넥트(+29.9%), 와이즈넛(+24.3%))
+- *자동차와부품*: +6.08% (상위: 에이에프더블류(+30.0%), 화신정공(+29.9%))
+- *반도체와반도체장비*: +5.88% (상위: 에이직랜드(+29.8%), 제너셈(+21.3%))
+- *은행*: +4.40% (상위: JB금융지주(+8.8%), 카카오뱅크(+7.1%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *153890* (져스텍) | ₩17,530 (*+40.24%*)
+2. *025620* (차AI헬스케어) | ₩7,410 (*+30.00%*)
+3. *322780* (코퍼스코리아) | ₩1,612 (*+30.00%*)
+4. *111710* (남화산업) | ₩6,370 (*+30.00%*)
+5. *002995* (금호건설우) | ₩26,000 (*+30.00%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *203690* (아크솔루션스) | ₩115 (*-97.40%*)
+2. *032980* (바이온) | ₩3 (*-57.14%*)
+3. *222160* (NPX) | ₩105 (*-49.52%*)
+4. *227100* (프로브잇) | ₩5 (*-44.44%*)
+5. *101390* (아이엠) | ₩21 (*-36.36%*)
+
+📂 *전체 2,769개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
