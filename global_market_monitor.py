@@ -42,6 +42,7 @@ def load_env():
 load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or "-1003877753638"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # ----------------- Helper Functions ----------------- #
 
@@ -127,6 +128,57 @@ def send_telegram_message(token, chat_id, text):
     except Exception as e:
         logger.error(f"Failed to send telegram message: {e}")
         return None
+
+def analyze_market_reasons_with_gemini(market, date_str, report_summary):
+    """Use Gemini 3.5 Flash to analyze the reasons behind daily market index moves."""
+    if not GEMINI_API_KEY:
+        return ""
+    
+    prompt = (
+        f"너는 글로벌 거시 경제와 주식 시장을 분석하는 최고의 금융 애널리스트야. "
+        f"아래 제공된 {market} 주식 시장의 일일 마감 데이터({date_str})를 분석하고, "
+        f"오늘 시장이 상승 또는 하락한 핵심 이유와 시황 분석 요약을 작성해줘.\n"
+        f"이유를 명확히 짚어주되, 3~4개의 핵심 포인트(불릿 포인터 형태)로 가독성 높고 깊이 있게 한국어로 작성해줘.\n"
+        f"도입부 서론이나 꼬리말 없이 바로 본론의 요약 내용만 작성해줘.\n\n"
+        f"--- 마감 데이터 요약 ---\n"
+        f"{report_summary}"
+    )
+    
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.3,
+            "maxOutputTokens": 2048,
+            "thinkingConfig": {"thinkingBudget": 1024}
+        }
+    }
+    
+    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
+    for model in models:
+        for attempt in range(2):
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+                resp = requests.post(url, json=payload, timeout=60)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    candidates = data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        if parts:
+                            logger.info(f"Gemini analysis generated ({model}).")
+                            return parts[0].get("text", "").strip()
+                elif resp.status_code in (429, 503):
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
+                    if attempt == 0:
+                        time.sleep(5)
+                        continue
+                else:
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
+                    break
+            except Exception as e:
+                logger.warning(f"Gemini analysis failed ({model}): {e}")
+                break
+    return ""
 
 def check_market_holiday(market):
     """
@@ -784,6 +836,19 @@ def main():
             logger.info("Excel document sent successfully to Telegram.")
         else:
             logger.error(f"Failed to send Excel document to Telegram: {res_doc}")
+
+        # Generate and send Gemini AI market analysis as a separate message
+        logger.info("Generating Gemini market analysis...")
+        date_str = expected_date.strftime('%Y-%m-%d')
+        # We pass the report_text summary containing index returns and top movers
+        gemini_analysis = analyze_market_reasons_with_gemini(market, date_str, report_text)
+        if gemini_analysis:
+            logger.info("Sending Gemini market analysis to Telegram...")
+            analysis_text = f"🤖 *Gemini AI 마감 시황 분석 ({market} - {date_str})*\n\n{gemini_analysis}"
+            send_telegram_message(TELEGRAM_BOT4_TOKEN, target_chat, analysis_text)
+            logger.info("Gemini market analysis sent.")
+        else:
+            logger.warning("Gemini market analysis generation skipped or failed.")
     else:
         logger.error("Telegram credentials or Chat ID is missing in the environment.")
         
