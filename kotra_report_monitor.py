@@ -42,6 +42,44 @@ load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
+# Gemini API
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+
+def summarize_with_gemini(title, body_text):
+    """Use Gemini 3.5 Flash to generate a concise Korean summary of the report."""
+    if not GEMINI_API_KEY:
+        return ""
+    try:
+        prompt = (
+            "다음 한국어 KOTRA 해외시장 보고서를 읽고, 핵심 내용을 한국어로 요약해줘. "
+            "투자자 관점에서 중요한 포인트 위주로 충분히 상세하게 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
+            f"제목: {title}\n\n"
+            f"본문:\n{body_text[:4000]}"
+        )
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": 0.3,
+                "maxOutputTokens": 2048,
+                "thinkingConfig": {"thinkingBudget": 1024}
+            }
+        }
+        resp = requests.post(url, json=payload, timeout=60)
+        if resp.status_code == 200:
+            data = resp.json()
+            candidates = data.get("candidates", [])
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts", [])
+                if parts:
+                    return parts[0].get("text", "").strip()
+        else:
+            logger.warning(f"Gemini API error: HTTP {resp.status_code}")
+    except Exception as e:
+        logger.warning(f"Gemini summarization failed: {e}")
+    return ""
+
+
 LIST_URL = "https://dream.kotra.or.kr/ajaxf/frIndReport/getIndReportList.do"
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -369,6 +407,14 @@ def main():
                 logger.info(f"Sending preceding text summary part {idx+1}/{len(text_messages)} for report {rpt_no}...")
                 send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
                 time.sleep(1.5) # Sleep briefly to preserve chronological order in Telegram chat
+
+            # Send Gemini AI summary as a separate follow-up message
+            gemini_summary = summarize_with_gemini(title, core_points)
+            if gemini_summary:
+                summary_msg = f"🤖 *AI 요약: {title}*\n\n{gemini_summary}"
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
+                logger.info("Gemini AI summary sent.")
+                time.sleep(1.5)
 
         # 3. Download and upload each PDF attachment (this will be the last message)
         success_all = True

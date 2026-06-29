@@ -43,12 +43,50 @@ TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
+# Gemini API
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+
 AJAX_URL = "https://dream.kotra.or.kr/ajaxf/frNews/getKotraBoardList.do"
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'Referer': 'https://dream.kotra.or.kr/kotranews/cms/com/index.do?MENU_ID=70'
 }
+
+def summarize_with_gemini(title, body_text):
+    """Use Gemini 3.5 Flash to generate a concise Korean summary of the article."""
+    if not GEMINI_API_KEY:
+        return ""
+    try:
+        prompt = (
+            "다음 한국어 해외시장 뉴스 기사를 읽고, 핵심 내용을 한국어로 요약해줘. "
+            "투자자 관점에서 중요한 포인트 위주로 충분히 상세하게 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
+            f"제목: {title}\n\n"
+            f"본문:\n{body_text[:4000]}"
+        )
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": 0.3,
+                "maxOutputTokens": 2048,
+                "thinkingConfig": {"thinkingBudget": 1024}
+            }
+        }
+        resp = requests.post(url, json=payload, timeout=60)
+        if resp.status_code == 200:
+            data = resp.json()
+            candidates = data.get("candidates", [])
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts", [])
+                if parts:
+                    return parts[0].get("text", "").strip()
+        else:
+            logger.warning(f"Gemini API error: HTTP {resp.status_code}")
+    except Exception as e:
+        logger.warning(f"Gemini summarization failed: {e}")
+    return ""
+
 
 def fetch_latest_news_items():
     """
@@ -362,6 +400,14 @@ def main():
             logger.info(f"Sending full-text alert to Telegram chat {chat_id}...")
             send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, paragraphs, footer_text)
             logger.info("Telegram alert sent successfully.")
+
+            # Send Gemini AI summary as a separate follow-up message
+            body_for_summary = title + "\n" + "\n".join(paragraphs)
+            gemini_summary = summarize_with_gemini(title, body_for_summary)
+            if gemini_summary:
+                summary_msg = f"🤖 *AI 요약: {title}*\n\n{gemini_summary}"
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
+                logger.info("Gemini AI summary sent.")
         else:
             logger.warning("Telegram bot token or chat ID is missing. Alert skipped.")
             
