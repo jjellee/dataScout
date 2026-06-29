@@ -20,6 +20,7 @@ import argparse
 import logging
 import time
 import re
+import requests
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,6 +28,22 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger("dramexchange_scraper")
+
+def load_env():
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(env_path):
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ[k.strip()] = v.strip().strip("'\"")
+
+load_env()
+
+# Telegram configurations
+TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
+TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # Data directory
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_us", "dramexchange")
@@ -282,6 +299,116 @@ def main():
             chg_str = f"{chg:+.2f}%" if chg else "0.00%"
             print(f"  {p['item']:<45s} Avg: ${avg:<10.3f} Change: {chg_str}")
     print(f"{'='*60}")
+
+    # Generate chart and upload to Telegram
+    chart_path = generate_ddr5_chart(current_data)
+    if chart_path:
+        send_chart_to_telegram(chart_path, current_data)
+
+
+def generate_ddr5_chart(current_data):
+    """Generate a DDR5 16Gb spot price chart from historical CSV data."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
+    import pandas as pd
+
+    csv_path = os.path.join(DATA_DIR, "ddr5_16gb_spot_history.csv")
+    if not os.path.exists(csv_path):
+        logger.warning("DDR5 CSV not found. Skipping chart.")
+        return None
+
+    try:
+        df = pd.read_csv(csv_path, parse_dates=['Date'])
+        df = df.sort_values('Date')
+
+        # Last 6 months
+        cutoff = df['Date'].max() - pd.Timedelta(days=180)
+        df_chart = df[df['Date'] >= cutoff].copy()
+
+        if len(df_chart) < 2:
+            logger.warning("Not enough data points for chart.")
+            return None
+
+        fig, ax = plt.subplots(figsize=(12, 6))
+
+        ax.plot(df_chart['Date'], df_chart['Price'], color='#2196F3', linewidth=2, label='DDR5 16Gb Spot')
+        ax.fill_between(df_chart['Date'], df_chart['Price'], alpha=0.1, color='#2196F3')
+
+        # Latest price annotation
+        latest = df_chart.iloc[-1]
+        ax.annotate(f"${latest['Price']:.3f}",
+                    xy=(latest['Date'], latest['Price']),
+                    fontsize=12, fontweight='bold', color='#2196F3',
+                    xytext=(10, 10), textcoords='offset points')
+
+        ax.set_title('DDR5 16Gb (2Gx8) Spot Price', fontsize=16, fontweight='bold', pad=15)
+        ax.set_ylabel('Price (USD)', fontsize=12)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%m/%d'))
+        ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
+        ax.grid(True, alpha=0.3)
+        ax.legend(loc='upper left')
+        fig.autofmt_xdate()
+        plt.tight_layout()
+
+        chart_path = os.path.join(DATA_DIR, "ddr5_spot_chart.png")
+        fig.savefig(chart_path, dpi=150, bbox_inches='tight')
+        plt.close(fig)
+        logger.info(f"DDR5 chart saved: {chart_path}")
+        return chart_path
+    except Exception as e:
+        logger.error(f"Chart generation failed: {e}")
+        return None
+
+
+def send_chart_to_telegram(chart_path, current_data):
+    """Upload DDR5 chart to Telegram with price summary caption."""
+    if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_TEST_CHAT_ID:
+        logger.warning("Telegram credentials missing. Skipping upload.")
+        return
+
+    # Build caption with key prices
+    caption = "📊 *DRAMeXchange Spot Price Update*\n"
+    caption += "━━━━━━━━━━━━━━━\n"
+
+    # DRAM spot prices
+    dram_products = current_data.get("dram_spot", [])
+    for p in dram_products:
+        item = p.get('item', '')
+        avg = p.get('session_avg', 0)
+        chg = p.get('change_pct', 0) or 0
+        if avg and ('DDR5' in item or 'DDR4' in item or 'HBM' in item.upper()):
+            arrow = "🔺" if chg > 0 else "🔻" if chg < 0 else "➖"
+            caption += f"{arrow} {item}: ${avg:.3f} ({chg:+.2f}%)\n"
+
+    # NAND spot
+    nand_products = current_data.get("nand_spot", [])
+    if nand_products:
+        caption += "\n*NAND Flash:*\n"
+        for p in nand_products:
+            avg = p.get('session_avg', 0)
+            chg = p.get('change_pct', 0) or 0
+            if avg:
+                arrow = "🔺" if chg > 0 else "🔻" if chg < 0 else "➖"
+                caption += f"{arrow} {p['item']}: ${avg:.3f} ({chg:+.2f}%)\n"
+
+    caption += f"\n📅 {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} KST"
+
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT4_TOKEN}/sendPhoto"
+        with open(chart_path, 'rb') as f:
+            resp = requests.post(url, data={
+                'chat_id': TELEGRAM_TEST_CHAT_ID,
+                'caption': caption,
+                'parse_mode': 'Markdown'
+            }, files={'photo': f}, timeout=30)
+        if resp.status_code == 200:
+            logger.info("DDR5 chart uploaded to Telegram ✅")
+        else:
+            logger.warning(f"Telegram upload failed: HTTP {resp.status_code}")
+    except Exception as e:
+        logger.error(f"Telegram upload error: {e}")
 
 
 def _update_ddr5_csv(current_data, timestamp_str):
