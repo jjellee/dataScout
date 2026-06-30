@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 tech_investing_monitor.py - Monitor Tom's Hardware news and Investing.com analyst ratings,
-fetch full articles, translate & summarize using Gemini, and post to Telegram.
+fetch full articles, translate full body for Tom's Hardware, translate & summarize for Investing.com,
+and post to Telegram.
 """
 
 import os
@@ -74,6 +75,30 @@ def send_telegram_message(token, chat_id, text):
         return None
 
 
+def send_telegram_article(token, chat_id, header, paragraphs, footer):
+    """Sends the article content to Telegram, chunking if needed."""
+    limit = 4000
+    current_chunk = header + "\n\n"
+
+    for p in paragraphs:
+        if len(current_chunk) + len(p) + 2 > limit:
+            send_telegram_message(token, chat_id, current_chunk.strip())
+            time.sleep(1.0)
+            current_chunk = p + "\n\n"
+        else:
+            current_chunk += p + "\n\n"
+
+    if len(current_chunk) + len(footer) + 2 > limit:
+        send_telegram_message(token, chat_id, current_chunk.strip())
+        time.sleep(1.0)
+        current_chunk = footer
+    else:
+        current_chunk += footer
+
+    if current_chunk.strip():
+        send_telegram_message(token, chat_id, current_chunk.strip())
+
+
 def fetch_rss_feed(url):
     """Fetch and parse RSS feed. Returns a list of item dicts."""
     try:
@@ -107,7 +132,7 @@ def fetch_rss_feed(url):
 
 
 def fetch_full_article(link, source_type):
-    """Fetch article page and extract body paragraphs using curl_cffi."""
+    """Fetch article page and extract body paragraphs as a list of strings."""
     try:
         resp = c_requests.get(link, impersonate='chrome120', timeout=20)
         if resp.status_code != 200:
@@ -121,18 +146,58 @@ def fetch_full_article(link, source_type):
             body_div = soup.find('div', id='article-body') or soup.find('div', class_='content')
             if body_div:
                 paragraphs = [p.get_text().strip() for p in body_div.find_all('p') if p.get_text().strip()]
-                return "\n\n".join(paragraphs)
+                return paragraphs
                 
         elif source_type == 'investing':
             # Investing.com body selector
             body_div = soup.find('div', class_=re.compile(r'WYSIWYG'))
             if body_div:
                 paragraphs = [p.get_text().strip() for p in body_div.find_all('p') if p.get_text().strip()]
-                return "\n\n".join(paragraphs)
+                return paragraphs
                 
     except Exception as e:
         logger.error(f"Error fetching full article {link}: {e}")
     return None
+
+
+def translate_en_to_ko(text):
+    """Translates English text to Korean using the free Google Translate API."""
+    if not text:
+        return ""
+    text = " ".join(text.split())
+    if not text.strip():
+        return ""
+
+    try:
+        url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q={quote(text)}"
+        resp = requests.get(url, headers=HEADERS, timeout=10)
+        if resp.status_code == 200:
+            result = resp.json()
+            translated_sentences = []
+            if result and len(result) > 0 and result[0]:
+                for part in result[0]:
+                    if part and len(part) > 0 and part[0]:
+                        translated_sentences.append(part[0])
+            return "".join(translated_sentences)
+    except Exception as e:
+        logger.warning(f"Translation error: {e}")
+    return text
+
+
+def translate_paragraphs(paragraphs):
+    """Translates a list of English paragraphs to Korean."""
+    translated = []
+    for p in paragraphs:
+        if len(p) > 1000:
+            sub_chunks = [p[i:i+1000] for i in range(0, len(p), 1000)]
+            translated_sub = [translate_en_to_ko(sc) for sc in sub_chunks if sc.strip()]
+            tr = " ".join(translated_sub)
+        else:
+            tr = translate_en_to_ko(p)
+        if tr:
+            translated.append(tr)
+        time.sleep(0.3)
+    return translated
 
 
 def translate_and_summarize_gemini(title, body_text):
@@ -209,7 +274,6 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
     processed_ids = []
     
     # Process newest first (items are sorted oldest first or we do reversed if feed is newest first)
-    # Most RSS feeds return newest first, so we reverse to process oldest first to maintain chronological order in Telegram.
     for item in reversed(new_items[:limit]):
         title = item['title']
         link = item['link']
@@ -217,42 +281,68 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
         
         logger.info(f"Processing item: {title}")
         
-        # 1. Fetch full body content
-        body_text = fetch_full_article(link, source_type)
+        # 1. Fetch full body paragraphs
+        paragraphs = fetch_full_article(link, source_type)
         
         # Fallback if page fetch fails
-        if not body_text:
-            logger.warning(f"Could not fetch full article for {link}. Using description as fallback.")
-            body_text = item['description'] or title
+        if not paragraphs:
+            logger.warning(f"Could not fetch full article paragraphs for {link}. Using description as fallback.")
+            paragraphs = [item['description']] if item['description'] else [title]
+
+        if source_type == 'toms_hardware':
+            # ==========================================
+            # Tom's Hardware: FULL body translation
+            # ==========================================
+            translated_title = translate_en_to_ko(title)
+            if not translated_title:
+                translated_title = title
             
-        # 2. Translate and summarize with Gemini
-        gemini_res = translate_and_summarize_gemini(title, body_text)
-        
-        if gemini_res and 'translated_title' in gemini_res and 'summary' in gemini_res:
-            translated_title = gemini_res['translated_title']
-            summary_bullets = gemini_res['summary']
-        else:
-            # Fallback title translation using simple model or keeping original
-            translated_title = title
-            summary_bullets = ["(요약을 생성할 수 없어 원본 문서를 확인하십시오.)"]
+            logger.info("Translating paragraphs for Tom's Hardware...")
+            translated_paragraphs = translate_paragraphs(paragraphs)
             
-        # 3. Format message
-        source_name = "Tom's Hardware 뉴스" if source_type == 'toms_hardware' else "Investing.com 애널리스트 의견"
-        source_emoji = "🖥️" if source_type == 'toms_hardware' else "📊"
-        
-        msg = f"{source_emoji} *[{source_name}]*\n\n"
-        msg += f"📌 *{translated_title}*\n"
-        msg += f"({title})\n\n"
-        msg += "📋 *핵심 요약:*\n"
-        for bullet in summary_bullets:
-            msg += f"- {bullet}\n"
-        msg += f"\n🔗 [기사 원문 보기]({link})\n"
-        msg += f"⏰ {pub_date}"
-        
-        # 4. Send to Telegram
-        if TELEGRAM_BOT4_TOKEN and chat_id:
-            send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
-            time.sleep(2.0)
+            header_text = (
+                f"🖥️ *[Tom's Hardware 뉴스 - 전문 번역]*\n\n"
+                f"📌 *{translated_title}*\n"
+                f"({title})"
+            )
+            
+            footer_text = (
+                f"=============================\n"
+                f"🔗 [기사 원문 보기]({link})\n"
+                f"⏰ {pub_date}"
+            )
+            
+            if TELEGRAM_BOT4_TOKEN and chat_id:
+                logger.info("Sending full-text article to Telegram...")
+                send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
+                time.sleep(2.0)
+                
+        elif source_type == 'investing':
+            # ==========================================
+            # Investing.com: Title translation & 요약
+            # ==========================================
+            body_text = "\n\n".join(paragraphs)
+            gemini_res = translate_and_summarize_gemini(title, body_text)
+            
+            if gemini_res and 'translated_title' in gemini_res and 'summary' in gemini_res:
+                translated_title = gemini_res['translated_title']
+                summary_bullets = gemini_res['summary']
+            else:
+                translated_title = translate_en_to_ko(title) or title
+                summary_bullets = ["(요약을 생성할 수 없어 원본 문서를 확인하십시오.)"]
+                
+            msg = f"📊 *[Investing.com 애널리스트 의견]*\n\n"
+            msg += f"📌 *{translated_title}*\n"
+            msg += f"({title})\n\n"
+            msg += "📋 *핵심 요약:*\n"
+            for bullet in summary_bullets:
+                msg += f"- {bullet}\n"
+            msg += f"\n🔗 [기사 원문 보기]({link})\n"
+            msg += f"⏰ {pub_date}"
+            
+            if TELEGRAM_BOT4_TOKEN and chat_id:
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
+                time.sleep(2.0)
             
         processed_ids.append(item['id'])
         
