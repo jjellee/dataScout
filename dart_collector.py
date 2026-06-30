@@ -27,6 +27,61 @@ def load_env():
 load_env()
 DART_API_KEY = os.getenv("DART_API_KEY")
 
+# --- Disclosure HTML Download Classification --- #
+# must: always download HTML (for Excel processing, no size limit)
+# important: download HTML unless response > 5MB
+# None: skip HTML download entirely
+
+MAX_HTML_SIZE = 5 * 1024 * 1024  # 5MB
+
+def classify_for_download(report_nm):
+    """Classify whether HTML should be downloaded for a disclosure.
+    Returns: 'must', 'important', or None (skip)
+    """
+    nm = str(report_nm).replace(" ", "")
+
+    # Must-save types (for Excel processing - always download regardless of size)
+    must_keywords = [
+        "유상증자결정",
+        "신규시설투자",
+        "유형자산취득결정",
+        "타법인주식및출자증권처분결정",
+        "자기주식취득결정",
+        "자기주식소각결정", "주식소각결정",
+    ]
+    if any(kw in nm for kw in must_keywords):
+        return "must"
+    # Mezzanine (CB/BW/EB)
+    if any(k in nm for k in ["전환사채", "신주인수권부사채", "교환사채"]) and "발행" in nm:
+        return "must"
+    # Supply contracts
+    if "단일판매" in nm or "공급계약체결" in nm:
+        return "must"
+
+    # Important types (download unless response too large)
+    important_keywords = [
+        "무상증자결정",
+        "타법인주식및출자증권취득결정",
+        "최대주주변경",
+        "합병결정", "회사분할결정",
+        "자기주식취득신탁계약", "자기주식신탁계약체결", "신탁계약체결결정",
+        "영업양수결정", "영업양도결정",
+        "특허권취득", "기술도입계약", "업무제휴",
+        "주식배당결정",
+        "관리종목",
+        "상장폐지",
+        "채무보증결정", "타인에대한채무보증결정",
+        "금전대여결정", "담보제공결정",
+        # 5%ㆍ임원보고 (지분공시)
+        "대량보유상황보고서",       # 주식등의대량보유상황보고서
+        "소유주식변동보고서",       # 임원ㆍ주요주주소유주식변동보고서
+        "소유상황보고서",           # 임원ㆍ주요주주특정증권등소유상황보고서
+    ]
+    if any(kw in nm for kw in important_keywords):
+        return "important"
+
+    return None
+
 def fetch_daily_disclosures(target_date):
     """
     지정된 날짜(YYYYMMDD)의 공시 리스트를 페이지네이션을 처리하며 조회합니다.
@@ -81,7 +136,89 @@ def fetch_daily_disclosures(target_date):
             
     return all_reports
 
-def download_disclosure_document(api_key, rcept_no, output_dir, metadata=None):
+def convert_dart_xml_to_html(content_str):
+    """
+    DART 전용 XML을 브라우저에서 올바르게 렌더링되는 HTML로 변환합니다.
+    주요 변환:
+    - <TU ...>, <TE ...> → <TD ...> (DART 테이블 셀 태그)
+    - <TABLE-GROUP ...> → <div>
+    - <COVER>, <SECTION-*>, <BODY ATOCID=...> 등 비표준 태그 → div/section
+    - <LIBRARY> → <div>, <PGBRK> → <hr>
+    - 전체를 proper HTML5 문서로 래핑
+    """
+    # 1. <TU ...>, <TE ...> → <TD ...> (핵심 수정 - 표 내용이 빠져나오는 원인)
+    #    TU = Table Unit (일반 셀), TE = Table Extract (데이터 추출 셀)
+    for tag in ['TU', 'TE', 'tu', 'te']:
+        td_tag = 'TD' if tag.isupper() else 'td'
+        content_str = re.sub(rf'<{tag}(\s|>)', rf'<{td_tag}\1', content_str)
+        content_str = re.sub(rf'<{tag}\b', f'<{td_tag}', content_str)
+        content_str = re.sub(rf'</{tag}>', f'</{td_tag}>', content_str)
+
+    # 2. <TABLE-GROUP ...> → <div>, </TABLE-GROUP> → </div>
+    content_str = re.sub(r'<TABLE-GROUP[^>]*>', '<div class="table-group">', content_str, flags=re.IGNORECASE)
+    content_str = re.sub(r'</TABLE-GROUP>', '</div>', content_str, flags=re.IGNORECASE)
+
+    # 3. DART wrapper tags → div
+    dart_wrapper_tags = [
+        'DOCUMENT', 'COVER', 'COVER-TITLE', 'DOCUMENT-NAME',
+        'FORMULA-VERSION', 'COMPANY-NAME', 'SUMMARY', 'EXTRACTION',
+        'LIBRARY',
+    ]
+    for tag in dart_wrapper_tags:
+        content_str = re.sub(rf'<{tag}[^>]*>', f'<div class="dart-{tag.lower()}">', content_str, flags=re.IGNORECASE)
+        content_str = re.sub(rf'</{tag}>', '</div>', content_str, flags=re.IGNORECASE)
+
+    # 4. <SECTION-* ...> → <div class="section-*">
+    content_str = re.sub(r'<(SECTION-\w+)[^>]*>', r'<div class="dart-\1">', content_str, flags=re.IGNORECASE)
+    content_str = re.sub(r'</(SECTION-\w+)>', '</div>', content_str, flags=re.IGNORECASE)
+
+    # 5. <PGBRK> → <hr> (페이지 구분선)
+    content_str = re.sub(r'<PGBRK[^>]*>', '<hr class="page-break">', content_str, flags=re.IGNORECASE)
+    content_str = re.sub(r'</PGBRK>', '', content_str, flags=re.IGNORECASE)
+
+    # 6. <BODY ATOCID="..."> conflicts with HTML <body> - rename to <div>
+    content_str = re.sub(r'<BODY\s+ATOCID[^>]*>', '<div class="dart-body">', content_str)
+    # Only replace </BODY> that's the DART tag (check if it has no matching <body> with html context)
+    # Since we renamed the opening tag, close tag should also be div
+    # But be careful not to remove the real </body> if present
+    # Strategy: if the file has <DOCUMENT, it's DART XML format
+    if '<div class="dart-document">' in content_str:
+        # This is DART XML - all BODY tags are DART's, not HTML's
+        content_str = re.sub(r'</BODY>', '</div>', content_str)
+
+    # 7. XML declaration을 제거하고 HTML5 wrapper 추가 (DART XML인 경우)
+    is_dart_xml = 'dart-document' in content_str or 'dart4.xsd' in content_str
+    if is_dart_xml:
+        # XML declaration 제거
+        content_str = re.sub(r'<\?xml[^?]*\?>', '', content_str).strip()
+        # xsi 네임스페이스 참조 제거 (이미 div로 변환된 태그에서)
+        content_str = re.sub(r'\s*xmlns:xsi="[^"]*"', '', content_str)
+        content_str = re.sub(r'\s*xsi:noNamespaceSchemaLocation="[^"]*"', '', content_str)
+
+        # proper HTML wrapper
+        content_str = f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {{ font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; margin: 20px; line-height: 1.6; color: #333; }}
+  table {{ border-collapse: collapse; margin: 10px 0; width: 100%; }}
+  td, th {{ border: 1px solid #ddd; padding: 6px 10px; font-size: 13px; vertical-align: top; }}
+  .dart-cover-title {{ font-size: 18px; font-weight: bold; text-align: center; margin: 20px 0; }}
+  .dart-body {{ margin-top: 10px; }}
+  .table-group {{ margin: 10px 0; }}
+  hr.page-break {{ border: none; border-top: 1px dashed #ccc; margin: 30px 0; }}
+</style>
+</head>
+<body>
+{content_str}
+</body>
+</html>"""
+
+    return content_str
+
+def download_disclosure_document(api_key, rcept_no, output_dir, metadata=None, max_size=None):
     """
     DART Open API를 통해 특정 공시의 본문(document.xml)을 다운로드하고
     HTML 파일로 변환하여 저장합니다.
@@ -101,7 +238,12 @@ def download_disclosure_document(api_key, rcept_no, output_dir, metadata=None):
         if response.status_code != 200:
             print(f"[{rcept_no}] Failed to download: HTTP {response.status_code}")
             return False
-            
+
+        # Size check for non-must-save disclosures
+        if max_size and len(response.content) > max_size:
+            print(f"[{rcept_no}] Skipped: too large ({len(response.content) / 1024 / 1024:.1f}MB)")
+            return False
+
         # DART API가 때때로 ZIP 파일이 아닌 에러 JSON/XML을 반환할 수 있으므로 체크
         if not response.content.startswith(b'PK\x03\x04'):
             try:
@@ -144,6 +286,9 @@ def download_disclosure_document(api_key, rcept_no, output_dir, metadata=None):
                 content_str,
                 flags=re.IGNORECASE
             )
+
+            # DART XML → 브라우저 호환 HTML 변환
+            content_str = convert_dart_xml_to_html(content_str)
             
             # Metadata header injection (회사명, 종목코드 등 상단에 표시)
             if metadata:
@@ -214,31 +359,43 @@ def filter_and_save(reports, target_date):
     csv_path = os.path.join(output_dir, "disclosures.csv")
     df_filtered.to_csv(csv_path, index=False, encoding='utf-8-sig')
 
-    # C. 개별 공시 본문(HTML) 다운로드
-    print("Starting download of disclosure documents...")
+    # C. 주요 공시 본문(HTML) 선별 다운로드
+    print("Starting selective download of important disclosure documents...")
     success_count = 0
     skip_count = 0
     fail_count = 0
-    
-    total_docs = len(df_filtered)
+    filtered_out = 0
+
     for index, row in df_filtered.iterrows():
+        report_nm = str(row.get('report_nm', ''))
+        dl_class = classify_for_download(report_nm)
+
+        if dl_class is None:
+            filtered_out += 1
+            continue
+
         rcept_no = str(row['rcept_no'])
         html_path = os.path.join(output_dir, f"{rcept_no}.html")
-        
+
         if os.path.exists(html_path):
             skip_count += 1
             continue
-            
-        print(f"Downloading [{success_count + fail_count + skip_count + 1}/{total_docs}] {rcept_no}...")
-        success = download_disclosure_document(DART_API_KEY, rcept_no, output_dir, metadata=row.to_dict())
+
+        corp_name = str(row.get('corp_name', ''))
+        print(f"  [{dl_class.upper():>9}] [{corp_name}] {report_nm}")
+
+        max_size = MAX_HTML_SIZE if dl_class == "important" else None
+        success = download_disclosure_document(DART_API_KEY, rcept_no, output_dir,
+                                                metadata=row.to_dict(), max_size=max_size)
         if success:
             success_count += 1
         else:
             fail_count += 1
-            
+
         time.sleep(0.1)
-        
-    print(f"Download complete: {success_count} downloaded, {skip_count} skipped, {fail_count} failed.")
+
+    print(f"Download complete: {success_count} new, {skip_count} existing, "
+          f"{fail_count} failed, {filtered_out} skipped (not important)")
 
 def main():
     # 기본값은 오늘 날짜

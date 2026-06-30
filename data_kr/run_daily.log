@@ -42129,3 +42129,365 @@ Step 5: Checking for Japan export data updates (16 HS codes)...
 2026-06-29 20:33:34,172 - INFO - Done.
  no data
 Step 6: Committing and pushing to GitHub...
+[main 9b4ab038] auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]
+ 66 files changed, 20831 insertions(+)
+ create mode 100644 data_dart/20260626/20260626000453.html
+ create mode 100644 data_dart/20260626/20260626000477.html
+ create mode 100644 data_dart/20260626/20260626000485.html
+ create mode 100644 data_dart/20260626/20260626000517.html
+ create mode 100644 data_dart/20260626/20260626000613.html
+ create mode 100644 data_dart/20260626/20260626000652.html
+ create mode 100644 data_dart/20260626/20260626800732.html
+ create mode 100644 data_dart/20260626/20260626800804.html
+ create mode 100644 data_dart/20260626/20260626900775.html
+ create mode 100644 data_dart/20260629/disclosures.csv
+ create mode 100644 data_dart/20260629/disclosures.json
+ create mode 100644 data_jp/daily_prices/jp_prices_20260629.xlsx
+ create mode 100644 data_kr/20260629/all_stocks_investor_trend.csv
+ create mode 100644 data_kr/20260629/macro_indicators.csv
+ create mode 100644 data_kr/20260629/market_investor_trend.csv
+ create mode 100644 data_kr/20260629/sector_investor_trend.csv
+ create mode 100644 data_kr/daily_prices/kr_prices_20260629.xlsx
+ create mode 100644 data_kr/kosdaq_bio_supply_demand.png
+ create mode 100644 data_us/daily_prices/us_prices_20260626.xlsx
+ create mode 100644 data_us/dramexchange/ddr5_16gb_spot_chart.png
+ create mode 100644 data_us/dramexchange/ddr5_spot_chart.png
+ create mode 100644 data_us/dramexchange/scraper.log
+ create mode 100644 data_us/indicator_charts/chart_20260627_broad_market.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_global___region.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_individual.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_lithium___resources.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_macro___safe_haven.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_sector_cyclical.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_sector_defensive.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_tech___semi___sw.png
+ create mode 100644 data_us/indicator_charts/chart_20260627_thematic.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260627.png
+ create mode 100644 data_us/interest_monitor_run.log
+ create mode 100644 data_us/interest_news_run.log
+ create mode 100644 data_us/kotra_monitor.log
+ create mode 100644 data_us/kotra_report_monitor.log
+ create mode 100644 data_us/trendforce_monitor.log
+ create mode 100644 data_us/us_disclosure_monitor.log
+ create mode 100644 data_us/wallstreetcn_monitor.log
+To https://github.com/jjellee/dataScout.git
+   f36e127d..9b4ab038  main -> main
+=================================================================
+ Daily Run Completed: Mon Jun 29 08:33:39 PM KST 2026
+=================================================================
+=================================================================
+ Starting Daily Run: Tue Jun 30 08:30:01 PM KST 2026
+=================================================================
+Step 1: Collecting daily market data...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-06-30 20:30:03
+  만료 시간: 2026-06-30 21:30:03
+==================================================
+ Past 6 Months Batch Data Collector
+==================================================
+Fetching trading day list from 20260101 to 20260630...
+Total trading days to check: 120 days
+
+Already collected: 119 days (Skipping)
+Remaining to collect: 1 days
+Estimated time: ~0.3 minutes
+
+[1/1] Collecting data for: 2026-06-30
+  -> SUCCESS: Collected and saved data for 2026-06-30.
+
+==================================================
+ Batch collection completed!
+==================================================
+Step 2: Generating cumulative investor charts and uploading to Telegram...
+2026-06-30 20:30:50,001 - INFO - Loading environment variables from .env file...
+2026-06-30 20:30:50,002 - INFO - Using Pretendard font from: /home/inhyuk/Downloads/public/static/alternative/Pretendard-Regular.ttf
+2026-06-30 20:30:50,038 - INFO - Generating cumulative charts up to latest date: 20260630
+2026-06-30 20:30:50,038 - INFO - Processing 올릭스 (226950)...
+2026-06-30 20:30:51,310 - INFO - Successfully saved chart for 올릭스 to draw/226950_cumulative.png
+2026-06-30 20:30:51,310 - INFO - Processing 보로노이 (310210)...
+2026-06-30 20:30:52,425 - INFO - Successfully saved chart for 보로노이 to draw/310210_cumulative.png
+2026-06-30 20:30:52,425 - INFO - Processing 디앤디파마텍 (347850)...
+2026-06-30 20:30:53,612 - INFO - Successfully saved chart for 디앤디파마텍 to draw/347850_cumulative.png
+2026-06-30 20:30:53,613 - INFO - Processing 리브스메드 (491000)...
+2026-06-30 20:30:54,728 - INFO - Successfully saved chart for 리브스메드 to draw/491000_cumulative.png
+2026-06-30 20:30:54,728 - INFO - Processing 로킷헬스케어 (376900)...
+2026-06-30 20:30:55,827 - INFO - Successfully saved chart for 로킷헬스케어 to draw/376900_cumulative.png
+2026-06-30 20:30:55,827 - INFO - Processing 파두 (440110)...
+2026-06-30 20:30:56,914 - INFO - Successfully saved chart for 파두 to draw/440110_cumulative.png
+2026-06-30 20:30:56,914 - INFO - Processing 삼성전자 (005930)...
+2026-06-30 20:30:58,005 - INFO - Successfully saved chart for 삼성전자 to draw/005930_cumulative.png
+2026-06-30 20:30:58,005 - INFO - Processing SK하이닉스 (000660)...
+2026-06-30 20:30:59,096 - INFO - Successfully saved chart for SK하이닉스 to draw/000660_cumulative.png
+2026-06-30 20:30:59,096 - INFO - Processing 삼양식품 (003230)...
+2026-06-30 20:31:00,200 - INFO - Successfully saved chart for 삼양식품 to draw/003230_cumulative.png
+2026-06-30 20:31:00,201 - INFO - Processing KODEX 반도체 (091160)...
+2026-06-30 20:31:01,315 - INFO - Successfully saved chart for KODEX 반도체 to draw/091160_cumulative.png
+2026-06-30 20:31:01,315 - INFO - Processing KODEX 2차전지산업 (305720)...
+2026-06-30 20:31:02,412 - INFO - Successfully saved chart for KODEX 2차전지산업 to draw/305720_cumulative.png
+2026-06-30 20:31:02,413 - INFO - Processing KODEX 바이오 (244580)...
+2026-06-30 20:31:03,517 - INFO - Successfully saved chart for KODEX 바이오 to draw/244580_cumulative.png
+2026-06-30 20:31:03,517 - INFO - Processing PLUS K방산 (449450)...
+2026-06-30 20:31:04,591 - INFO - Successfully saved chart for PLUS K방산 to draw/449450_cumulative.png
+2026-06-30 20:31:04,591 - INFO - Processing KODEX 조선TOP10 (0115D0)...
+2026-06-30 20:31:05,680 - INFO - Successfully saved chart for KODEX 조선TOP10 to draw/0115D0_cumulative.png
+2026-06-30 20:31:05,680 - INFO - Processing KODEX 자동차 (091180)...
+2026-06-30 20:31:06,761 - INFO - Successfully saved chart for KODEX 자동차 to draw/091180_cumulative.png
+2026-06-30 20:31:06,761 - INFO - Processing TIGER 화장품 (228790)...
+2026-06-30 20:31:07,860 - INFO - Successfully saved chart for TIGER 화장품 to draw/228790_cumulative.png
+2026-06-30 20:31:07,860 - INFO - Processing 덕산하이메탈 (077360)...
+2026-06-30 20:31:08,957 - INFO - Successfully saved chart for 덕산하이메탈 to draw/077360_cumulative.png
+2026-06-30 20:31:08,957 - INFO - Processing 삼성전기 (009150)...
+2026-06-30 20:31:10,067 - INFO - Successfully saved chart for 삼성전기 to draw/009150_cumulative.png
+2026-06-30 20:31:10,067 - INFO - Processing 삼아알미늄 (006110)...
+2026-06-30 20:31:11,182 - INFO - Successfully saved chart for 삼아알미늄 to draw/006110_cumulative.png
+2026-06-30 20:31:11,182 - INFO - Processing 큐리언트 (115180)...
+2026-06-30 20:31:12,282 - INFO - Successfully saved chart for 큐리언트 to draw/115180_cumulative.png
+2026-06-30 20:31:12,282 - INFO - Processing 인텍플러스 (064290)...
+2026-06-30 20:31:13,405 - INFO - Successfully saved chart for 인텍플러스 to draw/064290_cumulative.png
+2026-06-30 20:31:13,405 - INFO - Processing 예스티 (122640)...
+2026-06-30 20:31:14,508 - INFO - Successfully saved chart for 예스티 to draw/122640_cumulative.png
+2026-06-30 20:31:14,508 - INFO - Processing 엘앤씨바이오 (290650)...
+2026-06-30 20:31:15,613 - INFO - Successfully saved chart for 엘앤씨바이오 to draw/290650_cumulative.png
+2026-06-30 20:31:15,614 - INFO - Processing 파마리서치 (214450)...
+2026-06-30 20:31:16,717 - INFO - Successfully saved chart for 파마리서치 to draw/214450_cumulative.png
+2026-06-30 20:31:16,717 - INFO - Running in PRODUCTION mode. Target channel ID: -1003877753638
+2026-06-30 20:31:16,717 - INFO - Initializing Telethon clients...
+2026-06-30 20:31:16,718 - INFO - Connecting to 91.108.56.103:443/TcpFull...
+2026-06-30 20:31:16,785 - INFO - Connection to 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:31:17,277 - INFO - Main upload client started.
+2026-06-30 20:31:17,361 - INFO - Successfully resolved main channel: 수급 데이터
+2026-06-30 20:31:17,361 - INFO - Connecting to 91.108.56.103:443/TcpFull...
+2026-06-30 20:31:17,427 - INFO - Connection to 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:31:17,890 - INFO - Forwarding Client 2 started.
+2026-06-30 20:31:17,964 - INFO - Successfully resolved forward channel 2: 데이터
+2026-06-30 20:31:18,048 - ERROR - Failed to start/resolve Forwarding Client 2: Could not find the input entity for PeerChannel(channel_id=3877753638) (PeerChannel). Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+2026-06-30 20:31:18,048 - INFO - Connecting to 91.108.56.103:443/TcpFull...
+2026-06-30 20:31:18,113 - INFO - Connection to 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:31:18,567 - INFO - Forwarding Client 3 started.
+2026-06-30 20:31:18,642 - INFO - Successfully resolved forward channel 3: 스터디 수출입데이터
+2026-06-30 20:31:18,714 - ERROR - Failed to start/resolve Forwarding Client 3: Could not find the input entity for PeerChannel(channel_id=3877753638) (PeerChannel). Please read https://docs.telethon.dev/en/stable/concepts/entities.html to find out more details.
+2026-06-30 20:31:18,923 - INFO - Uploading 올릭스 chart to main channel...
+2026-06-30 20:31:19,129 - INFO - Uploading file of 273685 bytes in 3 chunks of 131072
+2026-06-30 20:31:23,149 - INFO - Uploading 보로노이 chart to main channel...
+2026-06-30 20:31:23,353 - INFO - Uploading file of 276852 bytes in 3 chunks of 131072
+2026-06-30 20:31:27,511 - INFO - Uploading 디앤디파마텍 chart to main channel...
+2026-06-30 20:31:27,714 - INFO - Uploading file of 277249 bytes in 3 chunks of 131072
+2026-06-30 20:31:31,721 - INFO - Uploading 리브스메드 chart to main channel...
+2026-06-30 20:31:31,931 - INFO - Uploading file of 276327 bytes in 3 chunks of 131072
+2026-06-30 20:31:36,014 - INFO - Uploading 로킷헬스케어 chart to main channel...
+2026-06-30 20:31:36,201 - INFO - Uploading file of 257571 bytes in 2 chunks of 131072
+2026-06-30 20:31:40,606 - INFO - Uploading 파두 chart to main channel...
+2026-06-30 20:31:40,787 - INFO - Uploading file of 222839 bytes in 2 chunks of 131072
+2026-06-30 20:31:45,019 - INFO - Uploading 삼성전자 chart to main channel...
+2026-06-30 20:31:45,199 - INFO - Uploading file of 225650 bytes in 2 chunks of 131072
+2026-06-30 20:31:49,394 - INFO - Uploading SK하이닉스 chart to main channel...
+2026-06-30 20:31:49,576 - INFO - Uploading file of 216549 bytes in 2 chunks of 131072
+2026-06-30 20:31:53,656 - INFO - Uploading 삼양식품 chart to main channel...
+2026-06-30 20:31:53,840 - INFO - Uploading file of 258959 bytes in 2 chunks of 131072
+2026-06-30 20:31:57,989 - INFO - Uploading KODEX 반도체 chart to main channel...
+2026-06-30 20:31:58,171 - INFO - Uploading file of 238223 bytes in 2 chunks of 131072
+2026-06-30 20:32:02,298 - INFO - Uploading KODEX 2차전지산업 chart to main channel...
+2026-06-30 20:32:02,480 - INFO - Uploading file of 228465 bytes in 2 chunks of 131072
+2026-06-30 20:32:06,611 - INFO - Uploading KODEX 바이오 chart to main channel...
+2026-06-30 20:32:06,791 - INFO - Uploading file of 247883 bytes in 2 chunks of 131072
+2026-06-30 20:32:11,246 - INFO - Uploading PLUS K방산 chart to main channel...
+2026-06-30 20:32:11,427 - INFO - Uploading file of 211396 bytes in 2 chunks of 131072
+2026-06-30 20:32:15,568 - INFO - Uploading KODEX 조선TOP10 chart to main channel...
+2026-06-30 20:32:15,748 - INFO - Uploading file of 238192 bytes in 2 chunks of 131072
+2026-06-30 20:32:19,841 - INFO - Uploading KODEX 자동차 chart to main channel...
+2026-06-30 20:32:20,021 - INFO - Uploading file of 220132 bytes in 2 chunks of 131072
+2026-06-30 20:32:24,032 - INFO - Uploading TIGER 화장품 chart to main channel...
+2026-06-30 20:32:24,211 - INFO - Uploading file of 219730 bytes in 2 chunks of 131072
+2026-06-30 20:32:28,285 - INFO - Uploading 덕산하이메탈 chart to main channel...
+2026-06-30 20:32:28,468 - INFO - Uploading file of 264654 bytes in 3 chunks of 131072
+2026-06-30 20:32:32,561 - INFO - Uploading 삼성전기 chart to main channel...
+2026-06-30 20:32:32,742 - INFO - Uploading file of 235231 bytes in 2 chunks of 131072
+2026-06-30 20:32:36,968 - INFO - Uploading 삼아알미늄 chart to main channel...
+2026-06-30 20:32:37,149 - INFO - Uploading file of 222867 bytes in 2 chunks of 131072
+2026-06-30 20:32:41,062 - INFO - Uploading 큐리언트 chart to main channel...
+2026-06-30 20:32:41,247 - INFO - Uploading file of 251018 bytes in 2 chunks of 131072
+2026-06-30 20:32:45,133 - INFO - Uploading 인텍플러스 chart to main channel...
+2026-06-30 20:32:45,313 - INFO - Uploading file of 213882 bytes in 2 chunks of 131072
+2026-06-30 20:32:49,434 - INFO - Uploading 예스티 chart to main channel...
+2026-06-30 20:32:49,616 - INFO - Uploading file of 246514 bytes in 2 chunks of 131072
+2026-06-30 20:32:53,524 - INFO - Uploading 엘앤씨바이오 chart to main channel...
+2026-06-30 20:32:53,707 - INFO - Uploading file of 249910 bytes in 2 chunks of 131072
+2026-06-30 20:32:57,684 - INFO - Uploading 파마리서치 chart to main channel...
+2026-06-30 20:32:57,866 - INFO - Uploading file of 240938 bytes in 2 chunks of 131072
+2026-06-30 20:33:01,666 - INFO - Disconnecting from 91.108.56.103:443/TcpFull...
+2026-06-30 20:33:01,666 - INFO - Disconnection from 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:33:01,676 - INFO - Disconnecting from 91.108.56.103:443/TcpFull...
+2026-06-30 20:33:01,676 - INFO - Disconnection from 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:33:01,677 - INFO - Disconnecting from 91.108.56.103:443/TcpFull...
+2026-06-30 20:33:01,677 - INFO - Disconnection from 91.108.56.103:443/TcpFull complete!
+2026-06-30 20:33:01,679 - INFO - Telethon clients disconnected.
+Step 2b: Generating KOSDAQ Pharmaceutical & Biotech supply/demand chart and uploading to Telegram...
+2026-06-30 20:33:02,169 - INFO - Loading environment variables from .env file...
+2026-06-30 20:33:02,170 - INFO - Using Pretendard font from: /home/inhyuk/Downloads/public/static/alternative/Pretendard-Regular.ttf
+2026-06-30 20:33:02,171 - INFO - Using latest data date: 20260630
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-06-30 20:33:02
+  만료 시간: 2026-06-30 21:33:02
+2026-06-30 20:33:03,322 - INFO - Combined bio tickers count: 139 (2066: 129, 2217: 26)
+2026-06-30 20:33:03,322 - INFO - Processing data over 120 trading days...
+2026-06-30 20:33:04,603 - INFO - Chart saved successfully: /home/inhyuk/projects/dataScout/data_kr/kosdaq_bio_supply_demand.png
+2026-06-30 20:33:04,603 - INFO - Uploading chart to Telegram (Test Mode: False)...
+2026-06-30 20:33:07,704 - INFO - Chart successfully uploaded to Telegram chat: -1003877753638 ✅
+Step 3: Running stock supply-demand screener...
+2026-06-30 20:33:08,002 - INFO - Loading environment variables from .env file...
+2026-06-30 20:33:08,004 - INFO - Screening stocks for date: 2026-06-30 (Lookback: ['20260624', '20260625', '20260626', '20260629', '20260630'])
+2026-06-30 20:33:08,266 - INFO - Running Rule 1: Dual Heavy Buying...
+2026-06-30 20:33:08,267 - INFO - Running Rule 2: Pension Fund Accumulation...
+2026-06-30 20:33:08,280 - INFO - Running Rule 3: Trust Fund Accumulation...
+2026-06-30 20:33:08,290 - INFO - Running Rule 4: Retail Hand-off...
+2026-06-30 20:33:08,327 - INFO - Running Rule 5: All-Time High Breakout (ATH)...
+2026-06-30 20:33:10,047 - INFO - Running Rule 6: Oversold Dip-Buying Inflow...
+
+==================================================
+ SCREENING REPORT 
+==================================================
+📋 *[2026-06-30] 수급 우량주 포커스 스크리닝*
+=============================
+🔥 *1. 외인/기관 쌍끌이 파워 수급 (거래대금 대비 20%+, 거래대금 30억+, 가격 >= SMA20)*
+  • *인텍플러스 (064290)*
+    비중: *34.5%* (순매수 +42.3억 / 거래대금 122.6억)
+    수급: 외인 +15.6억, 기관 +26.7억
+  • *달바글로벌 (483650)*
+    비중: *24.7%* (순매수 +78.4억 / 거래대금 317.1억)
+    수급: 외인 +37.0억, 기관 +41.4억
+  • *제이에스링크 (127120)*
+    비중: *24.0%* (순매수 +11.7억 / 거래대금 48.6억)
+    수급: 외인 +11.3억, 기관 +0.4억
+  • *삼성전기 (009150)*
+    비중: *22.3%* (순매수 +6380.7억 / 거래대금 28643.2억)
+    수급: 외인 +4272.3억, 기관 +2108.4억
+
+🎖️ *2. 연기금 5일 연속 매집 상위*
+  • *대한항공 (003490)*
+    5일 누적: *+524.6억* (오늘 +6.9억)
+  • *셀트리온 (068270)*
+    5일 누적: *+394.3억* (오늘 +50.7억)
+  • *파마리서치 (214450)*
+    5일 누적: *+375.6억* (오늘 +112.4억)
+  • *원익IPS (240810)*
+    5일 누적: *+224.9억* (오늘 +32.4억)
+  • *에스티팜 (237690)*
+    5일 누적: *+201.9억* (오늘 +30.2억)
+  • *에이비엘바이오 (298380)*
+    5일 누적: *+190.7억* (오늘 +49.1억)
+  • *올릭스 (226950)*
+    5일 누적: *+171.7억* (오늘 +10.9억)
+  • *HJ중공업 (097230)*
+    5일 누적: *+145.5억* (오늘 +8.6억)
+  • *고려아연 (010130)*
+    5일 누적: *+134.1억* (오늘 +32.7억)
+  • *에이프릴바이오 (397030)*
+    5일 누적: *+118.8억* (오늘 +29.7억)
+
+🚀 *3. 투신 5일 연속 매집 상위*
+  • *삼성전기 (009150)*
+    5일 누적: *+2548.4억* (오늘 +1204.0억)
+  • *이수페타시스 (007660)*
+    5일 누적: *+1281.5억* (오늘 +819.2억)
+  • *삼성물산 (028260)*
+    5일 누적: *+796.3억* (오늘 +147.3억)
+  • *파마리서치 (214450)*
+    5일 누적: *+495.4억* (오늘 +129.6억)
+  • *심텍 (222800)*
+    5일 누적: *+464.4억* (오늘 +147.7억)
+  • *알테오젠 (196170)*
+    5일 누적: *+383.8억* (오늘 +25.1억)
+  • *테스 (095610)*
+    5일 누적: *+335.1억* (오늘 +42.6억)
+  • *올릭스 (226950)*
+    5일 누적: *+287.2억* (오늘 +52.4억)
+  • *한국콜마 (161890)*
+    5일 누적: *+274.9억* (오늘 +58.4억)
+  • *삼양식품 (003230)*
+    5일 누적: *+236.9억* (오늘 +40.8억)
+
+💎 *4. 개인 5일 연속 매도 & 외인+기관 매집 상위*
+  • *주성엔지니어링 (036930)*
+    외인/기관 누적: *+1813.3억* (개인 분산: -1800.0억)
+  • *미래에셋증권 (006800)*
+    외인/기관 누적: *+971.4억* (개인 분산: -890.2억)
+  • *LS (006260)*
+    외인/기관 누적: *+967.7억* (개인 분산: -976.8억)
+  • *대한항공 (003490)*
+    외인/기관 누적: *+910.6억* (개인 분산: -870.2억)
+  • *이수페타시스 (007660)*
+    외인/기관 누적: *+717.0억* (개인 분산: -702.9억)
+  • *셀트리온 (068270)*
+    외인/기관 누적: *+635.4억* (개인 분산: -1070.7억)
+  • *현대건설 (000720)*
+    외인/기관 누적: *+633.3억* (개인 분산: -627.8억)
+  • *파마리서치 (214450)*
+    외인/기관 누적: *+605.5억* (개인 분산: -623.6억)
+  • *대덕전자 (353200)*
+    외인/기관 누적: *+590.0억* (개인 분산: -539.7억)
+  • *삼성E&A (028050)*
+    외인/기관 누적: *+397.5억* (개인 분산: -409.0억)
+
+🏆 *5. 역사적 신고가 (ATH) 돌파 종목 (거래대금 20억+)*
+  • *심텍 (222800)*
+    종가: *148,700원* (+19.63% / 거래대금 1851.3억)
+  • *테스 (095610)*
+    종가: *208,000원* (+15.75% / 거래대금 1585.3억)
+  • *케이씨텍 (281820)*
+    종가: *115,100원* (+26.62% / 거래대금 817.1억)
+  • *피에스케이홀딩스 (031980)*
+    종가: *160,000원* (+18.78% / 거래대금 753.6억)
+  • *기가비스 (420770)*
+    종가: *192,200원* (+9.52% / 거래대금 280.4억)
+  • *세보엠이씨 (011560)*
+    종가: *27,150원* (+7.95% / 거래대금 37.0억)
+
+📉 *6. 낙폭과대 저가 매수 유입 (등락률 -5% 이하, 거래대금 20억+, 외인/기관 5억+)*
+  • *올릭스 (226950)*
+    종가: *155,600원* (-6.94% / 거래대금 646.3억)
+    수급: *+10.4억* (외인 -83.2억, 기관 +93.6억)
+  • *져스텍 (153890)*
+    종가: *16,640원* (-5.08% / 거래대금 1699.5억)
+    수급: *+8.8억* (외인 +6.8억, 기관 +2.0억)
+  • *JW신약 (067290)*
+    종가: *1,929원* (-10.07% / 거래대금 89.1억)
+    수급: *+5.2억* (외인 +5.2억, 기관 +0.0억)
+=============================
+==================================================
+
+2026-06-30 20:33:10,048 - INFO - Running in PRODUCTION mode. Sending to chat: -1003877753638
+2026-06-30 20:33:10,048 - INFO - Sending screening report to Telegram...
+2026-06-30 20:33:11,107 - INFO - Telegram screening report sent successfully!
+Step 4: Collecting Korean insider trades...
+2026-06-30 20:33:11,450 - INFO - Starting KR Insider/Block Collector for range: 2026-06-30 to 2026-06-30...
+2026-06-30 20:33:11,450 - INFO - Step 1: Fetching disclosures from 2026-06-30 to 2026-06-30...
+2026-06-30 20:33:13,614 - INFO -   Date 20260630: Found 207 target disclosures.
+2026-06-30 20:33:13,714 - INFO - Step 2A: Fetching elestock details for 90 unique companies...
+2026-06-30 20:33:18,185 - INFO -   Processed 20/90 companies...
+2026-06-30 20:33:22,655 - INFO -   Processed 40/90 companies...
+2026-06-30 20:33:27,090 - INFO -   Processed 60/90 companies...
+2026-06-30 20:33:31,311 - INFO -   Processed 80/90 companies...
+2026-06-30 20:33:33,528 - INFO - Step 2B: Fetching majorstock (5% block) details for 58 unique companies...
+2026-06-30 20:33:38,117 - INFO -   Processed 20/58 companies...
+2026-06-30 20:33:42,448 - INFO -   Processed 40/58 companies...
+2026-06-30 20:33:46,311 - INFO - Step 3: Matching disclosures with details and prices...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-06-30 20:33:48
+  만료 시간: 2026-06-30 21:33:48
+2026-06-30 20:33:50,483 - INFO - Successfully saved KR insider transactions Excel to /home/inhyuk/projects/dataScout/data_kr/kr_insider_transactions.xlsx
+2026-06-30 20:33:50,483 - INFO - Uploading updated Korean Insider/Block Excel sheet to Telegram chat: -1003877753638...
+2026-06-30 20:33:54,200 - INFO - Successfully uploaded Korean Excel sheet to Telegram.
+Step 5: Checking for Japan export data updates (16 HS codes)...
+2026-06-30 20:33:54,754 - INFO - Initializing session...
+2026-06-30 20:33:54,927 - INFO - Fetching 1 months × 2 batches = 2 requests...
+  [1/2] 2026-06 batch 1... no data
+  [2/2] 2026-06 batch 2...2026-06-30 20:33:55,790 - INFO - No updates found. Skipping chart generation.
+2026-06-30 20:33:55,790 - INFO - Done.
+ no data
+Step 6: Committing and pushing to GitHub...

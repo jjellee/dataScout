@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
+from dart_officer_parser import parse_officer_report_html
 import warnings
 from bs4 import XMLParsedAsHTMLWarning
 
@@ -105,7 +106,11 @@ def classify_disclosure(report_nm):
     # 8. 재무_자기주식
     if any(k in nm for k in ["자기주식취득결정", "자기주식취득신탁계약", "자기주식신탁계약체결결정", "자기주식소각결정", "주식소각결정", "신탁계약체결결정"]):
         return "재무_자기주식"
-        
+
+    # 9. 자산취득_처분
+    if any(k in nm for k in ["유형자산취득결정", "유형자산양수결정", "타법인주식및출자증권취득결정", "타법인주식및출자증권처분결정"]):
+        return "자산취득_처분"
+
     return "기타공시"
  
 def identify_base_report_type(report_nm):
@@ -135,6 +140,12 @@ def identify_base_report_type(report_nm):
         return "자기주식신탁"
     elif "자기주식소각결정" in nm or "주식소각결정" in nm:
         return "자기주식소각"
+    elif "유형자산취득결정" in nm:
+        return "유형자산취득"
+    elif "타법인주식및출자증권취득결정" in nm:
+        return "타법인증권취득"
+    elif "타법인주식및출자증권처분결정" in nm:
+        return "타법인증권처분"
     return "기타"
 
 
@@ -219,6 +230,363 @@ def find_original_date_from_html(html_path):
     except Exception as e:
         logger.error(f"Error finding original date in amendment HTML {html_path}: {e}")
     return None
+
+def parse_officer_report_html(html_path, report_type):
+    """
+    Parses 5%/officer report HTML files.
+    report_type: '임원보고' or '대량보유'
+    Returns list of dicts with keys:
+        reporter_name, relationship, change_reason, shares_change, avg_price,
+        shares_after, ownership_pct
+    """
+    results = []
+    if not os.path.exists(html_path):
+        return results
+
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            html = f.read()
+    except Exception as e:
+        logger.error(f"Error reading officer report HTML {html_path}: {e}")
+        return results
+
+    soup = BeautifulSoup(html, "html.parser")
+    tables = soup.find_all('table')
+
+    def clean_text(t):
+        """Strip whitespace and normalize text."""
+        return re.sub(r'\s+', ' ', t).strip()
+
+    def parse_number(val):
+        """Parse a number string with commas, parentheses for negatives."""
+        if not val or val.strip() in ['-', '', '(   )']:
+            return None
+        val = val.strip()
+        neg = False
+        if val.startswith('-') and len(val) > 1 and not val[1:].strip().startswith('-'):
+            neg = True
+            val = val[1:]
+        elif val.startswith('(') and val.endswith(')'):
+            neg = True
+            val = val[1:-1]
+        cleaned = re.sub(r'[^\d.]', '', val)
+        if not cleaned:
+            return None
+        try:
+            num = float(cleaned) if '.' in cleaned else int(cleaned)
+            return -num if neg else num
+        except ValueError:
+            return None
+
+    if report_type == '임원보고':
+        # --- Parse 임원보고 (Officer/Key Shareholder Report) ---
+        reporter_name = "-"
+        relationship = "-"
+        ownership_pct = None
+        shares_change_total = 0
+        shares_after_total = 0
+        avg_price = None
+        change_reason = "-"
+
+        for table in tables:
+            rows = table.find_all('tr')
+            if not rows:
+                continue
+            first_text = clean_text(rows[0].get_text())
+
+            # Table with 보고구분 → reporter info
+            if '보고구분' in first_text:
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    # 성명(명칭) row
+                    if any('성명' in ct or '명칭' in ct for ct in cell_texts[:2]):
+                        # Name is typically in the 3rd cell (한글 value)
+                        for j, ct in enumerate(cell_texts):
+                            if ct in ['한 글', '한글'] and j + 1 < len(cell_texts):
+                                reporter_name = cell_texts[j + 1].replace(' ', '').strip()
+                                break
+                        if reporter_name == "-" and len(cell_texts) >= 3:
+                            reporter_name = cell_texts[2].replace(' ', '').strip()
+                    # 발행회사와의 관계 row
+                    if any('발행회사와의' in ct or '관계' in ct for ct in cell_texts[:2]):
+                        # relationship description (e.g. 임원(등기여부) / 비등기임원 / 직위명)
+                        rel_parts = []
+                        for ct in cell_texts[1:]:
+                            ct_clean = ct.strip()
+                            if ct_clean and ct_clean != '-':
+                                rel_parts.append(ct_clean)
+                        if rel_parts:
+                            relationship = ' '.join(rel_parts)
+
+            # Table with 소유비율(%) → ownership percentage
+            if '소유비율' in first_text or '발행주식' in first_text:
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    # Look for the data row (not header) that has numeric values
+                    if len(cell_texts) >= 3 and not any('비율' in ct for ct in cell_texts):
+                        # ownership_pct is typically the 3rd or 4th value
+                        for ct in cell_texts[2:]:
+                            pct = parse_number(ct)
+                            if pct is not None and 0 < pct < 100:
+                                ownership_pct = pct
+                                break
+
+            # Table with 보고사유 → transaction details
+            if '보고사유' in first_text:
+                data_rows = []
+                header_done = False
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    if not header_done:
+                        # Skip header rows
+                        if any('변동전' in ct for ct in cell_texts) or any('보고사유' in ct for ct in cell_texts):
+                            header_done = '변동전' in ' '.join(cell_texts)
+                            continue
+                    else:
+                        if any('합' in ct and '계' in ct for ct in cell_texts[:2]):
+                            # Summary row: use for totals
+                            for ct in cell_texts:
+                                n = parse_number(ct)
+                                if n is not None and abs(n) > 0:
+                                    if shares_change_total == 0:
+                                        # skip변동전 if first
+                                        pass
+                            continue
+                        if len(cell_texts) >= 6:
+                            data_rows.append(cell_texts)
+
+                # Process data rows for this officer report
+                total_change = 0
+                total_after = 0
+                weighted_price_sum = 0
+                price_count = 0
+                reasons = []
+
+                for dr in data_rows:
+                    # dr structure: [보고사유, 변동일, 종류, 변동전, 증감, 변동후, 단가, 비고, ...]
+                    reason = dr[0] if len(dr) > 0 else "-"
+                    if reason and reason != '-':
+                        reasons.append(reason)
+
+                    change = parse_number(dr[4]) if len(dr) > 4 else None
+                    after = parse_number(dr[5]) if len(dr) > 5 else None
+                    price_raw = dr[6] if len(dr) > 6 else None
+
+                    # Clean price: remove parenthetical notes like "( 원)"
+                    if price_raw:
+                        price_val = parse_number(re.sub(r'\([^)]*\)', '', price_raw))
+                    else:
+                        price_val = None
+
+                    if change is not None:
+                        total_change += int(change)
+                    if after is not None:
+                        total_after = max(total_after, int(after))
+                    if price_val is not None and change is not None and abs(change) > 0:
+                        weighted_price_sum += price_val * abs(change)
+                        price_count += abs(change)
+
+                shares_change_total = total_change
+                shares_after_total = total_after
+                if price_count > 0:
+                    avg_price = round(weighted_price_sum / price_count)
+                change_reason = ', '.join(reasons) if reasons else "-"
+
+        # Build ownership % from table 5 if not found in table 7
+        if ownership_pct is None:
+            for table in tables:
+                rows = table.find_all('tr')
+                all_text = table.get_text()
+                if '이번보고서' in all_text and '비율' in all_text:
+                    for row in rows:
+                        cells = row.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if any('이번' in ct for ct in cell_texts):
+                            for ct in reversed(cell_texts):
+                                pct = parse_number(ct)
+                                if pct is not None and 0 < pct < 100:
+                                    ownership_pct = pct
+                                    break
+                            break
+
+        results.append({
+            "reporter_name": reporter_name,
+            "relationship": relationship,
+            "change_reason": change_reason,
+            "shares_change": shares_change_total,
+            "avg_price": avg_price,
+            "shares_after": shares_after_total,
+            "ownership_pct": ownership_pct
+        })
+
+    elif report_type == '대량보유':
+        # --- Parse 대량보유 (5% Bulk Ownership Report) ---
+        change_reason = "-"
+        overall_pct = None
+
+        # 1. Get 변동사유 / 변경사유
+        for table in tables:
+            all_text = table.get_text()
+            if '변동사유' in all_text or '변동방법' in all_text:
+                rows = table.find_all('tr')
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    if len(cell_texts) >= 2:
+                        key = cell_texts[0].replace(' ', '')
+                        val = cell_texts[1].strip()
+                        if '변동사유' in key and val and val != '-':
+                            change_reason = val
+                        elif '변경사유' in key and val and val != '-' and change_reason == '-':
+                            change_reason = val
+
+        # 2. Get overall ownership % from summary table (이번보고서 row)
+        for table in tables:
+            all_text = table.get_text()
+            if '이번보고서' in all_text and '비율' in all_text:
+                rows = table.find_all('tr')
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    if any('이번' in ct for ct in cell_texts):
+                        for ct in cell_texts:
+                            pct = parse_number(ct)
+                            if pct is not None and 0 < pct < 100:
+                                overall_pct = pct
+                                break
+                        break
+
+        # 3. Parse detail transaction table (변동일 + 취득/처분단가)
+        detail_transactions = {}  # key: reporter_name -> list of (change, price)
+
+        for table in tables:
+            all_text = table.get_text()
+            if '변동일' not in all_text or '취득/처분단가' not in all_text:
+                continue
+            rows = table.find_all('tr')
+            header_done = False
+            for row in rows:
+                cells = row.find_all(recursive=False)
+                cell_texts = [clean_text(c.get_text()) for c in cells]
+
+                if not header_done:
+                    if any('변동전' in ct for ct in cell_texts):
+                        header_done = True
+                    continue
+
+                # Skip empty/dash rows
+                if all(ct in ['-', '', '(   )'] for ct in cell_texts):
+                    continue
+                if len(cell_texts) < 8:
+                    continue
+
+                # Structure: [성명, 생년월일, 변동일, 취득/처분방법, 종류, 변동전, 증감, 변동후, 단가, ...]
+                name = cell_texts[0].replace(' ', '')
+                if not name or name == '-':
+                    continue
+
+                change = parse_number(cell_texts[6]) if len(cell_texts) > 6 else None
+                price_val = parse_number(cell_texts[8]) if len(cell_texts) > 8 else None
+                after = parse_number(cell_texts[7]) if len(cell_texts) > 7 else None
+                method = cell_texts[3] if len(cell_texts) > 3 else "-"
+
+                if name not in detail_transactions:
+                    detail_transactions[name] = {
+                        "changes": [],
+                        "last_after": 0,
+                        "methods": []
+                    }
+
+                if change is not None:
+                    detail_transactions[name]["changes"].append((int(change), price_val))
+                if after is not None:
+                    detail_transactions[name]["last_after"] = int(after)
+                if method and method != '-':
+                    detail_transactions[name]["methods"].append(method)
+
+        if detail_transactions:
+            # Build one row per subject
+            for name, txns in detail_transactions.items():
+                total_change = sum(c for c, p in txns["changes"])
+                # Weighted average price
+                w_sum = 0
+                w_count = 0
+                for c, p in txns["changes"]:
+                    if p is not None and abs(c) > 0:
+                        w_sum += p * abs(c)
+                        w_count += abs(c)
+                computed_avg_price = round(w_sum / w_count) if w_count > 0 else None
+
+                # Combine unique methods as change reason
+                unique_methods = list(dict.fromkeys(txns["methods"]))
+                reason = ', '.join(unique_methods) if unique_methods else change_reason
+
+                results.append({
+                    "reporter_name": name,
+                    "relationship": "특별관계자",
+                    "change_reason": reason,
+                    "shares_change": total_change,
+                    "avg_price": computed_avg_price,
+                    "shares_after": txns["last_after"],
+                    "ownership_pct": overall_pct
+                })
+        else:
+            # No detail transactions found; create single summary row
+            # Try to get reporter name from summary table
+            reporter_name = "-"
+            for table in tables:
+                all_text = table.get_text()
+                if '보고자' in all_text and '이번보고서' in all_text:
+                    rows = table.find_all('tr')
+                    for row in rows:
+                        cells = row.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if any('이번' in ct for ct in cell_texts):
+                            for ct in cell_texts:
+                                ct_clean = ct.strip()
+                                if ct_clean and ct_clean not in ['-', '이번보고서'] and not ct_clean.replace('.', '').replace(' ', '').isdigit():
+                                    pnum = parse_number(ct_clean)
+                                    if pnum is None:
+                                        reporter_name = ct_clean
+                                        break
+                            break
+
+            # Get shares from summary (이번보고서 row)
+            shares_after = None
+            for table in tables:
+                all_text = table.get_text()
+                if '이번보고서' in all_text and '주식등의' in all_text:
+                    rows = table.find_all('tr')
+                    for row in rows:
+                        cells = row.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if any('이번' in ct for ct in cell_texts):
+                            # Skip first few cells (label, date, reporter name, count)
+                            # Structure: [이번보고서, date, name, 특별관계자수, 주식등의수, 비율, 주식수, 비율, 발행주식총수]
+                            for ct in cell_texts[4:]:  # Start after metadata cells
+                                # Skip date-like strings
+                                if '년' in ct or '월' in ct or '일' in ct:
+                                    continue
+                                n = parse_number(ct)
+                                if n is not None and n > 1000:
+                                    shares_after = int(n)
+                                    break
+                            break
+
+            results.append({
+                "reporter_name": reporter_name,
+                "relationship": "보고자",
+                "change_reason": change_reason,
+                "shares_change": 0,
+                "avg_price": None,
+                "shares_after": shares_after or 0,
+                "ownership_pct": overall_pct
+            })
+
+    return results
 
 def parse_html_options(html_path):
     """Parses local HTML files to extract Call and Put option paragraphs."""
@@ -1194,7 +1562,8 @@ def build_excel_summary(workspace_dir):
     # -------------------------------------------------------------
     # Build Excel Workbook
     # -------------------------------------------------------------
-    excel_path = os.path.join(workspace_dir, "data_dart", "dart_disclosures_summary.xlsx")
+    today_str = datetime.datetime.now().strftime('%Y%m%d')
+    excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{today_str}.xlsx")
     
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
         
@@ -1380,12 +1749,110 @@ def build_excel_summary(workspace_dir):
         df_etc.to_excel(writer, sheet_name="기타공시", index=False)
         format_category_sheet(writer.sheets["기타공시"])
         
+        # Sheet 9: 5%ㆍ임원보고
+        equity_rows = [r for r in active_records if r["category"] == "지분공시"]
+        officer_data_list = []
+        for r in equity_rows:
+            rn = r["report_nm"]
+            # Determine report type
+            if '대량보유상황보고서' in rn:
+                rtype = '대량보유'
+            else:
+                rtype = '임원보고'
+            
+            html_path = os.path.join(workspace_dir, "data_dart", r["collected_date"], f"{r['rcept_no']}.html")
+            parsed = parse_officer_report_html(html_path, rtype)
+            
+            for p in parsed:
+                officer_data_list.append({
+                    "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
+                    "회사명": r["corp_name"],
+                    "종목코드": r["stock_code"],
+                    "보고구분": rtype,
+                    "보고자(주체)": p["reporter_name"],
+                    "관계": p["relationship"],
+                    "변동사유": p["change_reason"],
+                    "증감(주)": p["shares_change"] if p["shares_change"] != 0 else None,
+                    "단가(원)": p["avg_price"],
+                    "변동후 보유(주)": p["shares_after"] if p["shares_after"] != 0 else None,
+                    "보유비율(%)": p["ownership_pct"],
+                    "접수번호": r["rcept_no"],
+                    "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
+                })
+        
+        df_officer = pd.DataFrame(officer_data_list)
+        df_officer.to_excel(writer, sheet_name="5%_임원보고", index=False)
+        format_officer_sheet(writer.sheets["5%_임원보고"])
+        
+
     logger.info(f"Excel file built successfully: {excel_path}")
     return True
 
 # -------------------------------------------------------------
 # openpyxl Styling Helpers
 # -------------------------------------------------------------
+def format_officer_sheet(ws):
+    """Styles the 5%ㆍ임원보고 sheet."""
+    header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid")
+    data_font = Font(name="Malgun Gothic", size=9)
+    link_font = Font(name="Malgun Gothic", size=9, color="0000FF", underline="single")
+    
+    border_side = Side(border_style="thin", color="D3D3D3")
+    data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
+    
+    for col_idx in range(1, ws.max_column + 1):
+        cell = ws.cell(row=1, column=col_idx)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        
+    ws.row_dimensions[1].height = 25
+    
+    for row_idx in range(2, ws.max_row + 1):
+        ws.row_dimensions[row_idx].height = 22
+        
+        for col_idx in range(1, ws.max_column + 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.font = data_font
+            cell.border = data_border
+            
+            if col_idx in [1, 3, 4, 12]:  # 접수일자, 종목코드, 보고구분, 접수번호
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            elif col_idx == 13:  # DART링크
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.font = link_font
+            elif col_idx == 8:  # 증감(주)
+                cell.number_format = '#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+                # Color negative red, positive blue
+                if isinstance(cell.value, (int, float)):
+                    if cell.value < 0:
+                        cell.font = Font(name="Malgun Gothic", size=9, color="FF0000")
+                    elif cell.value > 0:
+                        cell.font = Font(name="Malgun Gothic", size=9, color="0000FF")
+            elif col_idx == 9:  # 단가(원)
+                cell.number_format = '#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 10:  # 변동후 보유(주)
+                cell.number_format = '#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 11:  # 보유비율(%)
+                if isinstance(cell.value, (int, float)):
+                    cell.number_format = '0.00'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+                
+    # Column widths
+    col_widths = {1: 12, 2: 16, 3: 10, 4: 10, 5: 20, 6: 14, 7: 14,
+                  8: 14, 9: 12, 10: 16, 11: 10, 12: 18, 13: 10}
+    for col_idx, width in col_widths.items():
+        ws.column_dimensions[get_column_letter(col_idx)].width = width
+            
+    ws.auto_filter.ref = ws.dimensions
+    ws.freeze_panes = "A2"
+
 def format_category_sheet(ws):
     """Styles the general category disclosure sheet."""
     header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
@@ -1775,7 +2242,7 @@ def main():
     
     # 2. Upload to Telegram if requested
     if success and args.upload:
-        excel_path = os.path.join(workspace_dir, "data_dart", "dart_disclosures_summary.xlsx")
+        excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
         
         if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_JJANG_GU_CHAT_ID:
             logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_JJANG_GU_CHAT_ID in env.")
