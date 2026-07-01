@@ -658,47 +658,43 @@ def parse_officer_report_html(html_path, report_type):
                         elif '변경사유' in key and val and val != '-' and change_reason == '-':
                             change_reason = val
 
-        # 2. Get overall ownership % from summary table (이번보고서 row)
+        # 2. Get overall ownership % and before stats from Table 11 (직전/이번보고서 summary)
+        # Table 11 has colspan issues, so we identify values by their format:
+        #   - 비율(%): contains decimal point (e.g., 5.03, 6.16)
+        #   - 주식수: large number with commas (e.g., 732,847)
+        #   - Skip: date strings, name strings, small integers like 특별관계자수
         for table in tables:
             all_text = table.get_text()
-            if '이번보고서' in all_text and '비율' in all_text:
+            if '이번보고서' in all_text and '직전보고서' in all_text and '비율' in all_text:
                 rows = table.find_all('tr')
                 for row in rows:
                     cells = row.find_all(recursive=False)
                     cell_texts = [clean_text(c.get_text()) for c in cells]
-                    if any('이번' in ct for ct in cell_texts):
+                    ct_joined = ' '.join(cell_texts)
+                    
+                    if '이번보고서' in ct_joined:
+                        # Find first decimal number as pct, first large comma number as shares
                         for ct in cell_texts:
-                            pct = parse_number(ct)
-                            if pct is not None and 0 < pct < 100:
-                                overall_pct = pct
-                                break
-                        break
-
-        # 2b. Get shares_before and pct_before from Table 11 (직전보고서 row)
-        for table in tables:
-            all_text = table.get_text()
-            if '직전보고서' in all_text and '비율' in all_text:
-                rows = table.find_all('tr')
-                for row in rows:
-                    cells = row.find_all(recursive=False)
-                    cell_texts = [clean_text(c.get_text()) for c in cells]
-                    if any('직전보고서' in ct for ct in cell_texts):
-                        # Structure: [직전보고서, date, name, count, shares, pct, ...]
-                        # Look for the shares (large number) and pct (small number < 100)
-                        nums_found = []
-                        for ct in cell_texts[1:]:
                             if '년' in ct or '월' in ct or '일' in ct:
                                 continue
-                            n = parse_number(ct)
-                            if n is not None:
-                                nums_found.append(n)
-                        # First large number is shares_before, first small number is pct_before
-                        for n in nums_found:
-                            if n > 1000 and shares_before is None:
-                                shares_before = int(n)
-                            elif 0 < n < 100 and pct_before is None:
-                                pct_before = n
-                        break
+                            if '.' in ct and overall_pct is None:
+                                p = parse_number(ct)
+                                if p is not None and 0 < p < 100:
+                                    overall_pct = p
+                    
+                    elif '직전보고서' in ct_joined:
+                        for ct in cell_texts:
+                            if '년' in ct or '월' in ct or '일' in ct:
+                                continue
+                            if '.' in ct and pct_before is None:
+                                p = parse_number(ct)
+                                if p is not None and 0 < p < 100:
+                                    pct_before = p
+                            elif ',' in ct and shares_before is None:
+                                s = parse_number(ct)
+                                if s is not None and s > 1000:
+                                    shares_before = int(s)
+                break
 
         # 2c. Get ownership_pct from Table 13 (대량보유내역 - 관계/성명 table)
         for table in tables:
