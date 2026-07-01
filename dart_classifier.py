@@ -1194,22 +1194,32 @@ def send_telegram_document(token, chat_id, file_path, caption=None):
         logger.error(f"Failed to send telegram document: {e}")
         return False
 
-def send_telegram_message(token, chat_id, text):
-    """Sends a plain text message via Telegram Bot API."""
+def send_telegram_message(token, chat_id, text, max_retries=3):
+    """Sends a plain text message via Telegram Bot API with rate-limit retry."""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         "chat_id": chat_id,
         "text": text
     }
-    try:
-        r = requests.post(url, json=payload, timeout=15)
-        if r.status_code == 200:
-            logger.info(f"Telegram text message sent successfully to chat {chat_id}")
-            return True
-        else:
-            logger.error(f"Failed to send telegram message: HTTP {r.status_code}, {r.text}")
-    except Exception as e:
-        logger.error(f"Failed to send telegram message: {e}")
+    for attempt in range(max_retries + 1):
+        try:
+            r = requests.post(url, json=payload, timeout=15)
+            if r.status_code == 200:
+                logger.info(f"Telegram text message sent successfully to chat {chat_id}")
+                return True
+            elif r.status_code == 429:
+                retry_after = r.json().get("parameters", {}).get("retry_after", 5)
+                logger.warning(f"Rate limited (429). Retrying after {retry_after}s (attempt {attempt+1}/{max_retries})")
+                if attempt < max_retries:
+                    time.sleep(retry_after + 1)
+                    continue
+                else:
+                    logger.error(f"Rate limit exceeded after {max_retries} retries.")
+            else:
+                logger.error(f"Failed to send telegram message: HTTP {r.status_code}, {r.text}")
+        except Exception as e:
+            logger.error(f"Failed to send telegram message: {e}")
+        break
     return False
 
 def build_excel_summary(workspace_dir):
