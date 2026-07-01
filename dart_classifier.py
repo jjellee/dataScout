@@ -48,7 +48,7 @@ def load_env():
 load_env()
 DART_API_KEY = os.getenv("DART_API_KEY")
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID")  # antbot channel
 
 # Cache path for parsed disclosures to avoid repeated API hits or re-parsing HTML
 CACHE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "mezzanine_cache.json")
@@ -2244,14 +2244,14 @@ def main():
     if success and args.upload:
         excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
         
-        if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_JJANG_GU_CHAT_ID:
-            logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_JJANG_GU_CHAT_ID in env.")
+        if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_TEST_CHAT_ID:
+            logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_TEST_CHAT_ID in env.")
             return
             
         caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 채무보증/금전대여, 자기주식취득/신탁/소각 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
         
         logger.info("Uploading Excel to Telegram...")
-        telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, excel_path, caption=caption)
+        telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, excel_path, caption=caption)
         if telegram_sent:
             logger.info("Excel successfully uploaded to Telegram.")
         else:
@@ -2305,12 +2305,12 @@ def main():
             count = 0
             for it in important_items:
                 if len(msg) + len(it) > 4000:
-                    send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, msg)
+                    send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, msg)
                     msg = "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n"
                 msg += it + "\n\n"
                 count += 1
             if msg != "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n":
-                send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, msg)
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, msg)
             logger.info(f"Sent {count} important other disclosures to Telegram.")
 
 if __name__ == "__main__":
