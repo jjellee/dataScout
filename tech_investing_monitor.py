@@ -388,7 +388,7 @@ def main():
             logger.error(f"Failed to save state file: {e}")
         return
         
-    chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+    chat_id = TELEGRAM_TEST_CHAT_ID  # antbot channel
     
     # Process feeds
     processed_toms = process_feed('toms_hardware', toms_items, seen_ids, chat_id)
