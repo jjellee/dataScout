@@ -232,11 +232,11 @@ def find_original_date_from_html(html_path):
         logger.error(f"Error finding original date in amendment HTML {html_path}: {e}")
     return None
 
-# Cache for pykrx closing price lookups
+# Cache for closing price lookups
 _closing_price_cache = {}
 
 def get_closing_price(stock_code, date_str):
-    """Get closing price for a stock on a specific date using pykrx.
+    """Get closing price for a stock on a specific date using Naver Finance API.
     
     Args:
         stock_code: Stock code (e.g., '005930')
@@ -262,11 +262,35 @@ def get_closing_price(stock_code, date_str):
         return _closing_price_cache[cache_key]
     
     try:
-        df = pykrx_stock.get_market_ohlcv_by_date(normalized, normalized, stock_code)
-        if df is not None and not df.empty:
-            close_price = int(df.iloc[0]['종가'])
-            _closing_price_cache[cache_key] = close_price
-            return close_price
+        # Use Naver Finance API for fast, reliable closing price
+        url = f"https://api.finance.naver.com/siseJson.naver"
+        params = {
+            "symbol": stock_code,
+            "requestType": 1,
+            "startTime": normalized,
+            "endTime": normalized,
+            "timeframe": "day"
+        }
+        resp = requests.get(url, params=params, timeout=10,
+                          headers={"User-Agent": "Mozilla/5.0"})
+        if resp.status_code == 200:
+            # Response is JS array format, parse it
+            text = resp.text.strip()
+            lines = [l.strip() for l in text.split('\n') if l.strip()]
+            # lines[0] is header, lines[1] is data (if exists)
+            if len(lines) >= 2:
+                # Parse data line: ["20260626", 52300, 52800, 51900, 52100, 1234567]
+                data_line = lines[1].strip().rstrip(',')
+                if data_line.startswith('['):
+                    import ast
+                    try:
+                        values = ast.literal_eval(data_line)
+                        # Index 4 is closing price (종가)
+                        close_price = int(values[4])
+                        _closing_price_cache[cache_key] = close_price
+                        return close_price
+                    except (ValueError, IndexError):
+                        pass
     except Exception as e:
         logger.warning(f"Failed to get closing price for {stock_code} on {normalized}: {e}")
     
