@@ -17,6 +17,7 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 from dart_officer_parser import parse_officer_report_html
+from pykrx import stock as pykrx_stock
 import warnings
 from bs4 import XMLParsedAsHTMLWarning
 
@@ -79,7 +80,7 @@ def classify_disclosure(report_nm):
         return "정기공시"
         
     # 2. 지분공시
-    if any(k in nm for k in ["주식등의대량보유상황보고서", "임원ㆍ주요주주소유주식변동보고서", "임원.주요주주소유주식변동보고서", "최대주주등소유주식변동신고서", "소유주식변동", "소유주식보고서"]):
+    if any(k in nm for k in ["주식등의대량보유상황보고서", "임원ㆍ주요주주소유주식변동보고서", "임원.주요주주소유주식변동보고서", "최대주주등소유주식변동신고서", "임원ㆍ주요주주특정증권등소유상황보고서", "특정증권등소유상황보고서", "소유주식변동", "소유주식보고서"]):
         return "지분공시"
         
     # 3. 신규시설투자 (Dedicated Category)
@@ -231,6 +232,47 @@ def find_original_date_from_html(html_path):
         logger.error(f"Error finding original date in amendment HTML {html_path}: {e}")
     return None
 
+# Cache for pykrx closing price lookups
+_closing_price_cache = {}
+
+def get_closing_price(stock_code, date_str):
+    """Get closing price for a stock on a specific date using pykrx.
+    
+    Args:
+        stock_code: Stock code (e.g., '005930')
+        date_str: Date string in format like '2026년 06월 26일' or '20260626'
+    Returns:
+        Closing price as int, or None if not available.
+    """
+    # Normalize date format to YYYYMMDD
+    normalized = date_str.strip()
+    # Handle '2026년 06월 26일' format
+    m = re.match(r'(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일', normalized)
+    if m:
+        normalized = f"{m.group(1)}{int(m.group(2)):02d}{int(m.group(3)):02d}"
+    else:
+        # Try removing non-digits
+        normalized = re.sub(r'[^\d]', '', normalized)
+    
+    if len(normalized) != 8:
+        return None
+    
+    cache_key = (stock_code, normalized)
+    if cache_key in _closing_price_cache:
+        return _closing_price_cache[cache_key]
+    
+    try:
+        df = pykrx_stock.get_market_ohlcv_by_date(normalized, normalized, stock_code)
+        if df is not None and not df.empty:
+            close_price = int(df.iloc[0]['종가'])
+            _closing_price_cache[cache_key] = close_price
+            return close_price
+    except Exception as e:
+        logger.warning(f"Failed to get closing price for {stock_code} on {normalized}: {e}")
+    
+    _closing_price_cache[cache_key] = None
+    return None
+
 def parse_officer_report_html(html_path, report_type):
     """
     Parses 5%/officer report HTML files.
@@ -364,6 +406,7 @@ def parse_officer_report_html(html_path, report_type):
                 weighted_price_sum = 0
                 price_count = 0
                 reasons = []
+                change_dates = []  # (date_str, change_amount) for rows without price
 
                 for dr in data_rows:
                     # dr structure: [보고사유, 변동일, 종류, 변동전, 증감, 변동후, 단가, 비고, ...]
@@ -371,6 +414,7 @@ def parse_officer_report_html(html_path, report_type):
                     if reason and reason != '-':
                         reasons.append(reason)
 
+                    change_date = dr[1] if len(dr) > 1 else None
                     change = parse_number(dr[4]) if len(dr) > 4 else None
                     after = parse_number(dr[5]) if len(dr) > 5 else None
                     price_raw = dr[6] if len(dr) > 6 else None
@@ -388,6 +432,8 @@ def parse_officer_report_html(html_path, report_type):
                     if price_val is not None and change is not None and abs(change) > 0:
                         weighted_price_sum += price_val * abs(change)
                         price_count += abs(change)
+                    elif price_val is None and change is not None and abs(change) > 0 and change_date:
+                        change_dates.append((change_date, int(change)))
 
                 shares_change_total = total_change
                 shares_after_total = total_after
@@ -419,13 +465,18 @@ def parse_officer_report_html(html_path, report_type):
             "shares_change": shares_change_total,
             "avg_price": avg_price,
             "shares_after": shares_after_total,
-            "ownership_pct": ownership_pct
+            "ownership_pct": ownership_pct,
+            "shares_before": None,
+            "pct_before": None,
+            "change_dates": change_dates if change_dates else None
         })
 
     elif report_type == '대량보유':
         # --- Parse 대량보유 (5% Bulk Ownership Report) ---
         change_reason = "-"
         overall_pct = None
+        shares_before = None
+        pct_before = None
 
         # 1. Get 변동사유 / 변경사유
         for table in tables:
@@ -459,8 +510,57 @@ def parse_officer_report_html(html_path, report_type):
                                 break
                         break
 
+        # 2b. Get shares_before and pct_before from Table 11 (직전보고서 row)
+        for table in tables:
+            all_text = table.get_text()
+            if '직전보고서' in all_text and '비율' in all_text:
+                rows = table.find_all('tr')
+                for row in rows:
+                    cells = row.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    if any('직전보고서' in ct for ct in cell_texts):
+                        # Structure: [직전보고서, date, name, count, shares, pct, ...]
+                        # Look for the shares (large number) and pct (small number < 100)
+                        nums_found = []
+                        for ct in cell_texts[1:]:
+                            if '년' in ct or '월' in ct or '일' in ct:
+                                continue
+                            n = parse_number(ct)
+                            if n is not None:
+                                nums_found.append(n)
+                        # First large number is shares_before, first small number is pct_before
+                        for n in nums_found:
+                            if n > 1000 and shares_before is None:
+                                shares_before = int(n)
+                            elif 0 < n < 100 and pct_before is None:
+                                pct_before = n
+                        break
+
+        # 2c. Get ownership_pct from Table 13 (대량보유내역 - 관계/성명 table)
+        for table in tables:
+            all_text = table.get_text()
+            if '관' in all_text and '계' in all_text and '성' in all_text and '명' in all_text:
+                rows = table.find_all('tr')
+                # Check if this is the 대량보유내역 table by looking at headers
+                header_text = clean_text(rows[0].get_text()) if rows else ''
+                if '관' in header_text and '계' in header_text:
+                    # Look for data rows with 합계 주수 and 비율 at the end
+                    for row in rows[1:]:
+                        cells = row.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if len(cell_texts) >= 4:
+                            # The last value should be 비율(%), second-to-last is 합계 주수
+                            last_pct = parse_number(cell_texts[-1])
+                            last_shares = parse_number(cell_texts[-2])
+                            if last_pct is not None and 0 < last_pct < 100:
+                                overall_pct = last_pct
+                            if last_shares is not None and last_shares > 1000:
+                                # Update shares_after from Table 13 if available
+                                pass
+                            break
+
         # 3. Parse detail transaction table (변동일 + 취득/처분단가)
-        detail_transactions = {}  # key: reporter_name -> list of (change, price)
+        detail_transactions = {}  # key: reporter_name -> list of (change, price, change_date)
 
         for table in tables:
             all_text = table.get_text()
@@ -488,6 +588,7 @@ def parse_officer_report_html(html_path, report_type):
                 if not name or name == '-':
                     continue
 
+                change_date = cell_texts[2] if len(cell_texts) > 2 else None
                 change = parse_number(cell_texts[6]) if len(cell_texts) > 6 else None
                 price_val = parse_number(cell_texts[8]) if len(cell_texts) > 8 else None
                 after = parse_number(cell_texts[7]) if len(cell_texts) > 7 else None
@@ -497,11 +598,15 @@ def parse_officer_report_html(html_path, report_type):
                     detail_transactions[name] = {
                         "changes": [],
                         "last_after": 0,
-                        "methods": []
+                        "methods": [],
+                        "change_dates": []
                     }
 
                 if change is not None:
                     detail_transactions[name]["changes"].append((int(change), price_val))
+                    # Track transactions without price for pykrx lookup
+                    if price_val is None and abs(change) > 0 and change_date:
+                        detail_transactions[name]["change_dates"].append((change_date, int(change)))
                 if after is not None:
                     detail_transactions[name]["last_after"] = int(after)
                 if method and method != '-':
@@ -531,7 +636,10 @@ def parse_officer_report_html(html_path, report_type):
                     "shares_change": total_change,
                     "avg_price": computed_avg_price,
                     "shares_after": txns["last_after"],
-                    "ownership_pct": overall_pct
+                    "ownership_pct": overall_pct,
+                    "shares_before": shares_before,
+                    "pct_before": pct_before,
+                    "change_dates": txns["change_dates"] if txns["change_dates"] else None
                 })
         else:
             # No detail transactions found; create single summary row
@@ -583,7 +691,10 @@ def parse_officer_report_html(html_path, report_type):
                 "shares_change": 0,
                 "avg_price": None,
                 "shares_after": shares_after or 0,
-                "ownership_pct": overall_pct
+                "ownership_pct": overall_pct,
+                "shares_before": shares_before,
+                "pct_before": pct_before,
+                "change_dates": None
             })
 
     return results
@@ -1788,6 +1899,20 @@ def build_excel_summary(workspace_dir):
             parsed = parse_officer_report_html(html_path, rtype)
             
             for p in parsed:
+                # Compute avg_price from pykrx closing prices if missing
+                avg_price = p["avg_price"]
+                stock_code = r["stock_code"]
+                if avg_price is None and p.get("change_dates") and stock_code:
+                    w_sum = 0
+                    w_count = 0
+                    for date_str, change_amt in p["change_dates"]:
+                        closing = get_closing_price(stock_code, date_str)
+                        if closing is not None and abs(change_amt) > 0:
+                            w_sum += closing * abs(change_amt)
+                            w_count += abs(change_amt)
+                    if w_count > 0:
+                        avg_price = round(w_sum / w_count)
+
                 officer_data_list.append({
                     "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
                     "회사명": r["corp_name"],
@@ -1797,7 +1922,9 @@ def build_excel_summary(workspace_dir):
                     "관계": p["relationship"],
                     "변동사유": p["change_reason"],
                     "증감(주)": p["shares_change"] if p["shares_change"] != 0 else None,
-                    "단가(원)": p["avg_price"],
+                    "단가(원)": avg_price,
+                    "변동전 보유(주)": p.get("shares_before"),
+                    "변동전 비율(%)": p.get("pct_before"),
                     "변동후 보유(주)": p["shares_after"] if p["shares_after"] != 0 else None,
                     "보유비율(%)": p["ownership_pct"],
                     "접수번호": r["rcept_no"],
@@ -1843,9 +1970,9 @@ def format_officer_sheet(ws):
             cell.font = data_font
             cell.border = data_border
             
-            if col_idx in [1, 3, 4, 12]:  # 접수일자, 종목코드, 보고구분, 접수번호
+            if col_idx in [1, 3, 4, 14]:  # 접수일자, 종목코드, 보고구분, 접수번호
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 13:  # DART링크
+            elif col_idx == 15:  # DART링크
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
             elif col_idx == 8:  # 증감(주)
@@ -1860,10 +1987,17 @@ def format_officer_sheet(ws):
             elif col_idx == 9:  # 단가(원)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 10:  # 변동후 보유(주)
+            elif col_idx == 10:  # 변동전 보유(주)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 11:  # 보유비율(%)
+            elif col_idx == 11:  # 변동전 비율(%)
+                if isinstance(cell.value, (int, float)):
+                    cell.number_format = '0.00'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 12:  # 변동후 보유(주)
+                cell.number_format = '#,##0'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 13:  # 보유비율(%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
@@ -1872,7 +2006,7 @@ def format_officer_sheet(ws):
                 
     # Column widths
     col_widths = {1: 12, 2: 16, 3: 10, 4: 10, 5: 20, 6: 14, 7: 14,
-                  8: 14, 9: 12, 10: 16, 11: 10, 12: 18, 13: 10}
+                  8: 14, 9: 12, 10: 16, 11: 10, 12: 16, 13: 10, 14: 18, 15: 10}
     for col_idx, width in col_widths.items():
         ws.column_dimensions[get_column_letter(col_idx)].width = width
             
