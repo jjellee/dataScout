@@ -2266,62 +2266,7 @@ def main():
             logger.info("Excel successfully uploaded to Telegram.")
         else:
             logger.error("Failed to upload Excel to Telegram.")
-            
-        # 3. Find other important disclosures to report via Telegram
-        logger.info("Collecting other important disclosures for Telegram notification...")
-        json_paths = sorted(glob.glob(os.path.join(workspace_dir, "data_dart", "202*", "disclosures.json")))
-        all_discls = []
-        for p in json_paths:
-            try:
-                with open(p, "r", encoding="utf-8") as f:
-                    for item in json.load(f):
-                        all_discls.append(item)
-            except Exception:
-                pass
-        
-        # De-duplicate by rcept_no
-        unique_discls = {item["rcept_no"]: item for item in all_discls}.values()
-        # Sort chronologically by rcept_dt
-        unique_discls = sorted(unique_discls, key=lambda x: x["rcept_dt"], reverse=True)
-        
-        important_items = []
-        for item in unique_discls:
-            nm = item["report_nm"].replace(" ", "")
-            is_important = False
-            label = ""
-            if "공개매수" in nm:
-                is_important = True
-                label = "📢 공개매수"
-            elif any(k in nm for k in ["주식분할", "주식병합", "액면분할", "액면병합"]):
-                is_important = True
-                label = "✂️ 주식 분할/병합"
-            elif any(k in nm for k in ["합병결정", "분할결정"]):
-                is_important = True
-                label = "🤝 합병/분할"
-            elif any(k in nm for k in ["타법인주식및출자증권취득", "타법인주식및출자증권처분"]):
-                is_important = True
-                label = "💼 타법인 지분 취득/처분"
-                
-            if is_important:
-                dt_str = item["rcept_dt"]
-                dt_fmt = f"{dt_str[:4]}-{dt_str[4:6]}-{dt_str[6:]}" if len(dt_str) == 8 else dt_str
-                # Check if it is an amendment
-                prefix = "[정정] " if any(k in item["report_nm"] for k in ["[기재정정]", "[첨부정정]", "정정보고서", "정정공시"]) else ""
-                important_items.append(f"• [{dt_fmt}] {item['corp_name']} | {label}\n  └ {prefix}{item['report_nm'].strip()}\n  └ DART링크: https://dart.fss.or.kr/dsaf001/main.do?rcpNo={item['rcept_no']}")
-                
-        if important_items:
-            intro_msg = "🔔 [DART 기타 주요 공시 실시간 요약]\n*엑셀 시트에 포함되지 않은 지배구조 개편 및 자산거래 관련 주요 공시 내역입니다.*\n\n"
-            msg = intro_msg
-            count = 0
-            for it in important_items:
-                if len(msg) + len(it) > 4000:
-                    send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, msg)
-                    msg = "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n"
-                msg += it + "\n\n"
-                count += 1
-            if msg != "🔔 [DART 기타 주요 공시 실시간 요약 - 계속]\n\n":
-                send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, msg)
-            logger.info(f"Sent {count} important other disclosures to Telegram.")
+
 
 if __name__ == "__main__":
     main()
