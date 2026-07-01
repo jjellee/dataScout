@@ -1616,6 +1616,8 @@ def build_excel_summary(workspace_dir):
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
         df_fund = pd.DataFrame(fund_data_list)
+        if '접수일자' in df_fund.columns:
+            df_fund = df_fund.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_fund.to_excel(writer, sheet_name="자금조달_증자", index=False)
         format_fundraising_sheet(writer.sheets["자금조달_증자"])
         
@@ -1642,6 +1644,8 @@ def build_excel_summary(workspace_dir):
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
         df_contract = pd.DataFrame(contract_data_list)
+        if '접수일자' in df_contract.columns:
+            df_contract = df_contract.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_contract.to_excel(writer, sheet_name="영업활동_계약", index=False)
         format_contract_sheet(writer.sheets["영업활동_계약"])
         
@@ -1665,6 +1669,8 @@ def build_excel_summary(workspace_dir):
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
         df_facility = pd.DataFrame(facility_data_list)
+        if '접수일자' in df_facility.columns:
+            df_facility = df_facility.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_facility.to_excel(writer, sheet_name="신규시설투자", index=False)
         format_facility_sheet(writer.sheets["신규시설투자"])
         
@@ -1693,6 +1699,8 @@ def build_excel_summary(workspace_dir):
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
         df_fin = pd.DataFrame(fin_data_list)
+        if '접수일자' in df_fin.columns:
+            df_fin = df_fin.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_fin.to_excel(writer, sheet_name="재무_채무보증", index=False)
         format_financial_sheet(writer.sheets["재무_채무보증"])
         
@@ -1726,6 +1734,8 @@ def build_excel_summary(workspace_dir):
                 "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
             })
         df_treasury = pd.DataFrame(treasury_data_list)
+        if '접수일자' in df_treasury.columns:
+            df_treasury = df_treasury.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_treasury.to_excel(writer, sheet_name="재무_자기주식", index=False)
         format_treasury_sheet(writer.sheets["재무_자기주식"])
         
@@ -1741,6 +1751,8 @@ def build_excel_summary(workspace_dir):
             "접수번호": r["rcept_no"],
             "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
         } for r in gov_rows])
+        if '접수일자' in df_gov.columns:
+            df_gov = df_gov.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_gov.to_excel(writer, sheet_name="경영권_지배구조", index=False)
         format_category_sheet(writer.sheets["경영권_지배구조"])
         
@@ -1756,6 +1768,8 @@ def build_excel_summary(workspace_dir):
             "접수번호": r["rcept_no"],
             "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
         } for r in etc_rows])
+        if '접수일자' in df_etc.columns:
+            df_etc = df_etc.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_etc.to_excel(writer, sheet_name="기타공시", index=False)
         format_category_sheet(writer.sheets["기타공시"])
         
@@ -1791,6 +1805,8 @@ def build_excel_summary(workspace_dir):
                 })
         
         df_officer = pd.DataFrame(officer_data_list)
+        if '접수일자' in df_officer.columns:
+            df_officer = df_officer.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_officer.to_excel(writer, sheet_name="5%_임원보고", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고"])
         
