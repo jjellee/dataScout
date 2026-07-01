@@ -482,6 +482,145 @@ def parse_officer_report_html(html_path, report_type):
                                     ownership_pct = pct
                                     break
                             break
+        # --- Fallback: 특정증권등소유상황보고서 format ---
+        # If the standard parser failed (reporter_name still '-'), try the 특정증권 format.
+        # 특정증권 format has: Table with 성명/변경일/변경원인/변경전주식수/증감주식수/변경후주식수
+        # and Table with 직전보고서제출일/이번보고서제출일 for ownership data.
+        if reporter_name == "-":
+            # Parse ownership from summary table (직전/이번보고서제출일)
+            for table in tables:
+                all_text = table.get_text()
+                if '직전보고서제출일' in all_text and '이번보고서제출일' in all_text:
+                    trows = table.find_all('tr')
+                    for trow in trows:
+                        cells = trow.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        ct_joined = ' '.join(cell_texts)
+                        if '직전보고서제출일' in ct_joined and '보통주식' in ct_joined:
+                            # [직전보고서제출일, date, 보통주식, shares, pct]
+                            for ct in cell_texts:
+                                n = parse_number(ct)
+                                if n is not None and n > 1000:
+                                    shares_before_fallback = int(n)
+                                    break
+                            for ct in cell_texts:
+                                n = parse_number(ct)
+                                if n is not None and 0 < n < 100:
+                                    pct_before_fallback = n
+                                    break
+                    break
+
+            # Parse reporter info and transactions from detail table
+            for table in tables:
+                all_text = table.get_text()
+                if '변경일' in all_text and '변경원인' in all_text and '변경전주식수' in all_text:
+                    trows = table.find_all('tr')
+                    # Find reporter name from rows before transaction header
+                    for trow in trows:
+                        cells = trow.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if len(cell_texts) >= 2 and '성명' in cell_texts[0]:
+                            reporter_name = cell_texts[1].replace(' ', '')
+                            break
+
+                    # Find relationship
+                    for trow in trows:
+                        cells = trow.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        ct_joined = ' '.join(cell_texts)
+                        if '발행회사와의' in ct_joined or '관계' in cell_texts[0] if cell_texts else False:
+                            for ct in cell_texts[1:]:
+                                ct_clean = ct.strip()
+                                if ct_clean and ct_clean != '-' and '관계' not in ct_clean:
+                                    relationship = ct_clean
+                                    break
+                            break
+
+                    # Parse transaction rows (after header: 변경일, 변경원인, ...)
+                    header_found = False
+                    total_change = 0
+                    total_after = 0
+                    weighted_price_sum = 0
+                    price_count = 0
+                    reasons_set = []
+                    change_dates = []
+
+                    for trow in trows:
+                        cells = trow.find_all(recursive=False)
+                        cell_texts = [clean_text(c.get_text()) for c in cells]
+                        if not header_found:
+                            if any('변경일' in ct for ct in cell_texts) and any('변경원인' in ct for ct in cell_texts):
+                                header_found = True
+                            continue
+                        if len(cell_texts) < 5:
+                            continue
+                        # Structure: [변경일, 변경원인, 주식의종류, 변경전주식수, 증감주식수, 변경후주식수, 비고]
+                        dt = cell_texts[0]
+                        reason = cell_texts[1]
+                        change = parse_number(cell_texts[4]) if len(cell_texts) > 4 else None
+                        after = parse_number(cell_texts[5]) if len(cell_texts) > 5 else None
+
+                        if reason and reason != '-' and reason not in reasons_set:
+                            reasons_set.append(reason)
+                        if change is not None:
+                            total_change += int(change)
+                            # No price in this format, use change_date for pykrx lookup
+                            if dt and dt != '-':
+                                change_dates.append((dt, int(change)))
+                        if after is not None:
+                            total_after = int(after)
+
+                    shares_change_total = total_change
+                    shares_after_total = total_after
+                    change_reason = ', '.join(reasons_set) if reasons_set else "-"
+
+                    # Get ownership from 이번보고서 합계 row
+                    for table2 in tables:
+                        t2_text = table2.get_text()
+                        if '이번보고서제출일' in t2_text:
+                            for trow in table2.find_all('tr'):
+                                cells = trow.find_all(recursive=False)
+                                cell_texts = [clean_text(c.get_text()) for c in cells]
+                                ct_joined = ' '.join(cell_texts)
+                                if '이번보고서제출일' in ct_joined and '보통주식' in ct_joined:
+                                    for ct in reversed(cell_texts):
+                                        n = parse_number(ct)
+                                        if n is not None and 0 < n < 100:
+                                            ownership_pct = n
+                                            break
+                                    break
+                            break
+                    break
+
+        # Get shares_before/pct_before from 직전보고서 if available
+        shares_before_val = None
+        pct_before_val = None
+        for table in tables:
+            all_text = table.get_text()
+            if '직전보고서제출일' in all_text and '이번보고서제출일' in all_text:
+                trows = table.find_all('tr')
+                for trow in trows:
+                    cells = trow.find_all(recursive=False)
+                    cell_texts = [clean_text(c.get_text()) for c in cells]
+                    ct_joined = ' '.join(cell_texts)
+                    if '직전보고서제출일' in ct_joined:
+                        nums = []
+                        for ct in cell_texts:
+                            # Skip date-like strings and text labels
+                            if re.match(r'\d{4}-\d{2}-\d{2}', ct.strip()):
+                                continue
+                            if any(k in ct for k in ['직전', '이번', '보통주식', '종류주식', '증권예탁', '합계', '제출일']):
+                                continue
+                            n = parse_number(ct)
+                            if n is not None:
+                                nums.append(n)
+                        for n in nums:
+                            if n > 1000 and shares_before_val is None:
+                                shares_before_val = int(n)
+                            elif 0 < n < 100 and pct_before_val is None:
+                                pct_before_val = n
+                        break
+                break
 
         results.append({
             "reporter_name": reporter_name,
@@ -491,8 +630,8 @@ def parse_officer_report_html(html_path, report_type):
             "avg_price": avg_price,
             "shares_after": shares_after_total,
             "ownership_pct": ownership_pct,
-            "shares_before": None,
-            "pct_before": None,
+            "shares_before": shares_before_val,
+            "pct_before": pct_before_val,
             "change_dates": change_dates if change_dates else None
         })
 
