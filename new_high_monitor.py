@@ -29,6 +29,7 @@ if os.path.exists(env_path):
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # ---- Telegram ---- #
 def send_telegram_message(token, chat_id, text):
@@ -140,6 +141,113 @@ def get_news_batch(tickers, max_count=30):
     return news_map
 
 
+def describe_companies_gemini(companies):
+    """Use Gemini to generate 3-line Korean business descriptions for a list of companies.
+    Args:
+        companies: list of dict with 'name', 'ticker', 'sector', 'country'
+    Returns:
+        dict: ticker -> description string (3 lines)
+    """
+    if not GEMINI_API_KEY or not companies:
+        return {}
+
+    # Build prompt with all companies
+    company_lines = []
+    for c in companies:
+        company_lines.append(f"- {c['name']} (#{c['ticker']}, {c['sector']}, {c['country']})")
+    company_list = "\n".join(company_lines)
+
+    prompt = (
+        "다음 기업들의 주요 사업 내용을 각각 한국어로 3줄 이내로 간결하게 설명해줘. "
+        "각 기업이 어떤 제품/서비스를 제공하고, 어떤 산업에서 활동하는지 핵심만 써줘. "
+        "불필요한 서론 없이 바로 설명해줘.\n"
+        "출력 형식: 각 기업마다 `[티커] 설명` 형식으로 작성해줘.\n\n"
+        f"{company_list}"
+    )
+
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.2,
+            "maxOutputTokens": 4096,
+            "thinkingConfig": {"thinkingBudget": 1024}
+        }
+    }
+
+    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
+    for model in models:
+        for attempt in range(2):
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+                resp = requests.post(url, json=payload, timeout=90)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    candidates = data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        if parts:
+                            text = parts[0].get("text", "").strip()
+                            logger.info(f"Gemini company descriptions generated ({model}).")
+                            return _parse_descriptions(text, companies)
+                elif resp.status_code in (429, 503):
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
+                    if attempt == 0:
+                        time.sleep(5)
+                        continue
+                else:
+                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
+                    break
+            except Exception as e:
+                logger.warning(f"Gemini description failed ({model}): {e}")
+                break
+    return {}
+
+
+def _parse_descriptions(text, companies):
+    """Parse Gemini response into ticker -> description dict."""
+    result = {}
+    # Try to match [TICKER] pattern
+    lines = text.split("\n")
+    current_ticker = None
+    current_lines = []
+
+    ticker_set = {c['ticker'] for c in companies}
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Check if line starts with a ticker marker like [AAPL] or [7203]
+        matched_ticker = None
+        for t in ticker_set:
+            if line.startswith(f"[{t}]") or line.startswith(f"**[{t}]**") or line.startswith(f"#{t}"):
+                matched_ticker = t
+                break
+        if matched_ticker:
+            if current_ticker and current_lines:
+                result[current_ticker] = "\n".join(current_lines[:3])
+            current_ticker = matched_ticker
+            # Remove the ticker prefix from the line
+            desc_part = line
+            for prefix in [f"**[{matched_ticker}]**", f"[{matched_ticker}]", f"#{matched_ticker}"]:
+                desc_part = desc_part.replace(prefix, "").strip()
+            desc_part = desc_part.lstrip(":： ").strip()
+            if desc_part:
+                current_lines = [desc_part]
+            else:
+                current_lines = []
+        elif current_ticker:
+            # Remove leading bullet/dash
+            cleaned = line.lstrip("•-* ").strip()
+            if cleaned:
+                current_lines.append(cleaned)
+
+    if current_ticker and current_lines:
+        result[current_ticker] = "\n".join(current_lines[:3])
+
+    return result
+
+
 # ---- Formatting ---- #
 def fmt_mcap_usd(val):
     if not val or val <= 0:
@@ -203,8 +311,8 @@ def process_us():
         name_row = df_all[df_all['Symbol'] == h['Symbol']]
         h['Name'] = name_row.iloc[0]['Name'] if not name_row.empty else h['Symbol']
 
-    # Filter: market cap >= $500M
-    highs = [h for h in highs if h['MarketCap'] >= 5e8]
+    # Filter: market cap >= $2B (mid-cap and above)
+    highs = [h for h in highs if h['MarketCap'] >= 2e9]
     highs.sort(key=lambda x: x['Change'], reverse=True)
     logger.info(f"US after mcap filter: {len(highs)}")
 
@@ -225,11 +333,20 @@ def process_us():
     lines = [f"🇺🇸 *52주 신고가 달성 주식 ({date_str})*"]
     lines.append(f"📊 섹터 집계: {sec_str}\n")
 
+    # Get business descriptions for US stocks via Gemini
+    desc_companies = [{'name': h['Name'], 'ticker': h['Symbol'], 'sector': h['Sector'], 'country': h.get('Country', 'USA')} for h in highs[:30]]
+    logger.info(f"Fetching Gemini descriptions for {len(desc_companies)} US stocks...")
+    desc_map = describe_companies_gemini(desc_companies)
+    logger.info(f"Got descriptions for {len(desc_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['Symbol']}")
         lines.append(f"{h['Sector']} / {h['Country']}")
         lines.append(f"종가 {h['Close']:,.2f} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_usd(h['MarketCap'])}")
+        desc = desc_map.get(h['Symbol'])
+        if desc:
+            lines.append(f"📝 {desc}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -448,12 +565,21 @@ def process_jp():
     news_map = get_news_batch(top_jp_tickers)
     logger.info(f"Got news for {len(news_map)} stocks")
 
+    # Get business descriptions for JP stocks via Gemini
+    desc_companies = [{'name': h['Name'], 'ticker': h['Symbol'].replace('.T', ''), 'sector': h['Sector'], 'country': 'Japan'} for h in highs[:30]]
+    logger.info(f"Fetching Gemini descriptions for {len(desc_companies)} JP stocks...")
+    desc_map = describe_companies_gemini(desc_companies)
+    logger.info(f"Got descriptions for {len(desc_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         ticker_short = h['Symbol'].replace('.T', '')
         lines.append(f"{i}. {h['Name'][:25]} #{ticker_short}")
         lines.append(f"{h['Sector']} / Japan")
         lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 ¥{fmt_mcap_usd(h['MarketCap'])}")
+        desc = desc_map.get(ticker_short)
+        if desc:
+            lines.append(f"📝 {desc}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
