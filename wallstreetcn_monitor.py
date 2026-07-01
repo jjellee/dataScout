@@ -407,12 +407,15 @@ def main():
             else:
                 translated_title = translate_zh_to_ko(details['title'])
 
-                # Gemini AI summary (generated in parallel with translation)
+                # Gemini AI summary — only for longer articles (>= 500 chars body)
                 gemini_summary = ""
                 body_for_summary = details['title'] + "\n" + "\n".join(details['paragraphs'])
-                gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
-                if gemini_summary:
-                    logger.info("Gemini summary generated.")
+                if len(body_for_summary) >= 500:
+                    gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
+                    if gemini_summary:
+                        logger.info("Gemini summary generated.")
+                else:
+                    logger.info(f"Article body too short ({len(body_for_summary)} chars). Skipping AI summary.")
 
                 # Translate summary
                 translated_summary = ""
