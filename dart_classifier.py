@@ -1412,6 +1412,13 @@ def build_excel_summary(workspace_dir):
         if rcept_no in cache:
             record_detail = cache[rcept_no]
             
+            # Always re-apply current classification logic to cached records
+            # (fixes records cached before new keywords were added)
+            current_category = row['category']
+            if record_detail.get("category") != current_category:
+                record_detail["category"] = current_category
+            record_detail["base_type"] = base_type
+            
             # Auto-healing cache: if it is a treasury share disclosure but is classified as "기타" or "기타공시",
             # or has empty data dictionary, re-parse and update it.
             is_treasury = base_type in ["자기주식취득", "자기주식신탁", "자기주식소각"]
