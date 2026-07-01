@@ -329,6 +329,7 @@ def parse_officer_report_html(html_path, report_type):
         shares_after_total = 0
         avg_price = None
         change_reason = "-"
+        change_dates = []
 
         for table in tables:
             rows = table.find_all('tr')
