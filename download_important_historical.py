@@ -17,6 +17,7 @@ from bs4 import BeautifulSoup
 # Add project path to import custom modules
 sys.path.append("/home/inhyuk/projects/dataScout")
 from dart_classifier import classify_disclosure
+from dart_collector import classify_for_download, convert_dart_xml_to_html
 
 # Custom env loader
 def load_env():
@@ -152,9 +153,9 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty):
             
     return all_reports
 
-def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None):
+def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, overwrite=False):
     html_path = os.path.join(output_dir, f"{rcept_no}.html")
-    if os.path.exists(html_path):
+    if os.path.exists(html_path) and not overwrite:
         return True
         
     url = "https://opendart.fss.or.kr/api/document.xml"
@@ -247,6 +248,8 @@ def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None):
                     flags=re.IGNORECASE
                 )
                 
+                content_str = convert_dart_xml_to_html(content_str)
+                
                 if metadata:
                     corp_name = str(metadata.get("corp_name", "")).strip()
                     report_nm = str(metadata.get("report_nm", "")).strip()
@@ -292,7 +295,7 @@ def main():
         print("Error: No DART API keys provided.")
         return
         
-    start_date = datetime.date(2020, 1, 1)
+    start_date = datetime.date(2023, 1, 1)
     end_date = datetime.date.today()
     
     ranges = get_monthly_ranges(start_date, end_date)
@@ -317,21 +320,18 @@ def main():
             reports = fetch_disclosures_range(bgn, end, p_type)
             all_period_discls.extend(reports)
             
-        # Filter in Python
-        filtered = []
+        # Filter in Python: keep all Y, K, N disclosures
+        ykn_discls = []
         for item in all_period_discls:
             corp_cls = item.get("corp_cls")
             if corp_cls in ['Y', 'K', 'N']:
-                report_nm = item.get("report_nm")
-                cat = classify_disclosure(report_nm)
-                if is_important_disclosure(report_nm, cat):
-                    filtered.append(item)
+                ykn_discls.append(item)
                     
-        print(f"Found {len(filtered)} important disclosures out of {len(all_period_discls)} total in this month.")
+        print(f"Found {len(ykn_discls)} disclosures out of {len(all_period_discls)} total in this month.")
         
         # Group by date
         date_groups = {}
-        for item in filtered:
+        for item in ykn_discls:
             dt = item.get("rcept_dt")
             if dt not in date_groups:
                 date_groups[dt] = []
@@ -369,24 +369,30 @@ def main():
             except Exception as e:
                 print(f"[{dt}] Failed to save disclosures metadata: {e}")
                 
-            # Download HTML files
+            # Download HTML files only if classify_for_download is not None
             download_needed = []
             for item in items:
                 rcept_no = item.get("rcept_no")
-                html_path = os.path.join(output_dir, f"{rcept_no}.html")
-                if not os.path.exists(html_path):
-                    download_needed.append(item)
+                report_nm = item.get("report_nm")
+                
+                # Check if it matches classify_for_download
+                if classify_for_download(report_nm) is not None:
+                    html_path = os.path.join(output_dir, f"{rcept_no}.html")
+                    # Force overwrite if it is a 5%/officer report
+                    is_officer = any(k in report_nm for k in ["대량보유상황보고서", "소유주식변동보고서", "소유상황보고서", "특정증권"])
+                    if is_officer or not os.path.exists(html_path):
+                        download_needed.append((item, is_officer))
                     
             if download_needed:
-                print(f"[{dt}] Downloading {len(download_needed)} HTML files...")
-                for item in download_needed:
+                print(f"[{dt}] Downloading {len(download_needed)} HTML files (includes 5%/officer updates)...")
+                success_count = 0
+                for item, is_officer in download_needed:
                     rcept_no = item.get("rcept_no")
-                    success = download_disclosure_document_rotated(rcept_no, output_dir, metadata=item)
+                    success = download_disclosure_document_rotated(rcept_no, output_dir, metadata=item, overwrite=is_officer)
                     if success:
-                        print(f"  [{rcept_no}] Downloaded successfully.")
-                    else:
-                        print(f"  [{rcept_no}] Failed to download.")
+                        success_count += 1
                     time.sleep(0.05)
-
+                print(f"[{dt}] Downloaded {success_count}/{len(download_needed)} HTML files successfully.")
+                
 if __name__ == "__main__":
     main()
