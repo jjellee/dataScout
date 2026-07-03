@@ -2448,7 +2448,15 @@ def build_excel_summary(workspace_dir):
             df_officer = df_officer.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_officer.to_excel(writer, sheet_name="5%_임원보고", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고"])
-        
+
+        # 탭 순서 재배열: 신규시설투자 → 5%_임원보고 → 재무_자기주식 순
+        desired_order = ["자금조달_증자", "영업활동_계약", "신규시설투자", "5%_임원보고",
+                         "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
+        wb = writer.book
+        ordered = [wb[name] for name in desired_order if name in wb.sheetnames]
+        # desired_order에 없는 시트(향후 추가분)는 기존 순서대로 뒤에 붙인다
+        ordered += [wb[name] for name in wb.sheetnames if name not in desired_order]
+        wb._sheets = ordered
 
     save_closing_price_cache()
     logger.info(f"Excel file built successfully: {excel_path}")
