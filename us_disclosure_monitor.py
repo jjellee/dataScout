@@ -43,8 +43,9 @@ load_env()
 
 # Telegram configurations
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
+from llm_client import deepseek_chat
 
 # SEC EDGAR User-Agent compliance
 SEC_HEADERS = {
@@ -56,7 +57,8 @@ TRANSLATE_HEADERS = {
 }
 
 def translate_en_to_ko(text):
-    """Translates English text to Korean using the free Google Translate API."""
+    """Translates English text to Korean using the free Google Translate API.
+    Used as fallback when Gemini is unavailable."""
     if not text:
         return ""
     try:
@@ -73,6 +75,36 @@ def translate_en_to_ko(text):
     except Exception as e:
         logger.warning(f"Translation error: {e}")
     return text
+
+def summarize_filing_with_gemini(ticker, company_name, filing_title, content_text):
+    """DeepSeek으로 SEC 공시 한국어 요약 생성 (함수명은 호출부 호환 위해 유지).
+    Returns a Korean summary with investment insights, or empty string on failure."""
+    if not content_text:
+        return ""
+
+    # Truncate very long content to avoid token limits
+    max_chars = 8000
+    if len(content_text) > max_chars:
+        content_text = content_text[:max_chars] + "\n... (이하 생략)"
+
+    prompt = (
+        f"너는 미국 주식 시장 전문 애널리스트야. "
+        f"아래는 {company_name} ({ticker})의 SEC 공시 '{filing_title}' 본문이야.\n\n"
+        f"다음 형식으로 한국어 요약을 작성해줘:\n"
+        f"1. 📌 핵심 요약 (2~3문장으로 공시의 핵심 내용)\n"
+        f"2. 💡 투자 포인트 (이 공시가 주가에 미칠 영향을 긍정/부정/중립으로 판단하고 이유 설명)\n"
+        f"3. 📊 주요 수치 (금액, 주식수, 비율 등 핵심 숫자가 있으면 정리)\n\n"
+        f"서론/꼬리말 없이 바로 위 형식으로만 작성해줘. "
+        f"전문용어는 한국 투자자가 이해하기 쉽게 번역해줘.\n\n"
+        f"--- 공시 본문 ---\n"
+        f"{content_text}"
+    )
+
+    result = deepseek_chat(prompt, temperature=0.3, max_tokens=1024)
+    if not result:
+        # Fallback to Google Translate if DeepSeek fails
+        logger.info("Falling back to Google Translate...")
+    return result
 
 def load_watchlist():
     """
@@ -526,13 +558,18 @@ def main():
         clean_summary = re.sub('<[^<]+?>', '', f['summary'])
         clean_summary = " ".join(clean_summary.split())
         
-        # 3. Fetch and translate filing content
+        # 3. Fetch filing content and summarize with Gemini
         content_summary = fetch_filing_content(link)
+        ai_summary = ""
         translated_content = ""
         if content_summary:
-            logger.info(f"Translating filing content for {ticker}...")
-            translated_content = translate_en_to_ko(content_summary)
-            
+            logger.info(f"Summarizing filing content with Gemini for {ticker}...")
+            ai_summary = summarize_filing_with_gemini(ticker, company_name, title, content_summary)
+            if not ai_summary:
+                # Fallback to Google Translate
+                logger.info(f"Gemini unavailable, falling back to Google Translate for {ticker}...")
+                translated_content = translate_en_to_ko(content_summary)
+
         # 4. Format Telegram alert using HTML
         escaped_ticker = html.escape(ticker)
         escaped_company_name = html.escape(company_name)
@@ -540,7 +577,7 @@ def main():
         escaped_title = html.escape(title)
         escaped_summary = html.escape(clean_summary)
         escaped_kst_date = html.escape(kst_date)
-        
+
         telegram_msg = (
             f"🇺🇸 <b>[미국 기업 공시 알림]</b>\n\n"
             f"📍 <b>{escaped_ticker} ({escaped_company_name})</b>\n"
@@ -550,8 +587,14 @@ def main():
             f"  • {escaped_summary}\n"
             f"  • 공시 일시: {escaped_kst_date}\n\n"
         )
-        
-        if translated_content:
+
+        if ai_summary:
+            escaped_ai_summary = html.escape(ai_summary)
+            telegram_msg += (
+                f"🤖 <b>AI 공시 분석 요약:</b>\n"
+                f"{escaped_ai_summary}\n\n"
+            )
+        elif translated_content:
             escaped_translated_content = html.escape(translated_content)
             telegram_msg += (
                 f"📝 <b>공시 본문 요약 (번역):</b>\n"

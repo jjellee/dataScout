@@ -28,8 +28,8 @@ if os.path.exists(env_path):
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
+from llm_client import deepseek_chat
 
 # ---- Telegram ---- #
 def send_telegram_message(token, chat_id, text):
@@ -142,13 +142,13 @@ def get_news_batch(tickers, max_count=30):
 
 
 def describe_companies_gemini(companies):
-    """Use Gemini to generate 3-line Korean business descriptions for a list of companies.
+    """DeepSeek으로 기업별 3줄 한국어 사업 설명 생성 (함수명은 호출부 호환 위해 유지).
     Args:
         companies: list of dict with 'name', 'ticker', 'sector', 'country'
     Returns:
         dict: ticker -> description string (3 lines)
     """
-    if not GEMINI_API_KEY or not companies:
+    if not companies:
         return {}
 
     # Build prompt with all companies
@@ -165,41 +165,9 @@ def describe_companies_gemini(companies):
         f"{company_list}"
     )
 
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.2,
-            "maxOutputTokens": 4096,
-            "thinkingConfig": {"thinkingBudget": 1024}
-        }
-    }
-
-    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
-    for model in models:
-        for attempt in range(2):
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-                resp = requests.post(url, json=payload, timeout=90)
-                if resp.status_code == 200:
-                    data = resp.json()
-                    candidates = data.get("candidates", [])
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts:
-                            text = parts[0].get("text", "").strip()
-                            logger.info(f"Gemini company descriptions generated ({model}).")
-                            return _parse_descriptions(text, companies)
-                elif resp.status_code in (429, 503):
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
-                    if attempt == 0:
-                        time.sleep(5)
-                        continue
-                else:
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
-                    break
-            except Exception as e:
-                logger.warning(f"Gemini description failed ({model}): {e}")
-                break
+    text = deepseek_chat(prompt, temperature=0.2, max_tokens=4096, timeout=90)
+    if text:
+        return _parse_descriptions(text, companies)
     return {}
 
 
@@ -611,7 +579,7 @@ def main():
 
             # Send to Telegram
             if TELEGRAM_BOT4_TOKEN and report:
-                chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+                chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_SUPPLY_DATA_CHAT_ID
                 # Split if too long
                 if len(report) > 4000:
                     parts = report.split("\n\n")

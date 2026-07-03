@@ -13,6 +13,7 @@ import asyncio
 import pandas as pd
 import yfinance as yf
 import FinanceDataReader as fdr
+import yahooquery
 from pykrx import stock as pykrx_stock
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
@@ -41,8 +42,8 @@ def load_env():
 
 load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or "-1003877753638"
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or "-1003877753638"
+from llm_client import deepseek_chat
 
 # ----------------- Helper Functions ----------------- #
 
@@ -130,10 +131,7 @@ def send_telegram_message(token, chat_id, text):
         return None
 
 def analyze_market_reasons_with_gemini(market, date_str, report_summary):
-    """Use Gemini 3.5 Flash to analyze the reasons behind daily market index moves."""
-    if not GEMINI_API_KEY:
-        return ""
-    
+    """DeepSeek으로 일일 시황 분석 생성 (함수명은 호출부 호환 위해 유지)."""
     prompt = (
         f"너는 글로벌 거시 경제와 주식 시장을 분석하는 최고의 금융 애널리스트야. "
         f"아래 제공된 {market} 주식 시장의 일일 마감 데이터({date_str})를 분석하고, "
@@ -143,42 +141,7 @@ def analyze_market_reasons_with_gemini(market, date_str, report_summary):
         f"--- 마감 데이터 요약 ---\n"
         f"{report_summary}"
     )
-    
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.3,
-            "maxOutputTokens": 2048,
-            "thinkingConfig": {"thinkingBudget": 1024}
-        }
-    }
-    
-    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
-    for model in models:
-        for attempt in range(2):
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-                resp = requests.post(url, json=payload, timeout=60)
-                if resp.status_code == 200:
-                    data = resp.json()
-                    candidates = data.get("candidates", [])
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts:
-                            logger.info(f"Gemini analysis generated ({model}).")
-                            return parts[0].get("text", "").strip()
-                elif resp.status_code in (429, 503):
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
-                    if attempt == 0:
-                        time.sleep(5)
-                        continue
-                else:
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
-                    break
-            except Exception as e:
-                logger.warning(f"Gemini analysis failed ({model}): {e}")
-                break
-    return ""
+    return deepseek_chat(prompt, temperature=0.3, max_tokens=2048)
 
 def check_market_holiday(market):
     """
@@ -382,16 +345,19 @@ def download_kr_prices(expected_date):
     for mkt in ["KOSPI", "KOSDAQ"]:
         try:
             df_mkt = pykrx_stock.get_market_ohlcv_by_ticker(date_str, market=mkt)
+            df_cap = pykrx_stock.get_market_cap_by_ticker(date_str, market=mkt)
             if df_mkt.empty:
                 logger.warning(f"No pykrx data for {mkt} on {date_str}")
                 continue
             for ticker in df_mkt.index:
                 close = df_mkt.loc[ticker, '종가']
                 change = df_mkt.loc[ticker, '등락률']
+                mcap = df_cap.loc[ticker, '시가총액'] if ticker in df_cap.index else 0
                 if close > 0:
                     all_results.append({
                         'Symbol': str(ticker),
                         'Price': float(close),
+                        'MarketCap': float(mcap),
                         'Change': float(change)
                     })
         except Exception as e:
@@ -441,6 +407,13 @@ def download_prices_bulk(symbols):
             # Fetch 5 days to ensure we always have 2+ active trading days
             df_chunk = yf.download(chunk_str, period="5d", group_by="ticker", progress=False)
             
+            try:
+                yq_tickers = yahooquery.Ticker(chunk)
+                summary_data = yq_tickers.summary_detail
+            except Exception as e:
+                logger.error(f"yahooquery error: {e}")
+                summary_data = {}
+            
             # Extract close prices
             for ticker in df_chunk.columns.get_level_values(0).unique():
                 try:
@@ -448,11 +421,17 @@ def download_prices_bulk(symbols):
                     if len(close_series) >= 2:
                         prev_close = float(close_series.iloc[-2])
                         close = float(close_series.iloc[-1])
+                        
+                        mcap = 0
+                        if isinstance(summary_data, dict) and ticker in summary_data and isinstance(summary_data[ticker], dict):
+                            mcap = summary_data[ticker].get('marketCap', 0)
+                            
                         if prev_close > 0:
                             change = (close - prev_close) / prev_close * 100
                             all_results.append({
                                 'Symbol': ticker,
                                 'Price': close,
+                                'MarketCap': float(mcap),
                                 'Change': change
                             })
                 except Exception:
@@ -501,8 +480,17 @@ def save_to_formatted_excel(df, output_path, market):
     try:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
+        # Rename for presentation
+        if market == "KR":
+            df = df.rename(columns={'Symbol': '티커', 'Name': '종목명', 'Industry': '섹터', 'MarketCap': '시가총액', 'Change': '등락률'})
+            df = df[['티커', '시가총액', '등락률', '종목명', '섹터']]
+        else:
+            df = df.rename(columns={'Symbol': 'Ticker', 'Name': 'Name', 'Industry': 'Sector', 'MarketCap': '시가총액', 'Change': 'Change(%)'})
+            df = df[['Ticker', '시가총액', 'Change(%)', 'Name', 'Sector']]
+            
         # Sort by change descending
-        df_sorted = df.sort_values(by='Change', ascending=False)
+        sort_col = '등락률' if market == "KR" else 'Change(%)'
+        df_sorted = df.sort_values(by=sort_col, ascending=False)
         
         with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
             df_sorted.to_excel(writer, index=False, sheet_name='Price Changes')
@@ -833,7 +821,7 @@ def main():
     report_text = "\n".join(report_lines)
     
     # 8. Upload to Telegram
-    target_chat = TELEGRAM_JJANG_GU_CHAT_ID
+    target_chat = TELEGRAM_SUPPLY_DATA_CHAT_ID
     if test_mode:
         # Use test bot/chat
         target_chat = os.getenv("TELEGRAM_TEST_CHAT_ID") or "-1003843549676"

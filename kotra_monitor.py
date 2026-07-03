@@ -40,11 +40,11 @@ load_env()
 
 # Telegram configurations
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
-# Gemini API
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+# LLM (DeepSeek)
+from llm_client import deepseek_chat
 
 AJAX_URL = "https://dream.kotra.or.kr/ajaxf/frNews/getKotraBoardList.do"
 HEADERS = {
@@ -54,49 +54,14 @@ HEADERS = {
 }
 
 def summarize_with_gemini(title, body_text):
-    """Use Gemini to generate a concise Korean summary. Falls back from 3.5-flash to 2.5-flash on error."""
-    if not GEMINI_API_KEY:
-        return ""
+    """DeepSeek으로 한국어 요약 생성 (함수명은 호출부 호환 위해 유지)."""
     prompt = (
         "다음 한국어 해외시장 뉴스 기사를 읽고, 핵심 내용을 한국어로 요약해줘. "
         "투자자 관점에서 중요한 포인트 위주로 충분히 상세하게 작성해줘. 불필요한 서론 없이 바로 요약해줘.\n\n"
         f"제목: {title}\n\n"
         f"본문:\n{body_text[:4000]}"
     )
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.3,
-            "maxOutputTokens": 2048,
-            "thinkingConfig": {"thinkingBudget": 1024}
-        }
-    }
-    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
-    for model in models:
-        for attempt in range(2):
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-                resp = requests.post(url, json=payload, timeout=60)
-                if resp.status_code == 200:
-                    data = resp.json()
-                    candidates = data.get("candidates", [])
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts:
-                            logger.info(f"Gemini summary generated ({model}).")
-                            return parts[0].get("text", "").strip()
-                elif resp.status_code in (429, 503):
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}, retry {attempt+1}/2")
-                    if attempt == 0:
-                        time.sleep(5)
-                        continue
-                else:
-                    logger.warning(f"Gemini API error ({model}): HTTP {resp.status_code}")
-                    break
-            except Exception as e:
-                logger.warning(f"Gemini summarization failed ({model}): {e}")
-                break
-    return ""
+    return deepseek_chat(prompt, temperature=0.3, max_tokens=2048)
 
 
 def fetch_latest_news_items():

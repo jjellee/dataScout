@@ -43,9 +43,9 @@ def load_env():
 load_env()
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+from llm_client import deepseek_chat
 
 # RSS Feeds
 TOMS_HARDWARE_RSS = "https://www.tomshardware.com/feeds/news"
@@ -201,11 +201,7 @@ def translate_paragraphs(paragraphs):
 
 
 def translate_and_summarize_gemini(title, body_text):
-    """Generate Korean title and summary using Gemini JSON mode."""
-    if not GEMINI_API_KEY:
-        logger.warning("No GEMINI_API_KEY set.")
-        return None
-    
+    """DeepSeek JSON 모드로 한국어 제목·요약 생성 (함수명은 호출부 호환 위해 유지)."""
     prompt = (
         "You are a professional financial and technical analyst and translator. "
         "Translate the following article title to Korean and summarize its content in Korean. "
@@ -217,39 +213,14 @@ def translate_and_summarize_gemini(title, body_text):
         f"Title: {title}\n"
         f"Content:\n{body_text[:12000]}"
     )
-    
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.2,
-            "maxOutputTokens": 2048,
-            "responseMimeType": "application/json"
-        }
-    }
-    
-    models = ["gemini-3.5-flash", "gemini-2.5-flash"]
-    for model in models:
-        for attempt in range(2):
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-                resp = requests.post(url, json=payload, timeout=45)
-                if resp.status_code == 200:
-                    data = resp.json()
-                    candidates = data.get("candidates", [])
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts:
-                            text = parts[0].get("text", "").strip()
-                            return json.loads(text)
-                elif resp.status_code in (429, 503):
-                    time.sleep(3)
-                    continue
-                else:
-                    break
-            except Exception as e:
-                logger.warning(f"Gemini API error with {model}: {e}")
-                break
-    return None
+    text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=45, json_mode=True)
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except Exception as e:
+        logger.warning(f"DeepSeek JSON parse error: {e}")
+        return None
 
 
 def format_pubdate(pubdate_str):
@@ -319,29 +290,30 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
                 
         elif source_type == 'investing':
             # ==========================================
-            # Investing.com: Title translation & 요약
+            # Investing.com: FULL body translation
             # ==========================================
-            body_text = "\n\n".join(paragraphs)
-            gemini_res = translate_and_summarize_gemini(title, body_text)
+            translated_title = translate_en_to_ko(title)
+            if not translated_title:
+                translated_title = title
             
-            if gemini_res and 'translated_title' in gemini_res and 'summary' in gemini_res:
-                translated_title = gemini_res['translated_title']
-                summary_bullets = gemini_res['summary']
-            else:
-                translated_title = translate_en_to_ko(title) or title
-                summary_bullets = ["(요약을 생성할 수 없어 원본 문서를 확인하십시오.)"]
-                
-            msg = f"📊 *[Investing.com 애널리스트 의견]*\n\n"
-            msg += f"📌 *{translated_title}*\n"
-            msg += f"({title})\n\n"
-            msg += "📋 *핵심 요약:*\n"
-            for bullet in summary_bullets:
-                msg += f"- {bullet}\n"
-            msg += f"\n🔗 [기사 원문 보기]({link})\n"
-            msg += f"⏰ {pub_date}"
+            logger.info("Translating paragraphs for Investing.com...")
+            translated_paragraphs = translate_paragraphs(paragraphs)
+            
+            header_text = (
+                f"📊 *[Investing.com 애널리스트 의견 - 전문 번역]*\n\n"
+                f"📌 *{translated_title}*\n"
+                f"({title})"
+            )
+            
+            footer_text = (
+                f"=============================\n"
+                f"🔗 [기사 원문 보기]({link})\n"
+                f"⏰ {pub_date}"
+            )
             
             if TELEGRAM_BOT4_TOKEN and chat_id:
-                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
+                logger.info("Sending full-text article to Telegram...")
+                send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
                 time.sleep(2.0)
             
         processed_ids.append(item['id'])
