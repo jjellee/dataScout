@@ -47,8 +47,9 @@ echo "Step 3: Running stock supply-demand screener..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python screener.py
 
 # 4. Run Korean insider trading collector
-echo "Step 4: Collecting Korean insider trades..."
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python kr_insider_collector.py
+# DISABLED 2026-07-03: kr_insider_transactions.xlsx 내용이 dart_disclosures_summary.xlsx(지분공시 시트)와 중복되어 실행 중지
+# echo "Step 4: Collecting Korean insider trades..."
+# /home/inhyuk/projects/ExportImportAutomation/venv/bin/python kr_insider_collector.py
 
 # 5. Run Japan multi-HS-code export tracker (16 codes: MLCC, Memory, InP, AlN, Photoresists, Si Wafer, ABF, Optical Fiber/Cable, Semi Equipment, etc.)
 echo "Step 5: Checking for Japan export data updates (16 HS codes)..."
