@@ -2154,6 +2154,22 @@ def build_excel_summary(workspace_dir):
                 for k, v in record["data"].items():
                     if v not in [None, "-", ""]:
                         original_match["data"][k] = v
+
+                # 콜/풋옵션은 최신 정정의 판정이 원공시보다 항상 우선한다.
+                # (정정으로 '실제 계약한 사실이 없습니다'처럼 옵션이 부인되면 '-'가 정답이므로
+                #  위의 '비어있으면 덮어쓰지 않음' 규칙을 적용하면 안 됨.)
+                # 단, 정정 HTML이 실제로 파싱된 경우에만 — 파싱 실패로 인한 '-'가 원본을 지우면 안 된다.
+                if base_type in ("CB", "BW", "EB"):
+                    amend_d = record["data"]
+                    _ci = amend_d.get("call_option_info") or ""
+                    _pi = amend_d.get("put_option_info") or ""
+                    if _ci and not _ci.startswith("N/A"):
+                        original_match["data"]["call_start"] = amend_d.get("call_start", "-")
+                        original_match["data"]["call_end"] = amend_d.get("call_end", "-")
+                    if _pi and not _pi.startswith("N/A"):
+                        original_match["data"]["put_start"] = amend_d.get("put_start", "-")
+                        original_match["data"]["put_end"] = amend_d.get("put_end", "-")
+
                 original_match["report_nm"] = f"{original_match['report_nm']} (정정: {record['rcept_dt']})"
                 
                 # Update date display to show amendment history
