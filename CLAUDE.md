@@ -58,7 +58,7 @@
 | `us_market_monitor.py` | S&P500 등락률로 마켓 무버(급등·급락주) 집계해 전송 |
 | `us_disclosure_monitor.py` | SEC EDGAR 공시 모니터링 → 한국어 번역 후 알림 |
 | `download_historical_insiders.py` | SEC Form4 / OpenInsider로 미국 내부자 매매 과거 데이터 수집 |
-| `market_indicators.py` | 장 마감 후 주요 ETF/지수 히트맵·추세 차트 대시보드 생성 |
+| `market_indicators.py` | 시장별(`--market US/KR/JP/CN`) 지수·섹터 히트맵·추세 차트 대시보드 — 각국 장마감 후 크론 실행 (US 07:30 / JP 15:50 / KR 16:10 / CN 17:35) |
 | `interest_monitor.py` | 관심종목(`interest_watchlist.json`) 주가·뉴스 일일 브리핑 |
 | `interest_news.py` | 관심종목을 Google News RSS에서 검색해 뉴스 다이제스트 발송 |
 
