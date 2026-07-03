@@ -44,7 +44,7 @@ load_env()
 
 # Telegram configurations
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # Matplotlib Font Setup
@@ -301,7 +301,7 @@ def main():
         return
 
     # 4. Uploading to Telegram
-    chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+    chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_SUPPLY_DATA_CHAT_ID
     logger.info(f"Uploading chart to Telegram (Test Mode: {args.test})...")
     send_to_telegram(chart_path, df_flow, chat_id)
 

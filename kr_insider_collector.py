@@ -35,7 +35,7 @@ def load_env():
 load_env()
 DART_API_KEY = os.getenv("DART_API_KEY")
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or "-1003877753638"
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or "-1003877753638"
 
 def fetch_daily_disclosures_list(target_date):
     """Fetches list of all disclosures for a specific date from DART."""
@@ -544,15 +544,15 @@ def main():
         workspace_dir = os.path.dirname(os.path.abspath(__file__))
         excel_path = os.path.join(workspace_dir, "data_kr", "kr_insider_transactions.xlsx")
         
-        if TELEGRAM_BOT4_TOKEN and TELEGRAM_JJANG_GU_CHAT_ID:
-            logger.info(f"Uploading updated Korean Insider/Block Excel sheet to Telegram chat: {TELEGRAM_JJANG_GU_CHAT_ID}...")
+        if TELEGRAM_BOT4_TOKEN and TELEGRAM_SUPPLY_DATA_CHAT_ID:
+            logger.info(f"Uploading updated Korean Insider/Block Excel sheet to Telegram chat: {TELEGRAM_SUPPLY_DATA_CHAT_ID}...")
             caption_text = (
                 "📁 *[국내 내부자 거래 & 5% 지분 변동 Excel 업데이트]*\n"
                 "새로운 지분 변동 내역이 누적 엑셀 파일에 추가되어 전송합니다.\n"
                 "• *InsiderTrades*: 임원 및 대주주, 최대주주 주식 변동 내역\n"
                 "• *BlockHoldings*: 5% 이상 대량 보유자(기관, 펀드 등) 변동 내역"
             )
-            res_file = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, excel_path, caption=caption_text)
+            res_file = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_SUPPLY_DATA_CHAT_ID, excel_path, caption=caption_text)
             if res_file and res_file.get("ok"):
                 logger.info("Successfully uploaded Korean Excel sheet to Telegram.")
             else:

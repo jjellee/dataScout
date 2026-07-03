@@ -434,7 +434,7 @@ def main():
         chat_id = os.getenv("TELEGRAM_TEST_CHAT_ID") or "-1003843549676"
         logger.info(f"Running in TEST mode. Sending to chat: {chat_id}")
     else:
-        chat_id = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or "-1003757683939"
+        chat_id = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or "-1003757683939"
         logger.info(f"Running in PRODUCTION mode. Sending to chat: {chat_id}")
 
     if not main_token or not chat_id:

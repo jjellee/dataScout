@@ -389,7 +389,7 @@ async def upload_reports_to_telegram(charts_data, target_date_str, test_mode=Fal
         main_chat_id_str = os.getenv("TELEGRAM_TEST_CHAT_ID") or "-1003843549676"
         logger.info(f"Running in TEST mode. Target channel ID: {main_chat_id_str}")
     else:
-        main_chat_id_str = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or os.getenv("TELEGRAM_FORWARD_ENABLED_CHAT_ID") or "-1003757683939"
+        main_chat_id_str = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or os.getenv("TELEGRAM_FORWARD_ENABLED_CHAT_ID") or "-1003757683939"
         logger.info(f"Running in PRODUCTION mode. Target channel ID: {main_chat_id_str}")
         
     beon_chat_id = int(main_chat_id_str)
