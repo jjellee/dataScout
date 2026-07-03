@@ -134,6 +134,84 @@ INDICATORS = {
     },
 }
 
+# ---- 시장별 지수·섹터 그룹 (각국 정규장 마감 후 --market 인자로 개별 실행) ---- #
+KR_INDICATORS = {
+    "[한국 지수]": {
+        "^KS11": "코스피",
+        "^KQ11": "코스닥",
+        "^KS200": "코스피 200",
+    },
+    "[한국 섹터 (ETF)]": {
+        "091160.KS": "반도체",
+        "305720.KS": "2차전지",
+        "091180.KS": "자동차",
+        "244580.KS": "바이오",
+        "143860.KS": "헬스케어",
+        "091170.KS": "은행",
+        "102970.KS": "증권",
+        "117460.KS": "에너지화학",
+        "117680.KS": "철강",
+        "117700.KS": "건설",
+        "449450.KS": "K방산",
+    },
+}
+
+JP_INDICATORS = {
+    "[일본 지수]": {
+        "^N225": "닛케이 225",
+        "1306.T": "TOPIX (ETF)",
+    },
+    "[일본 섹터 (TOPIX-17)]": {
+        "1625.T": "전기·정밀",
+        "1626.T": "IT·통신서비스",
+        "1622.T": "자동차·운송기기",
+        "1624.T": "기계",
+        "1620.T": "소재·화학",
+        "1623.T": "철강·비철",
+        "1621.T": "의약품",
+        "1615.T": "은행",
+        "1632.T": "금융(은행제외)",
+        "1628.T": "운수·물류",
+    },
+}
+
+CN_INDICATORS = {
+    "[중화권 지수]": {
+        "^HSI": "항셍",
+        "3032.HK": "항셍테크 (ETF)",
+        "000001.SS": "상해 종합",
+        "399001.SZ": "심천 성분",
+        "399006.SZ": "창업판 (ChiNext)",
+    },
+}
+
+MARKET_GROUPS = {
+    "US": INDICATORS,       # 기존 미국·글로벌 대시보드 (아침 07:30)
+    "KR": KR_INDICATORS,    # 한국 장마감(15:30) 후
+    "JP": JP_INDICATORS,    # 일본 장마감(15:30 KST) 후
+    "CN": CN_INDICATORS,    # 홍콩 장마감(17:00 KST) 후
+}
+
+MARKET_TITLES = {
+    "US": "Market Indicators",
+    "KR": "한국 마감 지수·섹터",
+    "JP": "일본 마감 지수·섹터",
+    "CN": "중화권 마감 지수",
+}
+
+
+def price_prefix(ticker):
+    """티커 유형별 통화 기호 (지수·환율·선물은 없음, 한국 ₩, 일본 ¥, 그 외 $)."""
+    if ticker.startswith('^') or ticker.endswith(('=X', '=F')):
+        return ""
+    if ticker.endswith(('.KS', '.KQ')):
+        return "₩"
+    if ticker.endswith('.T'):
+        return "¥"
+    if ticker.endswith(('.HK', '.SS', '.SZ')):
+        return ""
+    return "$"
+
 # ---- Telegram ---- #
 def send_telegram_photo(token, chat_id, photo_path, caption=""):
     url = f"https://api.telegram.org/bot{token}/sendPhoto"
@@ -317,9 +395,9 @@ def create_heatmap_chart(returns_df, save_path):
             ax.text(col_x[1] + 0.01, y, row['name'][:14],
                     transform=ax.transAxes, fontsize=8, color='#8b949e',
                     va='center')
-            # Price (지수·환율·선물은 달러 표기 생략 — 포인트/원 단위)
+            # Price (티커 유형별 통화 기호)
             price = row['price']
-            _cur = "" if (str(row.get('ticker', '')).startswith('^') or str(row.get('ticker', '')).endswith(('=X', '=F'))) else "$"
+            _cur = price_prefix(str(row.get('ticker', '')))
             price_str = f"{_cur}{price:,.2f}" if price < 10000 else f"{_cur}{price:,.0f}"
             ax.text(col_x[2] + 0.01, y, price_str,
                     transform=ax.transAxes, fontsize=8.5, color='#c9d1d9',
@@ -480,8 +558,8 @@ def create_category_charts(close_df, returns_df, chart_dir, date_str):
             ax.set_title(title_text, color='#e6edf3', fontsize=11, fontweight='bold',
                          loc='left', pad=8)
 
-            # Price on right side of title (지수·환율·선물은 달러 표기 생략)
-            _cur = "" if (ticker.startswith('^') or ticker.endswith(('=X', '=F'))) else "$"
+            # Price on right side of title (티커 유형별 통화 기호)
+            _cur = price_prefix(ticker)
             price_str = f"{_cur}{price:,.2f}" if price < 100000 else f"{_cur}{price:,.0f}"
             ax.set_title(price_str, color='#c9d1d9', fontsize=10,
                          loc='right', pad=8)
@@ -544,7 +622,15 @@ def create_category_charts(close_df, returns_df, chart_dir, date_str):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--test", action="store_true", help="Send to test channel")
+    parser.add_argument("--market", default="US", choices=list(MARKET_GROUPS.keys()),
+                        help="시장 그룹 선택 (US=아침 글로벌, KR/JP/CN=각국 장마감 후)")
     args = parser.parse_args()
+
+    # 선택된 시장 그룹으로 전역 INDICATORS 교체 (차트·히트맵 함수들이 참조)
+    global INDICATORS
+    INDICATORS = MARKET_GROUPS[args.market]
+    market_title = MARKET_TITLES[args.market]
+    logger.info(f"Market group: {args.market} ({market_title})")
 
     # Collect all tickers
     all_tickers = []
@@ -571,8 +657,9 @@ def main():
 
     date_str = datetime.date.today().strftime("%Y%m%d")
 
-    # 1) Heatmap overview
-    heatmap_path = os.path.join(chart_dir, f"heatmap_{date_str}.png")
+    # 1) Heatmap overview (시장별 파일명 분리)
+    hm_suffix = "" if args.market == "US" else f"_{args.market.lower()}"
+    heatmap_path = os.path.join(chart_dir, f"heatmap_{date_str}{hm_suffix}.png")
     heatmap_ok = create_heatmap_chart(returns_df, heatmap_path)
 
     # 2) Category individual charts
@@ -587,7 +674,7 @@ def main():
         if heatmap_ok:
             logger.info("Sending heatmap to Telegram...")
             res = send_telegram_photo(token, chat_id, heatmap_path,
-                                       caption=f"Market Indicators Overview ({date_str})")
+                                       caption=f"{market_title} Overview ({date_str})")
             logger.info(f"Heatmap: {'sent' if res and res.get('ok') else 'FAILED'}")
             time.sleep(1)
 
@@ -606,11 +693,11 @@ def main():
 
     # Print summary
     print("\n" + "="*70)
-    print(f"Market Indicators Summary ({date_str})")
+    print(f"{market_title} Summary ({date_str})")
     print("="*70)
     for _, row in returns_df.iterrows():
         comment = generate_comment(row['1D'], row['1W'], row['1M'], row['3M'], row['YTD'])
-        print(f"  {row['Ticker']:10s} ${row['Price']:>10,.2f}  "
+        print(f"  {row['Ticker']:10s} {price_prefix(str(row['Ticker'])):>1s}{row['Price']:>10,.2f}  "
               f"1D:{row['1D']:+6.1f}%  1W:{row['1W']:+6.1f}%  "
               f"1M:{row['1M']:+6.1f}%  3M:{row['3M']:+6.1f}%  "
               f"YTD:{row['YTD']:+6.1f}%  | {comment}")
