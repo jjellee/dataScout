@@ -48,8 +48,10 @@ def load_env():
 
 load_env()
 DART_API_KEY = os.getenv("DART_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")  # 콜/풋옵션 청구일 등 서술형 항목 LLM 추출용
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID")  # antbot channel
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 
 # Cache path for parsed disclosures to avoid repeated API hits or re-parsing HTML
 CACHE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "mezzanine_cache.json")
@@ -207,6 +209,113 @@ def extract_option_start_date(text, opt_type="call"):
         return dates[0]
     return "-"
 
+def _looks_like_real_option_text(text):
+    """옵션 조항이 실제로 존재하는 서술문인지 판별 (N/A·해당없음이면 LLM 호출 불필요)."""
+    if not text:
+        return False
+    t = text.replace(" ", "")
+    if t[:3] == "N/A" or text.startswith("N/A"):
+        return False
+    if any(k in t for k in ["해당사항없음", "해당없음", "미해당"]):
+        return False
+    return len(text.strip()) > 20
+
+
+def extract_option_dates_llm(call_text, put_text):
+    """
+    DeepSeek(deepseek-chat)로 콜/풋옵션 서술문에서 청구(행사) 시작·종료일을 추출한다.
+    상대표현('발행일로부터 12개월')로 해소된 절대일자가 문장에 있으면 그 날짜를 뽑는다.
+    Returns dict with keys call_start/call_end/put_start/put_end (YYYY-MM-DD or "-"),
+    또는 키가 없거나 호출 실패 시 None.
+    """
+    if not DEEPSEEK_API_KEY:
+        return None
+    if not call_text and not put_text:
+        return None
+
+    prompt = (
+        "너는 한국 증권신고서/주요사항보고서의 사채(CB/BW) 조항에서 옵션 행사일을 추출하는 도구다.\n"
+        "아래는 콜옵션(매도청구권/매수선택권)과 풋옵션(조기상환청구권)에 관한 서술이다.\n"
+        "각 옵션의 '행사(청구) 기간'의 시작일과 종료일을 YYYY-MM-DD 형식으로 추출하라.\n"
+        "규칙:\n"
+        "- 문장에 '발행일로부터 N개월이 경과한 날인 2027년 05월 28일'처럼 이미 계산된 절대일자가 있으면 그 날짜를 쓴다.\n"
+        "- 절대일자 없이 상대표현만 있으면 해당 값은 \"-\" 로 둔다(임의 계산 금지).\n"
+        "- 해당 옵션이 없거나 날짜를 알 수 없으면 \"-\".\n"
+        "- 반드시 JSON만 출력. 키: call_start, call_end, put_start, put_end.\n\n"
+        f"[콜옵션 서술]\n{(call_text or '없음')[:2500]}\n\n"
+        f"[풋옵션 서술]\n{(put_text or '없음')[:2500]}"
+    )
+    payload = {
+        "model": "deepseek-chat",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0,
+        "response_format": {"type": "json_object"},
+        "max_tokens": 300,
+    }
+    url = "https://api.deepseek.com/chat/completions"
+    headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"}
+    for attempt in range(2):
+        try:
+            resp = requests.post(url, json=payload, headers=headers, timeout=30)
+            if resp.status_code == 200:
+                content = resp.json()["choices"][0]["message"]["content"]
+                parsed = json.loads(content)
+                out = {}
+                for k in ["call_start", "call_end", "put_start", "put_end"]:
+                    v = str(parsed.get(k, "-")).strip()
+                    m = re.search(r'(\d{4})[-.\s년]*(\d{1,2})[-.\s월]*(\d{1,2})', v)
+                    out[k] = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else "-"
+                logger.info("DeepSeek option-date extraction succeeded.")
+                return out
+            elif resp.status_code == 429:
+                time.sleep(3)
+                continue
+            else:
+                logger.warning(f"DeepSeek API error: HTTP {resp.status_code} {resp.text[:200]}")
+                return None
+        except Exception as e:
+            logger.warning(f"DeepSeek option extraction failed: {e}")
+            if attempt == 0:
+                time.sleep(2)
+                continue
+            return None
+    return None
+
+
+def resolve_option_dates(call_text, put_text, regex_call, regex_put):
+    """
+    하이브리드: 정규식 결과를 우선 쓰고, 실패('-')했지만 옵션 서술문이 실제로 존재하면
+    DeepSeek로 보강한다. LLM을 실제로 호출했는지 여부(llm_used)도 함께 반환해
+    캐시에 llm 처리 완료 플래그를 남길 수 있게 한다.
+    Returns: (call_start, put_start, call_end, put_end, llm_used)
+    """
+    call_start, put_start = regex_call, regex_put
+    call_end = put_end = "-"
+    # 키가 없으면 LLM을 시도하지 않고, 처리 완료(llm_used)로도 표시하지 않는다.
+    # → 나중에 키를 넣으면 그때 백필된다.
+    if not DEEPSEEK_API_KEY:
+        return call_start, put_start, call_end, put_end, False
+    # 정규식은 서술문의 첫 날짜(주로 '발행일')를 옵션 시작일로 오탐하는 경우가 많다.
+    # 따라서 옵션 조항이 실제로 존재하면 LLM을 우선 신뢰하고, 정규식은 안전망으로만 쓴다.
+    has_call = _looks_like_real_option_text(call_text)
+    has_put = _looks_like_real_option_text(put_text)
+    llm_used = False
+    if has_call or has_put:
+        llm = extract_option_dates_llm(call_text if has_call else None,
+                                       put_text if has_put else None)
+        llm_used = True
+        if llm:
+            if has_call:
+                if llm.get("call_start", "-") != "-":
+                    call_start = llm["call_start"]
+                call_end = llm.get("call_end", "-")
+            if has_put:
+                if llm.get("put_start", "-") != "-":
+                    put_start = llm["put_start"]
+                put_end = llm.get("put_end", "-")
+    return call_start, put_start, call_end, put_end, llm_used
+
+
 def find_original_date_from_html(html_path):
     """Parses the HTML to find the original filing date of an amended ('정정') disclosure."""
     if not os.path.exists(html_path):
@@ -232,8 +341,51 @@ def find_original_date_from_html(html_path):
         logger.error(f"Error finding original date in amendment HTML {html_path}: {e}")
     return None
 
+def find_original_disclosure_on_disk(corp_code, base_type, orig_date, workspace_dir):
+    """Searches disclosures.json on disk for the specified date to find the original disclosure matching company and type."""
+    json_path = os.path.join(workspace_dir, "data_dart", orig_date, "disclosures.json")
+    if not os.path.exists(json_path):
+        return None
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            disclosures = json.load(f)
+        for d in disclosures:
+            if d.get("corp_code") == corp_code:
+                if identify_base_report_type(d.get("report_nm", "")) == base_type:
+                    return d
+    except Exception as e:
+        logger.warning(f"Error loading historical disclosures.json for {orig_date}: {e}")
+    return None
+
 # Cache for closing price lookups
+CLOSING_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "closing_price_cache.json")
 _closing_price_cache = {}
+
+def load_closing_price_cache():
+    global _closing_price_cache
+    try:
+        if os.path.exists(CLOSING_CACHE_FILE):
+            with open(CLOSING_CACHE_FILE, "r") as f:
+                raw_cache = json.load(f)
+                _closing_price_cache = {tuple(k.split(":")): v for k, v in raw_cache.items()}
+            logger.info(f"Loaded {len(_closing_price_cache)} closing prices from cache.")
+        else:
+            _closing_price_cache = {}
+    except Exception as e:
+        logger.warning(f"Failed to load closing price cache: {e}")
+        _closing_price_cache = {}
+
+def save_closing_price_cache():
+    try:
+        os.makedirs(os.path.dirname(CLOSING_CACHE_FILE), exist_ok=True)
+        with open(CLOSING_CACHE_FILE, "w") as f:
+            raw_cache = {f"{k[0]}:{k[1]}": v for k, v in _closing_price_cache.items()}
+            json.dump(raw_cache, f)
+        logger.info(f"Saved {len(_closing_price_cache)} closing prices to cache.")
+    except Exception as e:
+        logger.warning(f"Failed to save closing price cache: {e}")
+
+load_closing_price_cache()
 
 def get_closing_price(stock_code, date_str):
     """Get closing price for a stock on a specific date using Naver Finance API.
@@ -1317,6 +1469,12 @@ def parse_capital_increase_html(html_path):
         if existing_shares > 0:
             res["existing_shares"] = existing_shares
             res["ratio"] = (new_shares / existing_shares) * 100
+
+        # Fallback: 제3자배정 등에서 '자금조달의 목적' 세부항목이 전부 "-"인 경우
+        # 목적 합계가 0이 되어 조달금액이 빈칸이 된다. 이때는 신주수 × 발행가액으로 추정한다.
+        if (not res["fundraising_amount"]) and new_shares > 0 \
+                and isinstance(res.get("issue_price"), (int, float)) and res["issue_price"] > 0:
+            res["fundraising_amount"] = int(round(new_shares * res["issue_price"]))
             
         for k in ["payment_date", "listing_date"]:
             d_match = re.search(r'(\d{4})[-년\s]*(\d{1,2})[-월\s]*(\d{1,2})', res[k])
@@ -1559,6 +1717,25 @@ def build_excel_summary(workspace_dir):
             is_treasury = base_type in ["자기주식취득", "자기주식신탁", "자기주식소각"]
             cached_is_other = record_detail.get("base_type") == "기타" or record_detail.get("category") == "기타공시"
             
+            # Auto-healing: 유상/무상증자인데 조달금액이 비어있으면(예: 자금목적 항목이 전부 "-"인 제3자배정)
+            # HTML을 재파싱해 신주수×발행가액 fallback 로직으로 조달금액을 다시 채운다.
+            if base_type in ["유상증자", "무상증자"]:
+                d = record_detail.get("data") or {}
+                if not d.get("total_amount"):
+                    html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    if os.path.exists(html_path):
+                        cap = parse_capital_increase_html(html_path)
+                        if cap.get("fundraising_amount"):
+                            d["total_amount"] = cap["fundraising_amount"]
+                            if not d.get("price") and cap.get("issue_price"):
+                                d["price"] = cap["issue_price"]
+                            if not d.get("new_shares_count") and cap.get("new_shares_count"):
+                                d["new_shares_count"] = cap["new_shares_count"]
+                            if not d.get("ratio") and cap.get("ratio"):
+                                d["ratio"] = cap["ratio"]
+                            record_detail["data"] = d
+                            cache[rcept_no] = record_detail
+
             if is_treasury and (cached_is_other or not record_detail.get("data")):
                 record_detail["category"] = "재무_자기주식"
                 record_detail["base_type"] = base_type
@@ -1576,37 +1753,108 @@ def build_excel_summary(workspace_dir):
                 }
                 cache[rcept_no] = record_detail
                 
-            # Re-run option date extraction to apply the new request start date logic
+            # Re-run option date extraction only if missing from cache
             if base_type in ["CB", "BW", "EB"]:
-                html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
-                call_opt, put_opt = parse_html_options(html_path)
-                call_start = extract_option_start_date(call_opt, "call")
-                put_start = extract_option_start_date(put_opt, "put")
-                
-                # Parse fallback claim dates in case they are missing from cache
-                fallback = parse_mezzanine_html_fallback(html_path, base_type)
-                
-                if "data" in record_detail:
-                    record_detail["data"]["call_start"] = call_start
-                    record_detail["data"]["put_start"] = put_start
-                    record_detail["data"]["call_option_info"] = call_opt
-                    record_detail["data"]["put_option_info"] = put_opt
+                data_dct = record_detail.get("data", {})
+                if "call_start" not in data_dct or "put_start" not in data_dct or "call_option_info" not in data_dct:
+                    html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    call_opt, put_opt = parse_html_options(html_path)
+                    call_start = extract_option_start_date(call_opt, "call")
+                    put_start = extract_option_start_date(put_opt, "put")
                     
-                    # Fill claim_start and claim_end
-                    fb_start = fallback.get("claim_start", "-")
-                    fb_end = fallback.get("claim_end", "-")
+                    # Parse fallback claim dates in case they are missing from cache
+                    fallback = parse_mezzanine_html_fallback(html_path, base_type)
                     
-                    if fb_start and fb_start != "-":
-                        record_detail["data"]["claim_start"] = fb_start
-                    else:
-                        record_detail["data"]["claim_start"] = record_detail["data"].get("claim_start", "-")
+                    if "data" in record_detail:
+                        record_detail["data"]["call_start"] = call_start
+                        record_detail["data"]["put_start"] = put_start
+                        record_detail["data"]["call_option_info"] = call_opt
+                        record_detail["data"]["put_option_info"] = put_opt
                         
-                    if fb_end and fb_end != "-":
-                        record_detail["data"]["claim_end"] = fb_end
-                    else:
-                        record_detail["data"]["claim_end"] = record_detail["data"].get("claim_end", "-")
+                        # Fill claim_start and claim_end
+                        fb_start = fallback.get("claim_start", "-")
+                        fb_end = fallback.get("claim_end", "-")
                         
-                    record_detail["data"]["listing_date"] = "-"
+                        if fb_start and fb_start != "-":
+                            record_detail["data"]["claim_start"] = fb_start
+                        else:
+                            record_detail["data"]["claim_start"] = record_detail["data"].get("claim_start", "-")
+                            
+                        if fb_end and fb_end != "-":
+                            record_detail["data"]["claim_end"] = fb_end
+                        else:
+                            record_detail["data"]["claim_end"] = record_detail["data"].get("claim_end", "-")
+                            
+                        record_detail["data"]["listing_date"] = "-"
+
+                # DeepSeek 보강 healing: 정규식이 옵션일을 못 뽑았지만(-) 옵션 서술문은 실제로 있고
+                # 아직 LLM 처리를 안 한 캐시 레코드만 1회 호출한다(option_llm_done 플래그로 중복방지).
+                d = record_detail.get("data", {})
+                if DEEPSEEK_API_KEY and isinstance(d, dict) and not d.get("option_llm_done"):
+                    call_opt = d.get("call_option_info", "")
+                    put_opt = d.get("put_option_info", "")
+                    need_call = _looks_like_real_option_text(call_opt)
+                    need_put = _looks_like_real_option_text(put_opt)
+                    if need_call or need_put:
+                        cs, ps, ce, pe, llm_used = resolve_option_dates(
+                            call_opt, put_opt, d.get("call_start", "-"), d.get("put_start", "-"))
+                        d["call_start"] = cs
+                        d["put_start"] = ps
+                        d["call_end"] = ce
+                        d["put_end"] = pe
+                        d["option_llm_done"] = True
+                        record_detail["data"] = d
+                        cache[rcept_no] = record_detail
+
+            # Re-run officer reports parsing if missing from cache
+            if record_detail.get("category") == "지분공시":
+                data_dct = record_detail.get("data", {})
+                if not isinstance(data_dct, dict):
+                    data_dct = {}
+                if "officer_reports" not in data_dct:
+                    rn = report_nm
+                    if '대량보유상황보고서' in rn:
+                        rtype = '대량보유'
+                    else:
+                        rtype = '임원보고'
+                    html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    parsed = parse_officer_report_html(html_path, rtype)
+                    # Compute avg_price from Naver closing prices if missing
+                    for p in parsed:
+                        if p.get("avg_price") is None and p.get("change_dates") and record_detail.get("stock_code"):
+                            w_sum = 0
+                            w_count = 0
+                            for date_str, change_amt in p["change_dates"]:
+                                closing = get_closing_price(record_detail["stock_code"], date_str)
+                                if closing is not None and abs(change_amt) > 0:
+                                    w_sum += closing * abs(change_amt)
+                                    w_count += abs(change_amt)
+                            if w_count > 0:
+                                p["avg_price"] = round(w_sum / w_count)
+                    record_detail["data"] = data_dct
+                    record_detail["data"]["officer_reports"] = parsed
+                    cache[rcept_no] = record_detail
+                else:
+                    # Healing cache for missing avg_price
+                    parsed = data_dct.get("officer_reports")
+                    if isinstance(parsed, list):
+                        modified = False
+                        for p in parsed:
+                            if p.get("avg_price") is None and p.get("change_dates") and record_detail.get("stock_code"):
+                                w_sum = 0
+                                w_count = 0
+                                for date_str, change_amt in p["change_dates"]:
+                                    closing = get_closing_price(record_detail["stock_code"], date_str)
+                                    if closing is not None and abs(change_amt) > 0:
+                                        w_sum += closing * abs(change_amt)
+                                        w_count += abs(change_amt)
+                                if w_count > 0:
+                                    p["avg_price"] = round(w_sum / w_count)
+                                    modified = True
+                        if modified:
+                            record_detail["data"]["officer_reports"] = parsed
+                            cache[rcept_no] = record_detail
+
             parsed_records.append(record_detail)
             continue
             
@@ -1683,10 +1931,12 @@ def build_excel_summary(workspace_dir):
                 claim_end = fallback["claim_end"]
                 share_type = fallback["share_type"]
                 
-            # Extract Option Dates
-            call_start = extract_option_start_date(call_opt, "call")
-            put_start = extract_option_start_date(put_opt, "put")
-            
+            # Extract Option Dates (정규식 우선, 실패 시 DeepSeek 보강)
+            regex_call = extract_option_start_date(call_opt, "call")
+            regex_put = extract_option_start_date(put_opt, "put")
+            call_start, put_start, call_end, put_end, llm_used = resolve_option_dates(
+                call_opt, put_opt, regex_call, regex_put)
+
             record_detail["data"] = {
                 "total_amount": total_amount,
                 "price": conversion_price,
@@ -1700,13 +1950,32 @@ def build_excel_summary(workspace_dir):
                 "purpose": "-", # Summarize later
                 "call_start": call_start,
                 "put_start": put_start,
+                "call_end": call_end,
+                "put_end": put_end,
+                "option_llm_done": llm_used,
                 "call_option_info": call_opt,
                 "put_option_info": put_opt
             }
             
         # 2. Capital Increase Parsing (유상증자)
         elif base_type == "유상증자":
+            base_data = None
+            if is_amended and original_date:
+                orig_disc = find_original_disclosure_on_disk(corp_code, base_type, original_date, workspace_dir)
+                if orig_disc:
+                    orig_html = os.path.join(workspace_dir, "data_dart", original_date, f"{orig_disc['rcept_no']}.html")
+                    if os.path.exists(orig_html):
+                        base_data = parse_capital_increase_html(orig_html)
+                        
             cap_data = parse_capital_increase_html(html_path)
+            if base_data:
+                for k, v in cap_data.items():
+                    if v not in [None, "-", "", 0, 0.0]:
+                        base_data[k] = v
+                if base_data.get("existing_shares", 0) > 0 and base_data.get("new_shares_count", 0) > 0:
+                    base_data["ratio"] = (base_data["new_shares_count"] / base_data["existing_shares"]) * 100
+                cap_data = base_data
+
             record_detail["data"] = {
                 "total_amount": cap_data["fundraising_amount"],
                 "price": cap_data["issue_price"],
@@ -1771,10 +2040,42 @@ def build_excel_summary(workspace_dir):
                 "purpose": t_data["purpose"]
             }
             
+        # 7. Officer reports / 5% report parsing (지분공시)
+        elif row['category'] == "지분공시":
+            rn = report_nm
+            if '대량보유상황보고서' in rn:
+                rtype = '대량보유'
+            else:
+                rtype = '임원보고'
+            parsed = parse_officer_report_html(html_path, rtype)
+            # Compute avg_price from Naver closing prices if missing
+            for p in parsed:
+                if p.get("avg_price") is None and p.get("change_dates") and row.get("stock_code"):
+                    w_sum = 0
+                    w_count = 0
+                    for date_str, change_amt in p["change_dates"]:
+                        closing = get_closing_price(row["stock_code"], date_str)
+                        if closing is not None and abs(change_amt) > 0:
+                            w_sum += closing * abs(change_amt)
+                            w_count += abs(change_amt)
+                    if w_count > 0:
+                        p["avg_price"] = round(w_sum / w_count)
+            record_detail["data"] = {
+                "officer_reports": parsed
+            }
+            
         # Cache and save
-        cache[rcept_no] = record_detail
-        parsed_records.append(record_detail)
+        cat = record_detail.get("category")
+        dt = record_detail.get("data", {})
+        is_bad = False
+        if cat == "자금조달_증자" and dt.get("total_amount") is None: is_bad = True
+        if cat == "영업활동_계약" and dt.get("amount") is None: is_bad = True
+        if cat == "신규시설투자" and dt.get("amount") is None: is_bad = True
         
+        if not is_bad:
+            cache[rcept_no] = record_detail
+            
+        parsed_records.append(record_detail)        
     save_cache(cache)
     
     # -------------------------------------------------------------
@@ -1812,14 +2113,16 @@ def build_excel_summary(workspace_dir):
                             
             if original_match:
                 logger.info(f"Merging amendment {record['rcept_no']} into original {original_match['rcept_no']}")
-                # Overwrite original data with corrected amendment data
-                original_match["data"] = record["data"]
+                # Overwrite original data with corrected amendment data, but only if the new data is not empty
+                for k, v in record["data"].items():
+                    if v not in [None, "-", ""]:
+                        original_match["data"][k] = v
                 original_match["report_nm"] = f"{original_match['report_nm']} (정정: {record['rcept_dt']})"
                 
                 # Update date display to show amendment history
                 orig_date_fmt = f"{original_match['rcept_dt'][:4]}-{original_match['rcept_dt'][4:6]}-{original_match['rcept_dt'][6:]}"
                 amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
-                original_match["rcept_dt_display"] = f"{orig_date_fmt} (정정: {amend_date_fmt})"
+                original_match["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
                 
                 # Overwrite receipt number to the latest one so that link points to the corrected version
                 original_match["rcept_no"] = record["rcept_no"]
@@ -1831,7 +2134,7 @@ def build_excel_summary(workspace_dir):
                 # If original not found in current dataset (e.g. original was 2025), format its date showing it is an amendment
                 orig_date_fmt = f"{orig_date[:4]}-{orig_date[4:6]}-{orig_date[6:]}" if orig_date else "과거공시"
                 amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
-                record["rcept_dt_display"] = f"{orig_date_fmt} (정정: {amend_date_fmt})"
+                record["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
                 
     # Filter out merged amendments
     active_records = [r for r in parsed_records if r["merged_into"] is None]
@@ -1873,6 +2176,7 @@ def build_excel_summary(workspace_dir):
             
             fund_data_list.append({
                 "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
+                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")',
                 "회사명": r["corp_name"],
                 "시장구분": map_market(r["corp_cls"]),
                 "종목코드": r["stock_code"],
@@ -1890,8 +2194,7 @@ def build_excel_summary(workspace_dir):
                 "조달목적": d.get("purpose", "-"),
                 "콜옵션 청구일": d.get("call_start", "-"),
                 "풋옵션 청구일": d.get("put_start", "-"),
-                "접수번호": r["rcept_no"],
-                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
+                "접수번호": r["rcept_no"]
             })
         df_fund = pd.DataFrame(fund_data_list)
         if '접수일자' in df_fund.columns:
@@ -1906,6 +2209,7 @@ def build_excel_summary(workspace_dir):
             d = r["data"]
             contract_data_list.append({
                 "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
+                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")',
                 "회사명": r["corp_name"],
                 "시장구분": map_market(r["corp_cls"]),
                 "종목코드": r["stock_code"],
@@ -1918,8 +2222,7 @@ def build_excel_summary(workspace_dir):
                 "수주잔고": d.get("backlog", "-") if r["base_type"] == "공급계약" else "-",
                 "최근 매출액 대비": d.get("ratio") if r["base_type"] == "공급계약" else None,
                 "수주상대방": d.get("counterparty", "-") if r["base_type"] == "공급계약" else "-",
-                "접수번호": r["rcept_no"],
-                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
+                "접수번호": r["rcept_no"]
             })
         df_contract = pd.DataFrame(contract_data_list)
         if '접수일자' in df_contract.columns:
@@ -2062,24 +2365,12 @@ def build_excel_summary(workspace_dir):
             else:
                 rtype = '임원보고'
             
-            html_path = os.path.join(workspace_dir, "data_dart", r["collected_date"], f"{r['rcept_no']}.html")
-            parsed = parse_officer_report_html(html_path, rtype)
+            parsed = r.get("data", {}).get("officer_reports")
+            if parsed is None:
+                html_path = os.path.join(workspace_dir, "data_dart", r["collected_date"], f"{r['rcept_no']}.html")
+                parsed = parse_officer_report_html(html_path, rtype)
             
             for p in parsed:
-                # Compute avg_price from pykrx closing prices if missing
-                avg_price = p["avg_price"]
-                stock_code = r["stock_code"]
-                if avg_price is None and p.get("change_dates") and stock_code:
-                    w_sum = 0
-                    w_count = 0
-                    for date_str, change_amt in p["change_dates"]:
-                        closing = get_closing_price(stock_code, date_str)
-                        if closing is not None and abs(change_amt) > 0:
-                            w_sum += closing * abs(change_amt)
-                            w_count += abs(change_amt)
-                    if w_count > 0:
-                        avg_price = round(w_sum / w_count)
-
                 officer_data_list.append({
                     "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
                     "회사명": r["corp_name"],
@@ -2089,7 +2380,7 @@ def build_excel_summary(workspace_dir):
                     "관계": p["relationship"],
                     "변동사유": p["change_reason"],
                     "증감(주)": p["shares_change"] if p["shares_change"] != 0 else None,
-                    "단가(원)": avg_price,
+                    "단가(원)": p.get("avg_price"),
                     "변동전 보유(주)": p.get("shares_before"),
                     "변동전 비율(%)": p.get("pct_before"),
                     "변동후 보유(주)": p["shares_after"] if p["shares_after"] != 0 else None,
@@ -2105,6 +2396,7 @@ def build_excel_summary(workspace_dir):
         format_officer_sheet(writer.sheets["5%_임원보고"])
         
 
+    save_closing_price_cache()
     logger.info(f"Excel file built successfully: {excel_path}")
     return True
 
@@ -2178,6 +2470,8 @@ def format_officer_sheet(ws):
         ws.column_dimensions[get_column_letter(col_idx)].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
     ws.freeze_panes = "A2"
 
 def format_category_sheet(ws):
@@ -2219,10 +2513,13 @@ def format_category_sheet(ws):
                 val = "공시열람"
             if len(val) > max_len:
                 max_len = len(val)
-        width = min(max(max_len * 1.5 + 3, 10), 60)
+        width = min(max(max_len * 1.2 + 2, 10), 35)
         ws.column_dimensions[col_letter].width = width
         
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
+    ws.freeze_panes = "A2"
 
 def format_fundraising_sheet(ws):
     """Styles the detailed capital increase and mezzanine sheet."""
@@ -2251,7 +2548,7 @@ def format_fundraising_sheet(ws):
     for row_idx in range(2, ws.max_row + 1):
         ws.row_dimensions[row_idx].height = 36 # Moderately tall row height
         
-        type_cell = ws.cell(row=row_idx, column=5)
+        type_cell = ws.cell(row=row_idx, column=6)
         
         for col_idx in range(1, ws.max_column + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
@@ -2259,24 +2556,24 @@ def format_fundraising_sheet(ws):
             cell.border = data_border
             
             # Alignments
-            if col_idx in [1, 3, 4, 5, 9, 11, 12, 13, 14, 17, 18, 19]: # Dates, codes, types, opt dates, claim dates
+            if col_idx in [1, 4, 5, 6, 10, 12, 13, 14, 15, 18, 19, 20]: # Dates, codes, types, opt dates, claim dates
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 20: # DARTLink
+            elif col_idx == 2: # DARTLink
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx == 16: # 조달목적 (Wrap text)
+            elif col_idx == 17: # 조달목적 (Wrap text)
                 cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
             else:
                 cell.alignment = Alignment(horizontal="left", vertical="center")
                 
             # Number formatting
-            if col_idx in [7, 8]: # 조달금액, 발행가/전환가
+            if col_idx in [8, 9]: # 조달금액, 발행가/전환가
                 cell.number_format = '₩#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 10: # 신주발행수
+            elif col_idx == 11: # 신주발행수
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 15: # 주식총수대비 (%)
+            elif col_idx == 16: # 주식총수대비 (%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00"%"'
                     cell.alignment = Alignment(horizontal="right", vertical="center")
@@ -2294,8 +2591,8 @@ def format_fundraising_sheet(ws):
             
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
-        if col_idx == 16: # 조달목적 (wider)
-            ws.column_dimensions[col_letter].width = 45
+        if col_idx == 17: # 조달목적 (wider)
+            ws.column_dimensions[col_letter].width = 30
         else:
             max_len = 0
             for cell in col:
@@ -2304,10 +2601,17 @@ def format_fundraising_sheet(ws):
                     val = "공시열람"
                 if len(val) > max_len:
                     max_len = len(val)
-            width = min(max(max_len * 1.4 + 3, 10), 30)
+            width = min(max(max_len * 1.2 + 2, 10), 25)
+            # Reduce specific columns by 1/3 (multiply by 2/3)
+            if col_idx in [3, 8, 9, 11, 12, 13, 14, 15, 16]:
+                width = width * (2 / 3)
             ws.column_dimensions[col_letter].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["D"].hidden = True
+    ws.column_dimensions["E"].hidden = True
+    ws.column_dimensions["T"].hidden = True # 접수번호
+    ws.freeze_panes = "A2"
 
 def format_contract_sheet(ws):
     """Styles the detailed supply contracts sheet."""
@@ -2335,29 +2639,29 @@ def format_contract_sheet(ws):
             cell.font = data_font
             cell.border = data_border
             
-            if col_idx in [1, 3, 4, 5, 8, 9, 11, 14]:
+            if col_idx in [1, 4, 5, 6, 9, 10, 12, 15]:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 15:
+            elif col_idx == 2:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx in [7, 13]: # 계약내용, 수주상대방
+            elif col_idx in [8, 14]: # 계약내용, 수주상대방
                 cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
             else:
                 cell.alignment = Alignment(horizontal="left", vertical="center")
                 
-            if col_idx == 10: # 수주금액
+            if col_idx == 11: # 수주금액
                 cell.number_format = '₩#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 12: # 최근매출액대비 (%)
+            elif col_idx == 13: # 최근매출액대비 (%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00"%"'
                     
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
-        if col_idx == 7: # 계약내용
-            ws.column_dimensions[col_letter].width = 40
-        elif col_idx == 13: # 수주상대방
-            ws.column_dimensions[col_letter].width = 25
+        if col_idx == 8: # 계약내용
+            ws.column_dimensions[col_letter].width = 30
+        elif col_idx == 14: # 수주상대방
+            ws.column_dimensions[col_letter].width = 20
         else:
             max_len = 0
             for cell in col:
@@ -2366,10 +2670,13 @@ def format_contract_sheet(ws):
                     val = "공시열람"
                 if len(val) > max_len:
                     max_len = len(val)
-            width = min(max(max_len * 1.4 + 3, 10), 30)
+            width = min(max(max_len * 1.2 + 2, 10), 25)
             ws.column_dimensions[col_letter].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["D"].hidden = True
+    ws.column_dimensions["E"].hidden = True
+    ws.freeze_panes = "A2"
 
 def format_facility_sheet(ws):
     """Styles the detailed facility investment sheet."""
@@ -2417,7 +2724,7 @@ def format_facility_sheet(ws):
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
         if col_idx == 6: # 투자목적
-            ws.column_dimensions[col_letter].width = 40
+            ws.column_dimensions[col_letter].width = 30
         else:
             max_len = 0
             for cell in col:
@@ -2426,10 +2733,13 @@ def format_facility_sheet(ws):
                     val = "공시열람"
                 if len(val) > max_len:
                     max_len = len(val)
-            width = min(max(max_len * 1.4 + 3, 10), 30)
+            width = min(max(max_len * 1.2 + 2, 10), 25)
             ws.column_dimensions[col_letter].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
+    ws.freeze_panes = "A2"
 
 def format_financial_sheet(ws):
     """Styles the detailed financial debt guarantees and loans sheet."""
@@ -2477,9 +2787,9 @@ def format_financial_sheet(ws):
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
         if col_idx == 12: # 목적/용도
-            ws.column_dimensions[col_letter].width = 35
-        elif col_idx == 7: # 상대방
             ws.column_dimensions[col_letter].width = 25
+        elif col_idx == 7: # 상대방
+            ws.column_dimensions[col_letter].width = 20
         else:
             max_len = 0
             for cell in col:
@@ -2488,10 +2798,13 @@ def format_financial_sheet(ws):
                     val = "공시열람"
                 if len(val) > max_len:
                     max_len = len(val)
-            width = min(max(max_len * 1.4 + 3, 10), 30)
+            width = min(max(max_len * 1.2 + 2, 10), 25)
             ws.column_dimensions[col_letter].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
+    ws.freeze_panes = "A2"
 
 def format_treasury_sheet(ws):
     """Styles the detailed financial treasury shares sheet."""
@@ -2539,11 +2852,11 @@ def format_treasury_sheet(ws):
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
         if col_idx == 5: # 공시명
-            ws.column_dimensions[col_letter].width = 30
-        elif col_idx == 14: # 목적
-            ws.column_dimensions[col_letter].width = 35
-        elif col_idx == 13: # 위탁투자업자/수탁기관
             ws.column_dimensions[col_letter].width = 25
+        elif col_idx == 14: # 목적
+            ws.column_dimensions[col_letter].width = 25
+        elif col_idx == 13: # 위탁투자업자/수탁기관
+            ws.column_dimensions[col_letter].width = 20
         else:
             max_len = 0
             for cell in col:
@@ -2552,10 +2865,13 @@ def format_treasury_sheet(ws):
                     val = "공시열람"
                 if len(val) > max_len:
                     max_len = len(val)
-            width = min(max(max_len * 1.4 + 3, 10), 30)
+            width = min(max(max_len * 1.2 + 2, 10), 25)
             ws.column_dimensions[col_letter].width = width
             
     ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
+    ws.freeze_panes = "A2"
 
 def main():
     parser = argparse.ArgumentParser(description="DART Disclosure Classifier & Mezzanine/Contracts/Investments Parser")
@@ -2571,14 +2887,14 @@ def main():
     if success and args.upload:
         excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
         
-        if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_TEST_CHAT_ID:
-            logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_TEST_CHAT_ID in env.")
+        if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_SUPPLY_DATA_CHAT_ID:
+            logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_SUPPLY_DATA_CHAT_ID in env.")
             return
             
         caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 채무보증/금전대여, 자기주식취득/신탁/소각 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
         
         logger.info("Uploading Excel to Telegram...")
-        telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, excel_path, caption=caption)
+        telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_SUPPLY_DATA_CHAT_ID, excel_path, caption=caption)
         if telegram_sent:
             logger.info("Excel successfully uploaded to Telegram.")
         else:
