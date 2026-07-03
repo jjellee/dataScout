@@ -50,24 +50,19 @@ TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # ---- Indicator Categories ---- #
 INDICATORS = {
-    "[Global Indices]": {
-        "^KS11": "코스피",
-        "^KQ11": "코스닥",
+    "[미국 지수]": {
         "^GSPC": "S&P 500",
         "^IXIC": "나스닥 종합",
-        "^N225": "닛케이 225",
-        "^TWII": "대만 가권",
-        "^HSI": "항셍",
-        "^STOXX50E": "유로스탁스 50",
+        "^DJI": "다우존스",
+        "^RUT": "러셀 2000",
+        "RSP": "S&P 동일가중 ETF",
         "^SOX": "필라델피아 반도체",
         "^VIX": "VIX 변동성",
     },
-    "[Broad Market]": {
-        "SPY": "S&P 500",
-        "QQQ": "Nasdaq 100",
-        "DIA": "Dow Jones",
-        "RSP": "S&P Equal Wt",
-        "IWM": "Russell 2000",
+    "[유럽 지수]": {
+        "^STOXX50E": "유로스탁스 50",
+        "^GDAXI": "독일 DAX",
+        "^FTSE": "영국 FTSE 100",
     },
     "[Global / Region]": {
         "EZU": "Eurozone",
@@ -159,7 +154,7 @@ KR_INDICATORS = {
 JP_INDICATORS = {
     "[일본 지수]": {
         "^N225": "닛케이 225",
-        "1306.T": "TOPIX (ETF)",
+        "1306.T": "TOPIX ETF",
     },
     "[일본 섹터 (TOPIX-17)]": {
         "1625.T": "전기·정밀",
@@ -178,10 +173,11 @@ JP_INDICATORS = {
 CN_INDICATORS = {
     "[중화권 지수]": {
         "^HSI": "항셍",
-        "3032.HK": "항셍테크 (ETF)",
+        "3032.HK": "항셍테크 ETF",
         "000001.SS": "상해 종합",
         "399001.SZ": "심천 성분",
-        "399006.SZ": "창업판 (ChiNext)",
+        "399006.SZ": "창업판 ChiNext",
+        "^TWII": "대만 가권",
     },
 }
 
