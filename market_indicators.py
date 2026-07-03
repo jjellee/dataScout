@@ -45,11 +45,23 @@ if os.path.exists(env_path):
                 os.environ[k.strip()] = v.strip().strip("'\"")
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # ---- Indicator Categories ---- #
 INDICATORS = {
+    "[Global Indices]": {
+        "^KS11": "코스피",
+        "^KQ11": "코스닥",
+        "^GSPC": "S&P 500",
+        "^IXIC": "나스닥 종합",
+        "^N225": "닛케이 225",
+        "^TWII": "대만 가권",
+        "^HSI": "항셍",
+        "^STOXX50E": "유로스탁스 50",
+        "^SOX": "필라델피아 반도체",
+        "^VIX": "VIX 변동성",
+    },
     "[Broad Market]": {
         "SPY": "S&P 500",
         "QQQ": "Nasdaq 100",
@@ -110,6 +122,10 @@ INDICATORS = {
         "TLT": "Treasury 20Y+",
         "UUP": "US Dollar",
         "HYG": "High Yield",
+        "KRW=X": "원/달러 환율",
+        "^TNX": "미국채 10Y 금리",
+        "CL=F": "WTI 원유",
+        "HG=F": "구리 선물",
     },
     "[Individual]": {
         "MSTR": "MicroStrategy",
@@ -301,9 +317,10 @@ def create_heatmap_chart(returns_df, save_path):
             ax.text(col_x[1] + 0.01, y, row['name'][:14],
                     transform=ax.transAxes, fontsize=8, color='#8b949e',
                     va='center')
-            # Price
+            # Price (지수·환율·선물은 달러 표기 생략 — 포인트/원 단위)
             price = row['price']
-            price_str = f"${price:,.2f}" if price < 10000 else f"${price:,.0f}"
+            _cur = "" if (str(row.get('ticker', '')).startswith('^') or str(row.get('ticker', '')).endswith(('=X', '=F'))) else "$"
+            price_str = f"{_cur}{price:,.2f}" if price < 10000 else f"{_cur}{price:,.0f}"
             ax.text(col_x[2] + 0.01, y, price_str,
                     transform=ax.transAxes, fontsize=8.5, color='#c9d1d9',
                     va='center')
@@ -463,8 +480,9 @@ def create_category_charts(close_df, returns_df, chart_dir, date_str):
             ax.set_title(title_text, color='#e6edf3', fontsize=11, fontweight='bold',
                          loc='left', pad=8)
 
-            # Price on right side of title
-            price_str = f"${price:,.2f}" if price < 100000 else f"${price:,.0f}"
+            # Price on right side of title (지수·환율·선물은 달러 표기 생략)
+            _cur = "" if (ticker.startswith('^') or ticker.endswith(('=X', '=F'))) else "$"
+            price_str = f"{_cur}{price:,.2f}" if price < 100000 else f"{_cur}{price:,.0f}"
             ax.set_title(price_str, color='#c9d1d9', fontsize=10,
                          loc='right', pad=8)
 
@@ -561,7 +579,7 @@ def main():
     category_charts = create_category_charts(close_df, returns_df, chart_dir, date_str)
 
     # Send to Telegram
-    chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_JJANG_GU_CHAT_ID
+    chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_SUPPLY_DATA_CHAT_ID
     token = TELEGRAM_BOT4_TOKEN
 
     if token and chat_id:
