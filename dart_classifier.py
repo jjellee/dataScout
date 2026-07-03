@@ -188,14 +188,31 @@ def extract_dates(text):
     found_dates.sort(key=lambda x: x[0])
     return [d[1] for d in found_dates]
 
+def _option_clause_negated(text):
+    """
+    옵션 조항 서두(첫 150자)가 '행사 할 수 없음' 등 옵션 부존재를 명시하는지 판별.
+    추출된 스니펫에는 옵션 조항 뒤로 무관한 표 내용(청약일·납입일·'미해당' 등)이 딸려오므로
+    반드시 서두만 검사한다 (전체 검사 시 뒤쪽 '미해당' 때문에 실제 옵션도 오판).
+    """
+    if not text:
+        return True
+    head = text[:150].replace(" ", "").replace("\n", "")
+    negations = ["행사할수없", "행사불가", "해당사항없음", "해당없음", "미해당",
+                 "부여하지않", "부여되지않", "존재하지않"]
+    return any(n in head for n in negations)
+
+
 def extract_option_start_date(text, opt_type="call"):
     """Extracts the first valid option request start date (청구일) from option text snippet."""
-    if not text or text in ["N/A", "N/A (HTML 파일 없음)", "N/A (파일 에러)"] or text.replace(" ", "") in ["해당사항없음", "해당없음", "미해당", "없음"]:
+    if not text or text.startswith("N/A") or text.replace(" ", "") in ["해당사항없음", "해당없음", "미해당", "없음"]:
         return "-"
-    
+    # 조항 서두가 '행사 할 수 없음' 등이면 옵션이 없는 것 → 날짜 추출 금지
+    if _option_clause_negated(text):
+        return "-"
+
     text_clean = re.sub(r'\s+', ' ', text)
     keywords = ["청구기간", "청구 시작", "청구일", "행사기간", "행사 시작"] if opt_type == "put" else ["행사기간", "청구기간", "청구일", "매도청구기간", "행사 시작"]
-    
+
     for kw in keywords:
         pos = text_clean.find(kw)
         if pos != -1:
@@ -203,20 +220,23 @@ def extract_option_start_date(text, opt_type="call"):
             dates = extract_dates(sub)
             if dates:
                 return dates[0]
-                
-    dates = extract_dates(text)
-    if dates:
-        return dates[0]
+
+    # NOTE: 과거에는 키워드 실패 시 '텍스트의 첫 날짜'를 반환했으나,
+    # 스니펫에 딸려온 청약일·납입일을 옵션 청구일로 오탐하는 원인이라 제거함.
+    # 키워드로 못 찾은 실제 옵션 날짜는 LLM(resolve_option_dates)이 담당한다.
     return "-"
 
 def _looks_like_real_option_text(text):
-    """옵션 조항이 실제로 존재하는 서술문인지 판별 (N/A·해당없음이면 LLM 호출 불필요)."""
+    """
+    옵션 조항이 실제로 존재하는 서술문인지 판별 (N/A·부존재 명시면 LLM 호출 불필요).
+    부존재 판단은 조항 서두만 검사한다 — 스니펫 뒤쪽 무관한 표의 '미해당' 등으로
+    실제 옵션을 오판하면 정규식 오답이 LLM 교정 없이 통과해버린다.
+    """
     if not text:
         return False
-    t = text.replace(" ", "")
-    if t[:3] == "N/A" or text.startswith("N/A"):
+    if text.startswith("N/A"):
         return False
-    if any(k in t for k in ["해당사항없음", "해당없음", "미해당"]):
+    if _option_clause_negated(text):
         return False
     return len(text.strip()) > 20
 
@@ -240,6 +260,9 @@ def extract_option_dates_llm(call_text, put_text):
         "규칙:\n"
         "- 문장에 '발행일로부터 N개월이 경과한 날인 2027년 05월 28일'처럼 이미 계산된 절대일자가 있으면 그 날짜를 쓴다.\n"
         "- 절대일자 없이 상대표현만 있으면 해당 값은 \"-\" 로 둔다(임의 계산 금지).\n"
+        "- '행사할 수 없음', '해당 없음' 등 옵션이 존재하지 않는다고 명시되면 반드시 \"-\".\n"
+        "- 서술문 뒤에 청약일·납입일·이사회결의일 등 무관한 일정 표가 딸려올 수 있다. "
+        "이런 날짜는 절대 옵션 행사일로 쓰지 마라. 오직 콜/풋옵션 행사(청구)기간으로 명시된 날짜만 추출한다.\n"
         "- 해당 옵션이 없거나 날짜를 알 수 없으면 \"-\".\n"
         "- 반드시 JSON만 출력. 키: call_start, call_end, put_start, put_end.\n\n"
         f"[콜옵션 서술]\n{(call_text or '없음')[:2500]}\n\n"
