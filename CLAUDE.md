@@ -48,6 +48,7 @@
 | `dart_officer_parser.py` | 임원·주요주주 소유상황보고서 / 5% 대량보유 공시 HTML에서 거래 내역 파싱 (헬퍼 모듈) |
 | `kr_insider_collector.py` | 내부자·5% 대량보유 공시를 수집, pykrx 종가와 결합해 누적 엑셀 저장·전송 |
 | `download_important_historical.py` | 2023년~현재 과거 중요 공시를 API 키 로테이션으로 대량 백필 다운로드 |
+| `dart_pdf_report.py` | 공시 PDF 리포트 — 일일 전체공시(평일 21:40) / 주간 중요공시(토 09:00) 생성·텔레그램 발송 |
 
 ---
 
