@@ -286,6 +286,10 @@ def detail_from_html(rcept_no, collected_dates, max_rows=16):
             soup = BeautifulSoup(f.read(), "html.parser")
         pairs = []
         for table in soup.find_all("table"):
+            ttxt = table.get_text()
+            # 정정신고 표는 extract_amendment_diff가 별도 처리하므로 제외
+            if "정정항목" in ttxt or "정정사유" in ttxt or "정정일자" in ttxt:
+                continue
             for tr in table.find_all("tr"):
                 cells = [re.sub(r"\s+", " ", c.get_text(separator=" ").strip())
                          for c in tr.find_all(recursive=False)]
@@ -293,9 +297,24 @@ def detail_from_html(rcept_no, collected_dates, max_rows=16):
                 if len(cells) == 2:
                     label, val = cells
                 elif len(cells) == 3:
-                    label, val = f"{cells[0]} {cells[1]}"[:40], cells[2]
+                    c0, c1, c2 = cells
+                    if re.fullmatch(r"[-+]?[\d,]+(\.\d+)?", c1.strip()):
+                        # [라벨, 숫자, 단위/통화] 형태: 값=숫자+단위
+                        label = c0
+                        m = re.match(r"([A-Z]{3})\s*:", c2)
+                        if m:
+                            unit = "원" if m.group(1) == "KRW" else " " + m.group(1)
+                        elif len(c2) <= 6 and not re.search(r"\d", c2) and c2 != "-":
+                            unit = c2
+                        else:
+                            unit = ""
+                        val = f"{c1}{unit}"
+                    else:
+                        # [상위라벨, 하위라벨, 값] 형태
+                        label, val = f"{c0} {c1}"[:40], c2
                 else:
                     continue
+                label = re.sub(r"\s*\(통화단위\)\s*", "", label)
                 label = label.strip()
                 # 필터: 빈 값, 과도한 길이, 한글 없는 라벨, 보일러플레이트
                 if val in ("-", "") or len(val) > 120 or len(label) > 40:
@@ -315,6 +334,68 @@ def detail_from_html(rcept_no, collected_dates, max_rows=16):
         return _kv(pairs)
     except Exception as e:
         logger.warning(f"generic extract failed {rcept_no}: {e}")
+        return ""
+
+
+def extract_amendment_diff(rcept_no, collected_dates, max_rows=8, max_len=90):
+    """정정공시 서두의 정정신고 표에서 정정사유와 (항목, 정정전, 정정후)를 추출해 HTML로 반환."""
+    from bs4 import BeautifulSoup
+    path = None
+    for d in collected_dates:
+        p = os.path.join(WORKSPACE, "data_dart", d, f"{rcept_no}.html")
+        if os.path.exists(p):
+            path = p
+            break
+    if not path:
+        return ""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            soup = BeautifulSoup(f.read(), "html.parser")
+        reason = ""
+        diffs = []
+        for table in soup.find_all("table"):
+            txt = table.get_text()
+            if "정정사유" not in txt or "정정항목" not in txt:
+                continue
+            in_diff = False
+            for tr in table.find_all("tr"):
+                cells = [re.sub(r"\s+", " ", c.get_text(separator=" ").strip())
+                         for c in tr.find_all(recursive=False)]
+                cells = [c for c in cells if c]
+                if not cells:
+                    continue
+                head = cells[0].replace(" ", "")
+                if "정정사유" in head and len(cells) >= 2:
+                    reason = cells[1]
+                elif head.startswith("정정항목"):
+                    in_diff = True
+                elif in_diff and len(cells) >= 3:
+                    item, before, after = cells[0], cells[1], cells[2]
+                    if before == after:
+                        continue
+                    item = re.sub(r"^\d+(-\d+)?\.\s*", "", item)
+                    diffs.append((item[:50],
+                                  before[:max_len] + ("…" if len(before) > max_len else ""),
+                                  after[:max_len] + ("…" if len(after) > max_len else "")))
+                    if len(diffs) >= max_rows:
+                        break
+            break  # 첫 정정 표만
+        if not reason and not diffs:
+            return ""
+        out = '<div class="amend">'
+        if reason:
+            out += f'<div class="amend-reason">📝 정정사유: {html.escape(reason[:150])}</div>'
+        if diffs:
+            rows = "".join(
+                f"<tr><td>{html.escape(i)}</td>"
+                f"<td class='before'>{html.escape(b)}</td>"
+                f"<td class='after'>{html.escape(a)}</td></tr>" for i, b, a in diffs)
+            out += ('<table class="mini amendtbl"><tr><th>정정항목</th><th>정정 전</th>'
+                    '<th>정정 후</th></tr>' + rows + '</table>')
+        out += "</div>"
+        return out
+    except Exception as e:
+        logger.warning(f"amendment diff extract failed {rcept_no}: {e}")
         return ""
 
 
@@ -354,6 +435,13 @@ table.mini th{background:#dfe9f5;color:#345;padding:4px 8px;text-align:left;font
 table.mini td{padding:4px 8px;border-top:1px solid #e8eef7}
 table.mini td.num{text-align:right;font-variant-numeric:tabular-nums}
 .foot{color:#99a;font-size:12px;margin-top:24px}
+.amend{margin-top:7px}
+.amend-reason{font-size:12.5px;color:#8a5a00;background:#fdf6e3;border:1px solid #f0e0b0;
+              border-radius:8px;padding:6px 10px}
+table.amendtbl th:first-child{width:26%}
+table.amendtbl td.before{color:#a33;background:#fdf1f1;text-decoration:line-through;
+                          text-decoration-color:#d99}
+table.amendtbl td.after{color:#151;background:#f0f9f0;font-weight:600}
 """
 
 
@@ -371,6 +459,9 @@ def render_item(it, cache, cache_index, generic_dates):
         detail = detail_from_cache(rec)
     if not detail and cat in IMPORTANT_CATEGORIES and cat != "5%_임원보고":
         detail = detail_from_html(rcept_no, generic_dates)
+    # 정정공시: 어떤 항목이 어떻게 정정됐는지 표시
+    if any(tag in str(it["report_nm"]) for tag in _AMEND_TAGS):
+        detail += extract_amendment_diff(rcept_no, generic_dates)
 
     return (f'<div class="item"><div class="head">'
             f'<span class="corp">{html.escape(str(it["corp_name"]))}</span>'

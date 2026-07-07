@@ -1479,6 +1479,7 @@ def parse_capital_increase_html(html_path):
             soup = BeautifulSoup(f.read(), 'html.parser')
             
         purposes = {}
+        purposes_auth = set()  # '(원)' 단위가 명시된 본문 테이블 값 (신뢰도 높음)
         new_shares = 0
         existing_shares = 0
         
@@ -1525,7 +1526,20 @@ def parse_capital_increase_html(html_path):
                         if p_key in cols[0].replace(" ", "") or (len(cols) >= 2 and p_key in cols[1].replace(" ", "")):
                             val = clean_numeric(cols[-1])
                             if isinstance(val, (int, float)) and val > 0:
-                                purposes[p_key] = val
+                                # 라벨에 단위가 명시된 행을 우선한다. '(원)'은 그대로,
+                                # '백만원'은 환산. 단위 없는 행(자금사용계획 등 부속표)은
+                                # 이미 값이 있으면 덮어쓰지 않는다.
+                                label_join = (cols[0] + (cols[1] if len(cols) >= 2 else "")).replace(" ", "")
+                                if "백만원" in label_join:
+                                    val = val * 1000000
+                                    authoritative = True
+                                else:
+                                    authoritative = "(원)" in label_join
+                                if authoritative:
+                                    purposes[p_key] = val
+                                    purposes_auth.add(p_key)
+                                elif p_key not in purposes:
+                                    purposes[p_key] = val
                                 
         if purposes:
             res["fundraising_amount"] = sum(purposes.values())
