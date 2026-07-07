@@ -546,6 +546,8 @@ def parse_officer_report_html(html_path, report_type):
         change_dates = []
         # 거래종류(보고사유/변경원인)별 그룹: 같은 사유는 합산, 다른 사유는 별도 행
         txn_groups = {}  # reason -> {change, after, w_sum, w_count, dates}
+        rel_officer_parts = []  # 임원(등기여부)·직위명 등의 '값'만 수집
+        rel_major = ""          # 주요주주 행의 값 (예: 10%이상주주)
 
         for table in tables:
             rows = table.find_all('tr')
@@ -567,16 +569,24 @@ def parse_officer_report_html(html_path, report_type):
                                 break
                         if reporter_name == "-" and len(cell_texts) >= 3:
                             reporter_name = cell_texts[2].replace(' ', '').strip()
-                    # 발행회사와의 관계 row
-                    if any('발행회사와의' in ct or '관계' in ct for ct in cell_texts[:2]):
-                        # relationship description (e.g. 임원(등기여부) / 비등기임원 / 직위명)
-                        rel_parts = []
-                        for ct in cell_texts[1:]:
-                            ct_clean = ct.strip()
-                            if ct_clean and ct_clean != '-':
-                                rel_parts.append(ct_clean)
-                        if rel_parts:
-                            relationship = ' '.join(rel_parts)
+                    # 발행회사와의 관계 블록 — [라벨, 임원(등기여부), 값, 직위명, 값] 형태의
+                    # 라벨-값 쌍 구조이므로 '값'만 수집한다 (값이 '-'면 임원 아님)
+                    first_key = cell_texts[0].replace(' ', '') if cell_texts else ''
+                    if first_key.startswith('발행회사와의관계'):
+                        if len(cell_texts) == 2:
+                            v = cell_texts[1].strip()
+                            if v and v != '-':
+                                rel_officer_parts.append(v)
+                        else:
+                            for j in range(1, len(cell_texts) - 1, 2):
+                                v = cell_texts[j + 1].strip()
+                                if v and v != '-':
+                                    rel_officer_parts.append(v)
+                    # 주요주주 행 (예: ['주요주주', '10%이상주주'])
+                    elif first_key == '주요주주' and len(cell_texts) >= 2:
+                        v = cell_texts[1].strip()
+                        if v and v != '-':
+                            rel_major = v
 
             # Table with 소유비율(%) → ownership percentage
             if '소유비율' in first_text or '발행주식' in first_text:
@@ -647,6 +657,15 @@ def parse_officer_report_html(html_path, report_type):
                     elif price_val is None and change is not None and abs(change) > 0 and change_date:
                         g["dates"].append((change_date, int(change)))
 
+        # 관계 조합: 임원(등기임원/직위) 값 + 주요주주 값 (겸직이면 병기)
+        rel_parts_final = []
+        if rel_officer_parts:
+            rel_parts_final.append(' '.join(rel_officer_parts))
+        if rel_major:
+            rel_parts_final.append(rel_major)
+        if rel_parts_final:
+            relationship = ', '.join(rel_parts_final)
+
         # Build ownership % from table 5 if not found in table 7
         if ownership_pct is None:
             for table in tables:
@@ -710,9 +729,11 @@ def parse_officer_report_html(html_path, report_type):
                         cell_texts = [clean_text(c.get_text()) for c in cells]
                         ct_joined = ' '.join(cell_texts)
                         if '발행회사와의' in ct_joined or '관계' in cell_texts[0] if cell_texts else False:
+                            _rel_labels = ('임원(등기여부)', '직위명', '주요주주', '선임일', '퇴임일')
                             for ct in cell_texts[1:]:
                                 ct_clean = ct.strip()
-                                if ct_clean and ct_clean != '-' and '관계' not in ct_clean:
+                                if (ct_clean and ct_clean != '-' and '관계' not in ct_clean
+                                        and ct_clean.replace(' ', '') not in _rel_labels):
                                     relationship = ct_clean
                                     break
                             break
