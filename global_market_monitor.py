@@ -842,18 +842,18 @@ def main():
         else:
             logger.error(f"Failed to send Excel document to Telegram: {res_doc}")
 
-        # Generate and send Gemini AI market analysis as a separate message
-        logger.info("Generating Gemini market analysis...")
+        # Generate and send AI market analysis as a separate message
+        logger.info("Generating AI market analysis...")
         date_str = expected_date.strftime('%Y-%m-%d')
         # We pass the report_text summary containing index returns and top movers
         gemini_analysis = analyze_market_reasons_with_gemini(market, date_str, report_text)
         if gemini_analysis:
-            logger.info("Sending Gemini market analysis to Telegram...")
-            analysis_text = f"🤖 *Gemini AI 마감 시황 분석 ({market} - {date_str})*\n\n{gemini_analysis}"
+            logger.info("Sending AI market analysis to Telegram...")
+            analysis_text = f"🤖 *AI 마감 시황 분석 ({market} - {date_str})*\n\n{gemini_analysis}"
             send_telegram_message(TELEGRAM_BOT4_TOKEN, target_chat, analysis_text)
-            logger.info("Gemini market analysis sent.")
+            logger.info("AI market analysis sent.")
         else:
-            logger.warning("Gemini market analysis generation skipped or failed.")
+            logger.warning("AI market analysis generation skipped or failed.")
     else:
         logger.error("Telegram credentials or Chat ID is missing in the environment.")
         

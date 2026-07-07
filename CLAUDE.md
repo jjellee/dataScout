@@ -71,11 +71,11 @@
 |------|------|
 | `trendforce_monitor.py` | 반도체 조사기관 TrendForce 신규 기사 번역·전송 |
 | `dramexchange_scraper.py` | DRAMeXchange DRAM/NAND 현물가를 Selenium으로 스크래핑해 이력 누적 |
-| `wallstreetcn_monitor.py` | 월스트리트견문(중국) 기사 Gemini 요약·번역 |
+| `wallstreetcn_monitor.py` | 월스트리트견문(중국) 기사 DeepSeek 요약·번역 |
 | `tech_investing_monitor.py` | Tom's Hardware / Investing.com 애널리스트 등급 RSS 모니터링 |
-| `kotra_monitor.py` | KOTRA 해외시장뉴스 신규 기사 Gemini 요약 |
+| `kotra_monitor.py` | KOTRA 해외시장뉴스 신규 기사 DeepSeek 요약 |
 | `kotra_report_monitor.py` | KOTRA 보고서(PDF) 신규 감지·다운로드·요약 |
-| `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 Gemini로 번역·게시 |
+| `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 DeepSeek로 번역·게시 |
 
 ---
 

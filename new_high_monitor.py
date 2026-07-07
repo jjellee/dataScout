@@ -172,7 +172,7 @@ def describe_companies_gemini(companies):
 
 
 def _parse_descriptions(text, companies):
-    """Parse Gemini response into ticker -> description dict."""
+    """Parse LLM response into ticker -> description dict."""
     result = {}
     # Try to match [TICKER] pattern
     lines = text.split("\n")
@@ -301,9 +301,9 @@ def process_us():
     lines = [f"🇺🇸 *52주 신고가 달성 주식 ({date_str})*"]
     lines.append(f"📊 섹터 집계: {sec_str}\n")
 
-    # Get business descriptions for US stocks via Gemini
+    # Get business descriptions for US stocks via DeepSeek
     desc_companies = [{'name': h['Name'], 'ticker': h['Symbol'], 'sector': h['Sector'], 'country': h.get('Country', 'USA')} for h in highs[:30]]
-    logger.info(f"Fetching Gemini descriptions for {len(desc_companies)} US stocks...")
+    logger.info(f"Fetching AI descriptions for {len(desc_companies)} US stocks...")
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 
@@ -533,9 +533,9 @@ def process_jp():
     news_map = get_news_batch(top_jp_tickers)
     logger.info(f"Got news for {len(news_map)} stocks")
 
-    # Get business descriptions for JP stocks via Gemini
+    # Get business descriptions for JP stocks via DeepSeek
     desc_companies = [{'name': h['Name'], 'ticker': h['Symbol'].replace('.T', ''), 'sector': h['Sector'], 'country': 'Japan'} for h in highs[:30]]
-    logger.info(f"Fetching Gemini descriptions for {len(desc_companies)} JP stocks...")
+    logger.info(f"Fetching AI descriptions for {len(desc_companies)} JP stocks...")
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 

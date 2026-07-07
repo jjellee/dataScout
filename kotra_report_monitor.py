@@ -384,12 +384,12 @@ def main():
                 send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
                 time.sleep(1.5) # Sleep briefly to preserve chronological order in Telegram chat
 
-            # Send Gemini AI summary as a separate follow-up message
+            # Send AI summary as a separate follow-up message
             gemini_summary = summarize_with_gemini(title, core_points)
             if gemini_summary:
                 summary_msg = f"🤖 *AI 요약: {title}*\n\n{gemini_summary}"
                 send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
-                logger.info("Gemini AI summary sent.")
+                logger.info("AI summary sent.")
                 time.sleep(1.5)
 
         # 3. Download and upload each PDF attachment (this will be the last message)

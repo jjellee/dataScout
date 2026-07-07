@@ -58,7 +58,7 @@ TRANSLATE_HEADERS = {
 
 def translate_en_to_ko(text):
     """Translates English text to Korean using the free Google Translate API.
-    Used as fallback when Gemini is unavailable."""
+    Used as fallback when DeepSeek is unavailable."""
     if not text:
         return ""
     try:
@@ -558,16 +558,16 @@ def main():
         clean_summary = re.sub('<[^<]+?>', '', f['summary'])
         clean_summary = " ".join(clean_summary.split())
         
-        # 3. Fetch filing content and summarize with Gemini
+        # 3. Fetch filing content and summarize with DeepSeek
         content_summary = fetch_filing_content(link)
         ai_summary = ""
         translated_content = ""
         if content_summary:
-            logger.info(f"Summarizing filing content with Gemini for {ticker}...")
+            logger.info(f"Summarizing filing content with DeepSeek for {ticker}...")
             ai_summary = summarize_filing_with_gemini(ticker, company_name, title, content_summary)
             if not ai_summary:
                 # Fallback to Google Translate
-                logger.info(f"Gemini unavailable, falling back to Google Translate for {ticker}...")
+                logger.info(f"DeepSeek unavailable, falling back to Google Translate for {ticker}...")
                 translated_content = translate_en_to_ko(content_summary)
 
         # 4. Format Telegram alert using HTML

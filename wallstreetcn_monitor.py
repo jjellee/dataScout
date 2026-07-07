@@ -372,13 +372,13 @@ def main():
             else:
                 translated_title = translate_zh_to_ko(details['title'])
 
-                # Gemini AI summary — only for longer articles (>= 500 chars body)
+                # AI summary — only for longer articles (>= 500 chars body)
                 gemini_summary = ""
                 body_for_summary = details['title'] + "\n" + "\n".join(details['paragraphs'])
                 if len(body_for_summary) >= 500:
                     gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
                     if gemini_summary:
-                        logger.info("Gemini summary generated.")
+                        logger.info("AI summary generated.")
                 else:
                     logger.info(f"Article body too short ({len(body_for_summary)} chars). Skipping AI summary.")
 
@@ -412,11 +412,11 @@ def main():
                     send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
                     logger.info("Full-text alert sent.")
 
-                    # Send Gemini AI summary as a separate follow-up message
+                    # Send AI summary as a separate follow-up message
                     if gemini_summary:
                         summary_msg = f"🤖 *AI 요약: {translated_title}*\n\n{gemini_summary}"
                         send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
-                        logger.info("Gemini AI summary sent.")
+                        logger.info("AI summary sent.")
 
         processed_count += 1
         time.sleep(2.0)

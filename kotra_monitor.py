@@ -377,13 +377,13 @@ def main():
             send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, paragraphs, footer_text)
             logger.info("Telegram alert sent successfully.")
 
-            # Send Gemini AI summary as a separate follow-up message
+            # Send AI summary as a separate follow-up message
             body_for_summary = title + "\n" + "\n".join(paragraphs)
             gemini_summary = summarize_with_gemini(title, body_for_summary)
             if gemini_summary:
                 summary_msg = f"🤖 *AI 요약: {title}*\n\n{gemini_summary}"
                 send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
-                logger.info("Gemini AI summary sent.")
+                logger.info("AI summary sent.")
         else:
             logger.warning("Telegram bot token or chat ID is missing. Alert skipped.")
             
