@@ -544,6 +544,8 @@ def parse_officer_report_html(html_path, report_type):
         avg_price = None
         change_reason = "-"
         change_dates = []
+        # 거래종류(보고사유/변경원인)별 그룹: 같은 사유는 합산, 다른 사유는 별도 행
+        txn_groups = {}  # reason -> {change, after, w_sum, w_count, dates}
 
         for table in tables:
             rows = table.find_all('tr')
@@ -615,19 +617,12 @@ def parse_officer_report_html(html_path, report_type):
                         if len(cell_texts) >= 6:
                             data_rows.append(cell_texts)
 
-                # Process data rows for this officer report
-                total_change = 0
-                total_after = 0
-                weighted_price_sum = 0
-                price_count = 0
-                reasons = []
-                change_dates = []  # (date_str, change_amount) for rows without price
-
+                # Process data rows: 거래종류(보고사유)별로 그룹핑
                 for dr in data_rows:
                     # dr structure: [보고사유, 변동일, 종류, 변동전, 증감, 변동후, 단가, 비고, ...]
-                    reason = dr[0] if len(dr) > 0 else "-"
-                    if reason and reason != '-':
-                        reasons.append(reason)
+                    reason = dr[0].strip() if len(dr) > 0 and dr[0] else "-"
+                    if not reason:
+                        reason = "-"
 
                     change_date = dr[1] if len(dr) > 1 else None
                     change = parse_number(dr[4]) if len(dr) > 4 else None
@@ -640,21 +635,17 @@ def parse_officer_report_html(html_path, report_type):
                     else:
                         price_val = None
 
+                    g = txn_groups.setdefault(reason, {
+                        "change": 0, "after": 0, "w_sum": 0, "w_count": 0, "dates": []})
                     if change is not None:
-                        total_change += int(change)
+                        g["change"] += int(change)
                     if after is not None:
-                        total_after = max(total_after, int(after))
+                        g["after"] = int(after)
                     if price_val is not None and change is not None and abs(change) > 0:
-                        weighted_price_sum += price_val * abs(change)
-                        price_count += abs(change)
+                        g["w_sum"] += price_val * abs(change)
+                        g["w_count"] += abs(change)
                     elif price_val is None and change is not None and abs(change) > 0 and change_date:
-                        change_dates.append((change_date, int(change)))
-
-                shares_change_total = total_change
-                shares_after_total = total_after
-                if price_count > 0:
-                    avg_price = round(weighted_price_sum / price_count)
-                change_reason = ', '.join(reasons) if reasons else "-"
+                        g["dates"].append((change_date, int(change)))
 
         # Build ownership % from table 5 if not found in table 7
         if ownership_pct is None:
@@ -727,13 +718,8 @@ def parse_officer_report_html(html_path, report_type):
                             break
 
                     # Parse transaction rows (after header: 변경일, 변경원인, ...)
+                    # 거래종류(변경원인)별로 그룹핑
                     header_found = False
-                    total_change = 0
-                    total_after = 0
-                    weighted_price_sum = 0
-                    price_count = 0
-                    reasons_set = []
-                    change_dates = []
 
                     for trow in trows:
                         cells = trow.find_all(recursive=False)
@@ -744,25 +730,25 @@ def parse_officer_report_html(html_path, report_type):
                             continue
                         if len(cell_texts) < 5:
                             continue
+                        if cell_texts[0].replace(' ', '') in ('합계', '총계'):
+                            continue
                         # Structure: [변경일, 변경원인, 주식의종류, 변경전주식수, 증감주식수, 변경후주식수, 비고]
                         dt = cell_texts[0]
-                        reason = cell_texts[1]
+                        reason = cell_texts[1].strip() if cell_texts[1] else "-"
+                        if not reason:
+                            reason = "-"
                         change = parse_number(cell_texts[4]) if len(cell_texts) > 4 else None
                         after = parse_number(cell_texts[5]) if len(cell_texts) > 5 else None
 
-                        if reason and reason != '-' and reason not in reasons_set:
-                            reasons_set.append(reason)
+                        g = txn_groups.setdefault(reason, {
+                            "change": 0, "after": 0, "w_sum": 0, "w_count": 0, "dates": []})
                         if change is not None:
-                            total_change += int(change)
+                            g["change"] += int(change)
                             # No price in this format, use change_date for pykrx lookup
                             if dt and dt != '-':
-                                change_dates.append((dt, int(change)))
+                                g["dates"].append((dt, int(change)))
                         if after is not None:
-                            total_after = int(after)
-
-                    shares_change_total = total_change
-                    shares_after_total = total_after
-                    change_reason = ', '.join(reasons_set) if reasons_set else "-"
+                            g["after"] = int(after)
 
                     # Get ownership from 이번보고서 합계 row
                     for table2 in tables:
@@ -812,18 +798,40 @@ def parse_officer_report_html(html_path, report_type):
                         break
                 break
 
-        results.append({
-            "reporter_name": reporter_name,
-            "relationship": relationship,
-            "change_reason": change_reason,
-            "shares_change": shares_change_total,
-            "avg_price": avg_price,
-            "shares_after": shares_after_total,
-            "ownership_pct": ownership_pct,
-            "shares_before": shares_before_val,
-            "pct_before": pct_before_val,
-            "change_dates": change_dates if change_dates else None
-        })
+        if txn_groups:
+            # 거래종류가 다르면 별도 행, 같은 거래종류는 합산된 한 행
+            # 실거래 그룹이 있으면 증감 0짜리 비고성 그룹은 제외
+            nonzero = {r: g for r, g in txn_groups.items()
+                       if g["change"] != 0 or g["dates"] or g["w_count"] > 0}
+            if nonzero:
+                txn_groups = nonzero
+            for reason, g in txn_groups.items():
+                grp_price = round(g["w_sum"] / g["w_count"]) if g["w_count"] > 0 else None
+                results.append({
+                    "reporter_name": reporter_name,
+                    "relationship": relationship,
+                    "change_reason": reason,
+                    "shares_change": g["change"],
+                    "avg_price": grp_price,
+                    "shares_after": g["after"],
+                    "ownership_pct": ownership_pct,
+                    "shares_before": shares_before_val,
+                    "pct_before": pct_before_val,
+                    "change_dates": g["dates"] if g["dates"] else None
+                })
+        else:
+            results.append({
+                "reporter_name": reporter_name,
+                "relationship": relationship,
+                "change_reason": change_reason,
+                "shares_change": shares_change_total,
+                "avg_price": avg_price,
+                "shares_after": shares_after_total,
+                "ownership_pct": ownership_pct,
+                "shares_before": shares_before_val,
+                "pct_before": pct_before_val,
+                "change_dates": change_dates if change_dates else None
+            })
 
     elif report_type == '대량보유':
         # --- Parse 대량보유 (5% Bulk Ownership Report) ---
@@ -910,7 +918,8 @@ def parse_officer_report_html(html_path, report_type):
                             break
 
         # 3. Parse detail transaction table (변동일 + 취득/처분단가)
-        detail_transactions = {}  # key: reporter_name -> list of (change, price, change_date)
+        # key: (reporter_name, 취득/처분방법) — 동일인이라도 거래종류가 다르면 별도 행
+        detail_transactions = {}
 
         for table in tables:
             all_text = table.get_text()
@@ -942,30 +951,37 @@ def parse_officer_report_html(html_path, report_type):
                 change = parse_number(cell_texts[6]) if len(cell_texts) > 6 else None
                 price_val = parse_number(cell_texts[8]) if len(cell_texts) > 8 else None
                 after = parse_number(cell_texts[7]) if len(cell_texts) > 7 else None
-                method = cell_texts[3] if len(cell_texts) > 3 else "-"
+                method = cell_texts[3].strip() if len(cell_texts) > 3 and cell_texts[3] else "-"
+                if not method:
+                    method = "-"
 
-                if name not in detail_transactions:
-                    detail_transactions[name] = {
+                key = (name, method)
+                if key not in detail_transactions:
+                    detail_transactions[key] = {
                         "changes": [],
                         "last_after": 0,
-                        "methods": [],
                         "change_dates": []
                     }
 
                 if change is not None:
-                    detail_transactions[name]["changes"].append((int(change), price_val))
+                    detail_transactions[key]["changes"].append((int(change), price_val))
                     # Track transactions without price for pykrx lookup
                     if price_val is None and abs(change) > 0 and change_date:
-                        detail_transactions[name]["change_dates"].append((change_date, int(change)))
+                        detail_transactions[key]["change_dates"].append((change_date, int(change)))
                 if after is not None:
-                    detail_transactions[name]["last_after"] = int(after)
-                if method and method != '-':
-                    detail_transactions[name]["methods"].append(method)
+                    detail_transactions[key]["last_after"] = int(after)
 
         if detail_transactions:
-            # Build one row per subject
-            for name, txns in detail_transactions.items():
+            # Build one row per (subject, 거래종류)
+            # 실거래가 있는 보고자의 증감 0짜리 비고성 그룹은 제외
+            names_nonzero = set()
+            for (name, method), txns in detail_transactions.items():
+                if sum(c for c, p in txns["changes"]) != 0 or txns["change_dates"]:
+                    names_nonzero.add(name)
+            for (name, method), txns in detail_transactions.items():
                 total_change = sum(c for c, p in txns["changes"])
+                if total_change == 0 and not txns["change_dates"] and name in names_nonzero:
+                    continue
                 # Weighted average price
                 w_sum = 0
                 w_count = 0
@@ -975,9 +991,7 @@ def parse_officer_report_html(html_path, report_type):
                         w_count += abs(c)
                 computed_avg_price = round(w_sum / w_count) if w_count > 0 else None
 
-                # Combine unique methods as change reason
-                unique_methods = list(dict.fromkeys(txns["methods"]))
-                reason = ', '.join(unique_methods) if unique_methods else change_reason
+                reason = method if method != '-' else change_reason
 
                 results.append({
                     "reporter_name": name,
@@ -1844,12 +1858,13 @@ def build_excel_summary(workspace_dir):
                         record_detail["data"] = d
                         cache[rcept_no] = record_detail
 
-            # Re-run officer reports parsing if missing from cache
+            # Re-run officer reports parsing if missing from cache,
+            # or if cached before v2 (거래종류별 행 분리) — one-time re-parse per record
             if record_detail.get("category") == "지분공시":
                 data_dct = record_detail.get("data", {})
                 if not isinstance(data_dct, dict):
                     data_dct = {}
-                if "officer_reports" not in data_dct:
+                if "officer_reports" not in data_dct or not data_dct.get("officer_split_v2"):
                     rn = report_nm
                     if '대량보유상황보고서' in rn:
                         rtype = '대량보유'
@@ -1857,6 +1872,9 @@ def build_excel_summary(workspace_dir):
                         rtype = '임원보고'
                     html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
                     parsed = parse_officer_report_html(html_path, rtype)
+                    if not parsed and isinstance(data_dct.get("officer_reports"), list) and data_dct["officer_reports"]:
+                        # HTML이 없어 재파싱 실패 시 기존 캐시 유지
+                        parsed = data_dct["officer_reports"]
                     # Compute avg_price from Naver closing prices if missing
                     for p in parsed:
                         if p.get("avg_price") is None and p.get("change_dates") and record_detail.get("stock_code"):
@@ -1871,6 +1889,7 @@ def build_excel_summary(workspace_dir):
                                 p["avg_price"] = round(w_sum / w_count)
                     record_detail["data"] = data_dct
                     record_detail["data"]["officer_reports"] = parsed
+                    record_detail["data"]["officer_split_v2"] = True
                     cache[rcept_no] = record_detail
                 else:
                     # Healing cache for missing avg_price
@@ -2099,7 +2118,8 @@ def build_excel_summary(workspace_dir):
                     if w_count > 0:
                         p["avg_price"] = round(w_sum / w_count)
             record_detail["data"] = {
-                "officer_reports": parsed
+                "officer_reports": parsed,
+                "officer_split_v2": True
             }
             
         # Cache and save
