@@ -193,6 +193,7 @@ def detail_from_cache(rec):
             ("유형", bt),
             ("금액", fmt_amt(d.get("total_amount"))),
             ("주식수", f"{d.get('shares_count'):,.0f}주" if isinstance(d.get("shares_count"), (int, float)) and d.get("shares_count") else None),
+            ("소각비율(발행주식총수 대비)", f"{d.get('cancel_ratio'):.2f}%" if isinstance(d.get("cancel_ratio"), (int, float)) else None),
             ("기간", f"{d.get('start_date')} ~ {d.get('end_date')}" if d.get("start_date") not in (None, "-", "") else None),
             ("소각예정일", d.get("cancellation_date")),
             ("방법", d.get("method")),

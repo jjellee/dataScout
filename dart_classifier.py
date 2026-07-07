@@ -1253,6 +1253,8 @@ def parse_treasury_html_fallback(html_path, base_type):
     res = {
         "total_amount": None,
         "shares_count": None,
+        "issued_shares": None,
+        "cancel_ratio": None,
         "start_date": "-",
         "end_date": "-",
         "cancellation_date": "-",
@@ -1301,6 +1303,11 @@ def parse_treasury_html_fallback(html_path, base_type):
                         val = clean_numeric(cols[-1])
                         if val is not None:
                             res["shares_count"] = val
+                    if "발행주식총수" in key:
+                        val = clean_numeric(cols[-1])
+                        # 보통주식/기타주식 하위 행 중 큰 값(보통주식)을 채택
+                        if isinstance(val, (int, float)) and val > (res["issued_shares"] or 0):
+                            res["issued_shares"] = val
                     if "취득방법" in key or "소각할주식의취득방법" in key:
                         res["method"] = cols[-1]
                     if "위탁투자" in key or "계약체결기관" in key or "자기주식취득위탁" in key:
@@ -1338,6 +1345,10 @@ def parse_treasury_html_fallback(html_path, base_type):
         # Apply helpful defaults for cancellation purpose
         if base_type == "자기주식소각" and res["purpose"] == "-":
             res["purpose"] = "주주가치 제고 및 주식소각"
+
+        # 소각비율: 소각할 주식 수 / 발행주식총수
+        if base_type == "자기주식소각" and res["shares_count"] and res["issued_shares"]:
+            res["cancel_ratio"] = res["shares_count"] / res["issued_shares"] * 100
     except Exception as e:
         logger.error(f"Error parsing fallback treasury HTML: {e}")
     return res
@@ -1831,6 +1842,7 @@ def build_excel_summary(workspace_dir):
                 record_detail["data"] = {
                     "total_amount": t_data["total_amount"],
                     "shares_count": t_data["shares_count"],
+                    "cancel_ratio": t_data.get("cancel_ratio"),
                     "start_date": t_data["start_date"],
                     "end_date": t_data["end_date"],
                     "cancellation_date": t_data["cancellation_date"],
@@ -2124,6 +2136,7 @@ def build_excel_summary(workspace_dir):
             record_detail["data"] = {
                 "total_amount": t_data["total_amount"],
                 "shares_count": t_data["shares_count"],
+                "cancel_ratio": t_data.get("cancel_ratio"),
                 "start_date": t_data["start_date"],
                 "end_date": t_data["end_date"],
                 "cancellation_date": t_data["cancellation_date"],
@@ -2414,6 +2427,7 @@ def build_excel_summary(workspace_dir):
                 "유형": type_lbl,
                 "예정금액": d.get("total_amount"),
                 "예정주식수": d.get("shares_count"),
+                "소각비율(%)": round(d["cancel_ratio"], 2) if isinstance(d.get("cancel_ratio"), (int, float)) else None,
                 "취득방법": d.get("method", "-"),
                 "시작일": fmt_date(str(d.get("start_date", "-"))),
                 "종료일": fmt_date(str(d.get("end_date", "-"))),
@@ -2953,30 +2967,34 @@ def format_treasury_sheet(ws):
             cell.font = data_font
             cell.border = data_border
             
-            if col_idx in [1, 3, 4, 6, 10, 11, 12, 15]:
+            if col_idx in [1, 3, 4, 6, 11, 12, 13, 16]:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 16:
+            elif col_idx == 17:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx in [5, 13, 14]: # 공시명, 위탁/수탁기관, 목적
+            elif col_idx in [5, 14, 15]: # 공시명, 위탁/수탁기관, 목적
                 cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
             else:
                 cell.alignment = Alignment(horizontal="left", vertical="center")
-                
+
             if col_idx == 7: # 예정금액
                 cell.number_format = '₩#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
             elif col_idx == 8: # 예정주식수
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_idx == 9: # 소각비율(%)
+                if isinstance(cell.value, (int, float)):
+                    cell.number_format = '0.00'
+                cell.alignment = Alignment(horizontal="right", vertical="center")
                 
     for col_idx, col in enumerate(ws.columns, 1):
         col_letter = get_column_letter(col_idx)
         if col_idx == 5: # 공시명
             ws.column_dimensions[col_letter].width = 25
-        elif col_idx == 14: # 목적
+        elif col_idx == 15: # 목적
             ws.column_dimensions[col_letter].width = 25
-        elif col_idx == 13: # 위탁투자업자/수탁기관
+        elif col_idx == 14: # 위탁투자업자/수탁기관
             ws.column_dimensions[col_letter].width = 20
         else:
             max_len = 0
