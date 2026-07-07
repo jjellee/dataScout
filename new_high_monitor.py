@@ -37,7 +37,15 @@ def send_telegram_message(token, chat_id, text):
     data = {"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}
     try:
         resp = requests.post(url, data=data, timeout=60)
-        return resp.json()
+        result = resp.json()
+        if not result.get("ok"):
+            # 마크다운 파싱 실패 등 → parse_mode 없이 1회 재시도
+            logger.warning(f"Telegram send not ok ({result.get('description')}), retrying without parse_mode...")
+            resp = requests.post(url, data={"chat_id": chat_id, "text": text}, timeout=60)
+            result = resp.json()
+            if not result.get("ok"):
+                logger.error(f"Telegram send failed after retry: {result.get('description')}")
+        return result
     except Exception as e:
         logger.error(f"Telegram error: {e}")
         return None
@@ -583,17 +591,29 @@ def main():
                 # Split if too long
                 if len(report) > 4000:
                     parts = report.split("\n\n")
+                    chunks = []
                     current = ""
                     for part in parts:
                         if len(current) + len(part) + 2 > 4000:
                             if current:
-                                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, current)
-                                time.sleep(1)
+                                chunks.append(current)
                             current = part
                         else:
                             current = current + "\n\n" + part if current else part
                     if current:
-                        send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, current)
+                        chunks.append(current)
+                    sent_ok = 0
+                    for chunk in chunks:
+                        res = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, chunk)
+                        if res and res.get("ok"):
+                            sent_ok += 1
+                        else:
+                            logger.error(f"{market} Telegram chunk send failed: {res}")
+                        time.sleep(1)
+                    if sent_ok == len(chunks):
+                        logger.info(f"{market} report sent to Telegram ({sent_ok} parts).")
+                    else:
+                        logger.error(f"{market} report partially sent: {sent_ok}/{len(chunks)} parts.")
                 else:
                     res = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, report)
                     if res and res.get("ok"):
