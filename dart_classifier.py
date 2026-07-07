@@ -2445,6 +2445,9 @@ def build_excel_summary(workspace_dir):
                 parsed = parse_officer_report_html(html_path, rtype)
             
             for p in parsed:
+                trade_amount = None
+                if p["shares_change"] and p.get("avg_price"):
+                    trade_amount = int(p["shares_change"] * p["avg_price"])
                 officer_data_list.append({
                     "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
                     "회사명": r["corp_name"],
@@ -2455,6 +2458,7 @@ def build_excel_summary(workspace_dir):
                     "변동사유": p["change_reason"],
                     "증감(주)": p["shares_change"] if p["shares_change"] != 0 else None,
                     "단가(원)": p.get("avg_price"),
+                    "거래액(원)": trade_amount,
                     "변동전 보유(주)": p.get("shares_before"),
                     "변동전 비율(%)": p.get("pct_before"),
                     "변동후 보유(주)": p["shares_after"] if p["shares_after"] != 0 else None,
@@ -2511,12 +2515,12 @@ def format_officer_sheet(ws):
             cell.font = data_font
             cell.border = data_border
             
-            if col_idx in [1, 3, 4, 14]:  # 접수일자, 종목코드, 보고구분, 접수번호
+            if col_idx in [1, 3, 4, 15]:  # 접수일자, 종목코드, 보고구분, 접수번호
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-            elif col_idx == 15:  # DART링크
+            elif col_idx == 16:  # DART링크
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx == 8:  # 증감(주)
+            elif col_idx in [8, 10]:  # 증감(주), 거래액(원)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
                 # Color negative red, positive blue
@@ -2528,17 +2532,17 @@ def format_officer_sheet(ws):
             elif col_idx == 9:  # 단가(원)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 10:  # 변동전 보유(주)
+            elif col_idx == 11:  # 변동전 보유(주)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 11:  # 변동전 비율(%)
+            elif col_idx == 12:  # 변동전 비율(%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 12:  # 변동후 보유(주)
+            elif col_idx == 13:  # 변동후 보유(주)
                 cell.number_format = '#,##0'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
-            elif col_idx == 13:  # 보유비율(%)
+            elif col_idx == 14:  # 보유비율(%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
                 cell.alignment = Alignment(horizontal="right", vertical="center")
@@ -2547,7 +2551,7 @@ def format_officer_sheet(ws):
                 
     # Column widths
     col_widths = {1: 12, 2: 16, 3: 10, 4: 10, 5: 20, 6: 14, 7: 14,
-                  8: 14, 9: 12, 10: 16, 11: 10, 12: 16, 13: 10, 14: 18, 15: 10}
+                  8: 14, 9: 12, 10: 16, 11: 16, 12: 10, 13: 16, 14: 10, 15: 18, 16: 10}
     for col_idx, width in col_widths.items():
         ws.column_dimensions[get_column_letter(col_idx)].width = width
             
