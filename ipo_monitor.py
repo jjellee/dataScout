@@ -78,16 +78,22 @@ def _pick_schedule_table(soup, header_key):
     return best[1] if best else []
 
 
+KR_DETAIL_KEYS = ("업종", "시장구분", "공모금액", "매출액", "순이익", "자본금",
+                  "액면가", "상장공모", "희망공모가액", "확정공모가")
+
+
 def fetch_kr_detail(url):
-    """종목 상세페이지에서 업종·시장구분·공모금액 추출."""
+    """종목 상세페이지에서 업종·재무·공모 정보 추출."""
     info = {}
     try:
         soup = _fetch_38(url)
         for tr in soup.find_all("tr"):
-            cells = [td.get_text(strip=True) for td in tr.find_all("td")]
-            if len(cells) == 2 and cells[0] in ("업종", "시장구분", "공모금액", "매출액") \
-                    and cells[0] not in info:
-                info[cells[0]] = cells[1]
+            cells = [re.sub(r"\s+", " ", td.get_text()).strip() for td in tr.find_all("td")]
+            for i in range(len(cells) - 1):
+                k = cells[i].replace(" ", "")
+                if k in KR_DETAIL_KEYS and k not in info and len(cells[i]) < 12 \
+                        and cells[i + 1].strip():
+                    info[k] = cells[i + 1][:60]
     except Exception as e:
         logger.warning(f"KR detail fetch failed ({url}): {e}")
     return info
@@ -95,11 +101,31 @@ def fetch_kr_detail(url):
 
 def _fmt_won_mm(val):
     """'26,000 (백만원)' → '260억'"""
-    m = re.match(r"([\d,]+)", val or "")
+    m = re.match(r"(-?[\d,]+)", val or "")
     if not m:
         return None
     mm = int(m.group(1).replace(",", ""))
     return f"{mm/100:,.0f}억"
+
+
+def _kr_valuation(d, band):
+    """예상 상장 시가총액(억) = (자본금/액면가 + 신주모집주식수) × 공모가밴드."""
+    try:
+        par = int(re.match(r"([\d,]+)", d["액면가"]).group(1).replace(",", ""))
+        cap_mm = int(re.match(r"([\d,]+)", d["자본금"]).group(1).replace(",", ""))
+        pre_shares = cap_mm * 1_000_000 // par
+        m = re.search(r"신주모집\s*:\s*([\d,]+)", d.get("상장공모", ""))
+        new_shares = int(m.group(1).replace(",", "")) if m else 0
+        prices = [int(p.replace(",", "")) for p in re.findall(r"[\d,]+", band or "")]
+        if not prices or pre_shares <= 0:
+            return None
+        total = pre_shares + new_shares
+        lo, hi = min(prices) * total / 1e8, max(prices) * total / 1e8
+        if round(lo) == round(hi):
+            return f"약 {lo:,.0f}억"
+        return f"약 {lo:,.0f}~{hi:,.0f}억"
+    except Exception:
+        return None
 
 
 def fetch_kr_upcoming():
@@ -132,13 +158,17 @@ def fetch_kr_upcoming():
             "link": link,
         })
     items.sort(key=lambda x: x["sched"])
-    # 상세페이지에서 업종·시장·공모금액 보강
+    # 상세페이지에서 업종·시장·공모금액·예상시총·재무 보강
     for x in items:
         if x["link"]:
             d = fetch_kr_detail(x["link"])
             x["industry"] = d.get("업종")
             x["market"] = d.get("시장구분")
             x["amount"] = _fmt_won_mm(d.get("공모금액"))
+            band = x["confirmed"] if x["confirmed"] else x["band"]
+            x["valuation"] = _kr_valuation(d, band)
+            x["sales"] = _fmt_won_mm(d.get("매출액"))
+            x["profit"] = _fmt_won_mm(d.get("순이익"))
             time.sleep(0.3)
     return items
 
@@ -169,7 +199,7 @@ def fetch_kr_new_listings():
 # 미국 (Nasdaq IPO 캘린더)
 # ---------------------------------------------------------------------------
 
-SPAC_PAT = re.compile(r"acquisition|SPAC|blank check", re.IGNORECASE)
+SPAC_PAT = re.compile(r"acquisition|SPAC|blank check|merger corp", re.IGNORECASE)
 
 
 def fetch_us_ipos():
@@ -220,6 +250,87 @@ def fetch_us_ipos():
     for section in out:
         out[section].sort(key=lambda x: (x["spac"], x["date"]))
     return out
+
+
+# ---------------------------------------------------------------------------
+# 미국: S-1 원문 기반 사업·밸류 추출
+# ---------------------------------------------------------------------------
+
+SEC_UA = {"User-Agent": "dataScout research heyork12@gmail.com"}
+
+
+def _fetch_us_s1_excerpt(company_name):
+    """EDGAR에서 해당 기업의 S-1/F-1을 찾아 표지+사업설명 발췌 반환."""
+    q = re.sub(r",?\s*(Inc|Corp|Corporation|Ltd|LLC|Co|S\.A|plc)\.?\s*$", "",
+               company_name, flags=re.IGNORECASE).strip()
+    if not q:
+        return None
+    try:
+        for form in ("S-1", "F-1"):
+            r = requests.get("https://efts.sec.gov/LATEST/search-index",
+                             params={"q": f'"{q}"', "forms": form},
+                             headers=SEC_UA, timeout=30)
+            hits = (r.json().get("hits") or {}).get("hits") or []
+            hit = next((h for h in hits
+                        if q.lower()[:6] in str(h["_source"].get("display_names", "")).lower()),
+                       None)
+            if not hit:
+                continue
+            src = hit["_source"]
+            cik = int(src["ciks"][0])
+            adsh = src["adsh"]
+            base = f"https://www.sec.gov/Archives/edgar/data/{cik}/{adsh.replace('-', '')}"
+            idx = requests.get(f"{base}/index.json", headers=SEC_UA, timeout=30).json()
+            htms = sorted([(it["name"], int(it.get("size") or 0))
+                           for it in idx["directory"]["item"] if it["name"].endswith(".htm")],
+                          key=lambda x: -x[1])
+            if not htms:
+                continue
+            doc = requests.get(f"{base}/{htms[0][0]}", headers=SEC_UA, timeout=60)
+            text = BeautifulSoup(doc.content, "html.parser").get_text(" ", strip=True)
+            text = re.sub(r"\s+", " ", text)
+            excerpt = text[:5000]
+            for marker in ("we are a", "We are a", "Our company", "our company is", "Overview"):
+                pos = text.find(marker, 5000)
+                if pos > 0:
+                    excerpt += " ... " + text[pos:pos + 2500]
+                    break
+            return excerpt
+    except Exception as e:
+        logger.warning(f"S-1 excerpt fetch failed ({company_name}): {e}")
+    return None
+
+
+def get_us_s1_infos(companies):
+    """[(ticker, name)] → {ticker: '사업 한줄 | 공모·밸류 정보'} (S-1 원문 기반)."""
+    excerpts = []
+    for ticker, name in companies:
+        ex = _fetch_us_s1_excerpt(name)
+        if ex:
+            excerpts.append((ticker, name, ex))
+        time.sleep(0.3)
+    logger.info(f"S-1 excerpts fetched: {len(excerpts)}/{len(companies)}")
+    infos = {}
+    BATCH = 4
+    for i in range(0, len(excerpts), BATCH):
+        batch = excerpts[i:i + BATCH]
+        parts = [f"### [{t}] {n}\n{ex[:4000]}" for t, n, ex in batch]
+        prompt = (
+            "아래는 미국 IPO 신청 기업들의 S-1 증권신고서 발췌야. 각 기업에 대해 한국어로:\n"
+            "① 무슨 사업을 하는지 한 줄 ② 공모 조건(공모가 밴드, 상장 거래소·티커, 예상 시가총액 등 "
+            "본문에 있는 것만)을 정리해줘. 원문에 없는 수치는 지어내지 말고, 없는 항목은 '미기재'라고 "
+            "나열하지 말고 그냥 생략해. 공모가가 공란이면 '공모가 미정'이라고만 써.\n"
+            "출력 형식: `[티커] 사업설명 | 공모정보` 한 줄씩, 서론·꼬리말 없이.\n\n"
+            + "\n\n".join(parts)
+        )
+        text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
+        if not text:
+            continue
+        for line in text.splitlines():
+            m = re.match(r"\**\[([A-Z0-9.]+)\]\**\s*[:：]?\s*(.+)", line.strip())
+            if m:
+                infos[m.group(1)] = m.group(2).strip()[:250]
+    return infos
 
 
 # ---------------------------------------------------------------------------
@@ -290,8 +401,15 @@ def build_report():
         for x in kr_up:
             price = f"확정 {x['confirmed']}원" if x["confirmed"] else f"밴드 {x['band']}원"
             lines.append(f"• *{x['name']}* | 청약 {x['sched']} | {price} | {x['underwriter']}")
-            detail_parts = [p for p in (x.get("industry"), x.get("market"),
-                                        f"공모 {x['amount']}" if x.get("amount") else None) if p]
+            fin = None
+            if x.get("sales") or x.get("profit"):
+                fin = f"매출 {x.get('sales') or '?'}·순익 {x.get('profit') or '?'}"
+            detail_parts = [p for p in (
+                x.get("industry"),
+                f"예상시총 {x['valuation']}" if x.get("valuation") else None,
+                f"공모 {x['amount']}" if x.get("amount") else None,
+                fin,
+            ) if p]
             if detail_parts:
                 lines.append(f"   └ {' | '.join(detail_parts)}")
     elif kr_up is None:
@@ -315,15 +433,33 @@ def build_report():
     if us is not None:
         nonspac_names = [(x["ticker"], x["name"]) for x in us["upcoming"] + us["filed"]
                          if not x["spac"]][:25]
-        intros = get_intros(nonspac_names, "미국")
+        # S-1 원문 기반 사업·밸류 추출, 실패분은 지식 기반 소개로 폴백
+        s1_infos = get_us_s1_infos(nonspac_names)
+        missing = [(t, n) for t, n in nonspac_names if t not in s1_infos]
+        intros = get_intros(missing, "미국") if missing else {}
+
+        # 최근 상장 종목은 현재 시가총액 조회
+        mcap_map = {}
+        try:
+            import yfinance as yf
+            for x in us["priced"]:
+                if not x["spac"]:
+                    mc = (yf.Ticker(x["ticker"]).info or {}).get("marketCap")
+                    if mc:
+                        mcap_map[x["ticker"]] = mc
+        except Exception as e:
+            logger.warning(f"yfinance mcap lookup failed: {e}")
 
         def render(x):
             spac_tag = " (SPAC)" if x["spac"] else ""
             price = f" | 공모가 ${x['price']}" if x["price"] else ""
             amount = f" | 규모 {x['amount']}" if x["amount"] else ""
-            out = [f"• *{x['name'][:40]}*{spac_tag} #{x['ticker']} | {x['date']}{price}{amount}"]
-            if not x["spac"] and intros.get(x["ticker"]):
-                out.append(f"   └ {intros[x['ticker']]}")
+            mcap = mcap_map.get(x["ticker"])
+            mcap_str = f" | 시총 ${mcap/1e9:,.1f}B" if mcap else ""
+            out = [f"• *{x['name'][:40]}*{spac_tag} #{x['ticker']} | {x['date']}{price}{amount}{mcap_str}"]
+            info = s1_infos.get(x["ticker"]) or intros.get(x["ticker"])
+            if not x["spac"] and info:
+                out.append(f"   └ {info}")
             return out
 
         if us["upcoming"]:
