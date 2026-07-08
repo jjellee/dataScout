@@ -27,6 +27,7 @@ import datetime
 import logging
 
 import requests
+from bs4 import BeautifulSoup
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
@@ -60,6 +61,8 @@ def load_env():
 
 
 load_env()
+from llm_client import deepseek_chat  # noqa: E402
+
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
@@ -263,7 +266,7 @@ def collect_filings(date_str, universe, cik2tickers, caps):
                          for n in names)[:80]
         return main_cik, ticker, name, mcap
 
-    def make_row(src, sheet, item_desc=""):
+    def make_row(src, sheet, item_desc="", doc_id=""):
         adsh = src.get("adsh", "")
         if (adsh, sheet) in seen:
             return
@@ -289,8 +292,12 @@ def collect_filings(date_str, universe, cik2tickers, caps):
             "시가총액($B)": round(mcap / 1e9, 1) if mcap else None,
             "공시유형": form,
             "유형설명": item_desc or form_desc,
-            "설명": desc_txt,
+            "핵심내용": desc_txt,
+            "신고자": None, "보유비율(%)": None, "보유주식수": None,
             "링크": link,
+            "_adsh": adsh, "_cik": cik,
+            "_doc": doc_id.split(":", 1)[1] if ":" in doc_id else "",
+            "_form": form,
         })
 
     # 1) 전 종목 커버 폼
@@ -298,7 +305,7 @@ def collect_filings(date_str, universe, cik2tickers, caps):
         hits = efts_search(form, date_str)
         for h in hits:
             src = h["_source"]
-            make_row(src, FORM_CATEGORY[form])
+            make_row(src, FORM_CATEGORY[form], doc_id=h.get("_id", ""))
         if hits:
             logger.info(f"[{form}] {len(hits)} filings (all-cap).")
         time.sleep(0.2)
@@ -321,16 +328,117 @@ def collect_filings(date_str, universe, cik2tickers, caps):
                 items = src.get("items") or []
                 mapped = [(ITEM_MAP[i], i) for i in items if i in ITEM_MAP]
                 for (sheet, desc), item_no in mapped:
-                    make_row(src, sheet, f"[{item_no}] {desc}")
+                    make_row(src, sheet, f"[{item_no}] {desc}", doc_id=h.get("_id", ""))
                 kept += 1 if mapped else 0
             else:
-                make_row(src, FORM_CATEGORY[form])
+                make_row(src, FORM_CATEGORY[form], doc_id=h.get("_id", ""))
                 kept += 1
         if kept:
             logger.info(f"[{form}] {kept}/{len(hits)} filings in universe.")
         time.sleep(0.2)
 
     return sheets
+
+
+# ---------------------------------------------------------------------------
+# 상세 파싱 (13D/G 구조화 XML + 원문 DeepSeek 요약)
+# ---------------------------------------------------------------------------
+
+def _fetch_doc_text(cik, adsh, filename, max_chars):
+    """공시 원문 문서를 받아 텍스트로 변환."""
+    url = (f"https://www.sec.gov/Archives/edgar/data/{cik}/"
+           f"{adsh.replace('-', '')}/{filename}")
+    try:
+        r = requests.get(url, headers=SEC_UA, timeout=30)
+        if r.status_code != 200:
+            return ""
+        text = BeautifulSoup(r.content, "html.parser").get_text(" ", strip=True)
+        return re.sub(r"\s+", " ", text)[:max_chars]
+    except Exception as e:
+        logger.warning(f"doc fetch failed {url}: {e}")
+        return ""
+
+
+def enrich_13dg(rows):
+    """SCHEDULE 13D/G primary_doc.xml → 신고자·보유비율·보유주식수 + 13D 목적(item4)."""
+    for row in rows:
+        if not row["_form"].startswith("SCHEDULE 13") or not row["_doc"].endswith(".xml"):
+            continue
+        url = (f"https://www.sec.gov/Archives/edgar/data/{row['_cik']}/"
+               f"{row['_adsh'].replace('-', '')}/{row['_doc']}")
+        try:
+            xml = requests.get(url, headers=SEC_UA, timeout=30).text
+        except Exception as e:
+            logger.warning(f"13D/G xml fetch failed: {e}")
+            continue
+        persons = re.findall(r"<reportingPersonName>(.*?)</reportingPersonName>", xml, re.DOTALL)
+        percents = re.findall(r"<percentOfClass>([\d.]+)</percentOfClass>", xml)
+        amounts = re.findall(r"<aggregateAmountOwned>([\d.]+)</aggregateAmountOwned>", xml)
+        if persons:
+            uniq = list(dict.fromkeys(p.strip() for p in persons))
+            row["신고자"] = ", ".join(uniq[:2]) + (" 외" if len(uniq) > 2 else "")
+        if percents:
+            vals = [float(p) for p in percents]
+            top = vals.index(max(vals))
+            row["보유비율(%)"] = vals[top]
+            # 최대 비율 신고자와 같은 인덱스의 주식수로 짝을 맞춘다
+            if len(amounts) == len(percents):
+                row["보유주식수"] = int(float(amounts[top]))
+            elif amounts:
+                row["보유주식수"] = int(max(float(a) for a in amounts))
+        elif amounts:
+            row["보유주식수"] = int(max(float(a) for a in amounts))
+        # 13D 목적(item4) 원문 → LLM 요약 대상으로 저장
+        m = re.search(r"<item4>(.*?)</item4>", xml, re.DOTALL)
+        if m and "13D" in row["_form"]:
+            purpose = re.sub(r"<[^>]+>", " ", m.group(1))
+            row["_text"] = re.sub(r"\s+", " ", purpose).strip()[:3000]
+        time.sleep(0.12)
+
+
+LLM_SKIP_FORMS = {"10-K", "10-Q", "20-F", "SCHEDULE 13G", "SCHEDULE 13G/A"}
+
+
+def enrich_llm(all_rows):
+    """원문 텍스트를 DeepSeek으로 핵심내용(한국어 1~2문장) 추출."""
+    targets = []
+    for row in all_rows:
+        if row["_form"] in LLM_SKIP_FORMS:
+            continue
+        if "_text" not in row:
+            if not row["_doc"] or row["_doc"].endswith(".xml"):
+                continue
+            row["_text"] = _fetch_doc_text(row["_cik"], row["_adsh"], row["_doc"], 4000)
+            time.sleep(0.12)
+        if row.get("_text"):
+            targets.append(row)
+    logger.info(f"LLM extraction targets: {len(targets)} filings.")
+
+    BATCH = 5
+    for i in range(0, len(targets), BATCH):
+        batch = targets[i:i + BATCH]
+        parts = []
+        for j, row in enumerate(batch, 1):
+            parts.append(f"### 공시 {j} ({row['회사명'][:40]} / {row['_form']} / {row['유형설명']})\n"
+                         f"{row['_text'][:3500]}")
+        prompt = (
+            "아래는 미국 SEC 공시 원문 발췌들이야. 각 공시의 핵심 사실을 한국어 1~2문장으로 추출해줘. "
+            "금액·수량·상대방·조건 등 구체적 숫자가 있으면 반드시 포함하고, 원문에 없는 내용은 지어내지 마. "
+            "예비신고서라 금액이 공란이면 무엇을 발행·계약하는지 요약하고 '(금액 미정)'을 붙여. "
+            "본문이 목차·표지뿐이라 정말 아무것도 알 수 없을 때만 '본문 정보 부족'이라고 써.\n"
+            "출력 형식: 각 공시마다 `[1] 내용` 형식 한 줄씩, 서론·꼬리말 없이.\n\n"
+            + "\n\n".join(parts)
+        )
+        text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
+        if not text:
+            continue
+        for line in text.splitlines():
+            m = re.match(r"\**\[(\d+)\]\**\s*(.+)", line.strip())
+            if m:
+                idx = int(m.group(1)) - 1
+                if 0 <= idx < len(batch) and "본문 정보 부족" not in m.group(2):
+                    batch[idx]["핵심내용"] = m.group(2).strip()[:300]
+        logger.info(f"LLM extraction {min(i + BATCH, len(targets))}/{len(targets)}")
 
 
 # ---------------------------------------------------------------------------
@@ -343,8 +451,16 @@ THIN_BORDER = Border(*[Side(style="thin", color="D9D9D9")] * 4)
 LINK_FONT = Font(color="0563C1", underline="single", size=10)
 BASE_FONT = Font(size=10)
 
-COLUMNS = ["접수일자", "티커", "회사명", "시가총액($B)", "공시유형", "유형설명", "설명", "링크"]
-COL_WIDTHS = {1: 11, 2: 8, 3: 34, 4: 12, 5: 15, 6: 26, 7: 44, 8: 12}
+BASE_COLUMNS = ["접수일자", "티커", "회사명", "시가총액($B)", "공시유형", "유형설명", "핵심내용", "링크"]
+HOLDER_COLUMNS = ["접수일자", "티커", "회사명", "시가총액($B)", "공시유형", "유형설명",
+                  "신고자", "보유비율(%)", "보유주식수", "핵심내용", "링크"]
+COL_WIDTHS = {"접수일자": 11, "티커": 8, "회사명": 32, "시가총액($B)": 12, "공시유형": 15,
+              "유형설명": 24, "핵심내용": 70, "신고자": 26, "보유비율(%)": 11,
+              "보유주식수": 13, "링크": 10}
+
+
+def sheet_columns(sheet_name):
+    return HOLDER_COLUMNS if sheet_name == "5%지분" else BASE_COLUMNS
 
 
 def build_excel(sheets, date_str, out_path):
@@ -353,22 +469,26 @@ def build_excel(sheets, date_str, out_path):
     total_rows = 0
     for sheet_name in SHEET_ORDER:
         rows = sheets[sheet_name]
+        columns = sheet_columns(sheet_name)
         ws = wb.create_sheet(title=sheet_name)
-        for ci, col in enumerate(COLUMNS, 1):
+        for ci, col in enumerate(columns, 1):
             c = ws.cell(row=1, column=ci, value=col)
             c.fill, c.font = HEADER_FILL, HEADER_FONT
             c.alignment = Alignment(horizontal="center", vertical="center")
             c.border = THIN_BORDER
-            ws.column_dimensions[get_column_letter(ci)].width = COL_WIDTHS[ci]
+            ws.column_dimensions[get_column_letter(ci)].width = COL_WIDTHS[col]
         rows.sort(key=lambda r: (-(r["시가총액($B)"] or 0), r["티커"]))
         for ri, row in enumerate(rows, 2):
-            for ci, col in enumerate(COLUMNS, 1):
+            for ci, col in enumerate(columns, 1):
                 val = row[col]
                 c = ws.cell(row=ri, column=ci)
                 c.border, c.font = THIN_BORDER, BASE_FONT
                 if col == "링크" and val:
                     c.value, c.hyperlink, c.font = "EDGAR", val, LINK_FONT
                     c.alignment = Alignment(horizontal="center")
+                elif col == "핵심내용":
+                    c.value = val
+                    c.alignment = Alignment(wrap_text=True, vertical="top")
                 else:
                     c.value = val
                     if col in ("접수일자", "티커", "공시유형"):
@@ -376,8 +496,14 @@ def build_excel(sheets, date_str, out_path):
                     elif col == "시가총액($B)":
                         c.number_format = "#,##0.0"
                         c.alignment = Alignment(horizontal="right")
+                    elif col == "보유비율(%)":
+                        c.number_format = "0.00"
+                        c.alignment = Alignment(horizontal="right")
+                    elif col == "보유주식수":
+                        c.number_format = "#,##0"
+                        c.alignment = Alignment(horizontal="right")
         ws.freeze_panes = "A2"
-        ws.auto_filter.ref = f"A1:{get_column_letter(len(COLUMNS))}{max(len(rows)+1, 2)}"
+        ws.auto_filter.ref = f"A1:{get_column_letter(len(columns))}{max(len(rows)+1, 2)}"
         total_rows += len(rows)
     wb.save(out_path)
     logger.info(f"Excel saved: {out_path} ({total_rows} rows).")
@@ -429,6 +555,11 @@ def main():
 
     universe, cik2tickers, caps = build_universe()
     sheets = collect_filings(date_str, universe, cik2tickers, caps)
+
+    # 상세 보강: 13D/G 구조화 XML + 원문 DeepSeek 핵심내용
+    enrich_13dg(sheets["5%지분"])
+    all_rows = [r for s in SHEET_ORDER for r in sheets[s]]
+    enrich_llm(all_rows)
 
     out_path = os.path.join(DATA_DIR, f"us_disclosures_summary_{target.strftime('%Y%m%d')}.xlsx")
     total = build_excel(sheets, date_str, out_path)
