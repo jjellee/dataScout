@@ -915,28 +915,32 @@ def parse_officer_report_html(html_path, report_type):
                                     shares_before = int(s)
                 break
 
-        # 2c. Get ownership_pct from Table 13 (대량보유내역 - 관계/성명 table)
-        for table in tables:
-            all_text = table.get_text()
-            if '관' in all_text and '계' in all_text and '성' in all_text and '명' in all_text:
-                rows = table.find_all('tr')
-                # Check if this is the 대량보유내역 table by looking at headers
-                header_text = clean_text(rows[0].get_text()) if rows else ''
-                if '관' in header_text and '계' in header_text:
-                    # Look for data rows with 합계 주수 and 비율 at the end
-                    for row in rows[1:]:
-                        cells = row.find_all(recursive=False)
-                        cell_texts = [clean_text(c.get_text()) for c in cells]
-                        if len(cell_texts) >= 4:
-                            # The last value should be 비율(%), second-to-last is 합계 주수
-                            last_pct = parse_number(cell_texts[-1])
-                            last_shares = parse_number(cell_texts[-2])
-                            if last_pct is not None and 0 < last_pct < 100:
-                                overall_pct = last_pct
-                            if last_shares is not None and last_shares > 1000:
-                                # Update shares_after from Table 13 if available
-                                pass
-                            break
+        # 2c. Fallback: 요약테이블(2)에서 비율을 못 얻은 경우에만
+        #     대량보유내역(관계/성명) 테이블에서 추출.
+        #     주의: parse_number가 '주1)주2)' 같은 각주도 12로 바꾸므로
+        #     순수 숫자 형식 셀만 인정한다.
+        if overall_pct is None:
+            for table in tables:
+                all_text = table.get_text()
+                if '관' in all_text and '계' in all_text and '성' in all_text and '명' in all_text:
+                    rows = table.find_all('tr')
+                    # Check if this is the 대량보유내역 table by looking at headers
+                    header_text = clean_text(rows[0].get_text()) if rows else ''
+                    if '관' in header_text and '계' in header_text:
+                        # Look for data rows with 합계 주수 and 비율 at the end
+                        for row in rows[1:]:
+                            cells = row.find_all(recursive=False)
+                            cell_texts = [clean_text(c.get_text()) for c in cells]
+                            if len(cell_texts) >= 4:
+                                # The last value should be 비율(%)
+                                last_cell = cell_texts[-1].strip()
+                                if re.fullmatch(r'[\d,]+(\.\d+)?\s*%?', last_cell):
+                                    last_pct = parse_number(last_cell)
+                                    if last_pct is not None and 0 < last_pct < 100:
+                                        overall_pct = last_pct
+                                break
+                if overall_pct is not None:
+                    break
 
         # 2d. 관계 정보 추출
         # - issuer_relation: '발행회사와의 관계' (보고자 본인의 관계: 최대주주 등)
