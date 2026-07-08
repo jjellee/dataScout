@@ -59,6 +59,7 @@
 | `us_market_monitor.py` | S&P500 등락률로 마켓 무버(급등·급락주) 집계해 전송 |
 | `us_disclosure_monitor.py` | SEC EDGAR 공시 모니터링 → 한국어 번역 후 알림 |
 | `us_disclosure_summary.py` | SEC 공시를 유형별(자금조달·계약·M&A·5%지분·경영진·실적·리스크) 엑셀로 분류·전송 — 시총 $10B+ 및 watchlist, 13D·공개매수·합병은 전 종목 (화~토 12:20) |
+| `ipo_monitor.py` | 미국(Nasdaq 캘린더)·한국(38커뮤니케이션) IPO 예정 기업 리포트 — KR은 업종·공모가밴드·주간사, US는 DeepSeek 한줄소개, 스팩 표기/제외 (매주 월 08:30) |
 | `download_historical_insiders.py` | SEC Form4 / OpenInsider로 미국 내부자 매매 과거 데이터 수집 |
 | `market_indicators.py` | 시장별(`--market US/KR/JP/CN`) 지수·섹터 히트맵·추세 차트 대시보드 — 각국 장마감 후 크론 실행 (US 07:30 / JP 15:50 / KR 16:10 / CN 17:35) |
 | `interest_monitor.py` | 관심종목(`interest_watchlist.json`) 주가·뉴스 일일 브리핑 |
