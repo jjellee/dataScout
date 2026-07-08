@@ -6,6 +6,14 @@ VENV_PYTHON="/home/inhyuk/projects/ExportImportAutomation/venv/bin/python"
 SCRIPT_DIR="/home/inhyuk/projects/dataScout"
 LOG_DIR="$SCRIPT_DIR/data_dart"
 
+# 중복 실행 방지 (백필 기간 등 빌드가 길어져 크론이 겹치는 경우 스킵)
+LOCK_FILE="$LOG_DIR/.dart_periodic.lock"
+exec 200>"$LOCK_FILE"
+if ! flock -n 200; then
+    echo "[$(date)] Another DART periodic run is in progress. Skipping."
+    exit 0
+fi
+
 echo "================================================================="
 echo " DART Periodic Run: $(date)"
 echo "================================================================="
