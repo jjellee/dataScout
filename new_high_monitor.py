@@ -179,6 +179,38 @@ def describe_companies_gemini(companies):
     return {}
 
 
+def analyze_strength_gemini(companies):
+    """DeepSeek으로 52주 신고가 종목의 주가 강세 이유를 1~2줄씩 분석.
+    Args:
+        companies: list of dict with 'name', 'ticker', 'sector', 'country',
+                   'change'(당일 등락률), 'news'(선택)
+    Returns:
+        dict: ticker -> 분석 문자열 (최대 2줄)
+    """
+    if not companies:
+        return {}
+
+    company_lines = []
+    for c in companies:
+        extra = f" | 당일 {c.get('change', 0):+.1f}%"
+        news = f" | 최근 뉴스: {c['news']}" if c.get('news') else ""
+        company_lines.append(f"- {c['name']} (#{c['ticker']}, {c['sector']}, {c['country']}){extra}{news}")
+
+    prompt = (
+        "다음 기업들은 오늘 52주 신고가를 기록한 종목이야. 각 종목의 주가가 강세인 이유를 "
+        "한국어로 1~2줄씩 간결하게 분석해줘. 제공된 뉴스와 네가 아는 해당 기업·산업의 흐름을 근거로 쓰되, "
+        "근거가 불확실하면 '~로 추정된다' 식으로 쓰고 구체적인 수치나 뉴스를 지어내지 마.\n"
+        "출력 형식: 각 기업마다 `[티커] 분석` 형식으로 작성해줘. 서론·꼬리말 없이.\n\n"
+        f"{chr(10).join(company_lines)}"
+    )
+
+    text = deepseek_chat(prompt, temperature=0.3, max_tokens=4096, timeout=120)
+    if text:
+        parsed = _parse_descriptions(text, companies)
+        return {k: "\n".join(v.split("\n")[:2]) for k, v in parsed.items()}
+    return {}
+
+
 def _parse_descriptions(text, companies):
     """Parse LLM response into ticker -> description dict."""
     result = {}
@@ -315,6 +347,14 @@ def process_us():
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 
+    # 주가 강세 이유 분석 (DeepSeek)
+    strength_companies = [{'name': h['Name'], 'ticker': h['Symbol'], 'sector': h['Sector'],
+                           'country': h.get('Country', 'USA'), 'change': h['Change'],
+                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
+    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} US stocks...")
+    strength_map = analyze_strength_gemini(strength_companies)
+    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['Symbol']}")
@@ -323,6 +363,9 @@ def process_us():
         desc = desc_map.get(h['Symbol'])
         if desc:
             lines.append(f"📝 {desc}")
+        strength = strength_map.get(h['Symbol'])
+        if strength:
+            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -447,11 +490,22 @@ def process_kr():
     news_map = get_news_batch(top_yf_tickers)
     logger.info(f"Got news for {len(news_map)} stocks")
 
+    # 주가 강세 이유 분석 (DeepSeek)
+    strength_companies = [{'name': h['Name'], 'ticker': h['RawTicker'], 'sector': h['Sector'],
+                           'country': 'Korea', 'change': h['Change'],
+                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
+    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} KR stocks...")
+    strength_map = analyze_strength_gemini(strength_companies)
+    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['RawTicker']}")
         lines.append(f"{h['Sector']} / Korea")
         lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_krw(h['MarketCap'])}")
+        strength = strength_map.get(h['RawTicker'])
+        if strength:
+            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -547,6 +601,14 @@ def process_jp():
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 
+    # 주가 강세 이유 분석 (DeepSeek)
+    strength_companies = [{'name': h['Name'], 'ticker': h['Symbol'].replace('.T', ''), 'sector': h['Sector'],
+                           'country': 'Japan', 'change': h['Change'],
+                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
+    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} JP stocks...")
+    strength_map = analyze_strength_gemini(strength_companies)
+    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         ticker_short = h['Symbol'].replace('.T', '')
@@ -556,6 +618,9 @@ def process_jp():
         desc = desc_map.get(ticker_short)
         if desc:
             lines.append(f"📝 {desc}")
+        strength = strength_map.get(ticker_short)
+        if strength:
+            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
