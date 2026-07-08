@@ -132,13 +132,22 @@ def fetch_rss_feed(url):
 
 
 def fetch_full_article(link, source_type):
-    """Fetch article page and extract body paragraphs as a list of strings."""
+    """Fetch article page and extract body paragraphs as a list of strings.
+
+    Cloudflare가 간헐적으로 403/503을 던지므로 브라우저 위장을 바꿔가며 재시도한다.
+    """
     try:
-        resp = c_requests.get(link, impersonate='chrome120', timeout=20)
-        if resp.status_code != 200:
-            logger.warning(f"Failed to fetch article body: {link}. HTTP {resp.status_code}")
+        resp = None
+        for attempt, imp in enumerate(['chrome120', 'chrome131', 'safari17_0', 'firefox133']):
+            resp = c_requests.get(link, impersonate=imp, timeout=20)
+            if resp.status_code == 200:
+                break
+            logger.warning(f"Fetch attempt {attempt + 1} ({imp}) got HTTP {resp.status_code}: {link}")
+            time.sleep(5 * (attempt + 1))
+        if resp is None or resp.status_code != 200:
+            logger.warning(f"Failed to fetch article body after retries: {link}")
             return None
-        
+
         soup = BeautifulSoup(resp.content, 'html.parser')
         
         if source_type == 'toms_hardware':
@@ -256,9 +265,13 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
         paragraphs = fetch_full_article(link, source_type)
         
         # Fallback if page fetch fails
+        is_fallback = False
         if not paragraphs:
             logger.warning(f"Could not fetch full article paragraphs for {link}. Using description as fallback.")
-            paragraphs = [item['description']] if item['description'] else [title]
+            is_fallback = True
+            desc = (item['description'] or "").strip()
+            # description이 제목과 동일하면 본문으로 중복 표기하지 않음
+            paragraphs = [desc] if desc and desc != title.strip() else []
 
         if source_type == 'toms_hardware':
             # ==========================================
@@ -271,8 +284,9 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
             logger.info("Translating paragraphs for Tom's Hardware...")
             translated_paragraphs = translate_paragraphs(paragraphs)
             
+            label = "제목만 · 본문 수집 실패" if is_fallback else "전문 번역"
             header_text = (
-                f"🖥️ *[Tom's Hardware 뉴스 - 전문 번역]*\n\n"
+                f"🖥️ *[Tom's Hardware 뉴스 - {label}]*\n\n"
                 f"📌 *{translated_title}*\n"
                 f"({title})"
             )
@@ -299,8 +313,9 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
             logger.info("Translating paragraphs for Investing.com...")
             translated_paragraphs = translate_paragraphs(paragraphs)
             
+            label = "제목만 · 본문 수집 실패" if is_fallback else "전문 번역"
             header_text = (
-                f"📊 *[Investing.com 애널리스트 의견 - 전문 번역]*\n\n"
+                f"📊 *[Investing.com 애널리스트 의견 - {label}]*\n\n"
                 f"📌 *{translated_title}*\n"
                 f"({title})"
             )
