@@ -34,16 +34,19 @@ def load_env():
 load_env()
 
 # DART API Keys list (auto rotation support)
-env_key = os.getenv("DART_API_KEY")
-new_key = "2474d23f39aef91e3318806304ca7a0562468b37"
-
+# .env의 DART_API_KEY, DART_API_KEY2, DART_API_KEY3 ... 을 순서대로 로드
 DART_KEYS = []
-if env_key:
-    DART_KEYS.append(env_key)
-if new_key not in DART_KEYS:
-    DART_KEYS.append(new_key)
-
-DART_KEYS = [k for k in DART_KEYS if k]
+_k = os.getenv("DART_API_KEY")
+if _k:
+    DART_KEYS.append(_k)
+_i = 2
+while True:
+    _k = os.getenv(f"DART_API_KEY{_i}")
+    if not _k:
+        break
+    if _k not in DART_KEYS:
+        DART_KEYS.append(_k)
+    _i += 1
 current_key_idx = 0
 
 def get_api_key():
