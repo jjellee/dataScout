@@ -143,6 +143,40 @@ def analyze_market_reasons_with_gemini(market, date_str, report_summary):
     )
     return deepseek_chat(prompt, temperature=0.3, max_tokens=2048)
 
+def generate_sector_stock_comments(market, df_merged, top_sectors, bottom_sectors):
+    """상승/하락 섹터의 주요 구성종목을 DeepSeek에 넘겨 '눈여겨볼 종목' 한 줄 코멘트 생성."""
+    try:
+        lines = []
+        for direction, sectors in (("상승", top_sectors), ("하락", bottom_sectors)):
+            for row in sectors.itertuples():
+                stocks = df_merged[df_merged['Industry'] == row.Industry]
+                # 등락 상위 3 + 시총 상위 2 (중복 제거)
+                movers = stocks.sort_values('Change', ascending=(direction == "하락")).head(3)
+                giants = stocks.sort_values('MarketCap', ascending=False).head(2)
+                picked, seen = [], set()
+                for r in list(movers.itertuples()) + list(giants.itertuples()):
+                    if r.Symbol not in seen:
+                        seen.add(r.Symbol)
+                        picked.append(f"{r.Name[:12]}({r.Change:+.1f}%)")
+                lines.append(f"[{direction}] {row.Industry} ({row.Change:+.2f}%): {', '.join(picked)}")
+        data_block = "\n".join(lines)
+        prompt = (
+            f"너는 {market} 주식 시장 전문 애널리스트야. 아래는 오늘 등락률 기준 상승 상위 5개, "
+            f"하락 하위 5개 섹터와 각 섹터의 주요 종목(등락 상위 + 시가총액 상위)이야.\n"
+            f"각 섹터마다 한 줄로, 눈여겨볼 종목 1~2개를 짚고 그 이유를 간결하게 한국어로 코멘트해줘.\n"
+            f"제공된 데이터(등락률·시총)에 근거해서만 쓰고, 확인 불가한 뉴스나 실적 추정은 지어내지 마.\n"
+            f"출력 형식은 섹터당 '- 섹터명: 코멘트' 한 줄씩, 서론·꼬리말 없이.\n\n"
+            f"{data_block}"
+        )
+        comment = deepseek_chat(prompt, temperature=0.3, max_tokens=1200)
+        if comment:
+            # 텔레그램 마크다운 충돌 방지: 볼드 마커 외 특수문자 정리
+            return comment.strip()
+    except Exception as e:
+        logger.warning(f"Sector stock comment generation failed: {e}")
+    return None
+
+
 def check_market_holiday(market):
     """
     Checks if the market was closed on the expected trading date.
@@ -710,8 +744,8 @@ def main():
     sector_perf = df_merged.groupby('Industry')['Change'].mean().reset_index()
     sector_perf_sorted = sector_perf.sort_values(by='Change', ascending=False)
     
-    top_sectors = sector_perf_sorted.head(3)
-    bottom_sectors = sector_perf_sorted.tail(3)
+    top_sectors = sector_perf_sorted.head(5)
+    bottom_sectors = sector_perf_sorted.tail(5)
     
     # C. Load Interest Sectors
     interest_sectors = load_interest_sectors(market)
@@ -730,13 +764,19 @@ def main():
     report_lines.append(f"📅 *기준일자: {expected_date.strftime('%Y-%m-%d')}*\n")
     
     # Sector performance
-    report_lines.append("🔥 *주요 상승 섹터/산업 TOP 3*")
+    report_lines.append("🔥 *주요 상승 섹터/산업 TOP 5*")
     for idx, row in enumerate(top_sectors.itertuples(), start=1):
         report_lines.append(f"{idx}. *{row.Industry}* (+{row.Change:.2f}%)")
-        
-    report_lines.append("\n❄️ *주요 하락 섹터/산업 BOTTOM 3*")
+
+    report_lines.append("\n❄️ *주요 하락 섹터/산업 BOTTOM 5*")
     for idx, row in enumerate(reversed(list(bottom_sectors.itertuples())), start=1):
         report_lines.append(f"{idx}. *{row.Industry}* ({row.Change:.2f}%)")
+
+    # DeepSeek 섹터별 주목 종목 코멘트
+    sector_comment = generate_sector_stock_comments(market, df_merged, top_sectors, bottom_sectors)
+    if sector_comment:
+        report_lines.append("\n💬 *섹터별 주목 종목 (AI)*")
+        report_lines.append(sector_comment)
         
     # Interest Sectors Section
     if not interest_perf.empty:
