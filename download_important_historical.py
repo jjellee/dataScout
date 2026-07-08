@@ -34,11 +34,11 @@ def load_env():
 load_env()
 
 # DART API Keys list (auto rotation support)
-# .env의 DART_API_KEY, DART_API_KEY2, DART_API_KEY3 ... 을 순서대로 로드
+# .env의 DART_API_KEY, DART_API_KEY2, DART_API_KEY3 ... 로드.
+# 백필은 보조 키(KEY2...)부터 소진하고, 기본 키(DART_API_KEY)는
+# 일일 수집기(dart_collector 등)가 쓸 여유를 남기고 마지막에 사용.
+PRIMARY_KEY = os.getenv("DART_API_KEY")
 DART_KEYS = []
-_k = os.getenv("DART_API_KEY")
-if _k:
-    DART_KEYS.append(_k)
 _i = 2
 while True:
     _k = os.getenv(f"DART_API_KEY{_i}")
@@ -47,13 +47,44 @@ while True:
     if _k not in DART_KEYS:
         DART_KEYS.append(_k)
     _i += 1
+if PRIMARY_KEY and PRIMARY_KEY not in DART_KEYS:
+    DART_KEYS.append(PRIMARY_KEY)  # 기본 키는 맨 뒤
 current_key_idx = 0
 
+# 자체 일일 사용량 상한 (실제 한도 20,000보다 보수적으로)
+DAILY_LIMIT = 19000
+PRIMARY_RESERVE = 5000  # 기본 키는 일일 수집용으로 이만큼 남겨둠
+_usage = {"date": None, "counts": {}}
+
+
+def _cap_for(key):
+    return DAILY_LIMIT - (PRIMARY_RESERVE if key == PRIMARY_KEY else 0)
+
+
+def note_request(key):
+    today = datetime.date.today().isoformat()
+    if _usage["date"] != today:
+        _usage["date"] = today
+        _usage["counts"] = {}
+    _usage["counts"][key] = _usage["counts"].get(key, 0) + 1
+
+
 def get_api_key():
+    """사용량이 상한 미만인 키 반환. 모든 키 상한 도달 시 QuotaExhausted."""
     global current_key_idx
     if not DART_KEYS:
         return None
-    return DART_KEYS[current_key_idx]
+    today = datetime.date.today().isoformat()
+    if _usage["date"] != today:
+        _usage["date"] = today
+        _usage["counts"] = {}
+    for _ in range(len(DART_KEYS)):
+        key = DART_KEYS[current_key_idx]
+        if _usage["counts"].get(key, 0) < _cap_for(key):
+            return key
+        current_key_idx = (current_key_idx + 1) % len(DART_KEYS)
+    print(f"[QUOTA] Self-imposed daily caps reached for all {len(DART_KEYS)} keys.", flush=True)
+    raise QuotaExhausted()
 
 def rotate_api_key():
     global current_key_idx
@@ -130,6 +161,7 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty=None):
         if pblntf_ty:
             params['pblntf_ty'] = pblntf_ty
         try:
+            note_request(api_key)
             response = requests.get(url, params=params, timeout=15)
             if response.status_code != 200:
                 print(f"[{bgn_de}-{end_de} | {pblntf_ty}] Error: HTTP {response.status_code}")
@@ -187,8 +219,9 @@ def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, ov
             'crtfc_key': api_key,
             'rcept_no': rcept_no
         }
-        
+
         try:
+            note_request(api_key)
             response = requests.get(url, params=params, timeout=15)
             if response.status_code != 200:
                 return False
