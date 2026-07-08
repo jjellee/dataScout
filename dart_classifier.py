@@ -938,6 +938,58 @@ def parse_officer_report_html(html_path, report_type):
                                 pass
                             break
 
+        # 2d. 관계 정보 추출
+        # - issuer_relation: '발행회사와의 관계' (보고자 본인의 관계: 최대주주 등)
+        # - person_relations: 대량보유내역 테이블의 관계(보고자/특별관계자)별 성명 매핑
+        def _norm_name(s):
+            return re.sub(r'\(주\)|주식회사|\(유\)|유한회사|\s+', '', s or '')
+
+        issuer_relation = None
+        for table in tables:
+            for row in table.find_all('tr'):
+                cells = row.find_all(recursive=False)
+                cell_texts = [clean_text(c.get_text()) for c in cells]
+                for i, ct in enumerate(cell_texts[:-1]):
+                    if ct.replace(' ', '') == '발행회사와의관계':
+                        val = cell_texts[i + 1].strip()
+                        if val and val != '-':
+                            issuer_relation = val
+                        break
+                if issuer_relation:
+                    break
+            if issuer_relation:
+                break
+
+        person_relations = {}
+        for table in tables:
+            rows = table.find_all('tr')
+            if not rows:
+                continue
+            header = clean_text(rows[0].get_text()).replace(' ', '')
+            if not ('관계' in header and '성명' in header):
+                continue
+            current_rel = None
+            for row in rows[1:]:
+                cells = row.find_all(recursive=False)
+                cell_texts = [clean_text(c.get_text()) for c in cells]
+                if not cell_texts:
+                    continue
+                first = cell_texts[0].replace(' ', '')
+                if not first or first.startswith(('제1호', '합계', '주수', '비율')):
+                    continue
+                if first in ('보고자', '특별관계자', '공동보유자', '본인'):
+                    current_rel = first
+                    if len(cell_texts) > 1 and cell_texts[1].strip():
+                        person_relations[_norm_name(cell_texts[1])] = current_rel
+                elif current_rel and not first.replace(',', '').replace('.', '').isdigit():
+                    person_relations.setdefault(_norm_name(first), current_rel)
+
+        def resolve_relation(person_name):
+            rel = person_relations.get(_norm_name(person_name), "특별관계자")
+            if rel in ('보고자', '본인'):
+                return issuer_relation or "보고자(본인)"
+            return rel
+
         # 3. Parse detail transaction table (변동일 + 취득/처분단가)
         # key: (reporter_name, 취득/처분방법) — 동일인이라도 거래종류가 다르면 별도 행
         detail_transactions = {}
@@ -1016,7 +1068,7 @@ def parse_officer_report_html(html_path, report_type):
 
                 results.append({
                     "reporter_name": name,
-                    "relationship": "특별관계자",
+                    "relationship": resolve_relation(name),
                     "change_reason": reason,
                     "shares_change": total_change,
                     "avg_price": computed_avg_price,
@@ -1071,7 +1123,7 @@ def parse_officer_report_html(html_path, report_type):
 
             results.append({
                 "reporter_name": reporter_name,
-                "relationship": "보고자",
+                "relationship": issuer_relation or "보고자",
                 "change_reason": change_reason,
                 "shares_change": 0,
                 "avg_price": None,
@@ -1911,7 +1963,12 @@ def build_excel_summary(workspace_dir):
                 data_dct = record_detail.get("data", {})
                 if not isinstance(data_dct, dict):
                     data_dct = {}
-                if "officer_reports" not in data_dct or not data_dct.get("officer_split_v2"):
+                needs_reparse = ("officer_reports" not in data_dct
+                                 or not data_dct.get("officer_split_v2"))
+                # v3: 대량보유 관계(최대주주 등) 재파싱
+                if '대량보유상황보고서' in report_nm and not data_dct.get("holder_rel_v3"):
+                    needs_reparse = True
+                if needs_reparse:
                     rn = report_nm
                     if '대량보유상황보고서' in rn:
                         rtype = '대량보유'
@@ -1937,6 +1994,7 @@ def build_excel_summary(workspace_dir):
                     record_detail["data"] = data_dct
                     record_detail["data"]["officer_reports"] = parsed
                     record_detail["data"]["officer_split_v2"] = True
+                    record_detail["data"]["holder_rel_v3"] = True
                     cache[rcept_no] = record_detail
                 else:
                     # Healing cache for missing avg_price
@@ -2167,7 +2225,8 @@ def build_excel_summary(workspace_dir):
                         p["avg_price"] = round(w_sum / w_count)
             record_detail["data"] = {
                 "officer_reports": parsed,
-                "officer_split_v2": True
+                "officer_split_v2": True,
+                "holder_rel_v3": True
             }
             
         # Cache and save
