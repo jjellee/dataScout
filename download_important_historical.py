@@ -358,10 +358,20 @@ def process_date(dt):
                        if classify_for_download(it.get("report_nm")) is not None
                        and not os.path.exists(os.path.join(output_dir, f"{it['rcept_no']}.html"))]
     success = 0
+    failed = []
     for it in download_needed:
         if download_disclosure_document_rotated(it["rcept_no"], output_dir, metadata=it):
             success += 1
+        else:
+            failed.append(it)
         time.sleep(0.05)
+    # 네트워크 오류 등 실패분 1회 재시도
+    if failed:
+        time.sleep(3)
+        for it in failed:
+            if download_disclosure_document_rotated(it["rcept_no"], output_dir, metadata=it):
+                success += 1
+            time.sleep(0.05)
     return len(items), success
 
 
