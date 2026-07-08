@@ -91,27 +91,41 @@ def get_monthly_ranges(start_date, end_date):
         curr = next_month
     return ranges
 
-def fetch_disclosures_range(bgn_de, end_de, pblntf_ty):
+class QuotaExhausted(Exception):
+    """모든 DART API 키의 일일 한도 소진."""
+
+
+def wait_until_quota_reset():
+    """DART 일일 한도는 자정(KST) 리셋 — 다음날 00:10까지 대기."""
+    now = datetime.datetime.now()
+    tomorrow = (now + datetime.timedelta(days=1)).replace(hour=0, minute=10, second=0, microsecond=0)
+    wait_sec = (tomorrow - now).total_seconds()
+    print(f"\n[QUOTA] All keys exhausted. Sleeping {wait_sec/3600:.1f}h until {tomorrow} ...\n", flush=True)
+    time.sleep(wait_sec)
+
+
+def fetch_disclosures_range(bgn_de, end_de, pblntf_ty=None):
     url = "https://opendart.fss.or.kr/api/list.json"
     page_no = 1
     page_count = 100
     all_reports = []
-    
+
     attempts = 0
     while True:
         api_key = get_api_key()
         if not api_key:
             print("No DART API key available.")
             break
-            
+
         params = {
             'crtfc_key': api_key,
             'bgn_de': bgn_de,
             'end_de': end_de,
-            'pblntf_ty': pblntf_ty,
             'page_no': page_no,
             'page_count': page_count
         }
+        if pblntf_ty:
+            params['pblntf_ty'] = pblntf_ty
         try:
             response = requests.get(url, params=params, timeout=15)
             if response.status_code != 200:
@@ -127,7 +141,7 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty):
                 attempts += 1
                 if attempts >= len(DART_KEYS):
                     print("All available DART API keys are exhausted (rate limited). Exiting.")
-                    sys.exit(1)
+                    raise QuotaExhausted()
                 if rotate_api_key():
                     continue
                 else:
@@ -145,8 +159,8 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty):
                 break
             page_no += 1
             time.sleep(0.05)
-        except SystemExit:
-            sys.exit(1)
+        except QuotaExhausted:
+            raise
         except Exception as e:
             print(f"[{bgn_de}-{end_de} | {pblntf_ty}] Request failed: {e}")
             break
@@ -181,18 +195,18 @@ def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, ov
                     err_data = response.json()
                     status = err_data.get("status")
                     print(f"  [{rcept_no}] Error: {err_data.get('message')} (status: {status})")
-                    if status == "021":
+                    if status in ["020", "021"]:
                         print(f"  [{rcept_no}] Limit exceeded for key index {current_key_idx}. Rotating key...")
                         attempts += 1
                         if attempts >= len(DART_KEYS):
                             print("All available DART API keys are exhausted (rate limited). Exiting.")
-                            sys.exit(1)
+                            raise QuotaExhausted()
                         if rotate_api_key():
                             continue
                         else:
                             return False
-                except SystemExit:
-                    sys.exit(1)
+                except QuotaExhausted:
+                    raise
                 except Exception:
                     try:
                         err_text = response.content.decode('utf-8', errors='ignore')
@@ -203,18 +217,18 @@ def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, ov
                         
                         print(f"  [{rcept_no}] Error: {msg} (status: {status})")
                         
-                        if status == "021" or "021" in err_text or "초과조회" in err_text:
+                        if status in ["020", "021"] or "021" in err_text or "초과조회" in err_text or "사용한도" in err_text:
                             print(f"  [{rcept_no}] Limit exceeded for key index {current_key_idx}. Rotating key...")
                             attempts += 1
                             if attempts >= len(DART_KEYS):
                                 print("All available DART API keys are exhausted (rate limited). Exiting.")
-                                sys.exit(1)
+                                raise QuotaExhausted()
                             if rotate_api_key():
                                 continue
                             else:
                                 return False
-                    except SystemExit:
-                        sys.exit(1)
+                    except QuotaExhausted:
+                        raise
                     except Exception as e:
                         print(f"  [{rcept_no}] Exception decoding error content: {e}")
                         pass
@@ -286,113 +300,114 @@ def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, ov
                     out_f.write(content_str)
                     
                 return True
+        except QuotaExhausted:
+            raise
         except Exception as e:
             print(f"  [{rcept_no}] Exception: {e}")
             return False
 
+WORKSPACE_DIR = "/home/inhyuk/projects/dataScout"
+STATE_FILE = os.path.join(WORKSPACE_DIR, "data_dart", "historical_backfill_state.json")
+
+
+def load_state():
+    try:
+        with open(STATE_FILE, "r", encoding="utf-8") as f:
+            return set(json.load(f).get("done_dates", []))
+    except Exception:
+        return set()
+
+
+def save_state(done_dates):
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump({"done_dates": sorted(done_dates)}, f, ensure_ascii=False)
+
+
+def process_date(dt):
+    """하루치 공시 리스트 조회(전체 유형) + 중요공시 HTML 다운로드.
+
+    일일 수집기(dart_collector)와 동일하게 pblntf_ty 필터 없이 전체를 조회한다.
+    (기존 D/E/G 필터는 주요사항보고(B)·거래소공시(I)를 누락하는 버그였음)
+    """
+    items_all = fetch_disclosures_range(dt, dt, None)
+    items = [it for it in items_all if it.get("corp_cls") in ('Y', 'K', 'N')]
+    if not items:
+        return 0, 0
+
+    output_dir = os.path.join(WORKSPACE_DIR, "data_dart", dt)
+    os.makedirs(output_dir, exist_ok=True)
+    json_path = os.path.join(output_dir, "disclosures.json")
+    csv_path = os.path.join(output_dir, "disclosures.csv")
+
+    existing = []
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                existing = json.load(f)
+        except Exception:
+            pass
+    merged = {it["rcept_no"]: it for it in existing}
+    for it in items:
+        merged.setdefault(it["rcept_no"], it)
+    merged_list = list(merged.values())
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(merged_list, f, ensure_ascii=False, indent=4)
+    pd.DataFrame(merged_list).to_csv(csv_path, index=False, encoding='utf-8-sig')
+
+    download_needed = [it for it in items
+                       if classify_for_download(it.get("report_nm")) is not None
+                       and not os.path.exists(os.path.join(output_dir, f"{it['rcept_no']}.html"))]
+    success = 0
+    for it in download_needed:
+        if download_disclosure_document_rotated(it["rcept_no"], output_dir, metadata=it):
+            success += 1
+        time.sleep(0.05)
+    return len(items), success
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="DART 과거 공시 백필 다운로더")
+    parser.add_argument("--start", default="20240101", help="시작일 YYYYMMDD")
+    parser.add_argument("--end", default="20251111", help="종료일 YYYYMMDD (이후는 일일수집분 존재)")
+    args = parser.parse_args()
+
     if not DART_KEYS:
         print("Error: No DART API keys provided.")
         return
-        
-    start_date = datetime.date(2023, 1, 1)
-    end_date = datetime.date.today()
-    
-    ranges = get_monthly_ranges(start_date, end_date)
-    # Reverse order so that the most recent ones are downloaded first
-    ranges.reverse()
-    
-    print(f"Starting historical collection from {start_date} to {end_date}.")
-    print(f"Active DART API Keys: {len(DART_KEYS)}")
-    for idx, key in enumerate(DART_KEYS):
-        print(f"  Key {idx}: {key[:6]}...")
-    print(f"Total months to process: {len(ranges)}")
-    
-    workspace_dir = "/home/inhyuk/projects/dataScout"
-    
-    for bgn, end in ranges:
-        print(f"\n--- Processing period {bgn} to {end} ---")
-        
-        # Fetch for all 3 types (D: 주요사항보고서, E: 발행공시, G: 기타공시)
-        all_period_discls = []
-        for p_type in ['D', 'E', 'G']:
-            print(f"Fetching type {p_type}...")
-            reports = fetch_disclosures_range(bgn, end, p_type)
-            all_period_discls.extend(reports)
-            
-        # Filter in Python: keep all Y, K, N disclosures
-        ykn_discls = []
-        for item in all_period_discls:
-            corp_cls = item.get("corp_cls")
-            if corp_cls in ['Y', 'K', 'N']:
-                ykn_discls.append(item)
-                    
-        print(f"Found {len(ykn_discls)} disclosures out of {len(all_period_discls)} total in this month.")
-        
-        # Group by date
-        date_groups = {}
-        for item in ykn_discls:
-            dt = item.get("rcept_dt")
-            if dt not in date_groups:
-                date_groups[dt] = []
-            date_groups[dt].append(item)
-            
-        # Process each date
-        for dt, items in sorted(date_groups.items(), reverse=True):
-            output_dir = os.path.join(workspace_dir, "data_dart", dt)
-            os.makedirs(output_dir, exist_ok=True)
-            
-            json_path = os.path.join(output_dir, "disclosures.json")
-            csv_path = os.path.join(output_dir, "disclosures.csv")
-            
-            # Load existing disclosures.json if any
-            existing_discls = []
-            if os.path.exists(json_path):
-                try:
-                    with open(json_path, "r", encoding="utf-8") as f:
-                        existing_discls = json.load(f)
-                except Exception:
-                    pass
-            
-            # Merge and de-duplicate by rcept_no
-            merged = {item["rcept_no"]: item for item in existing_discls}
-            for item in items:
-                merged[item["rcept_no"]] = item
-                
-            merged_list = list(merged.values())
-            
-            # Save back
+
+    start = datetime.datetime.strptime(args.start, "%Y%m%d").date()
+    end = datetime.datetime.strptime(args.end, "%Y%m%d").date()
+    dates = []
+    d = end
+    while d >= start:  # 최신 날짜부터 역순
+        if d.weekday() < 5:  # 주말 제외 (공시 없음)
+            dates.append(d.strftime("%Y%m%d"))
+        d -= datetime.timedelta(days=1)
+
+    done = load_state()
+    todo = [dt for dt in dates if dt not in done]
+    print(f"Backfill {args.start}~{args.end}: {len(dates)} business days, "
+          f"{len(done)} done, {len(todo)} to go. Keys: {len(DART_KEYS)}", flush=True)
+
+    t0 = time.time()
+    for n, dt in enumerate(todo, 1):
+        while True:
             try:
-                with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(merged_list, f, ensure_ascii=False, indent=4)
-                pd.DataFrame(merged_list).to_csv(csv_path, index=False, encoding='utf-8-sig')
+                total, dl = process_date(dt)
+                done.add(dt)
+                save_state(done)
+                print(f"[{dt}] disclosures {total}, html downloaded {dl} "
+                      f"({n}/{len(todo)}, {time.time()-t0:.0f}s)", flush=True)
+                break
+            except QuotaExhausted:
+                wait_until_quota_reset()
             except Exception as e:
-                print(f"[{dt}] Failed to save disclosures metadata: {e}")
-                
-            # Download HTML files only if classify_for_download is not None
-            download_needed = []
-            for item in items:
-                rcept_no = item.get("rcept_no")
-                report_nm = item.get("report_nm")
-                
-                # Check if it matches classify_for_download
-                if classify_for_download(report_nm) is not None:
-                    html_path = os.path.join(output_dir, f"{rcept_no}.html")
-                    # Force overwrite if it is a 5%/officer report
-                    is_officer = any(k in report_nm for k in ["대량보유상황보고서", "소유주식변동보고서", "소유상황보고서", "특정증권"])
-                    if is_officer or not os.path.exists(html_path):
-                        download_needed.append((item, is_officer))
-                    
-            if download_needed:
-                print(f"[{dt}] Downloading {len(download_needed)} HTML files (includes 5%/officer updates)...")
-                success_count = 0
-                for item, is_officer in download_needed:
-                    rcept_no = item.get("rcept_no")
-                    success = download_disclosure_document_rotated(rcept_no, output_dir, metadata=item, overwrite=is_officer)
-                    if success:
-                        success_count += 1
-                    time.sleep(0.05)
-                print(f"[{dt}] Downloaded {success_count}/{len(download_needed)} HTML files successfully.")
-                
+                print(f"[{dt}] unexpected error: {e} — retrying in 60s", flush=True)
+                time.sleep(60)
+
+    print("Backfill complete.", flush=True)
+
+
 if __name__ == "__main__":
     main()
