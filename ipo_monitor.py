@@ -380,9 +380,33 @@ def get_intros(companies, market):
 # 리포트
 # ---------------------------------------------------------------------------
 
+def _fmt_usd(s):
+    """'$100,000,000' → '$100M'"""
+    m = re.search(r"[\d,]+", s or "")
+    if not m:
+        return s or ""
+    v = int(m.group(0).replace(",", ""))
+    if v >= 1e9:
+        return f"${v/1e9:.1f}B"
+    if v >= 1e6:
+        return f"${v/1e6:.0f}M"
+    return f"${v:,.0f}"
+
+
+def _fmt_us_date(s):
+    """'7/02/2026' → '07/02'"""
+    m = re.match(r"(\d{1,2})/(\d{1,2})/\d{4}", s or "")
+    return f"{int(m.group(1)):02d}/{int(m.group(2)):02d}" if m else (s or "")
+
+
+def _strip_year(s):
+    """'2026.08.13~08.14' → '08.13~08.14'"""
+    return re.sub(r"\b20\d{2}\.", "", s or "")
+
+
 def build_report():
     today_str = datetime.date.today().strftime("%Y-%m-%d")
-    lines = [f"🎯 *IPO 예정 기업 리포트 ({today_str})*"]
+    lines = [f"🎯 *IPO 예정 기업 리포트* ({today_str})"]
 
     # ---- 한국 ----
     try:
@@ -396,32 +420,36 @@ def build_report():
         logger.error(f"KR new listing fetch failed: {e}")
         kr_new = None
 
-    lines.append("\n🇰🇷 *한국 공모청약 예정* (스팩 제외)")
+    lines.append("\n━━━ 🇰🇷 *한국 공모청약 예정* ━━━")
     if kr_up:
-        for x in kr_up:
-            price = f"확정 {x['confirmed']}원" if x["confirmed"] else f"밴드 {x['band']}원"
-            lines.append(f"• *{x['name']}* | 청약 {x['sched']} | {price} | {x['underwriter']}")
-            fin = None
-            if x.get("sales") or x.get("profit"):
-                fin = f"매출 {x.get('sales') or '?'}·순익 {x.get('profit') or '?'}"
-            detail_parts = [p for p in (
-                x.get("industry"),
-                f"예상시총 {x['valuation']}" if x.get("valuation") else None,
-                f"공모 {x['amount']}" if x.get("amount") else None,
-                fin,
-            ) if p]
-            if detail_parts:
-                lines.append(f"   └ {' | '.join(detail_parts)}")
+        for i, x in enumerate(kr_up, 1):
+            industry = f" — {x['industry']}" if x.get("industry") else ""
+            lines.append(f"\n*{i}. {x['name']}*{industry}")
+            market = f" ({x['market']})" if x.get("market") else ""
+            lines.append(f"📅 청약 {_strip_year(x['sched'])}{market}")
+            price = f"확정공모가 {x['confirmed']}원" if x["confirmed"] else f"밴드 {x['band']}원"
+            amount = f" · 공모 {x['amount']}" if x.get("amount") else ""
+            lines.append(f"💰 {price}{amount}")
+            if x.get("valuation"):
+                lines.append(f"🏢 예상시총 {x['valuation']}")
+            fin_parts = []
+            if x.get("sales"):
+                fin_parts.append(f"매출 {x['sales']}")
+            if x.get("profit"):
+                fin_parts.append(f"순익 {x['profit']}")
+            fin = " · ".join(fin_parts)
+            uw = x["underwriter"].split(",")[0]
+            lines.append(f"📊 {fin} · {uw}" if fin else f"🏦 {uw}")
     elif kr_up is None:
-        lines.append("  (조회 실패)")
+        lines.append("(조회 실패)")
     else:
-        lines.append("  예정된 청약 없음")
+        lines.append("예정된 청약 없음")
 
     if kr_new:
-        lines.append("\n🇰🇷 *한국 신규상장 예정*")
+        lines.append("\n━━━ 🇰🇷 *한국 신규상장 예정* ━━━")
         for x in kr_new:
-            price = f" | 공모가 {x['price']}원" if x["price"] else ""
-            lines.append(f"• *{x['name']}* | 상장 {x['date']}{price}")
+            price = f" · 공모가 {x['price']}원" if x["price"] else ""
+            lines.append(f"• *{x['name']}* — 상장 {_strip_year(x['date'])}{price}")
 
     # ---- 미국 ----
     try:
@@ -450,30 +478,55 @@ def build_report():
         except Exception as e:
             logger.warning(f"yfinance mcap lookup failed: {e}")
 
-        def render(x):
-            spac_tag = " (SPAC)" if x["spac"] else ""
-            price = f" | 공모가 ${x['price']}" if x["price"] else ""
-            amount = f" | 규모 {x['amount']}" if x["amount"] else ""
-            mcap = mcap_map.get(x["ticker"])
-            mcap_str = f" | 시총 ${mcap/1e9:,.1f}B" if mcap else ""
-            out = [f"• *{x['name'][:40]}*{spac_tag} #{x['ticker']} | {x['date']}{price}{amount}{mcap_str}"]
-            info = s1_infos.get(x["ticker"]) or intros.get(x["ticker"])
-            if not x["spac"] and info:
-                out.append(f"   └ {info}")
+        def render_block(x, idx, date_label):
+            """비스팩 종목: 여러 줄 블록."""
+            out = [f"\n*{idx}. {x['name'][:40]}* #{x['ticker']}"]
+            info = s1_infos.get(x["ticker"]) or intros.get(x["ticker"]) or ""
+            biz, _, offer = info.partition("|")
+            if biz.strip():
+                out.append(f"📝 {biz.strip()}")
+            cond_parts = []
+            if x["price"]:
+                cond_parts.append(f"공모가 ${x['price']}")
+            elif offer.strip():
+                cond_parts.append(offer.strip()[:80])
+            if x["amount"]:
+                cond_parts.append(f"규모 {_fmt_usd(x['amount'])}")
+            cond_parts.append(f"{date_label} {_fmt_us_date(x['date'])}")
+            out.append(f"💰 {' · '.join(cond_parts)}")
             return out
 
+        def render_spac_line(items):
+            """스팩: 한 줄로 압축."""
+            if not items:
+                return []
+            parts = [f"{x['ticker']} {_fmt_usd(x['amount'])}" if x["amount"] else x["ticker"]
+                     for x in items]
+            return [f"\n🎲 SPAC {len(items)}건: {' · '.join(parts)}"]
+
         if us["upcoming"]:
-            lines.append("\n🇺🇸 *미국 상장 예정 (가격결정 대기)*")
-            for x in us["upcoming"]:
-                lines.extend(render(x))
+            lines.append("\n━━━ 🇺🇸 *미국 상장 예정* (가격결정 대기) ━━━")
+            nonspac = [x for x in us["upcoming"] if not x["spac"]]
+            for i, x in enumerate(nonspac, 1):
+                lines.extend(render_block(x, i, "예정"))
+            lines.extend(render_spac_line([x for x in us["upcoming"] if x["spac"]]))
         if us["filed"]:
-            lines.append("\n🇺🇸 *미국 신규 상장신청 (S-1 제출)*")
-            for x in us["filed"]:
-                lines.extend(render(x))
+            lines.append("\n━━━ 🇺🇸 *미국 신규 상장신청* (S-1) ━━━")
+            nonspac = [x for x in us["filed"] if not x["spac"]]
+            for i, x in enumerate(nonspac, 1):
+                lines.extend(render_block(x, i, "제출"))
+            lines.extend(render_spac_line([x for x in us["filed"] if x["spac"]]))
         if us["priced"]:
-            lines.append("\n🇺🇸 *미국 최근 상장 (2주 내 가격확정)*")
+            lines.append("\n━━━ 🇺🇸 *미국 최근 상장* (2주 내) ━━━")
             for x in us["priced"]:
-                lines.extend(render(x))
+                if x["spac"]:
+                    continue
+                mcap = mcap_map.get(x["ticker"])
+                mcap_str = f" · 시총 ${mcap/1e9:,.1f}B" if mcap else ""
+                price = f" · 공모가 ${x['price']}" if x["price"] else ""
+                lines.append(f"• *{x['name'][:35]}* #{x['ticker']} — {_fmt_us_date(x['date'])} 상장"
+                             f"{price} · 규모 {_fmt_usd(x['amount'])}{mcap_str}")
+            lines.extend(render_spac_line([x for x in us["priced"] if x["spac"]]))
     else:
         lines.append("\n🇺🇸 미국 IPO 캘린더 조회 실패")
 
