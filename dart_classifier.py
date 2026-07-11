@@ -2579,15 +2579,25 @@ def build_excel_summary(workspace_dir):
                     "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
                 })
         
-        df_officer = pd.DataFrame(officer_data_list)
+        deduped_list, dup_removed = dedup_officer_rows(officer_data_list)
+        logger.info(f"5%_임원보고 dedup: {len(officer_data_list)} -> {len(deduped_list)} rows "
+                    f"({dup_removed} duplicates removed)")
+
+        df_officer = pd.DataFrame(deduped_list)
         if '접수일자' in df_officer.columns:
             df_officer = df_officer.sort_values('접수일자', ascending=False).reset_index(drop=True)
         df_officer.to_excel(writer, sheet_name="5%_임원보고", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고"])
 
+        df_officer_raw = pd.DataFrame(officer_data_list)
+        if '접수일자' in df_officer_raw.columns:
+            df_officer_raw = df_officer_raw.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        df_officer_raw.to_excel(writer, sheet_name="5%_임원보고 원본", index=False)
+        format_officer_sheet(writer.sheets["5%_임원보고 원본"])
+
         # 탭 순서 재배열: 신규시설투자 → 5%_임원보고 → 재무_자기주식 순
         desired_order = ["자금조달_증자", "영업활동_계약", "신규시설투자", "5%_임원보고",
-                         "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
+                         "5%_임원보고 원본", "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
         wb = writer.book
         ordered = [wb[name] for name in desired_order if name in wb.sheetnames]
         # desired_order에 없는 시트(향후 추가분)는 기존 순서대로 뒤에 붙인다
@@ -2597,6 +2607,60 @@ def build_excel_summary(workspace_dir):
     save_closing_price_cache()
     logger.info(f"Excel file built successfully: {excel_path}")
     return True
+
+def dedup_officer_rows(rows):
+    """5%_임원보고 사실상 동일 거래 행 중복 제거.
+
+    같은 거래가 반복 수록되는 4가지 경로를 하나로 줄인다:
+      ① 서식 교차: 대량보유상황보고서와 임원·주요주주보고서 양쪽 신고
+      ② 금감원/거래소(KIND) 이중 접수
+      ③ 기재정정 체인 (원공시 + 정정본)
+      ④ 후속 보고서의 직전 거래 재수록
+    키: (종목코드, 보고자 정규화, 변동사유, 증감, 변동후 보유). 증감 없는 행은 전부 유지.
+    남길 행: 정보량(단가 > 거래액 > 보유비율) 최대 → 동률이면 대량보유 우선 →
+             같은 날이면 최신 접수번호(정정·이중접수), 다른 날이면 최초 접수일(재수록).
+    Returns: (deduped_rows, removed_count)
+    """
+    def norm(s):
+        return re.sub(r'\(주\)|㈜|주식회사|\(유\)|유한회사|\s+', '', str(s or ''))
+
+    def date_of(r):
+        return str(r.get("접수일자"))[:10]
+
+    def score(r):
+        info = ((r.get("단가(원)") is not None) * 4
+                + (r.get("거래액(원)") is not None) * 2
+                + (r.get("보유비율(%)") is not None) * 1)
+        is_bulk = 1 if r.get("보고구분") == "대량보유" else 0
+        return (info, is_bulk)
+
+    groups = {}
+    for i, r in enumerate(rows):
+        if not r.get("증감(주)"):
+            continue
+        key = (r.get("종목코드"), norm(r.get("보고자(주체)")),
+               str(r.get("변동사유") or '').replace(' ', ''),
+               r.get("증감(주)"), r.get("변동후 보유(주)"))
+        groups.setdefault(key, []).append(i)
+
+    drop = set()
+    for key, idxs in groups.items():
+        if len(idxs) <= 1:
+            continue
+        best = max(score(rows[i]) for i in idxs)
+        cands = [i for i in idxs if score(rows[i]) == best]
+        if len(cands) > 1:
+            if len({date_of(rows[i]) for i in cands}) == 1:
+                # 같은 날 복수 접수(정정·이중접수) → 최신 접수번호 유지
+                cands.sort(key=lambda i: str(rows[i].get("접수번호")), reverse=True)
+            else:
+                # 다른 날(후속 보고 재수록) → 최초 접수일 유지
+                cands.sort(key=lambda i: (date_of(rows[i]), str(rows[i].get("접수번호"))))
+        winner = cands[0]
+        drop.update(i for i in idxs if i != winner)
+
+    return [r for i, r in enumerate(rows) if i not in drop], len(drop)
+
 
 # -------------------------------------------------------------
 # openpyxl Styling Helpers
