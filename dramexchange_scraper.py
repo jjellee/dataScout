@@ -445,15 +445,21 @@ def _update_ddr5_csv(current_data, timestamp_str):
             last_date = line.split(",")[0]
             break
     
-    # Only append if today is AFTER the last date in the CSV
-    # Never modify existing data
-    if today <= last_date:
-        logger.info(f"DDR5 CSV already has data through {last_date}. Skipping (today={today}).")
+    # 오늘 행은 최신 세션 가격으로 갱신(11시→15시→18시), 과거 행은 불변.
+    # 캡션(현재 세션가)과 차트 끝점이 어긋나지 않도록 같은 날은 덮어쓴다.
+    if last_date == today:
+        for i in range(len(existing_lines) - 1, -1, -1):
+            if existing_lines[i].startswith(today + ","):
+                existing_lines[i] = f"{today},{ddr5_price}"
+                break
+        logger.info(f"Updated DDR5 CSV (same-day): {today} ${ddr5_price}")
+    elif today > last_date:
+        existing_lines.append(f"{today},{ddr5_price}")
+        logger.info(f"Appended DDR5 CSV: {today} ${ddr5_price}")
+    else:
+        logger.info(f"DDR5 CSV last date {last_date} is in the future?! Skipping.")
         return
-    
-    existing_lines.append(f"{today},{ddr5_price}")
-    logger.info(f"Appended DDR5 CSV: {today} ${ddr5_price}")
-    
+
     # Write back
     with open(csv_path, "w", encoding="utf-8") as f:
         f.write("\n".join(existing_lines) + "\n")
