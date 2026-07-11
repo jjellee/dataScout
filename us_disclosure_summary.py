@@ -463,7 +463,7 @@ def sheet_columns(sheet_name):
     return HOLDER_COLUMNS if sheet_name == "5%지분" else BASE_COLUMNS
 
 
-def build_excel(sheets, date_str, out_path):
+def build_excel(sheets, date_str, out_path, presorted=False):
     wb = Workbook()
     wb.remove(wb.active)
     total_rows = 0
@@ -477,7 +477,8 @@ def build_excel(sheets, date_str, out_path):
             c.alignment = Alignment(horizontal="center", vertical="center")
             c.border = THIN_BORDER
             ws.column_dimensions[get_column_letter(ci)].width = COL_WIDTHS[col]
-        rows.sort(key=lambda r: (-(r["시가총액($B)"] or 0), r["티커"]))
+        if not presorted:
+            rows.sort(key=lambda r: (-(r["시가총액($B)"] or 0), r["티커"]))
         for ri, row in enumerate(rows, 2):
             for ci, col in enumerate(columns, 1):
                 val = row[col]
@@ -539,42 +540,101 @@ def default_target_date():
     return d
 
 
+ROW_CACHE = os.path.join(DATA_DIR, "us_disclosures_cache.json")
+
+
+def load_row_cache():
+    try:
+        with open(ROW_CACHE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def save_row_cache(cache):
+    tmp = ROW_CACHE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+    os.replace(tmp, ROW_CACHE)
+
+
+def collect_date_into_cache(target, universe, cik2tickers, caps, cache):
+    """하루치 수집·보강 후 누적 캐시에 병합. 이미 캐시된 행은 재보강하지 않음."""
+    date_str = target.isoformat()
+    sheets = collect_filings(date_str, universe, cik2tickers, caps)
+
+    new_rows = []
+    for sheet in SHEET_ORDER:
+        for row in sheets[sheet]:
+            key = f"{row['_adsh']}|{sheet}"
+            if key in cache:
+                continue
+            row["_sheet"] = sheet
+            new_rows.append(row)
+    # 신규 행만 보강 (13D/G XML + DeepSeek)
+    enrich_13dg([r for r in new_rows if r["_sheet"] == "5%지분"])
+    enrich_llm(new_rows)
+    for row in new_rows:
+        row.pop("_text", None)
+        cache[f"{row['_adsh']}|{row['_sheet']}"] = row
+    logger.info(f"[{date_str}] new rows merged: {len(new_rows)} (cache {len(cache)})")
+    return len(new_rows)
+
+
+def build_cumulative_excel(cache, out_path):
+    sheets = {s: [] for s in SHEET_ORDER}
+    for key, row in cache.items():
+        sheet = row.get("_sheet") or key.split("|", 1)[1]
+        if sheet in sheets:
+            sheets[sheet].append(row)
+    # 누적본은 최신 접수일 우선, 같은 날은 시총 순
+    for s in sheets:
+        sheets[s].sort(key=lambda r: (r.get("접수일자", ""), r.get("시가총액($B)") or 0), reverse=True)
+    total = build_excel(sheets, "", out_path, presorted=True)
+    return total, sheets
+
+
 def main():
-    parser = argparse.ArgumentParser(description="US SEC disclosure summary Excel.")
+    parser = argparse.ArgumentParser(description="US SEC disclosure summary Excel (누적).")
     parser.add_argument("--date", help="대상 일자 (YYYY-MM-DD, ET 기준)")
+    parser.add_argument("--backfill", help="백필 시작일 (YYYY-MM-DD) — 시작일~기본 대상일 순회")
     parser.add_argument("--upload", action="store_true", help="텔레그램 업로드")
     parser.add_argument("--test", action="store_true", help="테스트 채널로 전송")
     args = parser.parse_args()
 
-    if args.date:
-        target = datetime.date.fromisoformat(args.date)
+    end = datetime.date.fromisoformat(args.date) if args.date else default_target_date()
+    if args.backfill:
+        start = datetime.date.fromisoformat(args.backfill)
+        dates = []
+        d = start
+        while d <= end:
+            if d.weekday() < 5:
+                dates.append(d)
+            d += datetime.timedelta(days=1)
     else:
-        target = default_target_date()
-    date_str = target.isoformat()
-    logger.info(f"Target US filing date: {date_str}")
+        dates = [end]
 
     universe, cik2tickers, caps = build_universe()
-    sheets = collect_filings(date_str, universe, cik2tickers, caps)
+    cache = load_row_cache()
+    new_total = 0
+    for target in dates:
+        new_total += collect_date_into_cache(target, universe, cik2tickers, caps, cache)
+        save_row_cache(cache)
 
-    # 상세 보강: 13D/G 구조화 XML + 원문 DeepSeek 핵심내용
-    enrich_13dg(sheets["5%지분"])
-    all_rows = [r for s in SHEET_ORDER for r in sheets[s]]
-    enrich_llm(all_rows)
-
-    out_path = os.path.join(DATA_DIR, f"us_disclosures_summary_{target.strftime('%Y%m%d')}.xlsx")
-    total = build_excel(sheets, date_str, out_path)
-
+    out_path = os.path.join(DATA_DIR, "us_disclosures_summary.xlsx")
+    total, sheets = build_cumulative_excel(cache, out_path)
     counts = ", ".join(f"{s} {len(sheets[s])}" for s in SHEET_ORDER if sheets[s])
-    logger.info(f"Done: {total} rows ({counts})")
+    dts = sorted({r.get("접수일자", "") for r in cache.values() if r.get("접수일자")})
+    logger.info(f"Done: 누적 {total} rows, 신규 {new_total} ({counts})")
 
     if args.upload and total > 0:
         chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_SUPPLY_DATA_CHAT_ID
-        caption = (f"🇺🇸 미국 공시 요약 ({date_str}, ET 기준)\n"
-                   f"총 {total}건 — {counts}\n"
+        caption = (f"🇺🇸 미국 공시 요약 누적본 ({dts[0]} ~ {dts[-1]})\n"
+                   f"총 {total:,}건 (오늘 신규 {new_total}) — {counts}\n"
                    f"대상: 시총 $10B+ 및 관심종목 (13D·공개매수·합병은 전 종목)")
         send_document(TELEGRAM_BOT4_TOKEN, chat_id, out_path, caption)
     elif args.upload:
-        logger.info("No filings — skip upload.")
+        logger.info("No rows — skip upload.")
 
 
 if __name__ == "__main__":
