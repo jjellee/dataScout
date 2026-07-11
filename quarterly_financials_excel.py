@@ -129,13 +129,34 @@ def build_kr(out_path, quarters):
                 qmap[cc] = out
         metric_maps[acct] = qmap
 
-    ids = {cc: {"회사명": corps.get(cc, (cc, ""))[0], "종목코드": corps.get(cc, (cc, ""))[1]}
-           for cc in set(metric_maps["매출액"]) | set(metric_maps["영업이익"])}
-    df = assemble_combined(ids, metric_maps["매출액"], metric_maps["영업이익"], quarters,
-                           unit_div=1e8, min_rev_for_sort=100)  # 매출 100억 미만은 정렬 후순위
-    _write_wide_excel({"분기실적(억원)": df}, out_path)
-    logger.info(f"KR Excel: {out_path} ({len(df)}개사)")
+    markets = kr_market_map()
+    ids = {}
+    for cc in set(metric_maps["매출액"]) | set(metric_maps["영업이익"]):
+        name, sc = corps.get(cc, (cc, ""))
+        ids[cc] = {"종목코드": sc, "종목명": name, "시장": markets.get(cc, "")}
+    df, meta = assemble_combined(ids, metric_maps["매출액"], metric_maps["영업이익"], quarters,
+                                 unit_div=1e8)
+    _write_screening_excel(df, meta, out_path, "실적", "억원")
+    logger.info(f"KR Excel: {out_path} ({len(df)}개사, T={meta['T']})")
     return len(df)
+
+
+def kr_market_map():
+    """corp_code → 시장구분 (KOSPI/KOSDAQ/KONEX)."""
+    import glob as _glob
+    m = {}
+    label = {"Y": "KOSPI", "K": "KOSDAQ", "N": "KONEX"}
+    for f in _glob.glob(os.path.join(PROJECT_DIR, "data_dart", "20*", "disclosures.json")):
+        try:
+            items = json.load(open(f, encoding="utf-8"))
+        except Exception:
+            continue
+        for x in items:
+            cc = x.get("corp_code")
+            cls = x.get("corp_cls")
+            if cc and cls in label:
+                m[cc] = label[cls]
+    return m
 
 
 # ---------------------------------------------------------------------------
@@ -228,32 +249,53 @@ def build_us(out_path, quarters):
     oi_map = to_map(oi, ann_oi)
     ids = {cik: {"Ticker": t, "MCap($B)": round(mc / 1e9, 1)}
            for cik, (t, mc) in uni.items() if cik in rev_map or cik in oi_map}
-    df = assemble_combined(ids, rev_map, oi_map, quarters, unit_div=1e6,
-                           rev_label="매출", oi_label="영업익",
-                           min_rev_for_sort=100)  # $100M 미만은 정렬 후순위
-    _write_wide_excel({"분기실적($M)": df}, out_path)
-    logger.info(f"US Excel: {out_path} ({len(df)} companies)")
+    df, meta = assemble_combined(ids, rev_map, oi_map, quarters, unit_div=1e6)
+    _write_screening_excel(df, meta, out_path, "실적", "$M")
+    logger.info(f"US Excel: {out_path} ({len(df)} companies, T={meta['T']})")
     return len(df)
 
 
 # ---------------------------------------------------------------------------
 
-def assemble_combined(ids, rev_map, oi_map, quarters, unit_div,
-                      rev_label="매출", oi_label="영업익", min_rev_for_sort=0):
-    """매출+영업이익+YoY를 분기별 그룹 컬럼으로 결합한 성장 스크리닝용 프레임.
+def _q_to_yyyymm(ql):
+    """'2024Q1' → '202403'"""
+    y, q = ql.split("Q")
+    return f"{y}{int(q)*3:02d}"
 
-    컬럼: [ID..., '{Q} 매출', '{Q} 매출YoY%', '{Q} 영업익', '{Q} 영업익YoY%'] × 분기.
-    표시 구간은 YoY 계산이 가능한 2025Q1부터. 영업이익 기저가 적자면 흑자전환 시 '흑전'.
+
+def assemble_combined(ids, rev_map, oi_map, quarters, unit_div, min_rev_for_sort=0):
+    """'1Q26_실적 스크리닝' 포맷의 실적 블록: 메트릭별 그룹 컬럼.
+
+    컬럼: [ID...] + [매출액 분기 시계열(YYYYMM)] + [매출 YoY T-4..T]
+                  + [영업이익 분기 시계열] + [영업이익 YoY T-4..T]
+    T = 채움율 30% 이상인 최신 분기. 시계열은 2024Q1~T.
+    Returns (df, meta) — meta는 그룹헤더 작성용 {"rev_qs":[..], "yoy_qs":[..], "T": ql}.
     """
     import pandas as pd
-    display_qs = [q for q in quarters if q >= "2025Q1"]
 
-    def yoy(cur, prev, is_oi):
+    # T 결정: 채움율 30% 이상 최신 분기
+    def fill_ratio(ql):
+        n = sum(1 for s in rev_map.values() if ql in s)
+        return n / max(len(rev_map), 1)
+    T = None
+    for ql in reversed(quarters):
+        if fill_ratio(ql) >= 0.3:
+            T = ql
+            break
+    if T is None:
+        T = quarters[-1]
+    display_qs = [q for q in quarters if q <= T]
+    ti = display_qs.index(T)
+    yoy_qs = display_qs[max(0, ti - 4):ti + 1]  # T-4 .. T
+
+    def yoy(ser, ql):
+        y, qn = ql.split("Q")
+        cur, prev = ser.get(ql), ser.get(f"{int(y)-1}Q{qn}")
         if cur is None or prev is None:
             return None
         if prev > 0:
             return round((cur / prev - 1) * 100, 1)
-        if is_oi and prev <= 0 < cur:
+        if prev <= 0 < cur:
             return "흑전"
         return None
 
@@ -261,33 +303,80 @@ def assemble_combined(ids, rev_map, oi_map, quarters, unit_div,
     for key, idv in ids.items():
         rser = rev_map.get(key, {})
         oser = oi_map.get(key, {})
+        if not rser and not oser:
+            continue
         rec = dict(idv)
-        has = False
         for ql in display_qs:
-            y, qn = ql.split("Q")
-            base = f"{int(y)-1}Q{qn}"
-            for label, ser, is_oi in ((rev_label, rser, False), (oi_label, oser, True)):
-                cur, prev = ser.get(ql), ser.get(base)
-                rec[f"{ql} {label}"] = round(cur / unit_div) if cur is not None else None
-                rec[f"{ql} {label}YoY%"] = yoy(cur, prev, is_oi)
-                has = has or cur is not None
-        if has:
-            recs.append(rec)
+            v = rser.get(ql)
+            rec[f"매출_{_q_to_yyyymm(ql)}"] = round(v / unit_div, 1) if v is not None else None
+        for i, ql in enumerate(yoy_qs):
+            rec[f"매출YoY_T-{len(yoy_qs)-1-i}" if ql != T else "매출YoY_T"] = yoy(rser, ql)
+        for ql in display_qs:
+            v = oser.get(ql)
+            rec[f"영업이익_{_q_to_yyyymm(ql)}"] = round(v / unit_div, 1) if v is not None else None
+        for i, ql in enumerate(yoy_qs):
+            rec[f"영업이익YoY_T-{len(yoy_qs)-1-i}" if ql != T else "영업이익YoY_T"] = yoy(oser, ql)
+        recs.append(rec)
     df = pd.DataFrame(recs)
-    # 정렬: 채움율 30%+ 최근 분기의 매출YoY 내림차순
-    sort_col = None
-    for ql in reversed(display_qs):
-        col = f"{ql} {rev_label}"
-        if col in df.columns and df[col].notna().mean() >= 0.3:
-            sort_col = f"{ql} {rev_label}YoY%"
-            break
-    if sort_col and sort_col in df.columns:
-        rev_col = sort_col.replace("YoY%", "")
-        df["_s"] = pd.to_numeric(df[sort_col], errors="coerce")
-        # 저기저 노이즈 방지: 매출이 기준 미만인 행은 정렬에서 뒤로
-        df.loc[pd.to_numeric(df[rev_col], errors="coerce").fillna(0) < min_rev_for_sort, "_s"] = None
-        df = df.sort_values("_s", ascending=False, na_position="last").drop(columns="_s")
-    return df.reset_index(drop=True)
+    # 정렬: T분기 매출 내림차순 (저기저 가드는 YoY 정렬이 아니므로 불필요)
+    sort_col = f"매출_{_q_to_yyyymm(T)}"
+    if sort_col in df.columns:
+        df = df.sort_values(sort_col, ascending=False, na_position="last")
+    meta = {"display_qs": display_qs, "yoy_qs": yoy_qs, "T": T}
+    return df.reset_index(drop=True), meta
+
+
+def _write_screening_excel(df, meta, out_path, sheet_name, unit):
+    """참조 포맷(그룹헤더 2줄) 실적 시트 작성."""
+    from openpyxl import Workbook
+    from openpyxl.utils import get_column_letter
+    from openpyxl.styles import Font, PatternFill, Alignment
+    hf = PatternFill(start_color="1F4E78", end_color="1F4E78", fill_type="solid")
+    gf = PatternFill(start_color="D9E2F3", end_color="D9E2F3", fill_type="solid")
+
+    cols = list(df.columns)
+    id_cols = [c for c in cols if "_" not in str(c)]
+    groups = [
+        (f"매출액({unit})", [c for c in cols if str(c).startswith("매출_")]),
+        ("매출액 전년동기대비 증감률(YoY, %)", [c for c in cols if str(c).startswith("매출YoY_")]),
+        (f"영업이익({unit})", [c for c in cols if str(c).startswith("영업이익_") and "YoY" not in str(c)]),
+        ("영업이익 전년동기대비 증감률(YoY, %)", [c for c in cols if str(c).startswith("영업이익YoY_")]),
+    ]
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = sheet_name
+    # 1행: 그룹 헤더 (병합)
+    ci = len(id_cols) + 1
+    for title, gcols in groups:
+        if not gcols:
+            continue
+        ws.cell(row=1, column=ci, value=title).fill = gf
+        ws.cell(row=1, column=ci).font = Font(bold=True, size=10)
+        ws.cell(row=1, column=ci).alignment = Alignment(horizontal="center")
+        if len(gcols) > 1:
+            ws.merge_cells(start_row=1, start_column=ci, end_row=1, end_column=ci + len(gcols) - 1)
+        ci += len(gcols)
+    # 2행: 컬럼 헤더
+    for j, c in enumerate(cols, 1):
+        label = str(c).split("_", 1)[1] if "_" in str(c) else str(c)
+        cell = ws.cell(row=2, column=j, value=label)
+        cell.fill, cell.font = hf, Font(color="FFFFFF", bold=True, size=10)
+        cell.alignment = Alignment(horizontal="center")
+        ws.column_dimensions[get_column_letter(j)].width = 13 if j <= len(id_cols) else 11
+    # 데이터
+    yoy_cols = {j for j, c in enumerate(cols, 1) if "YoY" in str(c)}
+    num_cols = {j for j, c in enumerate(cols, 1) if "_" in str(c)}
+    for ri, (_, row) in enumerate(df.iterrows(), 3):
+        for j, c in enumerate(cols, 1):
+            cell = ws.cell(row=ri, column=j, value=row[c])
+            if j in yoy_cols:
+                cell.number_format = "0.0;[Red]-0.0"
+            elif j in num_cols:
+                cell.number_format = "#,##0;[Red]-#,##0"
+    ws.freeze_panes = ws.cell(row=3, column=len(id_cols) + 1)
+    ws.auto_filter.ref = f"A2:{get_column_letter(len(cols))}{len(df)+2}"
+    wb.save(out_path)
 
 
 def _write_wide_excel(sheets, out_path):
