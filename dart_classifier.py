@@ -1972,6 +1972,11 @@ def build_excel_summary(workspace_dir):
                 # v3: 대량보유 관계(최대주주 등) 재파싱
                 if '대량보유상황보고서' in report_nm and not data_dct.get("holder_rel_v3"):
                     needs_reparse = True
+                # 빈 결과인데 HTML이 존재하면 재시도 (수집 시점 다운로드 지연으로 빈 파싱이 박제된 케이스)
+                if data_dct.get("officer_reports") == []:
+                    _hp = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    if os.path.exists(_hp):
+                        needs_reparse = True
                 if needs_reparse:
                     rn = report_nm
                     if '대량보유상황보고서' in rn:
