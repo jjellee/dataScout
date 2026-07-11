@@ -70,13 +70,22 @@ def save_json(path, obj):
 
 
 def api_get(url, params, binary=False):
-    """키 로테이션 + 쿼터 카운트가 적용된 API GET (한도 시 QuotaExhausted)."""
+    """키 로테이션 + 쿼터 카운트 + 일시적 네트워크 오류 재시도가 적용된 API GET."""
     attempts = 0
+    net_retries = 0
     while True:
         key = get_api_key()
         params['crtfc_key'] = key
         note_request(key)
-        r = requests.get(url, params=params, timeout=40)
+        try:
+            r = requests.get(url, params=params, timeout=40)
+        except requests.exceptions.RequestException as e:
+            net_retries += 1
+            if net_retries > 5:
+                logger.warning(f"network fail after retries: {e}")
+                return None
+            time.sleep(3 * net_retries)
+            continue
         if binary:
             if r.content[:2] == b'PK':
                 return r.content

@@ -77,11 +77,20 @@ def quarter_label(report_nm):
 
 def fetch_document(rcept_no):
     attempts = 0
+    net_retries = 0
     while True:
         key = get_api_key()
         note_request(key)
-        r = requests.get("https://opendart.fss.or.kr/api/document.xml",
-                         params={"crtfc_key": key, "rcept_no": rcept_no}, timeout=90)
+        try:
+            r = requests.get("https://opendart.fss.or.kr/api/document.xml",
+                             params={"crtfc_key": key, "rcept_no": rcept_no}, timeout=90)
+        except requests.exceptions.RequestException as e:
+            net_retries += 1
+            if net_retries > 5:
+                logger.warning(f"network fail after retries ({rcept_no}): {e}")
+                return None
+            time.sleep(3 * net_retries)
+            continue
         if r.content[:2] == b'PK':
             z = zipfile.ZipFile(io.BytesIO(r.content))
             name = next((n for n in z.namelist() if n == f"{rcept_no}.xml"), z.namelist()[0])
@@ -303,22 +312,25 @@ def main():
                 save_json(BACKLOG_CACHE, backlog)
                 wait_until_quota_reset()
         if xml:
-            sc = x["stock_code"].strip()
-            label = quarter_label(x["report_nm"])
-            corp_dir = os.path.join(OUT_DIR, sc)
-            os.makedirs(corp_dir, exist_ok=True)
-            md = xml_to_markdown(xml)
-            header = (f"# {x['corp_name']} {x['report_nm'].strip()}\n"
-                      f"- 종목코드: {sc} | 접수일: {x['rcept_dt']} | 접수번호: {rcept}\n\n")
-            with open(os.path.join(corp_dir, f"{label}.md"), "w", encoding="utf-8") as f:
-                f.write(header + md)
-            unit, rows = parse_backlog(xml)
-            if rows:
-                backlog[rcept] = {
-                    "corp_name": x["corp_name"], "stock_code": sc,
-                    "label": label, "rcept_dt": x["rcept_dt"],
-                    "unit": unit or "", "rows": rows[:200],
-                }
+            try:
+                sc = x["stock_code"].strip()
+                label = quarter_label(x["report_nm"])
+                corp_dir = os.path.join(OUT_DIR, sc)
+                os.makedirs(corp_dir, exist_ok=True)
+                md = xml_to_markdown(xml)
+                header = (f"# {x['corp_name']} {x['report_nm'].strip()}\n"
+                          f"- 종목코드: {sc} | 접수일: {x['rcept_dt']} | 접수번호: {rcept}\n\n")
+                with open(os.path.join(corp_dir, f"{label}.md"), "w", encoding="utf-8") as f:
+                    f.write(header + md)
+                unit, rows = parse_backlog(xml)
+                if rows:
+                    backlog[rcept] = {
+                        "corp_name": x["corp_name"], "stock_code": sc,
+                        "label": label, "rcept_dt": x["rcept_dt"],
+                        "unit": unit or "", "rows": rows[:200],
+                    }
+            except Exception as e:
+                logger.warning(f"process fail {rcept} ({x.get('corp_name')}): {e}")
         done.add(rcept)
         if n % 50 == 0:
             save_json(STATE_FILE, {"done": sorted(done)})
