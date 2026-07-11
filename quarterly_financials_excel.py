@@ -87,8 +87,8 @@ def build_kr(out_path, quarters):
             addv[k] = av
         fs_pref[k] = fs
 
-    import pandas as pd
-    sheets = {}
+    # 계정별 분기값 맵: {corp_code: {quarter_label: 원단위 값}}
+    metric_maps = {}
     for acct in ("매출액", "영업이익"):
         rows = {}
         adds = {}
@@ -98,11 +98,10 @@ def build_kr(out_path, quarters):
         for (cc, year, a, ro), val in addv.items():
             if a == acct:
                 adds.setdefault(cc, {})[(year, ro)] = val
-        recs = []
+        qmap = {}
         for cc, series in rows.items():
             aser = adds.get(cc, {})
-            name, sc = corps.get(cc, (cc, ""))
-            rec = {"회사명": name, "종목코드": sc}
+            out = {}
             for ql in quarters:
                 y, q = ql.split("Q")
                 q = int(q)
@@ -114,7 +113,6 @@ def build_kr(out_path, quarters):
                         aq, ap = aser.get((y, q)), (aser.get((y, q - 1)) if q > 1 else 0)
                         if aq is not None and ap is not None:
                             v = aq - ap
-                    rec[ql] = round(v / 1e8) if v is not None else None
                 else:
                     ann = series.get((y, 4))
                     v = None
@@ -125,16 +123,19 @@ def build_kr(out_path, quarters):
                             v = ann - add3  # 3분기 누적 기반 (Q1·Q2 보고서 불필요)
                         elif all(x is not None for x in q123):
                             v = ann - sum(q123)
-                    rec[ql] = round(v / 1e8) if v is not None else None
-            recs.append(rec)
-        df = pd.DataFrame(recs)
-        sort_q = _densest_recent_quarter(df, quarters)
-        df = df.sort_values(sort_q, ascending=False, na_position="last").reset_index(drop=True)
-        sheets[f"{acct}(억원)"] = df
+                if v is not None:
+                    out[ql] = v
+            if out:
+                qmap[cc] = out
+        metric_maps[acct] = qmap
 
-    _write_wide_excel(sheets, out_path)
-    logger.info(f"KR Excel: {out_path} ({len(sheets['매출액(억원)'])}개사)")
-    return len(sheets["매출액(억원)"])
+    ids = {cc: {"회사명": corps.get(cc, (cc, ""))[0], "종목코드": corps.get(cc, (cc, ""))[1]}
+           for cc in set(metric_maps["매출액"]) | set(metric_maps["영업이익"])}
+    df = assemble_combined(ids, metric_maps["매출액"], metric_maps["영업이익"], quarters,
+                           unit_div=1e8, min_rev_for_sort=100)  # 매출 100억 미만은 정렬 후순위
+    _write_wide_excel({"분기실적(억원)": df}, out_path)
+    logger.info(f"KR Excel: {out_path} ({len(df)}개사)")
+    return len(df)
 
 
 # ---------------------------------------------------------------------------
@@ -207,42 +208,86 @@ def build_us(out_path, quarters):
             s += v
         return fy - s
 
-    import pandas as pd
-    names = {}
-    # entityName 확보용: 마지막 분기 프레임 재조회 대신 company_tickers 매핑 사용
-    from us_disclosure_summary import fetch_cik_map
-    sheets = {}
-    for label, metric_q, metric_ann in (("Revenue($M)", rev, ann_rev), ("OperatingIncome($M)", oi, ann_oi)):
-        recs = []
-        for cik, (ticker, mcap) in uni.items():
-            rec = {"Ticker": ticker, "MCap($B)": round(mcap / 1e9, 1)}
-            has = False
+    # {cik: {quarter: 값}} 형태로 변환 (Q4 파생 포함)
+    def to_map(metric_q, metric_ann):
+        out = {}
+        for cik in uni:
+            series = {}
             for ql in quarters:
                 y, qn = ql.split("Q")
                 v = metric_q.get(ql, {}).get(cik)
                 if v is None and qn == "4":
                     v = q4_derive(metric_q, metric_ann, cik, y)
-                rec[ql] = round(v / 1e6) if v is not None else None
-                has = has or v is not None
-            if has:
-                recs.append(rec)
-        df = pd.DataFrame(recs)
-        sort_q = _densest_recent_quarter(df, quarters)
-        df = df.sort_values(sort_q, ascending=False, na_position="last").reset_index(drop=True)
-        sheets[label] = df
-    _write_wide_excel(sheets, out_path)
-    logger.info(f"US Excel: {out_path} ({len(sheets['Revenue($M)'])} companies)")
-    return len(sheets["Revenue($M)"])
+                if v is not None:
+                    series[ql] = v
+            if series:
+                out[cik] = series
+        return out
+
+    rev_map = to_map(rev, ann_rev)
+    oi_map = to_map(oi, ann_oi)
+    ids = {cik: {"Ticker": t, "MCap($B)": round(mc / 1e9, 1)}
+           for cik, (t, mc) in uni.items() if cik in rev_map or cik in oi_map}
+    df = assemble_combined(ids, rev_map, oi_map, quarters, unit_div=1e6,
+                           rev_label="매출", oi_label="영업익",
+                           min_rev_for_sort=100)  # $100M 미만은 정렬 후순위
+    _write_wide_excel({"분기실적($M)": df}, out_path)
+    logger.info(f"US Excel: {out_path} ({len(df)} companies)")
+    return len(df)
 
 
 # ---------------------------------------------------------------------------
 
-def _densest_recent_quarter(df, quarters):
-    """정렬 기준: 채움율 30% 이상인 가장 최근 분기."""
-    for ql in reversed(quarters):
-        if ql in df.columns and df[ql].notna().mean() >= 0.3:
-            return ql
-    return quarters[0]
+def assemble_combined(ids, rev_map, oi_map, quarters, unit_div,
+                      rev_label="매출", oi_label="영업익", min_rev_for_sort=0):
+    """매출+영업이익+YoY를 분기별 그룹 컬럼으로 결합한 성장 스크리닝용 프레임.
+
+    컬럼: [ID..., '{Q} 매출', '{Q} 매출YoY%', '{Q} 영업익', '{Q} 영업익YoY%'] × 분기.
+    표시 구간은 YoY 계산이 가능한 2025Q1부터. 영업이익 기저가 적자면 흑자전환 시 '흑전'.
+    """
+    import pandas as pd
+    display_qs = [q for q in quarters if q >= "2025Q1"]
+
+    def yoy(cur, prev, is_oi):
+        if cur is None or prev is None:
+            return None
+        if prev > 0:
+            return round((cur / prev - 1) * 100, 1)
+        if is_oi and prev <= 0 < cur:
+            return "흑전"
+        return None
+
+    recs = []
+    for key, idv in ids.items():
+        rser = rev_map.get(key, {})
+        oser = oi_map.get(key, {})
+        rec = dict(idv)
+        has = False
+        for ql in display_qs:
+            y, qn = ql.split("Q")
+            base = f"{int(y)-1}Q{qn}"
+            for label, ser, is_oi in ((rev_label, rser, False), (oi_label, oser, True)):
+                cur, prev = ser.get(ql), ser.get(base)
+                rec[f"{ql} {label}"] = round(cur / unit_div) if cur is not None else None
+                rec[f"{ql} {label}YoY%"] = yoy(cur, prev, is_oi)
+                has = has or cur is not None
+        if has:
+            recs.append(rec)
+    df = pd.DataFrame(recs)
+    # 정렬: 채움율 30%+ 최근 분기의 매출YoY 내림차순
+    sort_col = None
+    for ql in reversed(display_qs):
+        col = f"{ql} {rev_label}"
+        if col in df.columns and df[col].notna().mean() >= 0.3:
+            sort_col = f"{ql} {rev_label}YoY%"
+            break
+    if sort_col and sort_col in df.columns:
+        rev_col = sort_col.replace("YoY%", "")
+        df["_s"] = pd.to_numeric(df[sort_col], errors="coerce")
+        # 저기저 노이즈 방지: 매출이 기준 미만인 행은 정렬에서 뒤로
+        df.loc[pd.to_numeric(df[rev_col], errors="coerce").fillna(0) < min_rev_for_sort, "_s"] = None
+        df = df.sort_values("_s", ascending=False, na_position="last").drop(columns="_s")
+    return df.reset_index(drop=True)
 
 
 def _write_wide_excel(sheets, out_path):
@@ -261,10 +306,15 @@ def _write_wide_excel(sheets, out_path):
                 hc.fill, hc.font = hf, Font(color="FFFFFF", bold=True, size=10)
                 hc.alignment = Alignment(horizontal="center")
                 ws.column_dimensions[get_column_letter(ci)].width = 17 if ci <= n_id_cols else 11
-            # 분기 숫자 열: 천단위 콤마 + 음수 빨강
+            # 분기 숫자 열: 천단위 콤마 + 음수 빨강 / YoY 열: 소수 1자리
+            col_names = list(df.columns)
             for row in ws.iter_rows(min_row=2, min_col=n_id_cols + 1):
                 for c in row:
-                    c.number_format = "#,##0;[Red]-#,##0"
+                    name_c = col_names[c.column - 1]
+                    if str(name_c).endswith("YoY%"):
+                        c.number_format = "0.0;[Red]-0.0"
+                    else:
+                        c.number_format = "#,##0;[Red]-#,##0"
             ws.auto_filter.ref = ws.dimensions
 
 
