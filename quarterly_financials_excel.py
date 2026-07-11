@@ -63,8 +63,9 @@ def quarters_range():
 def build_kr(out_path, quarters):
     conf = load_json(CONF_CACHE, {})
     corps = listed_corp_codes()
-    # (corp, year, acct) -> {reprt_order: 누적값(원)} — CFS 우선
+    # (corp, year, acct, 보고서차수) -> (3개월값, 누적값) — CFS 우선
     cum = {}
+    addv = {}
     fs_pref = {}
     for key, v in conf.items():
         if key.startswith("_done_"):
@@ -73,41 +74,58 @@ def build_kr(out_path, quarters):
         if acct not in ("매출액", "영업이익"):
             continue
         val = parse_num(v.get("thstrm"))
-        if val is None:
+        av = parse_num(v.get("add"))
+        if val is None and av is None:
             continue
         k = (cc, year, acct, REPRT_ORDER[rc])
         prev_fs = fs_pref.get(k)
         if prev_fs == "CFS" and fs != "CFS":
             continue
-        cum[k] = val
+        if val is not None:
+            cum[k] = val
+        if av is not None:
+            addv[k] = av
         fs_pref[k] = fs
 
     import pandas as pd
     sheets = {}
     for acct in ("매출액", "영업이익"):
         rows = {}
+        adds = {}
         for (cc, year, a, ro), val in cum.items():
-            if a != acct:
-                continue
-            rows.setdefault(cc, {})[(year, ro)] = val
+            if a == acct:
+                rows.setdefault(cc, {})[(year, ro)] = val
+        for (cc, year, a, ro), val in addv.items():
+            if a == acct:
+                adds.setdefault(cc, {})[(year, ro)] = val
         recs = []
         for cc, series in rows.items():
+            aser = adds.get(cc, {})
             name, sc = corps.get(cc, (cc, ""))
             rec = {"회사명": name, "종목코드": sc}
             for ql in quarters:
                 y, q = ql.split("Q")
                 q = int(q)
-                # DART thstrm_amount: 1Q/반기/3분기 보고서 = 해당 3개월치, 연간 = 12개월치
+                # thstrm = 해당 3개월치(연간 보고서만 12개월), add = 누적치
                 if q < 4:
-                    cur = series.get((y, q))
-                    rec[ql] = round(cur / 1e8) if cur is not None else None
+                    v = series.get((y, q))
+                    if v is None:
+                        # 폴백: 누적 차분 (신규상장 등으로 직전 분기 보고서가 없는 경우)
+                        aq, ap = aser.get((y, q)), (aser.get((y, q - 1)) if q > 1 else 0)
+                        if aq is not None and ap is not None:
+                            v = aq - ap
+                    rec[ql] = round(v / 1e8) if v is not None else None
                 else:
                     ann = series.get((y, 4))
-                    q123 = [series.get((y, i)) for i in (1, 2, 3)]
-                    if ann is not None and all(v is not None for v in q123):
-                        rec[ql] = round((ann - sum(q123)) / 1e8)
-                    else:
-                        rec[ql] = None
+                    v = None
+                    if ann is not None:
+                        add3 = aser.get((y, 3))
+                        q123 = [series.get((y, i)) for i in (1, 2, 3)]
+                        if add3 is not None:
+                            v = ann - add3  # 3분기 누적 기반 (Q1·Q2 보고서 불필요)
+                        elif all(x is not None for x in q123):
+                            v = ann - sum(q123)
+                    rec[ql] = round(v / 1e8) if v is not None else None
             recs.append(rec)
         df = pd.DataFrame(recs)
         sort_q = _densest_recent_quarter(df, quarters)
