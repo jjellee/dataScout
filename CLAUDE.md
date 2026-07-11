@@ -49,6 +49,8 @@
 | `kr_insider_collector.py` | 내부자·5% 대량보유 공시를 수집, pykrx 종가와 결합해 누적 엑셀 저장·전송 |
 | `download_important_historical.py` | 2023년~현재 과거 중요 공시를 API 키 로테이션으로 대량 백필 다운로드 |
 | `dart_report.py` | 공시 HTML 리포트 — 파싱된 상세(조달금액·옵션일·계약상대 등) 인라인 포함, 일일 전체공시(평일 21:40) / 주간 중요공시(토 09:00) 생성·텔레그램 발송 |
+| `quarterly_earnings.py` | 분기 실적 엑셀 — 잠정실적(공정공시) 파싱 + 확정실적(재무제표 다중회사 API) + 수주잔고 3개 시트, 캐시 누적 (평일 21:35 증분) |
+| `periodic_report_saver.py` | 분기·반기·사업보고서 전문을 LLM 분석용 Markdown(`data_dart/periodic/<종목>/<분기>.md`)으로 저장 + 수주상황 표 파싱(`order_backlog_cache.json`) (평일 23:00 증분) |
 
 ---
 
