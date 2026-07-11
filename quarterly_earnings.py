@@ -385,37 +385,31 @@ def build_excel(out_path):
         cur = acc[k].get(acct)
         if cur is None or (cur[0] == "OFS" and fs == "CFS"):
             acc[k][acct] = (fs, _fmt_mm(v.get("thstrm")))
-    conf_rows = []
+    # DART thstrm_amount: 1Q/반기/3분기 보고서 = 해당 3개월치, 연간 보고서 = 12개월치
+    label_to_q = {"1Q": "Q1", "반기": "Q2", "3Q": "Q3", "연간": "Q4"}
+    by_corp_year = {}
     for (cc, year, label), accts in acc.items():
+        by_corp_year.setdefault((cc, year), {})[label] = accts
+    conf_rows = []
+    for (cc, year), labels in by_corp_year.items():
         name, sc = corps.get(cc, (cc, ""))
-        row = {"회사명": name, "종목코드": sc, "연도": year, "보고서": label,
-               "기준": "연결" if any(x[0] == "CFS" for x in accts.values()) else "별도"}
-        for a in ("매출액", "영업이익", "당기순이익"):
-            row[f"{a}(누적)"] = accts.get(a, (None, None))[1]
-        conf_rows.append(row)
+        for label, accts in labels.items():
+            row = {"회사명": name, "종목코드": sc, "연도": year,
+                   "분기": label_to_q[label],
+                   "기준": "연결" if any(x[0] == "CFS" for x in accts.values()) else "별도"}
+            for a in ("매출액", "영업이익", "당기순이익"):
+                v = accts.get(a, (None, None))[1]
+                if label == "연간":
+                    # 4분기 단독값 = 연간 - (Q1+Q2+Q3)
+                    q123 = [labels.get(l, {}).get(a, (None, None))[1] for l in ("1Q", "반기", "3Q")]
+                    v = v - sum(q123) if v is not None and all(x is not None for x in q123) else None
+                row[a] = v
+            conf_rows.append(row)
     df_conf = pd.DataFrame(conf_rows)
     if not df_conf.empty:
-        order = {"1Q": 1, "반기": 2, "3Q": 3, "연간": 4}
-        df_conf["_o"] = df_conf["보고서"].map(order)
+        order = {"Q1": 1, "Q2": 2, "Q3": 3, "Q4": 4}
+        df_conf["_o"] = df_conf["분기"].map(order)
         df_conf = df_conf.sort_values(["회사명", "연도", "_o"]).drop(columns="_o")
-        # 분기 단독값 파생: 2Q=반기-1Q, 3Q표시는 누적이므로 3Q단독=3Q-반기, 4Q=연간-3Q
-        for a in ("매출액", "영업이익", "당기순이익"):
-            col = f"{a}(누적)"
-            qcol = f"{a}(분기)"
-            vals = []
-            prev = {}
-            for _, row in df_conf.iterrows():
-                k = (row["회사명"], row["연도"])
-                cum = row[col]
-                p = prev.get(k)
-                if row["보고서"] == "1Q" or cum is None:
-                    q = cum
-                else:
-                    q = cum - p if p is not None else None
-                vals.append(q)
-                if cum is not None:
-                    prev[k] = cum
-            df_conf[qcol] = vals
 
     # --- 수주잔고 ---
     backlog = load_json(BACKLOG_CACHE, {})
