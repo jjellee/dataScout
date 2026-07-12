@@ -164,8 +164,7 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty=None):
             note_request(api_key)
             response = requests.get(url, params=params, timeout=15)
             if response.status_code != 200:
-                print(f"[{bgn_de}-{end_de} | {pblntf_ty}] Error: HTTP {response.status_code}")
-                break
+                raise RuntimeError(f"list HTTP {response.status_code}")
                 
             data = response.json()
             status = data.get("status")
@@ -197,9 +196,9 @@ def fetch_disclosures_range(bgn_de, end_de, pblntf_ty=None):
         except QuotaExhausted:
             raise
         except Exception as e:
-            print(f"[{bgn_de}-{end_de} | {pblntf_ty}] Request failed: {e}")
-            break
-            
+            # 부분 목록으로 완료 처리하지 않도록 상위(재시도 루프)로 전파
+            raise RuntimeError(f"list fetch failed ({bgn_de}-{end_de} p{page_no}): {e}")
+
     return all_reports
 
 def download_disclosure_document_rotated(rcept_no, output_dir, metadata=None, overwrite=False):
