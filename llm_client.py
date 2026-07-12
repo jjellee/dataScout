@@ -118,7 +118,10 @@ def claude_chat(prompt, model=None, max_tokens=2048, effort="medium", timeout=12
 
 def smart_chat(prompt, max_tokens=2048, timeout=120, model=None, effort="medium",
                temperature=0.3, json_mode=False):
-    """Claude 우선, 미설정/실패 시 DeepSeek 폴백. (json_mode는 DeepSeek 폴백에서만 적용)"""
+    """구독 CLI → Claude API → DeepSeek 순 폴백. (json_mode는 DeepSeek 폴백에서만 적용)"""
+    out = claude_cli_chat(prompt, model=CLAUDE_CLI_MODEL_SMART, timeout=max(timeout, 240))
+    if out:
+        return out
     out = claude_chat(prompt, model=model, max_tokens=max_tokens, effort=effort, timeout=timeout)
     if out:
         return out
@@ -146,7 +149,9 @@ def llm_translate(paragraphs, src_lang="영어", model="claude-haiku-4-5"):
             "- 문단 구분자 <<<P>>>를 그대로 유지하고 문단 수를 바꾸지 마.\n"
             "- 설명 없이 번역문만 출력해.\n\n" + SEP.join(batch)
         )
-        out = claude_chat(prompt, model=model, max_tokens=8000, effort="low", timeout=180)
+        out = claude_cli_chat(prompt, model=CLAUDE_CLI_MODEL_LIGHT, timeout=240)
+        if not out:
+            out = claude_chat(prompt, model=model, max_tokens=8000, effort="low", timeout=180)
         if not out:
             out = deepseek_chat(prompt, temperature=0.2, max_tokens=8000, timeout=180)
         if not out:
@@ -173,3 +178,34 @@ def llm_translate(paragraphs, src_lang="영어", model="claude-haiku-4-5"):
             return []  # 부분 성공은 혼란 — 전체 폴백
         result.extend(parts)
     return result
+
+
+# ---------------------------------------------------------------------------
+# Claude Code CLI (구독 인증 — API 키 불필요)
+# ---------------------------------------------------------------------------
+
+CLAUDE_CLI = os.getenv("CLAUDE_CLI_BIN", os.path.expanduser("~/.local/bin/claude"))
+CLAUDE_CLI_ENABLED = os.getenv("CLAUDE_CLI_ENABLED", "1") != "0"
+CLAUDE_CLI_MODEL_LIGHT = os.getenv("CLAUDE_CLI_MODEL_LIGHT", "haiku")     # 번역 등 대량
+CLAUDE_CLI_MODEL_SMART = os.getenv("CLAUDE_CLI_MODEL_SMART", "sonnet")    # 분석
+
+
+def claude_cli_chat(prompt, model=None, timeout=240):
+    """Claude Code CLI 헤드리스(-p) 호출 — 구독 토큰 사용.
+
+    구독 한도 소진/오류 시 "" 반환하여 호출부가 다음 단계로 폴백한다.
+    """
+    if not CLAUDE_CLI_ENABLED or not os.path.exists(CLAUDE_CLI):
+        return ""
+    try:
+        import subprocess
+        r = subprocess.run(
+            [CLAUDE_CLI, "-p", "--model", model or CLAUDE_CLI_MODEL_SMART],
+            input=prompt, capture_output=True, text=True, timeout=timeout)
+        if r.returncode == 0 and r.stdout.strip():
+            logger.info(f"Claude CLI response generated (subscription, {model or CLAUDE_CLI_MODEL_SMART}).")
+            return r.stdout.strip()
+        logger.warning(f"Claude CLI failed rc={r.returncode}: {(r.stderr or '')[:150]}")
+    except Exception as e:
+        logger.warning(f"Claude CLI error: {e}")
+    return ""
