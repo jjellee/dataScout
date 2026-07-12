@@ -118,7 +118,7 @@ def claude_chat(prompt, model=None, max_tokens=2048, effort="medium", timeout=12
 
 def smart_chat(prompt, max_tokens=2048, timeout=120, model=None, effort="medium",
                temperature=0.3, json_mode=False):
-    """구독 CLI → Claude API → DeepSeek 순 폴백. (json_mode는 DeepSeek 폴백에서만 적용)"""
+    """정리·분석용: 1) Claude(구독 CLI, 폴백 API) → 2) DeepSeek. (json_mode는 DeepSeek에서만 적용)"""
     out = claude_cli_chat(prompt, model=CLAUDE_CLI_MODEL_SMART, timeout=max(timeout, 240))
     if out:
         return out
@@ -132,8 +132,8 @@ def smart_chat(prompt, max_tokens=2048, timeout=120, model=None, effort="medium"
 def llm_translate(paragraphs, src_lang="영어", model="claude-haiku-4-5"):
     """기사 문단 리스트를 통번역 (문맥 유지, 자연스러운 한국어).
 
-    Claude(기본 Haiku 4.5, 키 없으면 skip) → DeepSeek 순으로 시도.
-    실패 시 [] 반환 — 호출부는 기존 구글 번역 등으로 폴백한다.
+    번역 우선순위: 1) DeepSeek 통번역 → 실패 시 [] 반환(호출부가 2) 구글 번역 폴백).
+    Claude는 번역에 사용하지 않는다(구독 토큰은 정리·분석 전용).
     """
     paragraphs = [p for p in paragraphs if p and p.strip()]
     if not paragraphs:
@@ -149,11 +149,7 @@ def llm_translate(paragraphs, src_lang="영어", model="claude-haiku-4-5"):
             "- 문단 구분자 <<<P>>>를 그대로 유지하고 문단 수를 바꾸지 마.\n"
             "- 설명 없이 번역문만 출력해.\n\n" + SEP.join(batch)
         )
-        out = claude_cli_chat(prompt, model=CLAUDE_CLI_MODEL_LIGHT, timeout=240)
-        if not out:
-            out = claude_chat(prompt, model=model, max_tokens=8000, effort="low", timeout=180)
-        if not out:
-            out = deepseek_chat(prompt, temperature=0.2, max_tokens=8000, timeout=180)
+        out = deepseek_chat(prompt, temperature=0.2, max_tokens=8000, timeout=180)
         if not out:
             return None
         parts = [s.strip() for s in out.split("<<<P>>>") if s.strip()]
