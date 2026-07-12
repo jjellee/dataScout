@@ -29,7 +29,7 @@ if os.path.exists(env_path):
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, smart_chat
 
 # ---- Telegram ---- #
 def send_telegram_message(token, chat_id, text):
@@ -204,7 +204,7 @@ def analyze_strength_gemini(companies):
         f"{chr(10).join(company_lines)}"
     )
 
-    text = deepseek_chat(prompt, temperature=0.3, max_tokens=4096, timeout=120)
+    text = smart_chat(prompt, temperature=0.3, max_tokens=4096, timeout=120)
     if text:
         parsed = _parse_descriptions(text, companies)
         return {k: "\n".join(v.split("\n")[:2]) for k, v in parsed.items()}

@@ -61,7 +61,7 @@ def load_env():
 
 
 load_env()
-from llm_client import deepseek_chat  # noqa: E402
+from llm_client import deepseek_chat, smart_chat  # noqa: E402
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
@@ -429,7 +429,7 @@ def enrich_llm(all_rows):
             "출력 형식: 각 공시마다 `[1] 내용` 형식 한 줄씩, 서론·꼬리말 없이.\n\n"
             + "\n\n".join(parts)
         )
-        text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
+        text = smart_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
         if not text:
             continue
         for line in text.splitlines():

@@ -43,7 +43,7 @@ def load_env():
 load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or "-1003877753638"
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, smart_chat
 
 # ----------------- Helper Functions ----------------- #
 
@@ -141,7 +141,7 @@ def analyze_market_reasons_with_gemini(market, date_str, report_summary):
         f"--- 마감 데이터 요약 ---\n"
         f"{report_summary}"
     )
-    return deepseek_chat(prompt, temperature=0.3, max_tokens=2048)
+    return smart_chat(prompt, temperature=0.3, max_tokens=2048)
 
 def generate_sector_stock_comments(market, df_merged, top_sectors, bottom_sectors):
     """상승/하락 섹터의 주요 구성종목을 DeepSeek에 넘겨 '눈여겨볼 종목' 한 줄 코멘트 생성."""
@@ -168,7 +168,7 @@ def generate_sector_stock_comments(market, df_merged, top_sectors, bottom_sector
             f"출력 형식은 섹터당 '- 섹터명: 코멘트' 한 줄씩, 서론·꼬리말 없이.\n\n"
             f"{data_block}"
         )
-        comment = deepseek_chat(prompt, temperature=0.3, max_tokens=1200)
+        comment = smart_chat(prompt, temperature=0.3, max_tokens=1200)
         if comment:
             # 텔레그램 마크다운 충돌 방지: 볼드 마커 외 특수문자 정리
             return comment.strip()

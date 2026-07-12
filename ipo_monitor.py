@@ -48,7 +48,7 @@ def load_env():
 
 load_env()
 sys.path.insert(0, PROJECT_DIR)
-from llm_client import deepseek_chat  # noqa: E402
+from llm_client import deepseek_chat, smart_chat  # noqa: E402
 
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
@@ -323,7 +323,7 @@ def get_us_s1_infos(companies):
             "출력 형식: `[티커] 사업설명 | 공모정보` 한 줄씩, 서론·꼬리말 없이.\n\n"
             + "\n\n".join(parts)
         )
-        text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
+        text = smart_chat(prompt, temperature=0.2, max_tokens=2048, timeout=120)
         if not text:
             continue
         for line in text.splitlines():
@@ -349,7 +349,7 @@ def get_intros(companies, market):
         f"추측으로 지어내는 것이 '정보 없음'보다 훨씬 나쁘다.\n"
         f"출력 형식: `[식별자] 설명` 한 줄씩, 서론·꼬리말 없이.\n\n{listing}"
     )
-    text = deepseek_chat(prompt, temperature=0.2, max_tokens=2048, timeout=90)
+    text = smart_chat(prompt, temperature=0.2, max_tokens=2048, timeout=90)
     intros = {}
     if text:
         keys = [k for k, _ in companies]

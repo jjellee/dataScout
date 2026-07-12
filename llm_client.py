@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-llm_client.py - dataScout 공용 DeepSeek 클라이언트
+llm_client.py - dataScout 공용 LLM 클라이언트
 
-기존 각 모니터의 Gemini(generateContent) 호출을 대체하는 경량 헬퍼.
 사용법:
-    from llm_client import deepseek_chat
-    text = deepseek_chat(prompt)            # 실패 시 "" 반환
+    from llm_client import deepseek_chat, claude_chat, smart_chat
+    text = deepseek_chat(prompt)   # DeepSeek (실패 시 "" 반환)
+    text = claude_chat(prompt)     # Claude API (ANTHROPIC_API_KEY 필요, 미설정/실패 시 "")
+    text = smart_chat(prompt)      # Claude 우선, 미설정/실패 시 DeepSeek 자동 폴백
+
+역할 분담(비용):
+  - 대량 번역·저부가 호출(kotra/trendforce 등 30분 주기) → deepseek_chat 유지
+  - 분석 품질이 중요한 호출(실적 비교분석, 강세분석, 섹터코멘트 등) → smart_chat
+    ANTHROPIC_API_KEY가 .env에 있으면 Claude(기본 claude-sonnet-5)로,
+    없으면 기존처럼 DeepSeek으로 동작한다.
 """
 import os
 import time
@@ -68,3 +75,52 @@ def deepseek_chat(prompt, temperature=0.3, max_tokens=2048, timeout=60, retries=
             if attempt < retries - 1:
                 time.sleep(3)
     return ""
+
+
+# ---------------------------------------------------------------------------
+# Claude API (Anthropic)
+# ---------------------------------------------------------------------------
+
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+_CLAUDE_DEFAULT_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5")
+
+
+def claude_chat(prompt, model=None, max_tokens=2048, effort="medium", timeout=120):
+    """Claude API 호출. 성공 시 응답 텍스트, 미설정/실패 시 "" 반환.
+
+    model: 기본 claude-sonnet-5 (.env CLAUDE_MODEL로 변경 가능).
+           고부가 분석은 model="claude-opus-4-8" 지정.
+    effort: low/medium/high — 파이프라인 요약은 medium이면 충분.
+    참고: Opus 4.8/Sonnet 5는 temperature 미지원(전달 시 400)이라 받지 않는다.
+    """
+    if not ANTHROPIC_API_KEY:
+        return ""
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, timeout=timeout, max_retries=2)
+        resp = client.messages.create(
+            model=model or _CLAUDE_DEFAULT_MODEL,
+            max_tokens=max_tokens,
+            output_config={"effort": effort},
+            messages=[{"role": "user", "content": prompt}],
+        )
+        if resp.stop_reason == "refusal":
+            logger.warning("Claude refused the request.")
+            return ""
+        text = "".join(b.text for b in resp.content if b.type == "text").strip()
+        if text:
+            logger.info(f"Claude response generated ({resp.model}).")
+        return text
+    except Exception as e:
+        logger.warning(f"Claude request failed: {e}")
+        return ""
+
+
+def smart_chat(prompt, max_tokens=2048, timeout=120, model=None, effort="medium",
+               temperature=0.3, json_mode=False):
+    """Claude 우선, 미설정/실패 시 DeepSeek 폴백. (json_mode는 DeepSeek 폴백에서만 적용)"""
+    out = claude_chat(prompt, model=model, max_tokens=max_tokens, effort=effort, timeout=timeout)
+    if out:
+        return out
+    return deepseek_chat(prompt, temperature=temperature, max_tokens=max_tokens,
+                         timeout=timeout, json_mode=json_mode)
