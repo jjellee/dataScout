@@ -306,6 +306,15 @@ def main():
         send_chart_to_telegram(chart_path, current_data)
 
 
+
+def _extract_ddr5_price(current_data):
+    """현재 스크랩 데이터에서 DDR5 16Gb (2Gx8, 비eTT) session_avg 추출."""
+    for p in current_data.get("dram_spot", []):
+        item = p.get("item", "")
+        if "DDR5" in item and "16Gb" in item and "eTT" not in item:
+            return p.get("session_avg")
+    return None
+
 def generate_ddr5_chart(current_data):
     """Generate a DDR5 16Gb spot price chart from historical CSV data."""
     import matplotlib
@@ -322,6 +331,15 @@ def generate_ddr5_chart(current_data):
     try:
         df = pd.read_csv(csv_path, parse_dates=['Date'])
         df = df.sort_values('Date')
+
+        # 근원 동기화: 오늘 값은 캡션과 동일한 실시간 session_avg로 강제.
+        # CSV 쓰기 실패·날짜 경계·스킵 등 어떤 경로로도 차트-텍스트가 어긋나지 않게 한다.
+        live = _extract_ddr5_price(current_data)
+        if live is not None:
+            today = pd.Timestamp(datetime.datetime.now().date())
+            df = df[df['Date'] != today]
+            df = pd.concat([df, pd.DataFrame([{'Date': today, 'Price': live}])], ignore_index=True)
+            df = df.sort_values('Date')
 
         # Last 6 months
         cutoff = df['Date'].max() - pd.Timedelta(days=180)
@@ -418,13 +436,7 @@ def _update_ddr5_csv(current_data, timestamp_str):
     """
     csv_path = os.path.join(DATA_DIR, "ddr5_16gb_spot_history.csv")
     
-    # Find DDR5 16Gb price in the scraped data
-    ddr5_price = None
-    dram_products = current_data.get("dram_spot", [])
-    for p in dram_products:
-        if "DDR5" in p.get("item", "") and "16Gb" in p.get("item", "") and "eTT" not in p.get("item", ""):
-            ddr5_price = p.get("session_avg")
-            break
+    ddr5_price = _extract_ddr5_price(current_data)
     
     if ddr5_price is None:
         logger.warning("DDR5 16Gb price not found in scraped data. Skipping CSV update.")
