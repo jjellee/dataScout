@@ -170,6 +170,28 @@ def _expand_table(table):
     return grid
 
 
+def extract_sales_backlog_section(md_text):
+    """Markdown 전문에서 「매출 및 수주상황」 섹션만 추출.
+
+    xml_to_markdown이 TITLE을 ##/### 헤더로 변환하므로, '매출'+'수주' 또는
+    '수주상황'이 들어간 헤더부터 다음 헤더 전까지를 자른다.
+    """
+    lines = md_text.split("\n")
+    start = None
+    for i, line in enumerate(lines):
+        if line.startswith("#"):
+            t = line.replace(" ", "")
+            if ("매출" in t and "수주" in t) or "수주상황" in t:
+                start = i
+                break
+    if start is None:
+        return None
+    for j in range(start + 1, len(lines)):
+        if lines[j].startswith("#"):
+            return "\n".join(lines[start:j]).strip()
+    return "\n".join(lines[start:]).strip()
+
+
 def parse_backlog(xml_text):
     """「수주상황」 표에서 수주잔고 행 추출 (다단 헤더 span 전개). Returns (unit, rows)."""
     soup = BeautifulSoup(xml_text, "html.parser")
@@ -322,6 +344,11 @@ def main():
                           f"- 종목코드: {sc} | 접수일: {x['rcept_dt']} | 접수번호: {rcept}\n\n")
                 with open(os.path.join(corp_dir, f"{label}.md"), "w", encoding="utf-8") as f:
                     f.write(header + md)
+                # 「매출 및 수주상황」 섹션 별도 저장 (수주잔고 자동 수집용)
+                section = extract_sales_backlog_section(md)
+                if section:
+                    with open(os.path.join(corp_dir, f"{label}_매출수주.md"), "w", encoding="utf-8") as f:
+                        f.write(header + section)
                 unit, rows = parse_backlog(xml)
                 if rows:
                     backlog[rcept] = {
