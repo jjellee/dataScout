@@ -45,7 +45,7 @@ load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, llm_translate
 
 # RSS Feeds
 TOMS_HARDWARE_RSS = "https://www.tomshardware.com/feeds/news"
@@ -195,6 +195,10 @@ def translate_en_to_ko(text):
 
 def translate_paragraphs(paragraphs):
     """Translates a list of English paragraphs to Korean."""
+    # LLM 통번역 우선 (문맥 유지·자연스러운 문체), 실패 시 아래 구글 번역 폴백
+    _llm = llm_translate(paragraphs, src_lang="영어")
+    if _llm:
+        return _llm
     translated = []
     for p in paragraphs:
         if len(p) > 1000:

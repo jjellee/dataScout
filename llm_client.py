@@ -124,3 +124,52 @@ def smart_chat(prompt, max_tokens=2048, timeout=120, model=None, effort="medium"
         return out
     return deepseek_chat(prompt, temperature=temperature, max_tokens=max_tokens,
                          timeout=timeout, json_mode=json_mode)
+
+
+def llm_translate(paragraphs, src_lang="영어", model="claude-haiku-4-5"):
+    """기사 문단 리스트를 통번역 (문맥 유지, 자연스러운 한국어).
+
+    Claude(기본 Haiku 4.5, 키 없으면 skip) → DeepSeek 순으로 시도.
+    실패 시 [] 반환 — 호출부는 기존 구글 번역 등으로 폴백한다.
+    """
+    paragraphs = [p for p in paragraphs if p and p.strip()]
+    if not paragraphs:
+        return []
+    SEP = "\n<<<P>>>\n"
+
+    def _translate_batch(batch):
+        prompt = (
+            f"다음 {src_lang} 기사를 자연스러운 한국어로 번역해줘.\n"
+            "- 직역투를 피하고 한국 경제지 기사 문체(평서체, '~했다'체)로 옮겨.\n"
+            "- 기업명·인명·제품명은 통용되는 한국어 표기가 있으면 쓰고 없으면 원어 유지.\n"
+            "- 숫자·단위·날짜는 정확히 보존하고, 반도체·금융 용어는 업계 표준 한국어 용어를 써.\n"
+            "- 문단 구분자 <<<P>>>를 그대로 유지하고 문단 수를 바꾸지 마.\n"
+            "- 설명 없이 번역문만 출력해.\n\n" + SEP.join(batch)
+        )
+        out = claude_chat(prompt, model=model, max_tokens=8000, effort="low", timeout=180)
+        if not out:
+            out = deepseek_chat(prompt, temperature=0.2, max_tokens=8000, timeout=180)
+        if not out:
+            return None
+        parts = [s.strip() for s in out.split("<<<P>>>") if s.strip()]
+        # 문단 수가 어긋나도 내용은 유효 — 그대로 사용
+        return parts if parts else None
+
+    # 긴 기사는 ~10,000자 단위로 나눠 번역
+    batches, cur, cur_len = [], [], 0
+    for p in paragraphs:
+        if cur and cur_len + len(p) > 10000:
+            batches.append(cur)
+            cur, cur_len = [], 0
+        cur.append(p)
+        cur_len += len(p)
+    if cur:
+        batches.append(cur)
+
+    result = []
+    for b in batches:
+        parts = _translate_batch(b)
+        if parts is None:
+            return []  # 부분 성공은 혼란 — 전체 폴백
+        result.extend(parts)
+    return result

@@ -15,6 +15,7 @@ import logging
 import re
 from html import unescape
 from urllib.parse import quote
+from llm_client import llm_translate
 import requests
 from bs4 import BeautifulSoup
 
@@ -41,7 +42,7 @@ load_env()
 
 # Telegram configurations
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID")
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 MAIN_URL = "https://www.trendforce.com/news/"
@@ -176,6 +177,10 @@ def fetch_full_article_content(article_url):
 
 def translate_paragraphs(paragraphs):
     """Translates a list of paragraphs to Korean."""
+    # LLM 통번역 우선 (문맥 유지·자연스러운 문체), 실패 시 아래 구글 번역 폴백
+    _llm = llm_translate(paragraphs, src_lang="영어")
+    if _llm:
+        return _llm
     translated_paras = []
     for p in paragraphs:
         if len(p) > 1000:

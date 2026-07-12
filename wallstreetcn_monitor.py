@@ -42,7 +42,7 @@ TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # LLM (DeepSeek)
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, llm_translate
 
 BASE_URL = "https://wallstreetcn.com"
 NEWS_URL = f"{BASE_URL}/news/global"
@@ -196,6 +196,10 @@ def fetch_full_article(article_url):
 
 def translate_paragraphs(paragraphs):
     """Translates a list of Chinese paragraphs to Korean."""
+    # LLM 통번역 우선 (문맥 유지·자연스러운 문체), 실패 시 아래 구글 번역 폴백
+    _llm = llm_translate(paragraphs, src_lang="중국어")
+    if _llm:
+        return _llm
     translated = []
     for p in paragraphs:
         # Preserve formatting markers

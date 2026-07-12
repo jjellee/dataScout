@@ -45,7 +45,7 @@ load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, llm_translate
 
 # SEC EDGAR User-Agent compliance
 SEC_HEADERS = {
@@ -57,10 +57,13 @@ TRANSLATE_HEADERS = {
 }
 
 def translate_en_to_ko(text):
-    """Translates English text to Korean using the free Google Translate API.
-    Used as fallback when DeepSeek is unavailable."""
+    """영→한 번역: 긴 텍스트는 LLM 통번역 우선, 실패/짧은 텍스트는 구글 번역 폴백."""
     if not text:
         return ""
+    if len(text) > 200:
+        _out = llm_translate([text], src_lang="영어")
+        if _out:
+            return "\n".join(_out)
     try:
         url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q={quote(text)}"
         resp = requests.get(url, headers=TRANSLATE_HEADERS, timeout=10)
