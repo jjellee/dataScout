@@ -1,0 +1,728 @@
+=== [1/5] 잠정실적 백필 Sun Jul 12 02:05:31 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:05:32,274 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:05:32,768 - INFO - 잠정실적: 전체 5015건, 신규 5015건
+2026-07-12 02:05:44,332 - INFO -   100/5015
+2026-07-12 02:05:55,787 - INFO -   200/5015
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1012: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Read timed out. (read timeout=40)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 485, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 469, in main
+    new += backfill_prov()
+           ~~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 215, in backfill_prov
+    content = api_get("https://opendart.fss.or.kr/api/document.xml",
+                      {"rcept_no": rcept}, binary=True)
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 79, in api_get
+    r = requests.get(url, params=params, timeout=40)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Read timed out. (read timeout=40)
+=== [2/5] 확정실적 수집 Sun Jul 12 02:06:36 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:06:37,204 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:06:37,573 - INFO - 확정실적: 상장사 2767개
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1012: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Read timed out. (read timeout=40)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 485, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 471, in main
+    new += collect_confirmed()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 293, in collect_confirmed
+    d = api_get("https://opendart.fss.or.kr/api/fnlttMultiAcnt.json",
+                {"corp_code": ",".join(batch), "bsns_year": year, "reprt_code": rc})
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 79, in api_get
+    r = requests.get(url, params=params, timeout=40)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Read timed out. (read timeout=40)
+=== [3/5] 1차 엑셀 빌드·업로드 Sun Jul 12 02:07:21 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:07:22,360 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:07:22,741 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_dart/quarterly_earnings.xlsx (잠정 199, 확정 0, 수주 0)
+2026-07-12 02:07:24,580 - INFO - Telegram upload OK
+=== [4/5] 정기보고서 md 저장 + 수주잔고 Sun Jul 12 02:07:24 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:07:25,092 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:07:25,493 - INFO - 정기보고서: 대상 20880건, 처리 예정 20875건
+=== [1/5] 잠정실적 백필 Sun Jul 12 02:09:00 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:09:01,076 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:09:01,452 - INFO - 잠정실적: 전체 5015건, 신규 4815건
+2026-07-12 02:09:14,244 - INFO -   100/4815
+2026-07-12 02:09:25,618 - INFO -   200/4815
+2026-07-12 02:11:03,878 - INFO -   300/4815
+2026-07-12 02:11:58,127 - INFO -   400/4815
+2026-07-12 02:12:09,516 - INFO -   500/4815
+2026-07-12 02:15:13,291 - INFO -   600/4815
+2026-07-12 02:15:24,701 - INFO -   700/4815
+2026-07-12 02:17:48,212 - INFO -   800/4815
+2026-07-12 02:18:42,578 - INFO -   900/4815
+2026-07-12 02:18:54,157 - INFO -   1000/4815
+2026-07-12 02:21:57,802 - INFO -   1100/4815
+2026-07-12 02:22:08,988 - INFO -   1200/4815
+2026-07-12 02:22:20,342 - INFO -   1300/4815
+2026-07-12 02:24:40,980 - INFO -   1400/4815
+2026-07-12 02:25:35,361 - INFO -   1500/4815
+2026-07-12 02:27:12,721 - INFO -   1600/4815
+2026-07-12 02:29:33,126 - INFO -   1700/4815
+2026-07-12 02:31:10,728 - INFO -   1800/4815
+2026-07-12 02:32:05,104 - INFO -   1900/4815
+2026-07-12 02:32:16,580 - INFO -   2000/4815
+2026-07-12 02:33:53,915 - INFO -   2100/4815
+2026-07-12 02:34:48,231 - INFO -   2200/4815
+2026-07-12 02:34:59,337 - INFO -   2300/4815
+2026-07-12 02:36:40,201 - INFO -   2400/4815
+2026-07-12 02:37:34,727 - INFO -   2500/4815
+2026-07-12 02:37:45,903 - INFO -   2600/4815
+2026-07-12 02:40:06,330 - INFO -   2700/4815
+2026-07-12 02:40:17,794 - INFO -   2800/4815
+2026-07-12 02:40:29,105 - INFO -   2900/4815
+2026-07-12 02:40:40,457 - INFO -   3000/4815
+2026-07-12 02:41:35,073 - INFO -   3100/4815
+2026-07-12 02:43:15,414 - INFO -   3200/4815
+2026-07-12 02:43:26,662 - INFO -   3300/4815
+2026-07-12 02:45:04,175 - INFO -   3400/4815
+2026-07-12 02:45:58,654 - INFO -   3500/4815
+2026-07-12 02:46:09,865 - INFO -   3600/4815
+2026-07-12 02:48:33,173 - INFO -   3700/4815
+2026-07-12 02:48:44,306 - INFO -   3800/4815
+2026-07-12 02:49:38,735 - INFO -   3900/4815
+2026-07-12 02:51:16,264 - INFO -   4000/4815
+2026-07-12 02:53:36,511 - INFO -   4100/4815
+2026-07-12 02:54:30,904 - INFO -   4200/4815
+2026-07-12 02:54:42,128 - INFO -   4300/4815
+2026-07-12 02:55:36,488 - INFO -   4400/4815
+2026-07-12 02:55:48,188 - INFO -   4500/4815
+2026-07-12 02:56:42,602 - INFO -   4600/4815
+2026-07-12 02:58:19,882 - INFO -   4700/4815
+2026-07-12 02:59:14,258 - INFO -   4800/4815
+2026-07-12 02:59:16,207 - INFO - 잠정실적 캐시: 5015건 (파싱 성공 5005) — 신규 4806
+=== [2/5] 확정실적 수집 Sun Jul 12 02:59:16 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 02:59:16,728 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 02:59:17,081 - INFO - 확정실적: 상장사 2767개
+2026-07-12 03:00:55,568 - INFO -   2024 1Q 수집 완료
+2026-07-12 03:01:08,205 - INFO -   2024 반기 수집 완료
+2026-07-12 03:01:21,143 - INFO -   2024 3Q 수집 완료
+2026-07-12 03:01:34,650 - INFO -   2024 연간 수집 완료
+2026-07-12 03:01:47,010 - INFO -   2025 1Q 수집 완료
+2026-07-12 03:01:59,519 - INFO -   2025 반기 수집 완료
+2026-07-12 03:02:11,965 - INFO -   2025 3Q 수집 완료
+2026-07-12 03:02:24,636 - INFO -   2025 연간 수집 완료
+2026-07-12 03:02:37,156 - INFO -   2026 1Q 수집 완료
+2026-07-12 03:03:23,859 - INFO -   2026 반기 수집 완료
+2026-07-12 03:04:53,595 - INFO -   2026 3Q 수집 완료
+2026-07-12 03:04:58,709 - INFO -   2026 연간 수집 완료
+2026-07-12 03:04:58,833 - INFO - 확정실적 캐시 항목: 79744 — 신규 79732
+=== [3/5] 1차 엑셀 빌드·업로드 Sun Jul 12 03:04:58 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 03:04:59,326 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 03:05:02,623 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_dart/quarterly_earnings.xlsx (잠정 5005, 확정 22574, 수주 0)
+2026-07-12 03:05:06,795 - INFO - Telegram upload OK
+=== [4/5] 정기보고서 md 저장 + 수주잔고 Sun Jul 12 03:05:06 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 03:05:07,417 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 03:05:07,813 - INFO - 정기보고서: 대상 20880건, 처리 예정 20875건
+2026-07-12 03:05:30,477 - INFO -   50/20875 (23s, backlog 11)
+2026-07-12 03:05:57,729 - INFO -   100/20875 (50s, backlog 34)
+2026-07-12 03:06:24,738 - INFO -   150/20875 (77s, backlog 45)
+2026-07-12 03:06:55,334 - INFO -   200/20875 (108s, backlog 57)
+2026-07-12 03:07:25,923 - INFO -   250/20875 (138s, backlog 68)
+2026-07-12 03:09:26,843 - INFO -   300/20875 (259s, backlog 79)
+2026-07-12 03:09:58,918 - INFO -   350/20875 (291s, backlog 91)
+2026-07-12 03:10:30,456 - INFO -   400/20875 (323s, backlog 105)
+2026-07-12 03:10:55,724 - INFO -   450/20875 (348s, backlog 117)
+2026-07-12 03:11:24,808 - INFO -   500/20875 (377s, backlog 130)
+2026-07-12 03:13:25,818 - INFO -   550/20875 (498s, backlog 145)
+2026-07-12 03:13:56,155 - INFO -   600/20875 (528s, backlog 155)
+2026-07-12 03:14:23,667 - INFO -   650/20875 (556s, backlog 165)
+2026-07-12 03:14:51,854 - INFO -   700/20875 (584s, backlog 175)
+2026-07-12 03:15:22,289 - INFO -   750/20875 (614s, backlog 188)
+2026-07-12 03:17:23,020 - INFO -   800/20875 (735s, backlog 199)
+2026-07-12 03:17:51,888 - INFO -   850/20875 (764s, backlog 213)
+2026-07-12 03:18:20,149 - INFO -   900/20875 (792s, backlog 232)
+2026-07-12 03:20:21,322 - INFO -   950/20875 (914s, backlog 243)
+2026-07-12 03:20:47,257 - INFO -   1000/20875 (939s, backlog 253)
+2026-07-12 03:21:13,398 - INFO -   1050/20875 (966s, backlog 267)
+2026-07-12 03:21:40,032 - INFO -   1100/20875 (992s, backlog 281)
+2026-07-12 03:23:39,191 - INFO -   1150/20875 (1111s, backlog 295)
+2026-07-12 03:24:07,208 - INFO -   1200/20875 (1139s, backlog 306)
+2026-07-12 03:24:35,481 - INFO -   1250/20875 (1168s, backlog 316)
+2026-07-12 03:25:03,835 - INFO -   1300/20875 (1196s, backlog 330)
+2026-07-12 03:25:30,780 - INFO -   1350/20875 (1223s, backlog 345)
+2026-07-12 03:27:29,925 - INFO -   1400/20875 (1342s, backlog 354)
+2026-07-12 03:27:58,049 - INFO -   1450/20875 (1370s, backlog 364)
+2026-07-12 03:28:23,105 - INFO -   1500/20875 (1395s, backlog 374)
+2026-07-12 03:28:49,440 - INFO -   1550/20875 (1422s, backlog 382)
+2026-07-12 03:30:51,205 - INFO -   1600/20875 (1543s, backlog 396)
+2026-07-12 03:31:20,781 - INFO -   1650/20875 (1573s, backlog 404)
+2026-07-12 03:31:48,909 - INFO -   1700/20875 (1601s, backlog 417)
+2026-07-12 03:32:19,822 - INFO -   1750/20875 (1632s, backlog 425)
+2026-07-12 03:32:48,028 - INFO -   1800/20875 (1660s, backlog 445)
+2026-07-12 03:34:49,936 - INFO -   1850/20875 (1782s, backlog 457)
+2026-07-12 03:35:15,464 - INFO -   1900/20875 (1808s, backlog 470)
+2026-07-12 03:35:37,404 - INFO -   1950/20875 (1830s, backlog 480)
+2026-07-12 03:37:34,074 - INFO -   2000/20875 (1946s, backlog 494)
+2026-07-12 03:37:58,738 - INFO -   2050/20875 (1971s, backlog 503)
+2026-07-12 03:38:23,032 - INFO -   2100/20875 (1995s, backlog 516)
+2026-07-12 03:38:46,538 - INFO -   2150/20875 (2019s, backlog 533)
+2026-07-12 03:40:41,825 - INFO -   2200/20875 (2134s, backlog 545)
+2026-07-12 03:42:42,513 - INFO -   2250/20875 (2255s, backlog 559)
+2026-07-12 03:43:13,711 - INFO -   2300/20875 (2286s, backlog 573)
+2026-07-12 03:43:53,102 - INFO -   2350/20875 (2325s, backlog 587)
+2026-07-12 03:44:30,354 - INFO -   2400/20875 (2363s, backlog 600)
+2026-07-12 03:45:13,715 - INFO -   2450/20875 (2406s, backlog 612)
+2026-07-12 03:45:55,150 - INFO -   2500/20875 (2447s, backlog 627)
+2026-07-12 03:46:34,290 - INFO -   2550/20875 (2486s, backlog 637)
+2026-07-12 03:47:11,982 - INFO -   2600/20875 (2524s, backlog 650)
+2026-07-12 03:47:50,537 - INFO -   2650/20875 (2563s, backlog 661)
+2026-07-12 03:48:25,701 - INFO -   2700/20875 (2598s, backlog 672)
+2026-07-12 03:48:59,078 - INFO -   2750/20875 (2631s, backlog 690)
+2026-07-12 03:49:33,348 - INFO -   2800/20875 (2666s, backlog 704)
+2026-07-12 03:50:15,341 - INFO -   2850/20875 (2708s, backlog 714)
+2026-07-12 03:50:53,816 - INFO -   2900/20875 (2746s, backlog 730)
+2026-07-12 03:51:33,411 - INFO -   2950/20875 (2786s, backlog 751)
+2026-07-12 03:52:07,428 - INFO -   3000/20875 (2820s, backlog 762)
+2026-07-12 03:52:44,356 - INFO -   3050/20875 (2857s, backlog 771)
+2026-07-12 03:53:28,025 - INFO -   3100/20875 (2900s, backlog 780)
+2026-07-12 03:54:13,690 - INFO -   3150/20875 (2946s, backlog 791)
+2026-07-12 03:54:53,328 - INFO -   3200/20875 (2986s, backlog 806)
+2026-07-12 03:57:05,313 - INFO -   3250/20875 (3118s, backlog 819)
+2026-07-12 03:57:42,765 - INFO -   3300/20875 (3155s, backlog 829)
+2026-07-12 03:58:21,473 - INFO -   3350/20875 (3194s, backlog 839)
+2026-07-12 03:58:54,768 - INFO -   3400/20875 (3227s, backlog 849)
+2026-07-12 03:59:27,436 - INFO -   3450/20875 (3260s, backlog 860)
+2026-07-12 04:01:39,027 - INFO -   3500/20875 (3391s, backlog 870)
+2026-07-12 04:02:19,918 - INFO -   3550/20875 (3432s, backlog 880)
+2026-07-12 04:03:08,494 - INFO -   3600/20875 (3481s, backlog 891)
+2026-07-12 04:04:02,310 - INFO -   3650/20875 (3534s, backlog 902)
+2026-07-12 04:04:59,565 - INFO -   3700/20875 (3592s, backlog 918)
+2026-07-12 04:05:46,120 - INFO -   3750/20875 (3638s, backlog 930)
+2026-07-12 04:06:43,420 - INFO -   3800/20875 (3696s, backlog 939)
+2026-07-12 04:07:32,925 - INFO -   3850/20875 (3745s, backlog 950)
+2026-07-12 04:08:26,055 - INFO -   3900/20875 (3798s, backlog 967)
+2026-07-12 04:09:11,960 - INFO -   3950/20875 (3844s, backlog 978)
+2026-07-12 04:09:55,806 - INFO -   4000/20875 (3888s, backlog 990)
+2026-07-12 04:10:34,786 - INFO -   4050/20875 (3927s, backlog 1006)
+2026-07-12 04:11:10,300 - INFO -   4100/20875 (3962s, backlog 1018)
+2026-07-12 04:13:29,028 - INFO -   4150/20875 (4101s, backlog 1025)
+2026-07-12 04:14:13,236 - INFO -   4200/20875 (4145s, backlog 1040)
+2026-07-12 04:14:49,175 - INFO -   4250/20875 (4181s, backlog 1058)
+2026-07-12 04:15:43,881 - INFO -   4300/20875 (4236s, backlog 1071)
+2026-07-12 04:16:38,808 - INFO -   4350/20875 (4291s, backlog 1081)
+2026-07-12 04:17:31,058 - INFO -   4400/20875 (4343s, backlog 1093)
+2026-07-12 04:18:07,739 - INFO -   4450/20875 (4380s, backlog 1105)
+2026-07-12 04:18:59,086 - INFO -   4500/20875 (4431s, backlog 1119)
+2026-07-12 04:19:46,193 - INFO -   4550/20875 (4478s, backlog 1133)
+2026-07-12 04:20:35,429 - INFO -   4600/20875 (4528s, backlog 1147)
+2026-07-12 04:21:21,606 - INFO -   4650/20875 (4574s, backlog 1154)
+2026-07-12 04:22:02,602 - INFO -   4700/20875 (4615s, backlog 1164)
+2026-07-12 04:22:43,506 - INFO -   4750/20875 (4656s, backlog 1173)
+2026-07-12 04:23:08,977 - INFO -   4800/20875 (4681s, backlog 1180)
+2026-07-12 04:23:35,979 - INFO -   4850/20875 (4708s, backlog 1191)
+2026-07-12 04:24:13,097 - INFO -   4900/20875 (4745s, backlog 1200)
+2026-07-12 04:24:45,338 - INFO -   4950/20875 (4778s, backlog 1217)
+2026-07-12 04:25:16,736 - INFO -   5000/20875 (4809s, backlog 1230)
+2026-07-12 04:25:52,355 - INFO -   5050/20875 (4845s, backlog 1245)
+2026-07-12 04:26:24,178 - INFO -   5100/20875 (4876s, backlog 1260)
+2026-07-12 04:26:58,821 - INFO -   5150/20875 (4911s, backlog 1271)
+2026-07-12 04:27:27,928 - INFO -   5200/20875 (4940s, backlog 1282)
+2026-07-12 04:28:00,474 - INFO -   5250/20875 (4973s, backlog 1299)
+2026-07-12 04:28:30,267 - INFO -   5300/20875 (5002s, backlog 1317)
+2026-07-12 04:29:04,338 - INFO -   5350/20875 (5037s, backlog 1330)
+2026-07-12 04:29:35,126 - INFO -   5400/20875 (5067s, backlog 1344)
+2026-07-12 04:30:07,688 - INFO -   5450/20875 (5100s, backlog 1354)
+2026-07-12 04:32:09,680 - INFO -   5500/20875 (5222s, backlog 1366)
+2026-07-12 04:32:41,011 - INFO -   5550/20875 (5253s, backlog 1382)
+2026-07-12 04:33:08,890 - INFO -   5600/20875 (5281s, backlog 1393)
+2026-07-12 04:33:39,350 - INFO -   5650/20875 (5312s, backlog 1406)
+2026-07-12 04:34:10,393 - INFO -   5700/20875 (5343s, backlog 1419)
+2026-07-12 04:36:12,323 - INFO -   5750/20875 (5465s, backlog 1432)
+2026-07-12 04:36:43,475 - INFO -   5800/20875 (5496s, backlog 1446)
+2026-07-12 04:37:11,230 - INFO -   5850/20875 (5523s, backlog 1456)
+2026-07-12 04:37:41,241 - INFO -   5900/20875 (5553s, backlog 1468)
+2026-07-12 04:38:11,734 - INFO -   5950/20875 (5584s, backlog 1479)
+2026-07-12 04:38:40,827 - INFO -   6000/20875 (5613s, backlog 1490)
+2026-07-12 04:39:11,811 - INFO -   6050/20875 (5644s, backlog 1501)
+2026-07-12 04:39:45,222 - INFO -   6100/20875 (5677s, backlog 1511)
+2026-07-12 04:40:16,213 - INFO -   6150/20875 (5708s, backlog 1523)
+2026-07-12 04:40:49,099 - INFO -   6200/20875 (5741s, backlog 1534)
+2026-07-12 04:41:18,238 - INFO -   6250/20875 (5770s, backlog 1547)
+2026-07-12 04:41:44,657 - INFO -   6300/20875 (5797s, backlog 1552)
+2026-07-12 04:42:12,633 - INFO -   6350/20875 (5825s, backlog 1565)
+2026-07-12 04:42:40,712 - INFO -   6400/20875 (5853s, backlog 1578)
+2026-07-12 04:43:10,043 - INFO -   6450/20875 (5882s, backlog 1592)
+2026-07-12 04:43:39,845 - INFO -   6500/20875 (5912s, backlog 1603)
+2026-07-12 04:44:05,495 - INFO -   6550/20875 (5938s, backlog 1614)
+2026-07-12 04:44:31,909 - INFO -   6600/20875 (5964s, backlog 1623)
+2026-07-12 04:44:57,396 - INFO -   6650/20875 (5990s, backlog 1634)
+2026-07-12 04:45:23,586 - INFO -   6700/20875 (6016s, backlog 1647)
+2026-07-12 04:45:48,551 - INFO -   6750/20875 (6041s, backlog 1657)
+2026-07-12 04:46:12,344 - INFO -   6800/20875 (6065s, backlog 1672)
+2026-07-12 04:48:13,483 - INFO -   6850/20875 (6186s, backlog 1689)
+2026-07-12 04:48:43,274 - INFO -   6900/20875 (6215s, backlog 1703)
+2026-07-12 04:49:20,074 - INFO -   6950/20875 (6252s, backlog 1719)
+2026-07-12 04:49:52,756 - INFO -   7000/20875 (6285s, backlog 1729)
+2026-07-12 04:51:57,062 - INFO -   7050/20875 (6409s, backlog 1736)
+2026-07-12 04:52:28,754 - INFO -   7100/20875 (6441s, backlog 1748)
+2026-07-12 04:52:56,509 - INFO -   7150/20875 (6469s, backlog 1764)
+2026-07-12 04:53:21,558 - INFO -   7200/20875 (6494s, backlog 1777)
+2026-07-12 04:53:45,197 - INFO -   7250/20875 (6517s, backlog 1788)
+2026-07-12 04:54:09,154 - INFO -   7300/20875 (6541s, backlog 1799)
+2026-07-12 04:54:41,827 - INFO -   7350/20875 (6574s, backlog 1814)
+2026-07-12 04:55:25,192 - INFO -   7400/20875 (6617s, backlog 1824)
+2026-07-12 04:56:02,520 - INFO -   7450/20875 (6655s, backlog 1833)
+2026-07-12 04:56:42,492 - INFO -   7500/20875 (6695s, backlog 1843)
+2026-07-12 04:57:23,989 - INFO -   7550/20875 (6736s, backlog 1852)
+2026-07-12 04:59:35,508 - INFO -   7600/20875 (6868s, backlog 1862)
+2026-07-12 05:00:16,093 - INFO -   7650/20875 (6908s, backlog 1879)
+2026-07-12 05:00:59,484 - INFO -   7700/20875 (6952s, backlog 1899)
+2026-07-12 05:01:33,999 - INFO -   7750/20875 (6986s, backlog 1912)
+2026-07-12 05:02:19,159 - INFO -   7800/20875 (7031s, backlog 1931)
+2026-07-12 05:02:58,725 - INFO -   7850/20875 (7071s, backlog 1945)
+2026-07-12 05:03:32,291 - INFO -   7900/20875 (7104s, backlog 1953)
+2026-07-12 05:04:05,637 - INFO -   7950/20875 (7138s, backlog 1965)
+2026-07-12 05:06:15,286 - INFO -   8000/20875 (7267s, backlog 1978)
+2026-07-12 05:06:49,050 - INFO -   8050/20875 (7301s, backlog 1992)
+2026-07-12 05:07:28,243 - INFO -   8100/20875 (7340s, backlog 2003)
+2026-07-12 05:08:06,415 - INFO -   8150/20875 (7379s, backlog 2016)
+2026-07-12 05:08:43,745 - INFO -   8200/20875 (7416s, backlog 2028)
+2026-07-12 05:09:22,373 - INFO -   8250/20875 (7455s, backlog 2045)
+2026-07-12 05:09:57,155 - INFO -   8300/20875 (7489s, backlog 2058)
+2026-07-12 05:10:32,845 - INFO -   8350/20875 (7525s, backlog 2074)
+2026-07-12 05:11:07,469 - INFO -   8400/20875 (7560s, backlog 2088)
+2026-07-12 05:11:43,556 - INFO -   8450/20875 (7596s, backlog 2100)
+2026-07-12 05:12:14,783 - INFO -   8500/20875 (7627s, backlog 2114)
+2026-07-12 05:12:42,102 - INFO -   8550/20875 (7654s, backlog 2130)
+2026-07-12 05:13:10,367 - INFO -   8600/20875 (7683s, backlog 2141)
+2026-07-12 05:13:36,720 - INFO -   8650/20875 (7709s, backlog 2147)
+2026-07-12 05:14:11,455 - INFO -   8700/20875 (7744s, backlog 2157)
+2026-07-12 05:16:22,088 - INFO -   8750/20875 (7874s, backlog 2172)
+2026-07-12 05:16:57,529 - INFO -   8800/20875 (7910s, backlog 2192)
+2026-07-12 05:17:34,609 - INFO -   8850/20875 (7947s, backlog 2201)
+2026-07-12 05:18:06,397 - INFO -   8900/20875 (7979s, backlog 2210)
+2026-07-12 05:18:41,008 - INFO -   8950/20875 (8013s, backlog 2227)
+2026-07-12 05:19:18,300 - INFO -   9000/20875 (8050s, backlog 2235)
+2026-07-12 05:23:02,465 - INFO -   9050/20875 (8275s, backlog 2246)
+2026-07-12 05:23:36,841 - INFO -   9100/20875 (8309s, backlog 2265)
+2026-07-12 05:25:41,980 - INFO -   9150/20875 (8434s, backlog 2281)
+2026-07-12 05:26:13,912 - INFO -   9200/20875 (8466s, backlog 2292)
+2026-07-12 05:26:45,376 - INFO -   9250/20875 (8498s, backlog 2305)
+2026-07-12 05:27:16,366 - INFO -   9300/20875 (8529s, backlog 2317)
+2026-07-12 05:27:41,135 - INFO -   9350/20875 (8553s, backlog 2327)
+2026-07-12 05:28:07,300 - INFO -   9400/20875 (8579s, backlog 2340)
+2026-07-12 05:28:31,774 - INFO -   9450/20875 (8604s, backlog 2355)
+2026-07-12 05:30:31,105 - INFO -   9500/20875 (8723s, backlog 2371)
+2026-07-12 05:30:57,809 - INFO -   9550/20875 (8750s, backlog 2380)
+2026-07-12 05:31:22,701 - INFO -   9600/20875 (8775s, backlog 2397)
+2026-07-12 05:36:28,567 - INFO -   9650/20875 (9081s, backlog 2409)
+2026-07-12 05:38:37,943 - INFO -   9700/20875 (9210s, backlog 2420)
+2026-07-12 05:40:52,434 - INFO -   9750/20875 (9345s, backlog 2433)
+2026-07-12 05:41:33,126 - INFO -   9800/20875 (9385s, backlog 2446)
+2026-07-12 05:42:14,048 - INFO -   9850/20875 (9426s, backlog 2462)
+2026-07-12 05:42:50,850 - INFO -   9900/20875 (9463s, backlog 2482)
+2026-07-12 05:44:58,883 - INFO -   9950/20875 (9591s, backlog 2493)
+2026-07-12 05:45:36,094 - INFO -   10000/20875 (9628s, backlog 2507)
+2026-07-12 05:47:42,607 - INFO -   10050/20875 (9755s, backlog 2518)
+2026-07-12 05:48:12,438 - INFO -   10100/20875 (9785s, backlog 2527)
+2026-07-12 05:48:45,019 - INFO -   10150/20875 (9817s, backlog 2540)
+2026-07-12 05:49:16,458 - INFO -   10200/20875 (9849s, backlog 2550)
+2026-07-12 05:49:58,942 - INFO -   10250/20875 (9891s, backlog 2558)
+2026-07-12 05:50:43,746 - INFO -   10300/20875 (9936s, backlog 2571)
+2026-07-12 05:51:22,959 - INFO -   10350/20875 (9975s, backlog 2582)
+2026-07-12 05:51:57,546 - INFO -   10400/20875 (10010s, backlog 2597)
+2026-07-12 05:54:05,216 - INFO -   10450/20875 (10137s, backlog 2609)
+2026-07-12 05:54:57,892 - INFO -   10500/20875 (10190s, backlog 2621)
+2026-07-12 05:56:00,074 - INFO -   10550/20875 (10252s, backlog 2636)
+2026-07-12 05:57:03,264 - INFO -   10600/20875 (10315s, backlog 2645)
+2026-07-12 05:57:49,696 - INFO -   10650/20875 (10362s, backlog 2666)
+2026-07-12 05:58:35,477 - INFO -   10700/20875 (10408s, backlog 2683)
+2026-07-12 05:59:15,747 - INFO -   10750/20875 (10448s, backlog 2699)
+2026-07-12 05:59:55,774 - INFO -   10800/20875 (10488s, backlog 2712)
+2026-07-12 06:00:37,323 - INFO -   10850/20875 (10530s, backlog 2731)
+2026-07-12 06:02:46,493 - INFO -   10900/20875 (10659s, backlog 2746)
+2026-07-12 06:03:18,918 - INFO -   10950/20875 (10691s, backlog 2763)
+2026-07-12 06:04:05,972 - INFO -   11000/20875 (10738s, backlog 2776)
+2026-07-12 06:04:55,181 - INFO -   11050/20875 (10787s, backlog 2794)
+2026-07-12 06:07:13,107 - INFO -   11100/20875 (10925s, backlog 2808)
+2026-07-12 06:07:53,444 - INFO -   11150/20875 (10966s, backlog 2820)
+2026-07-12 06:08:29,946 - INFO -   11200/20875 (11002s, backlog 2832)
+2026-07-12 06:09:14,882 - INFO -   11250/20875 (11047s, backlog 2847)
+2026-07-12 06:09:55,018 - INFO -   11300/20875 (11087s, backlog 2859)
+2026-07-12 06:10:35,635 - INFO -   11350/20875 (11128s, backlog 2872)
+2026-07-12 06:11:20,823 - INFO -   11400/20875 (11173s, backlog 2885)
+2026-07-12 06:12:01,415 - INFO -   11450/20875 (11214s, backlog 2894)
+2026-07-12 06:14:29,845 - INFO -   11500/20875 (11362s, backlog 2907)
+2026-07-12 06:15:07,379 - INFO -   11550/20875 (11400s, backlog 2915)
+2026-07-12 06:15:56,942 - INFO -   11600/20875 (11449s, backlog 2924)
+2026-07-12 06:18:03,750 - INFO -   11650/20875 (11576s, backlog 2932)
+2026-07-12 06:18:27,678 - INFO -   11700/20875 (11600s, backlog 2943)
+2026-07-12 06:18:52,466 - INFO -   11750/20875 (11625s, backlog 2950)
+2026-07-12 06:21:02,524 - INFO -   11800/20875 (11755s, backlog 2965)
+2026-07-12 06:21:35,425 - INFO -   11850/20875 (11788s, backlog 2984)
+2026-07-12 06:22:07,937 - INFO -   11900/20875 (11820s, backlog 2991)
+2026-07-12 06:22:41,728 - INFO -   11950/20875 (11854s, backlog 3009)
+2026-07-12 06:23:11,751 - INFO -   12000/20875 (11884s, backlog 3024)
+2026-07-12 06:26:50,890 - INFO -   12050/20875 (12103s, backlog 3039)
+2026-07-12 06:27:21,199 - INFO -   12100/20875 (12133s, backlog 3051)
+2026-07-12 06:27:49,771 - INFO -   12150/20875 (12162s, backlog 3067)
+2026-07-12 06:28:16,861 - INFO -   12200/20875 (12189s, backlog 3081)
+2026-07-12 06:30:18,212 - INFO -   12250/20875 (12310s, backlog 3089)
+2026-07-12 06:30:45,346 - INFO -   12300/20875 (12338s, backlog 3105)
+2026-07-12 06:31:11,869 - INFO -   12350/20875 (12364s, backlog 3114)
+2026-07-12 06:33:13,702 - INFO -   12400/20875 (12486s, backlog 3128)
+2026-07-12 06:33:42,232 - INFO -   12450/20875 (12514s, backlog 3139)
+2026-07-12 06:34:07,219 - INFO -   12500/20875 (12539s, backlog 3150)
+2026-07-12 06:34:38,148 - INFO -   12550/20875 (12570s, backlog 3161)
+2026-07-12 06:35:07,262 - INFO -   12600/20875 (12599s, backlog 3170)
+2026-07-12 06:35:35,418 - INFO -   12650/20875 (12628s, backlog 3183)
+2026-07-12 06:36:04,710 - INFO -   12700/20875 (12657s, backlog 3199)
+2026-07-12 06:36:33,912 - INFO -   12750/20875 (12686s, backlog 3212)
+2026-07-12 06:37:01,555 - INFO -   12800/20875 (12714s, backlog 3218)
+2026-07-12 06:37:28,216 - INFO -   12850/20875 (12740s, backlog 3231)
+2026-07-12 06:37:54,857 - INFO -   12900/20875 (12767s, backlog 3245)
+2026-07-12 06:38:22,164 - INFO -   12950/20875 (12794s, backlog 3252)
+2026-07-12 06:38:51,782 - INFO -   13000/20875 (12824s, backlog 3258)
+2026-07-12 06:39:16,870 - INFO -   13050/20875 (12849s, backlog 3269)
+2026-07-12 06:41:19,090 - INFO -   13100/20875 (12971s, backlog 3280)
+2026-07-12 06:41:44,043 - INFO -   13150/20875 (12996s, backlog 3288)
+2026-07-12 06:42:10,223 - INFO -   13200/20875 (13022s, backlog 3303)
+2026-07-12 06:42:37,087 - INFO -   13250/20875 (13049s, backlog 3318)
+2026-07-12 06:43:00,323 - INFO -   13300/20875 (13073s, backlog 3331)
+2026-07-12 06:43:24,177 - INFO -   13350/20875 (13096s, backlog 3342)
+2026-07-12 06:45:23,141 - INFO -   13400/20875 (13215s, backlog 3352)
+2026-07-12 06:45:47,157 - INFO -   13450/20875 (13239s, backlog 3372)
+2026-07-12 06:46:12,079 - INFO -   13500/20875 (13264s, backlog 3381)
+2026-07-12 06:46:35,668 - INFO -   13550/20875 (13288s, backlog 3393)
+2026-07-12 06:47:01,231 - INFO -   13600/20875 (13313s, backlog 3408)
+2026-07-12 06:47:25,399 - INFO -   13650/20875 (13338s, backlog 3424)
+2026-07-12 06:47:48,450 - INFO -   13700/20875 (13361s, backlog 3437)
+2026-07-12 06:48:22,090 - INFO -   13750/20875 (13394s, backlog 3454)
+2026-07-12 06:50:26,712 - INFO -   13800/20875 (13519s, backlog 3472)
+2026-07-12 06:50:51,722 - INFO -   13850/20875 (13544s, backlog 3485)
+2026-07-12 06:52:50,930 - INFO -   13900/20875 (13663s, backlog 3495)
+2026-07-12 06:53:16,894 - INFO -   13950/20875 (13689s, backlog 3506)
+2026-07-12 06:53:42,100 - INFO -   14000/20875 (13714s, backlog 3523)
+2026-07-12 06:54:06,828 - INFO -   14050/20875 (13739s, backlog 3545)
+2026-07-12 06:54:28,293 - INFO -   14100/20875 (13760s, backlog 3558)
+2026-07-12 06:54:50,577 - INFO -   14150/20875 (13783s, backlog 3568)
+2026-07-12 06:55:14,704 - INFO -   14200/20875 (13807s, backlog 3579)
+2026-07-12 06:55:52,083 - INFO -   14250/20875 (13844s, backlog 3592)
+2026-07-12 06:56:27,793 - INFO -   14300/20875 (13880s, backlog 3604)
+2026-07-12 06:57:02,095 - INFO -   14350/20875 (13914s, backlog 3615)
+2026-07-12 06:57:37,523 - INFO -   14400/20875 (13950s, backlog 3635)
+2026-07-12 06:58:08,889 - INFO -   14450/20875 (13981s, backlog 3649)
+2026-07-12 06:58:46,421 - INFO -   14500/20875 (14019s, backlog 3665)
+2026-07-12 06:59:22,795 - INFO -   14550/20875 (14055s, backlog 3678)
+2026-07-12 06:59:58,656 - INFO -   14600/20875 (14091s, backlog 3692)
+2026-07-12 07:02:04,658 - INFO -   14650/20875 (14217s, backlog 3702)
+2026-07-12 07:02:36,196 - INFO -   14700/20875 (14248s, backlog 3711)
+2026-07-12 07:03:04,827 - INFO -   14750/20875 (14277s, backlog 3725)
+2026-07-12 07:03:34,593 - INFO -   14800/20875 (14307s, backlog 3734)
+2026-07-12 07:04:08,512 - INFO -   14850/20875 (14341s, backlog 3746)
+2026-07-12 07:04:43,436 - INFO -   14900/20875 (14376s, backlog 3756)
+2026-07-12 07:05:11,366 - INFO -   14950/20875 (14404s, backlog 3768)
+2026-07-12 07:05:43,576 - INFO -   15000/20875 (14436s, backlog 3780)
+2026-07-12 07:06:11,736 - INFO -   15050/20875 (14464s, backlog 3790)
+2026-07-12 07:06:42,517 - INFO -   15100/20875 (14495s, backlog 3802)
+2026-07-12 07:07:11,077 - INFO -   15150/20875 (14523s, backlog 3811)
+2026-07-12 07:07:39,981 - INFO -   15200/20875 (14552s, backlog 3825)
+2026-07-12 07:08:08,236 - INFO -   15250/20875 (14580s, backlog 3840)
+2026-07-12 07:08:34,960 - INFO -   15300/20875 (14607s, backlog 3849)
+2026-07-12 07:09:02,103 - INFO -   15350/20875 (14634s, backlog 3858)
+2026-07-12 07:09:29,107 - INFO -   15400/20875 (14661s, backlog 3869)
+2026-07-12 07:09:57,339 - INFO -   15450/20875 (14690s, backlog 3881)
+2026-07-12 07:11:59,957 - INFO -   15500/20875 (14812s, backlog 3894)
+2026-07-12 07:12:30,021 - INFO -   15550/20875 (14842s, backlog 3904)
+2026-07-12 07:12:57,599 - INFO -   15600/20875 (14870s, backlog 3913)
+2026-07-12 07:13:27,306 - INFO -   15650/20875 (14899s, backlog 3926)
+2026-07-12 07:13:56,187 - INFO -   15700/20875 (14928s, backlog 3945)
+2026-07-12 07:14:24,646 - INFO -   15750/20875 (14957s, backlog 3957)
+2026-07-12 07:14:52,415 - INFO -   15800/20875 (14985s, backlog 3971)
+2026-07-12 07:15:17,425 - INFO -   15850/20875 (15010s, backlog 3982)
+2026-07-12 07:15:45,446 - INFO -   15900/20875 (15038s, backlog 3996)
+2026-07-12 07:17:46,013 - INFO -   15950/20875 (15158s, backlog 4008)
+2026-07-12 07:18:11,861 - INFO -   16000/20875 (15184s, backlog 4019)
+2026-07-12 07:18:35,994 - INFO -   16050/20875 (15208s, backlog 4029)
+2026-07-12 07:19:01,987 - INFO -   16100/20875 (15234s, backlog 4047)
+2026-07-12 07:19:28,931 - INFO -   16150/20875 (15261s, backlog 4063)
+2026-07-12 07:20:05,936 - INFO -   16200/20875 (15298s, backlog 4078)
+2026-07-12 07:20:36,997 - INFO -   16250/20875 (15329s, backlog 4099)
+2026-07-12 07:21:06,361 - INFO -   16300/20875 (15359s, backlog 4112)
+2026-07-12 07:21:34,907 - INFO -   16350/20875 (15387s, backlog 4124)
+2026-07-12 07:22:00,030 - INFO -   16400/20875 (15412s, backlog 4139)
+2026-07-12 07:22:22,437 - INFO -   16450/20875 (15435s, backlog 4152)
+2026-07-12 07:22:46,352 - INFO -   16500/20875 (15459s, backlog 4165)
+2026-07-12 07:23:08,401 - INFO -   16550/20875 (15481s, backlog 4176)
+2026-07-12 07:23:35,823 - INFO -   16600/20875 (15508s, backlog 4188)
+2026-07-12 07:25:43,018 - INFO -   16650/20875 (15635s, backlog 4197)
+2026-07-12 07:26:14,683 - INFO -   16700/20875 (15667s, backlog 4208)
+2026-07-12 07:26:44,973 - INFO -   16750/20875 (15697s, backlog 4215)
+2026-07-12 07:27:18,954 - INFO -   16800/20875 (15731s, backlog 4224)
+2026-07-12 07:27:51,182 - INFO -   16850/20875 (15763s, backlog 4246)
+2026-07-12 07:28:26,422 - INFO -   16900/20875 (15799s, backlog 4263)
+2026-07-12 07:28:58,154 - INFO -   16950/20875 (15830s, backlog 4276)
+2026-07-12 07:29:28,888 - INFO -   17000/20875 (15861s, backlog 4284)
+2026-07-12 07:29:55,358 - INFO -   17050/20875 (15888s, backlog 4293)
+2026-07-12 07:33:31,181 - INFO -   17100/20875 (16103s, backlog 4302)
+2026-07-12 07:34:01,234 - INFO -   17150/20875 (16133s, backlog 4317)
+2026-07-12 07:34:31,300 - INFO -   17200/20875 (16163s, backlog 4333)
+2026-07-12 07:34:58,114 - INFO -   17250/20875 (16190s, backlog 4349)
+2026-07-12 07:35:25,505 - INFO -   17300/20875 (16218s, backlog 4360)
+2026-07-12 07:35:50,817 - INFO -   17350/20875 (16243s, backlog 4372)
+2026-07-12 07:36:15,774 - INFO -   17400/20875 (16268s, backlog 4385)
+2026-07-12 07:36:42,410 - INFO -   17450/20875 (16295s, backlog 4395)
+2026-07-12 07:37:08,119 - INFO -   17500/20875 (16320s, backlog 4413)
+2026-07-12 07:37:32,371 - INFO -   17550/20875 (16345s, backlog 4424)
+2026-07-12 07:39:30,774 - INFO -   17600/20875 (16463s, backlog 4437)
+2026-07-12 07:39:58,258 - INFO -   17650/20875 (16490s, backlog 4443)
+2026-07-12 07:40:24,062 - INFO -   17700/20875 (16516s, backlog 4453)
+2026-07-12 07:40:49,083 - INFO -   17750/20875 (16541s, backlog 4467)
+2026-07-12 07:41:15,259 - INFO -   17800/20875 (16567s, backlog 4477)
+2026-07-12 07:43:11,789 - INFO -   17850/20875 (16684s, backlog 4489)
+2026-07-12 07:43:37,064 - INFO -   17900/20875 (16709s, backlog 4498)
+2026-07-12 07:43:58,852 - INFO -   17950/20875 (16731s, backlog 4512)
+2026-07-12 07:44:30,190 - INFO -   18000/20875 (16762s, backlog 4531)
+2026-07-12 07:44:56,533 - INFO -   18050/20875 (16789s, backlog 4547)
+2026-07-12 07:45:31,491 - INFO -   18100/20875 (16824s, backlog 4562)
+2026-07-12 07:45:56,953 - INFO -   18150/20875 (16849s, backlog 4582)
+2026-07-12 07:46:27,963 - INFO -   18200/20875 (16880s, backlog 4595)
+2026-07-12 07:46:55,184 - INFO -   18250/20875 (16907s, backlog 4610)
+2026-07-12 07:47:19,514 - INFO -   18300/20875 (16932s, backlog 4618)
+2026-07-12 07:49:18,723 - INFO -   18350/20875 (17051s, backlog 4630)
+2026-07-12 07:49:44,988 - INFO -   18400/20875 (17077s, backlog 4645)
+2026-07-12 07:50:12,470 - INFO -   18450/20875 (17105s, backlog 4657)
+2026-07-12 07:52:11,229 - INFO -   18500/20875 (17223s, backlog 4667)
+2026-07-12 07:52:38,059 - INFO -   18550/20875 (17250s, backlog 4677)
+2026-07-12 07:53:00,549 - INFO -   18600/20875 (17273s, backlog 4692)
+2026-07-12 07:53:23,473 - INFO -   18650/20875 (17296s, backlog 4715)
+2026-07-12 07:53:47,240 - INFO -   18700/20875 (17319s, backlog 4732)
+2026-07-12 07:54:13,958 - INFO -   18750/20875 (17346s, backlog 4742)
+2026-07-12 07:54:43,785 - INFO -   18800/20875 (17376s, backlog 4756)
+2026-07-12 07:55:18,347 - INFO -   18850/20875 (17411s, backlog 4768)
+2026-07-12 07:55:57,913 - INFO -   18900/20875 (17450s, backlog 4775)
+2026-07-12 07:56:35,546 - INFO -   18950/20875 (17488s, backlog 4790)
+2026-07-12 07:57:09,206 - INFO -   19000/20875 (17521s, backlog 4798)
+2026-07-12 07:57:39,472 - INFO -   19050/20875 (17552s, backlog 4812)
+2026-07-12 07:58:19,585 - INFO -   19100/20875 (17592s, backlog 4823)
+2026-07-12 07:59:03,586 - INFO -   19150/20875 (17636s, backlog 4835)
+2026-07-12 07:59:38,727 - INFO -   19200/20875 (17671s, backlog 4846)
+2026-07-12 08:01:51,742 - INFO -   19250/20875 (17804s, backlog 4859)
+2026-07-12 08:02:31,800 - INFO -   19300/20875 (17844s, backlog 4876)
+2026-07-12 08:03:10,048 - INFO -   19350/20875 (17882s, backlog 4889)
+2026-07-12 08:03:48,020 - INFO -   19400/20875 (17920s, backlog 4906)
+2026-07-12 08:04:25,463 - INFO -   19450/20875 (17958s, backlog 4919)
+2026-07-12 08:05:01,884 - INFO -   19500/20875 (17994s, backlog 4935)
+2026-07-12 08:05:38,894 - INFO -   19550/20875 (18031s, backlog 4949)
+2026-07-12 08:06:09,587 - INFO -   19600/20875 (18062s, backlog 4962)
+2026-07-12 08:08:16,846 - INFO -   19650/20875 (18189s, backlog 4980)
+2026-07-12 08:10:20,551 - INFO -   19700/20875 (18313s, backlog 4991)
+2026-07-12 08:10:49,106 - INFO -   19750/20875 (18341s, backlog 5006)
+2026-07-12 08:14:24,596 - INFO -   19800/20875 (18557s, backlog 5022)
+2026-07-12 08:14:57,004 - INFO -   19850/20875 (18589s, backlog 5036)
+2026-07-12 08:15:40,420 - INFO -   19900/20875 (18633s, backlog 5047)
+2026-07-12 08:16:12,535 - INFO -   19950/20875 (18665s, backlog 5061)
+2026-07-12 08:18:27,872 - INFO -   20000/20875 (18800s, backlog 5079)
+2026-07-12 08:19:13,839 - INFO -   20050/20875 (18846s, backlog 5093)
+2026-07-12 08:21:27,918 - INFO -   20100/20875 (18980s, backlog 5110)
+2026-07-12 08:23:40,567 - INFO -   20150/20875 (19113s, backlog 5125)
+2026-07-12 08:25:49,820 - INFO -   20200/20875 (19242s, backlog 5139)
+2026-07-12 08:26:29,607 - INFO -   20250/20875 (19282s, backlog 5152)
+2026-07-12 08:28:38,914 - INFO -   20300/20875 (19411s, backlog 5164)
+2026-07-12 08:29:10,361 - INFO -   20350/20875 (19443s, backlog 5176)
+2026-07-12 08:29:48,002 - INFO -   20400/20875 (19480s, backlog 5193)
+2026-07-12 08:32:08,340 - INFO -   20450/20875 (19621s, backlog 5201)
+2026-07-12 08:32:39,609 - INFO -   20500/20875 (19652s, backlog 5210)
+2026-07-12 08:33:09,973 - INFO -   20550/20875 (19682s, backlog 5213)
+2026-07-12 08:34:00,875 - INFO -   20600/20875 (19733s, backlog 5228)
+2026-07-12 08:34:48,309 - INFO -   20650/20875 (19780s, backlog 5239)
+2026-07-12 08:35:21,581 - INFO -   20700/20875 (19814s, backlog 5250)
+2026-07-12 08:36:12,805 - INFO -   20750/20875 (19865s, backlog 5261)
+2026-07-12 08:36:47,147 - INFO -   20800/20875 (19899s, backlog 5280)
+2026-07-12 08:37:20,839 - INFO -   20850/20875 (19933s, backlog 5289)
+2026-07-12 08:37:31,469 - INFO - 완료: 20875건 처리, 수주잔고 5292건 — 19944s
+=== [5/5] 최종 엑셀 빌드·업로드 Sun Jul 12 08:37:31 AM KST 2026
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-07-12 08:37:32,169 - INFO - Loaded 18482 closing prices from cache.
+2026-07-12 08:37:36,881 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_dart/quarterly_earnings.xlsx (잠정 5005, 확정 22574, 수주 42380)
+2026-07-12 08:37:41,791 - INFO - Telegram upload OK
+=== CHAIN DONE Sun Jul 12 08:37:42 AM KST 2026
