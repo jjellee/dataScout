@@ -198,15 +198,31 @@ def analyze_strength_bullets(companies):
     text = smart_chat(prompt, temperature=0.3, max_tokens=6000, timeout=420)
     out = {}
     cur = None
+    known = {str(c["ticker"]) for c in companies}
     for line in (text or "").splitlines():
         line = line.strip()
         m = re.match(r"\**\[([^\]]+)\]\**", line)
         if m:
-            cur = m.group(1).strip()
+            cur = m.group(1).strip().lstrip("#")
             out[cur] = []
-        elif cur is not None and line.startswith("-") and len(out[cur]) < 2:
+        elif cur is not None and line.startswith("-") and len(out.get(cur, [])) < 2:
             out[cur].append(line.lstrip("- ").strip())
-    return {k: v for k, v in out.items() if v}
+    result = {k: v for k, v in out.items() if v}
+    # 진단: 파싱 실패 시 원문 앞부분 로깅
+    logger.info(f"strength bullets parsed: {len(result)}/{len(companies)}")
+    if not result and text:
+        logger.warning(f"bullets parse failed. raw head: {text[:300]!r}")
+    # 티커 키가 안 맞으면 회사명으로 2차 매칭
+    if result and not (set(result) & known):
+        by_name = {}
+        for c in companies:
+            for k, v in result.items():
+                if k and (k in c["name"] or c["name"] in k):
+                    by_name[str(c["ticker"])] = v
+        if by_name:
+            logger.info(f"bullets rematched by name: {len(by_name)}")
+            result = by_name
+    return result
 
 
 def fetch_naver_reports(stock_names):
@@ -764,8 +780,11 @@ def process_cn():
         h["Sector"] = meta.get("Sector", "기타")
         h["MarketCap"] = (infos.get(h["Symbol"], {}).get("marketCap", 0)) or 0
 
-    # 시총 100억 위안(~2조원) 이상
-    highs = [h for h in highs if h["MarketCap"] >= 1e10]
+    # 시총 100억 위안(~2조원) 이상. 단, 시총 조회가 전부 실패(rate limit)하면 필터 생략
+    if any(h["MarketCap"] for h in highs):
+        highs = [h for h in highs if h["MarketCap"] >= 1e10]
+    else:
+        logger.warning("CN mcap unavailable (yfinance rate limit?) — mcap filter skipped")
     highs.sort(key=lambda x: x["Change"], reverse=True)
     logger.info(f"CN after mcap filter: {len(highs)}")
 
@@ -868,6 +887,8 @@ def main():
                 if analysis:
                     ok = send_long_message(TELEGRAM_BOT4_TOKEN, chat_id, analysis)
                     logger.info(f"{market} analysis sent." if ok else f"{market} analysis send FAILED.")
+                else:
+                    logger.warning(f"{market} analysis empty — skipped.")
         except Exception as e:
             logger.error(f"{market} processing failed: {e}", exc_info=True)
             results[market] = (0, f"{market}: Error - {e}")
