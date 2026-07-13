@@ -252,15 +252,31 @@ def _looks_like_real_option_text(text):
     return len(text.strip()) > 20
 
 
+def _parse_option_dates_json(content):
+    """LLM 응답에서 옵션일 JSON을 파싱해 정규화. 실패 시 None."""
+    try:
+        m = re.search(r'\{.*\}', content, re.S)
+        if not m:
+            return None
+        parsed = json.loads(m.group(0))
+        out = {}
+        for k in ["call_start", "call_end", "put_start", "put_end"]:
+            v = str(parsed.get(k, "-")).strip()
+            dm = re.search(r'(\d{4})[-.\s년]*(\d{1,2})[-.\s월]*(\d{1,2})', v)
+            out[k] = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else "-"
+        return out
+    except Exception:
+        return None
+
+
 def extract_option_dates_llm(call_text, put_text):
     """
-    DeepSeek(deepseek-chat)로 콜/풋옵션 서술문에서 청구(행사) 시작·종료일을 추출한다.
+    LLM으로 콜/풋옵션 서술문에서 청구(행사) 시작·종료일을 추출한다.
+    우선순위(정리·분석 정책): 1) Claude 구독 CLI → 2) DeepSeek.
     상대표현('발행일로부터 12개월')로 해소된 절대일자가 문장에 있으면 그 날짜를 뽑는다.
     Returns dict with keys call_start/call_end/put_start/put_end (YYYY-MM-DD or "-"),
     또는 키가 없거나 호출 실패 시 None.
     """
-    if not DEEPSEEK_API_KEY:
-        return None
     if not call_text and not put_text:
         return None
 
@@ -277,7 +293,9 @@ def extract_option_dates_llm(call_text, put_text):
         "뒤에 나오는 정정 문구가 앞의 서술보다 항상 우선한다.\n"
         "- put_start는 풋옵션(조기상환)을 처음 '청구'할 수 있는 날이다. "
         "회차별 일정표(조기상환 청구기간 FROM/TO, 지급일)가 있으면 1차 청구기간의 FROM 날짜를 쓴다 — 지급일이 아니다. "
-        "일정표가 없으면 서술문의 첫 행사가능일('발행일로부터 1년이 되는 날인 X')을 쓴다.\n"
+        "일정표가 없으면 서술문의 첫 행사가능일('발행일로부터 1년이 되는 날인 X')을 쓴다. "
+        "일정표 없이 '발행일로부터 N개월이 되는 날인 X 및 그 이후 매 3개월...'처럼 서술만 있으면 "
+        "그 X가 '지급일'로 명명되어 있어도 첫 도래일이므로 put_start로 쓴다.\n"
         "- put_end는 마지막 회차의 청구기간 종료일(TO), 알 수 없으면 \"-\".\n"
         "- 서술문 뒤에 청약일·납입일·이사회결의일 등 무관한 일정 표가 딸려올 수 있다. "
         "이런 날짜는 절대 옵션 행사일로 쓰지 마라. 오직 콜/풋옵션 행사(청구)기간으로 명시된 날짜만 추출한다.\n"
@@ -286,6 +304,22 @@ def extract_option_dates_llm(call_text, put_text):
         f"[콜옵션 서술]\n{(call_text or '없음')[:2500]}\n\n"
         f"[풋옵션 서술]\n{(put_text or '없음')[:2500]}"
     )
+
+    # 1) Claude 구독 CLI 우선
+    try:
+        from llm_client import claude_cli_chat
+        out = claude_cli_chat(prompt, timeout=120)
+        if out:
+            parsed = _parse_option_dates_json(out)
+            if parsed:
+                logger.info("Claude CLI option-date extraction succeeded.")
+                return parsed
+    except Exception as e:
+        logger.warning(f"Claude CLI option extraction failed: {e}")
+
+    # 2) DeepSeek 폴백
+    if not DEEPSEEK_API_KEY:
+        return None
     payload = {
         "model": "deepseek-chat",
         "messages": [{"role": "user", "content": prompt}],
@@ -332,10 +366,6 @@ def resolve_option_dates(call_text, put_text, regex_call, regex_put):
     """
     call_start, put_start = regex_call, regex_put
     call_end = put_end = "-"
-    # 키가 없으면 LLM을 시도하지 않고, 처리 완료(llm_used)로도 표시하지 않는다.
-    # → 나중에 키를 넣으면 그때 백필된다.
-    if not DEEPSEEK_API_KEY:
-        return call_start, put_start, call_end, put_end, False
     # 정규식은 서술문의 첫 날짜(주로 '발행일')를 옵션 시작일로 오탐하는 경우가 많다.
     # 따라서 옵션 조항이 실제로 존재하면 LLM을 우선 신뢰하고, 정규식은 안전망으로만 쓴다.
     has_call = _looks_like_real_option_text(call_text)
@@ -344,7 +374,9 @@ def resolve_option_dates(call_text, put_text, regex_call, regex_put):
     if has_call or has_put:
         llm = extract_option_dates_llm(call_text if has_call else None,
                                        put_text if has_put else None)
-        llm_used = True
+        # LLM이 실제로 답을 준 경우에만 '처리 완료' — 실패(잔액소진 등)를 완료로
+        # 박제하면 빈칸이 영구화된다. 실패 시 다음 실행에서 재시도된다.
+        llm_used = llm is not None
         if llm:
             if has_call:
                 if llm.get("call_start", "-") != "-":
@@ -1960,7 +1992,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 # DeepSeek 보강 healing: 정규식이 옵션일을 못 뽑았지만(-) 옵션 서술문은 실제로 있고
                 # 아직 LLM 처리를 안 한 캐시 레코드만 1회 호출한다(option_llm_done 플래그로 중복방지).
                 d = record_detail.get("data", {})
-                if DEEPSEEK_API_KEY and not FAST_MODE and isinstance(d, dict) and not d.get("option_llm_done"):
+                if not FAST_MODE and isinstance(d, dict) and not d.get("option_llm_done"):
                     call_opt = d.get("call_option_info", "")
                     put_opt = d.get("put_option_info", "")
                     need_call = _looks_like_real_option_text(call_opt)
@@ -1972,7 +2004,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                         d["put_start"] = ps
                         d["call_end"] = ce
                         d["put_end"] = pe
-                        d["option_llm_done"] = True
+                        # LLM이 실제 성공한 경우에만 완료 처리 — 실패 시 다음 실행에서 재시도
+                        d["option_llm_done"] = llm_used
                         record_detail["data"] = d
                         cache[rcept_no] = record_detail
 
@@ -2718,8 +2751,9 @@ def format_officer_sheet(ws):
     align_center = Alignment(horizontal="center", vertical="center")
     align_right = Alignment(horizontal="right", vertical="center")
     align_left = Alignment(horizontal="left", vertical="center")
-    font_neg = Font(name="Malgun Gothic", size=9, color="FF0000")
-    font_pos = Font(name="Malgun Gothic", size=9, color="0000FF")
+    # 한국 시장 관례: 플러스(+) 빨강, 마이너스(-) 파랑
+    font_neg = Font(name="Malgun Gothic", size=9, color="0000FF")
+    font_pos = Font(name="Malgun Gothic", size=9, color="FF0000")
 
     for col_idx in range(1, ws.max_column + 1):
         cell = ws.cell(row=1, column=col_idx)
