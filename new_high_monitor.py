@@ -5,7 +5,7 @@ Identifies stocks at 52-week highs for US, KR, JP markets.
 Sends formatted text report to Telegram.
 """
 
-import os, sys, datetime, requests, time, argparse
+import os, sys, datetime, requests, time, argparse, re
 import pandas as pd
 import yfinance as yf
 import FinanceDataReader as fdr
@@ -179,6 +179,97 @@ def describe_companies_gemini(companies):
     return {}
 
 
+
+def analyze_strength_bullets(companies):
+    """구독 Claude(스마트 체인)로 종목별 상승 이유 2개 불릿 생성. {ticker: [b1, b2]}"""
+    if not companies:
+        return {}
+    lines = []
+    for c in companies:
+        news = f" | 뉴스: {c['news']}" if c.get('news') else ""
+        rpt = f" | 당일 증권사 리포트: {c['report']}" if c.get('report') else ""
+        lines.append(f"- {c['name']} (#{c['ticker']}, {c.get('sector','')}, 당일 {c.get('change',0):+.1f}%){news}{rpt}")
+    prompt = (
+        "다음은 오늘 52주 신고가를 기록한 종목들이다. 각 종목의 주가 강세 이유를 정확히 2개의 불릿으로 정리해줘.\n"
+        "- 각 불릿은 한 문장으로, '~기대감.' '~전망.' 같은 명사형으로 종결.\n"
+        "- 제공된 뉴스·리포트와 네가 아는 해당 기업·산업 흐름을 근거로 쓰되, 근거가 약하면 추정임이 드러나게 쓰고 수치·뉴스를 지어내지 마.\n"
+        "출력 형식(각 종목마다):\n[티커]\n- 이유1\n- 이유2\n다른 텍스트 없이.\n\n" + "\n".join(lines)
+    )
+    text = smart_chat(prompt, temperature=0.3, max_tokens=6000, timeout=420)
+    out = {}
+    cur = None
+    for line in (text or "").splitlines():
+        line = line.strip()
+        m = re.match(r"\**\[([^\]]+)\]\**", line)
+        if m:
+            cur = m.group(1).strip()
+            out[cur] = []
+        elif cur is not None and line.startswith("-") and len(out[cur]) < 2:
+            out[cur].append(line.lstrip("- ").strip())
+    return {k: v for k, v in out.items() if v}
+
+
+def fetch_naver_reports(stock_names):
+    """네이버 리서치 당일 종목분석 리포트 → {종목명: '당일 ○○증권 Buy 보고서 발행, 목표가 N원'}"""
+    from bs4 import BeautifulSoup
+    reports = {}
+    today = datetime.datetime.now().strftime("%y.%m.%d")
+    targets = set(stock_names)
+    try:
+        for page in (1, 2, 3):
+            r = requests.get(f"https://finance.naver.com/research/company_list.naver?page={page}",
+                             headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+            r.encoding = "euc-kr"
+            soup = BeautifulSoup(r.text, "html.parser")
+            for tr in soup.select("table.type_1 tr"):
+                tds = tr.find_all("td")
+                if len(tds) < 5:
+                    continue
+                name = tds[0].get_text(strip=True)
+                date = tds[4].get_text(strip=True)
+                if date != today or name not in targets or name in reports:
+                    continue
+                broker = tds[2].get_text(strip=True)
+                line = f"당일 {broker} 보고서 발행"
+                a = tds[1].find("a")
+                if a and a.get("href"):
+                    try:
+                        d = requests.get("https://finance.naver.com/research/" + a["href"],
+                                         headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+                        d.encoding = "euc-kr"
+                        t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", d.text))
+                        tp = re.search(r"목표가\s*([\d,]+)", t)
+                        op = re.search(r"투자의견\s*([A-Za-z가-힣]+)", t)
+                        opinion = f" {op.group(1)}" if op else ""
+                        target = f", 목표가 {tp.group(1)}원" if tp else ""
+                        line = f"당일 {broker}{opinion} 보고서 발행{target}"
+                    except Exception:
+                        pass
+                reports[name] = line
+                time.sleep(0.2)
+    except Exception as e:
+        logger.warning(f"Naver research fetch failed: {e}")
+    if reports:
+        logger.info(f"Naver reports matched: {len(reports)}")
+    return reports
+
+
+def build_analysis_report(market_name, entries):
+    """예시 포맷의 '주요 상승 종목 현황' 텍스트 생성."""
+    if not entries:
+        return ""
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    lines = [f"✅ *{market_name} 주요 상승 종목 현황* ({now} 기준)"]
+    for e in entries:
+        lines.append("")
+        lines.append(f"*{e['name']}* ({e['mcap']}) {e['change']:+.1f}%")
+        if e.get("report"):
+            lines.append(e["report"])
+        for b in e.get("bullets", []):
+            lines.append(f"- {b}")
+    return "\n".join(lines)
+
+
 def analyze_strength_gemini(companies):
     """DeepSeek으로 52주 신고가 종목의 주가 강세 이유를 1~2줄씩 분석.
     Args:
@@ -303,7 +394,7 @@ def process_us():
     highs = find_52w_highs_yf(symbols, chunk_size=200)
     logger.info(f"US raw 52w highs: {len(highs)}")
     if not highs:
-        return None, "US: No 52-week highs found."
+        return None, "US: No 52-week highs found.", ""
 
     # Get sector + market cap from yfinance
     hit_tickers = [h['Symbol'] for h in highs]
@@ -347,13 +438,15 @@ def process_us():
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 
-    # 주가 강세 이유 분석 (DeepSeek)
-    strength_companies = [{'name': h['Name'], 'ticker': h['Symbol'], 'sector': h['Sector'],
-                           'country': h.get('Country', 'USA'), 'change': h['Change'],
-                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
-    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} US stocks...")
-    strength_map = analyze_strength_gemini(strength_companies)
-    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+    # 분석 리포트(구독 Claude): 종목별 상승 이유 2불릿
+    top_us = highs[:20]
+    bullets_us = analyze_strength_bullets([
+        {'name': h['Name'], 'ticker': h['Symbol'], 'sector': h['Sector'],
+         'change': h['Change'], 'news': news_map.get(h['Symbol'])} for h in top_us])
+    analysis_entries = [{'name': h['Name'], 'mcap': '$' + fmt_mcap_usd(h['MarketCap']),
+                         'change': h['Change'], 'bullets': bullets_us.get(h['Symbol'], [])}
+                        for h in top_us if bullets_us.get(h['Symbol'])]
+    analysis_text = build_analysis_report("🇺🇸 미국", analysis_entries)
 
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
@@ -363,9 +456,6 @@ def process_us():
         desc = desc_map.get(h['Symbol'])
         if desc:
             lines.append(f"📝 {desc}")
-        strength = strength_map.get(h['Symbol'])
-        if strength:
-            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -374,7 +464,7 @@ def process_us():
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
 
-    return len(highs), "\n".join(lines)
+    return len(highs), "\n".join(lines), analysis_text
 
 
 # ====================== KR ====================== #
@@ -415,7 +505,7 @@ def process_kr():
     highs = find_52w_highs_yf(yf_symbols, chunk_size=200)
     logger.info(f"KR raw 52w highs: {len(highs)}")
     if not highs:
-        return None, "KR: No 52-week highs found."
+        return None, "KR: No 52-week highs found.", ""
 
     # Get market cap from pykrx (efficient single call)
     mcap_map = {}
@@ -490,22 +580,24 @@ def process_kr():
     news_map = get_news_batch(top_yf_tickers)
     logger.info(f"Got news for {len(news_map)} stocks")
 
-    # 주가 강세 이유 분석 (DeepSeek)
-    strength_companies = [{'name': h['Name'], 'ticker': h['RawTicker'], 'sector': h['Sector'],
-                           'country': 'Korea', 'change': h['Change'],
-                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
-    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} KR stocks...")
-    strength_map = analyze_strength_gemini(strength_companies)
-    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+    # 분석 리포트(구독 Claude): 상승 이유 2불릿 + 네이버 당일 증권사 리포트
+    top_kr = highs[:25]
+    naver_reports = fetch_naver_reports([h['Name'] for h in top_kr])
+    bullets_kr = analyze_strength_bullets([
+        {'name': h['Name'], 'ticker': h['RawTicker'], 'sector': h['Sector'],
+         'change': h['Change'], 'news': news_map.get(h['Symbol']),
+         'report': naver_reports.get(h['Name'])} for h in top_kr])
+    analysis_entries = [{'name': h['Name'], 'mcap': fmt_mcap_krw(h['MarketCap']),
+                         'change': h['Change'], 'report': naver_reports.get(h['Name']),
+                         'bullets': bullets_kr.get(h['RawTicker'], [])}
+                        for h in top_kr if bullets_kr.get(h['RawTicker'])]
+    analysis_text = build_analysis_report("🇰🇷 한국", analysis_entries)
 
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
         lines.append(f"{i}. {h['Name']} #{h['RawTicker']}")
         lines.append(f"{h['Sector']} / Korea")
         lines.append(f"종가 {int(h['Close']):,} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 {fmt_mcap_krw(h['MarketCap'])}")
-        strength = strength_map.get(h['RawTicker'])
-        if strength:
-            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -514,7 +606,7 @@ def process_kr():
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
 
-    return len(highs), "\n".join(lines)
+    return len(highs), "\n".join(lines), analysis_text
 
 
 # ====================== JP ====================== #
@@ -545,7 +637,7 @@ def process_jp():
         df_jpx['Sector'] = df_jpx[sector_col].astype(str).str.strip()
     except Exception as e:
         logger.error(f"JPX listing error: {e}")
-        return None, "JP: Failed to load JPX listing."
+        return None, "JP: Failed to load JPX listing.", ""
 
     symbols = df_jpx['Symbol'].dropna().tolist()
     symbols = [s for s in symbols if s.endswith('.T') and len(s) <= 10]
@@ -560,7 +652,7 @@ def process_jp():
     highs = find_52w_highs_yf(symbols, chunk_size=200)
     logger.info(f"JP raw 52w highs: {len(highs)}")
     if not highs:
-        return None, "JP: No 52-week highs found."
+        return None, "JP: No 52-week highs found.", ""
 
     # Get market cap from yfinance (only for matching stocks)
     hit_tickers = [h['Symbol'] for h in highs]
@@ -601,13 +693,16 @@ def process_jp():
     desc_map = describe_companies_gemini(desc_companies)
     logger.info(f"Got descriptions for {len(desc_map)} stocks")
 
-    # 주가 강세 이유 분석 (DeepSeek)
-    strength_companies = [{'name': h['Name'], 'ticker': h['Symbol'].replace('.T', ''), 'sector': h['Sector'],
-                           'country': 'Japan', 'change': h['Change'],
-                           'news': news_map.get(h['Symbol'])} for h in highs[:30]]
-    logger.info(f"Fetching AI strength analysis for {len(strength_companies)} JP stocks...")
-    strength_map = analyze_strength_gemini(strength_companies)
-    logger.info(f"Got strength analysis for {len(strength_map)} stocks")
+    # 분석 리포트(구독 Claude): 종목별 상승 이유 2불릿
+    top_jp = highs[:20]
+    bullets_jp = analyze_strength_bullets([
+        {'name': h['Name'], 'ticker': h['Symbol'].replace('.T', ''), 'sector': h['Sector'],
+         'change': h['Change'], 'news': news_map.get(h['Symbol'])} for h in top_jp])
+    analysis_entries = [{'name': h['Name'][:25], 'mcap': '¥' + fmt_mcap_usd(h['MarketCap']),
+                         'change': h['Change'],
+                         'bullets': bullets_jp.get(h['Symbol'].replace('.T', ''), [])}
+                        for h in top_jp if bullets_jp.get(h['Symbol'].replace('.T', ''))]
+    analysis_text = build_analysis_report("🇯🇵 일본", analysis_entries)
 
     for i, h in enumerate(highs[:30], 1):
         chg_icon = "🟢" if h['Change'] >= 0 else "🔴"
@@ -618,9 +713,6 @@ def process_jp():
         desc = desc_map.get(ticker_short)
         if desc:
             lines.append(f"📝 {desc}")
-        strength = strength_map.get(ticker_short)
-        if strength:
-            lines.append(f"📈 {strength}")
         news = news_map.get(h['Symbol'])
         if news:
             lines.append(f"💬 {news}")
@@ -629,7 +721,32 @@ def process_jp():
     if len(highs) > 30:
         lines.append(f"... 외 {len(highs)-30}개 종목")
 
-    return len(highs), "\n".join(lines)
+    return len(highs), "\n".join(lines), analysis_text
+
+
+def send_long_message(token, chat_id, text):
+    """4000자 초과 시 문단 단위로 분할 발송. 전부 성공하면 True."""
+    if len(text) <= 4000:
+        res = send_telegram_message(token, chat_id, text)
+        return bool(res and res.get("ok"))
+    parts = text.split("\n\n")
+    chunks, current = [], ""
+    for part in parts:
+        if len(current) + len(part) + 2 > 4000:
+            if current:
+                chunks.append(current)
+            current = part
+        else:
+            current = current + "\n\n" + part if current else part
+    if current:
+        chunks.append(current)
+    ok = 0
+    for chunk in chunks:
+        res = send_telegram_message(token, chat_id, chunk)
+        if res and res.get("ok"):
+            ok += 1
+        time.sleep(1)
+    return ok == len(chunks)
 
 
 # ====================== Main ====================== #
@@ -647,44 +764,17 @@ def main():
         logger.info(f"Processing {market} market...")
         logger.info(f"{'='*50}")
         try:
-            count, report = processors[market]()
+            count, report, analysis = processors[market]()
             results[market] = (count, report)
 
-            # Send to Telegram
-            if TELEGRAM_BOT4_TOKEN and report:
+            if TELEGRAM_BOT4_TOKEN:
                 chat_id = TELEGRAM_TEST_CHAT_ID if args.test else TELEGRAM_SUPPLY_DATA_CHAT_ID
-                # Split if too long
-                if len(report) > 4000:
-                    parts = report.split("\n\n")
-                    chunks = []
-                    current = ""
-                    for part in parts:
-                        if len(current) + len(part) + 2 > 4000:
-                            if current:
-                                chunks.append(current)
-                            current = part
-                        else:
-                            current = current + "\n\n" + part if current else part
-                    if current:
-                        chunks.append(current)
-                    sent_ok = 0
-                    for chunk in chunks:
-                        res = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, chunk)
-                        if res and res.get("ok"):
-                            sent_ok += 1
-                        else:
-                            logger.error(f"{market} Telegram chunk send failed: {res}")
-                        time.sleep(1)
-                    if sent_ok == len(chunks):
-                        logger.info(f"{market} report sent to Telegram ({sent_ok} parts).")
-                    else:
-                        logger.error(f"{market} report partially sent: {sent_ok}/{len(chunks)} parts.")
-                else:
-                    res = send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, report)
-                    if res and res.get("ok"):
-                        logger.info(f"{market} report sent to Telegram.")
-                    else:
-                        logger.error(f"{market} Telegram send failed: {res}")
+                if report:
+                    ok = send_long_message(TELEGRAM_BOT4_TOKEN, chat_id, report)
+                    logger.info(f"{market} report sent." if ok else f"{market} report send FAILED.")
+                if analysis:
+                    ok = send_long_message(TELEGRAM_BOT4_TOKEN, chat_id, analysis)
+                    logger.info(f"{market} analysis sent." if ok else f"{market} analysis send FAILED.")
         except Exception as e:
             logger.error(f"{market} processing failed: {e}", exc_info=True)
             results[market] = (0, f"{market}: Error - {e}")
