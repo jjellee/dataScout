@@ -290,7 +290,8 @@ def fetch_latest_news_headlines(company_name):
             articles = []
             seen_titles = set()
             for a in links:
-                title = a.text.strip()
+                # 네이버 접근성 텍스트('새 창 열림' 등) 제거
+                title = a.text.replace('새 창 열림', '').strip()
                 link_url = a.get('href', '')
                 if title and title not in seen_titles and link_url:
                     seen_titles.add(title)
@@ -347,9 +348,9 @@ def format_telegram_caption(ticker, name, date_str, latest_row):
             val = 0.0
         val_in_100m = val / 1e8
         if val_in_100m > 0:
-            val_str = f"+{val_in_100m:.1f}억"
+            val_str = f"+{val_in_100m:,.1f}억"
         elif val_in_100m < 0:
-            val_str = f"{val_in_100m:.1f}억"
+            val_str = f"{val_in_100m:,.1f}억"
         else:
             val_str = "0.0억"
             
@@ -361,7 +362,7 @@ def format_telegram_caption(ticker, name, date_str, latest_row):
         short_val = 0.0
     if short_ratio is None or (isinstance(short_ratio, float) and math.isnan(short_ratio)):
         short_ratio = 0.0
-    caption += f"   공매도: {short_val / 1e8:.1f}억 ({short_ratio:.1f}%)\n"
+    caption += f"   공매도: {short_val / 1e8:,.1f}억 ({short_ratio:.1f}%)\n"
     
     headlines = fetch_latest_news_headlines(name)
     if headlines:
