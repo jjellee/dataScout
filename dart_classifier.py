@@ -68,8 +68,11 @@ def load_cache():
 def save_cache(cache):
     os.makedirs(os.path.dirname(CACHE_PATH), exist_ok=True)
     try:
-        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+        # 원자적 쓰기 — 저장 중에 병렬 --fast 빌드가 읽어도 깨진 JSON을 보지 않는다
+        tmp_path = CACHE_PATH + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(cache, f, ensure_ascii=False, indent=4)
+        os.replace(tmp_path, CACHE_PATH)
     except Exception as e:
         logger.error(f"Failed to save cache: {e}")
 
@@ -396,6 +399,9 @@ def find_original_disclosure_on_disk(corp_code, base_type, orig_date, workspace_
     return None
 
 # Cache for closing price lookups
+# FAST 모드: 캐시만 사용(네트워크 종가조회·LLM 보강·캐시 저장 생략) — 엑셀 생성/업로드를 검증과 분리
+FAST_MODE = False
+
 CLOSING_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "closing_price_cache.json")
 _closing_price_cache = {}
 
@@ -416,9 +422,11 @@ def load_closing_price_cache():
 def save_closing_price_cache():
     try:
         os.makedirs(os.path.dirname(CLOSING_CACHE_FILE), exist_ok=True)
-        with open(CLOSING_CACHE_FILE, "w") as f:
+        tmp_path = CLOSING_CACHE_FILE + ".tmp"
+        with open(tmp_path, "w") as f:
             raw_cache = {f"{k[0]}:{k[1]}": v for k, v in _closing_price_cache.items()}
             json.dump(raw_cache, f)
+        os.replace(tmp_path, CLOSING_CACHE_FILE)
         logger.info(f"Saved {len(_closing_price_cache)} closing prices to cache.")
     except Exception as e:
         logger.warning(f"Failed to save closing price cache: {e}")
@@ -450,7 +458,11 @@ def get_closing_price(stock_code, date_str):
     cache_key = (stock_code, normalized)
     if cache_key in _closing_price_cache:
         return _closing_price_cache[cache_key]
-    
+
+    if FAST_MODE:
+        # 업로드 경로에서는 네트워크 조회 금지 — 캐시 미스는 백그라운드 검증(--parse-only)이 채운다
+        return None
+
     try:
         # Use Naver Finance API for fast, reliable closing price
         url = f"https://api.finance.naver.com/siseJson.naver"
@@ -1805,8 +1817,11 @@ def send_telegram_message(token, chat_id, text, max_retries=3):
         break
     return False
 
-def build_excel_summary(workspace_dir):
-    """Scans disclosures, aggregates them, processes mezzanine/contracts/investments option info, resolves amendments, creates formatted Excel."""
+def build_excel_summary(workspace_dir, parse_only=False):
+    """Scans disclosures, aggregates them, processes mezzanine/contracts/investments option info, resolves amendments, creates formatted Excel.
+
+    parse_only=True: 파싱·보강·캐시 저장까지만 수행하고 엑셀 생성은 생략 (백그라운드 검증용).
+    """
     logger.info("Scanning disclosures in data_dart directory...")
     json_paths = sorted(glob.glob(os.path.join(workspace_dir, "data_dart", "202*", "disclosures.json")))
     
@@ -1945,7 +1960,7 @@ def build_excel_summary(workspace_dir):
                 # DeepSeek 보강 healing: 정규식이 옵션일을 못 뽑았지만(-) 옵션 서술문은 실제로 있고
                 # 아직 LLM 처리를 안 한 캐시 레코드만 1회 호출한다(option_llm_done 플래그로 중복방지).
                 d = record_detail.get("data", {})
-                if DEEPSEEK_API_KEY and isinstance(d, dict) and not d.get("option_llm_done"):
+                if DEEPSEEK_API_KEY and not FAST_MODE and isinstance(d, dict) and not d.get("option_llm_done"):
                     call_opt = d.get("call_option_info", "")
                     put_opt = d.get("put_option_info", "")
                     need_call = _looks_like_real_option_text(call_opt)
@@ -2249,9 +2264,15 @@ def build_excel_summary(workspace_dir):
         if not is_bad:
             cache[rcept_no] = record_detail
             
-        parsed_records.append(record_detail)        
-    save_cache(cache)
-    
+        parsed_records.append(record_detail)
+    if not FAST_MODE:
+        # FAST 모드는 캐시를 저장하지 않는다 — 동시에 도는 --parse-only의 저장분을 덮어쓰지 않기 위함
+        save_cache(cache)
+    if parse_only:
+        logger.info("Parse-only run finished: caches saved, skipping Excel build.")
+        save_closing_price_cache()
+        return True
+
     # -------------------------------------------------------------
     # Resolving Amendments ('정정' 공시 연동 및 수정 처리)
     # -------------------------------------------------------------
@@ -2609,7 +2630,8 @@ def build_excel_summary(workspace_dir):
         ordered += [wb[name] for name in wb.sheetnames if name not in desired_order]
         wb._sheets = ordered
 
-    save_closing_price_cache()
+    if not FAST_MODE:
+        save_closing_price_cache()
     logger.info(f"Excel file built successfully: {excel_path}")
     return True
 
@@ -3147,12 +3169,24 @@ def format_treasury_sheet(ws):
 def main():
     parser = argparse.ArgumentParser(description="DART Disclosure Classifier & Mezzanine/Contracts/Investments Parser")
     parser.add_argument("--upload", action="store_true", help="Upload the compiled Excel to Telegram")
+    parser.add_argument("--fast", action="store_true",
+                        help="캐시만 사용해 즉시 엑셀 생성 (네트워크 종가조회·LLM 보강·캐시 저장 생략)")
+    parser.add_argument("--parse-only", action="store_true",
+                        help="파싱·보강·캐시 저장만 수행, 엑셀 생성/업로드 생략 (백그라운드 검증용)")
     args = parser.parse_args()
-    
+
+    if args.fast and args.parse_only:
+        parser.error("--fast and --parse-only are mutually exclusive")
+    if args.fast:
+        global FAST_MODE
+        FAST_MODE = True
+
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
-    
+
     # 1. Compile summary and options
-    success = build_excel_summary(workspace_dir)
+    success = build_excel_summary(workspace_dir, parse_only=args.parse_only)
+    if args.parse_only:
+        return
     
     # 2. Upload to Telegram if requested
     if success and args.upload:
