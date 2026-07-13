@@ -1920,7 +1920,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
             
             # Auto-healing: 유상/무상증자인데 조달금액이 비어있으면(예: 자금목적 항목이 전부 "-"인 제3자배정)
             # HTML을 재파싱해 신주수×발행가액 fallback 로직으로 조달금액을 다시 채운다.
-            if base_type in ["유상증자", "무상증자"]:
+            # (FAST 모드는 치유용 HTML 재파싱을 전부 생략 — --parse-only가 캐시에 반영한다)
+            if not FAST_MODE and base_type in ["유상증자", "무상증자"]:
                 d = record_detail.get("data") or {}
                 if not d.get("total_amount"):
                     html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -1937,7 +1938,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
                             record_detail["data"] = d
                             cache[rcept_no] = record_detail
 
-            if is_treasury and (cached_is_other or not record_detail.get("data")):
+            if not FAST_MODE and is_treasury and (cached_is_other or not record_detail.get("data")):
                 record_detail["category"] = "재무_자기주식"
                 record_detail["base_type"] = base_type
                 html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -1958,7 +1959,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
             # Re-run option date extraction only if missing from cache
             if base_type in ["CB", "BW", "EB"]:
                 data_dct = record_detail.get("data", {})
-                if "call_start" not in data_dct or "put_start" not in data_dct or "call_option_info" not in data_dct:
+                if not FAST_MODE and ("call_start" not in data_dct or "put_start" not in data_dct or "call_option_info" not in data_dct):
                     html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
                     call_opt, put_opt = parse_html_options(html_path)
                     call_start = extract_option_start_date(call_opt, "call")
@@ -2025,6 +2026,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     _hp = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
                     if os.path.exists(_hp):
                         needs_reparse = True
+                if FAST_MODE:
+                    needs_reparse = False
                 if needs_reparse:
                     rn = report_nm
                     if '대량보유상황보고서' in rn:
@@ -2755,7 +2758,9 @@ def format_officer_sheet(ws):
     font_neg = Font(name="Malgun Gothic", size=9, color="0000FF")
     font_pos = Font(name="Malgun Gothic", size=9, color="FF0000")
 
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -2764,8 +2769,8 @@ def format_officer_sheet(ws):
     ws.row_dimensions[1].height = 25
     ws.sheet_format.defaultRowHeight = 22
 
-    for row_idx in range(2, ws.max_row + 1):
-        for col_idx in range(1, ws.max_column + 1):
+    for row_idx in range(2, _max_row + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -2828,14 +2833,16 @@ def format_category_sheet(ws):
     align_center = Alignment(horizontal="center", vertical="center")
     align_left = Alignment(horizontal="left", vertical="center")
 
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
         cell.alignment = align_center
 
-    for row_idx in range(2, ws.max_row + 1):
-        for col_idx in range(1, ws.max_column + 1):
+    for row_idx in range(2, _max_row + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -2849,7 +2856,7 @@ def format_category_sheet(ws):
                 cell.alignment = align_left
 
     # 열 너비 자동 맞춤은 상위 2,000행 샘플만 스캔 (10만 행 전수 스캔은 수 분 소요)
-    for col_cells in ws.iter_cols(min_row=1, max_row=min(ws.max_row, 2000)):
+    for col_cells in ws.iter_cols(min_row=1, max_row=min(_max_row, 2000)):
         max_len = 0
         col_letter = get_column_letter(col_cells[0].column)
         for cell in col_cells:
@@ -2882,7 +2889,9 @@ def format_fundraising_sheet(ws):
     eb_fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid") # Soft yellow
     cap_fill = PatternFill(start_color="DDEBF7", end_color="DDEBF7", fill_type="solid") # Soft blue
     
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -2890,12 +2899,12 @@ def format_fundraising_sheet(ws):
         
     ws.row_dimensions[1].height = 25
     
-    for row_idx in range(2, ws.max_row + 1):
+    for row_idx in range(2, _max_row + 1):
         ws.row_dimensions[row_idx].height = 36 # Moderately tall row height
         
         type_cell = ws.cell(row=row_idx, column=6)
         
-        for col_idx in range(1, ws.max_column + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -2968,7 +2977,9 @@ def format_contract_sheet(ws):
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
     
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -2976,10 +2987,10 @@ def format_contract_sheet(ws):
         
     ws.row_dimensions[1].height = 25
     
-    for row_idx in range(2, ws.max_row + 1):
+    for row_idx in range(2, _max_row + 1):
         ws.row_dimensions[row_idx].height = 36
         
-        for col_idx in range(1, ws.max_column + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -3033,7 +3044,9 @@ def format_facility_sheet(ws):
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
     
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -3041,10 +3054,10 @@ def format_facility_sheet(ws):
         
     ws.row_dimensions[1].height = 25
     
-    for row_idx in range(2, ws.max_row + 1):
+    for row_idx in range(2, _max_row + 1):
         ws.row_dimensions[row_idx].height = 36
         
-        for col_idx in range(1, ws.max_column + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -3096,7 +3109,9 @@ def format_financial_sheet(ws):
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
     
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -3104,10 +3119,10 @@ def format_financial_sheet(ws):
         
     ws.row_dimensions[1].height = 25
     
-    for row_idx in range(2, ws.max_row + 1):
+    for row_idx in range(2, _max_row + 1):
         ws.row_dimensions[row_idx].height = 36
         
-        for col_idx in range(1, ws.max_column + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
@@ -3161,7 +3176,9 @@ def format_treasury_sheet(ws):
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
     
-    for col_idx in range(1, ws.max_column + 1):
+    # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
@@ -3169,10 +3186,10 @@ def format_treasury_sheet(ws):
         
     ws.row_dimensions[1].height = 25
     
-    for row_idx in range(2, ws.max_row + 1):
+    for row_idx in range(2, _max_row + 1):
         ws.row_dimensions[row_idx].height = 36
         
-        for col_idx in range(1, ws.max_column + 1):
+        for col_idx in range(1, _max_col + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
