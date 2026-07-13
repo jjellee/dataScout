@@ -724,6 +724,99 @@ def process_jp():
     return len(highs), "\n".join(lines), analysis_text
 
 
+
+# ====================== CN ====================== #
+def process_cn():
+    logger.info("=== CN 52-Week High Monitor (상해+심천 A주) ===")
+
+    # FDR 리스팅: SSE(.SS) + SZSE(.SZ)
+    yf_symbols = []
+    info_map = {}
+    for mkt, suffix in (("SSE", ".SS"), ("SZSE", ".SZ")):
+        try:
+            d = fdr.StockListing(mkt)
+            for _, row in d.iterrows():
+                sym = str(row["Symbol"]).strip()
+                if not sym.isdigit():
+                    continue
+                yf_sym = sym + suffix
+                yf_symbols.append(yf_sym)
+                info_map[yf_sym] = {"Name": str(row.get("Name", sym)).strip(),
+                                    "Sector": str(row.get("Industry", "")).strip() or "기타"}
+        except Exception as e:
+            logger.error(f"FDR {mkt}: {e}")
+    logger.info(f"CN tickers: {len(yf_symbols)}")
+    if not yf_symbols:
+        return None, "CN: Failed to load listings.", ""
+
+    highs = find_52w_highs_yf(yf_symbols, chunk_size=200)
+    logger.info(f"CN raw 52w highs: {len(highs)}")
+    if not highs:
+        return None, "CN: No 52-week highs found.", ""
+
+    hit_tickers = [h["Symbol"] for h in highs]
+    logger.info(f"Fetching mcap for {len(hit_tickers)} CN stocks...")
+    infos = get_yf_info_batch(hit_tickers, fields=("marketCap",))
+
+    for h in highs:
+        meta = info_map.get(h["Symbol"], {})
+        h["Name"] = meta.get("Name", h["Symbol"])
+        h["Sector"] = meta.get("Sector", "기타")
+        h["MarketCap"] = (infos.get(h["Symbol"], {}).get("marketCap", 0)) or 0
+
+    # 시총 100억 위안(~2조원) 이상
+    highs = [h for h in highs if h["MarketCap"] >= 1e10]
+    highs.sort(key=lambda x: x["Change"], reverse=True)
+    logger.info(f"CN after mcap filter: {len(highs)}")
+
+    sec_counts = {}
+    for h in highs:
+        sec_counts[h["Sector"]] = sec_counts.get(h["Sector"], 0) + 1
+    sec_str = " | ".join(f"{s} {c}개" for s, c in sorted(sec_counts.items(), key=lambda x: -x[1]))
+
+    date_str = highs[0]["Date"] if highs else str(datetime.date.today())
+    lines = [f"🇨🇳 *52주 신고가 달성 주식 ({date_str})*"]
+    lines.append(f"📊 섹터 집계: {sec_str}\n")
+
+    top_cn = highs[:20]
+    news_map = get_news_batch([h["Symbol"] for h in top_cn])
+
+    # 기업 소개 (DeepSeek)
+    desc_companies = [{"name": h["Name"], "ticker": h["Symbol"].split(".")[0], "sector": h["Sector"],
+                       "country": "China"} for h in top_cn]
+    desc_map = describe_companies_gemini(desc_companies)
+
+    # 분석 리포트(구독 Claude)
+    bullets_cn = analyze_strength_bullets([
+        {"name": h["Name"], "ticker": h["Symbol"].split(".")[0], "sector": h["Sector"],
+         "change": h["Change"], "news": news_map.get(h["Symbol"])} for h in top_cn])
+    analysis_entries = [{"name": h["Name"][:30], "mcap": "CN¥" + fmt_mcap_usd(h["MarketCap"]),
+                         "change": h["Change"],
+                         "bullets": bullets_cn.get(h["Symbol"].split(".")[0], [])}
+                        for h in top_cn if bullets_cn.get(h["Symbol"].split(".")[0])]
+    analysis_text = build_analysis_report("🇨🇳 중국", analysis_entries)
+
+    for i, h in enumerate(highs[:30], 1):
+        chg_icon = "🟢" if h["Change"] >= 0 else "🔴"
+        ticker_short = h["Symbol"].split(".")[0]
+        mkt_tag = "상해" if h["Symbol"].endswith(".SS") else "심천"
+        lines.append(f"{i}. {h['Name'][:30]} #{ticker_short}")
+        lines.append(f"{h['Sector']} / {mkt_tag}")
+        lines.append(f"종가 {h['Close']:,.2f} | {'상승' if h['Change']>=0 else '하락'} {chg_icon} {abs(h['Change']):.2f}% | 시총 CN¥{fmt_mcap_usd(h['MarketCap'])}")
+        desc = desc_map.get(ticker_short)
+        if desc:
+            lines.append(f"📝 {desc}")
+        news = news_map.get(h["Symbol"])
+        if news:
+            lines.append(f"💬 {news}")
+        lines.append("")
+
+    if len(highs) > 30:
+        lines.append(f"... 외 {len(highs)-30}개 종목")
+
+    return len(highs), "\n".join(lines), analysis_text
+
+
 def send_long_message(token, chat_id, text):
     """4000자 초과 시 문단 단위로 분할 발송. 전부 성공하면 True."""
     if len(text) <= 4000:
@@ -752,12 +845,12 @@ def send_long_message(token, chat_id, text):
 # ====================== Main ====================== #
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--market", nargs="+", default=["US", "KR", "JP"], choices=["US", "KR", "JP"])
+    parser.add_argument("--market", nargs="+", default=["US", "KR", "JP", "CN"], choices=["US", "KR", "JP", "CN"])
     parser.add_argument("--test", action="store_true", help="Send to test channel")
     args = parser.parse_args()
 
     results = {}
-    processors = {"US": process_us, "KR": process_kr, "JP": process_jp}
+    processors = {"US": process_us, "KR": process_kr, "JP": process_jp, "CN": process_cn}
 
     for market in args.market:
         logger.info(f"\n{'='*50}")
