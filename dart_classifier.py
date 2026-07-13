@@ -2644,7 +2644,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
     if not FAST_MODE:
         save_closing_price_cache()
     logger.info(f"Excel file built successfully: {excel_path}")
-    return True
+    # 실제 저장 경로를 반환 — 자정 넘김 시 업로드 단계에서 날짜를 재계산하면 파일을 못 찾는다
+    return excel_path
 
 def dedup_officer_rows(rows):
     """5%_임원보고 사실상 동일 거래 행 중복 제거.
@@ -3211,8 +3212,10 @@ def main():
     
     # 2. Upload to Telegram if requested
     if success and args.upload:
-        excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
-        
+        # build가 반환한 실제 경로 사용 (자정 넘김 시 날짜 재계산하면 어긋남)
+        excel_path = success if isinstance(success, str) else \
+            os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
+
         if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_SUPPLY_DATA_CHAT_ID:
             logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_SUPPLY_DATA_CHAT_ID in env.")
             return
