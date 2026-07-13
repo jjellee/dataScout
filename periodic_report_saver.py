@@ -61,16 +61,16 @@ def save_json(path, obj):
 
 
 def quarter_label(report_nm):
-    """'분기보고서 (2026.03)' → 2026Q1 / 반기→Q2 / (YYYY.09)→Q3 / 사업보고서→Q4(연간)"""
-    nm = report_nm.replace(" ", "")
-    m = re.search(r"\((\d{4})[.](\d{2})\)", nm)
+    """기간 종료월 기준 캘린더 분기 라벨: '(2026.03)' → 2026Q1.
+
+    보고서 유형(사업/반기) 기준이 아닌 종료월 기준이라 12월 결산이 아닌
+    법인(예: 9월 결산 한스바이오메드)에서도 라벨이 충돌하지 않는다.
+    12월 결산사는 기존 라벨과 동일하다.
+    """
+    m = re.search(r"\((\d{4})[.](\d{2})\)", report_nm.replace(" ", ""))
     if not m:
         return None
     y, mo = m.group(1), int(m.group(2))
-    if nm.startswith("사업보고서"):
-        return f"{y}Q4"
-    if nm.startswith("반기보고서"):
-        return f"{y}Q2"
     q = {3: 1, 6: 2, 9: 3, 12: 4}.get(mo)
     return f"{y}Q{q}" if q else None
 
