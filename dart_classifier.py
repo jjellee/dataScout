@@ -2367,6 +2367,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
     today_str = datetime.datetime.now().strftime('%Y%m%d')
     excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{today_str}.xlsx")
     
+    logger.info("Excel: start building workbook...")
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
         
         # (Sheets for 정기공시 and 지분공시 have been removed as requested)
@@ -2410,6 +2411,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_fund = pd.DataFrame(fund_data_list)
         if '접수일자' in df_fund.columns:
             df_fund = df_fund.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [자금조달_증자] ...")
         df_fund.to_excel(writer, sheet_name="자금조달_증자", index=False)
         format_fundraising_sheet(writer.sheets["자금조달_증자"])
         
@@ -2438,6 +2440,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_contract = pd.DataFrame(contract_data_list)
         if '접수일자' in df_contract.columns:
             df_contract = df_contract.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [영업활동_계약] ...")
         df_contract.to_excel(writer, sheet_name="영업활동_계약", index=False)
         format_contract_sheet(writer.sheets["영업활동_계약"])
         
@@ -2463,6 +2466,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_facility = pd.DataFrame(facility_data_list)
         if '접수일자' in df_facility.columns:
             df_facility = df_facility.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [신규시설투자] ...")
         df_facility.to_excel(writer, sheet_name="신규시설투자", index=False)
         format_facility_sheet(writer.sheets["신규시설투자"])
         
@@ -2493,6 +2497,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_fin = pd.DataFrame(fin_data_list)
         if '접수일자' in df_fin.columns:
             df_fin = df_fin.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [재무_채무보증] ...")
         df_fin.to_excel(writer, sheet_name="재무_채무보증", index=False)
         format_financial_sheet(writer.sheets["재무_채무보증"])
         
@@ -2529,6 +2534,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_treasury = pd.DataFrame(treasury_data_list)
         if '접수일자' in df_treasury.columns:
             df_treasury = df_treasury.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [재무_자기주식] ...")
         df_treasury.to_excel(writer, sheet_name="재무_자기주식", index=False)
         format_treasury_sheet(writer.sheets["재무_자기주식"])
         
@@ -2546,6 +2552,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         } for r in gov_rows])
         if '접수일자' in df_gov.columns:
             df_gov = df_gov.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [경영권_지배구조] ...")
         df_gov.to_excel(writer, sheet_name="경영권_지배구조", index=False)
         format_category_sheet(writer.sheets["경영권_지배구조"])
         
@@ -2563,6 +2570,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         } for r in etc_rows])
         if '접수일자' in df_etc.columns:
             df_etc = df_etc.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [기타공시] ...")
         df_etc.to_excel(writer, sheet_name="기타공시", index=False)
         format_category_sheet(writer.sheets["기타공시"])
         
@@ -2612,12 +2620,14 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_officer = pd.DataFrame(deduped_list)
         if '접수일자' in df_officer.columns:
             df_officer = df_officer.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [5%_임원보고] ...")
         df_officer.to_excel(writer, sheet_name="5%_임원보고", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고"])
 
         df_officer_raw = pd.DataFrame(officer_data_list)
         if '접수일자' in df_officer_raw.columns:
             df_officer_raw = df_officer_raw.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [5%_임원보고 원본] ...")
         df_officer_raw.to_excel(writer, sheet_name="5%_임원보고 원본", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고 원본"])
 
@@ -2629,6 +2639,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         # desired_order에 없는 시트(향후 추가분)는 기존 순서대로 뒤에 붙인다
         ordered += [wb[name] for name in wb.sheetnames if name not in desired_order]
         wb._sheets = ordered
+        logger.info("Excel: saving workbook to disk (zip write)...")
 
     if not FAST_MODE:
         save_closing_price_cache()
@@ -2701,56 +2712,62 @@ def format_officer_sheet(ws):
     
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
-    
+
+    # 스타일 객체는 불변 — 셀마다 새로 만들면 20만 행 기준 수 분이 더 걸린다. 공유 인스턴스 사용
+    align_center = Alignment(horizontal="center", vertical="center")
+    align_right = Alignment(horizontal="right", vertical="center")
+    align_left = Alignment(horizontal="left", vertical="center")
+    font_neg = Font(name="Malgun Gothic", size=9, color="FF0000")
+    font_pos = Font(name="Malgun Gothic", size=9, color="0000FF")
+
     for col_idx in range(1, ws.max_column + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
-        cell.alignment = Alignment(horizontal="center", vertical="center")
-        
+        cell.alignment = align_center
+
     ws.row_dimensions[1].height = 25
-    
+    ws.sheet_format.defaultRowHeight = 22
+
     for row_idx in range(2, ws.max_row + 1):
-        ws.row_dimensions[row_idx].height = 22
-        
         for col_idx in range(1, ws.max_column + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
-            
+
             if col_idx in [1, 3, 4, 15]:  # 접수일자, 종목코드, 보고구분, 접수번호
-                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.alignment = align_center
             elif col_idx == 16:  # DART링크
-                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.alignment = align_center
                 cell.font = link_font
             elif col_idx in [8, 10]:  # 증감(주), 거래액(원)
                 cell.number_format = '#,##0'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
                 # Color negative red, positive blue
                 if isinstance(cell.value, (int, float)):
                     if cell.value < 0:
-                        cell.font = Font(name="Malgun Gothic", size=9, color="FF0000")
+                        cell.font = font_neg
                     elif cell.value > 0:
-                        cell.font = Font(name="Malgun Gothic", size=9, color="0000FF")
+                        cell.font = font_pos
             elif col_idx == 9:  # 단가(원)
                 cell.number_format = '#,##0'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
             elif col_idx == 11:  # 변동전 보유(주)
                 cell.number_format = '#,##0'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
             elif col_idx == 12:  # 변동전 비율(%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
             elif col_idx == 13:  # 변동후 보유(주)
                 cell.number_format = '#,##0'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
             elif col_idx == 14:  # 보유비율(%)
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
-                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.alignment = align_right
             else:
-                cell.alignment = Alignment(horizontal="left", vertical="center")
+                cell.alignment = align_left
                 
     # Column widths
     col_widths = {1: 12, 2: 16, 3: 10, 4: 10, 5: 20, 6: 14, 7: 14,
@@ -2773,30 +2790,34 @@ def format_category_sheet(ws):
     border_side = Side(border_style="thin", color="D3D3D3")
     data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
     
+    align_center = Alignment(horizontal="center", vertical="center")
+    align_left = Alignment(horizontal="left", vertical="center")
+
     for col_idx in range(1, ws.max_column + 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.font = header_font
         cell.fill = header_fill
-        cell.alignment = Alignment(horizontal="center", vertical="center")
-        
+        cell.alignment = align_center
+
     for row_idx in range(2, ws.max_row + 1):
         for col_idx in range(1, ws.max_column + 1):
             cell = ws.cell(row=row_idx, column=col_idx)
             cell.font = data_font
             cell.border = data_border
-            
+
             if col_idx in [1, 3, 4, 7]: # 접수일자, 시장구분, 종목코드, 접수번호
-                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.alignment = align_center
             elif col_idx in [8]: # DART링크 (hyperlink formula)
-                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.alignment = align_center
                 cell.font = link_font
             else:
-                cell.alignment = Alignment(horizontal="left", vertical="center")
-                
-    for col in ws.columns:
+                cell.alignment = align_left
+
+    # 열 너비 자동 맞춤은 상위 2,000행 샘플만 스캔 (10만 행 전수 스캔은 수 분 소요)
+    for col_cells in ws.iter_cols(min_row=1, max_row=min(ws.max_row, 2000)):
         max_len = 0
-        col_letter = get_column_letter(col[0].column)
-        for cell in col:
+        col_letter = get_column_letter(col_cells[0].column)
+        for cell in col_cells:
             val = str(cell.value or '')
             if val.startswith("="):
                 val = "공시열람"
