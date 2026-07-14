@@ -38,7 +38,7 @@ def load_env():
 
 load_env()
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
-TELEGRAM_JJANG_GU_CHAT_ID = os.getenv("TELEGRAM_JJANG_GU_CHAT_ID") or "-1003877753638"
+TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID") or "-1003877753638"
 SEC_USER_AGENT = "Norbot norbot.trading@gmail.com"  # Essential for SEC EDGAR API
 
 def get_us_market_movers():
@@ -260,11 +260,11 @@ def save_insider_transactions_to_excel(transactions):
     """
     Saves the list of insider transactions cumulatively into an Excel file.
     Deduplicates based on filing_url, ticker, insider, shares, price, and type.
-    Returns True if new transactions were added.
+    Returns (is_updated, new_rows): 새로 추가된 거래 dict 리스트 포함.
     """
     if not transactions:
-        return False
-        
+        return False, []
+
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
     output_dir = os.path.join(workspace_dir, "data_us")
     os.makedirs(output_dir, exist_ok=True)
@@ -273,8 +273,9 @@ def save_insider_transactions_to_excel(transactions):
     df_new = pd.DataFrame(transactions)
     if 'is_meaningful' in df_new.columns:
         df_new = df_new.drop(columns=['is_meaningful'])
-    
+
     old_row_count = 0
+    df_old = None
     if os.path.exists(excel_path):
         try:
             df_old = pd.read_excel(excel_path)
@@ -295,7 +296,17 @@ def save_insider_transactions_to_excel(transactions):
         dup_cols.append('filing_url')
         
     df_combined = df_combined.drop_duplicates(subset=dup_cols, keep='first')
-    
+
+    # 이번 실행에서 실제로 새로 추가된 거래 식별 (LLM 투자 코멘트용)
+    avail_cols = [c for c in dup_cols if c in df_new.columns]
+    if df_old is not None and all(c in df_old.columns for c in avail_cols):
+        old_keys = set(map(tuple, df_old[avail_cols].astype(str).values))
+    else:
+        old_keys = set()
+    df_added = df_new.drop_duplicates(subset=avail_cols)
+    df_added = df_added[~df_added[avail_cols].astype(str).apply(tuple, axis=1).isin(old_keys)]
+    new_rows = df_added.to_dict('records')
+
     # Sort by filing_date descending (if available)
     if 'filing_date' in df_combined.columns:
         df_combined = df_combined.sort_values(by='filing_date', ascending=False)
@@ -360,11 +371,42 @@ def save_insider_transactions_to_excel(transactions):
                 
         logger.info(f"Successfully saved {len(df_combined)} cumulative insider transactions to {excel_path}")
         if len(df_combined) > old_row_count:
-            return True
+            return True, new_rows
     except Exception as e:
         logger.error(f"Failed to save cumulative Excel file: {e}")
-        
-    return False
+
+    return False, []
+
+
+def build_insider_investment_comment(new_rows):
+    """새로 추가된 내부자 거래에서 투자 관점 주목 포인트를 LLM으로 요약 (실패 시 "")."""
+    rows = [r for r in new_rows if r.get('value')]
+    if not rows:
+        return ""
+    rows = sorted(rows, key=lambda r: r.get('value', 0), reverse=True)[:30]
+    lines = []
+    for r in rows:
+        lines.append(f"{r.get('ticker')} | {r.get('company')} | {r.get('insider')} ({r.get('role')}) | "
+                     f"{r.get('type')} | {int(r.get('shares') or 0):,}주 @ ${r.get('price') or 0:.2f} | "
+                     f"총액 ${r.get('value') or 0:,.0f} | {r.get('filing_date')}")
+    prompt = (
+        "다음은 SEC Form 4에 새로 보고된 미국 기업 내부자 거래 목록이다.\n"
+        "투자 관점에서 주목할 만한 포인트만 골라 한국어 불릿 2~4개로 아주 간단히 짚어줘.\n"
+        "- 우선순위: CEO/CFO 등 핵심 임원의 자사주 직접 매수 > 여러 임원 동시 매수(클러스터) > 이례적 대형 매도.\n"
+        "- 각 불릿은 '• 티커: 내용' 형식 1줄, 수치는 목록의 값을 그대로 인용.\n"
+        "- 루틴한 소규모 매도, 보상성 지급(수령가 $0 등)은 언급하지 마.\n"
+        "- 주목할 것이 없으면 '특이사항 없음' 한 줄만 출력.\n"
+        "- 설명이나 서두 없이 불릿만 출력해.\n\n" + "\n".join(lines)
+    )
+    try:
+        from llm_client import smart_chat
+        comment = (smart_chat(prompt, max_tokens=500) or "").strip()
+        if comment and len(comment) > 700:
+            comment = comment[:700].rsplit("\n", 1)[0]
+        return comment
+    except Exception as e:
+        logger.warning(f"Insider comment generation failed: {e}")
+        return ""
 
 def send_telegram_document(token, chat_id, file_path, caption=None):
     """Sends a document/file to Telegram."""
@@ -432,15 +474,19 @@ def main():
     insiders = get_sec_insider_transactions()
     
     # Save all parsed transactions to Excel and check if updated
-    is_updated = save_insider_transactions_to_excel(insiders)
-    
+    is_updated, new_rows = save_insider_transactions_to_excel(insiders)
+
     if is_updated:
         workspace_dir = os.path.dirname(os.path.abspath(__file__))
         excel_path = os.path.join(workspace_dir, "data_us", "us_insider_transactions.xlsx")
-        if TELEGRAM_BOT4_TOKEN and TELEGRAM_JJANG_GU_CHAT_ID:
-            logger.info(f"Uploading updated Excel sheet to Telegram chat: {TELEGRAM_JJANG_GU_CHAT_ID}...")
+        if TELEGRAM_BOT4_TOKEN and TELEGRAM_SUPPLY_DATA_CHAT_ID:
+            logger.info(f"Uploading updated Excel sheet to Telegram chat: {TELEGRAM_SUPPLY_DATA_CHAT_ID}...")
             caption_text = "📁 *[미국 내부자 지분 변동 Excel 업데이트]*\n새로운 내부자 거래가 추가되어 누적 엑셀 파일을 업로드합니다."
-            res_file = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, excel_path, caption=caption_text)
+            comment = build_insider_investment_comment(new_rows)
+            if comment:
+                caption_text += f"\n\n💡 *투자 관점 주목 포인트*\n{comment}"
+                caption_text = caption_text[:1020]  # Telegram 캡션 한도(1024) 보호
+            res_file = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_SUPPLY_DATA_CHAT_ID, excel_path, caption=caption_text)
             if res_file and res_file.get("ok"):
                 logger.info("Successfully uploaded Excel sheet to Telegram.")
             else:
@@ -500,9 +546,9 @@ def main():
     report_text = "\n".join(report_lines)
     
     # Send to Telegram
-    if TELEGRAM_BOT4_TOKEN and TELEGRAM_JJANG_GU_CHAT_ID:
-        logger.info(f"Uploading US Market Report to Telegram chat: {TELEGRAM_JJANG_GU_CHAT_ID}...")
-        res = send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_JJANG_GU_CHAT_ID, report_text)
+    if TELEGRAM_BOT4_TOKEN and TELEGRAM_SUPPLY_DATA_CHAT_ID:
+        logger.info(f"Uploading US Market Report to Telegram chat: {TELEGRAM_SUPPLY_DATA_CHAT_ID}...")
+        res = send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_SUPPLY_DATA_CHAT_ID, report_text)
         if res and res.get("ok"):
             logger.info("Successfully uploaded report to Telegram.")
         else:

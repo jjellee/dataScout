@@ -366,6 +366,10 @@ def resolve_option_dates(call_text, put_text, regex_call, regex_put):
     """
     call_start, put_start = regex_call, regex_put
     call_end = put_end = "-"
+    # FAST(업로드) 경로에서는 LLM 호출 금지 — 백그라운드 --parse-only가 보강하고,
+    # llm_used=False라 완료 플래그도 남지 않아 이후 정상 치유된다.
+    if FAST_MODE:
+        return call_start, put_start, call_end, put_end, False
     # 정규식은 서술문의 첫 날짜(주로 '발행일')를 옵션 시작일로 오탐하는 경우가 많다.
     # 따라서 옵션 조항이 실제로 존재하면 LLM을 우선 신뢰하고, 정규식은 안전망으로만 쓴다.
     has_call = _looks_like_real_option_text(call_text)
@@ -433,6 +437,31 @@ def find_original_disclosure_on_disk(corp_code, base_type, orig_date, workspace_
 # Cache for closing price lookups
 # FAST 모드: 캐시만 사용(네트워크 종가조회·LLM 보강·캐시 저장 생략) — 엑셀 생성/업로드를 검증과 분리
 FAST_MODE = False
+
+# 옵션일 LLM 결과 사이드 캐시 — 파싱 불완전(is_bad)으로 메인 캐시에 못 들어가는 레코드가
+# 매 실행마다 LLM을 재호출하는 것을 막는다 (rcept_no → {call_start, call_end, put_start, put_end})
+OPTION_LLM_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "option_llm_cache.json")
+_option_llm_cache = {}
+
+def load_option_llm_cache():
+    global _option_llm_cache
+    try:
+        if os.path.exists(OPTION_LLM_CACHE_FILE):
+            with open(OPTION_LLM_CACHE_FILE, "r", encoding="utf-8") as f:
+                _option_llm_cache = json.load(f)
+            logger.info(f"Loaded {len(_option_llm_cache)} option-date LLM results from cache.")
+    except Exception as e:
+        logger.warning(f"Failed to load option LLM cache: {e}")
+        _option_llm_cache = {}
+
+def save_option_llm_cache():
+    try:
+        tmp = OPTION_LLM_CACHE_FILE + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(_option_llm_cache, f, ensure_ascii=False)
+        os.replace(tmp, OPTION_LLM_CACHE_FILE)
+    except Exception as e:
+        logger.warning(f"Failed to save option LLM cache: {e}")
 
 CLOSING_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "closing_price_cache.json")
 _closing_price_cache = {}
