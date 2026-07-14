@@ -1932,6 +1932,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
     total_docs = len(df_all)
     logger.info(f"Parsing details for {total_docs} disclosures...")
     
+    _llm_heal_count = 0
     for idx, row in df_all.iterrows():
         rcept_no = str(row['rcept_no'])
         corp_code = str(row['corp_code'])
@@ -2048,6 +2049,12 @@ def build_excel_summary(workspace_dir, parse_only=False):
                         d["option_llm_done"] = llm_used
                         record_detail["data"] = d
                         cache[rcept_no] = record_detail
+                        # LLM 치유는 비싸다 — 100건마다 중간 저장해 프로세스가 죽어도 유실 방지
+                        if llm_used:
+                            _llm_heal_count += 1
+                            if _llm_heal_count % 100 == 0:
+                                save_cache(cache)
+                                logger.info(f"Incremental cache save after {_llm_heal_count} LLM heals.")
 
             # Re-run officer reports parsing if missing from cache,
             # or if cached before v2 (거래종류별 행 분리) — one-time re-parse per record
