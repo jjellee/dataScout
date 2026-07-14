@@ -131,7 +131,7 @@ def send_telegram_message(token, chat_id, text):
         return None
 
 def analyze_market_reasons_with_gemini(market, date_str, report_summary):
-    """DeepSeek으로 일일 시황 분석 생성 (함수명은 호출부 호환 위해 유지)."""
+    """일일 시황 분석 생성 — smart_chat: Claude 구독(sonnet) 우선, DeepSeek 폴백 (함수명은 호출부 호환 위해 유지)."""
     prompt = (
         f"너는 글로벌 거시 경제와 주식 시장을 분석하는 최고의 금융 애널리스트야. "
         f"아래 제공된 {market} 주식 시장의 일일 마감 데이터({date_str})를 분석하고, "
@@ -144,7 +144,7 @@ def analyze_market_reasons_with_gemini(market, date_str, report_summary):
     return smart_chat(prompt, temperature=0.3, max_tokens=2048)
 
 def generate_sector_stock_comments(market, df_merged, top_sectors, bottom_sectors):
-    """상승/하락 섹터의 주요 구성종목을 DeepSeek에 넘겨 '눈여겨볼 종목' 한 줄 코멘트 생성."""
+    """상승/하락 섹터의 주요 구성종목을 LLM(Claude 구독 우선)에 넘겨 '눈여겨볼 종목' 한 줄 코멘트 생성."""
     try:
         lines = []
         for direction, sectors in (("상승", top_sectors), ("하락", bottom_sectors)):
