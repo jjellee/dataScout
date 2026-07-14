@@ -357,30 +357,38 @@ def extract_option_dates_llm(call_text, put_text):
     return None
 
 
-def resolve_option_dates(call_text, put_text, regex_call, regex_put):
+def resolve_option_dates(call_text, put_text, regex_call, regex_put, rcept_no=None):
     """
     하이브리드: 정규식 결과를 우선 쓰고, 실패('-')했지만 옵션 서술문이 실제로 존재하면
-    DeepSeek로 보강한다. LLM을 실제로 호출했는지 여부(llm_used)도 함께 반환해
-    캐시에 llm 처리 완료 플래그를 남길 수 있게 한다.
+    LLM(Claude CLI→DeepSeek)으로 보강한다. LLM 결과는 rcept_no 키의 사이드 캐시에
+    영속화한다 — 파싱 불완전(is_bad)으로 메인 캐시에 안 들어가는 레코드가 매 실행마다
+    LLM을 재호출하는 것을 막는다. FAST 모드는 사이드 캐시 히트만 쓰고 LLM은 호출하지 않는다.
     Returns: (call_start, put_start, call_end, put_end, llm_used)
     """
     call_start, put_start = regex_call, regex_put
     call_end = put_end = "-"
-    # FAST(업로드) 경로에서는 LLM 호출 금지 — 백그라운드 --parse-only가 보강하고,
-    # llm_used=False라 완료 플래그도 남지 않아 이후 정상 치유된다.
-    if FAST_MODE:
-        return call_start, put_start, call_end, put_end, False
     # 정규식은 서술문의 첫 날짜(주로 '발행일')를 옵션 시작일로 오탐하는 경우가 많다.
     # 따라서 옵션 조항이 실제로 존재하면 LLM을 우선 신뢰하고, 정규식은 안전망으로만 쓴다.
     has_call = _looks_like_real_option_text(call_text)
     has_put = _looks_like_real_option_text(put_text)
     llm_used = False
     if has_call or has_put:
-        llm = extract_option_dates_llm(call_text if has_call else None,
-                                       put_text if has_put else None)
-        # LLM이 실제로 답을 준 경우에만 '처리 완료' — 실패(잔액소진 등)를 완료로
-        # 박제하면 빈칸이 영구화된다. 실패 시 다음 실행에서 재시도된다.
-        llm_used = llm is not None
+        if rcept_no and rcept_no in _option_llm_cache:
+            llm = _option_llm_cache[rcept_no]
+            llm_used = True
+        elif FAST_MODE:
+            # FAST(업로드) 경로에서는 LLM 호출 금지 — 백그라운드 --parse-only가 보강하고,
+            # llm_used=False라 완료 플래그도 남지 않아 이후 정상 치유된다.
+            return call_start, put_start, call_end, put_end, False
+        else:
+            llm = extract_option_dates_llm(call_text if has_call else None,
+                                           put_text if has_put else None)
+            # LLM이 실제로 답을 준 경우에만 '처리 완료' — 실패(잔액소진 등)를 완료로
+            # 박제하면 빈칸이 영구화된다. 실패 시 다음 실행에서 재시도된다.
+            llm_used = llm is not None
+            if llm and rcept_no:
+                _option_llm_cache[rcept_no] = llm
+                save_option_llm_cache()
         if llm:
             if has_call:
                 if llm.get("call_start", "-") != "-":
@@ -493,6 +501,7 @@ def save_closing_price_cache():
         logger.warning(f"Failed to save closing price cache: {e}")
 
 load_closing_price_cache()
+load_option_llm_cache()
 
 def get_closing_price(stock_code, date_str):
     """Get closing price for a stock on a specific date using Naver Finance API.
@@ -2029,7 +2038,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     need_put = _looks_like_real_option_text(put_opt)
                     if need_call or need_put:
                         cs, ps, ce, pe, llm_used = resolve_option_dates(
-                            call_opt, put_opt, d.get("call_start", "-"), d.get("put_start", "-"))
+                            call_opt, put_opt, d.get("call_start", "-"), d.get("put_start", "-"),
+                            rcept_no=rcept_no)
                         d["call_start"] = cs
                         d["put_start"] = ps
                         d["call_end"] = ce
@@ -2182,11 +2192,11 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 claim_end = fallback["claim_end"]
                 share_type = fallback["share_type"]
                 
-            # Extract Option Dates (정규식 우선, 실패 시 DeepSeek 보강)
+            # Extract Option Dates (정규식 우선, 실패 시 LLM 보강 — 결과는 사이드 캐시 영속화)
             regex_call = extract_option_start_date(call_opt, "call")
             regex_put = extract_option_start_date(put_opt, "put")
             call_start, put_start, call_end, put_end, llm_used = resolve_option_dates(
-                call_opt, put_opt, regex_call, regex_put)
+                call_opt, put_opt, regex_call, regex_put, rcept_no=rcept_no)
 
             record_detail["data"] = {
                 "total_amount": total_amount,
