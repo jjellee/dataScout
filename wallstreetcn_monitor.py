@@ -11,6 +11,7 @@ import json
 import time
 import re
 import argparse
+import datetime
 import logging
 from urllib.parse import quote
 import requests
@@ -49,6 +50,92 @@ NEWS_URL = f"{BASE_URL}/news/global"
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
 }
+
+
+INTERESTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wallstreetcn_interests.md")
+DIGEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_us", "wallstreetcn_digest_queue.json")
+RELEVANCE_THRESHOLD = 6   # 0~10, 이 점수 이상만 즉시 알림
+DIGEST_HOUR = 17          # 이 시각 이후 첫 실행에서 하루 1회 다이제스트 발송
+
+
+def load_interest_profile():
+    """관심사 프로필(md) 전체 텍스트와 폴백 키워드 리스트를 반환."""
+    try:
+        text = open(INTERESTS_FILE, encoding="utf-8").read()
+    except Exception:
+        return "", []
+    keywords = []
+    m = re.search(r"## 폴백 키워드[^\n]*\n+(.+?)(?:\n##|\Z)", text, re.S)
+    if m:
+        keywords = [k.strip() for k in m.group(1).replace("\n", ",").split(",") if k.strip()]
+    return text, keywords
+
+
+def assess_and_summarize(title, paragraphs, profile_text):
+    """관련성 판정 + 요약을 DeepSeek 1회 호출로 처리.
+
+    Returns dict {"score": int, "title_ko": str, "summary": str} 또는 실패 시 None.
+    """
+    from llm_client import deepseek_chat
+    body = "\n".join(paragraphs)[:6000] if paragraphs else ""
+    prompt = (
+        "너는 아래 '관심사 프로필'을 가진 투자자를 위한 중국 금융뉴스(华尔街见闻) 필터다.\n"
+        "기사가 이 투자자에게 얼마나 중요한지 0~10점으로 평가하고, 한국어로 요약하라.\n"
+        "- score: 높은 관심 주제에 직접 관련되고 시장에 영향 있는 내용이면 7~10, "
+        "중간 관심은 5~6, 낮은 관심/무관하면 0~4.\n"
+        "- title_ko: 제목의 자연스러운 한국어 번역.\n"
+        "- summary: 핵심 내용 불릿 3~5개 (각 1문장, '- '로 시작, 수치 보존). 본문이 없으면 빈 문자열.\n"
+        "- 반드시 JSON만 출력. 키: score, title_ko, summary.\n\n"
+        f"[관심사 프로필]\n{profile_text}\n\n"
+        f"[기사 제목]\n{title}\n\n"
+        f"[기사 본문]\n{body if body else '(본문 없음 - 제목만으로 판단)'}"
+    )
+    out = deepseek_chat(prompt, temperature=0.2, max_tokens=800, timeout=90, json_mode=True)
+    if not out:
+        return None
+    try:
+        m = re.search(r"\{.*\}", out, re.S)
+        parsed = json.loads(m.group(0) if m else out)
+        summary = parsed.get("summary", "")
+        if isinstance(summary, (list, tuple)):
+            summary = "\n".join(str(s).strip() for s in summary)
+        return {"score": int(parsed.get("score", 0)),
+                "title_ko": str(parsed.get("title_ko", "")).strip(),
+                "summary": str(summary).strip()}
+    except Exception as e:
+        logger.warning(f"Failed to parse relevance JSON: {e}")
+        return None
+
+
+def load_digest_queue():
+    try:
+        with open(DIGEST_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"last_digest": "", "items": []}
+
+
+def save_digest_queue(q):
+    try:
+        with open(DIGEST_FILE, "w", encoding="utf-8") as f:
+            json.dump(q, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error(f"Failed to save digest queue: {e}")
+
+
+def maybe_send_digest(q, token, chat_id):
+    """DIGEST_HOUR 이후 첫 실행에서 하루 1회, 걸러진 기사 제목 다이제스트 발송."""
+    now = datetime.datetime.now()
+    today = now.strftime("%Y%m%d")
+    if not q["items"] or q.get("last_digest") == today or now.hour < DIGEST_HOUR:
+        return q
+    lines = [f"🇨🇳 *[华尔街见闻 일일 다이제스트]* — 관심도 낮음으로 걸러진 기사 {len(q['items'])}건\n"]
+    for it in q["items"][-40:]:
+        t_ko = it.get("title_ko") or translate_zh_to_ko(it["title"])
+        lines.append(f"· [{t_ko}]({it['link']})")
+    send_telegram_message(token, chat_id, "\n".join(lines))
+    logger.info(f"Digest sent ({len(q['items'])} items).")
+    return {"last_digest": today, "items": []}
 
 
 def summarize_with_gemini(title, body_text):
@@ -334,6 +421,10 @@ def main():
     new_seen = list(seen_ids)
     processed_count = 0
 
+    profile_text, fallback_keywords = load_interest_profile()
+    digest_q = load_digest_queue()
+    chat_id = TELEGRAM_TEST_CHAT_ID
+
     for item in articles_to_process:
         article_id = item['id']
         title = item['title']
@@ -343,87 +434,59 @@ def main():
 
         logger.info(f"Processing: {title} (VIP={is_vip})")
 
-        if is_vip:
-            # VIP articles: send title only (no full text access)
-            translated_title = translate_zh_to_ko(title)
-            vip_msg = (
-                f"🇨🇳 *[华尔街见闻 글로벌 뉴스]*\n"
-                f"🔒 *VIP 전용 기사*\n\n"
-                f"📌 *{translated_title}*\n"
-                f"({title})\n\n"
-                f"⏰ {time_str}\n"
-                f"🔗 [기사 원문 보기]({link})"
-            )
-            chat_id = TELEGRAM_TEST_CHAT_ID
-            if TELEGRAM_BOT4_TOKEN and chat_id:
-                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, vip_msg)
-                logger.info("VIP title-only alert sent.")
-        else:
-            # Free articles: fetch full content and translate
+        # 본문 확보 (VIP는 제목만 접근 가능)
+        paragraphs = []
+        if not is_vip:
             details = fetch_full_article(link)
-            if not details:
-                logger.warning(f"Failed to fetch content for {link}. Sending title only.")
+            if details:
+                paragraphs = details['paragraphs']
+
+        # 관련성 판정 + 요약 (DeepSeek 1회 호출)
+        assess = assess_and_summarize(title, paragraphs, profile_text) if profile_text else None
+
+        if assess is None:
+            # LLM 사용 불가(잔액 소진 등): 키워드 폴백 — 매칭 시에만 제목 알림
+            haystack = title + " " + " ".join(paragraphs[:5])
+            matched = any(k.lower() in haystack.lower() for k in fallback_keywords)
+            if matched:
                 translated_title = translate_zh_to_ko(title)
-                fallback_msg = (
-                    f"🇨🇳 *[华尔街见闻 글로벌 뉴스]*\n\n"
-                    f"📌 *{translated_title}*\n"
-                    f"({title})\n\n"
-                    f"⏰ {time_str}\n"
-                    f"🔗 [기사 원문 보기]({link})"
+                msg = (
+                    f"🇨🇳 *[华尔街见闻]*{' 🔒VIP' if is_vip else ''}\n\n"
+                    f"📌 *{translated_title}*\n({title})\n\n"
+                    f"_(LLM 미가용 - 키워드 매칭으로 알림, 요약 생략)_\n"
+                    f"⏰ {time_str}\n🔗 [기사 원문 보기]({link})"
                 )
-                if TELEGRAM_BOT4_TOKEN and TELEGRAM_TEST_CHAT_ID:
-                    send_telegram_message(TELEGRAM_BOT4_TOKEN, TELEGRAM_TEST_CHAT_ID, fallback_msg)
-            else:
-                translated_title = translate_zh_to_ko(details['title'])
-
-                # AI summary — only for longer articles (>= 500 chars body)
-                gemini_summary = ""
-                body_for_summary = details['title'] + "\n" + "\n".join(details['paragraphs'])
-                if len(body_for_summary) >= 500:
-                    gemini_summary = summarize_with_gemini(details['title'], body_for_summary)
-                    if gemini_summary:
-                        logger.info("AI summary generated.")
-                else:
-                    logger.info(f"Article body too short ({len(body_for_summary)} chars). Skipping AI summary.")
-
-                # Translate summary
-                translated_summary = ""
-                if details['summary']:
-                    translated_summary = translate_zh_to_ko(details['summary'])
-
-                # Translate body
-                translated_paragraphs = translate_paragraphs(details['paragraphs'])
-
-                header_text = (
-                    f"🇨🇳 *[华尔街见闻 글로벌 뉴스 - 전문 번역]*\n\n"
-                    f"📌 *{translated_title}*\n"
-                    f"({details['title']})"
-                )
-
-                # Prepend original summary if available
-                if translated_summary:
-                    translated_paragraphs.insert(0, f"📋 *요약:* {translated_summary}")
-
-                footer_text = (
-                    f"=============================\n"
-                    f"🔗 [기사 원문 보기]({link})\n"
-                    f"⏰ {time_str}"
-                )
-
-                chat_id = TELEGRAM_TEST_CHAT_ID
                 if TELEGRAM_BOT4_TOKEN and chat_id:
-                    logger.info(f"Sending full-text alert to Telegram...")
-                    send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
-                    logger.info("Full-text alert sent.")
-
-                    # Send AI summary as a separate follow-up message
-                    if gemini_summary:
-                        summary_msg = f"🤖 *AI 요약: {translated_title}*\n\n{gemini_summary}"
-                        send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, summary_msg)
-                        logger.info("AI summary sent.")
+                    send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
+                    logger.info("Keyword-fallback alert sent.")
+            else:
+                digest_q["items"].append({"title": title, "link": link, "time": time_str})
+                logger.info("LLM unavailable & no keyword match -> queued for digest.")
+        elif assess["score"] >= RELEVANCE_THRESHOLD:
+            # 관련 기사: 요약본만 발송 (전문 번역 폐지)
+            title_ko = assess["title_ko"] or translate_zh_to_ko(title)
+            body_part = assess["summary"] if assess["summary"] else "_(본문 접근 불가 - 제목만 제공)_"
+            msg = (
+                f"🇨🇳 *[华尔街见闻 요약]*{' 🔒VIP' if is_vip else ''} (관심도 {assess['score']}/10)\n\n"
+                f"📌 *{title_ko}*\n({title})\n\n"
+                f"{body_part}\n\n"
+                f"⏰ {time_str}\n🔗 [기사 원문 보기]({link})"
+            )
+            if TELEGRAM_BOT4_TOKEN and chat_id:
+                send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, msg)
+                logger.info(f"Summary alert sent (score={assess['score']}).")
+        else:
+            digest_q["items"].append({"title": title, "title_ko": assess["title_ko"],
+                                      "link": link, "time": time_str})
+            logger.info(f"Filtered out (score={assess['score']}) -> queued for digest.")
 
         processed_count += 1
         time.sleep(2.0)
+
+    # 걸러진 기사 일일 다이제스트 (DIGEST_HOUR 이후 하루 1회)
+    if TELEGRAM_BOT4_TOKEN and chat_id:
+        digest_q = maybe_send_digest(digest_q, TELEGRAM_BOT4_TOKEN, chat_id)
+    save_digest_queue(digest_q)
 
     # Mark all new articles as seen
     for item in new_articles:
