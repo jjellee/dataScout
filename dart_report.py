@@ -211,28 +211,59 @@ def detail_from_cache(rec):
         ])
 
     if cat == "지분공시":
-        ors = d.get("officer_reports") or []
-        if not ors:
-            return ""
-        rows = []
-        for o in ors[:8]:
-            chg = o.get("shares_change")
-            chg_s = f"{chg:+,.0f}주" if isinstance(chg, (int, float)) and chg else "-"
-            price = o.get("avg_price")
-            price_s = f"{price:,.0f}원" if isinstance(price, (int, float)) and price else "-"
-            after = o.get("shares_after")
-            after_s = f"{after:,.0f}주" if isinstance(after, (int, float)) and after else "-"
-            pct = o.get("ownership_pct")
-            pct_s = f"{pct:.2f}%" if isinstance(pct, (int, float)) and pct else "-"
-            rows.append(f"<tr><td>{html.escape(str(o.get('reporter_name') or '-'))}</td>"
-                        f"<td>{html.escape(str(o.get('change_reason') or '-'))}</td>"
-                        f"<td class='num'>{chg_s}</td><td class='num'>{price_s}</td>"
-                        f"<td class='num'>{after_s}</td><td class='num'>{pct_s}</td></tr>")
-        if not rows:
-            return ""
-        return ('<table class="mini"><tr><th>보고자</th><th>사유</th><th>변동수량</th>'
-                '<th>평균단가</th><th>보유(후)</th><th>지분율</th></tr>' + "".join(rows) + "</table>")
+        return _officer_table(d.get("officer_reports") or [])
 
+    return ""
+
+
+def _officer_table(ors):
+    """5%·임원보고 파싱 행들을 미니 테이블로 렌더링 (엑셀 '5%_임원보고' 탭과 동일 필드)."""
+    rows = []
+    for o in ors[:8]:
+        chg = o.get("shares_change")
+        chg_s = f"{chg:+,.0f}주" if isinstance(chg, (int, float)) and chg else "-"
+        price = o.get("avg_price")
+        price_s = f"{price:,.0f}원" if isinstance(price, (int, float)) and price else "-"
+        after = o.get("shares_after")
+        after_s = f"{after:,.0f}주" if isinstance(after, (int, float)) and after else "-"
+        pct = o.get("ownership_pct")
+        pct_s = f"{pct:.2f}%" if isinstance(pct, (int, float)) and pct else "-"
+        rows.append(f"<tr><td>{html.escape(str(o.get('reporter_name') or '-'))}</td>"
+                    f"<td>{html.escape(str(o.get('relationship') or '-'))}</td>"
+                    f"<td>{html.escape(str(o.get('change_reason') or '-'))}</td>"
+                    f"<td class='num'>{chg_s}</td><td class='num'>{price_s}</td>"
+                    f"<td class='num'>{after_s}</td><td class='num'>{pct_s}</td></tr>")
+    if not rows:
+        return ""
+    return ('<table class="mini"><tr><th>보고자</th><th>관계</th><th>사유</th><th>변동수량</th>'
+            '<th>평균단가</th><th>보유(후)</th><th>지분율</th></tr>' + "".join(rows) + "</table>")
+
+
+def officer_detail_from_html(rcept_no, report_nm, collected_dates, stock_code=None):
+    """캐시 미스 시 원문 HTML을 엑셀과 동일한 파서(dart_classifier)로 즉석 파싱해 렌더링."""
+    rtype = '대량보유' if '대량보유상황보고서' in str(report_nm) else '임원보고'
+    for dt in collected_dates:
+        p = os.path.join(WORKSPACE, "data_dart", dt, f"{rcept_no}.html")
+        if not os.path.exists(p):
+            continue
+        try:
+            from dart_classifier import parse_officer_report_html, get_closing_price
+            parsed = parse_officer_report_html(p, rtype)
+            # 엑셀과 동일하게 단가 미기재 시 변동일 종가 가중평균으로 보정
+            for o in parsed:
+                if o.get("avg_price") is None and o.get("change_dates") and stock_code:
+                    w_sum = w_cnt = 0
+                    for date_str, change_amt in o["change_dates"]:
+                        closing = get_closing_price(stock_code, date_str)
+                        if closing is not None and abs(change_amt) > 0:
+                            w_sum += closing * abs(change_amt)
+                            w_cnt += abs(change_amt)
+                    if w_cnt > 0:
+                        o["avg_price"] = round(w_sum / w_cnt)
+            return _officer_table(parsed)
+        except Exception as e:
+            logger.warning(f"On-the-fly officer parse failed for {rcept_no}: {e}")
+            return ""
     return ""
 
 
@@ -263,11 +294,17 @@ def build_cache_index(cache):
 
 
 def lookup_cache(it, cache, cache_index):
-    """rcept_no 직접 조회 → 실패 시 (회사, 공시명) 색인으로 원공시 레코드 조회."""
+    """rcept_no 직접 조회 → 정정공시에 한해 (회사, 공시명) 색인으로 원공시 레코드 조회.
+
+    색인 폴백을 일반 공시에 쓰면 같은 이름을 반복 제출하는 공시(대량보유 등)에서
+    과거 다른 공시의 수치가 대신 표시된다 — 정정공시의 원공시 대체 용도로만 사용.
+    """
     rec = cache.get(it["rcept_no"])
     if rec:
         return rec
     nm = str(it["report_nm"])
+    if not any(tag in nm for tag in _AMEND_TAGS):
+        return None
     for tag in _AMEND_TAGS:
         nm = nm.replace(tag, "")
     key = (str(it.get("corp_code", "")), nm.replace(" ", "").strip())
@@ -461,6 +498,10 @@ def render_item(it, cache, cache_index, generic_dates):
     rec = lookup_cache(it, cache, cache_index)
     if rec:
         detail = detail_from_cache(rec)
+    if not detail and cat == "5%_임원보고":
+        # 캐시 미스(당일 미파싱 등): 엑셀과 동일한 파서로 원문에서 즉석 파싱
+        detail = officer_detail_from_html(rcept_no, it["report_nm"], generic_dates,
+                                          stock_code=it.get("stock_code"))
     if not detail and cat in IMPORTANT_CATEGORIES and cat != "5%_임원보고":
         detail = detail_from_html(rcept_no, generic_dates)
     # 정정공시: 어떤 항목이 어떻게 정정됐는지 표시
