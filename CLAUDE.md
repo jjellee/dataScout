@@ -81,6 +81,8 @@
 | `kotra_report_monitor.py` | KOTRA 보고서(PDF) 신규 감지·다운로드·요약 |
 | `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 DeepSeek로 번역·게시 |
 | `storagereview_monitor.py` | StorageReview 뉴스 RSS 신규 기사 전문 번역·전송 (review·podcast 제외) |
+| `semidoped_monitor.py` | Semi Doped 뉴스레터(Substack) 신규 글 전문 번역·전송 (초장문은 18k자 절단) |
+| `semidoped_youtube_monitor.py` | Semi Doped 유튜브 새 영상 자막 추출 → DeepSeek 전체 내용 구조화 정리·전송 (자막 미생성 시 6회 재시도) |
 
 ---
 
