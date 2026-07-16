@@ -80,6 +80,7 @@
 | `kotra_monitor.py` | KOTRA 해외시장뉴스 신규 기사 DeepSeek 요약 |
 | `kotra_report_monitor.py` | KOTRA 보고서(PDF) 신규 감지·다운로드·요약 |
 | `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 DeepSeek로 번역·게시 |
+| `storagereview_monitor.py` | StorageReview 뉴스 RSS 신규 기사 전문 번역·전송 (review·podcast 제외) |
 
 ---
 
