@@ -186,12 +186,14 @@ CLAUDE_CLI_MODEL_LIGHT = os.getenv("CLAUDE_CLI_MODEL_LIGHT", "haiku")     # 번�
 CLAUDE_CLI_MODEL_SMART = os.getenv("CLAUDE_CLI_MODEL_SMART", "sonnet")    # 분석
 
 
-def claude_cli_chat(prompt, model=None, timeout=240):
+def claude_cli_chat(prompt, model=None, timeout=240, force=False):
     """Claude Code CLI 헤드리스(-p) 호출 — 구독 토큰 사용.
 
     구독 한도 소진/오류 시 "" 반환하여 호출부가 다음 단계로 폴백한다.
+    force=True면 CLAUDE_CLI_ENABLED=0(전역 DeepSeek 정책)을 무시하고 Claude를 쓴다
+    — 예외적으로 Claude를 지정한 호출부(semidoped_youtube_monitor) 전용.
     """
-    if not CLAUDE_CLI_ENABLED or not os.path.exists(CLAUDE_CLI):
+    if (not CLAUDE_CLI_ENABLED and not force) or not os.path.exists(CLAUDE_CLI):
         return ""
     try:
         import subprocess

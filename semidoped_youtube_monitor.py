@@ -3,7 +3,7 @@
 """
 semidoped_youtube_monitor.py - Monitor the Semi Doped YouTube channel for new
 videos, pull the (auto-generated) transcript, summarize the FULL content in
-Korean with DeepSeek, and post to Telegram.
+Korean with Claude (subscription CLI; DeepSeek fallback), and post to Telegram.
 
 자막이 없는 영상은 제목+링크만 알림. 요약은 전체 내용 커버가 목표
 (섹션별 정리, 수치·기업명 보존).
@@ -17,7 +17,7 @@ import argparse
 import logging
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
-from llm_client import deepseek_chat
+from llm_client import deepseek_chat, claude_cli_chat
 import requests
 
 # Setup logging
@@ -129,7 +129,11 @@ def fetch_transcript_text(video_id):
         return ""
 
 def summarize_transcript(title, transcript):
-    """DeepSeek로 전사 전체를 커버하는 한국어 구조화 요약 생성. 실패 시 ""."""
+    """전사 전체를 커버하는 한국어 구조화 요약 생성. 실패 시 "".
+
+    LLM 우선순위(사용자 지정): 1) Claude(구독 CLI, force로 전역 DeepSeek 정책 예외)
+    → 2) DeepSeek 폴백. 이 스크립트가 유일한 Claude 사용처다.
+    """
     if len(transcript) > MAX_TRANSCRIPT_CHARS:
         transcript = transcript[:MAX_TRANSCRIPT_CHARS]
     # 출력 형식: 텔레그램 Markdown 파싱 오류 방지 위해 *, _, [ ] 금지
@@ -148,6 +152,10 @@ def summarize_transcript(title, transcript):
         f"{transcript}\n"
         "=== 전사 끝 ==="
     )
+    out = claude_cli_chat(prompt, model="sonnet", timeout=600, force=True)
+    if out:
+        return out
+    logger.warning("Claude CLI unavailable/failed; falling back to DeepSeek.")
     return deepseek_chat(prompt, temperature=0.3, max_tokens=8000, timeout=600)
 
 def format_pub_date(iso_date):
@@ -299,7 +307,7 @@ def main():
                 logger.info(f"No transcript yet for {vid} (attempt {attempts}/6). Will retry next run.")
             continue
         pending.pop(vid, None)
-        logger.info(f"Transcript fetched: {len(transcript)} chars. Summarizing with DeepSeek...")
+        logger.info(f"Transcript fetched: {len(transcript)} chars. Summarizing with Claude (DeepSeek fallback)...")
 
         summary = summarize_transcript(title, transcript)
         translated_title = translate_en_to_ko(title)
