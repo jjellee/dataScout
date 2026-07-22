@@ -76,9 +76,9 @@
 | `trendforce_monitor.py` | 반도체 조사기관 TrendForce 신규 기사 번역·전송 |
 | `dramexchange_scraper.py` | DRAMeXchange DRAM/NAND 현물가를 Selenium으로 스크래핑해 이력 누적 |
 | `wallstreetcn_monitor.py` | 월스트리트견문(중국) 기사 DeepSeek 요약·번역 |
-| `tech_investing_monitor.py` | Tom's Hardware / Investing.com 애널리스트 등급 RSS 모니터링 |
-| `kotra_monitor.py` | KOTRA 해외시장뉴스 신규 기사 DeepSeek 요약 |
-| `kotra_report_monitor.py` | KOTRA 보고서(PDF) 신규 감지·다운로드·요약 |
+| `tech_investing_monitor.py` | Tom's Hardware 전문 번역 + Investing.com 애널리스트 등급 LLM 게이트(`investing_interests.md`, score≥6만 요약+투자함의 발송, 나머지는 17시 다이제스트) |
+| `kotra_monitor.py` | KOTRA 해외시장뉴스 신규 기사 DeepSeek 요약 — **크론 중지 상태(2026-07-22 사용자 요청)** |
+| `kotra_report_monitor.py` | KOTRA 보고서(PDF) 신규 감지·다운로드·요약 — **크론 중지 상태(2026-07-22 사용자 요청)** |
 | `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 DeepSeek로 번역·게시 |
 | `storagereview_monitor.py` | StorageReview 뉴스 RSS 신규 기사 전문 번역·전송 (review·podcast 제외) |
 | `semidoped_monitor.py` | Semi Doped 뉴스레터(Substack) 신규 글 전문 번역·전송 (초장문은 18k자 절단) |

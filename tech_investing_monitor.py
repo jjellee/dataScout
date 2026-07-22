@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 tech_investing_monitor.py - Monitor Tom's Hardware news and Investing.com analyst ratings,
-fetch full articles, translate full body for Tom's Hardware, translate & summarize for Investing.com,
-and post to Telegram.
+fetch full articles, translate full body for Tom's Hardware, and post to Telegram.
+Investing.com은 LLM 관련성 게이트(investing_interests.md, score>=6)를 통과한 기사만
+요약 + 투자 함의 분석으로 발송하고, 걸러진 기사는 17시 이후 하루 1회 제목 다이제스트로 묶는다.
 """
 
 import os
@@ -50,6 +51,12 @@ from llm_client import deepseek_chat, llm_translate
 # RSS Feeds
 TOMS_HARDWARE_RSS = "https://www.tomshardware.com/feeds/news"
 INVESTING_RATINGS_RSS = "https://www.investing.com/rss/news_1061.rss"
+
+# Investing.com LLM 관련성 게이트 (wallstreetcn_monitor와 동일 패턴)
+INVESTING_INTERESTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "investing_interests.md")
+INVESTING_DIGEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_us", "investing_digest_queue.json")
+RELEVANCE_THRESHOLD = 6   # 0~10, 이 점수 이상만 즉시 알림
+DIGEST_HOUR = 17          # 이 시각 이후 첫 실행에서 하루 1회 다이제스트 발송
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0'
@@ -236,6 +243,92 @@ def translate_and_summarize_gemini(title, body_text):
         return None
 
 
+def load_interest_profile():
+    """관심사 프로필(md) 전체 텍스트와 폴백 키워드 리스트를 반환."""
+    try:
+        text = open(INVESTING_INTERESTS_FILE, encoding="utf-8").read()
+    except Exception:
+        return "", []
+    keywords = []
+    m = re.search(r"## 폴백 키워드[^\n]*\n+(.+?)(?:\n##|\Z)", text, re.S)
+    if m:
+        keywords = [k.strip() for k in m.group(1).replace("\n", ",").split(",") if k.strip()]
+    return text, keywords
+
+
+def assess_and_analyze(title, paragraphs, profile_text):
+    """관련성 판정 + 요약 + 투자 함의 분석을 DeepSeek 1회 호출로 처리.
+
+    Returns dict {"score": int, "title_ko": str, "summary": str, "implication": str}
+    또는 실패 시 None.
+    """
+    body = "\n".join(paragraphs)[:6000] if paragraphs else ""
+    prompt = (
+        "너는 아래 '관심사 프로필'을 가진 투자자를 위한 애널리스트 의견(투자의견·목표주가) 기사 필터이자 분석가다.\n"
+        "기사가 이 투자자에게 얼마나 중요한지 0~10점으로 평가하고, 한국어로 요약·분석하라.\n"
+        "- score: 높은 관심 기업/섹터의 의견 변경이면 7~10, 중간 관심 기준 충족은 5~6, "
+        "낮은 관심/무관 기업이면 0~4.\n"
+        "- title_ko: 제목의 자연스러운 한국어 번역.\n"
+        "- summary: 핵심 내용 불릿 2~4개 (각 1문장, '- '로 시작). 증권사명, 투자의견 변경 방향, "
+        "목표주가(변경 전→후), 핵심 근거를 정확히 보존. 본문이 없으면 빈 문자열.\n"
+        "- implication: 투자 함의 분석 2~4문장. 이 의견이 해당 종목과 관련 밸류체인(한국 반도체·소부장 "
+        "포함)에 갖는 의미, 컨센서스 대비 위치, 주가에 이미 반영됐을 가능성 등을 짚어라. "
+        "기사에 없는 사실을 지어내지 마라.\n"
+        "- 반드시 JSON만 출력. 키: score, title_ko, summary, implication.\n\n"
+        f"[관심사 프로필]\n{profile_text}\n\n"
+        f"[기사 제목]\n{title}\n\n"
+        f"[기사 본문]\n{body if body else '(본문 없음 - 제목만으로 판단)'}"
+    )
+    out = deepseek_chat(prompt, temperature=0.2, max_tokens=1200, timeout=90, json_mode=True)
+    if not out:
+        return None
+    try:
+        m = re.search(r"\{.*\}", out, re.S)
+        parsed = json.loads(m.group(0) if m else out)
+        def _s(v):
+            if isinstance(v, (list, tuple)):
+                return "\n".join(str(x).strip() for x in v)
+            return str(v or "").strip()
+        return {"score": int(parsed.get("score", 0)),
+                "title_ko": _s(parsed.get("title_ko")),
+                "summary": _s(parsed.get("summary")),
+                "implication": _s(parsed.get("implication"))}
+    except Exception as e:
+        logger.warning(f"Failed to parse relevance JSON: {e}")
+        return None
+
+
+def load_digest_queue():
+    try:
+        with open(INVESTING_DIGEST_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"last_digest": "", "items": []}
+
+
+def save_digest_queue(q):
+    try:
+        with open(INVESTING_DIGEST_FILE, "w", encoding="utf-8") as f:
+            json.dump(q, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error(f"Failed to save digest queue: {e}")
+
+
+def maybe_send_digest(q, token, chat_id):
+    """DIGEST_HOUR 이후 첫 실행에서 하루 1회, 걸러진 기사 제목 다이제스트 발송."""
+    now = datetime.datetime.now()
+    today = now.strftime("%Y%m%d")
+    if not q["items"] or q.get("last_digest") == today or now.hour < DIGEST_HOUR:
+        return q
+    lines = [f"📊 *[Investing.com 애널리스트 의견 일일 다이제스트]* — 관심도 낮음으로 걸러진 기사 {len(q['items'])}건\n"]
+    for it in q["items"][-40:]:
+        t_ko = it.get("title_ko") or translate_en_to_ko(it["title"])
+        lines.append(f"· [{t_ko}]({it['link']})")
+    send_telegram_message(token, chat_id, "\n".join(lines))
+    logger.info(f"Digest sent ({len(q['items'])} items).")
+    return {"last_digest": today, "items": []}
+
+
 def format_pubdate(pubdate_str):
     """Format pubDate from RSS feed to KST string."""
     try:
@@ -247,8 +340,10 @@ def format_pubdate(pubdate_str):
         return pubdate_str
 
 
-def process_feed(source_type, items, seen_ids, chat_id, limit=5):
+def process_feed(source_type, items, seen_ids, chat_id, limit=5,
+                 profile_text="", fallback_keywords=None, digest_queue=None):
     """Process new items from a feed."""
+    fallback_keywords = fallback_keywords or []
     new_items = [item for item in items if item['id'] not in seen_ids]
     if not new_items:
         logger.info(f"[{source_type}] No new items.")
@@ -308,33 +403,54 @@ def process_feed(source_type, items, seen_ids, chat_id, limit=5):
                 
         elif source_type == 'investing':
             # ==========================================
-            # Investing.com: FULL body translation
+            # Investing.com: LLM 관련성 게이트 + 투자 함의 분석
+            # (score>=RELEVANCE_THRESHOLD만 요약+함의 발송, 미만은 다이제스트 큐)
             # ==========================================
-            translated_title = translate_en_to_ko(title)
-            if not translated_title:
-                translated_title = title
-            
-            logger.info("Translating paragraphs for Investing.com...")
-            translated_paragraphs = translate_paragraphs(paragraphs)
-            
-            label = "제목만 · 본문 수집 실패" if is_fallback else "전문 번역"
-            header_text = (
-                f"📊 *[Investing.com 애널리스트 의견 - {label}]*\n\n"
-                f"📌 *{translated_title}*\n"
-                f"({title})"
-            )
-            
-            footer_text = (
-                f"=============================\n"
-                f"🔗 [기사 원문 보기]({link})\n"
-                f"⏰ {pub_date}"
-            )
-            
-            if TELEGRAM_BOT4_TOKEN and chat_id:
-                logger.info("Sending full-text article to Telegram...")
-                send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, translated_paragraphs, footer_text)
-                time.sleep(2.0)
-            
+            assess = assess_and_analyze(title, paragraphs, profile_text)
+
+            if assess is None:
+                # LLM 미가용: 폴백 키워드 매칭 시 제목만 알림, 아니면 다이제스트로
+                haystack = (title + " " + " ".join(paragraphs or [])).lower()
+                if any(k.lower() in haystack for k in fallback_keywords):
+                    translated_title = translate_en_to_ko(title) or title
+                    notice = (
+                        f"📊 *[Investing.com 애널리스트 의견]*\n\n"
+                        f"📌 *{translated_title}*\n({title})\n\n"
+                        f"_(LLM 미가용 - 키워드 매칭으로 알림, 분석 생략)_\n\n"
+                        f"🔗 [기사 원문 보기]({link})\n⏰ {pub_date}"
+                    )
+                    if TELEGRAM_BOT4_TOKEN and chat_id:
+                        send_telegram_message(TELEGRAM_BOT4_TOKEN, chat_id, notice)
+                        time.sleep(2.0)
+                elif digest_queue is not None:
+                    digest_queue["items"].append({"title": title, "title_ko": "", "link": link})
+            elif assess["score"] >= RELEVANCE_THRESHOLD:
+                translated_title = assess["title_ko"] or translate_en_to_ko(title) or title
+                body_parts = []
+                if assess["summary"]:
+                    body_parts.append(assess["summary"])
+                if assess["implication"]:
+                    body_parts.append(f"💡 *투자 함의*\n{assess['implication']}")
+                header_text = (
+                    f"📊 *[Investing.com 애널리스트 의견]* (관심도 {assess['score']}/10)\n\n"
+                    f"📌 *{translated_title}*\n"
+                    f"({title})"
+                )
+                footer_text = (
+                    f"=============================\n"
+                    f"🔗 [기사 원문 보기]({link})\n"
+                    f"⏰ {pub_date}"
+                )
+                if TELEGRAM_BOT4_TOKEN and chat_id:
+                    logger.info(f"Sending gated alert (score {assess['score']})...")
+                    send_telegram_article(TELEGRAM_BOT4_TOKEN, chat_id, header_text, body_parts, footer_text)
+                    time.sleep(2.0)
+            else:
+                logger.info(f"Filtered out (score {assess['score']}): {title}")
+                if digest_queue is not None:
+                    digest_queue["items"].append(
+                        {"title": title, "title_ko": assess["title_ko"], "link": link})
+
         processed_ids.append(item['id'])
         
     return processed_ids
@@ -382,9 +498,18 @@ def main():
     chat_id = TELEGRAM_TEST_CHAT_ID  # antbot channel
     
     # Process feeds
+    profile_text, fallback_keywords = load_interest_profile()
+    digest_queue = load_digest_queue()
     processed_toms = process_feed('toms_hardware', toms_items, seen_ids, chat_id)
-    processed_investing = process_feed('investing', investing_items, seen_ids, chat_id)
-    
+    processed_investing = process_feed('investing', investing_items, seen_ids, chat_id,
+                                       profile_text=profile_text,
+                                       fallback_keywords=fallback_keywords,
+                                       digest_queue=digest_queue)
+
+    # 걸러진 기사 일일 다이제스트 (DIGEST_HOUR 이후 하루 1회)
+    digest_queue = maybe_send_digest(digest_queue, TELEGRAM_BOT4_TOKEN, chat_id)
+    save_digest_queue(digest_queue)
+
     # Update seen state
     updated_seen = list(seen_ids) + processed_toms + processed_investing
     
