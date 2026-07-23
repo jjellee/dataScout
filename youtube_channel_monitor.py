@@ -15,6 +15,7 @@ import json
 import time
 import argparse
 import logging
+import re
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
 from llm_client import deepseek_chat, claude_cli_chat, openai_cli_chat
@@ -46,6 +47,8 @@ TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID", "-1003843549676")
 
 # 모니터링 채널 목록. context는 요약 프롬프트에 들어가는 채널 소개.
+# title_filter(정규식, 대소문자 무시)가 있으면 제목이 매칭되는 영상만 처리하고
+# 나머지는 조용히 seen 처리한다 (마케팅·숏폼 많은 공식 채널용).
 CHANNELS = [
     {"id": "UCqIzK82kDT3zpA5OcPDg3Rg", "name": "Semi Doped",
      "context": "반도체 산업 뉴스·분석 채널 (Vik Sekar, Austin Lyons)"},
@@ -55,6 +58,9 @@ CHANNELS = [
      "context": "Dylan Patel의 반도체·AI 인프라 리서치 채널 (Tokenomics 팟캐스트 포함)"},
     {"id": "UCXl4i9dYBrFOabk0xGmbkRA", "name": "Dwarkesh Patel",
      "context": "AI·과학·경제 심층 인터뷰 팟캐스트 채널"},
+    {"id": "UCK8sQmJBp8GCxrOtXWBpyEA", "name": "Google",
+     "context": "구글 공식 채널 (I/O·키노트 발표 영상만 모니터링)",
+     "title_filter": r"google\s+i/o|\bi/o\b|keynote"},
 ]
 
 HEADERS = {
@@ -246,6 +252,20 @@ def process_channel(channel, seen_map, pending, chat_id):
 
     seen_list = seen_map[cid]
     new_videos = [v for v in reversed(videos) if v['video_id'] not in seen_list]
+
+    # 제목 필터: 미매칭 영상은 조용히 seen 처리
+    title_filter = channel.get('title_filter')
+    if title_filter and new_videos:
+        matched = []
+        for v in new_videos:
+            if re.search(title_filter, v['title'], re.IGNORECASE):
+                matched.append(v)
+            else:
+                seen_list.append(v['video_id'])
+        if len(new_videos) != len(matched):
+            logger.info(f"[{name}] Title filter: {len(new_videos)-len(matched)} skipped, {len(matched)} matched.")
+        new_videos = matched
+
     if not new_videos:
         logger.info(f"[{name}] No new videos.")
         return
