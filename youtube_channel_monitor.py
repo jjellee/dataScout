@@ -17,7 +17,7 @@ import argparse
 import logging
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
-from llm_client import deepseek_chat, claude_cli_chat
+from llm_client import deepseek_chat, claude_cli_chat, openai_cli_chat
 import requests
 
 # Setup logging
@@ -145,7 +145,8 @@ def summarize_transcript(channel, title, transcript):
     """전사 전체를 커버하는 한국어 구조화 요약 생성. 실패 시 "".
 
     LLM 우선순위(사용자 지정): 1) Claude(구독 CLI, force로 전역 DeepSeek 정책 예외)
-    → 2) DeepSeek 폴백. 유튜브 영상 요약이 유일한 Claude 사용처다.
+    → 2) OpenAI(Codex CLI, ChatGPT 구독) → 3) DeepSeek 폴백.
+    유튜브 영상 요약이 유일한 Claude/OpenAI 사용처다.
     """
     if len(transcript) > MAX_TRANSCRIPT_CHARS:
         transcript = transcript[:MAX_TRANSCRIPT_CHARS]
@@ -168,7 +169,11 @@ def summarize_transcript(channel, title, transcript):
     out = claude_cli_chat(prompt, model="sonnet", timeout=600, force=True)
     if out:
         return out
-    logger.warning("Claude CLI unavailable/failed; falling back to DeepSeek.")
+    logger.warning("Claude CLI unavailable/failed; falling back to OpenAI Codex CLI.")
+    out = openai_cli_chat(prompt, timeout=600)
+    if out:
+        return out
+    logger.warning("OpenAI Codex CLI unavailable/failed; falling back to DeepSeek.")
     return deepseek_chat(prompt, temperature=0.3, max_tokens=8000, timeout=600)
 
 def format_pub_date(iso_date):

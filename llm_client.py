@@ -186,6 +186,48 @@ CLAUDE_CLI_MODEL_LIGHT = os.getenv("CLAUDE_CLI_MODEL_LIGHT", "haiku")     # 번�
 CLAUDE_CLI_MODEL_SMART = os.getenv("CLAUDE_CLI_MODEL_SMART", "sonnet")    # 분석
 
 
+CODEX_CLI = os.getenv("CODEX_CLI_BIN", os.path.expanduser("~/.local/bin/codex"))
+
+
+def openai_cli_chat(prompt, model=None, timeout=600):
+    """OpenAI Codex CLI 헤드리스(exec) 호출 — ChatGPT 구독 토큰 사용 (API 과금 아님).
+
+    프롬프트는 stdin으로 전달(초장문 대응). 실패 시 "" 반환하여 호출부가 폴백한다.
+    model 미지정 시 codex 기본 모델(gpt-5 계열)을 쓴다.
+    """
+    if not os.path.exists(CODEX_CLI):
+        return ""
+    import subprocess
+    import tempfile
+    out_path = None
+    try:
+        fd, out_path = tempfile.mkstemp(prefix="codex_last_", suffix=".txt")
+        os.close(fd)
+        cmd = [CODEX_CLI, "exec", "--skip-git-repo-check", "-s", "read-only",
+               "--ephemeral", "--color", "never", "-o", out_path]
+        if model:
+            cmd += ["-m", model]
+        cmd += ["-"]
+        r = subprocess.run(cmd, input=prompt, capture_output=True, text=True,
+                           timeout=timeout, cwd=os.path.expanduser("~"))
+        if r.returncode == 0:
+            with open(out_path, encoding="utf-8") as f:
+                txt = f.read().strip()
+            if txt:
+                logger.info("OpenAI Codex CLI response generated (subscription).")
+                return txt
+        logger.warning(f"Codex CLI failed rc={r.returncode}: {(r.stderr or '')[:150]}")
+    except Exception as e:
+        logger.warning(f"Codex CLI error: {e}")
+    finally:
+        try:
+            if out_path and os.path.exists(out_path):
+                os.remove(out_path)
+        except Exception:
+            pass
+    return ""
+
+
 def claude_cli_chat(prompt, model=None, timeout=240, force=False):
     """Claude Code CLI 헤드리스(-p) 호출 — 구독 토큰 사용.
 
