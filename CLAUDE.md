@@ -82,7 +82,7 @@
 | `company_blogs_monitor.py` | Nvidia·Google 등 기업 블로그 RSS를 DeepSeek로 번역·게시 |
 | `storagereview_monitor.py` | StorageReview 뉴스 RSS 신규 기사 전문 번역·전송 (review·podcast 제외) |
 | `semidoped_monitor.py` | Semi Doped 뉴스레터(Substack) 신규 글 전문 번역·전송 (초장문은 18k자 절단) |
-| `semidoped_youtube_monitor.py` | Semi Doped 유튜브 새 영상 자막 추출 → Claude(구독 CLI, DeepSeek 폴백) 전체 내용 구조화 정리·전송 (자막 미생성 시 6회 재시도) |
+| `youtube_channel_monitor.py` | 유튜브 4개 채널(Semi Doped·TechTechPotato·SemiAnalysis·Dwarkesh Patel) 새 영상 자막 추출 → Claude(구독 CLI sonnet, DeepSeek 폴백) 전체 내용 구조화 정리·전송 (자막 미생성 시 6회 재시도) |
 | `nextplatform_monitor.py` | The Next Platform 신규 포스트 전문 번역·전송 (피드에 본문 없음 → 기사 페이지 curl_cffi 수집) |
 
 ---
