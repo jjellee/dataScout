@@ -18,7 +18,7 @@ import logging
 import re
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
-from llm_client import deepseek_chat, claude_cli_chat, openai_cli_chat
+from llm_client import deepseek_chat, claude_cli_chat, openai_cli_chat, llm_translate
 import requests
 
 # Setup logging
@@ -61,6 +61,9 @@ CHANNELS = [
     {"id": "UCK8sQmJBp8GCxrOtXWBpyEA", "name": "Google",
      "context": "구글 공식 채널 (I/O·키노트 발표 영상만 모니터링)",
      "title_filter": r"google\s+i/o|\bi/o\b|keynote"},
+    {"id": "UCyz6-taovlaOkPsPtK4KNEg", "name": "Goldman Sachs",
+     "context": "골드만삭스 공식 채널 (리서치·트레이딩 데스크 시장 브리핑)",
+     "full_text": True},
 ]
 
 HEADERS = {
@@ -71,6 +74,7 @@ HEADERS = {
 MAX_TRANSCRIPT_CHARS = 300000
 MAX_PER_CHANNEL = 2       # 실행당 채널별 최대 처리 영상 수
 TRANSCRIPT_MAX_ATTEMPTS = 6  # 30분 크론 기준 약 3시간 대기 후 제목만 알림
+FULL_TEXT_MAX_CHARS = 40000  # full_text 채널에서 전문 번역을 시도하는 전사 길이 상한
 
 def translate_en_to_ko(text):
     """Translates English text to Korean using the free Google Translate API."""
@@ -128,7 +132,11 @@ def fetch_feed_videos(channel_id):
     return videos
 
 def fetch_transcript_text(video_id):
-    """Fetches the transcript (manual first, else auto-generated). Returns text or ""."""
+    """Fetches the transcript (manual first, else auto-generated).
+
+    Returns (text, permanent_fail). permanent_fail=True면 재시도해도 소용없는 경우
+    (자막 비활성화 영상 등)라 즉시 제목만 알림으로 넘어간다.
+    """
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
         api = YouTubeTranscriptApi()
@@ -139,13 +147,43 @@ def fetch_transcript_text(video_id):
             tl = api.list(video_id)
             first = next(iter(tl), None)
             if first is None:
-                return ""
+                return "", False
             tr = first.fetch()
         text = " ".join(s.text.strip() for s in tr.snippets if s.text and s.text.strip())
-        return " ".join(text.split())
+        return " ".join(text.split()), False
     except Exception as e:
-        logger.warning(f"Transcript unavailable for {video_id}: {type(e).__name__} {e}")
-        return ""
+        name = type(e).__name__
+        permanent = name in ("TranscriptsDisabled", "VideoUnavailable", "AgeRestricted",
+                             "VideoUnplayable", "NoTranscriptFound")
+        logger.warning(f"Transcript unavailable for {video_id}: {name}"
+                       f"{' (permanent)' if permanent else ''}")
+        return "", permanent
+
+
+def translate_transcript(transcript):
+    """전사 원문을 한국어로 통번역 (DeepSeek → 구글 폴백). 문단 리스트 반환."""
+    # 자동 자막은 문장 부호가 있어도 개행이 없다 — 문장 단위로 묶어 문단화
+    sentences = re.split(r"(?<=[.!?])\s+", transcript)
+    paragraphs, cur = [], ""
+    for s in sentences:
+        if len(cur) + len(s) > 700:
+            if cur:
+                paragraphs.append(cur.strip())
+            cur = s
+        else:
+            cur = f"{cur} {s}".strip()
+    if cur:
+        paragraphs.append(cur.strip())
+
+    translated = llm_translate(paragraphs, src_lang="영어")
+    if translated:
+        return translated
+    out = []
+    for p in paragraphs:
+        tr = translate_en_to_ko(p)
+        if tr:
+            out.append(tr)
+    return out
 
 def summarize_transcript(channel, title, transcript):
     """전사 전체를 커버하는 한국어 구조화 요약 생성. 실패 시 "".
@@ -286,11 +324,12 @@ def process_channel(channel, seen_map, pending, chat_id):
         link = v['link']
         logger.info(f"[{name}] Processing new video: {title} ({vid})")
 
-        transcript = fetch_transcript_text(vid)
+        transcript, permanent_fail = fetch_transcript_text(vid)
         if not transcript:
             attempts = pending.get(vid, 0) + 1
-            if attempts >= TRANSCRIPT_MAX_ATTEMPTS:
-                logger.info(f"[{name}] No transcript for {vid} after {attempts} attempts. Title-only alert.")
+            if permanent_fail or attempts >= TRANSCRIPT_MAX_ATTEMPTS:
+                reason = "자막 비활성화" if permanent_fail else f"{attempts}회 시도 실패"
+                logger.info(f"[{name}] No transcript for {vid} ({reason}). Title-only alert.")
                 translated_title = translate_en_to_ko(title)
                 notice = (
                     f"🎬 *[{name} 유튜브 - 새 영상]*\n\n"
@@ -331,6 +370,24 @@ def process_channel(channel, seen_map, pending, chat_id):
             logger.info(f"[{name}] Sending video summary to Telegram chat {chat_id}...")
             send_telegram_long(TELEGRAM_BOT4_TOKEN, chat_id, header_text, summary, footer_text)
             logger.info(f"[{name}] Telegram alert sent successfully.")
+
+            # full_text 채널: 요약에 이어 전사 전문 번역도 발송
+            if channel.get("full_text"):
+                if len(transcript) > FULL_TEXT_MAX_CHARS:
+                    logger.info(f"[{name}] Transcript too long ({len(transcript)} chars); skipping full text.")
+                else:
+                    logger.info(f"[{name}] Translating full transcript ({len(transcript)} chars)...")
+                    full_paras = translate_transcript(transcript)
+                    if full_paras:
+                        time.sleep(1.0)
+                        send_telegram_long(
+                            TELEGRAM_BOT4_TOKEN, chat_id,
+                            f"📄 *[{name} - 전문 번역]*\n📌 *{translated_title}*",
+                            "\n\n".join(full_paras),
+                            f"=============================\n🔗 [영상 보기]({link})")
+                        logger.info(f"[{name}] Full transcript translation sent.")
+                    else:
+                        logger.warning(f"[{name}] Full transcript translation failed.")
         else:
             logger.warning("Telegram bot token or chat ID is missing. Alert skipped.")
 

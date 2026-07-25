@@ -44,6 +44,80 @@ sys.path.insert(0, WORKSPACE)
 from dart_collector import classify_for_download  # noqa: E402
 
 CACHE_PATH = os.path.join(WORKSPACE, "data_dart", "mezzanine_cache.json")
+LISTED_SHARES_CACHE_PATH = os.path.join(WORKSPACE, "data_dart", "listed_shares_cache.json")
+
+# 상장주식수 캐시 {stock_code: {"shares": int, "date": "YYYYMMDD"}}
+_listed_shares_cache = None
+_listed_shares_dirty = False
+LISTED_SHARES_TTL_DAYS = 7   # 이 기간이 지나면 재조회 (증자·소각 반영)
+
+
+def _load_listed_shares_cache():
+    global _listed_shares_cache
+    if _listed_shares_cache is None:
+        try:
+            with open(LISTED_SHARES_CACHE_PATH, encoding="utf-8") as f:
+                _listed_shares_cache = json.load(f)
+        except Exception:
+            _listed_shares_cache = {}
+    return _listed_shares_cache
+
+
+def save_listed_shares_cache():
+    """조회 결과를 원자적으로 저장 (조회가 있었을 때만)."""
+    if not _listed_shares_dirty or _listed_shares_cache is None:
+        return
+    try:
+        tmp = LISTED_SHARES_CACHE_PATH + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(_listed_shares_cache, f, ensure_ascii=False)
+        os.replace(tmp, LISTED_SHARES_CACHE_PATH)
+    except Exception as e:
+        logger.warning(f"상장주식수 캐시 저장 실패: {e}")
+
+
+def get_listed_shares(stock_code):
+    """네이버 금융에서 상장주식수를 조회한다 (7일 TTL 캐시). 실패 시 None.
+
+    자기주식 취득·소각 공시에는 발행주식총수가 없어 비율 계산에 외부 데이터가 필요하다.
+    """
+    global _listed_shares_dirty
+    code = str(stock_code or "").strip()
+    if not re.fullmatch(r"\d{6}", code):
+        return None
+
+    cache = _load_listed_shares_cache()
+    today = datetime.date.today()
+    hit = cache.get(code)
+    if isinstance(hit, dict) and hit.get("shares"):
+        try:
+            fetched = datetime.datetime.strptime(hit.get("date", ""), "%Y%m%d").date()
+            if (today - fetched).days < LISTED_SHARES_TTL_DAYS:
+                return int(hit["shares"])
+        except Exception:
+            pass
+
+    try:
+        from bs4 import BeautifulSoup
+        resp = requests.get(f"https://finance.naver.com/item/main.naver?code={code}",
+                            headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
+                                                   "AppleWebKit/537.36 Chrome/120 Safari/537.36"},
+                            timeout=10)
+        if resp.status_code != 200:
+            return None
+        text = BeautifulSoup(resp.text, "html.parser").get_text(" ", strip=True)
+        m = re.search(r"상장주식수\s*([\d,]+)", text)
+        if not m:
+            return None
+        shares = int(m.group(1).replace(",", ""))
+        if shares <= 0:
+            return None
+        cache[code] = {"shares": shares, "date": today.strftime("%Y%m%d")}
+        _listed_shares_dirty = True
+        return shares
+    except Exception as e:
+        logger.debug(f"상장주식수 조회 실패({code}): {e}")
+        return None
 
 
 def classify_category(report_nm):
@@ -189,11 +263,20 @@ def detail_from_cache(rec):
         ])
 
     if bt in ("자기주식취득", "자기주식신탁", "자기주식소각"):
+        shares = d.get("shares_count")
+        ratio = d.get("cancel_ratio")
+        ratio_label = "소각비율(발행주식총수 대비)" if bt == "자기주식소각" else "발행주식총수 대비"
+        ratio_str = f"{ratio:.2f}%" if isinstance(ratio, (int, float)) and ratio else None
+        # 공시에 비율이 없으면 상장주식수(네이버)로 직접 계산
+        if ratio_str is None and isinstance(shares, (int, float)) and shares:
+            listed = get_listed_shares(rec.get("stock_code"))
+            if listed:
+                ratio_str = f"{shares / listed * 100:.2f}% (상장주식수 {listed:,}주 기준)"
         return _kv([
             ("유형", bt),
             ("금액", fmt_amt(d.get("total_amount"))),
-            ("주식수", f"{d.get('shares_count'):,.0f}주" if isinstance(d.get("shares_count"), (int, float)) and d.get("shares_count") else None),
-            ("소각비율(발행주식총수 대비)", f"{d.get('cancel_ratio'):.2f}%" if isinstance(d.get("cancel_ratio"), (int, float)) else None),
+            ("주식수", f"{shares:,.0f}주" if isinstance(shares, (int, float)) and shares else None),
+            (ratio_label, ratio_str),
             ("기간", f"{d.get('start_date')} ~ {d.get('end_date')}" if d.get("start_date") not in (None, "-", "") else None),
             ("소각예정일", d.get("cancellation_date")),
             ("방법", d.get("method")),
@@ -581,6 +664,7 @@ def make_daily(date_str, test=False, send=True):
     build_html(out, "DART 일일 전체공시 리포트",
                f"{d_fmt} ㆍ 코스피/코스닥/코넥스 전체 {len(items)}건 ㆍ 카테고리 제목을 누르면 접기/펼치기",
                grouped, cache, [date_str])
+    save_listed_shares_cache()
     logger.info(f"Daily HTML built: {out} ({os.path.getsize(out)//1024}KB)")
     if send:
         send_document(out, f"📄 DART 일일 전체공시 리포트 ({d_fmt}) — {len(items)}건 (파일을 열면 브라우저로 상세 확인)", test=test)
@@ -620,6 +704,7 @@ def make_weekly(date_str, test=False, send=True):
     build_html(out, "DART 주간 중요공시 리포트",
                f"{s_fmt} ㆍ 중요 공시 {sum(len(i) for _, i in grouped)}건 (정정공시는 최신본만) ㆍ 카테고리 제목을 누르면 접기/펼치기",
                grouped, cache, days)
+    save_listed_shares_cache()
     logger.info(f"Weekly HTML built: {out} ({os.path.getsize(out)//1024}KB)")
     if send:
         send_document(out, f"📚 DART 주간 중요공시 리포트 ({s_fmt}) (파일을 열면 브라우저로 상세 확인)", test=test)
