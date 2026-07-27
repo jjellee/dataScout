@@ -728,11 +728,15 @@ def parse_officer_report_html(html_path, report_type):
                         price_val = None
 
                     g = txn_groups.setdefault(reason, {
-                        "change": 0, "after": 0, "w_sum": 0, "w_count": 0, "dates": []})
+                        "change": 0, "after": 0, "w_sum": 0, "w_count": 0,
+                        "dates": [], "all_dates": []})
                     if change is not None:
                         g["change"] += int(change)
                     if after is not None:
                         g["after"] = int(after)
+                    # 거래일은 단가 유무와 무관하게 수집 (엑셀 '거래 시작일/종료일' 컬럼용)
+                    if change_date and change is not None:
+                        g.setdefault("all_dates", []).append(change_date)
                     if price_val is not None and change is not None and abs(change) > 0:
                         g["w_sum"] += price_val * abs(change)
                         g["w_count"] += abs(change)
@@ -844,12 +848,14 @@ def parse_officer_report_html(html_path, report_type):
                         after = parse_number(cell_texts[5]) if len(cell_texts) > 5 else None
 
                         g = txn_groups.setdefault(reason, {
-                            "change": 0, "after": 0, "w_sum": 0, "w_count": 0, "dates": []})
+                            "change": 0, "after": 0, "w_sum": 0, "w_count": 0,
+                            "dates": [], "all_dates": []})
                         if change is not None:
                             g["change"] += int(change)
                             # No price in this format, use change_date for pykrx lookup
                             if dt and dt != '-':
                                 g["dates"].append((dt, int(change)))
+                                g.setdefault("all_dates", []).append(dt)
                         if after is not None:
                             g["after"] = int(after)
 
@@ -920,7 +926,8 @@ def parse_officer_report_html(html_path, report_type):
                     "ownership_pct": ownership_pct,
                     "shares_before": shares_before_val,
                     "pct_before": pct_before_val,
-                    "change_dates": g["dates"] if g["dates"] else None
+                    "change_dates": g["dates"] if g["dates"] else None,
+                    "trade_dates": g.get("all_dates") or None
                 })
         else:
             results.append({
@@ -933,7 +940,8 @@ def parse_officer_report_html(html_path, report_type):
                 "ownership_pct": ownership_pct,
                 "shares_before": shares_before_val,
                 "pct_before": pct_before_val,
-                "change_dates": change_dates if change_dates else None
+                "change_dates": change_dates if change_dates else None,
+                "trade_dates": [d for d, _ in change_dates] if change_dates else None
             })
 
     elif report_type == '대량보유':
@@ -1119,11 +1127,15 @@ def parse_officer_report_html(html_path, report_type):
                     detail_transactions[key] = {
                         "changes": [],
                         "last_after": 0,
-                        "change_dates": []
+                        "change_dates": [],
+                        "trade_dates": []
                     }
 
                 if change is not None:
                     detail_transactions[key]["changes"].append((int(change), price_val))
+                    # 거래일은 단가 유무와 무관하게 수집 (엑셀 '거래 시작일/종료일' 컬럼용)
+                    if change_date:
+                        detail_transactions[key].setdefault("trade_dates", []).append(change_date)
                     # Track transactions without price for pykrx lookup
                     if price_val is None and abs(change) > 0 and change_date:
                         detail_transactions[key]["change_dates"].append((change_date, int(change)))
@@ -1162,7 +1174,8 @@ def parse_officer_report_html(html_path, report_type):
                     "ownership_pct": overall_pct,
                     "shares_before": shares_before,
                     "pct_before": pct_before,
-                    "change_dates": txns["change_dates"] if txns["change_dates"] else None
+                    "change_dates": txns["change_dates"] if txns["change_dates"] else None,
+                    "trade_dates": txns.get("trade_dates") or None
                 })
         else:
             # No detail transactions found; create single summary row
@@ -1217,7 +1230,8 @@ def parse_officer_report_html(html_path, report_type):
                 "ownership_pct": overall_pct,
                 "shares_before": shares_before,
                 "pct_before": pct_before,
-                "change_dates": None
+                "change_dates": None,
+                "trade_dates": None
             })
 
     return results
@@ -2067,6 +2081,9 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 # v3: 대량보유 관계(최대주주 등) 재파싱
                 if '대량보유상황보고서' in report_nm and not data_dct.get("holder_rel_v3"):
                     needs_reparse = True
+                # v4: 거래일 전량 수집(trade_dates) — 구캐시는 단가 미기재 건의 날짜만 있었다
+                if not data_dct.get("trade_dates_v4"):
+                    needs_reparse = True
                 # 빈 결과인데 HTML이 존재하면 재시도 (수집 시점 다운로드 지연으로 빈 파싱이 박제된 케이스)
                 if data_dct.get("officer_reports") == []:
                     _hp = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -2101,6 +2118,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     record_detail["data"]["officer_reports"] = parsed
                     record_detail["data"]["officer_split_v2"] = True
                     record_detail["data"]["holder_rel_v3"] = True
+                    record_detail["data"]["trade_dates_v4"] = True
                     cache[rcept_no] = record_detail
                 else:
                     # Healing cache for missing avg_price
@@ -2332,7 +2350,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
             record_detail["data"] = {
                 "officer_reports": parsed,
                 "officer_split_v2": True,
-                "holder_rel_v3": True
+                "holder_rel_v3": True,
+                "trade_dates_v4": True
             }
             
         # Cache and save
@@ -2676,11 +2695,14 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 trade_amount = None
                 if p["shares_change"] and p.get("avg_price"):
                     trade_amount = int(p["shares_change"] * p["avg_price"])
+                trade_start, trade_end = trade_date_range(p)
                 officer_data_list.append({
                     "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
                     "회사명": r["corp_name"],
                     "종목코드": r["stock_code"],
                     "보고구분": rtype,
+                    "거래 시작일": trade_start,
+                    "거래 종료일": trade_end,
                     "보고자(주체)": p["reporter_name"],
                     "관계": p["relationship"],
                     "변동사유": p["change_reason"],
@@ -2786,6 +2808,48 @@ def dedup_officer_rows(rows):
 # -------------------------------------------------------------
 # openpyxl Styling Helpers
 # -------------------------------------------------------------
+def normalize_trade_date(date_str):
+    """공시 원문의 여러 날짜 표기를 'YYYY-MM-DD'로 통일. 실패 시 None.
+
+    지원: '2026년 04월 15일', '2026-05-13', '2025.06.10', '20260415'
+    """
+    s = str(date_str or "").strip()
+    if not s:
+        return None
+    m = re.match(r'(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일', s)
+    if m:
+        return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+    m = re.match(r'(\d{4})[-./](\d{1,2})[-./](\d{1,2})', s)
+    if m:
+        return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+    digits = re.sub(r'[^\d]', '', s)
+    if len(digits) == 8:
+        return f"{digits[:4]}-{digits[4:6]}-{digits[6:]}"
+    return None
+
+
+def trade_date_range(parsed_row):
+    """한 행에 속한 거래일들의 (가장 이른 날, 가장 늦은 날)을 반환. 없으면 (None, None).
+
+    trade_dates(모든 거래일) 우선, 없으면 change_dates(단가 미기재 건만 수집된 구캐시)로 폴백.
+    """
+    if isinstance(parsed_row, dict):
+        raw_list = parsed_row.get("trade_dates") or parsed_row.get("change_dates")
+    else:
+        raw_list = parsed_row
+    if not raw_list:
+        return None, None
+    dates = []
+    for entry in raw_list:
+        raw = entry[0] if isinstance(entry, (list, tuple)) and entry else entry
+        norm = normalize_trade_date(raw)
+        if norm:
+            dates.append(norm)
+    if not dates:
+        return None, None
+    return min(dates), max(dates)
+
+
 def format_officer_sheet(ws):
     """Styles the 5%ㆍ임원보고 sheet."""
     header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
@@ -2806,11 +2870,23 @@ def format_officer_sheet(ws):
 
     # max_row/max_column은 전체 셀 스캔(O(셀수)) — 행마다 재평가하면 O(n^2)라 1회만 계산
     _max_row, _max_col = ws.max_row, ws.max_column
+    # 컬럼 위치가 바뀌어도 서식이 어긋나지 않도록 헤더명 기준으로 매핑한다
+    headers = {}
     for col_idx in range(1, _max_col + 1):
         cell = ws.cell(row=1, column=col_idx)
+        headers[str(cell.value or "").strip()] = col_idx
         cell.font = header_font
         cell.fill = header_fill
         cell.alignment = align_center
+
+    def cols(*names):
+        return {headers[n] for n in names if n in headers}
+
+    center_cols = cols("접수일자", "종목코드", "보고구분", "거래 시작일", "거래 종료일", "접수번호")
+    link_cols = cols("DART링크")
+    signed_cols = cols("증감(주)", "거래액(원)")           # 부호 색상 + 천단위
+    int_cols = cols("단가(원)", "변동전 보유(주)", "변동후 보유(주)")
+    pct_cols = cols("변동전 비율(%)", "보유비율(%)")
 
     ws.row_dimensions[1].height = 25
     ws.sheet_format.defaultRowHeight = 22
@@ -2821,49 +2897,46 @@ def format_officer_sheet(ws):
             cell.font = data_font
             cell.border = data_border
 
-            if col_idx in [1, 3, 4, 15]:  # 접수일자, 종목코드, 보고구분, 접수번호
+            if col_idx in center_cols:
                 cell.alignment = align_center
-            elif col_idx == 16:  # DART링크
+            elif col_idx in link_cols:
                 cell.alignment = align_center
                 cell.font = link_font
-            elif col_idx in [8, 10]:  # 증감(주), 거래액(원)
+            elif col_idx in signed_cols:
                 cell.number_format = '#,##0'
                 cell.alignment = align_right
-                # Color negative red, positive blue
+                # 한국 관례: 플러스 빨강, 마이너스 파랑
                 if isinstance(cell.value, (int, float)):
                     if cell.value < 0:
                         cell.font = font_neg
                     elif cell.value > 0:
                         cell.font = font_pos
-            elif col_idx == 9:  # 단가(원)
+            elif col_idx in int_cols:
                 cell.number_format = '#,##0'
                 cell.alignment = align_right
-            elif col_idx == 11:  # 변동전 보유(주)
-                cell.number_format = '#,##0'
-                cell.alignment = align_right
-            elif col_idx == 12:  # 변동전 비율(%)
-                if isinstance(cell.value, (int, float)):
-                    cell.number_format = '0.00'
-                cell.alignment = align_right
-            elif col_idx == 13:  # 변동후 보유(주)
-                cell.number_format = '#,##0'
-                cell.alignment = align_right
-            elif col_idx == 14:  # 보유비율(%)
+            elif col_idx in pct_cols:
                 if isinstance(cell.value, (int, float)):
                     cell.number_format = '0.00'
                 cell.alignment = align_right
             else:
                 cell.alignment = align_left
-                
-    # Column widths
-    col_widths = {1: 12, 2: 16, 3: 10, 4: 10, 5: 20, 6: 14, 7: 14,
-                  8: 14, 9: 12, 10: 16, 11: 16, 12: 10, 13: 16, 14: 10, 15: 18, 16: 10}
-    for col_idx, width in col_widths.items():
-        ws.column_dimensions[get_column_letter(col_idx)].width = width
-            
+
+    # Column widths (헤더명 기준)
+    name_widths = {
+        "접수일자": 12, "회사명": 16, "종목코드": 10, "보고구분": 10,
+        "거래 시작일": 12, "거래 종료일": 12,
+        "보고자(주체)": 20, "관계": 14, "변동사유": 14, "증감(주)": 14, "단가(원)": 12,
+        "거래액(원)": 16, "변동전 보유(주)": 16, "변동전 비율(%)": 10,
+        "변동후 보유(주)": 16, "보유비율(%)": 10, "접수번호": 18, "DART링크": 10,
+    }
+    for name, width in name_widths.items():
+        if name in headers:
+            ws.column_dimensions[get_column_letter(headers[name])].width = width
+
     ws.auto_filter.ref = ws.dimensions
-    ws.column_dimensions["C"].hidden = True
-    ws.column_dimensions["D"].hidden = True
+    for hidden in ("종목코드", "보고구분"):
+        if hidden in headers:
+            ws.column_dimensions[get_column_letter(headers[hidden])].hidden = True
     ws.freeze_panes = "A2"
 
 def format_category_sheet(ws):
