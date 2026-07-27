@@ -301,6 +301,11 @@ def detail_from_cache(rec):
 
 def _officer_table(ors):
     """5%·임원보고 파싱 행들을 미니 테이블로 렌더링 (엑셀 '5%_임원보고' 탭과 동일 필드)."""
+    try:
+        from dart_classifier import trade_date_range
+    except Exception:
+        trade_date_range = lambda _o: (None, None)  # noqa: E731
+
     rows = []
     for o in ors[:8]:
         chg = o.get("shares_change")
@@ -311,14 +316,17 @@ def _officer_table(ors):
         after_s = f"{after:,.0f}주" if isinstance(after, (int, float)) and after else "-"
         pct = o.get("ownership_pct")
         pct_s = f"{pct:.2f}%" if isinstance(pct, (int, float)) and pct else "-"
-        rows.append(f"<tr><td>{html.escape(str(o.get('reporter_name') or '-'))}</td>"
+        t_start, t_end = trade_date_range(o)
+        rows.append(f"<tr><td class='num'>{t_start or '-'}</td><td class='num'>{t_end or '-'}</td>"
+                    f"<td>{html.escape(str(o.get('reporter_name') or '-'))}</td>"
                     f"<td>{html.escape(str(o.get('relationship') or '-'))}</td>"
                     f"<td>{html.escape(str(o.get('change_reason') or '-'))}</td>"
                     f"<td class='num'>{chg_s}</td><td class='num'>{price_s}</td>"
                     f"<td class='num'>{after_s}</td><td class='num'>{pct_s}</td></tr>")
     if not rows:
         return ""
-    return ('<table class="mini"><tr><th>보고자</th><th>관계</th><th>사유</th><th>변동수량</th>'
+    return ('<table class="mini"><tr><th>거래 시작일</th><th>거래 종료일</th>'
+            '<th>보고자</th><th>관계</th><th>사유</th><th>변동수량</th>'
             '<th>평균단가</th><th>보유(후)</th><th>지분율</th></tr>' + "".join(rows) + "</table>")
 
 
