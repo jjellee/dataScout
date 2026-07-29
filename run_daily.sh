@@ -35,8 +35,9 @@ echo "Step 1: Collecting daily market data..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python batch_collector.py
 
 # 2. Run telegram reporter to update charts, upload and forward them
-echo "Step 2: Generating cumulative investor charts and uploading to Telegram..."
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python telegram_reporter.py
+# DISABLED 2026-07-29: 종목별 주체 수급 차트 전송 중지 (사용자 요청)
+# echo "Step 2: Generating cumulative investor charts and uploading to Telegram..."
+# /home/inhyuk/projects/ExportImportAutomation/venv/bin/python telegram_reporter.py
 
 # 2b. Run KOSDAQ Pharmaceutical & Biotech supply/demand reporter
 echo "Step 2b: Generating KOSDAQ Pharmaceutical & Biotech supply/demand chart and uploading to Telegram..."
