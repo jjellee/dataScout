@@ -466,3 +466,552 @@
 2026-08-04 11:07:28,276 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
 2026-08-04 11:07:29,319 - ERROR - 텔레그램 메시지 실패: {"ok":false,"error_code":400,"description":"Bad Request: message is too long"}
 2026-08-04 11:09:42,369 - INFO - 완료: 49종목 리포트 생성 · 텔레그램 발송
+2026-08-05 08:50:04,763 - INFO - Nasdaq 스크리너 수신: 7132종목
+2026-08-05 08:50:05,453 - INFO - 1차(상승률·시총·거래대금) 통과: 255종목
+2026-08-05 08:50:08,226 - INFO - 2차(거래량 급증 2.0배↑) 통과: 32종목
+2026-08-05 08:50:08,235 - INFO - 쿨다운(7일)으로 2종목 제외
+2026-08-05 08:50:27,116 - INFO - 3차(펀더멘털) 통과: 12종목
+2026-08-05 08:50:38,574 - INFO - 워치리스트 트랙: 56종목 (PLTR +29.5%, AEHR +19.8%, AAOI +19.4%, ARQQ +19.1%, MRVL +12.8%, ALAB +12.7%, COHR +12.4%, WOLF +11.1%, SNDK +10.8%, INTC +10.8%, FORM +10.6%, TER +10.3%, NVTS +10.2%, AMKR +9.9%, QBTS +9.3%, GLW +9.0%, CRDO +9.0%, RGTI +8.9%, LITE +8.9%, CLS +8.6%, LSCC +8.5%, FLEX +7.9%, LRCX +7.9%, MU +7.6%, IONQ +7.4%, QCOM +7.3%, MCHP +7.2%, CRWV +7.2%, ONTO +7.1%, AMD +7.0%, KLAC +6.9%, VIAV +6.8%, WT +6.7%, AVGO +6.6%, NBIS +6.2%, MDB +6.2%, VICR +6.1%, APLD +6.0%, KEYS +6.0%, NXPI +6.0%, QUBT +5.6%, DDOG +5.3%, CIEN +5.2%, CSCO +5.1%, APH +4.9%, IESC +4.9%, BE +4.5%, CRWD +4.3%, HPE +4.3%, ARWR +4.2%, NTAP +4.1%, GFS +4.0%, CBRS +3.3%, FTNT +3.1%, SNPS +3.0%, SNOW +3.0%)
+2026-08-05 08:52:03,252 - INFO - 최종 선정: 65종목 (워치리스트 56 + 전체시장 9)
+
+선정 종목
+  ★WL PLTR   + 29.45%  vol× 5.5   $389.95B  score=0.980  매출 YoY +84.7%, QoQ +16.0%, 영업이익률 46.2%
+  ★WL AEHR   + 19.82%  vol× 1.4     $3.58B  score=0.564  매출 YoY +33.7%, QoQ +82.6%, 영업적자(-6.4%)
+  ★WL AAOI   + 19.44%  vol× 2.2    $10.56B  score=0.640  매출 YoY +51.4%, QoQ +12.6%, 영업적자(-8.5%)
+  ★WL ARQQ   + 19.13%  vol× 1.9    $529.5M  score=0.378  
+  ★WL MRVL   + 12.81%  vol× 1.3   $191.43B  score=0.580  매출 YoY +27.6%, QoQ +9.0%, 영업이익률 14.5%
+  ★WL ALAB   + 12.65%  vol× 2.4    $61.99B  score=0.759  매출 YoY +93.4%, QoQ +14.0%, 영업이익률 20.1%
+  ★WL COHR   + 12.35%  vol× 1.9    $63.33B  score=0.548  매출 YoY +20.5%, QoQ +7.1%, 영업이익률 12.5%
+  ★WL WOLF   + 11.13%  vol× 1.9     $1.41B  score=0.331  매출 YoY -16.8%, 영업적자(-72.0%), 마진 +15.5%p 개선
+  ★WL SNDK   + 10.84%  vol× 1.0   $211.42B  score=0.588  매출 YoY +251.0%, QoQ +96.7%, 영업이익률 70.0%
+  ★WL INTC   + 10.84%  vol× 1.1   $508.74B  score=0.547  매출 YoY +25.4%, QoQ +18.8%, 영업이익률 12.2%
+  ★WL FORM   + 10.57%  vol× 1.7     $9.38B  score=0.522  매출 YoY +32.0%, QoQ +5.1%, TTM FCF 흑자
+  ★WL TER    + 10.32%  vol× 1.2    $63.09B  score=0.590  매출 YoY +103.9%, QoQ +3.6%, 영업이익률 33.2%
+  ★WL NVTS   + 10.16%  vol× 0.9     $3.31B  score=0.261  매출 YoY -27.3%, QoQ +22.5%, 영업적자(-255.0%)
+  ★WL AMKR   +  9.89%  vol× 1.2    $13.88B  score=0.485  매출 YoY +25.6%, QoQ +12.7%, 영업이익률 10.5%
+  ★WL QBTS   +  9.26%  vol× 1.4     $8.01B  score=0.361  매출 YoY -80.9%, QoQ +3.9%, 영업적자(-1914.9%)
+  ★WL GLW    +  9.04%  vol× 1.7   $137.73B  score=0.499  매출 YoY +16.6%, QoQ +8.7%, 영업이익률 15.5%
+  ★WL CRDO   +  8.96%  vol× 1.2    $44.37B  score=0.572  매출 YoY +157.0%, QoQ +7.4%, 영업이익률 35.7%
+  ★WL RGTI   +  8.93%  vol× 1.2     $5.80B  score=0.465  매출 YoY +198.9%, QoQ +135.5%, 영업적자(-589.8%)
+  ★WL LITE   +  8.92%  vol× 1.6    $66.09B  score=0.589  매출 YoY +90.1%, QoQ +21.5%, 영업이익률 21.7%
+  ★WL CLS    +  8.55%  vol× 1.4    $42.67B  score=0.523  매출 YoY +62.4%, QoQ +16.1%, 영업이익률 9.8%
+  ★WL LSCC   +  8.51%  vol× 2.1    $18.91B  score=0.695  매출 YoY +42.2%, QoQ +17.2%, 영업이익률 15.6%
+  ★WL FLEX   +  7.88%  vol× 1.1    $46.81B  score=0.353  매출 YoY +16.9%, QoQ +5.9%, TTM FCF 흑자
+  ★WL LRCX   +  7.85%  vol× 1.5   $397.36B  score=0.419  매출 YoY +23.8%, QoQ +9.3%, TTM FCF 흑자
+  ★WL MU     +  7.62%  vol× 0.8     $1.01T  score=0.540  매출 YoY +345.7%, QoQ +73.7%, 영업이익률 80.4%
+  ★WL IONQ   +  7.39%  vol× 1.3    $15.57B  score=0.452  매출 YoY +754.7%, QoQ +4.5%, 영업적자(-419.8%)
+  ★WL QCOM   +  7.32%  vol× 1.2   $170.84B  score=0.309  매출 YoY -4.0%, 영업이익률 16.3%, TTM FCF 흑자
+  ★WL MCHP   +  7.25%  vol× 1.4    $43.80B  score=0.515  매출 YoY +35.1%, QoQ +10.6%, 영업이익률 17.1%
+  ★WL CRWV   +  7.16%  vol× 1.3    $50.14B  score=0.398  매출 YoY +111.6%, QoQ +32.2%, 영업적자(-6.9%)
+  ★WL ONTO   +  7.12%  vol× 1.1    $14.31B  score=0.353  매출 YoY +9.5%, QoQ +9.4%, 영업이익률 13.3%
+  ★WL AMD    +  7.00%  vol× 1.8   $845.60B  score=0.580  매출 YoY +37.8%, 영업이익률 14.4%, 마진 +3.6%p 개선
+  ★WL KLAC   +  6.95%  vol× 1.1   $255.31B  score=0.343  매출 YoY +11.5%, QoQ +3.6%, TTM FCF 흑자
+  ★WL VIAV   +  6.81%  vol× 1.5     $9.43B  score=0.556  매출 YoY +42.8%, QoQ +10.2%, 영업이익률 10.3%
+  ★WL WT     +  6.67%  vol× 2.6     $3.42B  score=0.496  매출 YoY +47.5%, QoQ +8.2%, TTM FCF 흑자
+  ★WL AVGO   +  6.61%  vol× 1.5     $1.99T  score=0.553  매출 YoY +47.9%, QoQ +14.9%, 영업이익률 48.9%
+  ★WL NBIS   +  6.19%  vol× 1.1    $57.31B  score=0.430  매출 YoY +683.9%, QoQ +75.2%, 영업적자(-32.1%)
+  ★WL MDB    +  6.17%  vol× 1.7    $30.57B  score=0.425  매출 YoY +25.2%, 영업적자(-3.6%), 마진 +6.2%p 개선
+  ★WL VICR   +  6.06%  vol× 0.7    $10.44B  score=0.324  매출 YoY +1.6%, QoQ +26.9%, 영업이익률 24.3%
+  ★WL APLD   +  6.04%  vol× 1.0     $9.11B  score=0.336  매출 YoY +139.3%, TTM FCF 적자
+  ★WL KEYS   +  6.01%  vol× 1.2    $58.32B  score=0.492  매출 YoY +31.5%, QoQ +7.3%, 영업이익률 23.7%
+  ★WL NXPI   +  5.99%  vol× 1.6    $59.91B  score=0.457  매출 YoY +19.5%, QoQ +9.9%, 영업이익률 30.8%
+  ★WL QUBT   +  5.61%  vol× 1.5     $2.08B  score=0.438  매출 YoY +9364.1%, QoQ +1764.1%, 영업적자(-556.8%)
+  ★WL DDOG   +  5.32%  vol× 1.2   $102.57B  score=0.480  매출 YoY +32.2%, QoQ +5.6%, 영업이익률 0.7%
+  ★WL CIEN   +  5.21%  vol× 1.1    $58.20B  score=0.477  매출 YoY +39.5%, QoQ +10.1%, 영업이익률 15.2%
+  ★WL CSCO   +  5.08%  vol× 1.4   $479.83B  score=0.437  매출 YoY +12.0%, QoQ +3.2%, 영업이익률 25.0%
+  ★WL APH    +  4.89%  vol× 1.3   $211.25B  score=0.421  매출 YoY +58.4%, QoQ +18.3%, TTM FCF 흑자
+  ★WL IESC   +  4.88%  vol× 0.8    $15.15B  score=0.461  매출 YoY +39.6%, QoQ +27.5%, 영업이익률 14.4%
+  ★WL BE     +  4.48%  vol× 1.2    $67.18B  score=0.516  매출 YoY +165.5%, QoQ +41.8%, 영업이익률 17.1%
+  ★WL CRWD   +  4.29%  vol× 1.0   $215.08B  score=0.408  매출 YoY +25.6%, QoQ +6.1%, 영업적자(-2.2%)
+  ★WL HPE    +  4.28%  vol× 1.5    $69.38B  score=0.616  매출 YoY +40.0%, QoQ +14.8%, 영업이익률 7.7%
+  ★WL ARWR   +  4.16%  vol× 1.1    $12.62B  score=0.248  매출 YoY -86.4%, 영업적자(-191.6%), TTM FCF 적자
+  ★WL NTAP   +  4.12%  vol× 1.6    $37.37B  score=0.433  매출 YoY +12.5%, QoQ +13.7%, 영업이익률 27.3%
+  ★WL GFS    +  4.02%  vol× 1.8    $28.94B  score=0.360  매출 YoY +3.1%, 영업이익률 11.0%, 마진 +1.5%p 개선
+  ★WL CBRS   +  3.26%  vol× 1.1    $50.62B  score=0.181  QoQ +94.4%, 영업적자(-8.4%)
+  ★WL FTNT   +  3.11%  vol× 1.3   $123.48B  score=0.459  매출 YoY +25.6%, QoQ +10.7%, 영업이익률 33.7%
+  ★WL SNPS   +  3.01%  vol× 0.8    $77.33B  score=0.393  매출 YoY +41.9%, 영업이익률 10.4%, TTM FCF 흑자
+  ★WL SNOW   +  3.00%  vol× 1.3   $109.79B  score=0.402  매출 YoY +33.5%, QoQ +8.3%, 영업적자(-23.4%)
+      PAY    + 29.20%  vol× 4.7     $5.61B  score=0.900  매출 YoY +30.2%, QoQ +8.5%, 영업이익률 7.4%
+      W      + 29.97%  vol× 5.3    $15.32B  score=0.795  매출 YoY +7.4%, 영업이익률 0.4%, 마진 +2.0%p 개선
+      ZBRA   + 26.47%  vol× 4.1    $17.57B  score=0.774  매출 YoY +14.3%, QoQ +1.4%, 영업이익률 15.0%
+      AEIS   + 15.19%  vol× 2.4    $12.98B  score=0.745  매출 YoY +26.3%, QoQ +4.4%, 영업이익률 13.9%
+      AYA    + 12.59%  vol× 3.6     $3.28B  score=0.719  매출 YoY +246.6%, QoQ +55.7%, 영업이익률 66.2%
+      INOD   + 10.99%  vol× 2.2     $2.29B  score=0.640  매출 YoY +54.4%, QoQ +24.5%, 영업이익률 18.8%
+      ADEA   + 12.31%  vol× 2.5     $3.44B  score=0.631  매출 YoY +19.5%, 영업이익률 38.9%, 마진 +6.2%p 개선
+      SNAP   + 14.88%  vol× 2.9     $9.59B  score=0.624  매출 YoY +12.1%, 영업적자(-4.9%), 마진 +9.3%p 개선
+      WIX    + 17.49%  vol× 2.8     $3.68B  score=0.544  매출 YoY +14.3%, QoQ +3.2%, 영업적자(-12.9%)
+
+2026-08-05 08:52:03,260 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-08-05 08:52:03,260 - INFO - [1/65] PLTR 분석 시작
+2026-08-05 08:52:03,276 - INFO - PLTR: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 08:52:03,276 - INFO - sa-transcripts ticker 실행 (PLTR) — 최대 600초
+2026-08-05 08:52:31,005 - INFO -   sa[ticker] 08:52:30 [0805-085203-79d8] INFO 우선순위 발견 완료: 1종목, 신규 26건, 우선표시 30건. 대기열 우선분 106건 → 다음 드립부터 먼저 수집.
+2026-08-05 08:52:31,005 - INFO -   sa[ticker] 08:52:30 [0805-085203-79d8] INFO 누적 상태: {'error': 2, 'fetched': 2, 'seen': 7545, 'skipped': 18519, 'uploaded': 4819} (경과 27s)
+2026-08-05 08:52:31,005 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 09:12:31,035 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 09:12:31,090 - INFO - PLTR: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 09:12:31,090 - INFO - PLTR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 09:13:00,082 - INFO - DeepSeek response generated.
+2026-08-05 09:13:00,120 - INFO - PLTR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/PLTR_2026-08-05.html
+2026-08-05 09:13:00,120 - INFO - [2/65] AEHR 분석 시작
+2026-08-05 09:13:00,134 - INFO - AEHR: transcript 2건 확보 — 2026-07-14 Aehr Test Systems, Inc. (AEHR) Q4 2026 Earnin, 2026-04-07 Aehr Test Systems, Inc. (AEHR) Q3 2026 Earnin
+2026-08-05 09:13:00,134 - INFO - AEHR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:13:50,815 - INFO - DeepSeek response generated.
+2026-08-05 09:13:50,821 - INFO - AEHR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AEHR_2026-08-05.html
+2026-08-05 09:13:50,821 - INFO - [3/65] AAOI 분석 시작
+2026-08-05 09:13:50,845 - INFO - AAOI: transcript 1건 확보 — 2026-05-08 Applied Optoelectronics, Inc. (AAOI) Q1 2026 
+2026-08-05 09:13:50,845 - INFO - AAOI: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:14:33,659 - INFO - DeepSeek response generated.
+2026-08-05 09:14:33,664 - INFO - AAOI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AAOI_2026-08-05.html
+2026-08-05 09:14:33,664 - INFO - [4/65] ARQQ 분석 시작
+2026-08-05 09:14:33,675 - INFO - ARQQ: SEC 원문 다운로드 중…
+2026-08-05 09:14:34,547 - INFO - ARQQ: complete: saved=0 skipped=57 errors=0 requests=2 manifest={'saved': 48344, 'unavailable': 3}
+2026-08-05 09:14:34,555 - INFO - ARQQ: transcript 1건 확보 — 2026-05-21 Arqit Quantum Inc. (ARQQ) Q2 2026 Earnings Ca
+2026-08-05 09:14:34,555 - INFO - ARQQ: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 27,363자)
+2026-08-05 09:15:17,945 - INFO - DeepSeek response generated.
+2026-08-05 09:15:17,949 - INFO - ARQQ: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ARQQ_2026-08-05.html
+2026-08-05 09:15:17,949 - INFO - [5/65] MRVL 분석 시작
+2026-08-05 09:15:17,965 - INFO - MRVL: transcript 2건 확보 — 2026-06-03 Marvell Technology, Inc. (MRVL) Presents at B, 2026-06-02 Marvell Technology, Inc. (MRVL) Presents at 2
+2026-08-05 09:15:17,966 - INFO - MRVL: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:15:57,898 - INFO - DeepSeek response generated.
+2026-08-05 09:15:57,904 - INFO - MRVL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/MRVL_2026-08-05.html
+2026-08-05 09:15:57,904 - INFO - [6/65] ALAB 분석 시작
+2026-08-05 09:15:57,925 - INFO - ALAB: transcript 2건 확보 — 2026-06-04 Astera Labs, Inc. (ALAB) Presents at 2026 Eve, 2026-05-27 Astera Labs, Inc. (ALAB) Presents at TD Cowen
+2026-08-05 09:15:57,925 - INFO - ALAB: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:16:34,975 - INFO - DeepSeek response generated.
+2026-08-05 09:16:34,981 - INFO - ALAB: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ALAB_2026-08-05.html
+2026-08-05 09:16:34,981 - INFO - [7/65] COHR 분석 시작
+2026-08-05 09:16:34,997 - INFO - COHR: SEC 원문 다운로드 중…
+2026-08-05 09:16:36,358 - INFO - COHR: complete: saved=0 skipped=93 errors=0 requests=5 manifest={'saved': 48344, 'unavailable': 3}
+2026-08-05 09:16:36,370 - INFO - COHR: transcript 2건 확보 — 2026-05-06 Coherent Corp. (COHR) Q3 2026 Earnings Call T, 2026-03-17 Coherent Corp. (COHR) Discusses Photonics Inn
+2026-08-05 09:16:36,372 - INFO - COHR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:17:14,352 - INFO - DeepSeek response generated.
+2026-08-05 09:17:14,356 - INFO - COHR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/COHR_2026-08-05.html
+2026-08-05 09:17:14,356 - INFO - [8/65] WOLF 분석 시작
+2026-08-05 09:17:14,372 - INFO - WOLF: transcript 2건 확보 — 2026-05-05 Wolfspeed, Inc. (WOLF) Q3 2026 Earnings Call , 2026-05-05 Wolfspeed, Inc. 2026 Q3 - Results - Earnings 
+2026-08-05 09:17:14,372 - INFO - WOLF: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 27,520자)
+2026-08-05 09:18:01,666 - INFO - DeepSeek response generated.
+2026-08-05 09:18:01,673 - INFO - WOLF: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/WOLF_2026-08-05.html
+2026-08-05 09:18:01,673 - INFO - [9/65] SNDK 분석 시작
+2026-08-05 09:18:01,674 - INFO - SNDK: SEC 원문 다운로드 중…
+2026-08-05 09:18:02,857 - INFO - SNDK: complete: saved=0 skipped=55 errors=0 requests=3 manifest={'saved': 48344, 'unavailable': 3}
+2026-08-05 09:18:02,868 - INFO - SNDK: transcript 2건 확보 — 2026-06-09 Sandisk Corporation (SNDK) Presents at Mizuho, 2026-05-30 Sandisk Corporation (SNDK) Presents at Bernst
+2026-08-05 09:18:02,869 - INFO - SNDK: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:18:34,777 - INFO - DeepSeek response generated.
+2026-08-05 09:18:34,781 - INFO - SNDK: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/SNDK_2026-08-05.html
+2026-08-05 09:18:34,781 - INFO - [10/65] INTC 분석 시작
+2026-08-05 09:18:34,797 - INFO - INTC: SEC 원문 다운로드 중…
+2026-08-05 09:18:38,416 - INFO - INTC: complete: saved=0 skipped=85 errors=0 requests=14 manifest={'saved': 48344, 'unavailable': 3}
+2026-08-05 09:18:50,223 - INFO - INTC: transcript 2건 확보 — 2026-07-23 Intel Corporation (INTC) Q2 2026 Earnings Cal, 2026-06-02 Intel Corporation (INTC) Presents at Bank of 
+2026-08-05 09:18:50,224 - INFO - INTC: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:19:25,934 - INFO - DeepSeek response generated.
+2026-08-05 09:19:25,938 - INFO - INTC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/INTC_2026-08-05.html
+2026-08-05 09:19:25,938 - INFO - [11/65] FORM 분석 시작
+2026-08-05 09:19:36,170 - INFO - FORM: transcript 1건 확보 — 2026-07-29 FormFactor, Inc. (FORM) Q2 2026 Earnings Call
+2026-08-05 09:19:36,170 - INFO - FORM: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:20:19,977 - INFO - DeepSeek response generated.
+2026-08-05 09:20:19,982 - INFO - FORM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/FORM_2026-08-05.html
+2026-08-05 09:20:19,982 - INFO - [12/65] TER 분석 시작
+2026-08-05 09:20:19,997 - INFO - TER: SEC 원문 다운로드 중…
+2026-08-05 09:20:23,024 - INFO - TER: complete: saved=4 skipped=48 errors=0 requests=10 manifest={'saved': 48348, 'unavailable': 3}
+2026-08-05 09:20:45,006 - INFO - TER: transcript 2건 확보 — 2026-07-29 Teradyne, Inc. (TER) Q2 2026 Earnings Call Tr, 2026-06-03 Teradyne, Inc. (TER) Presents at Bank of Amer
+2026-08-05 09:20:45,007 - INFO - TER: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:21:30,945 - INFO - DeepSeek response generated.
+2026-08-05 09:21:30,950 - INFO - TER: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/TER_2026-08-05.html
+2026-08-05 09:21:30,950 - INFO - [13/65] NVTS 분석 시작
+2026-08-05 09:21:30,963 - INFO - NVTS: transcript 2건 확보 — 2026-07-27 Navitas Semiconductor Corporation (NVTS) Q2 2, 2026-05-06 Navitas Semiconductor Corporation (NVTS) Q1 2
+2026-08-05 09:21:30,963 - INFO - NVTS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:22:21,268 - INFO - DeepSeek response generated.
+2026-08-05 09:22:21,274 - INFO - NVTS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/NVTS_2026-08-05.html
+2026-08-05 09:22:21,274 - INFO - [14/65] AMKR 분석 시작
+2026-08-05 09:22:21,288 - INFO - AMKR: SEC 원문 다운로드 중…
+2026-08-05 09:22:27,931 - INFO - AMKR: complete: saved=3 skipped=61 errors=0 requests=26 manifest={'saved': 48351, 'unavailable': 3}
+2026-08-05 09:22:40,501 - INFO - AMKR: transcript 2건 확보 — 2026-07-27 Amkor Technology, Inc. (AMKR) Q2 2026 Earning, 2026-05-22 Amkor Technology, Inc. (AMKR) Analyst/Investo
+2026-08-05 09:22:40,501 - INFO - AMKR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:23:22,589 - INFO - DeepSeek response generated.
+2026-08-05 09:23:22,594 - INFO - AMKR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AMKR_2026-08-05.html
+2026-08-05 09:23:22,594 - INFO - [15/65] QBTS 분석 시작
+2026-08-05 09:23:22,617 - INFO - QBTS: transcript 2건 확보 — 2026-06-04 D-Wave Quantum Inc. (QBTS) Analyst/Investor D, 2026-05-12 D-Wave Quantum Inc. (QBTS) Q1 2026 Earnings C
+2026-08-05 09:23:22,618 - INFO - QBTS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:24:02,804 - INFO - DeepSeek response generated.
+2026-08-05 09:24:02,810 - INFO - QBTS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/QBTS_2026-08-05.html
+2026-08-05 09:24:02,810 - INFO - [16/65] GLW 분석 시작
+2026-08-05 09:24:02,824 - INFO - GLW: transcript 2건 확보 — 2026-07-28 Corning Incorporated (GLW) Q2 2026 Earnings C, 2026-05-19 Corning Incorporated (GLW) Presents at J.P. M
+2026-08-05 09:24:02,825 - INFO - GLW: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:24:50,228 - INFO - DeepSeek response generated.
+2026-08-05 09:24:50,233 - INFO - GLW: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/GLW_2026-08-05.html
+2026-08-05 09:24:50,233 - INFO - [17/65] CRDO 분석 시작
+2026-08-05 09:24:50,254 - INFO - CRDO: transcript 2건 확보 — 2026-06-04 Credo Technology Group Holding Ltd (CRDO) Pre, 2026-06-01 Credo Technology Group Holding Ltd (CRDO) Q4 
+2026-08-05 09:24:50,254 - INFO - CRDO: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:25:31,467 - INFO - DeepSeek response generated.
+2026-08-05 09:25:31,472 - INFO - CRDO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CRDO_2026-08-05.html
+2026-08-05 09:25:31,472 - INFO - [18/65] RGTI 분석 시작
+2026-08-05 09:25:31,494 - INFO - RGTI: transcript 2건 확보 — 2026-05-12 Rigetti Computing, Inc. (RGTI) Q1 2026 Earnin, 2026-05-12 Rigetti Computing, Inc. 2026 Q1 - Results - E
+2026-08-05 09:25:31,494 - INFO - RGTI: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 29,271자)
+2026-08-05 09:26:17,262 - INFO - DeepSeek response generated.
+2026-08-05 09:26:17,267 - INFO - RGTI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/RGTI_2026-08-05.html
+2026-08-05 09:26:17,267 - INFO - [19/65] LITE 분석 시작
+2026-08-05 09:26:17,295 - INFO - LITE: transcript 2건 확보 — 2026-06-09 Lumentum Holdings Inc. (LITE) Presents at Miz, 2026-06-03 Lumentum Holdings Inc. (LITE) Presents at Ban
+2026-08-05 09:26:17,295 - INFO - LITE: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:27:04,456 - INFO - DeepSeek response generated.
+2026-08-05 09:27:04,460 - INFO - LITE: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/LITE_2026-08-05.html
+2026-08-05 09:27:04,460 - INFO - [20/65] CLS 분석 시작
+2026-08-05 09:27:04,488 - INFO - CLS: transcript 2건 확보 — 2026-05-19 Celestica Inc. (CLS:CA) Shareholder/Analyst C, 2026-04-28 Celestica Inc. (CLS:CA) Q1 2026 Earnings Call
+2026-08-05 09:27:04,488 - INFO - CLS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:27:45,376 - INFO - DeepSeek response generated.
+2026-08-05 09:27:45,381 - INFO - CLS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CLS_2026-08-05.html
+2026-08-05 09:27:45,381 - INFO - [21/65] LSCC 분석 시작
+2026-08-05 09:27:45,387 - INFO - LSCC: SEC 원문 다운로드 중…
+2026-08-05 09:27:48,317 - INFO - LSCC: complete: saved=6 skipped=71 errors=0 requests=12 manifest={'saved': 48357, 'unavailable': 3}
+2026-08-05 09:27:48,328 - INFO - LSCC: transcript 2건 확보 — 2026-05-19 Lattice Semiconductor Corporation (LSCC) Pres, 2026-05-04 Lattice Semiconductor Corporation (LSCC) Q1 2
+2026-08-05 09:27:48,328 - INFO - LSCC: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:28:29,840 - INFO - DeepSeek response generated.
+2026-08-05 09:28:29,847 - INFO - LSCC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/LSCC_2026-08-05.html
+2026-08-05 09:28:29,847 - INFO - [22/65] FLEX 분석 시작
+2026-08-05 09:28:29,867 - INFO - FLEX: transcript 2건 확보 — 2026-07-29 Flex Ltd. (FLEX) Q1 2027 Earnings Call Transc, 2026-06-03 Flex Ltd. (FLEX) Presents at Bank of America 
+2026-08-05 09:28:29,867 - INFO - FLEX: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:29:13,333 - INFO - DeepSeek response generated.
+2026-08-05 09:29:13,337 - INFO - FLEX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/FLEX_2026-08-05.html
+2026-08-05 09:29:13,338 - INFO - [23/65] LRCX 분석 시작
+2026-08-05 09:29:13,352 - INFO - LRCX: SEC 원문 다운로드 중…
+2026-08-05 09:29:15,370 - INFO - LRCX: complete: saved=2 skipped=49 errors=0 requests=8 manifest={'saved': 48359, 'unavailable': 3}
+2026-08-05 09:30:02,476 - INFO - LRCX: transcript 2건 확보 — 2026-07-30 Lam Research Corporation (LRCX) Q4 2026 Earni, 2026-06-02 Lam Research Corporation (LRCX) Presents at B
+2026-08-05 09:30:02,476 - INFO - LRCX: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:30:40,073 - INFO - DeepSeek response generated.
+2026-08-05 09:30:40,078 - INFO - LRCX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/LRCX_2026-08-05.html
+2026-08-05 09:30:40,078 - INFO - [24/65] MU 분석 시작
+2026-08-05 09:30:40,085 - INFO - MU: SEC 원문 다운로드 중…
+2026-08-05 09:30:44,232 - INFO - MU: complete: saved=0 skipped=63 errors=0 requests=16 manifest={'saved': 48359, 'unavailable': 3}
+2026-08-05 09:30:44,243 - INFO - MU: transcript 2건 확보 — 2026-06-24 Micron Technology, Inc. (MU) Q3 2026 Earnings, 2026-06-24 Micron Technology, Inc. (MU) Q3 2026 Earnings
+2026-08-05 09:30:44,243 - INFO - MU: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:31:25,080 - INFO - DeepSeek response generated.
+2026-08-05 09:31:25,085 - INFO - MU: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/MU_2026-08-05.html
+2026-08-05 09:31:25,085 - INFO - [25/65] IONQ 분석 시작
+2026-08-05 09:31:25,108 - INFO - IONQ: transcript 2건 확보 — 2026-05-18 IonQ, Inc. (IONQ) Presents at J.P. Morgan 54t, 2026-05-09 IonQ, Inc. (IONQ) Q1 2026 Earnings Call Trans
+2026-08-05 09:31:25,109 - INFO - IONQ: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:32:09,625 - INFO - DeepSeek response generated.
+2026-08-05 09:32:09,630 - INFO - IONQ: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/IONQ_2026-08-05.html
+2026-08-05 09:32:09,630 - INFO - [26/65] QCOM 분석 시작
+2026-08-05 09:32:09,643 - INFO - QCOM: SEC 원문 다운로드 중…
+2026-08-05 09:32:14,514 - INFO - QCOM: complete: saved=4 skipped=49 errors=0 requests=19 manifest={'saved': 48363, 'unavailable': 3}
+2026-08-05 09:32:43,425 - INFO - QCOM: transcript 2건 확보 — 2026-07-29 QUALCOMM Incorporated (QCOM) Q3 2026 Earnings, 2026-06-25 QUALCOMM Incorporated (QCOM) Analyst/Investor
+2026-08-05 09:32:43,425 - INFO - QCOM: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:33:30,462 - INFO - DeepSeek response generated.
+2026-08-05 09:33:30,467 - INFO - QCOM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/QCOM_2026-08-05.html
+2026-08-05 09:33:30,467 - INFO - [27/65] MCHP 분석 시작
+2026-08-05 09:33:30,480 - INFO - MCHP: SEC 원문 다운로드 중…
+2026-08-05 09:33:31,389 - INFO - MCHP: complete: saved=0 skipped=72 errors=0 requests=3 manifest={'saved': 48363, 'unavailable': 3}
+2026-08-05 09:33:31,402 - INFO - MCHP: transcript 2건 확보 — 2026-06-03 Microchip Technology Incorporated (MCHP) Pres, 2026-06-02 Microchip Technology Incorporated (MCHP) Pres
+2026-08-05 09:33:31,402 - INFO - MCHP: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:34:23,563 - INFO - DeepSeek response generated.
+2026-08-05 09:34:23,568 - INFO - MCHP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/MCHP_2026-08-05.html
+2026-08-05 09:34:23,568 - INFO - [28/65] CRWV 분석 시작
+2026-08-05 09:34:23,578 - INFO - CRWV: SEC 원문 다운로드 중…
+2026-08-05 09:34:25,484 - INFO - CRWV: complete: saved=0 skipped=112 errors=0 requests=8 manifest={'saved': 48363, 'unavailable': 3}
+2026-08-05 09:34:25,493 - INFO - CRWV: transcript 2건 확보 — 2026-06-03 CoreWeave, Inc. (CRWV) Presents at Bank of Am, 2026-05-19 CoreWeave, Inc. (CRWV) Presents at J.P. Morga
+2026-08-05 09:34:25,493 - INFO - CRWV: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:35:17,525 - INFO - DeepSeek response generated.
+2026-08-05 09:35:17,529 - INFO - CRWV: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CRWV_2026-08-05.html
+2026-08-05 09:35:17,529 - INFO - [29/65] ONTO 분석 시작
+2026-08-05 09:35:17,544 - INFO - ONTO: SEC 원문 다운로드 중…
+2026-08-05 09:35:22,186 - INFO - ONTO: complete: saved=0 skipped=60 errors=0 requests=19 manifest={'saved': 48363, 'unavailable': 3}
+2026-08-05 09:35:22,196 - INFO - ONTO: transcript 1건 확보 — 2026-05-05 Onto Innovation Inc. (ONTO) Q1 2026 Earnings 
+2026-08-05 09:35:22,197 - INFO - ONTO: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:36:02,557 - INFO - DeepSeek response generated.
+2026-08-05 09:36:02,562 - INFO - ONTO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ONTO_2026-08-05.html
+2026-08-05 09:36:02,562 - INFO - [30/65] AMD 분석 시작
+2026-08-05 09:36:02,575 - INFO - AMD: SEC 원문 다운로드 중…
+2026-08-05 09:36:04,988 - INFO - AMD: complete: saved=3 skipped=75 errors=0 requests=10 manifest={'saved': 48366, 'unavailable': 3}
+2026-08-05 09:36:05,002 - INFO - AMD: transcript 2건 확보 — 2026-07-24 Advanced Micro Devices, Inc. (AMD) Presents a, 2026-06-02 Advanced Micro Devices, Inc. (AMD) Presents A
+2026-08-05 09:36:05,003 - INFO - AMD: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:36:50,741 - INFO - DeepSeek response generated.
+2026-08-05 09:36:50,748 - INFO - AMD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AMD_2026-08-05.html
+2026-08-05 09:36:50,748 - INFO - [31/65] KLAC 분석 시작
+2026-08-05 09:36:50,754 - INFO - KLAC: SEC 원문 다운로드 중…
+2026-08-05 09:36:54,522 - INFO - KLAC: complete: saved=2 skipped=56 errors=0 requests=15 manifest={'saved': 48368, 'unavailable': 3}
+2026-08-05 09:38:01,456 - INFO - KLAC: transcript 2건 확보 — 2026-07-28 KLA Corporation (KLAC) Q4 2026 Earnings Call , 2026-06-03 KLA Corporation (KLAC) Presents at Bank of Am
+2026-08-05 09:38:01,456 - INFO - KLAC: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 09:38:46,705 - INFO - DeepSeek response generated.
+2026-08-05 09:38:46,710 - INFO - KLAC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/KLAC_2026-08-05.html
+2026-08-05 09:38:46,710 - INFO - [32/65] VIAV 분석 시작
+2026-08-05 09:38:46,716 - INFO - VIAV: SEC 원문 다운로드 중…
+2026-08-05 09:38:53,677 - INFO - VIAV: complete: saved=1 skipped=67 errors=0 requests=20 manifest={'saved': 48369, 'unavailable': 3}
+2026-08-05 09:38:53,690 - INFO - VIAV: transcript 2건 확보 — 2026-04-29 Viavi Solutions Inc. (VIAV) Q3 2026 Earnings , 2026-04-29 Viavi Solutions Inc. 2026 Q3 - Results - Earn
+2026-08-05 09:38:53,690 - INFO - VIAV: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 28,945자)
+2026-08-05 09:39:28,849 - INFO - DeepSeek response generated.
+2026-08-05 09:39:28,854 - INFO - VIAV: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/VIAV_2026-08-05.html
+2026-08-05 09:39:28,854 - INFO - [33/65] WT 분석 시작
+2026-08-05 09:39:28,877 - INFO - WT: sa-transcripts 발언 전문 미수집(발표자료만 보유) → 발견·수집 시도
+2026-08-05 09:39:28,877 - INFO - sa-transcripts ticker 실행 (WT) — 최대 600초
+2026-08-05 09:39:46,404 - INFO -   sa[ticker] 09:39:46 [0805-093929-557e] INFO 우선순위 발견 완료: 1종목, 신규 0건, 우선표시 16건. 대기열 우선분 70건 → 다음 드립부터 먼저 수집.
+2026-08-05 09:39:46,404 - INFO -   sa[ticker] 09:39:46 [0805-093929-557e] INFO 누적 상태: {'dup_qtr': 30, 'error': 2, 'fetched': 3, 'seen': 7508, 'skipped': 18519, 'uploaded': 4825} (경과 17s)
+2026-08-05 09:39:46,404 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 09:59:46,405 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 09:59:46,465 - INFO - WT: transcript 2건 확보 — 2026-07-31 WisdomTree, Inc. 2026 Q2 - Results - Earnings, 2026-05-01 WisdomTree, Inc. 2026 Q1 - Results - Earnings
+2026-08-05 09:59:46,466 - INFO - WT: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 26,022자)
+2026-08-05 10:00:17,464 - INFO - DeepSeek response generated.
+2026-08-05 10:00:17,468 - INFO - WT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/WT_2026-08-05.html
+2026-08-05 10:00:17,468 - INFO - [34/65] AVGO 분석 시작
+2026-08-05 10:00:17,480 - INFO - AVGO: SEC 원문 다운로드 중…
+2026-08-05 10:00:22,344 - INFO - AVGO: complete: saved=0 skipped=69 errors=0 requests=19 manifest={'saved': 48369, 'unavailable': 3}
+2026-08-05 10:00:22,352 - INFO - AVGO: transcript 1건 확보 — 2026-06-03 Broadcom Inc. (AVGO) Q2 2026 Earnings Call Tr
+2026-08-05 10:00:22,352 - INFO - AVGO: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:01:00,822 - INFO - DeepSeek response generated.
+2026-08-05 10:01:00,827 - INFO - AVGO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AVGO_2026-08-05.html
+2026-08-05 10:01:00,828 - INFO - [35/65] NBIS 분석 시작
+2026-08-05 10:01:00,850 - INFO - NBIS: transcript 2건 확보 — 2026-06-04 Nebius Group N.V. (NBIS) Presents at Bank of , 2026-05-13 Nebius Group N.V. (NBIS) Q1 2026 Earnings Cal
+2026-08-05 10:01:00,850 - INFO - NBIS: LLM 분석 요청 [smart] (SEC 39,500자 + transcript 30,000자)
+2026-08-05 10:01:40,004 - INFO - DeepSeek response generated.
+2026-08-05 10:01:40,009 - INFO - NBIS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/NBIS_2026-08-05.html
+2026-08-05 10:01:40,009 - INFO - [36/65] MDB 분석 시작
+2026-08-05 10:01:40,020 - INFO - MDB: SEC 원문 다운로드 중…
+2026-08-05 10:01:41,609 - INFO - MDB: complete: saved=0 skipped=55 errors=0 requests=6 manifest={'saved': 48369, 'unavailable': 3}
+2026-08-05 10:01:41,620 - INFO - MDB: transcript 2건 확보 — 2026-06-11 MongoDB, Inc. (MDB) Presents at D.A. Davidson, 2026-06-03 MongoDB, Inc. (MDB) Presents at Bank of Ameri
+2026-08-05 10:01:41,620 - INFO - MDB: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:04:34,193 - INFO - DeepSeek response generated.
+2026-08-05 10:04:34,198 - INFO - MDB: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/MDB_2026-08-05.html
+2026-08-05 10:04:34,198 - INFO - [37/65] VICR 분석 시작
+2026-08-05 10:04:34,209 - INFO - VICR: SEC 원문 다운로드 중…
+2026-08-05 10:04:36,043 - INFO - VICR: complete: saved=2 skipped=43 errors=0 requests=4 manifest={'saved': 48371, 'unavailable': 3}
+2026-08-05 10:04:48,181 - INFO - VICR: transcript 2건 확보 — 2026-07-21 Vicor Corporation (VICR) Q2 2026 Earnings Cal, 2026-04-21 Vicor Corporation (VICR) Q1 2026 Earnings Cal
+2026-08-05 10:04:48,181 - INFO - VICR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:05:27,890 - INFO - DeepSeek response generated.
+2026-08-05 10:05:27,894 - INFO - VICR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/VICR_2026-08-05.html
+2026-08-05 10:05:27,894 - INFO - [38/65] APLD 분석 시작
+2026-08-05 10:05:27,927 - INFO - APLD: transcript 2건 확보 — 2026-07-28 Applied Digital Corporation (APLD) Q4 2026 Ea, 2026-04-08 Applied Digital Corporation (APLD) Q3 2026 Ea
+2026-08-05 10:05:27,927 - INFO - APLD: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:06:05,166 - INFO - DeepSeek response generated.
+2026-08-05 10:06:05,171 - INFO - APLD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/APLD_2026-08-05.html
+2026-08-05 10:06:05,171 - INFO - [39/65] KEYS 분석 시작
+2026-08-05 10:06:05,182 - INFO - KEYS: SEC 원문 다운로드 중…
+2026-08-05 10:06:09,519 - INFO - KEYS: complete: saved=0 skipped=51 errors=0 requests=17 manifest={'saved': 48371, 'unavailable': 3}
+2026-08-05 10:06:09,531 - INFO - KEYS: transcript 2건 확보 — 2026-05-19 Keysight Technologies, Inc. (KEYS) Q2 2026 Ea, 2026-05-19 Keysight Technologies, Inc. 2026 Q2 - Results
+2026-08-05 10:06:09,531 - INFO - KEYS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 29,043자)
+2026-08-05 10:06:52,555 - INFO - DeepSeek response generated.
+2026-08-05 10:06:52,560 - INFO - KEYS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/KEYS_2026-08-05.html
+2026-08-05 10:06:52,560 - INFO - [40/65] NXPI 분석 시작
+2026-08-05 10:06:52,573 - INFO - NXPI: SEC 원문 다운로드 중…
+2026-08-05 10:06:55,781 - INFO - NXPI: complete: saved=4 skipped=74 errors=0 requests=12 manifest={'saved': 48375, 'unavailable': 3}
+2026-08-05 10:07:57,543 - INFO - NXPI: transcript 2건 확보 — 2026-07-28 NXP Semiconductors N.V. (NXPI) Q2 2026 Earnin, 2026-05-27 NXP Semiconductors N.V. (NXPI) Presents at TD
+2026-08-05 10:07:57,543 - INFO - NXPI: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:08:41,403 - INFO - DeepSeek response generated.
+2026-08-05 10:08:41,408 - INFO - NXPI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/NXPI_2026-08-05.html
+2026-08-05 10:08:41,408 - INFO - [41/65] QUBT 분석 시작
+2026-08-05 10:08:41,419 - INFO - QUBT: SEC 원문 다운로드 중…
+2026-08-05 10:08:42,576 - INFO - QUBT: complete: saved=0 skipped=100 errors=0 requests=5 manifest={'saved': 48375, 'unavailable': 3}
+2026-08-05 10:08:42,587 - INFO - QUBT: transcript 1건 확보 — 2026-05-12 Quantum Computing Inc. (QUBT) Q1 2026 Earning
+2026-08-05 10:08:42,587 - INFO - QUBT: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:09:49,704 - INFO - DeepSeek response generated.
+2026-08-05 10:09:49,709 - INFO - QUBT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/QUBT_2026-08-05.html
+2026-08-05 10:09:49,709 - INFO - [42/65] DDOG 분석 시작
+2026-08-05 10:09:49,719 - INFO - DDOG: SEC 원문 다운로드 중…
+2026-08-05 10:09:50,604 - INFO - DDOG: complete: saved=0 skipped=47 errors=0 requests=3 manifest={'saved': 48375, 'unavailable': 3}
+2026-08-05 10:09:50,615 - INFO - DDOG: transcript 2건 확보 — 2026-06-04 Datadog, Inc. (DDOG) Presents at Bank of Amer, 2026-05-29 Datadog, Inc. (DDOG) Presents at Bernstein 42
+2026-08-05 10:09:50,615 - INFO - DDOG: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:10:48,351 - INFO - DeepSeek response generated.
+2026-08-05 10:10:48,356 - INFO - DDOG: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/DDOG_2026-08-05.html
+2026-08-05 10:10:48,356 - INFO - [43/65] CIEN 분석 시작
+2026-08-05 10:10:48,371 - INFO - CIEN: SEC 원문 다운로드 중…
+2026-08-05 10:10:50,001 - INFO - CIEN: complete: saved=0 skipped=65 errors=0 requests=6 manifest={'saved': 48375, 'unavailable': 3}
+2026-08-05 10:10:50,010 - INFO - CIEN: transcript 2건 확보 — 2026-06-04 Ciena Corporation (CIEN) Q2 2026 Earnings Cal, 2026-06-04 Ciena Corporation 2026 Q2 - Results - Earning
+2026-08-05 10:10:50,010 - INFO - CIEN: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 29,506자)
+2026-08-05 10:11:46,464 - INFO - DeepSeek response generated.
+2026-08-05 10:11:46,469 - INFO - CIEN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CIEN_2026-08-05.html
+2026-08-05 10:11:46,470 - INFO - [44/65] CSCO 분석 시작
+2026-08-05 10:11:46,483 - INFO - CSCO: SEC 원문 다운로드 중…
+2026-08-05 10:11:47,607 - INFO - CSCO: complete: saved=0 skipped=46 errors=0 requests=4 manifest={'saved': 48375, 'unavailable': 3}
+2026-08-05 10:11:47,622 - INFO - CSCO: transcript 2건 확보 — 2026-06-04 Cisco Systems, Inc. (CSCO) Presents at Bank o, 2026-05-18 Cisco Systems, Inc. (CSCO) Presents at J.P. M
+2026-08-05 10:11:47,622 - INFO - CSCO: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:12:19,704 - INFO - DeepSeek response generated.
+2026-08-05 10:12:19,708 - INFO - CSCO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CSCO_2026-08-05.html
+2026-08-05 10:12:19,708 - INFO - [45/65] APH 분석 시작
+2026-08-05 10:12:19,712 - INFO - APH: SEC 원문 다운로드 중…
+2026-08-05 10:12:26,716 - INFO - APH: complete: saved=3 skipped=83 errors=0 requests=26 manifest={'saved': 48378, 'unavailable': 3}
+2026-08-05 10:12:39,118 - INFO - APH: transcript 2건 확보 — 2026-07-29 Amphenol Corporation (APH) Q2 2026 Earnings C, 2026-04-29 Amphenol Corporation (APH) Q1 2026 Earnings C
+2026-08-05 10:12:39,118 - INFO - APH: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:13:25,946 - INFO - DeepSeek response generated.
+2026-08-05 10:13:25,951 - INFO - APH: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/APH_2026-08-05.html
+2026-08-05 10:13:25,951 - INFO - [46/65] IESC 분석 시작
+2026-08-05 10:13:25,961 - INFO - IESC: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 10:13:25,961 - INFO - sa-transcripts ticker 실행 (IESC) — 최대 600초
+2026-08-05 10:13:42,841 - INFO -   sa[ticker] 10:13:42 [0805-101326-0239] INFO 우선순위 발견 완료: 1종목, 신규 0건, 우선표시 0건. 대기열 우선분 61건 → 다음 드립부터 먼저 수집.
+2026-08-05 10:13:42,841 - INFO -   sa[ticker] 10:13:42 [0805-101326-0239] INFO 누적 상태: {'dup_qtr': 30, 'error': 2, 'fetched': 3, 'seen': 7498, 'skipped': 18519, 'uploaded': 4835} (경과 17s)
+2026-08-05 10:13:42,841 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 10:33:42,880 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 10:33:42,940 - INFO - IESC: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 10:33:42,940 - INFO - IESC: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 10:34:11,381 - INFO - DeepSeek response generated.
+2026-08-05 10:34:11,387 - INFO - IESC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/IESC_2026-08-05.html
+2026-08-05 10:34:11,387 - INFO - [47/65] BE 분석 시작
+2026-08-05 10:34:11,398 - INFO - BE: SEC 원문 다운로드 중…
+2026-08-05 10:34:17,327 - INFO - BE: complete: saved=1 skipped=85 errors=0 requests=24 manifest={'saved': 48379, 'unavailable': 3}
+2026-08-05 10:34:17,338 - INFO - BE: transcript 2건 확보 — 2026-07-29 Bloom Energy Corporation (BE) Q2 2026 Earning, 2026-05-01 Bloom Energy Corporation (BE) Q1 2026 Earning
+2026-08-05 10:34:17,338 - INFO - BE: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:34:51,832 - INFO - DeepSeek response generated.
+2026-08-05 10:34:51,837 - INFO - BE: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/BE_2026-08-05.html
+2026-08-05 10:34:51,837 - INFO - [48/65] CRWD 분석 시작
+2026-08-05 10:34:51,839 - INFO - CRWD: SEC 원문 다운로드 중…
+2026-08-05 10:34:56,189 - INFO - CRWD: complete: saved=0 skipped=50 errors=0 requests=17 manifest={'saved': 48379, 'unavailable': 3}
+2026-08-05 10:34:56,201 - INFO - CRWD: transcript 2건 확보 — 2026-06-03 CrowdStrike Holdings, Inc. (CRWD) Q1 2027 Ear, 2026-06-04 CrowdStrike Holdings, Inc. 2027 Q1 - Results 
+2026-08-05 10:34:56,202 - INFO - CRWD: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 28,977자)
+2026-08-05 10:35:28,050 - INFO - DeepSeek response generated.
+2026-08-05 10:35:28,054 - INFO - CRWD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CRWD_2026-08-05.html
+2026-08-05 10:35:28,054 - INFO - [49/65] HPE 분석 시작
+2026-08-05 10:35:28,066 - INFO - HPE: SEC 원문 다운로드 중…
+2026-08-05 10:35:34,244 - INFO - HPE: complete: saved=1 skipped=87 errors=0 requests=25 manifest={'saved': 48380, 'unavailable': 3}
+2026-08-05 10:35:34,257 - INFO - HPE: transcript 2건 확보 — 2026-06-17 Hewlett Packard Enterprise Company (HPE) Pres, 2026-06-03 Hewlett Packard Enterprise Company (HPE) Pres
+2026-08-05 10:35:34,258 - INFO - HPE: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:36:05,828 - INFO - DeepSeek response generated.
+2026-08-05 10:36:05,833 - INFO - HPE: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/HPE_2026-08-05.html
+2026-08-05 10:36:05,833 - INFO - [50/65] ARWR 분석 시작
+2026-08-05 10:36:05,838 - INFO - ARWR: SEC 원문 다운로드 중…
+2026-08-05 10:36:09,009 - INFO - ARWR: complete: saved=5 skipped=73 errors=0 requests=12 manifest={'saved': 48385, 'unavailable': 3}
+2026-08-05 10:36:09,018 - INFO - ARWR: transcript 2건 확보 — 2026-06-29 Arrowhead Pharmaceuticals, Inc. (ARWR) Discus, 2026-06-10 Arrowhead Pharmaceuticals, Inc. (ARWR) Presen
+2026-08-05 10:36:09,018 - INFO - ARWR: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:36:39,070 - INFO - DeepSeek response generated.
+2026-08-05 10:36:39,075 - INFO - ARWR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ARWR_2026-08-05.html
+2026-08-05 10:36:39,075 - INFO - [51/65] NTAP 분석 시작
+2026-08-05 10:36:39,088 - INFO - NTAP: SEC 원문 다운로드 중…
+2026-08-05 10:36:40,915 - INFO - NTAP: complete: saved=1 skipped=57 errors=0 requests=4 manifest={'saved': 48386, 'unavailable': 3}
+2026-08-05 10:36:40,924 - INFO - NTAP: transcript 2건 확보 — 2026-06-04 NetApp, Inc. (NTAP) Presents at 2026 Evercore, 2026-06-02 NetApp, Inc. (NTAP) Presents at Bank of Ameri
+2026-08-05 10:36:40,924 - INFO - NTAP: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:37:17,684 - INFO - DeepSeek response generated.
+2026-08-05 10:37:17,688 - INFO - NTAP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/NTAP_2026-08-05.html
+2026-08-05 10:37:17,688 - INFO - [52/65] GFS 분석 시작
+2026-08-05 10:37:17,689 - INFO - GFS: SEC 원문 다운로드 중…
+2026-08-05 10:37:47,268 - INFO - GFS: complete: saved=68 skipped=8 errors=0 requests=117 manifest={'saved': 48454, 'unavailable': 3}
+2026-08-05 10:37:47,274 - INFO - GFS: transcript 2건 확보 — 2026-05-27 GLOBALFOUNDRIES Inc. (GFS) Presents at TD Cow, 2026-05-19 GLOBALFOUNDRIES Inc. (GFS) Presents at J.P. M
+2026-08-05 10:37:47,275 - INFO - GFS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:38:30,433 - INFO - DeepSeek response generated.
+2026-08-05 10:38:30,441 - INFO - GFS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/GFS_2026-08-05.html
+2026-08-05 10:38:30,441 - INFO - [53/65] CBRS 분석 시작
+2026-08-05 10:38:30,450 - INFO - CBRS: SEC 원문 다운로드 중…
+2026-08-05 10:38:31,140 - INFO - CBRS: complete: saved=0 skipped=15 errors=0 requests=3 manifest={'saved': 48454, 'unavailable': 3}
+2026-08-05 10:38:31,148 - INFO - CBRS: transcript 1건 확보 — 2026-06-24 Cerebras Systems Inc. (CBRS) Q1 2026 Earnings
+2026-08-05 10:38:31,148 - INFO - CBRS: LLM 분석 요청 [smart] (SEC 18,964자 + transcript 30,000자)
+2026-08-05 10:39:08,804 - INFO - DeepSeek response generated.
+2026-08-05 10:39:08,808 - INFO - CBRS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/CBRS_2026-08-05.html
+2026-08-05 10:39:08,809 - INFO - [54/65] FTNT 분석 시작
+2026-08-05 10:39:08,809 - INFO - FTNT: SEC 원문 다운로드 중…
+2026-08-05 10:39:23,634 - INFO - FTNT: complete: saved=44 skipped=0 errors=0 requests=57 manifest={'saved': 48498, 'unavailable': 3}
+2026-08-05 10:39:43,472 - INFO - FTNT: transcript 2건 확보 — 2026-07-29 Fortinet, Inc. (FTNT) Q2 2026 Earnings Call T, 2026-06-04 Fortinet, Inc. (FTNT) Discusses Quantum Compu
+2026-08-05 10:39:43,472 - INFO - FTNT: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:40:12,072 - INFO - DeepSeek response generated.
+2026-08-05 10:40:12,077 - INFO - FTNT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/FTNT_2026-08-05.html
+2026-08-05 10:40:12,077 - INFO - [55/65] SNPS 분석 시작
+2026-08-05 10:40:12,090 - INFO - SNPS: SEC 원문 다운로드 중…
+2026-08-05 10:40:14,017 - INFO - SNPS: complete: saved=0 skipped=63 errors=0 requests=7 manifest={'saved': 48498, 'unavailable': 3}
+2026-08-05 10:40:14,030 - INFO - SNPS: transcript 2건 확보 — 2026-06-09 Synopsys, Inc. (SNPS) Presents at Mizuho Tech, 2026-05-28 Synopsys, Inc. (SNPS) Q2 2026 Earnings Call T
+2026-08-05 10:40:14,031 - INFO - SNPS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:40:55,292 - INFO - DeepSeek response generated.
+2026-08-05 10:40:55,297 - INFO - SNPS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/SNPS_2026-08-05.html
+2026-08-05 10:40:55,297 - INFO - [56/65] SNOW 분석 시작
+2026-08-05 10:40:55,316 - INFO - SNOW: transcript 2건 확보 — 2026-06-03 Snowflake Inc. (SNOW) Analyst/Investor Day Tr, 2026-05-28 Snowflake Inc. (SNOW) Q1 2027 Earnings Call T
+2026-08-05 10:40:55,316 - INFO - SNOW: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 10:41:32,248 - INFO - DeepSeek response generated.
+2026-08-05 10:41:32,253 - INFO - SNOW: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/SNOW_2026-08-05.html
+2026-08-05 10:41:32,253 - INFO - [57/65] PAY 분석 시작
+2026-08-05 10:41:32,274 - INFO - PAY: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 10:41:32,274 - INFO - sa-transcripts ticker 실행 (PAY) — 최대 600초
+2026-08-05 10:41:46,770 - INFO -   sa[ticker] 10:41:46 [0805-104132-dcf1] INFO 우선순위 발견 완료: 1종목, 신규 24건, 우선표시 30건. 대기열 우선분 85건 → 다음 드립부터 먼저 수집.
+2026-08-05 10:41:46,770 - INFO -   sa[ticker] 10:41:46 [0805-104132-dcf1] INFO 누적 상태: {'dup_qtr': 30, 'error': 2, 'fetched': 3, 'seen': 7520, 'skipped': 18513, 'uploaded': 4843} (경과 14s)
+2026-08-05 10:41:46,770 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 11:01:46,828 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 11:01:46,894 - INFO - PAY: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 11:01:46,894 - INFO - PAY: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 11:02:16,686 - INFO - DeepSeek response generated.
+2026-08-05 11:02:16,690 - INFO - PAY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/PAY_2026-08-05.html
+2026-08-05 11:02:16,690 - INFO - [58/65] W 분석 시작
+2026-08-05 11:02:16,713 - INFO - W: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 11:02:16,713 - INFO - sa-transcripts ticker 실행 (W) — 최대 600초
+2026-08-05 11:02:37,403 - INFO -   sa[ticker] 11:02:37 [0805-110216-1acd] INFO 우선순위 발견 완료: 1종목, 신규 16건, 우선표시 20건. 대기열 우선분 70건 → 다음 드립부터 먼저 수집.
+2026-08-05 11:02:37,403 - INFO -   sa[ticker] 11:02:37 [0805-110216-1acd] INFO 누적 상태: {'dup_qtr': 60, 'error': 2, 'fetched': 3, 'seen': 7504, 'skipped': 18509, 'uploaded': 4849} (경과 20s)
+2026-08-05 11:02:37,403 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 11:22:37,438 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 11:22:37,503 - INFO - W: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 11:22:37,503 - INFO - W: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 11:23:08,287 - INFO - DeepSeek response generated.
+2026-08-05 11:23:08,291 - INFO - W: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/W_2026-08-05.html
+2026-08-05 11:23:08,291 - INFO - [59/65] ZBRA 분석 시작
+2026-08-05 11:23:08,313 - INFO - ZBRA: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 11:23:08,313 - INFO - sa-transcripts ticker 실행 (ZBRA) — 최대 600초
+2026-08-05 11:23:26,216 - INFO -   sa[ticker] 11:23:26 [0805-112308-0d88] INFO 우선순위 발견 완료: 1종목, 신규 24건, 우선표시 35건. 대기열 우선분 81건 → 다음 드립부터 먼저 수집.
+2026-08-05 11:23:26,216 - INFO -   sa[ticker] 11:23:26 [0805-112308-0d88] INFO 누적 상태: {'dup_qtr': 80, 'error': 2, 'fetched': 5, 'seen': 7501, 'skipped': 18509, 'uploaded': 4854} (경과 18s)
+2026-08-05 11:23:26,216 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 11:43:26,242 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 11:43:26,305 - INFO - ZBRA: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 11:43:26,305 - INFO - ZBRA: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 11:43:55,275 - INFO - DeepSeek response generated.
+2026-08-05 11:43:55,281 - INFO - ZBRA: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ZBRA_2026-08-05.html
+2026-08-05 11:43:55,281 - INFO - [60/65] AEIS 분석 시작
+2026-08-05 11:43:55,281 - INFO - AEIS: SEC 원문 다운로드 중…
+2026-08-05 11:44:13,036 - INFO - AEIS: complete: saved=62 skipped=0 errors=0 requests=66 manifest={'saved': 48560, 'unavailable': 3}
+2026-08-05 11:44:13,043 - INFO - AEIS: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 11:44:13,043 - INFO - sa-transcripts ticker 실행 (AEIS) — 최대 600초
+2026-08-05 11:44:28,959 - INFO -   sa[ticker] 11:44:28 [0805-114413-2e26] INFO 우선순위 발견 완료: 1종목, 신규 24건, 우선표시 30건. 대기열 우선분 70건 → 다음 드립부터 먼저 수집.
+2026-08-05 11:44:28,959 - INFO -   sa[ticker] 11:44:28 [0805-114413-2e26] INFO 누적 상태: {'dup_qtr': 114, 'error': 2, 'fetched': 5, 'seen': 7481, 'skipped': 18509, 'uploaded': 4864} (경과 16s)
+2026-08-05 11:44:28,959 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 12:04:28,985 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 12:04:29,047 - INFO - AEIS: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 12:04:29,047 - INFO - AEIS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 12:04:53,503 - INFO - DeepSeek response generated.
+2026-08-05 12:04:53,509 - INFO - AEIS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AEIS_2026-08-05.html
+2026-08-05 12:04:53,509 - INFO - [61/65] AYA 분석 시작
+2026-08-05 12:04:53,509 - INFO - AYA: SEC 원문 다운로드 중…
+2026-08-05 12:05:05,846 - INFO - AYA: complete: saved=19 skipped=7 errors=0 requests=47 manifest={'saved': 48579, 'unavailable': 3}
+2026-08-05 12:05:05,852 - INFO - AYA: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 12:05:05,852 - INFO - sa-transcripts ticker 실행 (AYA) — 최대 600초
+2026-08-05 12:05:22,955 - INFO -   sa[ticker] 12:05:22 [0805-120506-34c9] INFO 우선순위 발견 완료: 1종목, 신규 17건, 우선표시 22건. 대기열 우선분 83건 → 다음 드립부터 먼저 수집.
+2026-08-05 12:05:22,955 - INFO -   sa[ticker] 12:05:22 [0805-120506-34c9] INFO 누적 상태: {'dup_qtr': 114, 'error': 2, 'fetched': 5, 'seen': 7493, 'skipped': 18504, 'uploaded': 4874} (경과 17s)
+2026-08-05 12:05:22,955 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 12:25:22,957 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 12:25:23,023 - INFO - AYA: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 12:25:23,023 - INFO - AYA: LLM 분석 요청 [smart] (SEC 20,018자 + transcript 68자)
+2026-08-05 12:25:48,052 - INFO - DeepSeek response generated.
+2026-08-05 12:25:48,056 - INFO - AYA: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/AYA_2026-08-05.html
+2026-08-05 12:25:48,056 - INFO - [62/65] INOD 분석 시작
+2026-08-05 12:25:48,056 - INFO - INOD: SEC 원문 다운로드 중…
+2026-08-05 12:26:05,678 - INFO - INOD: complete: saved=52 skipped=0 errors=0 requests=67 manifest={'saved': 48631, 'unavailable': 3}
+2026-08-05 12:26:05,687 - INFO - INOD: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 12:26:05,688 - INFO - sa-transcripts ticker 실행 (INOD) — 최대 600초
+2026-08-05 12:26:27,017 - INFO -   sa[ticker] 12:26:26 [0805-122605-9b2c] INFO 우선순위 발견 완료: 1종목, 신규 12건, 우선표시 14건. 대기열 우선분 89건 → 다음 드립부터 먼저 수집.
+2026-08-05 12:26:27,017 - INFO -   sa[ticker] 12:26:26 [0805-122605-9b2c] INFO 누적 상태: {'dup_qtr': 114, 'error': 2, 'fetched': 5, 'seen': 7499, 'skipped': 18502, 'uploaded': 4882} (경과 21s)
+2026-08-05 12:26:27,017 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 12:46:27,061 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 12:46:27,131 - INFO - INOD: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 12:46:27,131 - INFO - INOD: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 12:46:50,770 - INFO - DeepSeek response generated.
+2026-08-05 12:46:50,774 - INFO - INOD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/INOD_2026-08-05.html
+2026-08-05 12:46:50,774 - INFO - [63/65] ADEA 분석 시작
+2026-08-05 12:46:50,774 - INFO - ADEA: SEC 원문 다운로드 중…
+2026-08-05 12:47:06,983 - INFO - ADEA: complete: saved=52 skipped=0 errors=0 requests=57 manifest={'saved': 48683, 'unavailable': 3}
+2026-08-05 12:47:06,992 - INFO - ADEA: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 12:47:06,992 - INFO - sa-transcripts ticker 실행 (ADEA) — 최대 600초
+2026-08-05 12:47:23,022 - INFO -   sa[ticker] 12:47:22 [0805-124707-66bc] INFO 우선순위 발견 완료: 1종목, 신규 23건, 우선표시 27건. 대기열 우선분 106건 → 다음 드립부터 먼저 수집.
+2026-08-05 12:47:23,022 - INFO -   sa[ticker] 12:47:22 [0805-124707-66bc] INFO 누적 상태: {'dup_qtr': 114, 'error': 2, 'fetched': 6, 'seen': 7512, 'skipped': 18502, 'uploaded': 4891} (경과 16s)
+2026-08-05 12:47:23,022 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 13:07:23,067 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 13:07:23,131 - INFO - ADEA: transcript 미확보 — 우선순위 대기열에 등록됐고 다음 드립에서 수집됩니다.
+2026-08-05 13:07:23,131 - INFO - ADEA: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 68자)
+2026-08-05 13:07:48,348 - INFO - DeepSeek response generated.
+2026-08-05 13:07:48,353 - INFO - ADEA: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/ADEA_2026-08-05.html
+2026-08-05 13:07:48,353 - INFO - [64/65] SNAP 분석 시작
+2026-08-05 13:07:54,665 - INFO - SNAP: transcript 1건 확보 — 2026-07-30 Snap Inc. (SNAP) Shareholder/Analyst Call Pre
+2026-08-05 13:07:54,665 - INFO - SNAP: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 2,928자)
+2026-08-05 13:08:20,873 - INFO - DeepSeek response generated.
+2026-08-05 13:08:20,878 - INFO - SNAP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/SNAP_2026-08-05.html
+2026-08-05 13:08:20,878 - INFO - [65/65] WIX 분석 시작
+2026-08-05 13:08:20,878 - INFO - WIX: SEC 원문 다운로드 중…
+2026-08-05 13:08:44,759 - INFO - WIX: complete: saved=69 skipped=1 errors=0 requests=95 manifest={'saved': 48752, 'unavailable': 3}
+2026-08-05 13:08:44,767 - INFO - WIX: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-05 13:08:44,767 - INFO - sa-transcripts ticker 실행 (WIX) — 최대 600초
+2026-08-05 13:08:58,978 - INFO -   sa[ticker] 13:08:58 [0805-130844-252f] INFO 우선순위 발견 완료: 1종목, 신규 25건, 우선표시 29건. 대기열 우선분 126건 → 다음 드립부터 먼저 수집.
+2026-08-05 13:08:58,978 - INFO -   sa[ticker] 13:08:58 [0805-130844-252f] INFO 누적 상태: {'dup_qtr': 114, 'error': 2, 'fetched': 6, 'seen': 7532, 'skipped': 18498, 'uploaded': 4900} (경과 14s)
+2026-08-05 13:08:58,978 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-05 13:28:58,997 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-05 13:29:56,250 - INFO - WIX: transcript 1건 확보 — 2026-05-13 Wix.com Ltd. (WIX) Q1 2026 Earnings Call Tran
+2026-08-05 13:29:56,250 - INFO - WIX: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-05 13:30:39,697 - INFO - DeepSeek response generated.
+2026-08-05 13:30:39,702 - INFO - WIX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-05/WIX_2026-08-05.html
+2026-08-05 13:30:39,702 - INFO - 발송 보류 55종목(판정 미달): PLTR(보통), AEHR(보통), AAOI(보통), ARQQ(관망), MRVL(보통), ALAB(보통), COHR(보통), WOLF(회피), SNDK(보통), INTC(보통), FORM(보통), TER(보통), NVTS(관망), AMKR(보통), QBTS(관망), GLW(보통), CRDO(보통), RGTI(관망), LITE(보통), CLS(보통), LSCC(보통), FLEX(보통), LRCX(보통), MU(보통), IONQ(관망), QCOM(보통), MCHP(보통), CRWV(관망), ONTO(보통), AMD(보통), KLAC(보통), VIAV(보통), WT(보통), AVGO(보통), NBIS(보통), MDB(보통), VICR(보통), APLD(보통), KEYS(보통), NXPI(보통), QUBT(관망), DDOG(보통), CIEN(보통), CSCO(보통), IESC(보통), BE(보통), CRWD(보통), HPE(보통), ARWR(보통), NTAP(보통), GFS(보통), CBRS(보통), FTNT(보통), SNPS(보통), SNOW(보통)
+2026-08-05 13:31:12,487 - INFO - 완료: 65종목 리포트 생성 · 텔레그램 발송
