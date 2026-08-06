@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTRN — Materion Corporation</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MTRN — Materion Corporation</h1>
+<div class="sub">2026-08-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">MTRN</span><span class="badge">+30.82%</span><span class="badge">거래량 3.51배</span><span class="badge">$6.18B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<p>당일 <span class="up">+30.82%</span> 급등과 거래량 3.51배 급증은 2분기 실적 서프라이즈(비GAAP EPS $1.90, 컨센서스 대비 $0.38 상회)와 연간 가이던스 상향(조정 EPS $6.80–$7.20, 전년 대비 <span class="up">+30%</span> 중간값 기준)이 복합적으로 작용한 결과다. 매출 성장률은 YoY <span class="up">+30.8%</span>로 강하나, 영업이익률 6.7%(YoY <span class="down">-0.8%</span>p)와 TTM 잉여현금흐름 $9.5M(매출 대비 0.4% 수준)은 성장의 질 측면에서 확인이 필요하다. 52주 고점에 근접한 밸류에이션과 GF Value $136 대비 2배 이상의 프리미엄은 신규 진입 시 리스크로 작용한다. 의미 있는 비중을 실을 수 있는 종목이나, 분할 매수와 실적 지속성 확인이 선행되어야 한다.</p>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: 2분기 실적 서프라이즈 + 연간 가이던스 상향 + 신규 수주</strong></p>
+<ul>
+<li>8-K(2026-08-05) 보도자료에서 회사는 "record second-quarter 2026 financial results"와 "raises full-year outlook"를 발표. 분기 매출 $613.9M(전년 대비 <span class="up">+42.2%</span>), 조정 EPS $1.90(전년 $1.37 대비 <span class="up">+38.7%</span>)를 기록.</li>
+<li>동일 시점에 보도된 "Materion Wins ~$15M Space Business to Supply Engine Materials" 뉴스는 우주/방산 수요와 연결된 추가 촉매로 보임. 다만 해당 수주 규모($15M)는 분기 매출 $613.9M 대비 약 2.4%로, 실적 자체보다는 성장 스토리 강화에 기여한 것으로 판단됨.</li>
+<li>20일 수익률 <span class="up">+19.6%</span>, 60일 수익률 <span class="up">+49.0%</span>로 이미 상승 추세에 있던 종목이 실적 발표로 가속화된 형태. 52주 고점 대비 <span class="down">-0.1%</span>로 신고가권에서 거래.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 기준, Materion은 <strong>첨단 엔지니어링 소재의 통합 생산업체</strong>로 2025년 연간 순매출 $1.8B를 기록했다. 4개 보고 세그먼트로 구성:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>주요 제품</th>
+<th>최종 시장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance Materials</td>
+<td>베릴륨 및 비베릴륨 합금 시스템, 맞춤형 금속 솔루션(스트립, 벌크, 로드, 플레이트, 바, 튜브 등)</td>
+<td>산업, 자동차, 항공우주/방산, 에너지, 생명과학</td>
+</tr>
+<tr>
+<td>Electronic Materials</td>
+<td>전자/전기 응용 소재</td>
+<td>반도체, 전자, 통신</td>
+</tr>
+<tr>
+<td>Precision Optics</td>
+<td>정밀 광학 부품</td>
+<td>항공우주, 방산, 생명과학, 산업</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>미배분 본사 비용</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>수직통합 구조</strong>: 유타주에 세계 최대 규모의 버트란다이트 광산 및 정련소를 보유. 베릴륨 수산화물 피드스톡을 자체 조달하여 베릴륨 사업의 원재료 안정성을 확보.</li>
+<li><strong>경쟁 위치</strong>: 10-K는 "Alloyed metals competes with companies around the world that produce alloys with similar properties"라고만 밝히며 특정 경쟁사를 지목하지 않음. 베릴륨 소재 분야에서 세계적 통합 생산자로서의 지위는 사업설명상 확인되나, 시장점유율 수치는 공시상 확인 불가.</li>
+<li><strong>매출 구성</strong>: 2025년 연간 $1.8B(10-K), 2026년 1분기 $549.8M, 2분기 $613.9M(10-Q). 세그먼트별 매출 비중은 제공된 발췌문에서 확인 불가.</li>
+</ul>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 — 매출 급증의 원천:</strong></p>
+<ul>
+<li>2026년 2분기 매출 $613.9M은 전년 동기 $431.7M 대비 <span class="up">+42.2%</span> 증가. 1분기($549.8M) 대비로도 <span class="up">+11.7%</span> 증가하며 가속 성장.</li>
+<li>다만 8-K는 "value-added sales" 개념을 제시 — 2분기 value-added sales는 $308.2M으로, 매출 $613.9M의 약 50% 수준. 이는 매출의 상당 부분이 금속 가격(원자재) 통과분일 가능성을 시사. 실제 부가가치 성장률은 매출 성장률(<span class="up">+42.2%</span>)보다 낮은 <span class="up">+14.6%</span>(전년 $269.0M 대비)로, <strong>매출 급증의 상당 부분이 원자재 가격 상승 또는 금속 가격 통과에 기인</strong>한 것으로 추정.</li>
+<li>매출총이익률 14.9%(제공 지표)는 제조업 기준 낮은 수준. 이는 금속 가격이 매출과 매출원가에 동시에 반영되는 사업 구조상의 특성으로 보이나, 부가가치 기준 마진이 공개되지 않아 정확한 판단은 제한적.</li>
+</ul>
+<p><strong>마진 방향성:</strong></p>
+<ul>
+<li>2분기 조정 EBITDA $71.8M, value-added sales 대비 23.3% (전년 20.8% → +250bp 개선). 회사는 "Exceeded 23% quarterly adjusted EBITDA margin for the first time in Company's history"라고 밝힘.</li>
+<li>그러나 제공된 지표 기준 영업이익률은 6.7%로 전년 대비 <span class="down">-0.8%</span>p 하락. 이는 조정 EBITDA와 GAAP 영업이익 간의 괴리가 확대되고 있음을 의미. 10-Q 기준 2분기 "Other—net" $3.4M, 상반기 누적 $12.4M이 영업이익에서 차감되는데, 이 항목의 성격은 공시상 확인 불가.</li>
+<li>2분기 순이익 $38.8M(순이익률 6.3%)은 전년 $25.1M(순이익률 5.8%) 대비 개선.</li>
+</ul>
+<p><strong>현금흐름 — 가장 큰 약점:</strong></p>
+<ul>
+<li>TTM 잉여현금흐름 $9.5M. 분기 매출 $613.9M, 시가총액 $6.18B 대비 극히 미미한 수준.</li>
+<li>8-K는 "Strong free cash flow generation of $59 million in the quarter with ~150% cash conversion"이라고 밝히나, TTM 기준 $9.5M과 큰 괴리가 있음. 이는 최근 분기의 FCF가 과거 분기의 부진을 상쇄하지 못했거나, 운전자본 변동이 극심함을 시사.</li>
+<li>10-Q 기준 매출채권 $260.8M(전분기 $267.2M에서 소폭 감소), 재고 $487.4M(전분기 $493.7M에서 소폭 감소) — 운전자본 부담이 완화되는 조짐은 있으나, 재고가 여전히 분기 매출의 약 80% 수준으로 높음.</li>
+</ul>
+<p><strong>재무 건전성:</strong></p>
+<ul>
+<li>장기부채 $466.9M(10-Q, 2026년 7월 3일 기준), 단기부채 $23.1M 포함 총부채 약 $490M. 시가총액 $6.18B 대비 부채비율은 낮은 편.</li>
+<li>2분기 이자비용 $7.5M, 상반기 누적 $15.1M — 영업이익 $79.9M(상반기) 대비 이자보상배율 약 5.3배로 양호.</li>
+<li>현금 및 현금성 자산 $20.0M(2026년 7월 3일 기준)으로, 단기부채 $23.1M을 간신히 상회하는 수준. 유동성은 넉넉하지 않으나 당장의 유동성 위기는 없는 것으로 판단.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) 우주/방산 수요 확대</strong>
+- 뉴스에서 "$15M Space Business to Supply Engine Materials" 수주 보도. 10-K에서 항공우주/방산을 주요 최종 시장으로 명시.
+- <strong>검증 포인트</strong>: 다음 분기 실적콜에서 우주/방산 부문 수주 잔고(backlog) 증가율과 신규 수주 규모.</p>
+<p><strong>2) 반도체 소재 수요</strong>
+- 10-K에서 반도체를 첫 번째 최종 시장으로 명시. Electronic Materials 세그먼트의 성장이 매출 성장을 견인했을 가능성.
+- <strong>검증 포인트</strong>: 세그먼트별 매출 분해 — Electronic Materials의 YoY 성장률과 고객사 집중도.</p>
+<p><strong>3) 기록적 백로그</strong>
+- 8-K에서 "Exited the quarter with record backlog, up ~30% year over year"라고 밝힘.
+- <strong>검증 포인트</strong>: 백로그의 세그먼트 구성과 매출 전환 기간(12개월 이내 전환 비율).</p>
+<p><strong>4) 가이던스 상향</strong>
+- 8-K에서 연간 조정 EPS 전망을 $6.80–$7.20으로 상향. 중간값 $7.00은 2025년 대비 <span class="up">+30%</span> 수준.
+- <strong>검증 포인트</strong>: 하반기 실적이 가이던스 중간값 궤적을 유지하는지 — 3분기 실적 발표에서 조정 EPS $1.70 이상 여부(하반기 2개 분기 평균 $1.75 필요).</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript는 2026년 4월 29일 <strong>1분기 실적콜 프레젠테이션</strong>으로, 2분기 실적콜(8월 5일)은 아님. 1분기 콜에서 확인되는 사항:</p>
+<ul>
+<li><strong>EPS $1.27로 컨센서스 $0.02 상회, 매출 $549.82M로 컨센서스 $70.78M 상회</strong> — transcript 메타데이터에서 확인. 매출이 예상치를 크게 웃돈 반면 EPS는 소폭 상회에 그친 점은, 매출 증가가 이익으로 전환되는 레버리지가 제한적이었음을 시사.</li>
+<li>1분기 실적콜 시점(4월 29일)에는 2분기 가이던스 상향이 예고되지 않았으나, 8월 5일 8-K에서 상향이 발표됨. 이는 2분기 실적이 경영진 자체 기대치도 크게 상회했음을 의미.</li>
+<li>transcript 본문(발언 전문)은 제공되지 않아 경영진 톤, Q&amp;A 내용, 가이던스 화법 변화는 확인 불가.</li>
+</ul>
+<hr>
+<h2>6. 리스크</h2>
+<p><strong>1) 원자재 가격 변동 및 금속 가격 통과 구조</strong>
+- 10-K 전방위적 진술에서 "our success in passing through the costs of raw materials to customers or otherwise mitigating fluctuating prices for those materials, including the impact of fluctuating prices on inventory values"를 핵심 리스크로 명시.
+- 매출 성장(<span class="up">+42.2%</span>)과 value-added sales 성장(<span class="up">+14.6%</span>) 간의 괴리는 이 리스크가 실제로 작동하고 있음을 보여줌. 금속 가격 하락 시 매출이 급격히 축소될 수 있음.</p>
+<p><strong>2) 잉여현금흐름 창출력 부진</strong>
+- TTM FCF $9.5M은 시가총액 $6.18B의 0.15%에 불과. 8-K의 분기 FCF $59M과 TTM $9.5M의 괴리가 해소되지 않으면, 주가 상승을 뒷받침할 현금 창출력에 대한 의문이 지속될 것.
+- 재고 $487.4M(분기 매출의 79%)은 운전자본 부담의 핵심 요인.</p>
+<p><strong>3) 영업이익률 하락</strong>
+- 영업이익률 6.7%(YoY <span class="down">-0.8%</span>p)는 매출 성장이 이익률 개선으로 이어지지 않고 있음을 의미. 10-Q에서 "Other—net" 항목이 상반기 $12.4M으로 전년($8.9M) 대비 증가한 부분에 대한 설명이 필요.</p>
+<p><strong>4) 밸류에이션 리스크</strong>
+- 52주 고점에 위치한 주가와 GF Value $136 대비 2배 이상의 프리미엄. 실적 성장이 둔화되면 주가 조정 폭이 클 수 있음.
+- Seeking Alpha 데이터 기준 PER(FWD) 35.2배는 산업재 섹터 평균 대비 높은 수준.</p>
+<p><strong>5) 정부 지출 의존</strong>
+- 10-K에서 "the impact of any U.S. Federal Government shutdowns or sequestrations"를 리스크로 명시. 우주/방산 수요가 정부 예산에 연동될 경우, 재정 긴축 시 수주가 지연될 수 있음.</p>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 성장률(YoY)</td>
+<td>+30.8%</td>
+<td>긍정적</td>
+</tr>
+<tr>
+<td>Value-added sales 성장률(YoY)</td>
+<td>+14.6% (2Q26)</td>
+<td>긍정적이나 매출 성장보다 낮음</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>6.7% (YoY <span class="down">-0.8%</span>p)</td>
+<td>우려</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$9.5M</td>
+<td>심각한 수준</td>
+</tr>
+<tr>
+<td>부채비율</td>
+<td>총부채 약 $490M / 시총 $6.18B</td>
+<td>양호</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-0.1%</td>
+<td>신고가권 — 추격 매수 리스크</td>
+</tr>
+<tr>
+<td>PER(FWD)</td>
+<td>35.2배</td>
+<td>높은 편</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 3가지:</strong></p>
+<ol>
+<li><strong>2분기 실적콜 전문(8월 5일)</strong> — value-added sales 성장의 지속성, 세그먼트별 매출 분해, FCF 가이던스 확인. 특히 "~150% cash conversion"의 근거와 TTM FCF와의 괴리 해소 여부.</li>
+<li><strong>백로그의 질</strong> — "record backlog, up ~30% YoY"의 세그먼트 구성과 매출 전환 시점. 우주/방산 vs. 산업재 비중.</li>
+<li><strong>원자재 가격 영향 분리</strong> — 매출 성장에서 금속 가격 상승 효과를 제외한 유기적 성장률. 다음 분기 10-Q에서 value-added sales 기준 YoY 성장률이 15% 이상 유지되는지.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건(관망으로 전환):</strong></p>
+<ul>
+<li>다음 분기(3Q26) 실적에서 value-added sales 성장률이 10% 미만으로 둔화되고, 조정 EPS가 가이던스 중간값($7.00) 대비 하회하는 경우.</li>
+<li>TTM FCF가 분기 FCF와의 괴리를 해소하지 못하고 $50M 미만에 머무는 경우 — 이는 운전자본 부담이 구조적임을 의미.</li>
+<li>주가가 52주 고점을 크게 이탈하여 하락 전환하면서 거래량이 급증하는 경우(고점 대량 거래 후 급락 패턴).</li>
+<li>영업이익률이 6% 미만으로 하락하거나, "Other—net" 항목이 분기 $5M 이상으로 확대되는 경우.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000011/mtrn-20251231.htm">10-K — 2025-12-31_0001104657-26-000011</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000044/mtrn-20260703.htm">10-Q — 2026-07-03_0001104657-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000029/mtrn-20260403.htm">10-Q — 2026-04-03_0001104657-26-000029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000042/q22026pressrelease.htm">8-K — 2026-08-05_0001104657-26-000042__EX-99.1__q22026pressrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000042/mtrn-20260805.htm">8-K — 2026-08-05_0001104657-26-000042</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000031/mtrn-20260507.htm">8-K — 2026-05-07_0001104657-26-000031</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000026/q12026pressrelease.htm">8-K — 2026-04-29_0001104657-26-000026__EX-99.1__q12026pressrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1104657/000110465726000026/mtrn-20260429.htm">8-K — 2026-04-29_0001104657-26-000026</a></li>
+<li>Transcript — 2026-04-29 Materion Corporation 2026 Q1 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
