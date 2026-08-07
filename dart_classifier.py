@@ -2465,8 +2465,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
     # -------------------------------------------------------------
     # Build Excel Workbook
     # -------------------------------------------------------------
-    today_str = datetime.datetime.now().strftime('%Y%m%d')
-    excel_path = os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{today_str}.xlsx")
+    # 날짜 접미사 없이 고정 파일명으로 덮어쓰기 (누적 시 용량 낭비)
+    excel_path = os.path.join(workspace_dir, "data_dart", "dart_disclosures_summary.xlsx")
     
     logger.info("Excel: start building workbook...")
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
@@ -3382,9 +3382,9 @@ def main():
     
     # 2. Upload to Telegram if requested
     if success and args.upload:
-        # build가 반환한 실제 경로 사용 (자정 넘김 시 날짜 재계산하면 어긋남)
+        # build가 반환한 실제 경로 사용
         excel_path = success if isinstance(success, str) else \
-            os.path.join(workspace_dir, "data_dart", f"dart_disclosures_summary_{datetime.datetime.now().strftime('%Y%m%d')}.xlsx")
+            os.path.join(workspace_dir, "data_dart", "dart_disclosures_summary.xlsx")
 
         if not TELEGRAM_BOT4_TOKEN or not TELEGRAM_SUPPLY_DATA_CHAT_ID:
             logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_SUPPLY_DATA_CHAT_ID in env.")
