@@ -3225,3 +3225,92 @@ KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았�
 5. *4901.T* (FUJIFILM Holdings Co) | ¥3,219 (*-16.99%*)
 
 📂 *전체 3,706개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-08-10 15:30:02,292 - INFO - Loading environment variables from .env file...
+2026-08-10 15:30:02,301 - INFO - ==================================================
+2026-08-10 15:30:02,301 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-08-10 15:30:02,301 - INFO - ==================================================
+2026-08-10 15:30:03,331 - INFO - Processing trading date: 2026-08-10
+2026-08-10 15:30:03,331 - INFO - Scraping JPX listed issues Excel URL...
+2026-08-10 15:30:03,604 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-08-10 15:30:04,036 - INFO - Total metadata stocks loaded: 3718
+2026-08-10 15:30:04,036 - INFO - Downloading daily prices for 3718 tickers in chunks of 300...
+2026-08-10 15:30:58,524 - ERROR - $2488.T: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:30:59,051 - ERROR - $2705.T: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:30:59,055 - ERROR - 
+2 Failed downloads:
+2026-08-10 15:30:59,055 - ERROR - ['2488.T', '2705.T']: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:32:39,875 - ERROR - $4189.T: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:32:39,884 - ERROR - 
+1 Failed download:
+2026-08-10 15:32:39,884 - ERROR - ['4189.T']: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:38:23,383 - ERROR - $8628.T: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:38:23,392 - ERROR - 
+1 Failed download:
+2026-08-10 15:38:23,392 - ERROR - ['8628.T']: possibly delisted; no price data found  (period=5d)
+2026-08-10 15:40:00,743 - INFO - Successfully downloaded price changes for 3710 stocks.
+2026-08-10 15:40:00,748 - INFO - Fetching news for sharp movers (±5%)...
+2026-08-10 15:40:22,741 - INFO - Got news for 16 out of 240 sharp movers
+2026-08-10 15:40:22,742 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260810.xlsx...
+2026-08-10 15:40:28,081 - INFO - DeepSeek response generated (deepseek-chat).
+2026-08-10 15:40:28,086 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-08-10 15:40:29,193 - INFO - Report text sent successfully to Telegram.
+2026-08-10 15:40:29,194 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-08-10 15:40:31,787 - INFO - Excel document sent successfully to Telegram.
+2026-08-10 15:40:31,787 - INFO - Generating AI market analysis...
+2026-08-10 15:40:38,591 - INFO - DeepSeek response generated (deepseek-chat).
+2026-08-10 15:40:38,592 - INFO - Sending AI market analysis to Telegram...
+2026-08-10 15:40:39,634 - INFO - AI market analysis sent.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-08-10*
+
+🔥 *주요 상승 섹터/산업 TOP 5*
+1. *Mining* (+2.56%)
+2. *Nonferrous Metals* (+1.82%)
+3. *Precision Instruments* (+1.31%)
+4. *Marine Transportation* (+1.30%)
+5. *Electric Appliances* (+1.09%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 5*
+1. *Banks* (-1.65%)
+2. *Oil and Coal Products* (-1.02%)
+3. *Insurance* (-0.81%)
+4. *Fishery, Agriculture and Forestry* (-0.69%)
+5. *Air Transportation* (-0.62%)
+
+💬 *섹터별 주목 종목 (AI)*
+- Mining: INPEX CORPOR(+3.0%)이 시총 상위에서 견조한 상승을 보이며 섹터 상승을 주도, 자원 가격 상승 수혜가 반영된 흐름.
+- Nonferrous Metals: Fujikura Ltd(+8.2%)와 Sumitomo Ele(+1.8%)이 시총 상위에서 동반 강세, 전선·비철 수요 기대가 반영된 모습.
+- Precision Instruments: OLYMPUS CORP(+9.3%)과 TERUMO CORPO(+8.3%)이 시총 상위에서 급등, 의료기기 수요 회복 기대가 반영된 흐름.
+- Marine Transportation: Mitsui O.S.K(+1.5%)이 시총 상위에서 상승을 유지, 운임 안정세가 반영된 모습.
+- Electric Appliances: SYSMEX CORPO(+18.9%)이 시총 상위에서 급등, 진단기기 수요 증가 기대가 반영된 흐름.
+- Air Transportation: ANA HOLDINGS(-1.1%)이 시총 상위에서 하락, 항공 수요 둔화 우려가 반영된 모습.
+- Fishery, Agriculture and Forestry: Nissui Corpo(-0.1%)이 시총 상위에서 소폭 하락에 그쳐 방어적 성격을 보임.
+- Insurance: Daiichi Life(-4.5%)과 T&D Holdings(-2.6%)이 시총 상위에서 동반 하락, 금리·보험업황 부진 우려가 반영된 흐름.
+- Oil and Coal Products: ENEOS Holdin(-6.0%)이 시총 상위에서 급락, 정제마진 악화 우려가 반영된 모습.
+- Banks: JAPAN POST B(-3.3%)과 Fukuoka Fina(-4.5%)이 시총 상위에서 하락, 금리 상승 기대 약화가 반영된 흐름.
+
+📌 *나의 관심 섹터/산업 현황*
+- *Electric Appliances*: +1.09% (상위: ENOMOTO (+19.6%), SYSMEX C(+18.9%))
+- *Pharmaceutical*: +1.09% (상위: Innovace(+8.3%), Cuorips (+8.0%))
+- *Information & Communication*: +0.75% (상위: DIGITAL (+19.9%), Ficha In(+18.8%))
+- *Chemicals*: +0.59% (상위: New Japa(+19.6%), SANWAYUK(+15.5%))
+- *Transportation Equipment*: +0.44% (상위: GMB CORP(+5.8%), TEIN,INC(+5.4%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *6570.T* (Kyowa Corporation) | ¥2,602 (*+23.79%*)
+2. *6098.T* (Recruit Holdings Co.) | ¥16,165 (*+22.79%*)
+3. *6258.T* (HIRATA Corporation) | ¥3,865 (*+22.12%*)
+4. *8783.T* (abc Co.,Ltd.) | ¥72 (*+22.03%*)
+5. *5985.T* (SUNCALL CORPORATION) | ¥1,750 (*+20.69%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *4889.T* (Renascience Inc.) | ¥1,119 (*-26.33%*)
+2. *4263.T* (SUSMED,Inc.) | ¥558 (*-21.19%*)
+3. *4751.T* (CyberAgent,Inc.) | ¥1,247 (*-16.78%*)
+4. *6145.T* (NITTOKU CO.,LTD.) | ¥2,324 (*-15.09%*)
+5. *4182.T* (Mitsubishi Gas Chemi) | ¥3,823 (*-14.24%*)
+
+📂 *전체 3,710개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*

@@ -234297,3 +234297,599 @@ Step 5: Checking for Japan export data updates (16 HS codes)...
 2026-08-07 20:30:48,617 - INFO - Done.
  no data
 Step 6: Committing and pushing to GitHub...
+[main 6b43b7c56] auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]
+ 542 files changed, 1088006 insertions(+), 74 deletions(-)
+ create mode 100644 data_dart/20260806/20260806000005.html
+ create mode 100644 data_dart/20260806/20260806000006.html
+ create mode 100644 data_dart/20260806/20260806000007.html
+ create mode 100644 data_dart/20260806/20260806000009.html
+ create mode 100644 data_dart/20260806/20260806000014.html
+ create mode 100644 data_dart/20260806/20260806000019.html
+ create mode 100644 data_dart/20260806/20260806000021.html
+ create mode 100644 data_dart/20260806/20260806000041.html
+ create mode 100644 data_dart/20260806/20260806000080.html
+ create mode 100644 data_dart/20260806/20260806000092.html
+ create mode 100644 data_dart/20260806/20260806000095.html
+ create mode 100644 data_dart/20260806/20260806000108.html
+ create mode 100644 data_dart/20260806/20260806000174.html
+ create mode 100644 data_dart/20260806/20260806000175.html
+ create mode 100644 data_dart/20260806/20260806000184.html
+ create mode 100644 data_dart/20260806/20260806000186.html
+ create mode 100644 data_dart/20260806/20260806000195.html
+ create mode 100644 data_dart/20260806/20260806000203.html
+ create mode 100644 data_dart/20260806/20260806000244.html
+ create mode 100644 data_dart/20260806/20260806000258.html
+ create mode 100644 data_dart/20260806/20260806000259.html
+ create mode 100644 data_dart/20260806/20260806000262.html
+ create mode 100644 data_dart/20260806/20260806000276.html
+ create mode 100644 data_dart/20260806/20260806000281.html
+ create mode 100644 data_dart/20260806/20260806000284.html
+ create mode 100644 data_dart/20260806/20260806000285.html
+ create mode 100644 data_dart/20260806/20260806000290.html
+ create mode 100644 data_dart/20260806/20260806000292.html
+ create mode 100644 data_dart/20260806/20260806000301.html
+ create mode 100644 data_dart/20260806/20260806000302.html
+ create mode 100644 data_dart/20260806/20260806000304.html
+ create mode 100644 data_dart/20260806/20260806000320.html
+ create mode 100644 data_dart/20260806/20260806000326.html
+ create mode 100644 data_dart/20260806/20260806000329.html
+ create mode 100644 data_dart/20260806/20260806000334.html
+ create mode 100644 data_dart/20260806/20260806000335.html
+ create mode 100644 data_dart/20260806/20260806000336.html
+ create mode 100644 data_dart/20260806/20260806000337.html
+ create mode 100644 data_dart/20260806/20260806000338.html
+ create mode 100644 data_dart/20260806/20260806000339.html
+ create mode 100644 data_dart/20260806/20260806000340.html
+ create mode 100644 data_dart/20260806/20260806000341.html
+ create mode 100644 data_dart/20260806/20260806000342.html
+ create mode 100644 data_dart/20260806/20260806000343.html
+ create mode 100644 data_dart/20260806/20260806000344.html
+ create mode 100644 data_dart/20260806/20260806000345.html
+ create mode 100644 data_dart/20260806/20260806000347.html
+ create mode 100644 data_dart/20260806/20260806000348.html
+ create mode 100644 data_dart/20260806/20260806000349.html
+ create mode 100644 data_dart/20260806/20260806000350.html
+ create mode 100644 data_dart/20260806/20260806000352.html
+ create mode 100644 data_dart/20260806/20260806000354.html
+ create mode 100644 data_dart/20260806/20260806000355.html
+ create mode 100644 data_dart/20260806/20260806000357.html
+ create mode 100644 data_dart/20260806/20260806000358.html
+ create mode 100644 data_dart/20260806/20260806000359.html
+ create mode 100644 data_dart/20260806/20260806000362.html
+ create mode 100644 data_dart/20260806/20260806000365.html
+ create mode 100644 data_dart/20260806/20260806000369.html
+ create mode 100644 data_dart/20260806/20260806000371.html
+ create mode 100644 data_dart/20260806/20260806000374.html
+ create mode 100644 data_dart/20260806/20260806000375.html
+ create mode 100644 data_dart/20260806/20260806000376.html
+ create mode 100644 data_dart/20260806/20260806000377.html
+ create mode 100644 data_dart/20260806/20260806000380.html
+ create mode 100644 data_dart/20260806/20260806000381.html
+ create mode 100644 data_dart/20260806/20260806000383.html
+ create mode 100644 data_dart/20260806/20260806000384.html
+ create mode 100644 data_dart/20260806/20260806000385.html
+ create mode 100644 data_dart/20260806/20260806000388.html
+ create mode 100644 data_dart/20260806/20260806000392.html
+ create mode 100644 data_dart/20260806/20260806000393.html
+ create mode 100644 data_dart/20260806/20260806000394.html
+ create mode 100644 data_dart/20260806/20260806000396.html
+ create mode 100644 data_dart/20260806/20260806000397.html
+ create mode 100644 data_dart/20260806/20260806000398.html
+ create mode 100644 data_dart/20260806/20260806000399.html
+ create mode 100644 data_dart/20260806/20260806000400.html
+ create mode 100644 data_dart/20260806/20260806000401.html
+ create mode 100644 data_dart/20260806/20260806000402.html
+ create mode 100644 data_dart/20260806/20260806000403.html
+ create mode 100644 data_dart/20260806/20260806000404.html
+ create mode 100644 data_dart/20260806/20260806000406.html
+ create mode 100644 data_dart/20260806/20260806000407.html
+ create mode 100644 data_dart/20260806/20260806000411.html
+ create mode 100644 data_dart/20260806/20260806000418.html
+ create mode 100644 data_dart/20260806/20260806000420.html
+ create mode 100644 data_dart/20260806/20260806000423.html
+ create mode 100644 data_dart/20260806/20260806000428.html
+ create mode 100644 data_dart/20260806/20260806000429.html
+ create mode 100644 data_dart/20260806/20260806000430.html
+ create mode 100644 data_dart/20260806/20260806000431.html
+ create mode 100644 data_dart/20260806/20260806000435.html
+ create mode 100644 data_dart/20260806/20260806000436.html
+ create mode 100644 data_dart/20260806/20260806000437.html
+ create mode 100644 data_dart/20260806/20260806000438.html
+ create mode 100644 data_dart/20260806/20260806000439.html
+ create mode 100644 data_dart/20260806/20260806000440.html
+ create mode 100644 data_dart/20260806/20260806000441.html
+ create mode 100644 data_dart/20260806/20260806000442.html
+ create mode 100644 data_dart/20260806/20260806000443.html
+ create mode 100644 data_dart/20260806/20260806000444.html
+ create mode 100644 data_dart/20260806/20260806000445.html
+ create mode 100644 data_dart/20260806/20260806000446.html
+ create mode 100644 data_dart/20260806/20260806000447.html
+ create mode 100644 data_dart/20260806/20260806000448.html
+ create mode 100644 data_dart/20260806/20260806000450.html
+ create mode 100644 data_dart/20260806/20260806000452.html
+ create mode 100644 data_dart/20260806/20260806000453.html
+ create mode 100644 data_dart/20260806/20260806000454.html
+ create mode 100644 data_dart/20260806/20260806000455.html
+ create mode 100644 data_dart/20260806/20260806000458.html
+ create mode 100644 data_dart/20260806/20260806000459.html
+ create mode 100644 data_dart/20260806/20260806000460.html
+ create mode 100644 data_dart/20260806/20260806000461.html
+ create mode 100644 data_dart/20260806/20260806000462.html
+ create mode 100644 data_dart/20260806/20260806000463.html
+ create mode 100644 data_dart/20260806/20260806000464.html
+ create mode 100644 data_dart/20260806/20260806000465.html
+ create mode 100644 data_dart/20260806/20260806000466.html
+ create mode 100644 data_dart/20260806/20260806000468.html
+ create mode 100644 data_dart/20260806/20260806000470.html
+ create mode 100644 data_dart/20260806/20260806000471.html
+ create mode 100644 data_dart/20260806/20260806000472.html
+ create mode 100644 data_dart/20260806/20260806000473.html
+ create mode 100644 data_dart/20260806/20260806000474.html
+ create mode 100644 data_dart/20260806/20260806000476.html
+ create mode 100644 data_dart/20260806/20260806000477.html
+ create mode 100644 data_dart/20260806/20260806000478.html
+ create mode 100644 data_dart/20260806/20260806000479.html
+ create mode 100644 data_dart/20260806/20260806000480.html
+ create mode 100644 data_dart/20260806/20260806000482.html
+ create mode 100644 data_dart/20260806/20260806000484.html
+ create mode 100644 data_dart/20260806/20260806000485.html
+ create mode 100644 data_dart/20260806/20260806000486.html
+ create mode 100644 data_dart/20260806/20260806000487.html
+ create mode 100644 data_dart/20260806/20260806000491.html
+ create mode 100644 data_dart/20260806/20260806000493.html
+ create mode 100644 data_dart/20260806/20260806000499.html
+ create mode 100644 data_dart/20260806/20260806000500.html
+ create mode 100644 data_dart/20260806/20260806000501.html
+ create mode 100644 data_dart/20260806/20260806000503.html
+ create mode 100644 data_dart/20260806/20260806000506.html
+ create mode 100644 data_dart/20260806/20260806000507.html
+ create mode 100644 data_dart/20260806/20260806000508.html
+ create mode 100644 data_dart/20260806/20260806000510.html
+ create mode 100644 data_dart/20260806/20260806000512.html
+ create mode 100644 data_dart/20260806/20260806000514.html
+ create mode 100644 data_dart/20260806/20260806000516.html
+ create mode 100644 data_dart/20260806/20260806000517.html
+ create mode 100644 data_dart/20260806/20260806000519.html
+ create mode 100644 data_dart/20260806/20260806000520.html
+ create mode 100644 data_dart/20260806/20260806000524.html
+ create mode 100644 data_dart/20260806/20260806000526.html
+ create mode 100644 data_dart/20260806/20260806000531.html
+ create mode 100644 data_dart/20260806/20260806000532.html
+ create mode 100644 data_dart/20260806/20260806000534.html
+ create mode 100644 data_dart/20260806/20260806000536.html
+ create mode 100644 data_dart/20260806/20260806000538.html
+ create mode 100644 data_dart/20260806/20260806000539.html
+ create mode 100644 data_dart/20260806/20260806000541.html
+ create mode 100644 data_dart/20260806/20260806000542.html
+ create mode 100644 data_dart/20260806/20260806000544.html
+ create mode 100644 data_dart/20260806/20260806000545.html
+ create mode 100644 data_dart/20260806/20260806000546.html
+ create mode 100644 data_dart/20260806/20260806600223.html
+ create mode 100644 data_dart/20260806/20260806600287.html
+ create mode 100644 data_dart/20260806/20260806600582.html
+ create mode 100644 data_dart/20260806/20260806800002.html
+ create mode 100644 data_dart/20260806/20260806800011.html
+ create mode 100644 data_dart/20260806/20260806800037.html
+ create mode 100644 data_dart/20260806/20260806800069.html
+ create mode 100644 data_dart/20260806/20260806800073.html
+ create mode 100644 data_dart/20260806/20260806800075.html
+ create mode 100644 data_dart/20260806/20260806800150.html
+ create mode 100644 data_dart/20260806/20260806800153.html
+ create mode 100644 data_dart/20260806/20260806800162.html
+ create mode 100644 data_dart/20260806/20260806800181.html
+ create mode 100644 data_dart/20260806/20260806800184.html
+ create mode 100644 data_dart/20260806/20260806800186.html
+ create mode 100644 data_dart/20260806/20260806800187.html
+ create mode 100644 data_dart/20260806/20260806800188.html
+ create mode 100644 data_dart/20260806/20260806800195.html
+ create mode 100644 data_dart/20260806/20260806800228.html
+ create mode 100644 data_dart/20260806/20260806800234.html
+ create mode 100644 data_dart/20260806/20260806800240.html
+ create mode 100644 data_dart/20260806/20260806800244.html
+ create mode 100644 data_dart/20260806/20260806800245.html
+ create mode 100644 data_dart/20260806/20260806800266.html
+ create mode 100644 data_dart/20260806/20260806800274.html
+ create mode 100644 data_dart/20260806/20260806800280.html
+ create mode 100644 data_dart/20260806/20260806800289.html
+ create mode 100644 data_dart/20260806/20260806800295.html
+ create mode 100644 data_dart/20260806/20260806800304.html
+ create mode 100644 data_dart/20260806/20260806800305.html
+ create mode 100644 data_dart/20260806/20260806800311.html
+ create mode 100644 data_dart/20260806/20260806800319.html
+ create mode 100644 data_dart/20260806/20260806800326.html
+ create mode 100644 data_dart/20260806/20260806800338.html
+ create mode 100644 data_dart/20260806/20260806800351.html
+ create mode 100644 data_dart/20260806/20260806800370.html
+ create mode 100644 data_dart/20260806/20260806800392.html
+ create mode 100644 data_dart/20260806/20260806800411.html
+ create mode 100644 data_dart/20260806/20260806800420.html
+ create mode 100644 data_dart/20260806/20260806800421.html
+ create mode 100644 data_dart/20260806/20260806800423.html
+ create mode 100644 data_dart/20260806/20260806800424.html
+ create mode 100644 data_dart/20260806/20260806800431.html
+ create mode 100644 data_dart/20260806/20260806800433.html
+ create mode 100644 data_dart/20260806/20260806800457.html
+ create mode 100644 data_dart/20260806/20260806800462.html
+ create mode 100644 data_dart/20260806/20260806800470.html
+ create mode 100644 data_dart/20260806/20260806800485.html
+ create mode 100644 data_dart/20260806/20260806800498.html
+ create mode 100644 data_dart/20260806/20260806800506.html
+ create mode 100644 data_dart/20260806/20260806800511.html
+ create mode 100644 data_dart/20260806/20260806800520.html
+ create mode 100644 data_dart/20260806/20260806800526.html
+ create mode 100644 data_dart/20260806/20260806800529.html
+ create mode 100644 data_dart/20260806/20260806800530.html
+ create mode 100644 data_dart/20260806/20260806800535.html
+ create mode 100644 data_dart/20260806/20260806800574.html
+ create mode 100644 data_dart/20260806/20260806800577.html
+ create mode 100644 data_dart/20260806/20260806800578.html
+ create mode 100644 data_dart/20260806/20260806800593.html
+ create mode 100644 data_dart/20260806/20260806800609.html
+ create mode 100644 data_dart/20260806/20260806800610.html
+ create mode 100644 data_dart/20260806/20260806800613.html
+ create mode 100644 data_dart/20260806/20260806800615.html
+ create mode 100644 data_dart/20260806/20260806800617.html
+ create mode 100644 data_dart/20260806/20260806800629.html
+ create mode 100644 data_dart/20260806/20260806800632.html
+ create mode 100644 data_dart/20260806/20260806800636.html
+ create mode 100644 data_dart/20260806/20260806800643.html
+ create mode 100644 data_dart/20260806/20260806800646.html
+ create mode 100644 data_dart/20260806/20260806800667.html
+ create mode 100644 data_dart/20260806/20260806800669.html
+ create mode 100644 data_dart/20260806/20260806800671.html
+ create mode 100644 data_dart/20260806/20260806800672.html
+ create mode 100644 data_dart/20260806/20260806800683.html
+ create mode 100644 data_dart/20260806/20260806800716.html
+ create mode 100644 data_dart/20260806/20260806800719.html
+ create mode 100644 data_dart/20260806/20260806900072.html
+ create mode 100644 data_dart/20260806/20260806900096.html
+ create mode 100644 data_dart/20260806/20260806900102.html
+ create mode 100644 data_dart/20260806/20260806900119.html
+ create mode 100644 data_dart/20260806/20260806900122.html
+ create mode 100644 data_dart/20260806/20260806900124.html
+ create mode 100644 data_dart/20260806/20260806900125.html
+ create mode 100644 data_dart/20260806/20260806900126.html
+ create mode 100644 data_dart/20260806/20260806900127.html
+ create mode 100644 data_dart/20260806/20260806900128.html
+ create mode 100644 data_dart/20260806/20260806900132.html
+ create mode 100644 data_dart/20260806/20260806900143.html
+ create mode 100644 data_dart/20260806/20260806900155.html
+ create mode 100644 data_dart/20260806/20260806900159.html
+ create mode 100644 data_dart/20260806/20260806900161.html
+ create mode 100644 data_dart/20260806/20260806900165.html
+ create mode 100644 data_dart/20260806/20260806900171.html
+ create mode 100644 data_dart/20260806/20260806900173.html
+ create mode 100644 data_dart/20260806/20260806900177.html
+ create mode 100644 data_dart/20260806/20260806900185.html
+ create mode 100644 data_dart/20260806/20260806900192.html
+ create mode 100644 data_dart/20260806/20260806900196.html
+ create mode 100644 data_dart/20260806/20260806900197.html
+ create mode 100644 data_dart/20260806/20260806900198.html
+ create mode 100644 data_dart/20260806/20260806900207.html
+ create mode 100644 data_dart/20260806/20260806900208.html
+ create mode 100644 data_dart/20260806/20260806900212.html
+ create mode 100644 data_dart/20260806/20260806900214.html
+ create mode 100644 data_dart/20260806/20260806900218.html
+ create mode 100644 data_dart/20260806/20260806900227.html
+ create mode 100644 data_dart/20260806/20260806900230.html
+ create mode 100644 data_dart/20260806/20260806900236.html
+ create mode 100644 data_dart/20260806/20260806900237.html
+ create mode 100644 data_dart/20260806/20260806900242.html
+ create mode 100644 data_dart/20260806/20260806900243.html
+ create mode 100644 data_dart/20260806/20260806900246.html
+ create mode 100644 data_dart/20260806/20260806900269.html
+ create mode 100644 data_dart/20260806/20260806900270.html
+ create mode 100644 data_dart/20260806/20260806900275.html
+ create mode 100644 data_dart/20260806/20260806900281.html
+ create mode 100644 data_dart/20260806/20260806900296.html
+ create mode 100644 data_dart/20260806/20260806900302.html
+ create mode 100644 data_dart/20260806/20260806900303.html
+ create mode 100644 data_dart/20260806/20260806900314.html
+ create mode 100644 data_dart/20260806/20260806900321.html
+ create mode 100644 data_dart/20260806/20260806900323.html
+ create mode 100644 data_dart/20260806/20260806900327.html
+ create mode 100644 data_dart/20260806/20260806900337.html
+ create mode 100644 data_dart/20260806/20260806900341.html
+ create mode 100644 data_dart/20260806/20260806900349.html
+ create mode 100644 data_dart/20260806/20260806900357.html
+ create mode 100644 data_dart/20260806/20260806900360.html
+ create mode 100644 data_dart/20260806/20260806900366.html
+ create mode 100644 data_dart/20260806/20260806900371.html
+ create mode 100644 data_dart/20260806/20260806900373.html
+ create mode 100644 data_dart/20260806/20260806900384.html
+ create mode 100644 data_dart/20260806/20260806900387.html
+ create mode 100644 data_dart/20260806/20260806900390.html
+ create mode 100644 data_dart/20260806/20260806900396.html
+ create mode 100644 data_dart/20260806/20260806900405.html
+ create mode 100644 data_dart/20260806/20260806900406.html
+ create mode 100644 data_dart/20260806/20260806900413.html
+ create mode 100644 data_dart/20260806/20260806900417.html
+ create mode 100644 data_dart/20260806/20260806900449.html
+ create mode 100644 data_dart/20260806/20260806900451.html
+ create mode 100644 data_dart/20260806/20260806900452.html
+ create mode 100644 data_dart/20260806/20260806900454.html
+ create mode 100644 data_dart/20260806/20260806900463.html
+ create mode 100644 data_dart/20260806/20260806900477.html
+ create mode 100644 data_dart/20260806/20260806900482.html
+ create mode 100644 data_dart/20260806/20260806900491.html
+ create mode 100644 data_dart/20260806/20260806900515.html
+ create mode 100644 data_dart/20260806/20260806900516.html
+ create mode 100644 data_dart/20260806/20260806900517.html
+ create mode 100644 data_dart/20260806/20260806900524.html
+ create mode 100644 data_dart/20260806/20260806900531.html
+ create mode 100644 data_dart/20260806/20260806900581.html
+ create mode 100644 data_dart/20260806/20260806900583.html
+ create mode 100644 data_dart/20260806/20260806900604.html
+ create mode 100644 data_dart/20260806/20260806900607.html
+ create mode 100644 data_dart/20260806/20260806900611.html
+ create mode 100644 data_dart/20260806/20260806900618.html
+ create mode 100644 data_dart/20260806/20260806900620.html
+ create mode 100644 data_dart/20260806/20260806900623.html
+ create mode 100644 data_dart/20260806/20260806900624.html
+ create mode 100644 data_dart/20260806/20260806900648.html
+ create mode 100644 data_dart/20260806/20260806900650.html
+ create mode 100644 data_dart/20260806/20260806900659.html
+ create mode 100644 data_dart/20260806/20260806900661.html
+ create mode 100644 data_dart/20260806/20260806900679.html
+ create mode 100644 data_dart/20260806/20260806900680.html
+ create mode 100644 data_dart/20260806/20260806900681.html
+ create mode 100644 data_dart/20260806/20260806900692.html
+ create mode 100644 data_dart/20260806/20260806900707.html
+ create mode 100644 data_dart/20260806/20260806900713.html
+ create mode 100644 data_dart/20260806/20260806900721.html
+ create mode 100644 data_dart/20260806/20260806900725.html
+ create mode 100644 data_dart/20260807/20260806000547.html
+ create mode 100644 data_dart/20260807/20260806000551.html
+ create mode 100644 data_dart/20260807/20260806000554.html
+ create mode 100644 data_dart/20260807/20260807000001.html
+ create mode 100644 data_dart/20260807/20260807000003.html
+ create mode 100644 data_dart/20260807/20260807000004.html
+ create mode 100644 data_dart/20260807/20260807000068.html
+ create mode 100644 data_dart/20260807/20260807000078.html
+ create mode 100644 data_dart/20260807/20260807000084.html
+ create mode 100644 data_dart/20260807/20260807000085.html
+ create mode 100644 data_dart/20260807/20260807000095.html
+ create mode 100644 data_dart/20260807/20260807000101.html
+ create mode 100644 data_dart/20260807/20260807000109.html
+ create mode 100644 data_dart/20260807/20260807000113.html
+ create mode 100644 data_dart/20260807/20260807000115.html
+ create mode 100644 data_dart/20260807/20260807000119.html
+ create mode 100644 data_dart/20260807/20260807000125.html
+ create mode 100644 data_dart/20260807/20260807000146.html
+ create mode 100644 data_dart/20260807/20260807000148.html
+ create mode 100644 data_dart/20260807/20260807000150.html
+ create mode 100644 data_dart/20260807/20260807000156.html
+ create mode 100644 data_dart/20260807/20260807000162.html
+ create mode 100644 data_dart/20260807/20260807000184.html
+ create mode 100644 data_dart/20260807/20260807000188.html
+ create mode 100644 data_dart/20260807/20260807000189.html
+ create mode 100644 data_dart/20260807/20260807000204.html
+ create mode 100644 data_dart/20260807/20260807000208.html
+ create mode 100644 data_dart/20260807/20260807000210.html
+ create mode 100644 data_dart/20260807/20260807000217.html
+ create mode 100644 data_dart/20260807/20260807000220.html
+ create mode 100644 data_dart/20260807/20260807000229.html
+ create mode 100644 data_dart/20260807/20260807000230.html
+ create mode 100644 data_dart/20260807/20260807000235.html
+ create mode 100644 data_dart/20260807/20260807000239.html
+ create mode 100644 data_dart/20260807/20260807000241.html
+ create mode 100644 data_dart/20260807/20260807000242.html
+ create mode 100644 data_dart/20260807/20260807000244.html
+ create mode 100644 data_dart/20260807/20260807000246.html
+ create mode 100644 data_dart/20260807/20260807000247.html
+ create mode 100644 data_dart/20260807/20260807000254.html
+ create mode 100644 data_dart/20260807/20260807000261.html
+ create mode 100644 data_dart/20260807/20260807000263.html
+ create mode 100644 data_dart/20260807/20260807000274.html
+ create mode 100644 data_dart/20260807/20260807000276.html
+ create mode 100644 data_dart/20260807/20260807000281.html
+ create mode 100644 data_dart/20260807/20260807000284.html
+ create mode 100644 data_dart/20260807/20260807000288.html
+ create mode 100644 data_dart/20260807/20260807000290.html
+ create mode 100644 data_dart/20260807/20260807000293.html
+ create mode 100644 data_dart/20260807/20260807000301.html
+ create mode 100644 data_dart/20260807/20260807000313.html
+ create mode 100644 data_dart/20260807/20260807000317.html
+ create mode 100644 data_dart/20260807/20260807000331.html
+ create mode 100644 data_dart/20260807/20260807000339.html
+ create mode 100644 data_dart/20260807/20260807000340.html
+ create mode 100644 data_dart/20260807/20260807000348.html
+ create mode 100644 data_dart/20260807/20260807000349.html
+ create mode 100644 data_dart/20260807/20260807000350.html
+ create mode 100644 data_dart/20260807/20260807000352.html
+ create mode 100644 data_dart/20260807/20260807000353.html
+ create mode 100644 data_dart/20260807/20260807000355.html
+ create mode 100644 data_dart/20260807/20260807000357.html
+ create mode 100644 data_dart/20260807/20260807000365.html
+ create mode 100644 data_dart/20260807/20260807000371.html
+ create mode 100644 data_dart/20260807/20260807000374.html
+ create mode 100644 data_dart/20260807/20260807000376.html
+ create mode 100644 data_dart/20260807/20260807000378.html
+ create mode 100644 data_dart/20260807/20260807000389.html
+ create mode 100644 data_dart/20260807/20260807800073.html
+ create mode 100644 data_dart/20260807/20260807800114.html
+ create mode 100644 data_dart/20260807/20260807800247.html
+ create mode 100644 data_dart/20260807/20260807800276.html
+ create mode 100644 data_dart/20260807/20260807800288.html
+ create mode 100644 data_dart/20260807/20260807900133.html
+ create mode 100644 data_dart/20260807/20260807900158.html
+ create mode 100644 data_dart/20260807/20260807900191.html
+ create mode 100644 data_dart/20260807/20260807900387.html
+ create mode 100644 data_dart/20260807/disclosures.csv
+ create mode 100644 data_dart/20260807/disclosures.json
+ create mode 100644 data_dart/dart_daily_report_20260806.html
+ delete mode 100644 data_dart/dart_disclosures_summary_20260701.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260702.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260702_fixed.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260703.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260704.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260706.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260707.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260708.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260709.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260710.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260711.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260712.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260713.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260714.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260715.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260716.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260717.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260720.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260721.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260722.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260723.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260724.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260727.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260728.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260729.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260730.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260731.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260803.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260804.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260805.xlsx
+ delete mode 100644 data_dart/dart_disclosures_summary_20260806.xlsx
+ create mode 100644 data_jp/daily_prices/jp_prices_20260807.xlsx
+ create mode 100644 data_kr/20260807/all_stocks_investor_trend.csv
+ create mode 100644 data_kr/20260807/macro_indicators.csv
+ create mode 100644 data_kr/20260807/market_investor_trend.csv
+ create mode 100644 data_kr/20260807/sector_investor_trend.csv
+ create mode 100644 data_kr/daily_prices/kr_prices_20260807.xlsx
+ create mode 100644 data_us/daily_prices/us_prices_20260806.xlsx
+ create mode 100644 data_us/gainer_analysis/2026-08-07/ALB_2026-08-07earnings-q2-2026.html
+ create mode 100644 data_us/indicator_charts/chart_20260807_global___region.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_individual.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_lithium___resources.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_macro___safe_haven.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_sector_cyclical.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_sector_defensive.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_tech___semi___sw.png
+ create mode 100644 data_us/indicator_charts/chart_20260807_thematic.png
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\353\257\270\352\265\255_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\354\234\240\353\237\275_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\354\235\274\353\263\270_\354\204\271\355\204\260_(topix-17).png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\354\235\274\353\263\270_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\354\244\221\355\231\224\352\266\214_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\355\225\234\352\265\255_\354\204\271\355\204\260_(etf).png"
+ create mode 100644 "data_us/indicator_charts/chart_20260807_\355\225\234\352\265\255_\354\247\200\354\210\230.png"
+ create mode 100644 data_us/indicator_charts/heatmap_20260807.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260807_cn.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260807_jp.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260807_kr.png
+ create mode 100644 data_us/sa_transcripts/ALB/2026-05-07_ALB_Q1-2026_QTR.md
+ create mode 100644 data_us/sa_transcripts/ALB/2026-08-06_ALB_Q2-2026_QTR.md
+ create mode 100644 data_us/sa_transcripts/CACI/2026-04-23_CACI_CACI-International-Inc-2026-Q3---Results---Earnings-Call-Pre.md
+ create mode 100644 data_us/sa_transcripts/INSM/2026-05-07_INSM_Insmed-Incorporated-INSM-Q1-2026-Earnings-Call-Transcript.md
+ create mode 100644 data_us/sa_transcripts/INSM/2026-07-16_INSM_Insmed-Incorporated-INSM-Discusses-12-Month-Results-From-Ong.md
+ create mode 100644 data_us/sa_transcripts/KOPN/2026-06-17_KOPN_Planet-MicroCap-Las-Vegas-2026_QTR.md
+ create mode 100644 data_us/sa_transcripts/KOPN/2026-07-02_KOPN_Kopin-Corporation-KOPN-Discusses-AI-Infrastructure-Catalysts.md
+ create mode 100644 data_us/sa_transcripts/SPCX/2026-08-04_SPCX_Q2-2026_QTR.md
+ create mode 100644 data_us/sa_transcripts/TMUS/2026-06-02_TMUS_T-Mobile-US-Inc-TMUS-Presents-at-2026-Evercore-Global-TMT-Co.md
+ create mode 100644 data_us/sa_transcripts/TMUS/2026-07-23_TMUS_T-Mobile-US-Inc-TMUS-Q2-2026-Earnings-Call-Transcript.md
+ create mode 100644 data_us/toss_sector/toss_sectors_us_20260807.csv
+ create mode 100644 "data_us/toss_sector/\355\206\240\354\212\244\354\204\271\355\204\260_\353\257\270\352\265\255_\354\225\204\354\271\250\353\246\254\355\217\254\355\212\270_20260807.html"
+To https://github.com/jjellee/dataScout.git
+   b95df25f0..6b43b7c56  main -> main
+=================================================================
+ Daily Run Completed: Fri Aug  7 08:31:09 PM KST 2026
+=================================================================
+=================================================================
+ Starting Daily Run: Mon Aug 10 08:30:02 PM KST 2026
+=================================================================
+Step 1: Collecting daily market data...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-08-10 20:30:03
+  만료 시간: 2026-08-10 21:30:03
+==================================================
+ Past 6 Months Batch Data Collector
+==================================================
+Fetching trading day list from 20260211 to 20260810...
+Total trading days to check: 120 days
+
+Already collected: 119 days (Skipping)
+Remaining to collect: 1 days
+Estimated time: ~0.3 minutes
+
+[1/1] Collecting data for: 2026-08-10
+  -> SUCCESS: Collected and saved data for 2026-08-10.
+
+==================================================
+ Batch collection completed!
+==================================================
+Step 2b: Generating KOSDAQ Pharmaceutical & Biotech supply/demand chart and uploading to Telegram...
+2026-08-10 20:30:40,294 - INFO - Loading environment variables from .env file...
+2026-08-10 20:30:40,310 - INFO - Using Pretendard font from: /home/inhyuk/Downloads/public/static/alternative/Pretendard-Regular.ttf
+2026-08-10 20:30:40,311 - INFO - Using latest data date: 20260810
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-08-10 20:30:40
+  만료 시간: 2026-08-10 21:30:40
+2026-08-10 20:30:41,238 - INFO - Combined bio tickers count: 140 (2066: 130, 2217: 26)
+2026-08-10 20:30:41,238 - INFO - Processing data over 120 trading days...
+2026-08-10 20:30:42,703 - INFO - Chart saved successfully: /home/inhyuk/projects/dataScout/data_kr/kosdaq_bio_supply_demand.png
+2026-08-10 20:30:42,703 - INFO - Uploading chart to Telegram (Test Mode: False)...
+2026-08-10 20:30:45,704 - INFO - Chart successfully uploaded to Telegram chat: -1003877753638 ✅
+Step 3: Running stock supply-demand screener...
+2026-08-10 20:30:45,993 - INFO - Loading environment variables from .env file...
+2026-08-10 20:30:45,995 - INFO - Screening stocks for date: 2026-08-10 (Lookback: ['20260804', '20260805', '20260806', '20260807', '20260810'])
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/screener.py", line 452, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/screener.py", line 126, in main
+    prices_df = pd.concat(price_series_list, axis=1)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/reshape/concat.py", line 395, in concat
+    return op.get_result()
+           ~~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/reshape/concat.py", line 660, in get_result
+    df = cons(data, index=index, copy=self.copy)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 119, in arrays_to_mgr
+    arrays, refs = _homogenize(arrays, index, dtype)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 611, in _homogenize
+    val = val.reindex(index, copy=False)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/series.py", line 5164, in reindex
+    return super().reindex(
+           ~~~~~~~~~~~~~~~^
+        index=index,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        tolerance=tolerance,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/generic.py", line 5629, in reindex
+    return self._reindex_axes(
+           ~~~~~~~~~~~~~~~~~~^
+        axes, level, limit, tolerance, method, fill_value, copy
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).__finalize__(self, method="reindex")
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/generic.py", line 5652, in _reindex_axes
+    new_index, indexer = ax.reindex(
+                         ~~~~~~~~~~^
+        labels, level=level, limit=limit, tolerance=tolerance, method=method
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 4436, in reindex
+    raise ValueError("cannot reindex on an axis with duplicate labels")
+ValueError: cannot reindex on an axis with duplicate labels
+Step 5: Checking for Japan export data updates (16 HS codes)...
+2026-08-10 20:30:46,657 - INFO - Initializing session...
+2026-08-10 20:30:46,847 - INFO - Fetching 2 months × 2 batches = 4 requests...
+  [1/4] 2026-07 batch 1... no data
+  [2/4] 2026-07 batch 2... no data
+  [3/4] 2026-08 batch 1... no data
+  [4/4] 2026-08 batch 2...2026-08-10 20:30:48,577 - INFO - No data for 2 consecutive months. Stopping.
+2026-08-10 20:30:48,577 - INFO - No updates found. Skipping chart generation.
+2026-08-10 20:30:48,577 - INFO - Done.
+ no data
+Step 6: Committing and pushing to GitHub...
