@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BKR — Baker Hughes Company Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BKR — Baker Hughes Company Class A Common Stock</h1>
+<div class="sub">2026-08-11 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">BKR</span><span class="badge">+4.09%</span><span class="badge">거래량 0.66배</span><span class="badge">$63.60B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<p>당일 <span class="up">+4.09%</span> 상승은 Chart Industries 인수 완료(7/16) 직후 발표된 Q2 실적의 IET 부문 기록적 수주(7.1B, YoY 2배)와 RPO 37.1B 사상 최고치에 기인한 것으로 판단된다. 다만 거래량이 20일 중앙 대비 0.66배로 상승을 뒷받침하지 못했고, 매출 YoY <span class="down">-2.4%</span>로 외형 성장이 정체된 가운데 Chart 인수로 인한 부채 부담이 단기 실적에 미칠 영향이 불확실하다. IET 수주 모멘텀과 OFSE의 중동 리스크 노출을 감안할 때, 신규 포지션은 보통 수준에서 시작해 수주→매출 전환율과 레버리지 추이를 확인하며 비중을 조정하는 것이 적절하다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>가장 유력한 촉매: Q2 실적 발표(8-K, 7/26) 및 실적콜(7/27)의 IET 수주 서프라이즈.</strong> IET 수주가 YoY 2배인 7.1B, RPO가 19% 증가한 37.1B로 사상 최고치를 기록했다는 점이 확인됨.</li>
+<li><strong>Chart Industries 인수 완료(7/16)</strong> — 10-Q에 따르면 주당 $210, EV 약 $13.6B 규모로 7/16 완료. 인수 시너지 기대감이 반영된 것으로 보임.</li>
+<li><strong>뉴스 헤드라인에서 확인되는 추가 촉매:</strong> Eni-Petronas $11.8B 프로젝트 서브시(해저) 수주, 인도네시아 Kutei Northern Hub 가스 생산용 17개 시스템 수주, 대형 터빈 수주 등.</li>
+<li>거래량 배수 0.66배로 거래량이 동반되지 않은 점은 수급보다는 특정 뉴스/실적에 대한 선별적 매수세 가능성을 시사.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 및 10-Q 기준, Baker Hughes는 에너지 기술 기업으로 120개국 이상에서 사업을 영위하며 약 54,000명(2026 Q2 기준)을 고용. 두 개 세그먼트로 운영:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>사업 내용</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OFSE (Oilfield Services &amp; Equipment)</strong></td>
+<td>상류(upstream) 오일·가스 탐사/개발/생산 장비 및 서비스</td>
+<td>실적콜에서 "75% 국제, 50% 해양(offshore), 생산 중심"이라고 언급. 생산화학, 인공리프트(ESP) 등 OpEx 성격 매출 비중 높음</td>
+</tr>
+<tr>
+<td><strong>IET (Industrial &amp; Energy Technology)</strong></td>
+<td>터빈, 압축기, 펌프, 밸브, LNG 액화설비, 컨디션 모니터링, 디지털 솔루션</td>
+<td>데이터센터 전력, LNG 인프라, 가스 가공, CCUS, 수소, 지열 등 산업·신에너지 시장으로 다각화</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객군:</strong> 메이저·국영·독립 석유가스 기업(매출의 대부분), 산업용 전력 수요처(데이터센터), LNG 프로젝트 개발사.</li>
+<li><strong>경쟁 위치:</strong> OFSE는 SLB, Halliburton과 경쟁하나 실적콜에서 "전통 OFS 피어와 차별화"를 강조. IET는 터빈·압축기 분야에서 지멘스 에너지, GE Vernova 등과 경쟁하는 구조.</li>
+<li><strong>포트폴리오 변화:</strong> PSI(정밀센서) 매각, SPC(지상압력제어) JV 설립, Waygate Technologies 매각 의사 발표(버스타인 콜), Chart Industries 인수로 산업용·극저온(크라이오제닉) 역량 강화. 실적콜에서 "전통 OFS 기업이 아닌 산업화된 에너지 솔루션 기업"으로 재정의를 강조.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>최근 분기(2026 Q2) 실적:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$6.74B (YoY <span class="down">-2.4%</span>, QoQ <span class="up">+2.4%</span>)</td>
+<td>외형은 정체. PSI 매각·SPC JV 전환에 따른 매출 공백이 주요 원인</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>12.8% (YoY <span class="down">-0.0%</span>p)</td>
+<td>마진 방어 성공. 다만 개선도 없음</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>23.4%</td>
+<td>공시상 확인 가능한 수준</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$3.13B</td>
+<td>견조한 현금창출력</td>
+</tr>
+<tr>
+<td>분기 FCF</td>
+<td>$1,109M (8-K)</td>
+<td>실적콜에서 "강한 고객 대금 회수와 마일스톤 지급"에 기인</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>MD&amp;A 분석 (10-Q 2026 Q2):</strong>
+- IET 매출 YoY flat: GTS <span class="up">+11%</span>, IP <span class="up">+13%</span>, CTS <span class="up">+31%</span> vs GTE <span class="down">-6%</span>, IS <span class="down">-33%</span>(PSI 매각 영향).
+- OFSE 매출 YoY <span class="down">-5%</span>: SPC 매각과 국제 매출 감소가 원인.
+- 순이익 $0.7B로 YoY flat: 법인세 감소, 세그먼트 EBITDA 개선, 지분증권 공정가치 변동이 긍정적이나 감가상각비·거래비용·이자비용·구조조정비용이 상쇄.
+- <strong>Chart 인수 관련:</strong> 3월 $6.5B USD + €3.0B 유로 채권 발행, 7/16 인수 완료. 인수 후 부채 증가 예상.</p>
+<p><strong>성장의 질 평가:</strong>
+- 매출은 정체이나 <strong>수주(orders)가 선행지표로서 강하게 개선</strong> — IET 수주 YoY 2배, RPO 37.1B(사상 최고). 이는 2027년 이후 매출 가시성을 높이는 핵심.
+- 다만 <strong>매출 인식 시점이 수주보다 수년 뒤</strong>이므로 단기 매출 성장으로 연결되기까지 시간차 존재. 실적콜 CFO는 "GTE의 경우 2026년 수주 상당수가 2027년 이후 전환"이라고 언급.
+- 마진: Adjusted EBITDA 마진 18.3%(YoY +70bp, 사상 최고) — IET의 강한 성과가 OFSE의 인플레이션 비용 부담을 상쇄.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) 데이터센터 전력 수요 (Power Systems)</strong>
+- Q2 Power Systems 수주 $2.6B, 데이터센터 관련 $2.2B. 연초 이후 $4B로 이미 작년 연간($3.2B) 초과.
+- Dynamis(1.3GW 모바일 가스터빈), Kodiak(1GW 초기 + 최대 1.8GW 프레임워크) 수주.
+- 2029년까지 가스터빈·발전기 증설 완료 시 연간 Power Systems 매출 약 $5B 기회(실적콜 CEO 발언). 2025년 대비 3~4배 증가 잠재력.
+- <strong>검증 포인트:</strong> 데이터센터 수주가 단발성인지 지속적인지 — 분기별 Power Systems 수주와 백로그의 데이터센터 비중.</p>
+<p><strong>2) LNG 및 가스 인프라</strong>
+- Q2 LNG 장비 수주 $1.8B(3개 대형 프로젝트): Venture Global(6개 LNG 블록, 12개 액화 모듈), Golar(FLNG용 터빈 4기), Cheniere Sabine Pass Train 7.
+- 상반기 LNG 장비 수주 $2.9B로 이미 작년 연간 실적 초과.
+- <strong>검증 포인트:</strong> LNG 수주가 2026년 하반기에도 지속되는지, 특히 중동 프로젝트 일정 지연 여부.</p>
+<p><strong>3) IET Horizon 2 성장 전략</strong>
+- CEO는 Horizon 2(2026~2028) IET 수주가 $45B를 초과할 것으로 전망.
+- 실적콜 CFO: "2027년 백로그의 수익성(마진)이 좋다 — Power Systems, LNG, 서비스·업그레이드의 고품질 믹스."
+- <strong>검증 포인트:</strong> 2027년 가이던스가 공식적으로 제시될 때 IET 마진 개선 폭.</p>
+<p><strong>4) OFSE의 회복</strong>
+- 회사는 "중동 제외 글로벌 상류 투자가 연말까지 개선" 전망. 중동은 감소 예상.
+- <strong>검증 포인트:</strong> 중동 지정학적 리스크가 추가 악화되지 않는지, 북미·기타 국제 시장의 스펜딩이 실제로 유지되는지.</p>
+<p><strong>5) Chart Industries 시너지</strong>
+- 극저온(크라이오제닉) 기술과 콜드박스 역량이 LNG·수소·CCUS 밸류체인에서 보완적.
+- <strong>검증 포인트:</strong> 인수 통합 진행 상황, 시너지 수치의 구체화, 부채 축소 로드맵.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 자신감:</strong>
+- CEO Lorenzo Simonelli의 톤은 명확히 공격적·확신적. "IET delivered another exceptional quarter", "record bookings doubling year-over-year", "all-time high" 등의 표현이 반복됨.
+- CFO Ahmed Moghal은 "balanced outlook"을 강조하며 중동 불확실성과 GTE 백로그 전환 시차를 언급 — CEO의 낙관론과 CFO의 신중론이 대비됨.
+- CEO는 "energy demand decade"라는 표현으로 10년 단위 성장 스토리를 제시. 이는 단기 실적보다 장기 구조적 성장에 베팅하라는 메시지.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점:</strong>
+- <strong>IET 하반기 가이던스 상향 폭이 상반기 서프라이즈보다 작은 이유</strong> — CFO는 "중동 매출이 하반기에도 유사한 수준 유지 가정, 프로젝트 타이밍·로컬 공급망 불확실성, GTE 백로그 전환 시차, 항공파생(터빈) 공급망, FX·무역정책"을 이유로 제시. 이는 경영진이 수주 강세에도 불구하고 매출 전환에 보수적임을 시사.
+- <strong>FCF 가이던스 유지</strong> — 상반기 FCF 강세(강한 회수, 마일스톤 지급)에도 연간 전환율 가이던스를 유지한 점은 하반기 운전자본 변동 가능성을 경고.</p>
+<p><strong>콜에서만 확인된 정보:</strong>
+- Power Systems 수주 중 데이터센터 비중 $2.2B(공시에는 없음).
+- 데이터센터 제외 시에도 IET 수주 $4.9B로 종전 분기 최고치와 동률 — 수주 강세가 데이터센터 편중이 아님을 방어적으로 강조.
+- 2027년 GTE 매출 전환 시점이 2027년 이후로 지연될 수 있다는 점.
+- 2029년 Power Systems 증설 완료 시 연간 $5B 매출 기회(가동률 100% 기준, 실제로는 그 이하).
+- Waygate Technologies 매각 의사(버스타인 콜에서 공개).</p>
+<h2>6. 리스크</h2>
+<p><strong>1) 중동 지정학적 리스크 (10-Q MD&amp;A)</strong>
+- 10-Q는 "Strait of Hormuz를 포함한 주요 에너지 회랑의 교란이 구조적 특징이 되었다"고 명시. 중동 상류 투자가 올해 감소할 것으로 회사 스스로 전망.
+- 실적콜 CFO는 "중동 매출이 하반기에도 유사한 수준 유지"를 가정하나, 이는 불확실성이 높은 가정.</p>
+<p><strong>2) Chart 인수에 따른 재무 레버리지 증가</strong>
+- EV $13.6B 전액 현금 인수. 3월 $6.5B USD + €3.0B 유로 채권 발행. CFO는 "부채/EBITDA를 1~1.5배로 낮추는 데 시간이 걸릴 것"이라고 인정.
+- 인수 통합 실패 시 시너지 미실현 + 이자 부담 증가의 이중 리스크.</p>
+<p><strong>3) IET 백로그의 매출 전환 지연</strong>
+- CFO는 "GTE의 2026년 수주 상당수가 2027년 이후 전환"이라고 언급. 수주가 매출로 인식되기까지 수년이 걸리는 구조에서, 수요 사이클이 꺾이면 백로그의 가치가 훼손될 수 있음.
+- 항공파생(터빈) 공급망 타이트니스와 리드타임 연장도 지속적 모니터링 요소로 10-Q에 명시.</p>
+<p><strong>4) OFSE의 구조적 매출 감소</strong>
+- PSI 매각, SPC JV 전환으로 OFSE 매출이 YoY <span class="down">-5%</span> 감소. 이는 의도적 포트폴리오 재편이나, 단기적으로 외형 축소로 작용.
+- 중동 투자 감소가 OFSE 국제 매출에 추가 하방 압력.</p>
+<p><strong>5) 매출 정체 상태의 밸류에이션 부담</strong>
+- 매출 YoY <span class="down">-2.4%</span>로 외형이 줄고 있는 상황에서, 주가가 52주 고점 대비 <span class="down">-8.0%</span>로 조정받은 상태. 20일 수익률 <span class="up">+11.1%</span>로 단기 급등 후 밸류에이션 부담이 재차 커질 수 있음.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거:</strong>
+- <strong>긍정적:</strong> IET RPO $37.1B(사상 최고), IET 수주 YoY 2배, Adjusted EBITDA 마진 18.3%(사상 최고), 분기 FCF $1.1B, TTM FCF $3.13B.
+- <strong>부정적:</strong> 매출 YoY <span class="down">-2.4%</span>, 영업이익률 12.8%(개선 없음), 거래량 배수 0.66배(상승 신뢰도 낮음), 52주 고점 대비 <span class="down">-8.0%</span>(모멘텀 약화), Chart 인수로 인한 부채 증가.</p>
+<p><strong>진입 전 확인할 것 3가지:</strong>
+1. <strong>Chart 인수 통합 관련 8-K/10-Q 후속 공시</strong> — 인수 대가 지급 구조, 부채 규모, 통합 비용 추정치가 구체적으로 공시되는지.
+2. <strong>다음 분기(2026 Q3) IET 수주 지속성</strong> — 데이터센터 수주가 $2B 이상 유지되는지, LNG 신규 프로젝트 수주가 추가되는지.
+3. <strong>중동 리스크의 실물화 여부</strong> — OFSE 매출이 실제로 중동 감소 영향을 받는지, 회사가 제시한 "북미·기타 국제 시장의 스펜딩 유지" 전망이 실적으로 확인되는지.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 전환해야 하는 경우):</strong>
+- <strong>IET 수주가 2개 분기 연속 감소</strong>하거나 RPO가 정체될 경우 — 현재 밸류에이션의 핵심 근거가 수주 모멘텀이므로, 이 지표가 꺾이면 성장 스토리가 약화됨.
+- <strong>Chart 인수 통합 비용이 예상보다 크게 발생</strong>하거나 부채/EBITDA가 2배 이상으로 유지될 경우 — CFO가 제시한 1~1.5배 축소 로드맵이 지연되는 조짐.
+- <strong>중동 사태가 추가 악화</strong>되어 OFSE 매출이 두 자릿수 감소로 전환될 경우 — 회사가 제시한 "하반기 개선" 전망이 무너짐.
+- <strong>매출 성장이 3개 분기 연속 마이너스를 기록</strong>하면서 수주 증가가 매출로 전환되지 않을 경우 — 백로그의 질(전환 가능성)에 대한 의문 제기.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000170160526000007/bkr-20251231.htm">10-K — 2025-12-31_0001701605-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000170160526000023/bkr-20260630.htm">10-Q — 2026-06-30_0001701605-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000170160526000014/bkr-20260331.htm">10-Q — 2026-03-31_0001701605-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000170160526000021/earningsreleaseex991063020.htm">8-K — 2026-07-26_0001701605-26-000021__EX-99.1__earningsreleaseex991063020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000170160526000021/bkr-20260726.htm">8-K — 2026-07-26_0001701605-26-000021</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000119312526305477/d105425dex991.htm">8-K — 2026-07-16_0001193125-26-305477__EX-99.1__d105425dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000119312526305477/d105425dex101.htm">8-K — 2026-07-16_0001193125-26-305477__EX-10.1__d105425dex101</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1701605/000119312526305477/d105425d8k.htm">8-K — 2026-07-16_0001193125-26-305477</a></li>
+<li>Transcript — 2026-07-27 Baker Hughes Company (BKR) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-27 Baker Hughes Company (BKR) Presents at Bernstein 42nd Annual Strategic Decisions Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

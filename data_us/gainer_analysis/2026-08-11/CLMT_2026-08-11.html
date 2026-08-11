@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLMT — Calumet Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CLMT — Calumet Inc. Common Stock</h1>
+<div class="sub">2026-08-11 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">CLMT</span><span class="badge">+15.17%</span><span class="badge">거래량 2.2배</span><span class="badge">$3.96B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<p>2026년 2분기 Adjusted EBITDA with Tax Attributes가 $175.2M으로 전년 동기 $76.5M 대비 129% 증가했고, 실적콜에서 제한그룹 레버리지 비율이 4x 미만으로 하락했다고 언급되는 등 펀더멘털 개선이 뚜렷하다. 다만 당기순손실 $95.9M, 영업이익률 <span class="down">-2.8%</span>로 여전히 GAAP 기준 수익성은 확보되지 않았고, RINs 관련 비용 $163.6M이라는 비현금성 변수가 실적 변동성을 키우고 있다. 스페셜티 부문의 구조적 마진 개선과 Montana Renewables의 MaxSAF® 확장이 향후 2~3개 분기 실적 확인을 통해 검증된다면 비중 확대를 고려할 만하다.</p>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p>당일 <span class="up">+15.17%</span> 상승의 직접적 촉매는 2026년 8월 7일 공시된 2분기 실적 발표(8-K, Press Release)로 판단된다. 뉴스 헤드라인("Revenue Beat Fuels Deleveraging Story", "Revenue Beats And Debt Falls")이 공통적으로 매출 서프라이즈와 부채 감축을 상승 요인으로 지목하고 있다. 실적콜에서 CEO Todd Borgmann은 "제한그룹 레버리지 비율이 4x 미만으로 하락했고, 다음 분기 3x를 하회할 것"이라고 언급했으며, 7월에 $115M 규모의 부채를 상환했다는 점이 확인되었다. 52주 고점 대비 <span class="down">-0.0%</span>로 신고가 부근에서 거래되고 있어, 실적 개선이 주가에 선반영되는 구간으로 보인다.</p>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K에 따르면 Calumet은 3개 세그먼트로 운영된다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>주요 제품</th>
+<th>2Q26 Adjusted EBITDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specialty Products and Solutions (SPS)</td>
+<td>파라핀계 베이스오일(Group I/II), 솔벤트, 루브리컨트, 왁스, 아스팔트</td>
+<td>$161.7M</td>
+</tr>
+<tr>
+<td>Performance Brands</td>
+<td>Penico 등 소비자 브랜드 윤활유</td>
+<td>$6.3M</td>
+</tr>
+<tr>
+<td>Montana/Renewables (MRL)</td>
+<td>재생디젤(RD), 지속가능항공유(SAF)</td>
+<td>$10.7M (세금 혜택 포함 시 $26.6M)</td>
+</tr>
+</tbody>
+</table></div>
+<p>SPS가 Adjusted EBITDA의 약 90%를 차지하는 핵심 수익원이다. 10-K는 이 사업이 원유를 직접 정제해 스페셜티 제품을 생산하는 통합 구조라고 설명하며, 경쟁사들이 중간재(intermediates)를 외부에서 조달하는 것과 차별화된다고 강조한다. 실적콜에서 CEO는 "글로벌 베이스오일 생산능력의 10% 이상이 가동 중단되었고, 중동 Group III 수출의 1/3이 차질"이라고 언급하며 스페셜티 제품의 공급 부족 상황을 설명했다. Montana Renewables는 몬태나주 Great Falls에 위치한 재생연료 시설로, SAF와 RD를 생산한다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>매출 성장의 질</strong>: 최근 분기 매출 $1.45B, YoY <span class="up">+40.8%</span>, QoQ <span class="up">+40.3%</span>로 급증했다. 실적콜에서 CFO David Lunin은 "매출채권 증가 $30M은 단순히 판매 가격 상승에 따른 것"이라며 "좋은 문제"라고 표현했다. 이는 물량 증가보다 가격 상승이 매출 성장을 주도했음을 시사한다.</p>
+<p><strong>마진 방향성</strong>: SPS 세그먼트의 Adjusted gross profit per barrel이 $32.25로 전년 동기 $13.81 대비 134% 증가했다. 실적콜에서 CEO는 "글로벌 스페셜티 제품 부족"이 마진 확대의 배경이라고 설명했다. 다만 GAAP 기준 매출총이익률은 1.3%에 불과한데, 이는 비현금성 RINs 비용 $163.6M이 반영된 결과다. 회사는 이를 "비현금성" 항목으로 구분하고 있다.</p>
+<p><strong>현금흐름</strong>: TTM 잉여현금흐름은 $73.5M이다. 2분기 영업현금흐름은 $90M 이상이었고, CFO는 "운전자본 $70M 증가분은 재고 및 매출채권 증가 때문이며 자연적으로 해소될 것"이라고 설명했다. 7월 $115M 부채 상환은 "분기 실적으로 창출된 현금"으로 충당했다고 CFO가 확인했다.</p>
+<p><strong>재무 건전성</strong>: 실적콜에서 제한그룹 레버리지 비율이 4x 미만으로 하락했다고 밝혔고, "다음 분기 3x를 하회할 것"이라는 전망을 제시했다. 7월에 $115M 부채를 상환했고, CMR 트럭랙 세일리스백을 $115M에 종료했다. 다만 10-K 리스크 섹션은 "차입능력이 재고 및 제품 가격 하락 시 축소될 수 있다"고 경고한다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) MaxSAF® 150 확장 (Montana Renewables)</strong>
+- 현재 60M 갤런 SAF 연간 생산능력(런레이트)으로 가동 중
+- 2026년 말 80~100M 갤런, 2027년 봄 120~150M 갤런, 2028년 200M 갤런 목표
+- 기존 화석정제시설(CMR)의 제2 반응기를 재활용하는 방식으로 "수억 달러의 자본 절감"과 "더 높은 IRR"을 기대한다고 회사는 밝힘
+- <strong>검증 포인트</strong>: 다음 실적콜에서 DOE 관련 문서 업데이트 완료 여부와 구체적 자본비용 규모가 공개될 예정</p>
+<p><strong>2) SPS 성장 프로젝트 파이프라인</strong>
+- CEO는 "저위험·고수익 성장 프로젝트 파이프라인"을 검토 중이며, $50M 규모의 프로젝트 5~6개가 FEL(프론트엔드 로딩) 과정을 통과 중이라고 언급
+- 대부분 2027~2028년 자본지출로 집행 예정
+- <strong>검증 포인트</strong>: 2027년 자본예산 발표 시 성장 CapEx 규모와 프로젝트별 IRR 공개 여부</p>
+<p><strong>3) 레버리지 축소를 통한 자본구조 개선</strong>
+- 제한그룹 레버리지 4x 미만 → 3x 하회 예상
+- $115M 부채 상환(7월), 추가 가속 상환 예고
+- <strong>검증 포인트</strong>: 3분기 실적발표에서 레버리지 비율 3x 하회 여부</p>
+<p><strong>4) 바이오연료 정책 (RVO) 수혜</strong>
+- 1분기 실적발표에서 "EPA의 SET2 RVO가 바이오연료 마진 전망을 변화시켰다"고 밝힘
+- 실적콜에서 "바이오매스 기반 디젤 생산이 올해 70% 증가했다"고 언급
+- <strong>검증 포인트</strong>: RINs 가격과 재생디젤 마진 지표의 지속성</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>: CEO Todd Borgmann의 발언은 "2022년과 유사한 환경", "구조적 불균형", "해소되기 어려운 상황" 등 스페셜티 시장의 공급 부족이 단기적이 아닌 구조적이라는 점을 강조하는 데 집중한다. 이는 단순 호실적이 아닌 지속가능한 마진 환경을 시장에 설득하려는 의도로 읽힌다. CFO David Lunin은 "궁극적인 레버리지 축소 성공이 눈앞에 있다"고 표현하며 재무적 자신감을 드러냈다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 회사의 대응</strong>:
+- <strong>MaxSAF 수율 관련 질문(Goldman Sachs, TD Cowen)</strong>: 애널리스트들은 현재 SAF 생산량이 기대보다 낮은 이유를 집중적으로 질문했다. 회사는 "현재 마진 환경에서 RD를 SAF로 전환하는 것이 경제적으로 불리하다"며 "폴리싱 반응기 추가 후 수율이 업계 최고 수준으로 개선될 것"이라고 답변했다. 이는 현재 SAF 생산능력이 일시적으로 제한적이라는 점을 인정한 것이다.
+- <strong>CMR 반응기 이전 비용(TD Cowen)</strong>: 구체적 비용과 수율 손실에 대한 질문에 CEO는 "세부사항은 곧 공개하겠다"며 답변을 유보했다. 이는 아직 DOE와의 협의가 진행 중임을 시사한다.
+- <strong>M&amp;A 가능성(BofA)</strong>: CEO는 "기회가 있다면 주주가치 창출에 적극적"이라고 답하면서도 "레버리지 축소를 완료하는 것에 집중을 유지하겠다"고 신중한 입장을 보였다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>:
+- 제한그룹 레버리지 비율 4x 미만 (구체적 수치는 공시 안 됨)
+- 7월 $115M 부채 상환 및 CMR 트럭랙 세일리스백 종료
+- CMR 재구성 전까지 "$50M 이상의 EBITDA"를 추가로 벌어들일 것이라는 전망
+- 2027년 CBOB 기준 배럴당 약 $28 수준의 헤지 10,000배럴/일 보유 (2028년 초까지)
+- SPS 성장 CapEx $50M 규모, 대부분 2027~2028년 집행 예정</p>
+<hr>
+<h2>6. 리스크</h2>
+<p><strong>1) RINs 비용 변동성</strong>: 2분기 비현금성 RINs 비용이 $163.6M에 달했다. 10-K는 "EPA의 RFS 준수 비용, RINs 가격, 소규모 정제소 면제(SRE) 소송 결과"를 주요 리스크로 명시한다. RINs 가격 급등 시 GAAP 손익이 크게 악화될 수 있다.</p>
+<p><strong>2) 원자재 가격 및 재고 평가 리스크</strong>: 10-K는 "원유 가격 하락 시 재고 및 제품 가격 하락으로 회전신용한도 차입기준이 축소되고, 파생상품에 대한 현금 담보 요구가 발생할 수 있다"고 경고한다. CFO는 2분기에 "의도적으로 원유 재고를 평소보다 높게 유지했다"고 밝혔는데, 이는 원유 가격 하락 시 평가손실로 이어질 수 있다.</p>
+<p><strong>3) 글로벌 공급 충격의 역전 가능성</strong>: 현재 스페셜티 마진 확대는 중동 전쟁과 러시아-우크라이나 전쟁으로 인한 공급 차질에 기인한다. CEO는 "단기간에 해소되기 어렵다"고 주장하지만, 지정학적 리스크 해소 시 마진이 급격히 정상화될 수 있다.</p>
+<p><strong>4) MaxSAF 확장 실행 리스크</strong>: 실적콜에서 CEO는 "CMR 반응기를 재활용하는 방식"을 발표했지만, 구체적 비용과 일정은 아직 공개되지 않았다. 10-K는 "DOE 시설이 MaxSAF® 건설을 제때, 예산 내 완료할 수 있을 것이라는 기대"를 전방위적 진술로 분류하며 불확실성을 인정한다. 과거 1분기에는 "턴어라운드 완료 후 5월 초 MaxSAF® 150 가동 시작"이라고 밝혔으나, 2분기 실적에는 여전히 $40M 이상의 가동 중단 기회비용이 발생했다.</p>
+<p><strong>5) 잉여현금흐름의 제한적 규모</strong>: TTM 잉여현금흐름이 $73.5M에 불과한 반면, 회사는 부채 상환과 성장 CapEx를 동시에 추진 중이다. CFO는 "헤지 10,000배럴/일을 2028년 초까지 보유"한다고 밝혔는데, 이는 상방 참여를 제한하는 대가로 현금흐름의 확실성을 확보한 것이다.</p>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>:
+- 2Q26 Adjusted EBITDA with Tax Attributes $175.2M (전년 동기 대비 <span class="up">+129%</span>)
+- SPS Adjusted EBITDA $161.7M (전년 동기 $66.8M 대비 <span class="up">+142%</span>)
+- 제한그룹 레버리지 4x 미만, 다음 분기 3x 하회 전망
+- 7월 $115M 부채 상환 완료
+- 60일 수익률 <span class="up">+44.7%</span>, 52주 고점 부근에서 거래 — 시장이 이미 상당 부분 긍정적 흐름을 선반영</p>
+<p><strong>진입 전 확인할 것 3가지</strong>:
+1. <strong>3분기 실적에서 레버리지 비율 3x 하회 여부</strong>: CEO가 "다음 분기 3x를 하회할 것"이라고 전망했는데, 이는 검증 가능한 수치다. 미달 시 경영진 전망의 신뢰성에 의문이 생긴다.
+2. <strong>MaxSAF 확장의 구체적 비용과 일정 공개</strong>: DOE 관련 문서 업데이트가 "다음 실적콜 전에 완료될 것"이라고 밝혔는데, 이때 제시되는 자본비용과 IRR이 기존 기대(수억 달러 절감)를 충족하는지 확인해야 한다.
+3. <strong>RINs 비용의 향후 방향성</strong>: 2분기 $163.6M의 비현금성 비용이 3분기에도 유사한 수준으로 지속되는지, 아니면 정상화되는지 확인 필요.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 전환)</strong>:
+- 3분기 Adjusted EBITDA with Tax Attributes가 $175M을 크게 하회하거나, 레버리지 비율이 3x를 넘어설 경우
+- MaxSAF 확장의 실제 자본비용이 "수억 달러 절감"이라는 기대를 크게 벗어날 경우
+- 글로벌 베이스오일 공급 차질이 해소되는 조짐(중동 분쟁 종식, 유럽 Group I 재가동)이 확인될 경우
+- RINs 비용이 비현금성에서 현금성으로 전환되어 실제 현금흐름을 잠식할 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000007/clmt-20251231x10k.htm">10-K — 2025-12-31_0002013745-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000024/clmt-20260630.htm">10-Q — 2026-06-30_0002013745-26-000024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000016/clmt-20260331x10q.htm">10-Q — 2026-03-31_0002013745-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260630xex991.htm">8-K — 2026-08-07_0002013745-26-000022__EX-99.1__clmt-20260630xex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260807.htm">8-K — 2026-08-07_0002013745-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000119312526255570/d106744d8k.htm">8-K — 2026-06-02_0001193125-26-255570</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000013/clmt-20260331xex99d1.htm">8-K — 2026-05-08_0002013745-26-000013__EX-99.1__clmt-20260331xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000013/clmt-20260331x8k.htm">8-K — 2026-05-08_0002013745-26-000013</a></li>
+<li>Transcript — 2026-08-07 Calumet, Inc. (CLMT) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
