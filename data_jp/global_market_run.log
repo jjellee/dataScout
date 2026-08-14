@@ -3497,3 +3497,92 @@ KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았�
 5. *5858.T* (STG CO.,LTD.) | ¥1,136 (*-14.97%*)
 
 📂 *전체 3,712개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-08-14 15:30:01,759 - INFO - Loading environment variables from .env file...
+2026-08-14 15:30:01,761 - INFO - ==================================================
+2026-08-14 15:30:01,761 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-08-14 15:30:01,761 - INFO - ==================================================
+2026-08-14 15:30:03,023 - INFO - Processing trading date: 2026-08-14
+2026-08-14 15:30:03,023 - INFO - Scraping JPX listed issues Excel URL...
+2026-08-14 15:30:03,252 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xls
+2026-08-14 15:30:03,466 - INFO - Total metadata stocks loaded: 3718
+2026-08-14 15:30:03,466 - INFO - Downloading daily prices for 3718 tickers in chunks of 300...
+2026-08-14 15:33:47,718 - ERROR - $3237.T: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:33:47,727 - ERROR - 
+1 Failed download:
+2026-08-14 15:33:47,727 - ERROR - ['3237.T']: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:35:33,087 - ERROR - $4011.T: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:35:33,342 - ERROR - $4237.T: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:35:33,350 - ERROR - 
+2 Failed downloads:
+2026-08-14 15:35:33,351 - ERROR - ['4011.T', '4237.T']: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:40:28,842 - ERROR - $6197.T: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:40:40,211 - ERROR - 
+1 Failed download:
+2026-08-14 15:40:40,211 - ERROR - ['6197.T']: possibly delisted; no price data found  (period=5d)
+2026-08-14 15:51:21,551 - INFO - Successfully downloaded price changes for 3710 stocks.
+2026-08-14 15:51:21,553 - INFO - Fetching news for sharp movers (±5%)...
+2026-08-14 15:51:44,823 - INFO - Got news for 7 out of 165 sharp movers
+2026-08-14 15:51:44,824 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20260814.xlsx...
+2026-08-14 15:51:51,208 - INFO - DeepSeek response generated (deepseek-chat).
+2026-08-14 15:51:51,212 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-08-14 15:51:52,674 - INFO - Report text sent successfully to Telegram.
+2026-08-14 15:51:52,675 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-08-14 15:51:55,011 - INFO - Excel document sent successfully to Telegram.
+2026-08-14 15:51:55,011 - INFO - Generating AI market analysis...
+2026-08-14 15:52:02,609 - INFO - DeepSeek response generated (deepseek-chat).
+2026-08-14 15:52:02,610 - INFO - Sending AI market analysis to Telegram...
+2026-08-14 15:52:03,818 - INFO - AI market analysis sent.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-08-14*
+
+🔥 *주요 상승 섹터/산업 TOP 5*
+1. *Mining* (+1.99%)
+2. *Marine Transportation* (+1.52%)
+3. *Pulp and Paper* (+1.41%)
+4. *Information & Communication* (+1.36%)
+5. *Oil and Coal Products* (+1.33%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 5*
+1. *Insurance* (-0.05%)
+2. *Nonferrous Metals* (0.27%)
+3. *Chemicals* (0.27%)
+4. *Glass and Ceramics Products* (0.27%)
+5. *Metal Products* (0.30%)
+
+💬 *섹터별 주목 종목 (AI)*
+- Mining: INPEX CORPOR(+2.0%)과 Japan Petrol(+1.7%)이 시총 상위에서 동반 상승하며 섹터 상승을 견인, 에너지 가격 연동 수급이 유입된 흐름.
+- Marine Transportation: Mitsui O.S.K(+3.1%)와 Nippon Yusen(+3.0%)이 시총 상위에서 견조한 상승, 운임 관련 모멘텀이 동반된 것으로 보임.
+- Pulp and Paper: HAVIX CORPOR(+16.4%)의 급등이 두드러지나, 시총 상위 Oji Holdings(+0.5%)와 Rengo(+1.2%)는 상대적으로 보합권이라 대형주보다 중소형주 주도 장세.
+- Information & Communication: MEDLEY(+23.0%)와 PRONI(+19.8%) 등 중소형 성장주 급등이 눈에 띄나, SoftBank Group(+2.9%)과 NTT(+1.4%) 등 대형주도 동반 상승해 섹터 전반 강세.
+- Oil and Coal Products: ENEOS(+0.9%)와 Idemitsu(+1.8%)가 시총 상위에서 소폭 상승에 그친 반면, NICHIREKI(+3.8%) 등 중소형 종목 상승폭이 커 선별적 자금 유입.
+- Metal Products: 시총 상위 SUMCO(+1.8%)는 상승했지만, RS Technolog(-12.1%) 급락이 섹터 하락을 주도, 대형주와 중소형주 간 디커플링.
+- Glass and Ceramics Products: 시총 상위 Niterra(-0.2%)와 NGK(-1.2%)는 약보합에 그친 반면, NITTO BOSEKI(-2.9%) 등 중소형주 하락이 섹터 지수 압박.
+- Chemicals: 시총 상위 Shin-Etsu(-0.1%)와 FUJIFILM(+1.2%)은 상대적으로 안정적이나, SHIKOKU KASE(-7.9%) 급락 등 중소형주 약세가 섹터 하락을 주도.
+- Nonferrous Metals: 시총 상위 Fujikura(-1.4%)와 Sumitomo Electric(+1.5%)은 엇갈렸고, S Crypto Ene(-6.5%) 급락 등 중소형주 부진이 섹터 지수 하락 요인.
+- Insurance: Tokio Marine(-1.1%)과 MS&AD(-0.2%) 등 대형주 약세가 섹터 하락을 견인, LIFENET(-2.0%) 등 중소형주도 동반 하락해 전반적 약세.
+
+📌 *나의 관심 섹터/산업 현황*
+- *Information & Communication*: +1.36% (상위: MEDLEY,I(+23.0%), PRONI In(+19.8%))
+- *Transportation Equipment*: +1.09% (상위: AeroEdge(+9.9%), KASAI KO(+7.2%))
+- *Electric Appliances*: +0.88% (상위: Origin C(+27.4%), Asterisk(+13.9%))
+- *Pharmaceutical*: +0.58% (상위: Chiome B(+6.7%), Solasia (+6.5%))
+- *Chemicals*: +0.27% (상위: Rasa Ind(+9.2%), TOYO DRI(+4.9%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *6513.T* (Origin Company,Limit) | ¥1,371 (*+27.42%*)
+2. *7815.T* (TOKYO BOARD INDUSTRI) | ¥387 (*+26.06%*)
+3. *8995.T* (Makoto Construction ) | ¥1,580 (*+23.44%*)
+4. *4480.T* (MEDLEY,INC.) | ¥2,677 (*+22.97%*)
+5. *2585.T* (LIFEDRINK COMPANY,IN) | ¥1,787 (*+20.17%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *6736.T* (SUNCORPORATION) | ¥8,070 (*-19.94%*)
+2. *7039.T* (BRIDGE International) | ¥1,396 (*-18.27%*)
+3. *7069.T* (CyberBuzz,Inc.) | ¥583 (*-14.39%*)
+4. *480A.T* (LiB Consulting Co.,L) | ¥891 (*-14.33%*)
+5. *5537.T* (AlbaLink Co.,Ltd.) | ¥2,720 (*-12.96%*)
+
+📂 *전체 3,710개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
