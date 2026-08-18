@@ -103,37 +103,45 @@ def fetch_daily_disclosures(target_date):
             'page_no': page_no,
             'page_count': page_count
         }
-        
-        try:
-            response = requests.get(url, params=params, timeout=10)
-            if response.status_code != 200:
-                print(f"Error: API HTTP {response.status_code}")
-                break
-                
-            data = response.json()
+
+        # 페이지 단위 재시도 — 마감일(하루 4천건+)에는 일시적 오류가 잦은데
+        # 여기서 중단하면 그 뒤 페이지가 통째로 누락된다.
+        data = None
+        for attempt in range(5):
+            try:
+                response = requests.get(url, params=params, timeout=30)
+                if response.status_code != 200:
+                    print(f"Error: API HTTP {response.status_code} (page {page_no}, 재시도 {attempt+1}/5)")
+                    time.sleep(2 * (attempt + 1))
+                    continue
+                data = response.json()
+            except Exception as e:
+                print(f"Request failed (page {page_no}, 재시도 {attempt+1}/5): {e}")
+                time.sleep(2 * (attempt + 1))
+                continue
+
             status = data.get("status")
-            
-            # 검색 결과가 없는 경우 종료 (013 = 조회 결과 없음)
-            if status == "013":
+            if status == "000":
+                break
+            if status == "013":     # 조회 결과 없음
                 print(f"No disclosures found for {target_date}.")
-                break
-            elif status != "000":
-                print(f"DART API Error ({status}): {data.get('message')}")
-                break
-                
-            reports = data.get("list", [])
-            all_reports.extend(reports)
-            
-            # 페이지네이션 종료 판별
-            total_page = int(data.get("total_page", 1))
-            if page_no >= total_page:
-                break
-            page_no += 1
-            
-        except Exception as e:
-            print(f"Request failed: {e}")
+                return all_reports
+            print(f"DART API Error ({status}): {data.get('message')} (page {page_no}, 재시도 {attempt+1}/5)")
+            data = None
+            time.sleep(2 * (attempt + 1))
+        if data is None:
+            print(f"!! {target_date} page {page_no} 조회 실패 — 이후 페이지 누락 가능. "
+                  f"dart_backfill_disclosures.py --dates {target_date} 로 복구하세요.")
             break
-            
+
+        all_reports.extend(data.get("list", []))
+
+        # 페이지네이션 종료 판별
+        total_page = int(data.get("total_page", 1))
+        if page_no >= total_page:
+            break
+        page_no += 1
+
     return all_reports
 
 def convert_dart_xml_to_html(content_str):
