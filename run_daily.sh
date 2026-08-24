@@ -58,7 +58,7 @@ echo "Step 5: Checking for Japan export data updates (16 HS codes)..."
 
 # 6. Git commit & push data and charts to GitHub
 echo "Step 6: Committing and pushing to GitHub..."
-git add data_kr/ data_us/ data_dart/ data_jp/ telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_exports.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png us_disclosure_watchlist.json user_requested_hs_codes_list.md kosdaq_bio_monitor.py
+git add data_kr/ data_us/ data_dart/ data_jp/ data_krx/ krx_disclosure_report.py telegram_reporter.py run_daily.sh watchlist.txt .gitignore screener.py dart_collector.py kr_insider_collector.py dart_classifier.py fetch_japan_exports.py fetch_japan_mlcc.py japan_mlcc_exports.csv japan_mlcc_exports_chart.png us_disclosure_watchlist.json user_requested_hs_codes_list.md kosdaq_bio_monitor.py
 git commit -m "auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]"
 git push origin main
 
