@@ -3670,3 +3670,80 @@ KRX 로그인 완료.
 5. *223310* (사토시홀딩스) | ₩2,600 (*-15.03%*)
 
 📂 *전체 2,767개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-08-28 16:00:01,704 - INFO - Loading environment variables from .env file...
+2026-08-28 16:00:01,714 - INFO - ==================================================
+2026-08-28 16:00:01,714 - INFO -  Starting Daily KR Market Monitor (Test: False)
+2026-08-28 16:00:01,714 - INFO - ==================================================
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-08-28 16:00:02
+  만료 시간: 2026-08-28 17:00:02
+2026-08-28 16:00:02,347 - INFO - Processing trading date: 2026-08-28
+2026-08-28 16:00:02,347 - INFO - Fetching KR stock list with WICS industry classification from WiseIndex...
+2026-08-28 16:00:02,904 - INFO - Found active WICS date: 20260827 (offset: 1 days)
+2026-08-28 16:00:05,673 - INFO - WICS classification loaded: 2479 stocks, 28 sectors
+2026-08-28 16:00:34,906 - INFO - Added 288 extra tickers from pykrx (classified as '기타'). Total: 2767
+2026-08-28 16:00:34,908 - INFO - Total metadata stocks loaded: 2767
+2026-08-28 16:00:34,908 - INFO - Downloading KR prices for 20260828 using pykrx...
+2026-08-28 16:00:37,364 - INFO - Downloaded price changes for 2767 KR stocks.
+2026-08-28 16:00:37,365 - INFO - Successfully downloaded price changes for 2767 stocks.
+2026-08-28 16:00:37,367 - INFO - Fetching news for sharp movers (±5%)...
+2026-08-28 16:00:59,378 - INFO - Got news for 9 out of 234 sharp movers
+2026-08-28 16:00:59,379 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_kr/daily_prices/kr_prices_20260828.xlsx...
+2026-08-28 16:01:00,278 - WARNING - DeepSeek API error: HTTP 402 {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2026-08-28 16:01:00,278 - WARNING - DeepSeek unavailable/failed; falling back to Qwen.
+2026-08-28 16:01:00,765 - WARNING - Qwen API error: HTTP 403 {"error":{"message":"Access to model denied. Please make sure you are eligible for using the model.","id":"6275cb58-538c-94ae-88de-f7d8755b6a23","type":"AccessDenied.Unpurchased","code":"AccessDenied.
+2026-08-28 16:01:00,769 - WARNING - Investor trend CSV not found: /home/inhyuk/projects/dataScout/data_kr/20260828/all_stocks_investor_trend.csv
+2026-08-28 16:01:00,769 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-08-28 16:01:01,815 - INFO - Report text sent successfully to Telegram.
+2026-08-28 16:01:01,816 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-08-28 16:01:03,750 - INFO - Excel document sent successfully to Telegram.
+2026-08-28 16:01:03,750 - INFO - Generating AI market analysis...
+2026-08-28 16:01:04,265 - WARNING - DeepSeek API error: HTTP 402 {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2026-08-28 16:01:04,265 - WARNING - DeepSeek unavailable/failed; falling back to Qwen.
+2026-08-28 16:01:04,539 - WARNING - Qwen API error: HTTP 403 {"error":{"message":"Access to model denied. Please make sure you are eligible for using the model.","id":"463b9b60-d35d-9508-896b-4a6eb3463175","type":"AccessDenied.Unpurchased","code":"AccessDenied.
+2026-08-28 16:01:04,540 - WARNING - AI market analysis generation skipped or failed.
+
+--- Generated Report Summary ---
+🇰🇷 *[한국 증시 마감 일일 리포트]* 🇰🇷
+📅 *기준일자: 2026-08-28*
+
+🔥 *주요 상승 섹터/산업 TOP 5*
+1. *보험* (+2.34%)
+2. *내구소비재와의류* (+2.11%)
+3. *소프트웨어와서비스* (+1.99%)
+4. *식품,음료,담배* (+1.86%)
+5. *은행* (+1.71%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 5*
+1. *반도체와반도체장비* (-1.20%)
+2. *전기통신서비스* (-0.55%)
+3. *기술하드웨어와장비* (-0.32%)
+4. *유틸리티* (-0.28%)
+5. *전자와 전기제품* (0.18%)
+
+📌 *나의 관심 섹터/산업 현황*
+- *소프트웨어와서비스*: +1.99% (상위: 에스피소프트(+29.9%), 쿠콘(+23.9%))
+- *은행*: +1.71% (상위: JB금융지주(+3.8%), 우리금융지주(+2.9%))
+- *미디어와엔터테인먼트*: +1.33% (상위: 캔버스엔(+29.9%), 차이커뮤니케이션(+11.6%))
+- *제약과생물공학*: +1.20% (상위: 조아제약(+21.0%), 셀레믹스(+18.9%))
+- *자동차와부품*: +0.59% (상위: 에스엠벡셀(+11.6%), 세방전지(+10.3%))
+- *반도체와반도체장비*: -1.20% (상위: 젬백스(+8.2%), 피델릭스(+7.8%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *001770* (SHD) | ₩12,350 (*+30.00%*)
+2. *288980* (모아데이타) | ₩312 (*+30.00%*)
+3. *121850* (코이즈) | ₩724 (*+29.98%*)
+4. *312610* (에이에프더블류) | ₩386 (*+29.97%*)
+5. *001210* (금호전기) | ₩10,680 (*+29.93%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *189330* (씨이랩) | ₩12,730 (*-12.21%*)
+2. *096610* (알에프세미) | ₩101 (*-12.17%*)
+3. *085620* (미래에셋생명) | ₩23,200 (*-10.60%*)
+4. *0155E0* (해치텍) | ₩15,120 (*-10.27%*)
+5. *232140* (와이씨) | ₩11,350 (*-9.13%*)
+
+📂 *전체 2,767개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*

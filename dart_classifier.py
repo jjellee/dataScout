@@ -48,7 +48,6 @@ def load_env():
 
 load_env()
 DART_API_KEY = os.getenv("DART_API_KEY")
-DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")  # 콜/풋옵션 청구일 등 서술형 항목 LLM 추출용
 TELEGRAM_BOT4_TOKEN = os.getenv("TELEGRAM_BOT4_TOKEN")
 TELEGRAM_TEST_CHAT_ID = os.getenv("TELEGRAM_TEST_CHAT_ID")  # antbot channel
 TELEGRAM_SUPPLY_DATA_CHAT_ID = os.getenv("TELEGRAM_SUPPLY_DATA_CHAT_ID")
@@ -113,8 +112,13 @@ def classify_disclosure(report_nm):
     if any(k in nm for k in ["자기주식취득결정", "자기주식취득신탁계약", "자기주식신탁계약체결결정", "자기주식소각결정", "주식소각결정", "신탁계약체결결정"]):
         return "재무_자기주식"
 
-    # 9. 자산취득_처분
-    if any(k in nm for k in ["유형자산취득결정", "유형자산양수결정", "타법인주식및출자증권취득결정", "타법인주식및출자증권처분결정"]):
+    # 9. 자산취득_처분 (유형자산·타법인주식 취득/처분)
+    #    처분ㆍ양도(유형자산처분결정·유형자산양도결정)와 타법인 양수/양도 서식이 빠져 있어
+    #    기타공시로 흘러가던 것을 전부 흡수한다 (2026-08-28).
+    if any(k in nm for k in ["유형자산취득결정", "유형자산양수결정", "유형자산처분결정", "유형자산양도결정",
+                             "타법인주식및출자증권취득결정", "타법인주식및출자증권처분결정",
+                             "타법인주식및출자증권양수결정", "타법인주식및출자증권양도결정",
+                             "중요한자산양수도결정"]):
         return "자산취득_처분"
 
     return "기타공시"
@@ -146,13 +150,40 @@ def identify_base_report_type(report_nm):
         return "자기주식신탁"
     elif "자기주식소각결정" in nm or "주식소각결정" in nm:
         return "자기주식소각"
-    elif "유형자산취득결정" in nm:
+    elif "유형자산취득결정" in nm or "유형자산양수결정" in nm:
         return "유형자산취득"
-    elif "타법인주식및출자증권취득결정" in nm:
+    elif "유형자산처분결정" in nm or "유형자산양도결정" in nm:
+        return "유형자산처분"
+    elif "타법인주식및출자증권취득결정" in nm or "타법인주식및출자증권양수결정" in nm:
         return "타법인증권취득"
-    elif "타법인주식및출자증권처분결정" in nm:
+    elif "타법인주식및출자증권처분결정" in nm or "타법인주식및출자증권양도결정" in nm:
         return "타법인증권처분"
+    elif "중요한자산양수도결정" in nm:
+        return "중요자산양수도"
     return "기타"
+
+
+# 자산 취득·처분 서식 (유형자산 / 타법인주식 / 중요한 자산양수도)
+ASSET_BASE_TYPES = ("유형자산취득", "유형자산처분", "타법인증권취득", "타법인증권처분", "중요자산양수도")
+
+
+def asset_deal_side(base_type, report_nm):
+    """공시명으로 취득/처분/철회를 가른다."""
+    if "철회" in str(report_nm):
+        return "철회"
+    if base_type in ("유형자산취득", "타법인증권취득"):
+        return "취득ㆍ양수"
+    if base_type in ("유형자산처분", "타법인증권처분"):
+        return "처분ㆍ양도"
+    return "양수도"
+
+
+def asset_deal_target(base_type):
+    if base_type.startswith("유형자산"):
+        return "유형자산"
+    if base_type.startswith("타법인"):
+        return "타법인주식"
+    return "자산양수도"
 
 
 
@@ -317,44 +348,28 @@ def extract_option_dates_llm(call_text, put_text):
     except Exception as e:
         logger.warning(f"Claude CLI option extraction failed: {e}")
 
-    # 2) DeepSeek 폴백
-    if not DEEPSEEK_API_KEY:
+    # 2) 저비용 LLM 폴백 — llm_client 경유(.env의 LLM_PROVIDER를 따르고 제공자 폴백도 탄다).
+    #    예전엔 DeepSeek를 직접 호출했는데, 잔액이 마르면 여기만 조용히 죽었다.
+    try:
+        from llm_client import llm_chat
+    except Exception as e:
+        logger.warning(f"llm_client import failed: {e}")
         return None
-    payload = {
-        "model": "deepseek-chat",
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0,
-        "response_format": {"type": "json_object"},
-        "max_tokens": 300,
-    }
-    url = "https://api.deepseek.com/chat/completions"
-    headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"}
-    for attempt in range(2):
-        try:
-            resp = requests.post(url, json=payload, headers=headers, timeout=30)
-            if resp.status_code == 200:
-                content = resp.json()["choices"][0]["message"]["content"]
-                parsed = json.loads(content)
-                out = {}
-                for k in ["call_start", "call_end", "put_start", "put_end"]:
-                    v = str(parsed.get(k, "-")).strip()
-                    m = re.search(r'(\d{4})[-.\s년]*(\d{1,2})[-.\s월]*(\d{1,2})', v)
-                    out[k] = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else "-"
-                logger.info("DeepSeek option-date extraction succeeded.")
-                return out
-            elif resp.status_code == 429:
-                time.sleep(3)
-                continue
-            else:
-                logger.warning(f"DeepSeek API error: HTTP {resp.status_code} {resp.text[:200]}")
-                return None
-        except Exception as e:
-            logger.warning(f"DeepSeek option extraction failed: {e}")
-            if attempt == 0:
-                time.sleep(2)
-                continue
-            return None
-    return None
+    content = llm_chat(prompt, temperature=0, max_tokens=300, timeout=30, json_mode=True)
+    if not content:
+        return None
+    try:
+        parsed = json.loads(content)
+    except Exception as e:
+        logger.warning(f"LLM option-date JSON parse failed: {e}")
+        return None
+    out = {}
+    for k in ["call_start", "call_end", "put_start", "put_end"]:
+        v = str(parsed.get(k, "-")).strip()
+        m = re.search(r'(\d{4})[-.\s년]*(\d{1,2})[-.\s월]*(\d{1,2})', v)
+        out[k] = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else "-"
+    logger.info("LLM option-date extraction succeeded.")
+    return out
 
 
 def resolve_option_dates(call_text, put_text, regex_call, regex_put, rcept_no=None):
@@ -1853,6 +1868,158 @@ def parse_guarantee_loan_html(html_path):
         logger.error(f"Error parsing guarantee/loan HTML: {e}")
     return res
 
+# --- 자산 취득·처분 공시 파서 (유형자산 / 타법인주식) ---
+# 3종 서식을 하나로 흡수한다.
+#   ① 거래소 서식: 유형자산 취득·처분결정 / 타법인 주식 및 출자증권 취득·처분결정
+#   ② 금융위 주요사항보고서: 유형자산 양수·양도결정 / 타법인주식 및 출자증권 양수·양도결정
+#   ③ 종속·자회사 주요경영사항 신고 (지배회사의 연결자산총액 기준)
+# 라벨이 서식마다 달라 정규화된 라벨 → 필드 매핑표로 흡수한다.
+
+_ASSET_LABELS = {
+    # 자산 구분·이름
+    "취득물건구분": "asset_class", "처분물건구분": "asset_class",
+    "취득목적물": "asset_class", "처분목적물": "asset_class", "자산구분": "asset_class",
+    "취득물건명": "asset_name", "처분물건명": "asset_name", "자산명": "asset_name",
+    # 금액
+    "취득가액(원)": "amount", "취득금액(원)": "amount",
+    "처분가액(원)": "amount", "처분금액(원)": "amount",
+    "양수금액(원)": "amount", "양도금액(원)": "amount",
+    "양수금액(원)(A)": "amount", "양도금액(원)(A)": "amount",
+    # 비교 기준 (자산총액 / 자기자본 두 갈래를 따로 담는다 — 서식마다 기준이 다르다)
+    "자산총액(원)": "total_assets", "지배회사의연결자산총액(원)": "total_assets",
+    "총자산(원)(B)": "total_assets",
+    "자기자본(원)": "equity", "자기자본(원)(C)": "equity",
+    "자산총액대비(%)": "ratio_assets", "지배회사의연결자산총액대비(%)": "ratio_assets",
+    "총자산대비(%)(A/B)": "ratio_assets",
+    "자기자본대비(%)": "ratio_equity", "자기자본대비(%)(A/C)": "ratio_equity",
+    # 거래상대
+    "거래상대": "counterparty", "거래상대방": "counterparty", "회사명(성명)": "counterparty",
+    "회사와의관계": "relation", "회사와관계": "relation",
+    # 목적·영향
+    "취득목적": "purpose", "처분목적": "purpose", "양수목적": "purpose", "양도목적": "purpose",
+    "양수영향": "effect", "양도영향": "effect",
+    # 일정
+    "취득예정일자": "sched_date", "처분예정일자": "sched_date",
+    "양수예정일자": "sched_date", "양도예정일자": "sched_date",
+    "양수기준일": "sched_date", "양도기준일": "sched_date",
+    "계약체결일": "contract_date",
+    "이사회결의일(결정일)": "board_date", "이사회결의일": "board_date",
+    # 타법인 주식
+    "회사명": "issuer", "회사명(국적)": "issuer",
+    "취득주식수(주)": "shares", "처분주식수(주)": "shares",
+    "양수주식수(주)": "shares", "양도주식수(주)": "shares",
+    "지분비율(%)": "stake_after",
+}
+# 값 칸으로 오해하면 안 되는 라벨 — rowspan 서식에서 라벨이 연달아 나온다
+_ASSET_LABEL_KEYS = set(_ASSET_LABELS) | {
+    "국적", "대표자", "대표이사", "자본금(원)", "발행주식총수(주)", "주요사업",
+    "본점소재지(주소)", "소유주식수(주)", "등기예정일", "대규모법인여부", "대기업여부",
+    "대기업해당여부", "외부평가여부", "취득방법", "처분방법", "양수방법", "양도방법",
+}
+_ASSET_NUM_FIELDS = {"amount", "total_assets", "equity", "ratio_assets", "ratio_equity",
+                     "shares", "stake_after"}
+
+
+def _norm_label(text):
+    """표 라벨 정규화 — 앞머리 번호(1., -, ※)와 공백을 털어낸다."""
+    t = re.sub(r'\s+', '', str(text or ''))
+    t = re.sub(r'^[-※▶]+', '', t)
+    t = re.sub(r'^[0-9]+[.)]', '', t)
+    t = re.sub(r'^[-]+', '', t)
+    return t.replace("ㆍ", "")
+
+
+def _asset_field_for(raw_key, fuzzy=False):
+    key = _norm_label(raw_key)
+    field = _ASSET_LABELS.get(key)
+    if field or not fuzzy:
+        return field
+    # 정정표 항목은 "2. 처분내역 - 처분금액(원)"처럼 앞에 항목 경로가 붙는다
+    for label, fld in _ASSET_LABELS.items():
+        if len(label) >= 6 and key.endswith(label):
+            return fld
+    return None
+
+
+# 본문 뒤 부록([종속회사에 관한 사항]·발행회사 요약재무상황)도 '자산총액(원)'을 쓴다.
+# 뒤에 나온 값으로 덮으면 본문 수치가 종속회사/발행회사 것으로 바뀌므로
+# 기준금액·비율만 본문에서 처음 만난 값을 지킨다 (2026-08-28 블랙야크아이앤씨 건).
+_ASSET_KEEP_FIRST = {"total_assets", "equity", "ratio_assets", "ratio_equity"}
+
+
+def _asset_rows(soup):
+    """(셀목록, 정정표여부) 행 목록. 정정표 행은 마지막 칸이 '정정 후' 값이다."""
+    out = []
+    for table in soup.find_all('table'):
+        flat = [c.get_text() for c in table.find_all(['td', 'th'])]
+        is_amend_tbl = any(_norm_label(c) == "정정항목" for c in flat)
+        for r in table.find_all('tr'):
+            cols = [re.sub(r'\s+', ' ', c.get_text().strip()) for c in r.find_all(recursive=False)]
+            if len(cols) >= 2:
+                out.append((cols, is_amend_tbl))
+    return out
+
+
+def parse_asset_transaction_html(html_path, base_type):
+    """유형자산·타법인주식 취득/처분 공시에서 금액·자산명·거래상대·목적·일정을 뽑는다."""
+    res = {
+        "asset_class": "-", "asset_name": "-", "issuer": "-", "counterparty": "-",
+        "relation": "-", "amount": None, "total_assets": None, "equity": None,
+        "ratio_assets": None, "ratio_equity": None, "purpose": "-", "effect": "-",
+        "sched_date": "-", "contract_date": "-", "board_date": "-",
+        "shares": None, "stake_after": None,
+    }
+    if not html_path or not os.path.exists(html_path):
+        return res
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            soup = BeautifulSoup(f.read(), 'html.parser')
+
+        rows = _asset_rows(soup)
+        # 정정공시는 정정표(정정 전/후) 뒤에 정정된 본문 서식이 다시 실린다.
+        # 정정표를 먼저 깔고 본문으로 덮어써야 본문이 없는 정정건도 값이 남는다.
+        body_set = set()
+        for amend_pass in (True, False):
+            for cols, is_amend_tbl in rows:
+                if is_amend_tbl != amend_pass:
+                    continue
+                for i, raw_key in enumerate(cols[:-1]):
+                    field = _asset_field_for(raw_key, fuzzy=is_amend_tbl)
+                    if not field:
+                        continue
+                    if not is_amend_tbl and field in _ASSET_KEEP_FIRST and field in body_set:
+                        continue
+                    if is_amend_tbl:
+                        val = cols[-1]          # 정정 후
+                    else:
+                        val = next((c for c in cols[i + 1:]
+                                    if _norm_label(c) not in _ASSET_LABEL_KEYS), None)
+                    if val is None or not val.strip() or val.strip() == "-":
+                        continue
+                    if field in _ASSET_NUM_FIELDS:
+                        num = clean_numeric(val)
+                        if not isinstance(num, (int, float)):
+                            continue
+                        res[field] = num
+                    else:
+                        res[field] = val.strip()
+                    if not is_amend_tbl:
+                        body_set.add(field)
+
+        if res["sched_date"] == "-" and res["contract_date"] != "-":
+            res["sched_date"] = res["contract_date"]
+        for k in ("sched_date", "contract_date", "board_date"):
+            m = re.search(r'(\d{4})[-년.\s]+(\d{1,2})[-월.\s]+(\d{1,2})', str(res[k]))
+            if m:
+                y, mo, d = m.groups()
+                res[k] = f"{y}-{int(mo):02d}-{int(d):02d}"
+        # 타법인 주식은 발행회사가 곧 대상 자산이다 (거래소 서식엔 거래상대 항목이 없다)
+        if base_type in ("타법인증권취득", "타법인증권처분") and res["asset_name"] == "-":
+            res["asset_name"] = res["issuer"]
+    except Exception as e:
+        logger.error(f"Error parsing asset transaction HTML ({html_path}): {e}")
+    return res
+
 def send_telegram_document(token, chat_id, file_path, caption=None):
     """Sends a document via Telegram Bot API."""
     url = f"https://api.telegram.org/bot{token}/sendDocument"
@@ -2008,7 +2175,19 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     "purpose": t_data["purpose"]
                 }
                 cache[rcept_no] = record_detail
-                
+
+            # 자산 취득·처분: 시트 신설(2026-08-28) 이전 캐시는 data가 비어 있다.
+            # HTML이 있으면 1회 재파싱해 채운다 (없으면 다음 실행에서 재시도).
+            if not FAST_MODE and base_type in ASSET_BASE_TYPES:
+                d = record_detail.get("data") or {}
+                if not d.get("asset_v1"):
+                    html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    if os.path.exists(html_path):
+                        a_data = parse_asset_transaction_html(html_path, base_type)
+                        a_data["asset_v1"] = True
+                        record_detail["data"] = a_data
+                        cache[rcept_no] = record_detail
+
             # Re-run option date extraction only if missing from cache
             if base_type in ["CB", "BW", "EB"]:
                 data_dct = record_detail.get("data", {})
@@ -2327,6 +2506,12 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 "purpose": t_data["purpose"]
             }
             
+        # 6-2. 자산 취득·처분 파싱 (유형자산·타법인주식)
+        elif base_type in ASSET_BASE_TYPES:
+            a_data = parse_asset_transaction_html(html_path, base_type)
+            a_data["asset_v1"] = True
+            record_detail["data"] = a_data
+
         # 7. Officer reports / 5% report parsing (지분공시)
         elif row['category'] == "지분공시":
             rn = report_nm
@@ -2361,6 +2546,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         if cat == "자금조달_증자" and dt.get("total_amount") is None: is_bad = True
         if cat == "영업활동_계약" and dt.get("amount") is None: is_bad = True
         if cat == "신규시설투자" and dt.get("amount") is None: is_bad = True
+        if cat == "자산취득_처분" and dt.get("amount") is None: is_bad = True
         
         if not is_bad:
             cache[rcept_no] = record_detail
@@ -2571,6 +2757,40 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_facility.to_excel(writer, sheet_name="신규시설투자", index=False)
         format_facility_sheet(writer.sheets["신규시설투자"])
         
+        # Sheet 5-2: 자산_취득처분 (유형자산·타법인주식 취득/처분)
+        asset_rows = [r for r in active_records if r["category"] == "자산취득_처분"]
+        asset_data_list = []
+        for r in asset_rows:
+            d = r.get("data") or {}
+            asset_data_list.append({
+                "접수일자": r.get("rcept_dt_display") or fmt_date(r["rcept_dt"]),
+                "회사명": r["corp_name"],
+                "시장구분": map_market(r["corp_cls"]),
+                "종목코드": r["stock_code"],
+                "공시명": r["report_nm"],
+                "구분": asset_deal_side(r["base_type"], r["report_nm"]),
+                "대상": asset_deal_target(r["base_type"]),
+                "자산명/발행회사": d.get("asset_name", "-"),
+                "자산구분": d.get("asset_class", "-"),
+                "거래상대방": d.get("counterparty", "-"),
+                "관계": d.get("relation", "-"),
+                "금액": d.get("amount"),
+                "자산총액대비": d.get("ratio_assets"),
+                "자기자본대비": d.get("ratio_equity"),
+                "거래후지분율": d.get("stake_after"),
+                "목적": d.get("purpose", "-"),
+                "예정일자": fmt_date(str(d.get("sched_date", "-"))),
+                "이사회결의일": fmt_date(str(d.get("board_date", "-"))),
+                "접수번호": r["rcept_no"],
+                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")'
+            })
+        df_asset = pd.DataFrame(asset_data_list)
+        if '접수일자' in df_asset.columns:
+            df_asset = df_asset.sort_values('접수일자', ascending=False).reset_index(drop=True)
+        logger.info("Excel: writing sheet [자산_취득처분] ...")
+        df_asset.to_excel(writer, sheet_name="자산_취득처분", index=False)
+        format_asset_sheet(writer.sheets["자산_취득처분"])
+
         # Sheet 6: 재무_채무보증 (Guarantees & Loans columns)
         fin_rows = [r for r in active_records if r["category"] == "재무_채무보증"]
         fin_data_list = []
@@ -2736,7 +2956,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
         format_officer_sheet(writer.sheets["5%_임원보고 원본"])
 
         # 탭 순서 재배열: 신규시설투자 → 5%_임원보고 → 재무_자기주식 순
-        desired_order = ["자금조달_증자", "영업활동_계약", "신규시설투자", "5%_임원보고",
+        desired_order = ["자금조달_증자", "영업활동_계약", "신규시설투자", "자산_취득처분", "5%_임원보고",
                          "5%_임원보고 원본", "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
         wb = writer.book
         ordered = [wb[name] for name in desired_order if name in wb.sheetnames]
@@ -3218,6 +3438,76 @@ def format_facility_sheet(ws):
     ws.column_dimensions["D"].hidden = True
     ws.freeze_panes = "A2"
 
+def format_asset_sheet(ws):
+    """Styles the asset acquisition/disposal sheet (유형자산·타법인주식)."""
+    header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid")
+    data_font = Font(name="Malgun Gothic", size=9)
+    link_font = Font(name="Malgun Gothic", size=9, color="0000FF", underline="single")
+
+    border_side = Side(border_style="thin", color="D3D3D3")
+    data_border = Border(left=border_side, right=border_side, top=border_side, bottom=border_side)
+
+    # 열 번호 (1-based): 1접수일자 2회사명 3시장구분 4종목코드 5공시명 6구분 7대상 8자산명 9자산구분
+    #                    10거래상대방 11관계 12금액 13자산총액대비 14자기자본대비 15거래후지분율
+    #                    16목적 17예정일자 18이사회결의일 19접수번호 20DART링크
+    CENTER_COLS = {1, 3, 4, 6, 7, 15, 17, 18, 19}
+    PCT_COLS = {13, 14, 15}
+    WRAP_COLS = {8, 16}
+
+    _max_row, _max_col = ws.max_row, ws.max_column
+    for col_idx in range(1, _max_col + 1):
+        cell = ws.cell(row=1, column=col_idx)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+
+    ws.row_dimensions[1].height = 25
+
+    for row_idx in range(2, _max_row + 1):
+        ws.row_dimensions[row_idx].height = 36
+        for col_idx in range(1, _max_col + 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.font = data_font
+            cell.border = data_border
+
+            if col_idx == 20:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.font = link_font
+            elif col_idx == 12:
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.number_format = '₩#,##0'
+            elif col_idx in PCT_COLS:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                if isinstance(cell.value, (int, float)):
+                    cell.number_format = '0.00"%"'
+            elif col_idx in CENTER_COLS:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            elif col_idx in WRAP_COLS:
+                cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+
+    for col_idx, col in enumerate(ws.columns, 1):
+        col_letter = get_column_letter(col_idx)
+        if col_idx in WRAP_COLS:
+            ws.column_dimensions[col_letter].width = 32
+        else:
+            max_len = 0
+            for cell in col:
+                val = str(cell.value or '')
+                if val.startswith("="):
+                    val = "공시열람"
+                if len(val) > max_len:
+                    max_len = len(val)
+            ws.column_dimensions[col_letter].width = min(max(max_len * 1.2 + 2, 10), 25)
+
+    ws.auto_filter.ref = ws.dimensions
+    ws.column_dimensions["C"].hidden = True
+    ws.column_dimensions["D"].hidden = True
+    ws.freeze_panes = "A2"
+
+
 def format_financial_sheet(ws):
     """Styles the detailed financial debt guarantees and loans sheet."""
     header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
@@ -3390,7 +3680,7 @@ def main():
             logger.error("Missing TELEGRAM_BOT4_TOKEN or TELEGRAM_SUPPLY_DATA_CHAT_ID in env.")
             return
             
-        caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 채무보증/금전대여, 자기주식취득/신탁/소각 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
+        caption = f"📊 [DART 공시 요약 인덱스 리포트]\n- 공급계약, 유/무상증자, 전환사채(CB)/BW/EB, 시설투자, 유형자산ㆍ타법인주식 취득/처분, 채무보증/금전대여, 자기주식취득/신탁/소각 등 세부조항 정밀 파싱 완료\n- 기재정정(정정공시) 발생 시 최초공시 자동 연동 및 데이터 업데이트 반영\n- 일자: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}"
         
         logger.info("Uploading Excel to Telegram...")
         telegram_sent = send_telegram_document(TELEGRAM_BOT4_TOKEN, TELEGRAM_SUPPLY_DATA_CHAT_ID, excel_path, caption=caption)
