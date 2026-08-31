@@ -6556,3 +6556,89 @@
 2026-08-28 10:32:51,216 - WARNING - Qwen API error: HTTP 403 {"error":{"message":"Access to model denied. Please make sure you are eligible for using the model.","id":"d21892c3-0554-9305-b50f-ab617d5870eb","type":"AccessDenied.Unpurchased","code":"AccessDenied.
 2026-08-28 10:32:51,217 - ERROR - NCNO: LLM 분석 실패
 2026-08-28 10:32:51,217 - ERROR - 생성된 리포트가 없습니다.
+2026-08-29 08:50:04,041 - INFO - Nasdaq 스크리너 수신: 7132종목
+2026-08-29 08:50:04,581 - INFO - 1차(상승률·시총·거래대금) 통과: 8종목
+2026-08-29 08:50:05,869 - INFO - 2차(거래량 급증 2.0배↑) 통과: 4종목
+2026-08-29 08:50:10,124 - INFO - 3차(펀더멘털) 통과: 4종목
+2026-08-29 08:50:14,931 - INFO - 워치리스트 트랙: 7종목 (ESTC +19.3%, WDAY +5.8%, CLMT +4.3%, AMZN +4.0%, COTY +3.3%, BBWI +3.1%, MTW +3.1%)
+2026-08-29 08:50:25,945 - INFO - 최종 선정: 9종목 (워치리스트 7 + 전체시장 2)
+
+선정 종목
+  ★WL ESTC   + 19.31%  vol× 4.5    $10.39B  score=0.727  매출 YoY +16.0%, QoQ +0.2%, 영업적자(-3.6%)
+  ★WL WDAY   +  5.76%  vol× 2.4    $50.57B  score=0.576  매출 YoY +13.5%, QoQ +0.4%, 영업이익률 13.3%
+  ★WL CLMT   +  4.33%  vol× 1.1     $4.20B  score=0.459  매출 YoY +40.8%, QoQ +40.3%, 영업적자(-2.8%)
+  ★WL AMZN   +  3.97%  vol× 1.5     $2.87T  score=0.234  매출 YoY +16.6%, TTM FCF 적자
+  ★WL COTY   +  3.26%  vol× 0.9     $2.51B  score=0.191  매출 YoY -1.3%, 영업적자(-0.7%), TTM FCF 흑자
+  ★WL BBWI   +  3.06%  vol× 1.2     $3.88B  score=0.395  매출 YoY -3.2%, 영업이익률 16.8%, 마진 +2.1%p 개선
+  ★WL MTW    +  3.05%  vol× 0.9    $706.5M  score=0.480  매출 YoY +10.3%, QoQ +20.3%, 영업이익률 5.4%
+      SOLS   + 12.76%  vol× 7.8    $10.09B  score=0.762  매출 YoY +11.1%, QoQ +15.7%, 영업이익률 19.3%
+      GAP    + 12.94%  vol× 4.7     $8.45B  score=0.681  매출 YoY +1.0%, 영업이익률 12.7%, 마진 +5.2%p 개선
+
+2026-08-29 08:50:25,946 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-08-29 08:50:25,946 - INFO - [1/9] ESTC 분석 시작
+2026-08-29 08:50:25,968 - INFO - ESTC: transcript 2건 확보 — 2026-06-10 Elastic N.V. (ESTC) Presents at Rosenblatt 6t, 2026-06-04 Elastic N.V. (ESTC) Presents at Bank of Ameri
+2026-08-29 08:50:25,968 - INFO - ESTC: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:50:44,092 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:50:44,136 - INFO - ESTC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/ESTC_2026-08-29.html
+2026-08-29 08:50:44,136 - INFO - [2/9] WDAY 분석 시작
+2026-08-29 08:50:44,137 - INFO - WDAY: SEC 원문 다운로드 중…
+2026-08-29 08:50:45,535 - INFO - WDAY: complete: saved=3 skipped=73 errors=0 requests=5 manifest={'saved': 75246, 'unavailable': 6}
+2026-08-29 08:50:51,764 - INFO - WDAY: transcript 2건 확보 — 2026-08-27 Q2 2027 Transcript, 2026-05-21 Workday, Inc. (WDAY) Q1 2027 Earnings Call Tr
+2026-08-29 08:50:51,765 - INFO - WDAY: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:51:10,932 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:51:10,938 - INFO - WDAY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/WDAY_2026-08-29.html
+2026-08-29 08:51:10,938 - INFO - [3/9] CLMT 분석 시작
+2026-08-29 08:51:10,939 - INFO - CLMT: SEC 원문 다운로드 중…
+2026-08-29 08:51:14,910 - INFO - CLMT: complete: saved=0 skipped=112 errors=0 requests=15 manifest={'saved': 75246, 'unavailable': 6}
+2026-08-29 08:51:14,921 - INFO - CLMT: transcript 2건 확보 — 2026-08-07 Calumet, Inc. (CLMT) Q2 2026 Earnings Call Tr, 2026-05-08 Calumet, Inc. (CLMT) Q1 2026 Earnings Call Tr
+2026-08-29 08:51:14,921 - INFO - CLMT: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:51:31,486 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:51:31,490 - INFO - CLMT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/CLMT_2026-08-29.html
+2026-08-29 08:51:31,491 - INFO - [4/9] AMZN 분석 시작
+2026-08-29 08:51:31,494 - INFO - AMZN: SEC 원문 다운로드 중…
+2026-08-29 08:51:34,727 - INFO - AMZN: complete: saved=2 skipped=77 errors=0 requests=12 manifest={'saved': 75248, 'unavailable': 6}
+2026-08-29 08:51:34,749 - INFO - AMZN: transcript 2건 확보 — 2026-07-31 Amazon.com, Inc. (AMZN) Q2 2026 Earnings Call, 2026-04-29 Amazon.com, Inc. (AMZN) Q1 2026 Earnings Call
+2026-08-29 08:51:34,749 - INFO - AMZN: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:51:54,187 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:51:54,192 - INFO - AMZN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/AMZN_2026-08-29.html
+2026-08-29 08:51:54,192 - INFO - [5/9] COTY 분석 시작
+2026-08-29 08:51:54,194 - INFO - COTY: SEC 원문 다운로드 중…
+2026-08-29 08:52:00,498 - INFO - COTY: complete: saved=4 skipped=58 errors=0 requests=25 manifest={'saved': 75252, 'unavailable': 6}
+2026-08-29 08:53:02,100 - INFO - COTY: transcript 2건 확보 — 2026-08-19 Q4 2026 Prepared Remarks Transcript, 2026-06-10 16th Annual East Coast IDEAS Conference Trans
+2026-08-29 08:53:02,109 - INFO - COTY: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:53:16,193 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:53:16,197 - INFO - COTY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/COTY_2026-08-29.html
+2026-08-29 08:53:16,197 - INFO - [6/9] BBWI 분석 시작
+2026-08-29 08:53:16,222 - INFO - BBWI: transcript 2건 확보 — 2026-08-26 Q2 2027 Transcript, 2026-05-27 Q1 2027 Transcript
+2026-08-29 08:53:16,222 - INFO - BBWI: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:53:35,698 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:53:35,703 - INFO - BBWI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/BBWI_2026-08-29.html
+2026-08-29 08:53:35,703 - INFO - [7/9] MTW 분석 시작
+2026-08-29 08:53:35,704 - INFO - MTW: SEC 원문 다운로드 중…
+2026-08-29 08:53:38,111 - INFO - MTW: complete: saved=2 skipped=54 errors=0 requests=10 manifest={'saved': 75254, 'unavailable': 6}
+2026-08-29 08:53:38,122 - INFO - MTW: transcript 2건 확보 — 2026-08-07 Q2 2026 Transcript, 2026-06-10 16th Annual East Coast IDEAS Conference Trans
+2026-08-29 08:53:38,123 - INFO - MTW: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:54:00,122 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:54:00,127 - INFO - MTW: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/MTW_2026-08-29.html
+2026-08-29 08:54:00,127 - INFO - [8/9] SOLS 분석 시작
+2026-08-29 08:54:00,127 - INFO - SOLS: SEC 원문 다운로드 중…
+2026-08-29 08:54:30,641 - INFO - SOLS: complete: saved=51 skipped=0 errors=0 requests=58 manifest={'saved': 75305, 'unavailable': 6}
+2026-08-29 08:54:36,837 - INFO - SOLS: transcript 1건 확보 — 2026-07-30 Solstice Advanced Materials, Inc. (SOLS) Q2 2
+2026-08-29 08:54:36,837 - INFO - SOLS: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 08:55:00,723 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 08:55:00,728 - INFO - SOLS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/SOLS_2026-08-29.html
+2026-08-29 08:55:00,728 - INFO - [9/9] GAP 분석 시작
+2026-08-29 08:55:00,728 - INFO - GAP: SEC 원문 다운로드 중…
+2026-08-29 08:55:18,848 - INFO - GAP: complete: saved=54 skipped=0 errors=0 requests=71 manifest={'saved': 75359, 'unavailable': 6}
+2026-08-29 08:55:18,859 - INFO - GAP: sa-transcripts 보유분 없음 → 발견·수집 시도
+2026-08-29 08:55:18,859 - INFO - sa-transcripts ticker 실행 (GAP) — 최대 600초
+2026-08-29 08:55:39,783 - INFO -   sa[ticker] 08:55:39 [0829-085519-4ac2] INFO 우선순위 발견 완료: 1종목, 신규 20건, 우선표시 25건. 대기열 우선분 1271건 → 다음 드립부터 먼저 수집.
+2026-08-29 08:55:39,783 - INFO -   sa[ticker] 08:55:39 [0829-085519-4ac2] INFO 누적 상태: {'dup_qtr': 348, 'error': 1, 'fetched': 32, 'seen': 8457, 'skipped': 18192, 'uploaded': 5832} (경과 21s)
+2026-08-29 08:55:39,783 - INFO - sa-transcripts fetch 실행 — 최대 1200초
+2026-08-29 09:15:39,799 - INFO - sa-transcripts fetch 시간 상한 도달 — 중단하고 확보분만 사용합니다.
+2026-08-29 09:15:54,203 - INFO - GAP: transcript 2건 확보 — 2026-08-27 Q2 2027 Transcript, 2026-05-28 Q1 2027 Transcript
+2026-08-29 09:15:54,203 - INFO - GAP: LLM 분석 요청 [smart] (SEC 40,000자 + transcript 30,000자)
+2026-08-29 09:16:15,068 - INFO - Qwen response generated (qwen3.7-flash).
+2026-08-29 09:16:15,073 - INFO - GAP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-08-29/GAP_2026-08-29.html
+2026-08-29 09:16:15,073 - INFO - 발송 보류 4종목(판정 미달): CLMT(보통), COTY(관망), BBWI(관망), MTW(관망)
+2026-08-29 09:16:29,963 - INFO - 완료: 9종목 리포트 생성 · 텔레그램 발송
