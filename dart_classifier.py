@@ -1581,7 +1581,8 @@ def parse_contract_html(html_path):
         "amount": None,
         "backlog": "-",
         "ratio": None,
-        "counterparty": "-"
+        "counterparty": "-",
+        "region": "-"
     }
     if not os.path.exists(html_path):
         return res
@@ -1595,8 +1596,9 @@ def parse_contract_html(html_path):
                 cols = [c.get_text().strip().replace('\n', ' ') for c in children]
                 cols = [re.sub(r'\s+', ' ', col) for col in cols]
                 if len(cols) >= 2:
-                    key = cols[0].replace(" ", "").replace("ㆍ", "").replace(".", "")
-                    
+                    # 가운뎃점 변형(ㆍ U+318D / · U+00B7 / ・ U+30FB)과 공백·마침표를 모두 제거해 매칭
+                    key = cols[0].replace(" ", "").replace("ㆍ", "").replace("·", "").replace("・", "").replace(".", "")
+
                     if any(k in key for k in ["판매공급계약내용", "체결계약명", "계약내용"]):
                         res["content"] = cols[1]
                     elif len(cols) >= 3 and "판매공급계약내용" in cols[1].replace(" ", ""):
@@ -1623,7 +1625,13 @@ def parse_contract_html(html_path):
                         res["counterparty"] = cols[1]
                     elif len(cols) >= 3 and any(k in cols[1].replace(" ", "") for k in ["계약상대방", "계약상대"]):
                         res["counterparty"] = cols[2]
-                        
+
+                    # 판매ㆍ공급지역 (라벨 예: "4. 판매ㆍ공급지역" — 가운뎃점/마침표/공백은 key에서 제거됨)
+                    if "공급지역" in key:
+                        res["region"] = cols[1] if cols[1] else "-"
+                    elif len(cols) >= 3 and "공급지역" in re.sub(r"[\sㆍ·・.]", "", cols[1]):
+                        res["region"] = cols[2] if cols[2] else "-"
+
                     # Backlog check if explicitly in text
                     if "수주잔고" in key:
                         res["backlog"] = cols[1]
@@ -2188,6 +2196,18 @@ def build_excel_summary(workspace_dir, parse_only=False):
                         record_detail["data"] = a_data
                         cache[rcept_no] = record_detail
 
+            # 공급계약: 판매ㆍ공급지역 열 신설(2026-09-01) 이전 캐시는 region 키가 없다.
+            # HTML이 있으면 1회 재파싱해 region만 보충한다 (없으면 다음 실행에서 재시도).
+            if not FAST_MODE and base_type == "공급계약":
+                d = record_detail.get("data") or {}
+                if "region" not in d:
+                    html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                    if os.path.exists(html_path):
+                        con_heal = parse_contract_html(html_path)
+                        d["region"] = con_heal["region"]
+                        record_detail["data"] = d
+                        cache[rcept_no] = record_detail
+
             # Re-run option date extraction only if missing from cache
             if base_type in ["CB", "BW", "EB"]:
                 data_dct = record_detail.get("data", {})
@@ -2464,7 +2484,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 "amount": con_data["amount"],
                 "backlog": con_data["backlog"],
                 "ratio": con_data["ratio"],
-                "counterparty": con_data["counterparty"]
+                "counterparty": con_data["counterparty"],
+                "region": con_data["region"]
             }
             
         # 4. Facility Investment Parsing (신규시설투자)
@@ -2722,6 +2743,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 "수주잔고": d.get("backlog", "-") if r["base_type"] == "공급계약" else "-",
                 "최근 매출액 대비": d.get("ratio") if r["base_type"] == "공급계약" else None,
                 "수주상대방": d.get("counterparty", "-") if r["base_type"] == "공급계약" else "-",
+                "판매ㆍ공급지역": d.get("region", "-") if r["base_type"] == "공급계약" else "-",
                 "접수번호": r["rcept_no"]
             })
         df_contract = pd.DataFrame(contract_data_list)
@@ -3334,12 +3356,12 @@ def format_contract_sheet(ws):
             cell.font = data_font
             cell.border = data_border
             
-            if col_idx in [1, 4, 5, 6, 9, 10, 12, 15]:
+            if col_idx in [1, 4, 5, 6, 9, 10, 12, 16]:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
             elif col_idx == 2:
                 cell.alignment = Alignment(horizontal="center", vertical="center")
                 cell.font = link_font
-            elif col_idx in [8, 14]: # 계약내용, 수주상대방
+            elif col_idx in [8, 14, 15]: # 계약내용, 수주상대방, 판매ㆍ공급지역
                 cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
             else:
                 cell.alignment = Alignment(horizontal="left", vertical="center")
@@ -3357,6 +3379,8 @@ def format_contract_sheet(ws):
             ws.column_dimensions[col_letter].width = 30
         elif col_idx == 14: # 수주상대방
             ws.column_dimensions[col_letter].width = 20
+        elif col_idx == 15: # 판매ㆍ공급지역
+            ws.column_dimensions[col_letter].width = 18
         else:
             max_len = 0
             for cell in col:

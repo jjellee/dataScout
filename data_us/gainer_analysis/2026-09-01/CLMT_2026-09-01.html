@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLMT — Calumet Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CLMT — Calumet Inc. Common Stock</h1>
+<div class="sub">2026-09-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">CLMT</span><span class="badge">+4.15%</span><span class="badge">거래량 0.97배</span><span class="badge">$4.37B</span><span class="badge">비중 판단 적극</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 적극</strong></p>
+<p>CLMT는 글로벌 특수화학 원료(베이스오일) 공급 부족과 EPA의 바이오연료 의무할당량(RVO) 상향이라는 구조적 호재에 힘입어 마진이 극적으로 개선되고 있다. SPS 부문은 전 세계 용량 가동 중단으로 인한 수급 불균형에서, MRL 부문은 규제 강화로 인한 마진 반등에서 각각 독보적인 경쟁 우위를 점하고 있다. 급격한 부채 상환(Deleveraging) 진행 중이며, 향후 자사주 매각 또는 배당 등 주주환원 정책이 기대되는 시점이다. 단기 비현금 손실(RINs 등)에도 불구하고 Adjusted EBITDA가 전년 대비 2배 이상 증가하며 현금 창출력이 회복되었으므로, 의미 있는 비중 실리가 가능하다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p>확인된 촉매 없음 — 수급/섹터 동조 가능성</p>
+<p>당일(8월 7일 기준 공시일 이후) 특정 공시는 없으나, 최근 분기 실적 발표(8월 7일)와 관련 뉴스가 누적되어 상승을 주도한 것으로 보인다. 주요 뉴스 헤드라인인 "GF Score of 52", "Responsive Playbooks", "Fresh 52-Week Highs" 등은 기술적 분석이나 퀀트 모델 기반의 매수 신호를 반영한다. 또한 Jupiter Topco LLC 및 Hennessy Advisors Inc. 등의 기관 투자자 지분 취득 소식이 유동성 개선과 신뢰도 상승에 기여했을 가능성이 크다. 특히 실적 발표 직후인 8월 7일 이후의 상승세는 시장이 '회계상 비현금 손실'보다 'Adjusted EBITDA 급증'과 '부채 상환 가속화'라는 펀더멘털 개선에 더 높은 가중치를 두고 있음을 시사한다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>Calumet은 두 가지 주요 사업 부문으로 운영된다.</p>
+<ol>
+<li>
+<p><strong>Specialty Products and Solutions (SPS):</strong></p>
+<ul>
+<li><strong>제품:</strong> 파라핀성 베이스오일(Group I, II, III), 윤활유 첨가제, 솔벤트, 아스팔트 등.</li>
+<li><strong>공정:</strong> 원유를 직접 정제하여 고부가가치 특수 화학 제품을 생산하는 '통합(Integrated)' 모델. 중간체(VGO 등)를 구매하지 않고 원유부터 처리하므로 원가 우위가 있음.</li>
+<li><strong>고객:</strong> 글로벌 대형 기업 및 국내 선박사 등.</li>
+<li><strong>경쟁 위치:</strong> 중동 및 유럽의 베이스오일 생산 능력 중단(이란 전쟁, 러시아-우크라이나 전쟁 영향)으로 인해 공급망이 붕괴된 상황에서, 미국 내 원유 공급원과 안정적인 운송 인프라를 보유한 유일한 주요 플레이어로 부상.</li>
+</ul>
+</li>
+<li>
+<p><strong>Montana Renewables (MRL):</strong></p>
+<ul>
+<li><strong>제품:</strong> 재생 디젤(Renewable Diesel), 지속가능 항공연료(SAF).</li>
+<li><strong>공정:</strong> 몬태나주 시설에서 바이오디젤 및 SAF 생산. MaxSAF 150 확장 프로젝트 완료로 가동률 확대 중.</li>
+<li><strong>수익 모델:</strong> EPA의 Renewable Fuel Standard(RFS)에 따른 RINs(REnewable Identification Numbers) 가치와 바이오디젤 인덱스 마진에 민감하게 반응.</li>
+</ul>
+</li>
+</ol>
+<h2>4. 실적·재무 분석</h2>
+<p>제공된 Q2 2026 실적(8월 7일 공시) 및 MD&amp;A를 기반으로 분석하면 다음과 같다.</p>
+<ul>
+<li><strong>매출 및 성장성:</strong> 최근 분기 매출은 $1.45B로 전년 동기 대비 40.8% 증가했다. 이는 SPS 부문의 가격 인상 전달과 물량 증가, 그리고 MRL의 가동 재개에 기인함.</li>
+<li><strong>마진 추이:</strong><ul>
+<li><strong>SPS 부문:</strong> Adjusted EBITDA가 전년 동기 $66.8M에서 $161.7M으로 142% 급증. Adjusted Gross Profit per barrel는 $13.81에서 $32.25로 2배 이상 확대. 이는 글로벌 베이스오일 공급 부족으로 인한 프리미엄 가격 형성 때문임.</li>
+<li><strong>MRL 부문:</strong> Adjusted EBITDA가 전년 동기 $(5.1)M 흑자전환하여 $10.7M 달성. Adjusted EBITDA with Tax Attributes는 $16.3M에서 $26.6M으로 증가. EPA Set 2 RVO 발표로 바이오디젤 마진이 역사적 평균($2/gallon) 이상으로 회복됨.</li>
+<li><strong>영업이익률:</strong> 회계상 영업이익률은 <span class="down">-2.8%</span>이나, 이는 비현금 항목(RINs 평가손실 등)의 영향임. Adjusted EBITDA Margin은 크게 개선됨.</li>
+</ul>
+</li>
+<li><strong>현금흐름 및 재무 건전성:</strong><ul>
+<li>TTM 잉여현금흐름(FCF)은 $73.5M으로 양호한 수준.</li>
+<li>CEO는 제한 그룹 레버리지 비율이 4배 미만으로 하락했으며, 다음 분기에는 3배 미만으로 떨어질 것이라고 언급.</li>
+<li>2026년 7월 $115M의 부채 상환을 완료했으며, 추가적인 부채 상환 가속화를 예고.</li>
+</ul>
+</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>글로벌 베이스오일 공급 충격 지속:</strong> 중동 및 유럽의 생산 능력 중단으로 인한 구조적 수급 불균형. CLMT는 미국산 원유 의존도로 이 혜택을 독점적으로 누림.<ul>
+<li><em>검증 포인트:</em> 다음 분기에도 Group II/III 베이스오일 가격이 현재 수준을 유지하거나 상승하는지 확인.</li>
+</ul>
+</li>
+<li><strong>MRL의 가동률 확대 및 SAF 프리미엄:</strong> MaxSAF 150 확장 완료로 일일 처리량 증가. 2028년까지 연산 2억 갤런 SAF 생산 목표.<ul>
+<li><em>검증 포인트:</em> MRL의 실제 가동률(Ramp-up) 진척도와 단위 OpEx($0.38/gallon 목표) 유지 여부.</li>
+</ul>
+</li>
+<li><strong>저축된 자본 지출(CapEx)의 활용:</strong> 과거 MRL 건설과 부채 상환에 집중했던 자산을 이제 SPS 부문의 저리스크 고회수율 프로젝트에 투입 예정(2027-2028년).<ul>
+<li><em>검증 포인트:</em> 2027년 자본예산 발표 시 SPS 부문 CapEx 규모 및 예상 ROI.</li>
+</ul>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>경영진의 톤:</strong> Todd Borgmann CEO는 "2022년의 재현"이라며 매우 낙관적인 태도를 보임. "Exceptional results", "Constructive market" 등 강한 긍정적 어휘 사용.</li>
+<li><strong>가이던스 화법 변화:</strong> 이전에는 "생존과 부채 상환"에 집중했다면, 이제는 "성장 파이프라인(FEL process)"과 "M&amp;A 기회"에 대한言及이 늘어남. "Don't want to get ahead of our skis"라고 경계하면서도 M&amp;A를 적극적으로 모니터링 중임을 명시.</li>
+<li><strong>Q&amp;A 핵심 쟁점:</strong><ul>
+<li><strong>CapEx 시점:</strong> 애널리스트가 SPS 부문의 CapEx 증가 시기를 묻자, CEO는 "대부분이 2027-2028년에 집행될 것"이라고 답변. 즉, 당장 실적을 압박하지 않으면서 장기 성장을 준비 중임을 강조.</li>
+<li><strong>MRL 현금 흐름:</strong> MRL에서 발생하는 현금이 먼저 MRL 자체의 다음 단계 확장(CapEx)에 쓰이고, 나머지가 상위 회사로 유입될 것이라는 설명. 즉, MRL의 독립적인 현금 창출 능력이 입증되면 모회사 부채 상환에 더 큰 영향을 미칠 것임.</li>
+<li><strong>RINs/RVO:</strong> CEO는 EPA의 RVO 설정 방식이 역사적으로 안정적이었음을 강조하며, 현재 마진 상승이 일시적이 아닌 규제 구조에 기반함을 설득.</li>
+</ul>
+</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>비현금 손실의 변동성 (RINs/MtM):</strong> Q2 기준 $163.6M의 비현금 RINs 비용과 파생상품 평가 손실이 순손실을 발생시킴. RINs 가격이나 규제 변경 시 실적이 급변할 수 있음.</li>
+<li><strong>원유 및 에너지 가격 변동성:</strong> 원유 가격 급등은 재고 가치 평가와 운송 비용 상승을 유발할 수 있으며,hedging 전략이 완벽하지 않을 경우 수익성을 훼손할 수 있음.</li>
+<li><strong>규제 리스크 (EPA RVO):</strong> 바이오연료 산업은 정부 규제(RVO)에 완전히 종속됨. 차기 행정부의 에너지 정책 변경이나 EPA의 할당량 인하 시 MRL 부문의 마진이 급락할 수 있음.</li>
+<li><strong>운영 중단 위험:</strong> Shreveport 공장의 계획되지 않은 다운타임 사례처럼, 노후화된 정제 설비의 예기치 않은 고장은 현금 흐름에 즉각적인 타격을 줄 수 있음.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<ul>
+<li>
+<p><strong>적극 비중 실리의 근거:</strong></p>
+<ul>
+<li><strong>구조적 호재:</strong> SPS 부문의 글로벌 공급 부족은 단순 사이클이 아닌 지리적/정치적 요인에 의한 구조적 불균형으로, 지속 가능성이 높음.</li>
+<li><strong>재무 개선 속도:</strong> 레버리지 비율이 빠르게 3x대로 진입 중이며, 이는 신용등급 상승 가능성과 자금 조달 비용 절감으로 이어짐.</li>
+<li><strong>밸류에이션 역전:</strong> 회계상 순손실에도 불구하고 Adjusted EBITDA가 급증하며 EV/EBITDA 기준 매력적인 밸류에이션을 형성할 잠재력 있음.</li>
+</ul>
+</li>
+<li>
+<p><strong>진입 전 확인할 것 3가지:</strong></p>
+<ol>
+<li><strong>RINs 가격 동향:</strong> 다음 분기 보고서에서의 RINs 평가 손실 규모 및 RINs现货 가격 추이.</li>
+<li><strong>SPS 마진 지속성:</strong> 다음 분기 SPS 부문의 Adjusted Gross Profit per barrel가 $30 이상을 유지하는지 확인.</li>
+<li><strong>부채 상환 일정:</strong> 2026년 하반기 추가 부채 상환 계획 및 차입금 금리 재협상 결과.</li>
+</ol>
+</li>
+<li>
+<p><strong>판단 뒤집기 조건 (관망 전환):</strong></p>
+<ul>
+<li>EPA가 차기 RVO에서 바이오연료 할당량을 대폭 축소하거나 인하할 경우.</li>
+<li>SPS 부문의 마진이 글로벌 공급망 복원(중동/유럽 가동 재개) 속도에 따라 급격히 하락할 경우.</li>
+<li>Shreveport 또는 Cotton Valley 등에서 대규모 계획 외 다운타임이 반복되어 현금 흐름이 악화될 경우.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000007/clmt-20251231x10k.htm">10-K — 2025-12-31_0002013745-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000024/clmt-20260630.htm">10-Q — 2026-06-30_0002013745-26-000024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000016/clmt-20260331x10q.htm">10-Q — 2026-03-31_0002013745-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260630xex991.htm">8-K — 2026-08-07_0002013745-26-000022__EX-99.1__clmt-20260630xex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260807.htm">8-K — 2026-08-07_0002013745-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000119312526255570/d106744d8k.htm">8-K — 2026-06-02_0001193125-26-255570</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000013/clmt-20260331xex99d1.htm">8-K — 2026-05-08_0002013745-26-000013__EX-99.1__clmt-20260331xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000013/clmt-20260331x8k.htm">8-K — 2026-05-08_0002013745-26-000013</a></li>
+<li>Transcript — 2026-08-07 Calumet, Inc. (CLMT) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-08 Calumet, Inc. (CLMT) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELF — e.l.f. Beauty Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ELF — e.l.f. Beauty Inc. Common Stock</h1>
+<div class="sub">2026-09-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">ELF</span><span class="badge">+4.75%</span><span class="badge">거래량 1.21배</span><span class="badge">$6.43B</span><span class="badge">비중 판단 적극</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 적극</strong></p>
+<p>e.l.f. Beauty는 30분기 연속 성장이라는 이례적인 모멘텀과 함께, 최근 분기 매출 36% 증가 및 연간 가이던스 상향을 통해 펀더멘털의 강도를 입증했다. 특히 rhode 브랜드의 폭발적 성장과 글로벌 확장(유럽 등)이 새로운 성장 동력으로 작용하며, 단순한 저가 전략을 넘어 포트폴리오 다각화에 성공했다. IEEPA 관세 환불금 전액 재투자라는 단기적 이벤트가 장기적인 시장 점유율 확대와 브랜드 인지도 제고로 이어질 것으로 보여, 현재 상승 추세에서 의미 있는 비중 실리가 가능하다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p>오늘의 상승은 <strong>Q1 2027 실적 발표 및 연간 가이던스 상향</strong>이 주요 촉매로 작용했다.
+*   <strong>실적 초과 달성:</strong> 매출 36% 성장, Adjusted EPS $1.75 달성 (전년 대비 대폭 상회).
+*   <strong>가이던스 상향:</strong> FY2027 매출 성장률 전망을 기존 12~14%에서 18~20%로 대폭引き올림.
+*   <strong>긍정적 신호:</strong> rhode 브랜드의 유럽 진출 계획 발표, e.l.f. 본 브랜드의 가격 테스트를 통한 물량 주도 성장 확인, 그리고 관세 환불금($50M)의 마케팅/가격 인하 재투자로 인한 지속 가능성 확보.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품 및 서비스:</strong> 메이크업(e.l.f. Cosmetics), 스킨케어(e.l.f. SKIN, Naturium), 헤어케어(e.l.f. Hair), 그리고 하이엔드 세그먼트(rhode)까지 포괄하는 풀플랫폼 뷰티 기업. 모든 제품은 크루얼티 프리(Cruelty-free) 인증을 받음.</li>
+<li><strong>고객군:</strong> Gen Z, Gen Alpha, Millennials 중심의 가격 민감도가 높으나 트렌드에 민감한 소비자층. 평균 단가 $7 수준으로 대중적 접근성(Democratization of beauty)을 핵심 가치로 함.</li>
+<li><strong>채널 구성:</strong> 오프라인 유통망(Target, Walmart, Sephora, Dollar General 등)과 온라인(DTC, TikTok Shop 등) 채널 병행. 디지털 비중은 30%로 증가 중.</li>
+<li><strong>경쟁 위치:</strong> 니elson 기준 미국 내 메이크업 유닛 샵어 1위, 달러 샵어 2위. 스킨케어 카테고리에서도 급성장 중(Naturium은 Top 50 중 fastest-growing). 전통적인 메이저 브랜드 대비 혁신 속도와 마케팅 효율성에서 우위를 점함.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<ul>
+<li><strong>성장성:</strong> Q1 매출 $479.4M으로 전년 대비 36% 성장. 미국 내 29%, 해외 61% 성장으로 해외 시장도 견조하게 기여.</li>
+<li><strong>수익성:</strong> 매출총이익률(Gross Margin) 83% 기록. 이는 전년 대비 1,400bp 상승인데, 그중 약 1,050bp는 IEEPA 관세 환불 효과임. 순수 운영상 마진 개선은 약 350bp 수준이나 여전히 강력함. Adjusted EBITDA 마진은 35%로 전년 대비 93% 증가.</li>
+<li><strong>현금흐름 및 재무 건전성:</strong> 당좌자금은 $344.2M으로 전년 동기($170.0M) 대비 크게 증가. 총 부채는 $834.2M이나, Adjusted EBITDA 대비 순부채 비율은 1.5배 미만으로 건전함. TTM 잉여현금흐름은 $280.2M으로 양호.</li>
+<li><strong>비용 구조:</strong> SG&amp;A는 $280.3M으로 증가했으나, 이는 마케팅 및 인건비 증가 때문이며, 매출 성장에 비해 비용 효율성이 유지됨.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>rhode 브랜드의 글로벌 확장:</strong> Hailey Bieber의 영향력을 바탕으로 한 강력한 브랜드 파워. 유럽 19개국 Sephora 진출 예정. 검증 포인트: Q2 유럽 출시 초기 판매 데이터 및 Sephora 내 랭킹 유지 여부.</li>
+<li><strong>포트폴리오 다각화:</strong> 비-e.l.f. 매출 비중이 30%를 돌파. Naturium의 캐나다/멕시코 진출, e.l.f. Hair의 타겟 독점 출시 등 신규 카테고리 진입. 검증 포인트: 신규 브랜드들의 지속 성장률 및 마진 기여도.</li>
+<li><strong>해외 시장 심화:</strong> 현재 해외 매출 비중 21%로, 경쟁사 대비 낮은 수준. 영국 Boots, 브라질 Sephora 진출 등을 통해 선진국 및 신흥시장 모두 공략. 검증 포인트: 해외 시장별 ACV(Assortment Coverage Volume) 확대 속도 및 현지 마케팅 ROI.</li>
+<li><strong>공급망 다변화:</strong> 중국 의존도 1%에서 올해 말 60% 수준으로 낮추는 공급망 재편 완료. 검증 포인트: 공급망 전환에 따른 원가 안정성 및 납기 준수율.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>경영진의 톤:</strong> Tarang Amin CEO는 "7년 연속 분기별 20% 이상 성장"이라는 점을 강조하며 자신감을 드러냄. 특히 "우리는 516개 공개 소비기업 중 단 6곳뿐"이라는 비교 지표를 사용하여 차별성을 강조.</li>
+<li><strong>가이던스 화법 변화:</strong> 기존 보수적이었던 가이던스를 과감히 상향 조정(12-14% -&gt; 18-20%). 이는 내부적으로 Q2-Q4의 모멘텀이 매우 강력함을 시사.</li>
+<li><strong>Q&amp;A에서의 방어 및 명확화:</strong><ul>
+<li><strong>관세 환불금 재투자:</strong> 애널리스트들이 일회성 이익의 지속 가능성을 우려하자, 경영진은 $50M 환불금을 마케팅과 가격 인하에 '전액' 재투자하겠다고 명시. 이는 단기 마진 압박을 감수하더라도 장기 시장 점유율과 브랜드 인지도(awareness)를 높이는 데 집중하겠다는 의지로 해석됨.</li>
+<li><strong>마케팅 효율성:</strong> 마케팅 지출이 매출의 23-25% 수준에서 유지되나, Q2-Q4에는 이를 상회할 수 있음을 언급. 이는 과거에도 높은 마케팅 효율(ROI)을 입증해왔다는 신뢰 기반의 발언.</li>
+<li><strong>가격 탄력성:</strong> 10% SKU에 대한 임시 가격 인하 테스트 결과, 나머지 90%는 원래 가격 유지가 적절하다고 판단. 이는 브랜드 파워가 일정 수준 이상임을 의미하며, 무조건적 할인 경쟁보다는 선택적 가격 경쟁을 선호함을 보여줌.</li>
+</ul>
+</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>관세 정책 변동성:</strong> IEEPA 관세 환불금이 일회성 혜택임을 인정. 향후 무역 정책 변화나 관세 인상 시 마진이 즉시 타격받을 수 있음. (MD&amp;A 및 콜 참고)</li>
+<li><strong>높은 마케팅 의존도:</strong> 매출의 25% 이상을 마케팅에 투자해야 하는 구조. 경제 침체 시 마케팅 예산 삭감이 매출 감소로 직결될 수 있으며, 광고단가(CPM) 상승 시 수익성 악화가 예상됨.</li>
+<li><strong>경쟁 심화:</strong> 뷰티 시장은 진입 장벽이 상대적으로 낮고 경쟁이 치열함. 특히 저가 세그먼트에서는 수많은 DTC 브랜드 및 백인 브랜드의 공격적인 대응이 예상됨. (10-K 리스크 섹션 참고)</li>
+<li><strong>채널 집중도 및 유통 파트너 의존도:</strong> Target, Sephora 등 주요 유통사에 대한 의존도가 높으며, 이들 파트너와의 관계 변화나 재고 조정이 매출에 큰 영향을 미칠 수 있음.</li>
+<li><strong>신규 브랜드 실패 리스크:</strong> rhode, Naturium 등 신생 브랜드의 성장이 기대치에 미치지 못할 경우, 포트폴리오 다각화의 효과가 반감되고 투자 회수가 지연될 수 있음.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<ul>
+<li>
+<p><strong>적극 매수의 정량 근거:</strong></p>
+<ul>
+<li>30분기 연속 성장이라는 희소성 있는 모멘텀.</li>
+<li>FY2027 가이던스 상향(매출 성장률 18-20%)은 현재 주가($109.05)에 이미 일부 반영되었을 수 있으나, Adjusted EPS $3.50-3.55는 여전히 매력적인 밸류에이션을 제시.</li>
+<li>현금창출능력(TTM FCF $280.2M)이 우수하여 M&amp;A(rhode earn-out 포함) 및 자사주 매입 여력이 충분함.</li>
+</ul>
+</li>
+<li>
+<p><strong>진입 전 확인할 것 3가지:</strong></p>
+<ol>
+<li><strong>Q2 Rhone 유럽 출시 성과:</strong> Sephora 유럽 19개국 진출 후 첫 달 판매 데이터 및 고객 반응.</li>
+<li><strong>마케팅 ROI 추이:</strong> 마케팅 지출 증가분이 실제 매출 성장과 마진 확대로 이어지는지 분기별 확인.</li>
+<li><strong>원자재 및 운송비 인플레이션:</strong> 경영진이 "운송비 상승은 이미 가이드라인에 반영되었다"고 했으나, 추가적인 원가 상승 요인이 없는지 모니터링.</li>
+</ol>
+</li>
+<li>
+<p><strong>판단을 뒤집을 조건 (관망으로 전환):</strong></p>
+<ul>
+<li>다음 분기(Q2) 매출 성장률이 15% 미만으로 둔화되거나, 가이던스가 하향 조정될 경우.</li>
+<li>rhode 브랜드의 유럽 진출 초기부터 기대치에 못 미치는 성과를 보일 경우.</li>
+<li>마케팅 지출 증가에도 불구하고 시장 점유율(Scanner Data)이 정체되거나 하락할 경우.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000020/elf-20260331.htm">10-K — 2026-03-31_0001600033-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000040/elf-20260630.htm">10-Q — 2026-06-30_0001600033-26-000040</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000007/elf-20251231.htm">10-Q — 2025-12-31_0001600033-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000044/elf-20260820.htm">8-K — 2026-08-20_0001600033-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000036/q12027er-991.htm">8-K — 2026-08-05_0001600033-26-000036__EX-99.1__q12027er-991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000036/elf-20260805.htm">8-K — 2026-08-05_0001600033-26-000036</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000018/q42026er-991.htm">8-K — 2026-05-20_0001600033-26-000018__EX-99.1__q42026er-991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000018/elf-20260520.htm">8-K — 2026-05-20_0001600033-26-000018</a></li>
+<li>Transcript — 2026-08-05 Q1 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
