@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVM — Silvercorp Metals Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SVM — Silvercorp Metals Inc. Common Shares</h1>
+<div class="sub">2026-09-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · dataScout 자동 생성</div>
+<div class="badges"><span class="badge">SVM</span><span class="badge">+7.39%</span><span class="badge">거래량 0.7배</span><span class="badge">$2.82B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong>
+실버 가격 급등에 따른 매출·영업이익의 폭발적 성장(매출 YoY <span class="up">+96%</span>, 영업이익률 62.6%)과 강력한 현금창출능력(TTM FCF $158.8M)은 펀더멘털이 매우 견고함을 시사한다. 그러나 중국 내 안전 점검으로 인한 일시적 생산 둔화, 키르기스스탄 프로젝트의 높은 자본지출(CapEx) 및 지분 구조 복잡성 등 실행 리스크가 상존한다. 단기 모멘텀은 강하나 변동성이 큰 섹터 특성과 운영 리스크를 고려해 중립적 비중을 유지하며 추이를 관찰해야 한다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p>공시나 뉴스에서 특정 기업 개별 이슈(예: M&amp;A, 신규 광산 가동 등)보다는 <strong>금속 가격(특히 실버)의 강세와 이에 따른 실적 기대감 반영</strong>이 주된 요인으로 보인다. 제공된 SEC 공시(6-K)는 주주총회 소집 공고로 실질적인 사업 변화는 없으며, 최근 뉴스 헤드라인도 타사(Soda Ash 관련) 소식이다. 다만, 실적콜에서 경영진이 "실버 가격이 평균 $78/온스 이상"이라며 강력한 수익성을 강조한 점과, 전 분기 대비 매출 증가세가 지속될 것이라는 시장 심리가 작용한 것으로 판단된다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>사업 개요:</strong> Silvercorp Metals Inc.는 은(Silver), 금(Gold), 납(Lead), 아연(Zinc) 등을 생산하는 다국적 광산 개발 기업이다.</li>
+<li><strong>지역별 사업장:</strong><ul>
+<li><strong>중국:</strong> 주요 생산 기지 (은, 납, 아연). 최근 안전 업그레이드로 인해 일시적 생산 지연 발생.</li>
+<li><strong>에콰도르:</strong> El Domo 프로젝트 (은, 아연).</li>
+<li><strong>키르기스스탄:</strong> Chaarat ZAAV 프로젝트 (은, 금) 및 Tulkubash/Kyzyltash 금 프로젝트 인수로 확장 중.</li>
+</ul>
+</li>
+<li><strong>매출 구성:</strong> 실버가 매출의 약 77~78%를 차지하는 가장 핵심 제품이며, 그 외 금, 납, 아연이 기여한다. (Q4 2026 기준 실버 매출 비중 78%)</li>
+<li><strong>경쟁 위치:</strong> 낮은 운영 비용 구조와 안정적인 현금흐름을 바탕으로 한 포트폴리오 다양화(은+금+기타 금속)로 경쟁 우위를 확보하고 있다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<ul>
+<li><strong>매출 및 이익 성장:</strong> Q4 2026 기준 매출은 $147.4M로 전년 동기 대비 96.2% 급증했다. 이는 주로 실버 실현 판매가가 183% 상승한 데 기인한다. 조정 순이익은 $59.3M($0.27/주)로 전년 대비 303% 증가했다.</li>
+<li><strong>마진 개선:</strong> 영업이익률이 62.6%로 전년 대비 35.8%p 상승했으며, 매출총이익률은 67.8%를 기록했다. 금속 가격 상승분이 하단 이익선(Bottom line)으로 거의 그대로 전달되는 '레버리지 효과'가 뚜렷하다.</li>
+<li><strong>현금흐름:</strong> Q4 영업활동 현금흐름은 $90M, 자유현금흐름(FCF)은 $58M로 사상 최고치를 기록했다. TTM 잉여현금흐름은 $158.8M로 재무 여력이 매우充裕하다.</li>
+<li><strong>재무 건전성:</strong> 당분기 말 현금 및 현금성 자산은 $422M(또는 $387M, 공시기준 차이 존재)를 기록했으며, 미인출된 RMB 대출 시설 약 $220M를 보유하고 있어 유동성 위험은 낮다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>실버 가격 상승 지속:</strong> 실버 가격이 고공 행진을 이어갈 경우, 고정비 비중이 높은 광산 사업 특성상 이익 증폭 효과가 극대화된다.<ul>
+<li><em>검증 포인트:</em> 차트상 실버 가격 동향 및 연준의 금리 정책 방향.</li>
+</ul>
+</li>
+<li><strong>키르기스스탄 프로젝트 확장:</strong> Tulkubash 및 Kyzyltash 금 프로젝트 인수(약 $92M 지출)와 ZAAV 라이선스 갱신(2062년까지 연장)을 통해 장기 생산 기반을 확대 중이다.<ul>
+<li><em>검증 포인트:</em> 키르기스스탄 현지 인프라 구축 진행 상황 및 추가 CapEx 규모.</li>
+</ul>
+</li>
+<li><strong>비용 효율성 및 운영 안정화:</strong> 중국 공장의 안전 점검 완료 후 생산 정상화가 예상되며, 이는 물량 회복으로 이어질 수 있다.<ul>
+<li><em>검증 포인트:</em> 다음 분기(2027년 1분기) 중국 공장의 실제 생산량 재개 여부.</li>
+</ul>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>경영진의 톤:</strong> Lon Shaver 사장은 "강력한 분기", " compelling investment(설득력 있는 투자 대상)", "undervalued(저평가됨)" 등 매우 자신감 있는 어조를 사용했다. 특히 비수익성 항목(파생상품 평가손실 등)을 제거한 조정 지표 중심의 커뮤니케이션으로 투자자 신뢰를 관리하려는 의도가 읽힌다.</li>
+<li><strong>Q&amp;A 및 숨겨진 정보:</strong><ul>
+<li><strong>파생상품 처리 변경:</strong> 전환사채(CB)의 현금 결제 옵션을 제거하여 파생부채를 지분으로 재분류했다. 이는 향후 손익계산서의 변동성을 줄이고 회계를 단순화하겠다는 전략이다. (실적콜: "eliminated future fair value volatility")</li>
+<li><strong>생산량 감소 언급:</strong> 실버 가격은 올랐으나, 금 생산량은 24% 증가한 반면 실버, 납, 아연 생산량은 15~17% 감소했다고 인정했다. 이는 중국 공장의 안전 점검 영향임을 명시했다.</li>
+<li><strong>자본 배분:</strong> 무분별한 인수합병(M&amp;A)보다는 기존 프로젝트(중국, 에콰도르, 키르기스스탄)에 대한 지속적인 CapEx($22M, $12M, $2.6M 등)에 집중하고 있음을 보여준다.</li>
+</ul>
+</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>중국 내 규제 및 안전 리스크:</strong> 중국 공장에서의 안전 점검으로 인한 생산 중단은 단기적인 물량 부족과 비용 증가를 유발할 수 있으며, 중국의 광산 규제 강화는 장기적인 운영 불확실성을 높인다.</li>
+<li><strong>지정학적 및 정치적 리스크:</strong> 에콰도르와 키르기스스탄 등 신흥국에 자산을 보유하고 있어, 정부와의 관계 악화, 라이선스 취소, 세금 인상 등의 정치적 리스크에 노출되어 있다. (특히 키르기스스탄에서는 이미 새로운 라이선스 계약 체결을 위해 $60M를 지불한 바 있음)</li>
+<li><strong>금속 가격 변동성:</strong> 매출의 대부분이 실버에 의존하므로, 실버 가격의 급락은 매출과 이익에 즉각적이고 큰 타격을 준다.</li>
+<li><strong>높은 자본지출(CapEx):</strong> 성장 전략 수행을 위해 중국, 에콰도르, 키르기스스탄 등에서 지속적으로 대규모 자본을 투입해야 하며, 이는 단기적인 자유현금흐름을 압박할 수 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<ul>
+<li><strong>근거:</strong> 강력한 FCF 생성 능력과 저평가된 밸류에이션(FWD PER 14.84배)은 매력적이지만, 중국 내 운영 리스크와 키르기스스탄의 복잡한 지분/규제 환경이 명확히 해소되지 않았다. 따라서 '적극 매수'보다는 '관망 또는 소폭 보유'가 적절하다.</li>
+<li><strong>진입 전 확인할 것 3가지:</strong><ol>
+<li>중국 공장의 안전 점검 완료 시점 및 다음 분기 생산량 회복 속도.</li>
+<li>키르기스스탄 Tulkubash/Kyzyltash 프로젝트의 실제 가동 시작 일정.</li>
+<li>글로벌 실버 가격의 지지선 유지 여부 (기술적 분석 기반).</li>
+</ol>
+</li>
+<li><strong>판단 뒤집기 조건:</strong><ul>
+<li><strong>관망 -&gt; 적극:</strong> 중국 공장이 계획보다 빠르게 정상 가동되고, 키르기스스탄 프로젝트에서 초기 생산량이 가이드라인을 상회할 경우.</li>
+<li><strong>보통 -&gt; 회피:</strong> 실버 가격이 주요 지원선을 붕괴하거나, 중국/중앙아시아 현지에서 갑작스러운 규제 강화(라이선스 취소 위협 등) 소식이 나올 경우.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-4.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.4__tm2624133d1_ex99-4</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-3.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.3__tm2624133d1_ex99-3</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-2.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.2__tm2624133d1_ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-1.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.1__tm2624133d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_6k.htm">8-K — 2026-08-26_0001104659-26-102306</a></li>
+<li>Transcript — 2026-08-11 Silvercorp Metals Inc. (SVM:CA) Q1 2027 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-29 Silvercorp Metals Inc. (SVM:CA) Q4 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
