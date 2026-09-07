@@ -1184,3 +1184,104 @@ Details:
   datasets: 1개 업로드
   disclosures-index: 1일치 업로드
 [2026-09-04 16:07:46] drive_sync --light 완료 (451초)
+[2026-09-04 21:29:26] drive_sync --full 시작 (기준: 2026-09-04 16:00:15)
+  datasets: 1개 업로드
+  disclosures-index: 1일치 업로드
+  disclosures-raw/daily: 1일치 zip 업로드 (1.9M)
+[2026-09-04 21:29:54] drive_sync --full 완료 (28초)
+[2026-09-07 12:31:03] drive_sync --light 시작 (기준: 2026-09-04 21:29:26)
+2026/09/07 12:31:12 CRITICAL: Failed to create file system for "gdrive:BeOn 리서치/dataScout/datasets": couldn't find root directory ID: googleapi: Error 403: Quota exceeded for quota metric 'Queries' and limit 'Previous quota: Requests per minute' of service 'drive.googleapis.com' for consumer 'project_number:202264815644'.
+Details:
+[
+  {
+    "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+    "domain": "googleapis.com",
+    "metadata": {
+      "consumer": "projects/202264815644",
+      "quota_limit": "defaultPerMinutePerProject",
+      "quota_limit_value": "840000",
+      "quota_location": "global",
+      "quota_metric": "drive.googleapis.com/default",
+      "quota_unit": "1/min/{project}",
+      "service": "drive.googleapis.com"
+    },
+    "reason": "RATE_LIMIT_EXCEEDED"
+  },
+  {
+    "@type": "type.googleapis.com/google.rpc.Help",
+    "links": [
+      {
+        "description": "Request a higher quota limit.",
+        "url": "https://cloud.google.com/docs/quotas/help/request_increase"
+      }
+    ]
+  }
+]
+, rateLimitExceeded
+  rclone 실패(1/5): copy /home/inhyuk/projects/dataScout/data_dart/.drive_sync_tmp/datasets gdrive:BeOn 리서치/dataScout/datasets — 60초 후 재시도
+  datasets: 6개 업로드
+2026/09/07 12:33:08 CRITICAL: Failed to create file system for "gdrive:BeOn 리서치/dataScout/config": couldn't find root directory ID: googleapi: Error 403: Quota exceeded for quota metric 'Queries' and limit 'Previous quota: Requests per minute' of service 'drive.googleapis.com' for consumer 'project_number:202264815644'.
+Details:
+[
+  {
+    "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+    "domain": "googleapis.com",
+    "metadata": {
+      "consumer": "projects/202264815644",
+      "quota_limit": "defaultPerMinutePerProject",
+      "quota_limit_value": "840000",
+      "quota_location": "global",
+      "quota_metric": "drive.googleapis.com/default",
+      "quota_unit": "1/min/{project}",
+      "service": "drive.googleapis.com"
+    },
+    "reason": "RATE_LIMIT_EXCEEDED"
+  },
+  {
+    "@type": "type.googleapis.com/google.rpc.Help",
+    "links": [
+      {
+        "description": "Request a higher quota limit.",
+        "url": "https://cloud.google.com/docs/quotas/help/request_increase"
+      }
+    ]
+  }
+]
+, rateLimitExceeded
+  rclone 실패(1/5): copy /home/inhyuk/projects/dataScout/data_dart/.drive_sync_tmp/config gdrive:BeOn 리서치/dataScout/config — 60초 후 재시도
+2026/09/07 12:34:17 CRITICAL: Failed to create file system for "gdrive:BeOn 리서치/dataScout/config": couldn't find root directory ID: googleapi: Error 403: Quota exceeded for quota metric 'Queries' and limit 'Previous quota: Requests per minute' of service 'drive.googleapis.com' for consumer 'project_number:202264815644'.
+Details:
+[
+  {
+    "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+    "domain": "googleapis.com",
+    "metadata": {
+      "consumer": "projects/202264815644",
+      "quota_limit": "defaultPerMinutePerProject",
+      "quota_limit_value": "840000",
+      "quota_location": "global",
+      "quota_metric": "drive.googleapis.com/default",
+      "quota_unit": "1/min/{project}",
+      "service": "drive.googleapis.com"
+    },
+    "reason": "RATE_LIMIT_EXCEEDED"
+  },
+  {
+    "@type": "type.googleapis.com/google.rpc.Help",
+    "links": [
+      {
+        "description": "Request a higher quota limit.",
+        "url": "https://cloud.google.com/docs/quotas/help/request_increase"
+      }
+    ]
+  }
+]
+, rateLimitExceeded
+  rclone 실패(2/5): copy /home/inhyuk/projects/dataScout/data_dart/.drive_sync_tmp/config gdrive:BeOn 리서치/dataScout/config — 60초 후 재시도
+  config: 2개 업로드
+  disclosures-index: 1일치 업로드
+[2026-09-07 12:35:48] drive_sync --light 완료 (285초)
+[2026-09-07 16:00:18] drive_sync --light 시작 (기준: 2026-09-07 12:31:03)
+  datasets: 1개 업로드
+  disclosures-index: 1일치 업로드
+[2026-09-07 16:00:43] drive_sync --light 완료 (25초)
