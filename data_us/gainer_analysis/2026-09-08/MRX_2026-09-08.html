@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MRX — Marex Group Limited Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MRX — Marex Group Limited Ordinary Shares</h1>
+<div class="sub">2026-09-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">MRX</span><span class="badge">+3.46%</span><span class="badge">거래량 2.35배</span><span class="badge">$5.80B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 강함. 실적콜 기준 Q2 2026 매출 $696M(<span class="up">+39%</span> YoY), 조정 세전이익 $166M(<span class="up">+56%</span> YoY), ROE 37.5%, IPO 이후 6개 분기 연속 최고 이익. 거래소 거래량이 전분기 대비 17% 줄어든 환경에서도 조정 PBT가 QoQ <span class="up">+9%</span> 성장한 점은 구조적 성장 논리를 뒷받침함.</li>
+<li>밸류에이션 부담은 크지 않음. 종가 $78.27 대비 실적콜 언급 TTM 보고 EPS $5.72 기준 약 13.7배, H1 조정 EPS $3.29를 단순 연환산하면 약 11.9배(계산치).</li>
+<li>다만 오늘 상승은 확인된 촉매가 없고, 20일 수익률 28.7%로 52주 고점에 정확히 위치. 거래량 2.35배 급증의 주체가 공시로 설명되지 않음.</li>
+<li>청산·프라임 브로커리지 사업 특성상 고객 디폴트(1월 사례)·시장 혼란 시 유동성 리스크가 상존하며, 제공된 20-F 발췌에 리스크 팩터 본문이 없어 정성 리스크 검증이 불완전함.</li>
+<li>결론: 펀더멘털은 '적극' 수준이나, 촉매 부재·고점 추격 리스크·리스크 섹션 미검증을 감안해 분할 진입 전제의 '보통'.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>당일 전후 공시는 2026-09-04자 424B2 Pricing Supplement 3건뿐. 이는 회사가 2025년 8월 설정한 구조화채권(Structured Notes) 프로그램 하의 정기 발행 서류로, 주가 촉매로 보기 어려움.</li>
+<li>뉴스 헤드라인 2건 중 하나는 일반 기술적 분석 콘텐츠, 다른 하나는 'Mirex Network'라는 암호화폐를 다룬 것으로 Marex와 무관한 티커 혼동 기사임.</li>
+<li>직전 실적 이벤트는 2026-08-12 Q2 실적콜이며, 이후 20일간 28.7% 상승한 흐름의 연장선으로 해석하는 것이 합리적. 실적콜에서 회사는 "7월과 8월 초 Q3 추세가 H1과 일관된다"고 밝힘.</li>
+<li>거래대금 $120.5M, 거래량 2.35배는 시총 $5.80B 종목 치고 유의미하나, 지수 편입·대량 블록 등 수급 이벤트는 제공 자료로 확인 불가.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 20-F 발췌는 표지와 목차만 포함되어 사업 섹션 본문은 확인 불가. 아래는 2026-07-01자 6-K 첨부 보도자료와 실적콜 발언에 근거함.</p>
+<p><strong>사업 정의(6-K 보도자료 기준)</strong>: 글로벌 상품·금융시장에서 시장 접근(market access), 인프라 서비스, 유동성을 제공하는 다각화 금융 플랫폼. 4개 서비스 라인으로 구성됨.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>Q2 2026 매출(실적콜)</th>
+<th>YoY</th>
+<th>조정 PBT 마진</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clearing</td>
+<td>$161M</td>
+<td>+16%</td>
+<td>49%</td>
+<td>거래소 청산, 고객 예탁잔고 평균 $19.1B</td>
+</tr>
+<tr>
+<td>Agency &amp; Execution</td>
+<td>$351M</td>
+<td>+35%</td>
+<td>33%</td>
+<td>대행 집행, 프라임 브로커리지(분기 최고 $120M), FX(Hamilton Court)</td>
+</tr>
+<tr>
+<td>Market Making</td>
+<td>$118M</td>
+<td>+106%</td>
+<td>38%</td>
+<td>금속·증권 중심 마켓메이킹</td>
+</tr>
+<tr>
+<td>Solutions(Hedging &amp; Investment Solutions)</td>
+<td>공시상 확인 불가</td>
+<td>+74%</td>
+<td>35%</td>
+<td>헤지·구조화 투자 솔루션, 조정 PBT $25M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군</strong>: 6-K 보도자료 기준 3,400개 이상 활성 고객(상품 생산자·소비자·트레이더, 은행, 헤지펀드, 자산운용사). 60개 이상 거래소 접근, 50개 이상 사무소, 3,000명 이상 임직원. 실적콜에서 연매출 $5M 이상 고객이 77곳으로 2025년 49곳에서 증가했다고 언급.</p>
+<p><strong>경쟁 위치</strong>: 6월 Piper Sandler 컨퍼런스에서 CEO는 "은행이 버리는 사업을 줍는 단계를 넘어 글로벌 대형 은행과 대형 위임 경쟁에서 이기고 있다"고 주장. 프라임 브로커리지는 대형 은행의 캐파 제약 수혜와 $500M~$2B 규모 헤지펀드 공략이 핵심이라고 실적콜에서 언급. 이는 회사 측 주장이며 시장점유율 수치는 공시상 확인 불가.</p>
+<p><strong>지배구조 변경</strong>: 2026-07-01 영국에서 버뮤다로 재도미사일 완료(6-K). 기존 Marex Group plc는 Marex UK Holdings Limited로 이름을 바꿔 자회사가 됨. 회사는 구조 단순화·비용 절감·나스닥 상장과 정합성 있는 미국식 회사법 적용을 이유로 밝힘. 신주 1:1 교환으로 주주 지분 희석 없음.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>지표 정합성에 대한 주의</strong>: 제공 지표의 '최근 분기 매출 $1.18B(YoY <span class="up">+34%</span>)'는 실적콜의 Q2 매출 $696M(<span class="up">+39%</span>)과 다름. 총매출/순매출 등 정의 차이로 추정되나 공시상 확인 불가. 마찬가지로 제공 지표의 영업이익률 35.4%와 실적콜의 조정 PBT 마진 24%는 산식이 다른 것으로 보이며, 본 리포트는 실적콜 수치를 우선함.</p>
+<p><strong>성장의 질</strong>
+- 실적콜 기준 Q2 성장의 80%가 유기적 성장, 20%가 M&amp;A 기여. 회사는 "고객 잔고 증가가 신규·기존 고객 모두에서 발생했고 Q2 증가분 대부분은 미국 외 지역"이라고 밝힘.
+- 물량 환경은 역풍이었음. 핵심 거래소 거래량 QoQ <span class="down">-17%</span>, 변동성 하락, 금리 보합. 그럼에도 조정 PBT QoQ <span class="up">+9%</span>는 믹스(고마진 인프라 사업 비중 확대)와 점유율 확대가 물량 감소를 상쇄했음을 시사함.
+- 부문별로 Market Making(<span class="up">+106%</span>)과 Solutions(<span class="up">+74%</span>)의 고성장은 상품 가격 강세(금속) 수혜 성격이 있어 지속성은 검증 필요. Clearing(<span class="up">+16%</span>)은 1월 고객 디폴트 영향이 H1에 반영된 상태.</p>
+<p><strong>마진 방향성</strong>
+- 조정 PBT 마진 24%. 컨퍼런스에서 CEO는 "5년 전 15%에서 최근 22%까지 왔고 곧 20% 중후반, 장기적으로 30% 초과 가능성"이라고 밝힘. 실적콜에서는 "느리고 꾸준한 상승"으로 표현이 절제됨.
+- 부문 마진은 Clearing 49% &gt; Market Making 38% &gt; Solutions 35% &gt; Agency &amp; Execution 33%. Clearing은 금리 민감(예탁잔고 이자수익)이므로 금리 하락 시 마진 압박 가능.</p>
+<p><strong>수익성·자본</strong>
+- ROE 37.5%(조정 37.8%). Q2 세후이익 $155M에는 Winterflood Custody 매각이익 $35M 포함. 이를 제외한 조정 EPS는 $1.72(보고 EPS $2.09).
+- S&amp;P RAC 비율 약 12%로 회사가 밝힌 '강한 자본' 기준 10% 상회.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM 잉여현금흐름은 제공 지표에 없음. 브로커·청산 사업 특성상 고객 자금 흐름이 영업현금흐름을 왜곡하므로 FCF보다 유동성 헤드룸이 유의미함. 실적콜 기준 유동성 헤드룸 $1.8B, 총 조달원 $8.1B.
+- 총자산 $42.1B(6월 말) 중 80%가 고객 활동 기반. 자산 대비 시총이 작아 보이지만 이는 청산회사의 구조적 특성임.
+- 6-K(2026-07-06) 기준 발행 잔존 선순위채: 2028년 만기 $500M(5.829%), 2029년 만기 $600M(6.404%), 2031년 만기 $500M(5.680%). 여기에 2026년 6월 $500M 하이브리드 자본(AT1 성격, 버뮤다 홀드코 이전 후 S&amp;P 100% 자본 인정 예정이라고 CEO 언급). 부채 절대액은 증가 추세이나 CEO는 최근 발행 스프레드가 전년 대비 50bp 축소됐다고 밝힘.
+- 2026년 H1 평균 일일 VaR $5.8M, 거래일 87% 흑자(실적콜).</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>프라임 브로커리지 점유율 확대</strong>
+   - 실적콜: Q2 프라임 매출 분기 최고 $120M. 대형 은행 캐파 제약 수혜, 잔고가 "평균적으로 이전의 두 배". 다만 CEO는 "Q2 중 변동성 큰 종목의 가격 조정으로 잔고가 늘었다가 일부 줄었다"고 인정.
+   - 검증 포인트: Q3 프라임 매출이 $120M 수준을 유지하는지, 고객 잔고 추이.</p>
+</li>
+<li>
+<p><strong>청산 고객 잔고 성장과 신규 지역</strong>
+   - 평균 고객 잔고 $19.1B. Bright Point 인수(2026년 말~2027년 초 완료 예정)로 아시아 청산 강화. 회사는 "신규 고객 잔고 파이프라인이 건전하다"고 밝힘.
+   - 검증 포인트: 잔고 $19.1B 이상 유지 여부, Bright Point 클로징 일정, 금리 하락 시 이자수익 방어.</p>
+</li>
+<li>
+<p><strong>M&amp;A 롤업(연 성장의 약 20% 기여 목표)</strong>
+   - CEO는 "2~3배 이익 배수로 인수해 플랫폼 위에서 성장시키는 것"이 가장 효과적인 가치창출이라고 밝힘. Hamilton Court(FX)가 성공 사례로 반복 언급됨. M&amp;A 초점은 기존 고객 심화보다 신규 고객 유입(퍼널 확대), 특히 자본시장 자산군 인수.
+   - 검증 포인트: 신규 인수 발표 시 인수 배수·자본 소요, 인수 후 부문 마진 훼손 여부.</p>
+</li>
+<li>
+<p><strong>신시장 인프라(디지털자산·예측시장·국채 크로스마진)</strong>
+   - 실적콜: 미 국채 크로스마진 최초 제공, USDC 스테이블코인 마진 허용, 온체인 레포 실행, 예측시장 청산 준비 중. CEO는 예측시장 관여가 "현재로선 매우 제한적"이며, 디지털자산 역량이 대형 헤지펀드 접근의 '문 여는 열쇠' 역할이라고 언급.
+   - 검증 포인트: 이 항목의 매출 기여는 공시상 확인 불가. 다음 분기에 별도 수치 공개 여부 자체가 시그널.</p>
+</li>
+<li>
+<p><strong>마진 확대</strong>
+   - 회사 목표: 매출 성장 10~20% 레인지 상단, 마진은 완만한 상승.
+   - 검증 포인트: Q3 조정 PBT 마진 24% 이상 유지, 재도미사일 비용 소멸 후 순마진.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 톤은 매우 자신감 있음. CEO가 "20개 분기 중 19개 YoY 이익 성장"을 반복 인용하고 "H2가 기대된다", "선순환에 들어섰다"로 마무리. 자신감의 근거는 거래량 <span class="down">-17%</span> 환경에서 QoQ 이익 성장을 냈다는 점으로, 구조적 성장 논거를 데이터로 뒷받침하려는 의도가 뚜렷함.
+- 가이던스 화법: 6월 컨퍼런스에서는 "4월이 기록적 Q1과 일관, 5월은 오히려 강화"라고 월별 힌트를 줬고, 실적콜에서도 "7월·8월 초는 H1과 일관"이라고 분기 중 트렌드를 선제 공개. 이는 하방 서프라이즈 가능성을 낮추는 화법이나, 동시에 미달 시 신뢰 훼손 폭이 큰 양날의 검.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- 반복 질문: 프라임 브로커리지 잔고의 지속성. CEO는 "다각화됐다, 지속성이 있다"고 답하면서도 Q2 중 잔고 축소를 인정. 정량적 하한을 제시하지 않은 점은 방어적.
+- 예측시장 질문에 CEO는 "관여가 아직 제한적"이라며 기대치를 스스로 낮춤. 신사업 과대 포장은 없었음.
+- M&amp;A 질문에서 인수 배수·규모 등 구체 수치는 제시하지 않고 "퍼널 확대 쪽 스큐"라는 방향성만 답변.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 1월 고객 디폴트가 H1 청산 실적에 영향. 규모는 공시상 확인 불가.
+- 하이브리드 자본 $500M이 버뮤다 홀드코 이전 후 S&amp;P 100% 자본 인정 예정(CEO 컨퍼런스 발언). 재도미사일이 규제 자본 최적화와 연결돼 있음을 시사.
+- 자사주 매입 권한은 "주가 급락 시 대비용"이며 평상시 매입 계획 없음. 자본은 M&amp;A 우선.
+- 평균 일일 VaR $5.8M, 거래일 87% 흑자 등 트레이딩 리스크 지표.
+- 컨퍼런스 자동요약의 'GBP' 표기(PBT 418M 등)는 회사가 USD로 보고하므로 통화 오기로 추정. 6-K에 따르면 2031년 만기 채권은 $500M.</p>
+<h2>6. 리스크</h2>
+<p>제공된 20-F 발췌에 리스크 팩터 본문이 포함되지 않아, 아래는 6-K·실적콜에서 실제로 확인되는 항목으로 한정함.</p>
+<ol>
+<li><strong>고객 디폴트·청산 리스크</strong>: 2026년 1월 고객 디폴트가 H1 청산 실적에 부정적 영향(실적콜). 청산회사는 고객 손실을 최종 흡수하는 구조이므로 상품 가격 급변 시 재발 가능. 규모·충당 수준은 공시상 확인 불가.</li>
+<li><strong>프라임 브로커리지 잔고의 변동성</strong>: 실적콜에서 CEO가 Q2 중 변동성 큰 종목의 가격 조정으로 잔고 축소를 인정. 프라임이 A&amp;E 부문 매출 $351M 중 $120M을 차지해, 잔고 급감 시 부문 이익(YoY <span class="up">+69%</span>) 되돌림 폭이 큼.</li>
+<li><strong>레버리지 확대와 조달 의존</strong>: 선순위채 $1.6B에 하이브리드 $500M, 구조화채권 프로그램까지 부채 조달을 지속. CEO 스스로 "가장 큰 리스크는 시장 혼란 시 고객이 현금을 요구하는 상황"이라고 언급. 신용시장 경색 시 조달 비용 상승이 ROE를 직접 압박함.</li>
+<li><strong>M&amp;A 실행 리스크</strong>: 성장의 20%를 M&amp;A에 의존하며 Hamilton Court, Aarna, Agrinvest, Winterflood, Levmet, Bright Point 등 인수가 연쇄적. 통합 실패나 인수 배수 상승 시 "2~3배 인수" 논리가 깨짐. 회사는 "투자 기회가 자본보다 많아 제약된 상태"라고 밝혔는데 이는 자본 재조달 필요를 뜻함.</li>
+<li><strong>금리·상품가격 민감도</strong>: Clearing 마진 49%는 고객 예탁잔고 이자수익에 상당 부분 의존. Market Making <span class="up">+106%</span>는 금속 가격 강세 수혜. 금리 인하와 상품 가격 정상화가 동시에 오면 두 고마진 부문이 함께 둔화될 수 있음.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+| 항목 | 값 | 출처 |
+|---|---|---|
+| Q2 매출 성장 | <span class="up">+39%</span> YoY | 실적콜 |
+| 조정 PBT 성장 | <span class="up">+56%</span> YoY, <span class="up">+9%</span> QoQ | 실적콜 |
+| ROE | 37.5% | 실적콜 |
+| P/E(TTM 보고 EPS $5.72 기준) | 약 13.7배 | 계산치 |
+| P/E(H1 조정 EPS 연환산) | 약 11.9배 | 계산치 |
+| 유동성 헤드룸 | $1.8B | 실적콜 |
+| 20일 수익률 / 52주 고점 대비 | <span class="up">+28.7%</span> / 0.0% | 제공 지표 |</p>
+<p>성장률·ROE 대비 배수는 부담이 없어 펀더멘털만 보면 '적극'에 가까움. '보통'으로 낮춘 이유는 (1) 오늘 거래량 급증의 원인이 공시로 설명되지 않음, (2) 20일간 28.7% 상승 후 고점, (3) 리스크 팩터 원문 미검증 세 가지임.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 20-F Item 3.D 리스크 팩터와 Item 5 MD&amp;A 원문을 직접 확인해 1월 고객 디폴트 손실 규모와 총매출 $1.18B vs 순매출 $696M의 정의 차이를 해소할 것.
+2. 9월 4일 424B2 3건의 발행 규모와 조건. 구조화채권 발행이 급증했다면 조달 의존도 확대 신호.
+3. 오늘 거래량 2.35배의 주체(지수 리밸런싱, 블록 거래, 애널리스트 커버리지 개시 등). 확인되지 않으면 분할 진입 1차분만 집행.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- Q3 실적(예상 11월)에서 프라임 매출이 $120M에서 유의미하게 감소하거나 청산 고객 잔고가 $19.1B 아래로 내려갈 때.
+- 조정 PBT 마진이 24%에서 후퇴하며 회사가 "완만한 상승" 화법을 철회할 때.
+- 신규 고객 디폴트 공시 또는 하이브리드 자본의 S&amp;P 자본 인정이 불발돼 RAC 비율이 10% 근처로 하락할 때.
+- 대형 인수를 위한 유상증자 등 주식 희석성 조달이 발표될 때. CEO의 "자본보다 기회가 많다" 발언은 이 가능성을 열어둔 것으로 읽힘.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000199746426000018/mar-20251231.htm">20-F — 2025-12-31_0001997464-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000119312526296187/d69534d6k.htm">8-K — 2026-07-06_0001193125-26-296187</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000119312526291648/d100552dex995.htm">8-K — 2026-07-01_0001193125-26-291648__EX-99.5__d100552dex995</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000119312526291648/d100552dex994.htm">8-K — 2026-07-01_0001193125-26-291648__EX-99.4__d100552dex994</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000119312526291648/d100552dex993.htm">8-K — 2026-07-01_0001193125-26-291648__EX-99.3__d100552dex993</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1997464/000119312526291648/d100552dex992.htm">8-K — 2026-07-01_0001193125-26-291648__EX-99.2__d100552dex992</a></li>
+<li>Transcript — 2026-08-12 Q2 2026 Transcript</li>
+<li>Transcript — 2026-06-03 Piper Sandler Global Exchange and Fintech Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

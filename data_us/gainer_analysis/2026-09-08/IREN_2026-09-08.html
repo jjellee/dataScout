@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IREN — IREN Limited Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>IREN — IREN Limited Ordinary Shares</h1>
+<div class="sub">2026-09-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">IREN</span><span class="badge">+7.28%</span><span class="badge">거래량 0.86배</span><span class="badge">$17.61B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>계약 ARR $4B(회사 발표)과 Microsoft·NVIDIA라는 카운터파티는 실재하지만, 실제 가동 ARR은 $1B 수준이며 최근 분기 매출은 $137.2M(YoY <span class="down">-26.7%</span>)으로 아직 숫자로 확인된 것이 거의 없다.</li>
+<li>회사는 FY27 CapEx를 $25~30B로 제시했다. 6월 말 현금 $7.6B(이 중 $1.7B는 Microsoft GPU용 제한현금), TTM 잉여현금흐름 -$2.35B, 시가총액 $17.61B와 비교하면 자금조달 실행 리스크가 투자 논리의 핵심 변수다.</li>
+<li>발행주식은 2024년 6월 1억8,786만 주에서 2026년 8월 3억9,406만 주로 약 2.1배 늘었고, 지난 12개월 $3B 증자와 전환사채, NVIDIA의 $2.1B 투자권까지 추가 희석 요인이 쌓여 있다.</li>
+<li>오늘 <span class="up">+7.28%</span>는 거래량 배수 0.86배로 20일 중앙값을 밑돌아, 수급이 확인된 상승이 아니다. 신규 진입은 12월 분기 Horizon 2~4 인도와 실현 ARR 확인 이후로 미루는 것이 합리적이다.</li>
+<li>제공된 10-K 발췌에는 사업·리스크 본문이 포함되지 않아, 공시 원문 기반 리스크 검증이 미완이라는 점도 관망 판단의 이유다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 셀사이드 코멘트·미디어 기사에 의한 수급 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 직전 실적 발표(FY26 Q4, 2026-08-27)로부터 약 2주가 지나 실적 자체가 당일 촉매라고 보기 어렵다.</li>
+<li>헤드라인 중 "Jefferies가 $3B AI 기회를 언급했다"는 Stocktwits 기사, "AI 가격이 급등하고 있다·$2.6B 계약 기반이 크게 확장될 수 있다"는 Yahoo Finance·24/7 Wall St. 기사가 당일 전후 매수 심리를 자극한 것으로 추정된다. 다만 Jefferies 보고서 원문은 제공되지 않아 내용 검증은 불가하다.</li>
+<li>헤드라인의 "$2.6B 계약 기반"은 회사가 실적콜에서 밝힌 $4B 계약 ARR과 수치가 다르다. 기사의 정의(예: 특정 고객군·기간)는 제공 자료로 확인 불가하다.</li>
+<li>거래량 배수 0.86배, 거래대금 $1.62B는 평소 수준이다. 60일 <span class="down">-13.3%</span>, 52주 고점 대비 <span class="down">-41.5%</span> 상태에서의 반등이라는 점을 고려하면, 낙폭 과대 인식과 기사 노출이 결합된 기술적 반등에 가깝다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K(FY2026, 2026년 6월 30일 결산) 발췌는 표지와 목차까지만 포함되어 있어, Item 1 사업 섹션의 원문은 확인 불가하다. 아래는 표지의 사실과 실적콜 발언을 구분해 정리한 것이다.</p>
+<p><strong>공시(10-K 표지)로 확인되는 사실</strong>
+- 호주 법인(시드니 본사), Nasdaq Global Select 상장, 대형 가속 신고자(Large accelerated filer) 및 WKSI 지위.
+- FY2024까지는 Iris Energy Limited 명의로 IFRS 기준 20-F를 제출했고, FY2026에는 IREN Limited 명의로 10-K를 제출했다. 즉 외국 민간 발행인에서 미국 국내 신고자 형태로 전환됐다.
+- 2025년 12월 31일 기준 비계열 보유 시가총액 약 $11.9B. 2026년 8월 14일 기준 보통주 394,058,648주 및 B클래스 주식 2주.
+- 제공 지표의 섹터 분류 "Finance: Consumer Services"는 데이터 제공자 분류이며, 실제 사업 내용과 부합하지 않는다.</p>
+<p><strong>실적콜에서 언급된 사업 구조</strong>
+- 회사는 사업을 세 층으로 설명했다. ① 데이터센터(토지·전력·변전·냉각), ② 컴퓨트(GPU·스토리지·네트워킹), ③ 소프트웨어(Mirantis를 통한 관리형 서비스·엔터프라이즈 지원). 회사는 세 층을 모두 소유하는 것이 경쟁 우위라고 밝혔다.
+- 매출원은 AI Cloud(GPU 컴퓨트 임대 성격)와 비트코인 마이닝이다. FY26 Q4 매출 $137.2M 중 AI Cloud가 $70.5M이며, 나머지 약 $66.7M(산출값)은 마이닝 등이다. 회사는 마이닝을 2026년 말까지 완전 폐쇄한다고 밝혔다.
+- 고객군: 실적콜에서 Microsoft(Horizon 1~4, 각 50MW), NVIDIA(자체 내부 워크로드용 5년 $3.4B 계약, Q3 콜 발표), Together AI·Fireworks AI(갱신·확대), "선도적 프론티어 AI 랩" 등이 언급됐다. 개별 고객별 매출 비중은 공시상 확인 불가.
+- 자산 기반: Q3 콜에서 확보 전력 5GW를 밝혔고, 텍사스(Childress, Sweetwater), 브리티시컬럼비아(Prince George, Mackenzie), 오클라호마, 남호주, 스페인(Nostrum 인수로 490MW, Badajoz)이 언급됐다.
+- 경쟁 위치: 회사는 "가동 중인 모든 용량이 계약 완료" 상태이며 "유휴 GPU가 없다"고 반복 주장했다. 이는 회사 주장이며 제3자 검증 자료는 제공되지 않았다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>10-K의 MD&amp;A 본문은 제공 발췌에 포함되지 않았다. 아래는 제공된 분기 지표와 실적콜 발언에 근거한다.</p>
+<p><strong>성장의 질</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY26 Q4 매출</td>
+<td>$137.2M</td>
+<td>지표·실적콜</td>
+</tr>
+<tr>
+<td>이 중 AI Cloud</td>
+<td>$70.5M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>매출 QoQ</td>
+<td>-5.2% (약 -$7.6M)</td>
+<td>지표·실적콜</td>
+</tr>
+<tr>
+<td>매출 YoY</td>
+<td>-26.7%</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>62.3%</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>-102.5% (YoY <span class="down">-111.5%</span>p)</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>분기 순손실</td>
+<td>$684M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>비현금 손상</td>
+<td>$450.4M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>마이닝 하드웨어 공정가치 감소</td>
+<td>$102.1M</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출 감소는 마이닝 하드웨어 폐쇄에 따른 것이라고 회사는 밝혔다. AI Cloud 매출이 마이닝 감소를 아직 상쇄하지 못하는 전환기다.</li>
+<li>단가: 회사는 3년 계약 가격이 지난해 11월 이후 125%, 5년 계약이 70% 상승했고, 최근 3년 계약은 IT부하 MW당 $20M 이상, 현재 협상은 $25M/MW 수준이라고 밝혔다. 이는 회사 주장이며 계약서 기반 검증은 불가하다.</li>
+<li>물량: 분기 말 가동 ARR 약 $500M, Horizon 1 인도 후 $1B라고 회사는 밝혔다. 즉 매출의 향후 증가는 신규 용량 가동에 거의 전적으로 의존한다.</li>
+</ul>
+<p><strong>마진 방향성</strong>
+- 매출총이익률 62.3%는 양호하나, 영업이익률 <span class="down">-102.5%</span>는 대규모 손상·감가 및 인건비 확대(회사는 FY26 헤드카운트가 약 3배로 늘었다고 밝힘)를 반영한다.
+- 제공 지표로 산출한 영업손실은 약 $141M 수준인데, 실적콜의 손상 $450.4M이 영업손익에 포함되는지 여부는 제공 자료로 확인 불가하다. 재무제표 원문 확인이 필요하다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM 잉여현금흐름 -$2.35B. 회사는 지난 12개월간 약 $19B를 조달했다고 밝혔다(선수금·GPU 파이낸싱·전환사채 $16B, 증자 $3B).
+- 6월 말 현금 $7.6B(제한현금 $1.7B 포함). 4월 30일 $2.6B에서 크게 늘었는데, 이는 조달 결과다.
+- 최근 3개월 GPU 파이낸싱 $6.5B를 마감했다고 회사는 밝혔다(투자등급 $3.6B, 금리 6%; 비투자등급 $2.8B, 금리 9%). 회사는 모든 데이터센터가 무담보 상태로 추가 자산담보 조달 여력이 있다고 밝혔다.
+- 회사는 FY27 CapEx를 $25~30B로 제시하고, 추가 $8B의 GPU 파이낸싱·선수금을 목표로 한다고 밝혔다. 현금 $7.6B와 추가 $8B를 합쳐도 가이던스 하단에 미치지 못하므로, 나머지는 추가 조달 또는 계획 조정에 달려 있다.
+- 총부채 잔액, 전환사채 조건, 만기 구조는 제공 발췌에서 확인 불가하다.</p>
+<p><strong>밸류에이션(산출값)</strong>
+- 시가총액 $17.61B는 계약 ARR $4B의 약 4.4배, 가동 ARR $1B의 약 17.6배, 최근 분기 매출 연환산(약 $549M)의 약 32배다. 계약 ARR이 전부 실현되고 마진이 확인되어야 정당화되는 수준이다.</p>
+<h2>5. 성장 드라이버</h2>
+<p>회사가 제시한 성장 축과 검증 포인트다. 모두 회사 발언 기준이다.</p>
+<ol>
+<li>
+<p><strong>Microsoft Horizon 1~4 인도.</strong> Horizon 1(50MW)은 인도 완료, 나머지 3개는 12월 분기 인도 목표라고 회사는 밝혔다.
+   - 검증 포인트: 다음 분기 실적에서 Horizon 2~4 인도 여부, AI Cloud 분기 매출이 $70.5M에서 얼마나 증가했는지, 제한현금 $1.7B의 소진 추이.</p>
+</li>
+<li>
+<p><strong>계약 ARR $4B → 가동 ARR 전환.</strong> 회사는 12월 분기 말까지 $4B 이상 ARR을 목표로 한다고 밝혔다. Q3 콜의 "2026년 말 $3.7B" 목표에서 상향된 것이다.
+   - 검증 포인트: 가동 ARR(계약이 아닌) 수치 공개 여부, 고객별 집중도, 계약 취소·지연 공시.</p>
+</li>
+<li>
+<p><strong>NVIDIA 전략 파트너십.</strong> Q3 콜에서 5년 $3.4B AI 클라우드 계약과 NVIDIA의 $2.1B 투자(60만 GPU 배치 시 완전 베스팅)를 밝혔다. Q4 콜에서는 Mirantis가 NVIDIA 인증 하이퍼바이저로 지정됐다고 밝혔다.
+   - 검증 포인트: NVIDIA 투자권 베스팅 진행 상황, GPU 인도 일정, 이 계약의 매출 인식 개시 시점.</p>
+</li>
+<li>
+<p><strong>용량 확대.</strong> 회사는 2026년 300MW IT부하, 2027년 추가 500MW, 총 1.2GW를 제시했다. Q3 콜에서는 2026년 480MW AI 클라우드 용량, 2027년 1,210MW를 언급했는데, IT부하와 총용량 등 정의 차이인지 목표 하향인지 제공 자료로는 확인 불가하다.
+   - 검증 포인트: 두 수치의 정의 정리, Sweetwater·Childress·BC 사이트별 에너자이즈 일정 준수 여부.</p>
+</li>
+<li>
+<p><strong>계약 단가 상승.</strong> 회사는 3년 계약 단가가 11월 이후 125% 올랐고 MW당 $25M 협상이 진행 중이라고 밝혔다.
+   - 검증 포인트: 신규 계약 공시 시 MW당 금액·기간·선수금 비율, 기존 고객(Together AI, Fireworks AI) 갱신 단가.</p>
+</li>
+<li>
+<p><strong>자금조달 플라이휠.</strong> 회사는 고객 선수금이 GPU CapEx의 45~55%를 조달하고, 투자등급 딜에서는 GPU 파이낸싱이 최대 96%를 커버한다고 밝혔다.
+   - 검증 포인트: 추가 $8B 조달 마감 여부와 금리, 데이터센터 자산담보 조달 개시 여부, 신규 증자·전환사채 발행 규모.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 두 번의 콜 모두 창업자 CEO Daniel Roberts가 "디지털은 즉시 확장되지만 물리 세계는 그렇지 않다"는 창업 서사로 시작했다. 자신감의 근거로 제시된 것은 계약 ARR 증가($3.1B→$4B), NVIDIA·Microsoft 카운터파티, 그리고 GPU 파이낸싱 금리 하락(사모신용 10%대 중반에서 투자등급 6%로)이다.
+- 가이던스 화법은 Q3 "2026년 말 $3.7B ARR 궤도 유지"에서 Q4 "12월 분기 말 $4B 초과 목표"로 상향됐다. 반면 FY27 CapEx $25~30B라는 매우 큰 숫자를 처음 제시하면서 "건설 일정, GPU 인도, 자금조달 환경에 따라 유연하게 조정"이라는 단서를 붙였다.
+- 회사는 "컴퓨트 투자가 약 2년 내 회수되고 고객이 CapEx 절반을 선납한다"고 밝혔다. 이는 부동산 금융 비유를 통해 강조된 주장이며, 실제 계약별 회수기간은 공시상 확인 불가하다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- Canaccord의 Joseph Vafi는 업계 전체의 자금조달 지속 가능성을 물었다. CEO는 "이 질문을 자주 듣는다"고 인정한 뒤, 철도·통신·부동산 금융의 역사적 형성 과정을 길게 비유했다. 구체적 만기 구조나 커버넌트 대신 Blue Owl·PIMCO가 인수자라는 점을 근거로 들었다. 답변 길이와 비유 의존도를 보면 이 지점이 회사가 가장 방어적인 영역이다.
+- Q3 콜에서 Vafi는 미계약 용량의 수요와 고객 다변화를 물었다. CEO와 CCO Kent Draper는 "유휴 GPU는 없다"를 반복하며, 하이퍼스케일러 대 AI 네이티브 비중은 "유기적으로 형성될 것"이라고 답했다. 명시적 목표 비중은 제시하지 않았다.
+- BTIG의 Ben Sommers는 구세대 GPU(A100·H100·H200)의 수명과 수요를 물었다. CCO는 구세대도 완전 가동 중이고 일부 가격이 오르고 있다고 답했다. 이는 GPU 감가상각 기간 가정과 직결되며, 회계상 내용연수는 공시상 확인 불가하다.</p>
+<p><strong>공시 발췌에는 없고 콜에서만 드러난 정보</strong>
+- 계약 단가 지표(3년 <span class="up">+125%</span>, 5년 <span class="up">+70%</span>, MW당 $20M 초과, $25M 협상 중).
+- GPU 파이낸싱 세부(투자등급 $3.6B 6%, 비투자등급 $2.8B 9%), 선수금이 GPU CapEx의 45~55%를 조달한다는 구조.
+- 모든 데이터센터가 무담보 상태이며 자산담보 조달을 "향후 수개월 내 검토"한다는 언급.
+- Nostrum 인수(스페인 490MW), Mirantis 인수(엔지니어 650명, 엔터프라이즈 고객 1,500개), FY26 헤드카운트 약 3배 증가.
+- 텍사스 신규 규제 지침과 관련해 환경·규제 준수 측면에서 유리하다는 회사 주장.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에 Item 1A 리스크 요인 본문이 포함되지 않아, 공시 원문 기반 리스크 목록은 확인 불가하다. 아래는 표지 사실, 제공 지표, 실적콜 발언에서 도출된 실질적 리스크다.</p>
+<ol>
+<li>
+<p><strong>자금조달 갭과 실행 의존성.</strong> FY27 CapEx $25~30B(회사 가이던스) 대비 현금 $7.6B, TTM FCF -$2.35B. 회사가 목표로 한 추가 $8B를 확보해도 가이던스 하단에 미달한다. GPU 파이낸싱 시장이 "12개월 전에는 거의 존재하지 않았다"고 CEO 스스로 밝힌 만큼, 이 시장의 금리·가용성 변화가 곧 사업 계획 변화로 이어진다.</p>
+</li>
+<li>
+<p><strong>주주 희석.</strong> 발행주식은 2년여 만에 1억8,786만 주에서 3억9,406만 주로 늘었다. 지난 12개월 증자 $3B, 전환사채(규모·전환가 미확인), NVIDIA의 $2.1B 투자권이 추가 희석 요인이다. 계약 ARR이 성장해도 주당 가치 성장은 그보다 낮을 수 있다.</p>
+</li>
+<li>
+<p><strong>고객 집중과 카운터파티 의존.</strong> 실적콜에서 확인된 대형 계약은 Microsoft(200MW)와 NVIDIA($3.4B)에 집중되어 있다. 고객별 매출 비중은 공시상 확인 불가하나, 가동 ARR $1B 중 Horizon 1의 기여가 절반 수준이라고 회사가 밝힌 점에서 집중도는 높다. 선수금 구조는 유리하지만, 계약 지연·조정 시 자금계획 전체가 영향받는다.</p>
+</li>
+<li>
+<p><strong>마이닝 자산 정리 과정의 손상.</strong> FY26 Q4에 비현금 손상 $450.4M과 마이닝 하드웨어 공정가치 감소 $102.1M이 발생했다. 회사는 2026년 말까지 마이닝을 완전 폐쇄한다고 밝혔으므로, 12월 분기까지 추가 손상 가능성이 있다. 이 과정에서 보고 매출은 계속 감소 압력을 받는다.</p>
+</li>
+<li>
+<p><strong>GPU 내용연수·잔존가치 가정.</strong> 회사는 컴퓨트 투자가 약 2년 내 회수된다고 주장하나, 3년·5년 계약 만기 이후 GPU 재계약 단가는 세대 교체 속도에 달려 있다. 회사는 구세대 GPU 수요가 강하다고 밝혔지만, 이는 현재 시점의 공급 부족을 반영한 것이며 감가상각 정책과 실제 경제적 수명 간 괴리가 발생하면 손상으로 이어진다.</p>
+</li>
+<li>
+<p><strong>가이던스 정합성.</strong> Q3 콜의 2026년 480MW·2027년 1,210MW와 Q4 콜의 2026년 300MW IT부하·2027년 추가 500MW는 정의가 다를 수 있으나, 제공 자료로 정합성을 확인할 수 없다. 목표 하향이라면 ARR 실현 시점도 밀린다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>함의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>계약 ARR 대 가동 ARR</td>
+<td>$4B 대 $1B</td>
+<td>매출의 75%가 아직 미실현</td>
+</tr>
+<tr>
+<td>최근 분기 매출 YoY</td>
+<td>-26.7%</td>
+<td>보고 실적은 여전히 역성장</td>
+</tr>
+<tr>
+<td>FY27 CapEx 가이던스 대 현금</td>
+<td>$25~30B 대 $7.6B</td>
+<td>추가 조달 규모가 시총에 육박</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$2.35B</td>
+<td>자체 현금창출로 투자 불가</td>
+</tr>
+<tr>
+<td>발행주식 증가(2024.6→2026.8)</td>
+<td>약 2.1배</td>
+<td>희석이 구조적</td>
+</tr>
+<tr>
+<td>시총 / 가동 ARR</td>
+<td>약 17.6배</td>
+<td>실현 기준으로는 고평가</td>
+</tr>
+<tr>
+<td>오늘 거래량 배수</td>
+<td>0.86배</td>
+<td>상승에 수급 확인 없음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 10-K 원문의 Item 1A와 MD&amp;A, 재무제표 주석에서 부채 총액·전환사채 조건·GPU 감가상각 기간·고객별 매출 비중을 확인한다. 제공 발췌에는 없다.
+2. 12월 분기 실적에서 Horizon 2~4 인도 완료 여부와 AI Cloud 분기 매출의 실제 증가 폭을 확인한다. 회사 목표대로면 가동 ARR이 $1B에서 크게 늘어야 한다.
+3. 추가 $8B GPU 파이낸싱·선수금의 마감 여부와 조건(금리, 담보, 상환 구조), 그리고 증자·전환사채 추가 발행 여부를 8-K로 확인한다.</p>
+<p><strong>판단을 상향(보통)으로 바꿀 조건</strong>
+- Horizon 2~4가 12월 분기 내 인도되고, 가동 ARR이 회사 목표에 근접하며, 추가 조달이 투자등급 금리대에서 마감될 때. 이 세 가지가 동시에 확인되면 실현 ARR 기준 밸류에이션이 정당화 구간에 들어온다.</p>
+<p><strong>판단을 회피로 낮춰야 할 조건</strong>
+- Microsoft 또는 NVIDIA 계약의 지연·축소·조건 변경 공시.
+- FY27 CapEx 가이던스를 조달 실패를 이유로 하향하거나, 시총 대비 큰 규모의 추가 증자를 단행하는 경우.
+- 다음 분기에 마이닝 외 자산(AI Cloud 관련 GPU·데이터센터)에서 손상이 발생하는 경우.
+- GPU 파이낸싱 금리가 비투자등급 9%를 넘어 상승하거나 신규 조달 공시가 끊기는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm">10-K — 2026-06-30_0001878848-26-000052</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000162828024038677/iren-20240630.htm">20-F — 2024-06-30_0001628280-24-038677</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000187884826000026/iren-20260331.htm">10-Q — 2026-03-31_0001878848-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm">10-Q — 2025-12-31_0001878848-26-000015</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/irenreportsfy26results.htm">8-K — 2026-08-27_0001878848-26-000051__EX-99.1__irenreportsfy26results</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/iren-20260827.htm">8-K — 2026-08-27_0001878848-26-000051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_ex99-1.htm">8-K — 2026-08-13_0001140361-26-032638__EX-99.1__ef20080141_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_8k.htm">8-K — 2026-08-13_0001140361-26-032638</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1878848/000114036126031053/ny20079234x2_ex99-1.htm">8-K — 2026-08-04_0001140361-26-031053__EX-99.1__ny20079234x2_ex99-1</a></li>
+<li>Transcript — 2026-08-27 Q4 2026 Transcript</li>
+<li>Transcript — 2026-05-09 IREN Limited (IREN) Q3 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

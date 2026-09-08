@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KLAC — KLA Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>KLAC — KLA Corporation Common Stock</h1>
+<div class="sub">2026-09-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">KLAC</span><span class="badge">+7.32%</span><span class="badge">거래량 1.43배</span><span class="badge">$242.50B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 공시·실적콜 기준으로 흠잡을 곳이 적다. 6월 분기 매출 $3.66B(사상 최대, YoY <span class="up">+15%</span>, QoQ <span class="up">+7%</span>), 비GAAP 영업이익률 43.7%, 서비스 매출 YoY <span class="up">+17%</span>, 회사가 2027년까지 "의미있는 성장"을 반복 언급한다.</li>
+<li>그러나 오늘 <span class="up">+7.32%</span>는 회사 고유 촉매가 없는 섹터 동조 상승이다. 최근 4일 내 공시가 없고, 뉴스는 고용지표·AI 칩 랠리·장비주 동반 상승만 언급한다. 거래량 배수 1.43배는 수급 급변으로 보기엔 약하다.</li>
+<li>52주 고점 대비 <span class="down">-38.5%</span>, 60일 <span class="down">-13.1%</span>로 주가는 실적과 반대 방향으로 조정 중이었다. 조정 이유는 제공 자료로 특정 불가하다. 이 괴리가 매수 기회인지, 시장이 아는 무언가를 자료가 담지 못한 것인지 확인이 필요하다.</li>
+<li>따라서 급등일 추격이 아닌 분할 진입 관점의 "보통"이 적절하다. 다음 실적(10월 말 예상, 회사 공식 일정은 공시상 확인 불가)에서 2027년 가이던스 화법이 유지되는지가 비중 확대의 조건이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>SEC 공시: 최근 4일 내 신규 공시 없음. 가장 최근 8-K는 8월 6일 분기배당 $0.23 선언으로 오늘 주가와 무관하다.</li>
+<li>뉴스: "고용지표가 AI 칩 랠리를 촉발"(simplywall.st), "반도체 장비 섹터 랠리 속 7% 급등"(TIKR), "장비주 두 종목이 엔비디아를 앞섰다, AI 랠리 확산인가"(Yahoo Finance). 모두 매크로·섹터 흐름을 원인으로 기술하며 KLA 고유 이벤트를 지목하지 않는다.</li>
+<li>실적: 7월 28일 실적은 이미 6주 전 소화된 정보다. 다만 실적콜에서 회사가 밝힌 "2027년 유의미한 성장 지속" 발언이 장비 섹터 재평가 국면에서 재부각될 여지는 있다. 이는 추정이다.</li>
+<li>결론적으로 52주 고점 대비 <span class="down">-38.5%</span> 낙폭이 큰 상태에서 섹터 자금 유입에 베타로 반응한 것으로 보는 것이 자료상 가장 합리적이다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 전망 관련 고지까지만 포함되어 사업 섹션 본문이 없다. 아래는 10-Q 경영진 요약과 실적콜 발언에 기반한다.</p>
+<p><strong>무엇을 파는가</strong>
+- 10-Q 요약: 반도체 및 관련 전자산업 대상 공정제어(process control)·수율관리 솔루션 공급. 검사(inspection)·계측(metrology) 장비와 관련 서비스·소프트웨어가 핵심이며, IC·웨이퍼·레티클의 R&amp;D와 양산을 지원한다. 고객은 나노미터 수준 결함을 측정·검출·분석·해결하는 데 KLA 제품을 쓴다.
+- 실적콜에서 언급된 사업 구분: (1) 핵심 반도체 공정제어(Semiconductor Process Control), (2) 서비스, (3) 2019년 Orbotech 인수로 확보한 Specialty Process·PCB·Component Inspection.</p>
+<p><strong>매출 구성(공시상 확인 가능한 범위)</strong>
+- 6월 분기 총매출 $3.66B 중 서비스 $820M(약 22%, YoY <span class="up">+17%</span>). 나머지는 시스템 매출로 추정되나 세부 제품별 분해는 제공 자료에 없다.
+- 첨단 패키징 공정제어 시스템 매출은 회사가 2026년 약 $1.1B, YoY <span class="up">+70%</span> 이상으로 전망한다고 밝힘. Orbotech 계열 사업은 2026년 25% 이상 성장 전망이라고 밝힘.
+- 지역별·고객별 매출 비중: 공시상 확인 불가. 10-Q 리스크 요약은 "고도로 집중된 고객 기반"을 명시한다.</p>
+<p><strong>서비스 사업의 성격(6월 BofA 컨퍼런스에서 CFO 언급)</strong>
+- 서비스 매출의 80%가 계약 기반. 장비 수명이 CFO 취임 당시 약 10년에서 현재 20년 이상으로 연장. 계약 단가가 ASP 대비 10년 전보다 1~2%p 상승. 서비스 매출이 역성장한 해는 2009년 한 번뿐이라고 밝힘.
+- 부품이 고객 맞춤형이고 저볼륨·고믹스 특성상 제3자 대체가 어렵다는 것이 회사 설명이다.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 CEO는 "가장 가까운 경쟁자의 6배 규모"라 언급했고, 6월 컨퍼런스에서 CFO는 "7.5배"라고 언급했다. 두 수치의 기준 차이는 공시상 확인 불가.
+- CFO는 제3자 조사 기준 2025년 공정제어 시장 점유율이 80bp 상승했다고 밝힘. e-beam, 레티클 검사에서 점유율 개선을 언급.
+- CFO는 KLA가 수출규제로 진입 불가한 중국 팹에 경쟁사가 납품하는 상황에서도 전체 점유율이 올랐다고 밝힘. 즉 경쟁이 가능한 시장에서는 이기고 있다는 주장이다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 6월 분기 매출 $3.66B는 가이던스 중간값 $3.575B를 상회했고, QoQ <span class="up">+7%</span>, YoY <span class="up">+15%</span>다. 회사는 사상 최대라고 밝힘.
+- 물량·단가·믹스 분해는 공시상 확인 불가하나, 실적콜 발언으로 방향은 읽힌다. CFO는 "상반기에 더 만들 수 있었다면 더 출하할 수 있었다"고 언급해 수요가 아닌 공급이 제약이었음을 시사한다. 성장은 물량 제약 하에서 나온 것이다.
+- 믹스는 서비스 비중 상승(GM에 우호적)과 첨단 패키징 급성장이 특징이다. 반면 CFO는 "어려운 메모리 가격 환경"과 관세 역풍이 GM을 압박했다고 밝혔다.</p>
+<p><strong>마진</strong>
+- 제공 지표: 매출총이익률 61.4%, 영업이익률 42.5%(YoY <span class="down">-0.1%</span>p). 실적콜의 비GAAP 기준은 GM 62.4%, OM 43.7%로 차이는 비GAAP 조정 항목에 기인한 것으로 보인다.
+- 증분 영업이익률 59%는 매출 증가분의 절반 이상이 이익으로 떨어졌다는 의미다. 회사의 구조적 증분 마진 목표 40~50% 상단을 넘는다.
+- 영업비용 $682M(R&amp;D $399M, SG&amp;A $283M). CFO는 6월 컨퍼런스에서 2030년 모델 대비 영업이익률 3%p 개선을 목표로 밝힘.
+- YoY 영업이익률이 <span class="down">-0.1%</span>p로 정체된 점은 메모리 가격·관세 역풍이 규모의 효과를 상쇄했다는 CFO 설명과 부합한다. 마진 확장은 아직 확인되지 않았다.</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름 $3.77B. 시총 $242.5B 대비 약 1.6% FCF 수익률(제공 수치로 산출).
+- 6월 분기 영업현금흐름은 $906M으로 비GAAP 순이익 $1.39B의 약 65%다. 분기 단위 현금전환이 낮았던 이유(운전자본·재고 축적·매출채권 팩토링 등)는 발췌 구간이 잘려 공시상 확인 불가하다. 회사가 "수요 대응을 위해 생산능력을 추가 중"이라 밝힌 점과 연결될 가능성이 있으나 추정이다.
+- 배당은 분기 $0.23(액면분할 후 기준). 연환산 $0.92로 종가 대비 약 0.5%. 자사주 매입 규모는 공시상 확인 불가.</p>
+<p><strong>재무 건전성</strong>
+- 부채 잔액·현금 잔액은 발췌 구간에 없어 공시상 확인 불가. 10-Q 리스크 요약에 "부채와 레버리지 자본구조 관련 리스크", "리볼빙 신용약정 재무약정 준수" 항목이 있어 유의미한 차입이 존재함은 확인된다.
+- 밸류에이션 참고(제공 수치로 산출): 분기 비GAAP EPS $1.05를 단순 연환산하면 $4.20, 종가 $185.60 기준 약 44배. 성장 가속 국면임을 감안해도 낮은 배수는 아니다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>(1) AI 인프라 주도 선단 파운드리/로직 투자</strong>
+- 회사 주장: 3월 인베스터데이 이후 AI 인프라 수요 신호가 "실질적으로 강화"됐고, 2026년 하반기 가속·2027년 유의미한 성장이 이어진다고 밝힘. 2026년 WFE는 $140B 이상, 고십대~20% 성장으로 본다고 밝힘.
+- 실현 조건: 하이퍼스케일러 자본지출 지속, 신규 노드 투자 확대.
+- 검증 포인트: 다음 분기 가이던스가 QoQ 증가를 유지하는지, 2027년 WFE 성장 화법이 "유의미한 성장"에서 후퇴하지 않는지.</p>
+<p><strong>(2) 첨단 패키징 공정제어</strong>
+- 회사 주장: 2026년 약 $1.1B, YoY <span class="up">+70%</span> 이상(직전 전망 고50%대에서 상향). 시장 성장률의 약 2배라고 밝힘. 하이브리드 본딩이 고부가 시스템 수요를 만든다고 언급.
+- 실현 조건: CoWoS류·하이브리드 본딩 증설 지속. CFO는 이 시장이 리드타임이 짧아 "빨리 대응해야 한다"고 언급해 가시성이 상대적으로 낮음을 인정했다.
+- 검증 포인트: $1.1B 전망 재상향 여부. 하향 시 패키징 사이클 둔화 신호.</p>
+<p><strong>(3) 메모리(HBM·DRAM EUV·플래시 그린필드)</strong>
+- 회사 주장: DRAM 그린필드 팹과 리툴링, 메모리 가격 수준에서 수율 가치가 높아 공정제어 강도 상승 여지가 있다고 밝힘. 플래시도 그린필드 투자 가능성 언급.
+- 실현 조건: 메모리 가격 유지. 단, CFO는 동시에 현재 메모리 가격 환경이 GM에 "어렵다"고 말해 두 발언 사이에 긴장이 있다.
+- 검증 포인트: 메모리 고객 매출 비중과 GM 동반 개선 여부.</p>
+<p><strong>(4) 서비스</strong>
+- 회사 주장: 장기 성장률 13~15%로 상향. 6월 분기 <span class="up">+17%</span>.
+- 실현 조건: 설치 기반 확대와 계약 침투율(패키징 영역은 저침투라고 밝힘).
+- 검증 포인트: 서비스 매출 $820M에서 QoQ 지속 증가하는지. 시스템 매출이 꺾여도 서비스가 완충하는지.</p>
+<p><strong>(5) 공급능력 확충</strong>
+- 회사 주장: 상반기 공급 제약이 있었고 생산능력을 추가 중이라고 밝힘.
+- 검증 포인트: 재고·CAPEX 증가와 영업현금흐름 전환율 회복이 동반되는지.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 2027년에 대해 "우려가 거의 없다(very few concerns)", "빌드아웃이 계속되는 것이 꽤 명확하다"고 언급했다. 근거로는 고객이 공유하는 수요, 첨단 컴퓨트 용량 부족을 제3자와의 대화로 교차 확인한 점, 메모리 공급 정상화가 "한참 멀었다"는 점을 들었다.
+- 6월 컨퍼런스에서 CFO는 "2026년 중반에 2027년의 유의미한 성장을 이야기할 수 있는 가시성은 놀랍다(remarkable)"고 언급했다. 두 달 후 실적콜에서도 같은 톤이 유지됐다.
+- 화법 변화: 인베스터데이 시점보다 수요 신호가 "실질적으로 강화"됐다는 표현, 패키징 전망 상향(고50% → 70%+) 등 전망이 상향 방향으로 움직였다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- 2027년 가시성의 실체(Citi): 선수금·예치금 같은 정량 증거를 물었으나 CEO는 고객 대화와 정성적 교차검증으로 답했다. 계약상 구속력 있는 지표는 제시되지 않았다.
+- 공정제어 강도(Morgan Stanley): 질문자는 2026년 n+1·n+2 노드(3nm 등) 증설로 강도가 "비우호적"이었다는 인식을 전제했다. CFO는 부인하지 않고 2027년 신규 노드·DRAM 그린필드·패키징으로 개선을 기대한다고 답했다. 2026년 KLA가 WFE 대비 초과성장하지 못했을 가능성을 간접 인정한 대목이다.
+- 경쟁 심화(Morgan Stanley): 대형 경쟁사의 공정제어 진출 언급에 CEO는 "변화 없음"으로 단호히 답했고, CFO는 중국 팹 납품 제한 속 점유율 상승을 들어 방어했다. 다만 중국에서 경쟁사에 점유율을 내주고 있다는 사실 자체는 인정했다.
+- SpaceX Terafab 관여 여부(Citi): 특정 고객 언급 거부.</p>
+<p><strong>공시에 없고 콜에서만 드러난 정보</strong>
+- 상반기 공급 제약("더 만들 수 있었다면 더 출하")과 생산능력 확충 진행.
+- 첨단 패키징 2026년 매출 약 $1.1B 전망과 상향 이력.
+- 서비스 구조(80% 계약, 장비 수명 20년+, 2009년 이후 무역성장).
+- 2030년 목표: 매출 $26B ±$2.5B, EPS $84 ±$8(6월 3일 언급으로 6월 11일 10대1 분할 이전 기준, 분할 반영 시 약 $8.4). WFE 내 점유율 7.5% → 9% 목표.
+- 메모리 가격 환경과 관세가 6월 분기 GM에 실제 역풍이었다는 점.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>중국 수출규제(BIS Rules)의 추가 강화.</strong> 10-Q는 BIS 규정 변화가 중국 특정 고객 대상 판매·서비스 능력에 미치는 영향을 별도 항목으로 명시한다. CFO는 이미 진입 불가 팹이 있고 그곳에서 경쟁사가 납품 중이라고 인정했다. 규제 확대 시 매출 상실과 경쟁사 학습곡선 가속이 동시에 발생한다. 중국 매출 비중은 공시상 확인 불가.</p>
+</li>
+<li>
+<p><strong>고객 집중과 사이클 의존.</strong> 10-Q는 "고도로 집중된 고객 기반"과 "산업의 사이클성"을 명시한다. 2027년 낙관론은 소수 선단 고객과 하이퍼스케일러 자본지출에 의존하며, CEO 스스로 그 근거를 고객 대화로 설명했다. 계약상 구속력이 있는 백로그 수치는 콜에서 제시되지 않았다.</p>
+</li>
+<li>
+<p><strong>메모리 가격 환경과 관세가 마진에 실질적 역풍.</strong> CFO가 6월 분기 GM 압박 요인으로 직접 지목했다. 영업이익률 YoY <span class="down">-0.1%</span>p로 마진 확장이 멈춘 상태다. 메모리 그린필드 낙관론과 "어려운 메모리 가격" 발언이 공존하므로, 어느 쪽이 우세한지 다음 분기 GM에서 확인해야 한다.</p>
+</li>
+<li>
+<p><strong>공급 제약과 생산능력 확충의 실행 리스크.</strong> 상반기 출하 제약이 있었고 현재 증설 중이다. 증설 후 수요가 둔화되면 재고·고정비 부담이 생긴다. 10-Q 리스크 요약에 "구조조정·자산손상·재고 상각" 항목이 존재한다. 6월 분기 영업현금흐름이 순이익 대비 낮았던 점도 같은 맥락에서 추적이 필요하다.</p>
+</li>
+<li>
+<p><strong>관세 및 지정학.</strong> 10-Q 전망 고지 첫 항목이 "관세가 사업에 미치는 영향"이며, 3월 10-Q부터 "이란 무력충돌"이 명시적으로 추가됐다. 관세는 이미 GM 역풍으로 실현됐다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>"보통"을 뒷받침하는 정량 근거</strong>
+- 강점: 매출 YoY <span class="up">+15.2%</span>, QoQ <span class="up">+7.1%</span>, 증분 영업이익률 59%, 서비스 <span class="up">+17%</span>, TTM FCF $3.77B. 가이던스 중간값 상회.
+- 약점: 영업이익률 YoY <span class="down">-0.1%</span>p로 마진 정체. 분기 영업현금흐름 $906M은 비GAAP 순이익의 약 65%. 단순 연환산 P/E 약 44배, FCF 수익률 약 1.6%로 밸류에이션 부담 존재.
+- 주가: 52주 고점 <span class="down">-38.5%</span>, 60일 <span class="down">-13.1%</span>. 실적 대비 주가 괴리가 크지만 그 원인이 자료에 없다. 오늘 상승은 섹터 동조이며 거래량 1.43배는 결정적 수급 전환으로 보기 어렵다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 52주 고점 이후 <span class="down">-38.5%</span> 조정의 원인. 회사 고유 악재(가이던스 하향, 규제 이벤트)인지 섹터 디레이팅인지 구분해야 한다. 제공 자료로는 특정 불가.
+2. 10-K 본문의 지역별 매출(특히 중국 비중)과 상위 고객 비중. 리스크 1·2의 크기를 정량화하는 핵심 수치다.
+3. 10-K 현금흐름표·대차대조표에서 재고 증가폭, 부채 잔액, 자사주 매입 규모. 6월 분기 현금전환 저하가 일시적 운전자본인지 확인.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 다음 실적콜에서 "2027년 유의미한 성장" 표현이 "성장" 또는 "보합"으로 후퇴하거나, WFE 2027 전망을 언급하지 않는 경우.
+- 첨단 패키징 2026년 $1.1B 전망 하향.
+- 비GAAP GM이 62% 아래로 내려가며 메모리 가격·관세 역풍이 확대되는 경우.
+- BIS 규정 강화로 중국 관련 매출 영향을 회사가 정량적으로 공시하는 경우.</p>
+<p><strong>판단을 상향할 조건(적극으로)</strong>
+- 다음 분기 매출이 QoQ 증가하며 영업이익률이 YoY 플러스로 전환하고, 영업현금흐름이 순이익 수준으로 회복되는 경우.
+- 10-K 확인 결과 중국 비중이 관리 가능한 수준이고 조정 원인이 섹터 디레이팅으로 확인되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000031920126000027/klac-20260630.htm">10-K — 2026-06-30_0000319201-26-000027</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000031920126000016/klac-20260331.htm">10-Q — 2026-03-31_0000319201-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000031920126000008/klac-20251231.htm">10-Q — 2025-12-31_0000319201-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000119312526338242/d165938dex991.htm">8-K — 2026-08-06_0001193125-26-338242__EX-99.1__d165938dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000119312526338242/d165938d8k.htm">8-K — 2026-08-06_0001193125-26-338242</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000031920126000024/exhibit991earningsrelease7.htm">8-K — 2026-07-28_0000319201-26-000024__EX-99.1__exhibit991earningsrelease7</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000031920126000024/klac-20260728.htm">8-K — 2026-07-28_0000319201-26-000024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/319201/000119312526269375/d144278d8k.htm">8-K — 2026-06-11_0001193125-26-269375</a></li>
+<li>Transcript — 2026-07-28 KLA Corporation (KLAC) Q4 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-03 KLA Corporation (KLAC) Presents at Bank of America 2026 Global Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
