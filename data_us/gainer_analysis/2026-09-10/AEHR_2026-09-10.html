@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AEHR — Aehr Test Systems Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AEHR — Aehr Test Systems Common Stock</h1>
+<div class="sub">2026-09-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">AEHR</span><span class="badge">+5.25%</span><span class="badge">거래량 1.71배</span><span class="badge">$3.12B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>펀더멘털 자체는 공시로 뒷받침된다. 4분기(FY26 4Q, 5월 29일 마감) 수주 $60.7M(분기 사상 최대), 5월 말 백로그 $80.6M, 이후 수주 포함 유효 백로그 $100.6M, 현금 $116.5M이 8-K에 명시돼 있고, 회사는 FY27 매출 $130M~$150M(FY26 대비 2.6~3.0배)을 제시했다.</li>
+<li>그러나 오늘 상승(<span class="up">+5.25%</span>, 거래량 1.71배)은 SEC 공시로 특정되는 촉매가 없다. 당일 전후 공시는 9월 9일 DEF 14A(주총 위임장)뿐이며, 이는 실적·수주 정보가 아니다. 20일 <span class="down">-18.5%</span>, 52주 고점 대비 <span class="down">-34.4%</span>의 하락 추세 속 반등 성격이 강하다.</li>
+<li>시가총액 $3.12B는 FY27 가이던스 중간값 $140M 기준 약 22배 매출(산출값)이다. 매출총이익률 42.6%, TTM 잉여현금흐름 -$5.4M인 장비업체에 대해 가이던스 달성이 이미 상당 부분 반영된 가격이다.</li>
+<li>가이던스 달성에는 분기 매출이 직전 $18.8M에서 $32M~$38M 수준(산출값)으로 단숨에 올라서야 한다. 이 점프가 실제 숫자로 확인되는 FY27 1분기(8월 말 마감) 실적 전까지는 의미 있는 비중을 싣기보다 확인 후 진입이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>당일 전후 SEC 공시는 2026-09-09 DEF 14A 1건이며, 주주총회 안건을 담은 위임장으로 실적·수주·계약과 무관하다.</li>
+<li>뉴스 헤드라인은 "AI 주문과 월가 지지(Wall Street support)"를 언급하나, 이는 7월 14일 실적 발표 내용의 재인용 수준이며 새로운 수주 공시(8-K)는 확인되지 않는다. 애널리스트 투자의견 변경 여부는 제공 자료로 확인 불가.</li>
+<li>기술적 맥락: 52주 고점 대비 <span class="down">-34.4%</span>, 20일 <span class="down">-18.5%</span> 하락 이후의 거래량 동반 반등이다. 거래대금 $411.7M은 시가총액 대비 약 13%(산출값)로 회전율이 매우 높아, 단기 수급 성격의 매매가 주도했을 가능성이 크다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 사업 섹션 기준, Aehr는 반도체의 테스트·번인(burn-in)·안정화 장비를 웨이퍼 레벨, 개별 다이, 패키지 레벨 모두에서 공급하는 업체다. 1977년 캘리포니아 설립, 프리몬트 본사, 소규모 보고회사(smaller reporting company)다.</p>
+<p><strong>제품군</strong>
+- 웨이퍼 레벨 번인(WLBI): FOX-XP / FOX-NP(다중 웨이퍼 병렬 테스트·번인 시스템), FOX-CP(저가 단일 웨이퍼), 소모품인 FOX WaferPak 컨택터(300mm까지 풀 웨이퍼 접촉)와 WaferPak Aligner, DiePak 캐리어(DiePak당 최대 1,024개 다이 병렬).
+- 패키지 레벨 번인: Sonoma(고전력 AI 프로세서용), Tahoe, Echo. Sonoma Ultra와 자동 로더/언로더로 AI 가속기·GPU·HPC 프로세서의 패키지 번인을 담당.
+- 수익 구조는 시스템(장비) + 고객 디바이스별 전용 컨택터(WaferPak) 소모품의 조합이다. 실적콜에서 CEO는 WLBI 시스템 한 대가 WaferPak 포함 최대 $6M 수준이며, Sonoma Ultra는 약 $1M 수준이라고 언급했다.</p>
+<p><strong>시장·고객군</strong>
+- 10-K는 AI(LLM·추론), SiC/GaN 전력반도체(EV·충전·태양광·풍력), 실리콘 포토닉스(데이터센터), 메모리 등을 타깃 시장으로 열거한다.
+- 매출 구성(실적콜 언급): FY26 매출의 약 71%가 AI 가속기·CPU·네트워크 프로세서의 WLBI, 약 20%가 광소자(트랜시버, 칩 간 I/O, HDD)이며, 2년 전 95% 이상이던 EV용 SiC 비중은 5% 남짓으로 축소됐다. 즉 사업의 무게중심이 2년 사이 SiC에서 AI로 완전히 옮겨갔다.
+- 핵심 고객은 익명 처리돼 있다. 8-K·콜에서 확인되는 것은 (1) WLBI 리드 AI 고객(시스템 규모를 두 배로 늘리고 모든 번인을 웨이퍼 레벨로 이전), (2) Sonoma 리드 하이퍼스케일러(대형 데이터센터 사업자), (3) 리드 실리콘 포토닉스 고객, (4) 지난해 11월 신규 진입한 글로벌 네트워킹 기업이다. 고객명은 공시상 확인 불가.</p>
+<p><strong>경쟁 위치</strong>
+- 10-K는 웨이퍼 단위 풀 웨이퍼 컨택 기술과 WLBI+패키지 번인을 모두 갖춘 "턴키" 포지션을 차별점으로 제시한다.
+- 실적콜에서 SiC WLBI 분야 경쟁사 SEMI(말레이시아로 재법인화한 NEXUSTEST)를 특허 침해로 제소 중이라고 언급했으며, 대만 첫 SiC 고객이 해당 경쟁사 대신 Aehr를 선택했다고 밝혔다. 소송 진행 상황·비용은 제공 자료로 확인 불가.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적(FY26 4Q, 8-K 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>FY26 4Q</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$18.8M</td>
+<td>전년 $14.1M(<span class="up">+33.7%</span>), 전분기 대비 <span class="up">+82.6%</span></td>
+</tr>
+<tr>
+<td>GAAP 순이익</td>
+<td>$1.4M ($0.04/주)</td>
+<td>전년 $(2.9)M</td>
+</tr>
+<tr>
+<td>Non-GAAP 순이익</td>
+<td>$3.6M ($0.11/주)</td>
+<td>SBC·인수 조정 제외</td>
+</tr>
+<tr>
+<td>수주</td>
+<td>$60.7M</td>
+<td>분기 사상 최대</td>
+</tr>
+<tr>
+<td>백로그</td>
+<td>$80.6M / 유효 $100.6M</td>
+<td>5월 29일 이후 수주 포함</td>
+</tr>
+<tr>
+<td>현금·현금성·제한현금</td>
+<td>$116.5M</td>
+<td>2월 27일 $37.1M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>제공 지표상 영업이익률은 <span class="down">-6.4%</span>이나 GAAP 순이익은 흑자다. 영업외 항목(이자수익·세금 등)의 세부는 공시상 확인 불가.</li>
+<li>전분기 대비 <span class="up">+82.6%</span>를 역산하면 FY26 3Q 매출은 약 $10.3M(산출값)이다. FY26 연간 $50.0M 중 4분기가 38%를 차지하는 후반 편중 구조로, 분기별 변동성이 매우 크다.</li>
+</ul>
+<p><strong>성장의 질</strong>
+- 물량·믹스 요인이 주다. 실적콜에서 회사는 리드 AI 고객이 시스템 수를 두 배로 늘렸고 소모품(WaferPak) 수요가 동반 증가한다고 언급했다. 단가 측면에서는 WLBI 시스템이 패키지 레벨 장비보다 대당 가격과 마진이 모두 높다고 언급해, WLBI 비중 확대는 믹스 개선 요인이다.
+- 반면 FY26 연간 매출($50.0M)은 FY25($59.0M) 대비 감소했고 연간 GAAP 순손실은 $(7.1)M으로 전년 $(3.9)M보다 확대됐다. 4분기 실적이 좋았을 뿐 연간으로는 역성장·적자였다는 점을 놓쳐선 안 된다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률 42.6%는 반도체 장비업계 기준 낮은 편이다. 영업이익률은 전년 대비 <span class="up">+10.2%</span>p 개선됐지만 여전히 마이너스다.
+- 회사는 FY27 $130M~$150M 매출에서 Non-GAAP 세전이익률 18~22%를 기대한다고 밝혔다. 이는 매출 3배 성장에 따른 고정비 레버리지를 전제한 것으로, 산출하면 세전이익 약 $23M~$33M 수준이다.
+- 실적콜에서 Sonoma용 전원공급장치 공급업체가 가격을 40% 인상했다고 언급했다. 부품 인플레이션이 마진 가정에 압력이 될 수 있다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- FY26 영업활동 현금 사용은 $3.3M, TTM 잉여현금흐름은 -$5.4M으로 아직 자체 현금 창출 단계가 아니다.
+- 현금이 3개월 만에 $37.1M에서 $116.5M으로 늘어난 주된 원인은 2026년 4월 17일 완료된 ATM 유상증자(총 조달 약 $60.0M)다. 나머지 증가분은 고객 선수금 등으로 추정되나 공시상 확인 불가. 발행 주식 수는 2026년 7월 20일 기준 32,620,450주이며, ATM으로 발행된 주식 수와 평균 단가는 제공 자료로 확인 불가.
+- 부채 규모는 제공 발췌에 없어 공시상 확인 불가.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>(1) 리드 AI 고객의 WLBI 증설</strong>
+- 회사는 이 고객이 시스템 레벨 번인을 전량 웨이퍼 레벨로 전환했고, 파운드리 웨이퍼 배정 증가를 전망한다고 밝혔다. 실적콜에서는 지난 1년간 파운드리 웨이퍼 배정이 이 고객 성장의 제약이었다고 언급했다.
+- 검증 포인트: 다음 분기 백로그가 유효 백로그 $100.6M 위에서 유지·증가하는지, WaferPak(소모품) 매출 비중이 공개되는지.</p>
+<p><strong>(2) 2번째 대형 AI 프로세서 공급사(유료 평가 고객) 전환</strong>
+- 회사는 AI 가속기·CPU·네트워크 프로세서를 공급하는 대형 업체와의 WLBI 벤치마크를 완료했고, 이 고객이 현행 양산 디바이스로 대만 위탁제조사에서 파일럿 검증에 들어가길 원하며 두 번째 디바이스 평가도 요청했다고 밝혔다. 실적콜에서 이 고객 매출은 FY27 가이던스에 "거의 반영되지 않았다(noise level)"고 언급했다. 즉 가이던스 상단을 넘길 수 있는 순수 업사이드다.
+- 검증 포인트: 파일럿 시스템 수주 공시(8-K), 또는 다음 실적콜에서 파일럿 착수 언급.</p>
+<p><strong>(3) 하이퍼스케일러 Sonoma 2세대 디바이스</strong>
+- 회사는 리드 하이퍼스케일러가 기존 대비 패키지당 전력 2배인 2번째 디바이스용 Sonoma 대량 구매를 예고했다고 밝혔다. 실적콜에서 동남아 위탁제조사로 월 20대 Sonoma 생산체제를 막 가동했다고 언급했다.
+- 검증 포인트: Sonoma 후속 수주 규모, 전원공급장치 원가 상승이 마진에 미친 영향 언급 여부.</p>
+<p><strong>(4) 실리콘 포토닉스</strong>
+- 리드 고객이 완전 자동화 WLBI를 추가 발주했고, 신규 네트워킹 대기업은 지난해 11월 첫 접촉 후 9-웨이퍼 FOX 테스트셀 2대와 FOX-NP 2대를 주문했으며 올해 추가 시스템 전망을 제시했다고 회사는 밝혔다.
+- 검증 포인트: 광소자 매출 비중(FY26 20%)의 확대 여부, 신규 고객 추가 수주.</p>
+<p><strong>(5) 전력반도체(SiC/GaN/Si MOSFET) 회복</strong>
+- 회사는 최근 한 달간 SiC WaferPak 신규 수주 약 $8M(글로벌 완성차 직접 주문 포함), 첫 실리콘 MOSFET용 FOX 판매, 300mm GaN WLBI 솔루션 완성을 밝혔다.
+- 검증 포인트: SiC/GaN 매출 비중이 5% 수준에서 반등하는지, GaN WaferPak 샘플이 양산 주문으로 전환되는지.</p>
+<p><strong>(6) 메모리(NAND·HBM)</strong>
+- 실적콜에서 플래시 2~3개사, DRAM 2개사와 논의 중이나 아직 수주·매출은 없고, 2년 이상 접촉한 주요 플래시 고객과도 개발계약 미체결이라고 언급했다. 회사는 FY27 수주, FY28 램프를 기대한다고 밝혔다. 가이던스에는 미포함으로 이해된다.
+- 검증 포인트: 개발계약(12~18개월) 체결 공시 여부. 체결 전까지는 가치 산정에 넣지 않는 것이 안전하다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO 톤은 매우 낙관적이다. "가이던스를 더 올릴 기회가 있다", "$150M에서도 생산능력 제약이 없다", "백로그 대부분을 고객 요청일보다 앞서 출하 가능"이라고 언급했다. 자신감의 근거는 백로그 $100M과 복수 AI 고객의 예측(forecast)이며, 이는 회사 주장으로 검증이 필요하다.
+- 가이던스 화법은 백로그 기반의 구체적 범위 제시($130M~$150M, 세전 18~22%)로, 이전 연도 대비 가시성이 높아졌다는 점을 강조하는 구조다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- 생산능력 질문에서 CEO가 "월 20대 Sonoma와 월 20대 XP를 동시에" 가능하다는 취지로 답하자 투자자가 "둘 다가 아니라 둘 중 하나 아니냐"고 정정했고, CEO는 이를 인정하면서 Sonoma는 동남아 CM으로 분리했다고 재설명했다. 이어 "변호사들을 위해 면책을 붙이겠다"며 전원공급장치 40% 인상, 장납기 부품 등 어려움을 스스로 언급했다. 능력 발언이 다소 앞서 나가는 경향이 있으며, 이를 곧바로 완화하는 패턴이 반복된다.
+- 메모리 고객 질문에서 "2년 넘게 접촉했는데 왜 매출이 없느냐"는 지적에 CEO는 고객 측 조직 변동과 HBF(고대역폭 플래시)용 테스터의 비용 문제를 들며 "고객의 도움이 필요하다"고 답했다. 사실상 진전이 없음을 시인한 대목이다.
+- "HBM 고객이 유료 평가 고객의 권유로 오는 것이냐"는 질문에는 "그렇게 말하기엔 너무 대담하다"며 선을 그었다. AI 고객이 공급망에 Aehr를 지정하는 단계는 아직 아니라고 명시적으로 인정했다(CFO는 "아직은"이라고 첨언).</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- FY26 매출 구성(AI 71%, 광 20%, SiC EV 약 5%).
+- 유료 평가 고객 매출이 FY27 가이던스에 사실상 미반영이라는 점.
+- 리드 AI 고객의 성장 제약이 파운드리 웨이퍼 배정이었다는 점(즉 Aehr 통제 밖 변수).
+- WLBI 시스템 ASP 최대 $6M, Sonoma Ultra 약 $1M, 전원공급장치 40% 가격 인상.
+- 메모리 논의 상대 수(플래시 2~3, DRAM 2), 개발계약 12~18개월 소요.
+- 경쟁사 SEMI/NEXUSTEST 특허 소송 진행 중.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에는 리스크 팩터 본문이 포함되지 않아, 사업 섹션·8-K·실적콜에서 실제로 확인되는 리스크 위주로 정리한다.</p>
+<ol>
+<li><strong>극단적 고객 집중과 고객 통제 밖 변수.</strong> FY26 매출 71%가 AI WLBI이며 그 대부분이 리드 고객 1곳으로 읽힌다. 이 고객의 성장은 파운드리 웨이퍼 배정에 좌우된다고 실적콜에서 언급됐다. 웨이퍼 배정 축소나 고객 제품 전환 시 백로그 이행 시점이 밀릴 수 있다. 고객명·비중은 공시상 확인 불가.</li>
+<li><strong>가이던스 대비 실행 갭.</strong> FY27 $130M~$150M은 분기당 $32M~$38M(산출값)을 요구한다. 직전 분기 $18.8M, 그 전 분기 약 $10.3M에서의 도약이며, 유효 백로그 $100.6M만으로는 하단 $130M에도 못 미쳐 연중 $30M~$50M의 신규 수주가 연내 매출로 전환돼야 한다.</li>
+<li><strong>매출 변동성의 전력(前歷).</strong> 2년 전 매출 95%였던 EV용 SiC가 5%로 무너지며 FY25→FY26 매출이 역성장했다. AI 역시 소수 고객의 설비투자 사이클에 묶여 있어 같은 패턴이 반복될 수 있다.</li>
+<li><strong>부품 원가·공급망.</strong> Sonoma 전원공급장치 가격 40% 인상과 장납기 부품 문제를 실적콜에서 언급했다. 매출총이익률 42.6%에서 세전 18~22% 달성은 원가 통제에 민감하다.</li>
+<li><strong>희석과 현금 소진.</strong> 2026년 4월 ATM으로 약 $60M을 조달했고 TTM FCF는 -$5.4M이다. 증설 투자와 재고 선매입이 이어지면 추가 조달 가능성을 배제할 수 없다. S-3 잔여 한도는 $100M 중 $40M(산출값)이다.</li>
+<li><strong>특허 소송.</strong> 경쟁사 SEMI/NEXUSTEST 상대 소송이 진행 중이다. 패소나 장기화 시 SiC WLBI 경쟁 우위와 소송 비용에 영향을 준다. 진행 단계·비용은 공시상 확인 불가.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시가총액 / FY27 가이던스 중간값</td>
+<td>약 22배(산출)</td>
+<td>가이던스 달성을 선반영한 수준</td>
+</tr>
+<tr>
+<td>유효 백로그 / FY27 가이던스 하단</td>
+<td>약 77%(산출)</td>
+<td>나머지는 연내 신규 수주에 의존</td>
+</tr>
+<tr>
+<td>직전 분기 매출 vs 필요 분기 run-rate</td>
+<td>$18.8M vs $32M~$38M(산출)</td>
+<td>1.7~2.0배 점프 필요</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>42.6%</td>
+<td>업계 평균 대비 낮음</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$5.4M</td>
+<td>자체 자금조달 미달</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>$116.5M</td>
+<td>ATM 포함, 단기 유동성은 충분</td>
+</tr>
+<tr>
+<td>20일 / 52주 고점 대비</td>
+<td>-18.5% / <span class="down">-34.4%</span></td>
+<td>하락 추세 내 반등</td>
+</tr>
+</tbody>
+</table></div>
+<p>백로그와 현금은 "회피"를 배제하지만, 밸류에이션·실행 갭·촉매 부재·추세는 "보통 이상"을 뒷받침하지 못한다. 따라서 관망이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. FY27 1분기(8월 말 마감) 매출이 $25M 이상으로 가이던스 궤도에 올라섰는지, 그리고 분기 말 백로그가 유효 백로그 $100.6M 이상을 유지하는지.
+2. 유료 평가 AI 고객의 파일럿 검증이 시스템 수주(8-K 또는 콜 언급)로 전환됐는지. 가이던스 미반영 항목이므로 확인되면 상단 돌파 근거가 된다.
+3. 매출총이익률이 42.6%에서 개선되는지, 그리고 전원공급장치 인상분이 Sonoma 마진에 미친 영향을 회사가 어떻게 설명하는지.</p>
+<p><strong>판단을 상향(보통 이상)할 조건</strong>
+- 위 1번과 2번이 동시에 확인되고, 주가가 52주 고점 대비 <span class="down">-34%</span> 수준에서 추가 급등 없이 머물러 있을 때.</p>
+<p><strong>판단을 하향(회피)할 조건</strong>
+- FY27 1분기 매출이 $20M 미만이거나 가이던스 하향.
+- 리드 AI 고객의 웨이퍼 배정 축소·주문 이연 언급.
+- 백로그가 $80M 아래로 감소하거나 추가 ATM 조달 공시.
+- 특허 소송에서 불리한 판결 또는 경쟁사 SiC 수주 확대 확인.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426006919/aehr_10k.htm">10-K — 2026-05-29_0001654954-26-006919</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426003348/aehr_10q.htm">10-Q — 2026-02-27_0001654954-26-003348</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426000266/aehr_10q.htm">10-Q — 2025-11-28_0001654954-26-000266</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426006655/aehr_ex991.htm">8-K — 2026-07-14_0001654954-26-006655__EX-99.1__aehr_ex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426006655/aehr_8k.htm">8-K — 2026-07-14_0001654954-26-006655</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426003746/aehr_8k.htm">8-K — 2026-04-17_0001654954-26-003746</a></li>
+<li>Transcript — 2026-07-14 Aehr Test Systems, Inc. (AEHR) Q4 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

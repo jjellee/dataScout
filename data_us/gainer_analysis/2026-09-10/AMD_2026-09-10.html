@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMD — Advanced Micro Devices Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AMD — Advanced Micro Devices Inc. Common Stock</h1>
+<div class="sub">2026-09-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">AMD</span><span class="badge">+3.04%</span><span class="badge">거래량 1.28배</span><span class="badge">$850.67B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 스크린 통과 수준을 넘어선다. 분기 매출 $11.54B(YoY <span class="up">+50.1%</span>, QoQ <span class="up">+12.5%</span>), 데이터센터 매출이 실적콜 기준 YoY <span class="up">+107%</span>로 전체의 58%를 차지하며, 회사는 3분기 매출 가이던스를 약 $13B(±$0.3B, YoY <span class="up">+41%</span>)로 제시했다.</li>
+<li>그러나 시가총액 $850.67B 대비 TTM 잉여현금흐름 $8.40B으로 FCF 배수가 약 100배에 달하고, 재고가 $8.5B까지 늘어 2분기 FCF($1.6B)가 비GAAP 영업이익($3.1B)의 절반 수준에 그친다. 성장은 확인됐으나 현금 전환은 아직 뒤따르지 않는다.</li>
+<li>오늘 상승의 촉매는 SEC 공시가 아닌 CFO의 컨퍼런스 발언(TAM $3조) 보도이며 거래량 배수 1.28배로 수급 강도는 보통이다. 52주 고점 대비 <span class="down">-10.3%</span>로 추세 복귀 구간이지 신고가 돌파 구간은 아니다.</li>
+<li>따라서 신규 진입은 분할로 시작하되, 3분기 실적(Helios/MI450 초기 출하, 비GAAP 총이익률 56% 유지, 재고 증가 둔화)이 확인되면 '적극'으로 상향할 여지를 남긴다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>특정 촉매: CFO의 TAM 발언 보도(뉴스 기반).</strong> Barron's 헤드라인은 CFO가 AMD의 주소지정가능시장(TAM)이 $3조에 이를 수 있다고 언급했다고 보도했다. 회사 IR 일정상 9월 8일 Citi Global TMT 컨퍼런스, 9월 11일 Goldman Sachs Communacopia가 예정되어 있어(8월 4일 실적콜에서 고지), 이 발언은 컨퍼런스 발언으로 추정되나 어느 자리인지는 제공 자료로 확인 불가.</li>
+<li><strong>주의할 점:</strong> 8월 4일 실적콜에서 회사는 2030년 고성능·AI 컴퓨팅 시장이 연 약 40% 성장해 약 $2조에 근접한다고 밝혔다. 보도된 $3조가 기간·범위를 확장한 수치인지, 별도 정의인지는 SEC 공시나 transcript로 확인되지 않는다. 회사 주장이며 새 재무 가이던스는 아니다.</li>
+<li><strong>보조 요인:</strong> IBD가 매수 포인트 돌파를 보도하는 등 기술적 모멘텀 수급이 가세했다. 20일 수익률 9.9%인 반면 60일 수익률은 1.9%로, 7월 말 Advancing AI 행사·8월 초 실적 이후 조정분을 최근 3주에 되돌린 구간이다.</li>
+<li>최근 4일 내 SEC 공시는 없다. 8월 19일자 8-K(이사 선임)는 주가 촉매와 무관하다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지·목차·서두(미래예측진술 주의문)에 그쳐 사업 섹션 본문은 확인 불가하다. 아래 사업 구성은 10-K 서두에 언급된 항목과 8월 4일 실적콜의 세그먼트 수치를 근거로 한다.</p>
+<p><strong>세그먼트별 매출·수익성(2026년 2분기, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>매출</th>
+<th>YoY</th>
+<th>매출 비중</th>
+<th>영업이익(마진)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터센터(EPYC 서버 CPU, Instinct 가속기)</td>
+<td>$6.7B</td>
+<td>+107%</td>
+<td>58%</td>
+<td>$2.1B (31%)</td>
+</tr>
+<tr>
+<td>클라이언트(Ryzen PC CPU)</td>
+<td>$3.1B</td>
+<td>+23%</td>
+<td>27%</td>
+<td>클라이언트+게이밍 합산 $582M (15%)</td>
+</tr>
+<tr>
+<td>게이밍(GPU·세미커스텀)</td>
+<td>$779M</td>
+<td>-31%</td>
+<td>7%</td>
+<td>상동</td>
+</tr>
+<tr>
+<td>임베디드</td>
+<td>$977M</td>
+<td>+19%</td>
+<td>8%</td>
+<td>$386M (40%)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>수익 엔진은 데이터센터다.</strong> 1년 전 매출 비중 42%에서 58%로 올라섰고, 세그먼트 영업이익 $2.1B은 전사 비GAAP 영업이익 $3.1B의 약 3분의 2다. 실적콜에서 서버 CPU는 5분기 연속 최대 매출을 기록했고, 클라우드·엔터프라이즈 각각 70% 이상 성장했으며 x86 서버 매출 점유율이 YoY 상승했다고 언급됐다.</li>
+<li><strong>제품 세대:</strong> 실적콜에서 5세대 EPYC Turin·4세대 Genoa가 현 매출을 이끌고, 6세대 EPYC Venice와 랙 스케일 AI 플랫폼 Helios(MI450 기반)가 출시되어 이번 분기 초기 출하가 시작된다고 밝혔다.</li>
+<li><strong>고객군:</strong> 하이퍼스케일러(클라우드), 엔터프라이즈, PC OEM, 임베디드 고객. 실적콜에서 Anthropic·Microsoft와 대규모 Helios 배치를 위한 다년 전략 파트너십, Cerebras와 고속 추론 협력을 언급했다. 고객별 매출 집중도는 공시상 확인 불가.</li>
+<li><strong>경쟁 위치:</strong> 서버 CPU에서 점유율 상승 중이라는 회사 주장이 있으며, 데이터센터 AI 가속기는 회사가 2030년 $1.4조 시장으로 제시한 영역에서 후발 도전자 위치다. 게이밍은 <span class="down">-31%</span>로 축소 중이다.</li>
+<li><strong>제조 구조:</strong> 실적콜에서 칩렛 방식으로 2나노 신공정 웨이퍼 소요를 줄인다고 언급했다. 외주 파운드리 의존 구조이나 파운드리명은 제공 자료에서 확인 불가.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 매출 YoY <span class="up">+50.1%</span>는 데이터센터(<span class="up">+107%</span>)와 클라이언트(<span class="up">+23%</span>)가 견인했고, 게이밍(<span class="down">-31%</span>)이 상쇄했다. 서버 CPU와 Instinct 가속기 모두 물량·믹스 개선이 동시에 작용한 것으로 읽히나, 단가와 물량의 분해는 공시상 확인 불가.
+- 클라이언트 매출 <span class="up">+23%</span>는 실적콜에서 "PC 시장이 부진한 가운데 점유율 상승"으로 설명됐다. 시장 성장이 아닌 점유율 효과이므로 지속 여부는 경쟁사 대응에 좌우된다.</p>
+<p><strong>마진 방향성</strong>
+- 제공 지표상 GAAP 매출총이익률 53.8%, GAAP 영업이익률 17.3%. 실적콜 기준 비GAAP 총이익률 56%(YoY +200bp 이상, QoQ +80bp), 비GAAP 영업이익률 27%. GAAP과 비GAAP 영업이익률 차이가 약 10%p로 크며, 조정 항목 내역은 제공 자료에서 확인 불가.
+- 영업이익률 YoY <span class="up">+19.0%</span>p는 기저효과가 크다. 실적콜에서 2025년 2분기에 MI308 대중국 수출규제 관련 재고 및 관련 비용 약 $800M이 반영됐다고 밝혔다. 이를 제외한 실질 개선폭은 그보다 작다.
+- 3분기 가이던스는 비GAAP 총이익률 56%, 영업비용 $3.65B(2분기 $3.4B 대비 증가). 매출 $13B 기준 영업비용 비중은 약 28%로 2분기(약 30%)보다 낮아져 영업 레버리지가 이어진다는 회사 계산이다.
+- 회사는 2027년 총이익률이 서버 CPU 성장 속도와 데이터센터 AI(MI450) 램프 속도의 믹스에 따라 결정된다고 밝혔다. 가속기 비중 확대가 총이익률에 부담이 될 수 있음을 회사 스스로 시사한 대목이다.</p>
+<p><strong>현금흐름</strong>
+- 2분기 영업현금흐름 $2.4B, FCF $1.6B(실적콜). 비GAAP 영업이익 $3.1B 대비 FCF 전환율이 약 50%에 그친 주된 이유는 재고를 $8.5B까지 늘린 데 있다. 회사는 데이터센터 수요 대응 목적이라고 밝혔다.
+- TTM FCF $8.40B. 시가총액 대비 FCF 수익률은 약 1%다.</p>
+<p><strong>재무 건전성</strong>
+- 현금 및 현금성자산 $13.1B(실적콜). 총차입금·순현금 규모는 제공 자료에서 확인 불가. 10-K 서두에 리볼빙 신용한도와 기업어음(CP) 프로그램이 언급되어 있다.
+- 유통주식수는 2026년 1월 30일 1,630.4백만 주에서 7월 29일 1,632.5백만 주로 소폭 증가했다. 대규모 자사주 매입에 의한 주식수 감소는 확인되지 않는다.
+- 10-K 표지 기준 2025년 6월 27일 종가 $143.81 대비 오늘 종가 $521.10으로 약 14개월간 3.6배 상승했다. 밸류에이션 재평가가 실적 개선을 상당 부분 선반영한 상태다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>데이터센터 AI 가속기(Instinct MI450 / Helios 랙 스케일)</strong>
+   - 회사 주장: 2027년 데이터센터 매출이 YoY 2배 이상 성장한다고 밝혔고, Q&amp;A에서 CEO가 데이터센터 AI는 "100%를 훨씬 상회"할 것이라고 언급했다. Helios 초기 출하가 이번 분기 시작되며 분기마다 증가한다고 밝혔다.
+   - 실현 조건: 2나노 공정·패키징·기판 등 후공정 캐파 확보, Anthropic·Microsoft 배치 일정 준수, ROCm.AI 소프트웨어 성숙.
+   - 검증 포인트: 3분기 데이터센터 매출이 가이던스가 시사하는 "두 자릿수 강한 성장"을 달성하는지, Helios 출하가 매출로 인식되기 시작했는지, 데이터센터 세그먼트 마진(31%)이 가속기 믹스 확대에도 유지되는지.</p>
+</li>
+<li>
+<p><strong>서버 CPU(EPYC Turin·Venice)</strong>
+   - 회사 주장: 2026년 하반기 서버 매출 80% 이상, 2027년 연간 70% 이상 성장한다고 밝혔다. CEO는 공급 상황에 따라 상향 여지가 있다고 언급했다.
+   - 실현 조건: 현재 타이트한 공급의 해소. 회사는 2027년 공급 상황이 2026년보다 낫다고 밝혔다.
+   - 검증 포인트: 3분기 서버 매출 성장률이 80%선에 부합하는지, 클라우드 vs 엔터프라이즈 성장의 균형, 재고 추가 증가 여부.</p>
+</li>
+<li>
+<p><strong>임베디드 회복</strong>
+   - 회사 주장: 2분기 매출 <span class="up">+19%</span>, 영업이익률 40%로 최고 마진 세그먼트. 연간 신규 설계 수주 $18B 달성 경로에 있다고 밝혔다.
+   - 검증 포인트: 3분기 가이던스에 명시된 임베디드 "두 자릿수 강한 성장" 달성 여부. 설계 수주가 매출로 전환되는 데는 시차가 있어 단기 검증은 제한적이다.</p>
+</li>
+<li>
+<p><strong>클라이언트 점유율 확대</strong>
+   - 회사 주장: PC 시장 부진 속 매출 <span class="up">+23%</span>. 검증 포인트: 3분기 가이던스가 클라이언트를 성장 축으로 명시하지 않았으므로 성장 둔화 폭이 확인 대상이다.</p>
+</li>
+<li>
+<p><strong>중장기 목표(회사 제시)</strong>
+   - 회사는 매출 성장률이 종전 35% 이상 목표를 "상당히 상회"하고, EPS가 전략 기간 내 $20을 "크게 상회"할 것이라고 밝혔다. 목표 시점은 제공 자료에서 확인 불가. 영업비용 증가율은 매출 성장률보다 낮게 관리하겠다고 CFO가 언급했다.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- 톤은 명확히 공격적이다. CEO는 애널리스트의 2027년 데이터센터 AI 추정치에 대해 "당신의 숫자가 아마 너무 낮다"고 직접 언급했고, 종전 "100% 이상" 표현을 "100%를 훨씬 상회"로 스스로 격상했다. 회사가 컨센서스를 위로 끌어올리려는 의도가 드러나는 화법이다.
+- 서버 CPU에 대해서도 "70% 이상"을 제시하면서 상향 가능성을 덧붙였다. 하방 여지를 언급한 대목은 공급 제약뿐이다.
+- 재무 분석가의 날에 제시한 EPS $20 목표를 "크게 상회"로 갱신했다. 목표치 자체를 숫자로 바꾸지 않고 형용사를 바꾸는 방식이다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>Instinct 총이익률(Morgan Stanley·Cantor 질의):</strong> 2027년 초와 말의 Instinct 총이익률을 묻자 CFO는 "서버 CPU와 데이터센터 AI 램프의 믹스에 따라 결정된다", "2027년 가이던스 때 더 설명하겠다"며 수치를 회피했다. 가속기 마진이 전사 평균을 희석할 가능성을 부인하지 않고 "다른 레버(임베디드·클라이언트)가 상쇄"한다고 답한 점이 핵심 방어 지점이다.
+- <strong>공급 제약(Morgan Stanley):</strong> CEO는 서버 CPU 공급이 상반기 내내 타이트했고 "수요 상당 부분이 예측되지 않았던 것"이라고 인정했다. 2나노 신공정 램프의 어려움도 인정하되 칩렛 구조로 웨이퍼 소요가 적다고 방어했다. 웨이퍼 외에 패키징·기판까지 관리 대상임을 스스로 열거해 병목이 다층적임을 시사했다.
+- <strong>2027년 Instinct 절대 매출(Cantor):</strong> $30B 수준 추정에 대해 CEO는 정확한 숫자를 피하고 "분기마다 Helios가 성장하는 진행형"으로 답했다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 2025년 2분기 MI308 수출규제 관련 약 $800M 비용의 존재와 YoY 비교에서의 제외 처리.
+- 재고 $8.5B, 현금 $13.1B, 세그먼트별 영업이익률.
+- 메모리 비용 인플레이션과 메모리 할당 문제를 파트너와 관리 중이며 워크로드에 따라 메모리 탑재량을 조정할 유연성이 있다는 언급. 메모리 원가가 마진 변수로 부상했음을 시사한다.
+- Cerebras 웨이퍼 스케일 엔진과 Helios 결합 솔루션이 4분기 Cerebras Cloud에서 제공되어 2027년까지 확장된다는 일정.
+- Anthropic·Microsoft 다년 파트너십, 2030년 TAM 수치(가속기 $1.4조, 서버 CPU $2,200억, 전체 약 $2조).</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에 리스크 팩터 본문이 포함되지 않아, 10-K 서두 미래예측진술 목록과 실적콜에서 실제 언급된 사항 중 유의미한 것만 추린다.</p>
+<ol>
+<li><strong>수출규제 재발.</strong> 2025년 2분기 MI308 대중국 수출규제로 약 $800M 재고·관련 비용이 발생한 전례가 있다(실적콜). 데이터센터 매출 비중이 58%로 커진 만큼 규제 변경 시 손실 규모도 비례해 커진다.</li>
+<li><strong>재고 급증과 현금 전환 지연.</strong> 재고 $8.5B은 수요 대응 목적이라는 회사 설명이나, Helios/MI450 램프가 지연되거나 고객 데이터센터 구축 시점이 밀리면 재고 평가손실로 전환될 수 있다. 실적콜에서 회사 스스로 "고객 데이터센터 구축 시점"을 불확실성으로 명시했다.</li>
+<li><strong>가속기 믹스 확대에 따른 총이익률 압박.</strong> CFO가 2027년 총이익률을 서버 CPU와 AI 가속기의 믹스 함수라고 밝혔고 Instinct 마진 수치 제시를 회피했다. 메모리 비용 인플레이션도 회사가 언급한 변수다. 총이익률 56% 유지가 어려워지면 EPS 목표 달성 경로가 흔들린다.</li>
+<li><strong>공급망 다층 병목.</strong> 2나노 웨이퍼, 후공정 패키징, 기판까지 타이트하다고 CEO가 언급했다. 서버 CPU 수요의 상당 부분이 "예측되지 않았던" 것이어서, 공급 확보 실패 시 가이던스 미달 위험이 있다. 외주 파운드리 의존 구조는 회사가 통제할 수 없는 변수다.</li>
+<li><strong>밸류에이션과 기대치 리스크.</strong> 회사가 컨센서스를 위로 유도하는 화법을 쓰고 있고, 주가는 14개월간 3.6배 상승했다. FCF 배수 약 100배는 2027년 데이터센터 2배 성장이 이미 상당 부분 반영된 수준이다. 가이던스 대비 소폭 미달만으로도 큰 조정이 가능하다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(보통 판단)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY / QoQ</td>
+<td>+50.1% / <span class="up">+12.5%</span></td>
+<td>성장 가속, 3분기 가이던스도 QoQ <span class="up">+13%</span></td>
+</tr>
+<tr>
+<td>비GAAP 영업이익률(실적콜)</td>
+<td>27%</td>
+<td>영업 레버리지 작동 중</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>17.3%</td>
+<td>비GAAP과 10%p 격차, 조정 항목 큼</td>
+</tr>
+<tr>
+<td>시가총액 / TTM FCF</td>
+<td>약 101배</td>
+<td>성장 선반영, 현금 전환 미흡</td>
+</tr>
+<tr>
+<td>시가총액 / 분기 매출 연환산</td>
+<td>약 18배</td>
+<td>3분기 가이던스 연환산 기준 약 16배</td>
+</tr>
+<tr>
+<td>2분기 FCF / 비GAAP 영업이익</td>
+<td>약 52%</td>
+<td>재고 $8.5B이 현금 흡수</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-10.3%</td>
+<td>추세 복귀 구간, 돌파 전</td>
+</tr>
+<tr>
+<td>거래량 배수</td>
+<td>1.28배</td>
+<td>수급 강도 보통</td>
+</tr>
+</tbody>
+</table></div>
+<p>성장·마진은 '적극'에 부합하나, 현금 전환과 밸류에이션이 '보통'으로 끌어내린다. 오늘의 촉매가 공시가 아닌 컨퍼런스 발언 보도라는 점도 추격 매수를 정당화하기에 약하다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>CFO의 $3조 TAM 발언 원문.</strong> 9월 8일 Citi 컨퍼런스 또는 9월 11일 Goldman 컨퍼런스 발언 원문에서 기간·범위 정의를 확인하고, 8월 실적콜의 2030년 약 $2조와의 차이가 무엇인지 파악한다. 단순 기간 연장이면 촉매 강도는 낮다.
+2. <strong>8월 4일 실적 공시 8-K와 10-Q(2026년 6월 27일 분기)의 재고·현금흐름 세부.</strong> 재고 $8.5B의 구성(원재료 vs 완제품)과 순현금 규모를 확인한다. 제공 발췌에는 해당 본문이 없다.
+3. <strong>10-K 리스크 팩터 중 고객 집중도와 수출규제 조항.</strong> 특정 고객 매출 비중과 중국 매출 비중을 확인해 리스크 1·2의 크기를 정량화한다.</p>
+<p><strong>판단을 뒤집을 조건(→ 관망으로 하향)</strong>
+- 3분기 매출이 가이던스 하단 $12.7B을 밑돌거나, 비GAAP 총이익률이 56%에서 유의미하게 이탈할 때.
+- 3분기 말 재고가 $8.5B에서 추가로 크게 늘면서 데이터센터 매출 QoQ 성장이 둔화될 때. 수요 대응 재고가 아니라 출하 지연 재고일 가능성이 커진다.
+- Helios/MI450 출하 시점이 2026년 4분기 이후로 밀리거나, 실적콜에서 언급된 Anthropic·Microsoft 배치 일정이 변경될 때.
+- 수출규제 범위가 MI450급으로 확대되는 정책 변화가 확인될 때.</p>
+<p><strong>'적극'으로 상향할 조건</strong>
+- 3분기 실적에서 데이터센터 매출이 가이던스를 상회하고 Helios 매출 인식이 시작되며, 재고 증가세가 둔화되어 FCF 전환율이 비GAAP 영업이익 대비 70% 수준으로 회복될 때. 이 경우 FCF 배수 부담이 완화되어 밸류에이션 논거가 성립한다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm">10-K — 2025-12-27_0000002488-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm">10-Q — 2026-06-27_0000002488-26-000123</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/amd-20260328.htm">10-Q — 2026-03-28_0000002488-26-000076</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000163/pressrelease_bodxtr8x19x26.htm">8-K — 2026-08-17_0000002488-26-000163__EX-99.1__pressrelease_bodxtr8x19x26</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000163/amd-20260817.htm">8-K — 2026-08-17_0000002488-26-000163</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000119312526354029/d142696d8k.htm">8-K — 2026-08-13_0001193125-26-354029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000121/amdq22026earningsslidesf.htm">8-K — 2026-08-04_0000002488-26-000121__EX-99.2__amdq22026earningsslidesf</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000121/q22026991.htm">8-K — 2026-08-04_0000002488-26-000121__EX-99.1__q22026991</a></li>
+<li>Transcript — 2026-08-04 Q2 2026 Transcript</li>
+<li>Transcript — 2026-07-24 Advanced Micro Devices, Inc. (AMD) Presents at AMD Advancing AI 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

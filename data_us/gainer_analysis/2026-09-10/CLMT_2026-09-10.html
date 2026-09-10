@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLMT — Calumet Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CLMT — Calumet Inc. Common Stock</h1>
+<div class="sub">2026-09-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">CLMT</span><span class="badge">+3.30%</span><span class="badge">거래량 1.17배</span><span class="badge">$4.90B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>2분기 실적(조정 EBITDA $159.3M, 세제혜택 포함 $175.2M, 전년 $55.1M/$76.5M)과 9월 1일 공시된 Montana Renewables(MRL) 확장안(잔여 투자 $1.2B→$137M, 제3자 지분 불필요)은 구조적으로 긍정적이다.</li>
+<li>그러나 실적 급증의 핵심은 이란 전쟁·호르무즈 차질로 인한 기유(base oil)·정제마진 이상 확대라는 점을 실적콜에서 경영진 스스로 반복 강조했다. 피크 사이클 마진이 주가에 상당 부분 반영됐다고 본다.</li>
+<li>주가는 10-K 기준일(2025-06-30) $15.76에서 $55.69로 약 3.5배, 60일 <span class="up">+61.8%</span>, 52주 고점 갱신 상태이며 오늘 거래량 배수는 1.17배로 "급증"이라 하기 어렵다. 당일 신규 촉매도 없다.</li>
+<li>GAAP 기준으로는 상반기 순손실 $412.9M, 매출총이익률 1.3%, TTM 잉여현금흐름 $73.5M(시총 대비 약 1.5%)로 회계상 이익과 조정 지표의 괴리가 크고, 총부채 규모는 제공 자료에서 확인되지 않아 EV 밸류에이션이 불가능하다.</li>
+<li>3분기 실적(레버리지 3배 미만 달성 여부, SAF 런레이트, 기유 마진 지속성) 확인 후 진입해도 늦지 않다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong> 최근 4일 내 SEC 공시가 없고, 뉴스 헤드라인은 모두 52주 신고가·1주 <span class="up">+11.27%</span> 등 가격 자체를 다루는 후행성 기사다. 20일 수익률 <span class="up">+21.0%</span>의 출발점은 8월 28일 DOE 대출보증계약 수정(8-K) 및 9월 1일 MRL 확장 보도자료로 보는 것이 합리적이며, 오늘 <span class="up">+3.30%</span>는 그 흐름의 연장과 "미국 정제마진주" 섹터 테마(simplywall.st 헤드라인)가 겹친 것으로 추정한다. GuruFocus가 GF Value $18.38 대비 고평가를 지적한 헤드라인도 동시에 나와 있어, 밸류에이션 논쟁이 시작된 구간이다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 사업 섹션(Items 1·2) 본문이 포함되지 않아 고객군·지역별 매출 구성은 <strong>공시상 확인 불가</strong>다. 아래는 10-K 표지·요약, 8-K 세그먼트 표, 실적콜 발언을 종합한 것이다.</p>
+<p><strong>세그먼트 3개(2Q26 8-K 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>2Q26 조정 EBITDA</th>
+<th>2Q25</th>
+<th>조정 GP/bbl 2Q26</th>
+<th>2Q25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specialty Products &amp; Solutions (SPS)</td>
+<td>$161.7M</td>
+<td>$66.8M</td>
+<td>$32.25</td>
+<td>$13.81</td>
+</tr>
+<tr>
+<td>Performance Brands</td>
+<td>$6.3M</td>
+<td>$13.5M</td>
+<td>$81.42</td>
+<td>$140.25</td>
+</tr>
+<tr>
+<td>Montana/Renewables</td>
+<td>$10.7M (세제혜택 포함 $26.6M)</td>
+<td>$(5.1)M (포함 $16.3M)</td>
+<td>$11.36</td>
+<td>$(0.82)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>SPS(이익의 90% 이상)</strong>: 원유를 직접 정제해 파라핀계 기유(Group I·II 각 절반, 실적콜), 솔벤트, 왁스 등 스페셜티 제품을 만들고, 그 과정에서 연료·아스팔트가 부산물로 나온다. 실적콜에서 CEO는 "비통합 경쟁사는 VGO·디젤 등 중간유분을 사서 스페셜티를 만들지만, 우리는 원유에서 출발해 중간유분 가치를 내재화한다"고 밝혔다. 원유 공급은 대부분 미국 내(Shreveport, Princeton, Cotton Valley 등 언급).</li>
+<li><strong>Performance Brands</strong>: 브랜드 윤활유 등 다운스트림. 단가는 높지만 규모가 작고, 원가 전가 지연으로 2Q26 이익이 전년 대비 감소했다.</li>
+<li><strong>Montana/Renewables</strong>: Great Falls의 Calumet Montana Refining(CMR, 아스팔트 등)과 재생연료 자회사 MRL(재생디젤·SAF·재생나프타). MRL은 Calumet의 비제한(unrestricted)·비보증 자회사로, DOE 대출($782M 1차 집행)을 별도로 안고 있다.</li>
+</ul>
+<p><strong>경쟁 위치</strong>: 실적콜에서 회사는 전 세계 파라핀계 기유 생산이 일 70만 배럴 남짓인데 현재 10% 이상이 가동 중단(중동 1/3 이란 전쟁, 유럽 Group I 1/3 러-우 전쟁)이며, 미국 내 원유·고객 기반을 둔 자사가 "각 글로벌 역학의 옳은 편에 서 있다"고 주장했다. 이는 회사 주장이며 지속성은 전쟁 종결 여부에 달려 있다.</p>
+<p><strong>법인 구조</strong>: 2024년 MLP(Calumet Specialty Products Partners)에서 델라웨어 법인으로 전환(Conversion). 2026-02-27 기준 발행주식 86,776,552주, Large accelerated filer.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>: 최근 분기 매출 $1.45B(YoY <span class="up">+40.8%</span>, QoQ <span class="up">+40.3%</span>). 실적콜에 따르면 3월 2주간 원유가가 50% 이상 급등했고 회사는 20건 이상 가격 인상을 집행했다. 즉 매출 성장은 물량보다 <strong>단가(원유 연동 판가 상승)</strong> 주도이며, QoQ 급증에는 1분기 Shreveport 가동 중단과 MRL·Cotton Valley·Princeton 턴어라운드로 눌린 기저효과가 포함돼 있다.</p>
+<p><strong>마진 방향</strong>: GAAP 매출총이익률 1.3%, 영업이익률 <span class="down">-2.8%</span>(YoY <span class="up">+7.0%</span>p)는 비현금 RIN 평가손·시가평가 항목이 반영된 수치(8-K 표기)다. 조정 기준으로는 SPS 배럴당 조정 GP가 $13.81→$32.25로 2.3배가 됐고, 1분기 실적콜에서는 SPS 마진이 배럴당 $54였다고 언급됐다(지표 정의가 8-K 표와 다를 수 있음). MRL은 세제혜택 포함 배럴당 흑자 전환. 방향은 뚜렷하게 개선이지만, 그 원천이 지정학적 공급 차질임을 유의해야 한다.</p>
+<p><strong>현금흐름</strong>: TTM 잉여현금흐름 $73.5M. 1분기 콜에서 CFO는 원유 급등으로 매출채권이 $100M 이상 늘어 운전자본 유출이 컸고 4~5월에 대부분 되돌아온다고 밝혔다. 2분기 이후 현금창출은 7월 $115M 세일앤리스백 상환과 $100M 노트 콜(실적콜)로 확인된다.</p>
+<p><strong>재무 건전성</strong>: 실적콜에서 제한그룹 레버리지 비율이 4배 미만이며 다음 분기 3배 미만을 예상한다고 밝혔다. 총차입금·현금 잔액은 제공 자료에서 <strong>공시상 확인 불가</strong>. 별도로 MRL의 DOE 보증대출은 1차 $782M이 집행됐고(2025-02), 수정 계약으로 최대 원금 $815.8M·자본화이자 $232.8M으로 축소됐다. 상반기 GAAP 순손실 $412.9M(전년 $309.9M)은 조정 EBITDA 급증과 대조되며, 10-K 리스크 요약은 장기자산·영업권 손상 가능성을 명시하고 있다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>MRL SAF 확장(MaxSAF)</strong>: 회사는 현재 SAF 런레이트 6,000만 갤런, 2026년 말 8,000만 갤런 초과, 2027년 봄 1억 2,000만 갤런 초과, 2028년 말 약 2억 갤런과 총 처리량 17,000 bpd를 제시했다. 잔여 투자 $137M, DOE 최종 인출 $34M 외 MRL 자체 이익으로 충당. CMR의 수소화처리기·수소플랜트·나프타 분리기를 장기 리스로 전용. <strong>검증 포인트</strong>: 4분기 tie-in 턴어라운드의 기간·비용, $34M DOE 인출 완료 여부, 3Q 실적에서 MRL 조정 GP/bbl이 2Q $11.36 위를 유지하는지.</li>
+<li><strong>기유·솔벤트 공급 부족 마진</strong>: 회사는 중동·유럽 생산 차질과 물류비 급등으로 "기유가 부족해 돌아갈 수 없는" 상황이 빨리 해소되지 않을 것이라고 밝혔다. <strong>검증 포인트</strong>: SPS 조정 GP/bbl의 QoQ 방향, 중동 정제설비 복귀 뉴스, 회사가 언급한 Group II 대체 수요 지속 여부.</li>
+<li><strong>디레버리징 가속</strong>: 3Q 레버리지 3배 미만 전망(회사 주장). 2028년 만기 노트의 콜 프로텍션이 7월에 완화돼 $150M 추가발행분으로 상환한다는 계획이 1분기 콜에서 언급됐다. <strong>검증 포인트</strong>: 3Q 10-Q의 총차입금 감소 폭, 이자비용 감소.</li>
+<li><strong>스페셜티 성장 CAPEX 약 $50M</strong>: 디보틀넥·소규모 증설 5~6건, 2027년 2/3 이상·2028년 잔여 집행, 실적 기여는 2028년. <strong>검증 포인트</strong>: 2027년 자본예산 발표 시 개별 프로젝트 수익률 공개 여부.</li>
+<li><strong>45Z 청정연료 세액공제 현금화</strong>: 2Q "세제혜택 포함" 조정 EBITDA와 미포함 차이 $15.9M. 10-K는 현금화 가능성과 가격을 불확실성으로 명시. <strong>검증 포인트</strong>: 실제 매각 단가 공시.</li>
+<li><strong>MRL 수익화 옵션</strong>: 1분기 콜에서 CEO는 "MRL 수익화 계획은 그대로"라고 밝혔고, 9월 보도자료는 제3자 지분 불필요를 "향후 전략적 기회를 위한 단순한 자본구조"로 표현했다. <strong>검증 포인트</strong>: 지분 매각·JV 관련 8-K.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 화법 변화</strong>: 2Q 콜에서 CEO는 "올해는 2022년과 닮았다"는 전 분기 발언이 실현됐다며, 대화의 초점을 "자체 자금조달 가능한 성장 플랫폼이 다음에 무엇을 하는가"로 옮겼다. 1Q 콜의 키워드가 "디레버리징 가속"이었다면 2Q는 "성장 CAPEX 복귀·M&amp;A 주시"로 바뀌었다. 자신감의 근거는 (i) 기유 시장의 구조적 공급 부족, (ii) EPA Set 2 RVO 이후 재생디젤 인덱스 마진 회복, (iii) 레버리지 4배 미만 달성이다. 다만 MRL 담당 EVP는 1Q 콜에서 인덱스 마진 $3/갤런이 "유지되리라 보지 않으며 균형은 $2를 약간 웃도는 수준"이라고 선을 그었다.</p>
+<p><strong>Q&amp;A에서 반복·방어된 지점</strong>
+- MRL 현금의 용처(모회사 인터컴퍼니 채무 상환 여부): CEO가 "전체 딜을 공개할 때 얘기하자"며 두 차례 답을 미뤘다. 이후 9월 1일 공시로 상당 부분 해소됐으나 모회사로의 현금 상향 경로는 여전히 불명확하다.
+- 1Q 콜의 MRL 원료 오염 사건: "소량의 오염물이 원료 공급에 섞여 QC를 우회했다"며 조사 중이라고 답했고, "지속적 손상 없음"을 강조했다. 이후 전기 공급 중단으로 재가동을 두 번 했다는 언급도 있었다. 운영 리스크가 실재함을 보여준다.
+- 성장 CAPEX 규모·시점과 M&amp;A: 회사는 "디레버리징에서 눈을 떼지 않겠다"를 반복하며 방어했다.</p>
+<p><strong>공시에는 없고 콜에서만 확인된 정보</strong>: 제한그룹 레버리지 4배 미만·3배 미만 전망, $100M 노트 콜, $150M 추가발행, 글로벌 기유 수급 수치(70만 bpd, 10% 이상 중단, 중동 1/3, 유럽 Group I 1/3), Calumet 기유의 Group I/II 반반 구성, MRL 통제가능 원가 $0.38/갤런, 1Q SPS 마진 $54/bbl, 20건 이상 가격 인상, 현재 처리량 약 13,000 bpd, $50M 성장 CAPEX 파이프라인.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>마진 정상화 리스크</strong>: 2Q 이익의 대부분이 SPS이며, 그 마진 확대는 회사 스스로 이란 전쟁·호르무즈·러-우 전쟁에 따른 공급 차질로 설명했다. 10-K 리스크 요약도 "상품가격 변동과 마진 축소가 부채상환 가용현금을 줄인다"를 첫 항목에 둔다. 전쟁 종결이나 중동 설비 복귀 시 마진과 주가 모두 되돌림이 크다.</li>
+<li><strong>RFS·RIN 노출</strong>: 2Q 순손실 $95.9M의 원인이 비현금 RIN 평가손이다. 10-K는 RIN 매입 비용, 매입 의무 물량, 소형정제소 면제(SRE) 청원 소송 결과를 불확실성으로 명시한다. RIN 가격 상승이 GAAP 손익과 현금 모두를 흔들 수 있다.</li>
+<li><strong>레버리지·유동성 구조</strong>: 10-K는 재고·제품가 하락 시 리볼버 차입기반 축소와 파생상품 현금담보 요구를 경고한다. DOE 계약 수정으로 Base Cash Equity Reserve 요건이 $80M→$20M으로 낮아진 것은 유연성 확대이자 완충 축소이기도 하다. 총차입금은 제공 자료에서 확인 불가.</li>
+<li><strong>MRL 실행 리스크</strong>: 4분기 tie-in 턴어라운드, CMR 설비 전용, 6개 소규모 프로젝트 연쇄 실행이 SAF 런레이트 목표의 전제다. 2026년 상반기에만 원료 오염·전력 중단으로 재가동을 반복했고, 성능 테스트 결과는 제공 자료에서 확인되지 않는다.</li>
+<li><strong>GAAP-조정지표 괴리와 손상 가능성</strong>: 상반기 순손실 $412.9M, 매출총이익률 1.3%. 10-K는 장기자산·영업권 손상 가능성을 명시한다. 조정 EBITDA 기반 밸류에이션이 정당화되지 않는 국면에서 손상 인식이 나오면 주가 충격이 크다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 시가총액 $4.90B 대비 TTM FCF $73.5M(수익률 약 1.5%). 2Q 조정 EBITDA(세제혜택 포함) $175.2M을 단순 연율화하면 약 $700M이나, 이는 턴어라운드 3건을 안고도 나온 피크 마진 분기이며 총부채 미확인으로 EV 배수 산출 불가.
+- 주가 60일 <span class="up">+61.8%</span>, 10-K 기준일 대비 약 3.5배, 52주 고점 대비 0.0%. 오늘 거래량 배수 1.17배로 기관 신규 유입 신호는 약함.
+- 구조적 긍정 요인(MRL 잔여 CAPEX $1.2B→$137M, 희석 없음, 레버리지 4배→3배 미만 전망)은 확인됐으나, 이는 9월 1일 이후 주가에 반영 중.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3Q 실적(과거 패턴상 11월 초)에서 제한그룹 레버리지 3배 미만 달성과 총차입금 절대액.
+2. SPS 조정 GP/bbl이 2Q $32.25 대비 유지·상승하는지, 그리고 회사가 언급한 중동·유럽 기유 설비 복귀 여부.
+3. MRL 4분기 턴어라운드 일정·비용 확정과 DOE $34M 최종 인출 완료 공시.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>관망→보통 상향</strong>: 3Q에서 레버리지 3배 미만 확인 + MRL 조정 EBITDA(세제혜택 포함)가 2Q $26.6M 대비 개선 + 주가가 20일 급등분을 일부 반납해 피크 마진 의존도가 낮아진 밸류에이션이 될 때.
+- <strong>관망→회피 하향</strong>: 중동 기유 설비 정상화 뉴스로 SPS 마진 급락, RIN 가격 급등에 따른 현금 유출 확대, MRL tie-in 턴어라운드 지연 또는 추가 운영사고, 장기자산 손상 인식, 또는 디레버리징 완료 전 M&amp;A 발표.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000007/clmt-20251231x10k.htm">10-K — 2025-12-31_0002013745-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000024/clmt-20260630.htm">10-Q — 2026-06-30_0002013745-26-000024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000016/clmt-20260331x10q.htm">10-Q — 2026-03-31_0002013745-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000029/montanarenewablesannounces.htm">8-K — 2026-08-28_0002013745-26-000029__EX-99.1__montanarenewablesannounces</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000029/clmt-20260828.htm">8-K — 2026-08-28_0002013745-26-000029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260630xex991.htm">8-K — 2026-08-07_0002013745-26-000022__EX-99.1__clmt-20260630xex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000201374526000022/clmt-20260807.htm">8-K — 2026-08-07_0002013745-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2013745/000119312526255570/d106744d8k.htm">8-K — 2026-06-02_0001193125-26-255570</a></li>
+<li>Transcript — 2026-08-07 Calumet, Inc. (CLMT) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-08 Calumet, Inc. (CLMT) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
