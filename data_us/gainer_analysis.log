@@ -8955,3 +8955,71 @@
 2026-09-10 09:45:08,111 - ERROR - GME: LLM 분석 실패
 2026-09-10 09:45:08,111 - INFO - 발송 보류 16종목(판정 미달): NET(보통), DDOG(보통), CHYM(보통), META(보통), FSLY(관망), AEHR(관망), HPE(보통), AKAM(관망), MRVL(보통), MTSI(보통), ALAB(보통), FORM(보통), CLMT(관망), INSM(보통), TER(보통), AMD(보통)
 2026-09-10 09:45:10,035 - INFO - 완료: 19종목 리포트 생성 · 텔레그램 발송
+2026-09-11 08:50:03,117 - INFO - Nasdaq 스크리너 수신: 7166종목
+2026-09-11 08:50:03,639 - INFO - 1차(상승률·시총·거래대금) 통과: 10종목
+2026-09-11 08:50:05,369 - INFO - 2차(거래량 급증 2.0배↑) 통과: 4종목
+2026-09-11 08:50:09,518 - INFO - 3차(펀더멘털) 통과: 1종목
+2026-09-11 08:50:11,263 - INFO - 워치리스트 트랙: 7종목 (CLOV +8.5%, RDNT +4.8%, SEDG +4.4%, MDB +4.3%, DUOL +4.3%, AAPL +3.6%, LFST +3.0%)
+2026-09-11 08:50:23,255 - INFO - 최종 선정: 7종목 (워치리스트 7 + 전체시장 0)
+
+선정 종목
+  ★WL CLOV   +  8.53%  vol× 2.0     $2.50B  score=0.565  매출 YoY +55.6%, 영업이익률 3.8%, 마진 +6.0%p 개선
+  ★WL RDNT   +  4.81%  vol× 1.4     $5.85B  score=0.484  매출 YoY +25.0%, QoQ +8.2%, 영업이익률 6.8%
+  ★WL SEDG   +  4.37%  vol× 4.2     $2.26B  score=0.583  매출 YoY +19.6%, QoQ +11.5%, 영업적자(-2.7%)
+  ★WL MDB    +  4.32%  vol× 1.0    $30.12B  score=0.461  매출 YoY +30.5%, QoQ +12.2%, 영업이익률 3.7%
+  ★WL DUOL   +  4.25%  vol× 1.1     $6.79B  score=0.360  매출 YoY +18.3%, QoQ +2.2%, 영업이익률 11.4%
+  ★WL AAPL   +  3.56%  vol× 1.8     $4.77T  score=0.400  매출 YoY +16.4%, 영업이익률 32.6%, 마진 +2.6%p 개선
+  ★WL LFST   +  3.01%  vol× 1.7     $4.97B  score=0.473  매출 YoY +26.1%, QoQ +7.9%, 영업이익률 7.0%
+
+2026-09-11 08:50:23,255 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-09-11 08:50:24,217 - INFO - [1/7] CLOV 분석 시작
+2026-09-11 08:50:24,226 - INFO - CLOV: SEC 원문 다운로드 중…
+2026-09-11 08:50:25,080 - INFO - CLOV: complete: saved=0 skipped=79 errors=0 requests=2 manifest={'saved': 81516, 'unavailable': 6}
+2026-09-11 08:50:25,094 - INFO - CLOV: transcript 2건 확보 — 2026-05-07 Clover Health Investments, Corp. (CLOV) Q1 20, 2026-08-05 Clover Health Investments, Corp. 2026 Q2 - Re
+2026-09-11 08:50:25,095 - INFO - CLOV: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 28,432자)
+2026-09-11 08:50:29,205 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:50:29,205 - ERROR - CLOV: LLM 분석 실패
+2026-09-11 08:50:29,205 - INFO - [2/7] RDNT 분석 시작
+2026-09-11 08:50:29,215 - INFO - RDNT: SEC 원문 다운로드 중…
+2026-09-11 08:50:31,652 - INFO - RDNT: complete: saved=3 skipped=77 errors=0 requests=9 manifest={'saved': 81519, 'unavailable': 6}
+2026-09-11 08:50:43,762 - INFO - RDNT: transcript 2건 확보 — 2026-08-10 RadNet, Inc. (RDNT) Q2 2026 Earnings Call Tra, 2026-05-12 RadNet, Inc. (RDNT) Q1 2026 Earnings Call Tra
+2026-09-11 08:50:43,762 - INFO - RDNT: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-11 08:50:46,336 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:50:46,336 - ERROR - RDNT: LLM 분석 실패
+2026-09-11 08:50:46,336 - INFO - [3/7] SEDG 분석 시작
+2026-09-11 08:50:46,346 - INFO - SEDG: SEC 원문 다운로드 중…
+2026-09-11 08:50:52,767 - INFO - SEDG: complete: saved=1 skipped=80 errors=0 requests=26 manifest={'saved': 81520, 'unavailable': 6}
+2026-09-11 08:50:52,778 - INFO - SEDG: transcript 2건 확보 — 2026-08-05 SolarEdge Technologies, Inc. (SEDG) Q2 2026 E, 2026-05-28 SolarEdge Technologies, Inc. (SEDG) Presents 
+2026-09-11 08:50:52,778 - INFO - SEDG: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-11 08:50:55,155 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:50:55,155 - ERROR - SEDG: LLM 분석 실패
+2026-09-11 08:50:55,155 - INFO - [4/7] MDB 분석 시작
+2026-09-11 08:50:55,166 - INFO - MDB: SEC 원문 다운로드 중…
+2026-09-11 08:50:56,761 - INFO - MDB: complete: saved=0 skipped=54 errors=0 requests=6 manifest={'saved': 81520, 'unavailable': 6}
+2026-09-11 08:54:52,805 - WARNING - MDB rclone 복사 실패: 2026/09/11 08:54:36 ERROR : Google drive root 'BeOn 리서치/sa-transcripts/MDB - MongoDB, Inc./transcript/2026-08-25_MDB_The-Six-Five-Summit-AI-Unleashed-2026_QTR.md': error reading source root directory:
+2026-09-11 08:54:52,805 - INFO - MDB: transcript 1건 확보 — 2026-09-01 Q2 2027 Transcript
+2026-09-11 08:54:52,805 - INFO - MDB: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-11 08:54:55,230 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:54:55,230 - ERROR - MDB: LLM 분석 실패
+2026-09-11 08:54:55,230 - INFO - [5/7] DUOL 분석 시작
+2026-09-11 08:54:55,239 - INFO - DUOL: SEC 원문 다운로드 중…
+2026-09-11 08:54:56,078 - INFO - DUOL: complete: saved=0 skipped=73 errors=0 requests=2 manifest={'saved': 81520, 'unavailable': 6}
+2026-09-11 08:54:56,086 - INFO - DUOL: transcript 2건 확보 — 2026-08-05 Duolingo, Inc. (DUOL) Q2 2026 Earnings Call T, 2026-05-05 Duolingo, Inc. (DUOL) Q1 2026 Earnings Call T
+2026-09-11 08:54:56,087 - INFO - DUOL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-11 08:54:58,284 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:54:58,284 - ERROR - DUOL: LLM 분석 실패
+2026-09-11 08:54:58,284 - INFO - [6/7] AAPL 분석 시작
+2026-09-11 08:54:58,297 - INFO - AAPL: SEC 원문 다운로드 중…
+2026-09-11 08:55:00,187 - INFO - AAPL: complete: saved=3 skipped=46 errors=0 requests=7 manifest={'saved': 81523, 'unavailable': 6}
+2026-09-11 08:56:50,708 - INFO - AAPL: transcript 2건 확보 — 2026-07-31 Apple Inc. (AAPL) Q3 2026 Earnings Call Trans, 2026-04-30 Apple Inc. (AAPL) Q2 2026 Earnings Call Trans
+2026-09-11 08:56:50,709 - INFO - AAPL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-11 08:56:53,117 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:56:53,117 - ERROR - AAPL: LLM 분석 실패
+2026-09-11 08:56:53,117 - INFO - [7/7] LFST 분석 시작
+2026-09-11 08:56:53,126 - INFO - LFST: SEC 원문 다운로드 중…
+2026-09-11 08:56:54,715 - INFO - LFST: complete: saved=2 skipped=69 errors=0 requests=6 manifest={'saved': 81525, 'unavailable': 6}
+2026-09-11 08:56:54,727 - INFO - LFST: transcript 2건 확보 — 2026-05-13 LifeStance Health Group, Inc. (LFST) Presents, 2026-05-07 LifeStance Health Group, Inc. (LFST) Q1 2026 
+2026-09-11 08:56:54,728 - INFO - LFST: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 26,887자)
+2026-09-11 08:56:56,657 - WARNING - Claude CLI failed rc=1: 
+2026-09-11 08:56:56,657 - ERROR - LFST: LLM 분석 실패
+2026-09-11 08:56:56,657 - ERROR - 생성된 리포트가 없습니다.

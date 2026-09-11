@@ -1613,3 +1613,45 @@ Details:
 2026/09/10 16:03:51 ERROR : Attempt 2/3 succeeded
   disclosures-index: 1일치 업로드
 [2026-09-10 16:03:51] drive_sync --light 완료 (68초)
+[2026-09-10 21:30:22] drive_sync --full 시작 (기준: 2026-09-10 16:02:43)
+  datasets: 1개 업로드
+  disclosures-index: 1일치 업로드
+  disclosures-raw/daily: 1일치 zip 업로드 (1.6M)
+[2026-09-10 21:30:48] drive_sync --full 완료 (26초)
+[2026-09-11 12:30:13] drive_sync --light 시작 (기준: 2026-09-10 21:30:22)
+2026/09/11 12:30:22 CRITICAL: Failed to create file system for "gdrive:BeOn 리서치/dataScout/datasets": couldn't find root directory ID: googleapi: Error 403: Quota exceeded for quota metric 'Queries' and limit 'Previous quota: Requests per minute' of service 'drive.googleapis.com' for consumer 'project_number:202264815644'.
+Details:
+[
+  {
+    "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+    "domain": "googleapis.com",
+    "metadata": {
+      "consumer": "projects/202264815644",
+      "quota_limit": "defaultPerMinutePerProject",
+      "quota_limit_value": "840000",
+      "quota_location": "global",
+      "quota_metric": "drive.googleapis.com/default",
+      "quota_unit": "1/min/{project}",
+      "service": "drive.googleapis.com"
+    },
+    "reason": "RATE_LIMIT_EXCEEDED"
+  },
+  {
+    "@type": "type.googleapis.com/google.rpc.Help",
+    "links": [
+      {
+        "description": "Request a higher quota limit.",
+        "url": "https://cloud.google.com/docs/quotas/help/request_increase"
+      }
+    ]
+  }
+]
+, rateLimitExceeded
+  rclone 실패(1/5): copy /home/inhyuk/projects/dataScout/data_dart/.drive_sync_tmp/datasets gdrive:BeOn 리서치/dataScout/datasets — 60초 후 재시도
+  datasets: 7개 업로드
+  disclosures-index: 1일치 업로드
+[2026-09-11 12:31:50] drive_sync --light 완료 (97초)
+[2026-09-11 16:00:18] drive_sync --light 시작 (기준: 2026-09-11 12:30:13)
+  datasets: 1개 업로드
+  disclosures-index: 1일치 업로드
+[2026-09-11 16:00:40] drive_sync --light 완료 (22초)
