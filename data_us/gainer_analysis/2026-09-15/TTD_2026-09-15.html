@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTD — The Trade Desk Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TTD — The Trade Desk Inc. Class A Common Stock</h1>
+<div class="sub">2026-09-15 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">TTD</span><span class="badge">+4.39%</span><span class="badge">거래량 1.19배</span><span class="badge">$7.03B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>매출 성장률이 Q1 <span class="up">+12%</span> → Q2 <span class="up">+3%</span>로 급감했고, 회사가 제시한 Q3 매출 하한($650M)은 전분기 대비 약 <span class="down">-9%</span>, 전년 Q2 실적($694M)보다도 낮은 수준이다(10-Q, 실적콜).</li>
+<li>Q1 콜에서 제시한 Q2 가이던스(매출 ≥$750M, 조정 EBITDA $260M)를 실제(매출 $715M, 조정 EBITDA $241M)가 하회했고, Q3 조정 EBITDA 가이던스 $160M은 마진 약 25%로 Q2(34%)에서 추가 하락을 시사한다.</li>
+<li>시가총액 $7.03B은 TTM FCF $848.6M의 약 8.3배로 절대 밸류에이션은 낮으나, FCF 자체가 Q1 $276M → Q2 $136M로 감소 중이어서 "싸다"는 판단의 분모가 흔들리고 있다.</li>
+<li>오늘 <span class="up">+4.39%</span>는 확인된 촉매가 없고 거래량 배수 1.19배로 수급 신호도 약하다. 실적 바닥 확인(Q3 실적, 11월 초 예상) 전까지 의미있는 비중은 유보한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음. 가장 최근 8-K(2026-09-03)는 제공된 발췌에 표지만 포함되어 있어 보고 항목 내용은 공시상 확인 불가.</li>
+<li>뉴스 헤드라인은 CFO·최고법률책임자 대상 각 398K주 주식 부여(Stock Titan), "선행 PER 16배" 밸류에이션 기사(tikr), 애널리스트 50% 하방 경고(Stocktwits), 구조조정 관련 의견(Quiver) 등으로, 상승을 설명할 긍정적 이벤트가 아니다. 구조조정 자체는 제공된 SEC 원문에서 확인되지 않는다.</li>
+<li>52주 고점 대비 <span class="down">-72.3%</span>, 60일 <span class="down">-17.6%</span> 낙폭 이후 20일 수익률 <span class="up">+5.9%</span>로 기술적 반등 국면에 있다. 거래량 배수 1.19배는 "급증"이라 보기 어렵다. 낙폭 과대주에 대한 밸류에이션 매수 또는 숏커버 가능성은 추정이며 근거 자료는 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 10-K 발췌는 표지·목차·서두에서 끊겨 Item 1 사업 섹션 본문이 없다. 아래는 10-Q MD&amp;A Overview와 실적콜 기준이다.</p>
+<ul>
+<li><strong>제품</strong>: 광고 구매자(바이사이드) 전용 셀프서비스 프로그래매틱 광고 플랫폼(DSP). 광고주가 CTV·비디오·모바일·오디오·디스플레이 등 채널 전반에서 캠페인을 생성·관리·최적화하며, 엔터프라이즈 API로 기능 확장이 가능하다. 자체 광고 인벤토리를 보유하지 않는 "객관성·독립성"을 핵심 차별점으로 내세운다(10-Q).</li>
+<li><strong>수익 모델</strong>: 고객의 플랫폼 총 광고 집행액(spend)에 대한 일정 비율의 플랫폼 수수료 + 데이터·부가서비스 수수료. 고객과는 지속적 MSA를 체결한다(10-Q). 즉 매출은 광고주 집행액에 연동되는 테이크레이트 구조다.</li>
+<li><strong>고객군</strong>: 광고대행사, 광고주, 대행사 대상 서비스 제공자. 실적콜에 따르면 플랫폼 지출의 거의 전부가 Fortune 500급 대형 브랜드에서 발생하며, CEO가 스스로 "고객 집중도가 있다"고 인정했다.</li>
+<li><strong>매출 구성(실적콜 Q2 기준)</strong>: 비디오(CTV 포함) 50%대 초반, 모바일 20%대 후반, 디스플레이 10%대 초반, 오디오 7%(최고 성장 채널). 지역별로는 Q1 기준 미국 82%, 해외 18%. 매출총이익률 74.2%로 소프트웨어 플랫폼형 마진 구조.</li>
+<li><strong>경쟁 위치</strong>: 10-Q는 자체 인벤토리를 판매하는 월드가든과의 이해상충 부재를 강조한다. 실적콜에서는 Amazon으로부터 대형 제약 고객을 되찾았다고 언급하는 한편, 압박받는 일부 대형 광고주가 "더 싸고 덜 정교한 매체 구매"로 이동하고 있다고 인정했다. 회사는 글로벌 광고 TAM 약 $1조 중 약 1%에 참여한다고 밝혔다(실적콜).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q1 2026</th>
+<th>Q2 2026</th>
+<th>Q3 2026 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$688.9M (<span class="up">+12%</span> YoY)</td>
+<td>$715.1M (<span class="up">+3%</span> YoY, <span class="up">+3.8%</span> QoQ)</td>
+<td>≥$650M (회사 제시)</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$40.0M (<span class="down">-21%</span>)</td>
+<td>$64.4M (<span class="down">-29%</span>)</td>
+<td>미제시</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$206.1M (30%)</td>
+<td>$241.3M (34%)</td>
+<td>$160M (약 25%)</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>$276M</td>
+<td>$136M</td>
+<td>미제시</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출 감속은 테이크레이트 인하가 아니라 <strong>물량(집행액) 둔화</strong>로 읽힌다. 회사는 CPG·자동차 등 일부 대형 광고주의 지출 축소와 "저가 매체 선호"를 원인으로 지목했고, 이는 곧 집행액 감소다(실적콜). 단가 변화는 공시상 확인 불가.</li>
+<li>믹스는 양극화다. 실적콜에 따르면 상위 500 광고주 밖 매출 <span class="up">+50%</span> 이상, EMEA·APAC 연초누계 약 <span class="up">+30%</span>, 중국 <span class="up">+100%</span> 이상, CTV·오디오 두 자릿수 성장인데도 전체가 <span class="up">+3%</span>에 그쳤다는 것은 상위 소수 대형 고객의 감소폭이 그만큼 크다는 뜻이다.</li>
+<li>Q1 콜 가이던스(Q2 매출 ≥$750M)를 약 $35M 하회했다. 신임 CFO는 "가시성이 최근보다 제한적"이라고 밝혔다.</li>
+</ul>
+<p><strong>마진 방향성</strong></p>
+<ul>
+<li>영업이익률 14.2%(YoY <span class="down">-2.6%</span>p), 순이익률 9%. Q1 영업비용 $622M(<span class="up">+11%</span>), SBC 제외 $513M(<span class="up">+18%</span>)로 <strong>비용이 매출보다 빠르게 증가</strong>하는 구조가 이미 Q1부터 나타났다(실적콜). Q1 시점 SBC는 약 $109M(분기 매출의 약 16%)으로 추산된다.</li>
+<li>Q1 콜에서 회사가 제시한 "2026년 연간 조정 EBITDA 마진 40% 이상"은 Q2 34%, Q3 가이던스 약 25%를 고려하면 달성이 사실상 어렵다. Q2 콜 발췌에서 해당 목표의 철회·수정 여부는 확인되지 않는다.</li>
+</ul>
+<p><strong>현금흐름·재무 건전성</strong></p>
+<ul>
+<li>Q2 말 현금성자산 $1.5B(실적콜). 부채 유무·규모는 제공 발췌에서 확인 불가.</li>
+<li>TTM FCF $848.6M은 여전히 견조하나 상반기 FCF $412M(Q1 $276M + Q2 $136M) 추세와 자체 데이터센터 투자 확대(실적콜) 감안 시 하반기 FCF 추가 감소 가능성이 높다.</li>
+<li>자사주: Q1 $164M, Q2 $78M 매입, 잔여 승인 $269M. 매입 규모가 줄고 있다.</li>
+<li>주식수: 2026년 1월 31일 기준 Class A 432.9M + Class B 43.1M(10-K). 2025년 6월 30일 비계열 시가총액 $32.0B → 현재 $7.03B로 약 78% 감소.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>CTV·오디오 채널 확대</strong> — 회사는 CTV·오디오가 Q2에도 두 자릿수 성장했고 오디오가 최고 성장 채널(7%)이라고 밝혔으며 Spotify 파트너십 확대를 언급했다(실적콜). <em>검증 포인트</em>: Q3에 CTV·오디오 성장률이 유지되는지, 비디오 매출 비중이 50%대 초반에서 상승하는지.</li>
+<li><strong>해외(EMEA·APAC·중국)</strong> — 연초누계 약 30% 성장, 해외 CTV <span class="up">+50%</span>(실적콜). 해외 비중은 Q1 기준 18%에 불과해 총량 기여는 제한적. <em>검증 포인트</em>: 해외 매출 비중이 20%를 넘는지, 성장률 30%가 Q3에도 유지되는지.</li>
+<li><strong>JBP(공동사업계획)</strong> — 217개 고객, <span class="up">+38%</span> YoY, JBP 매출은 전체 대비 6배 빠른 성장(실적콜). <em>검증 포인트</em>: JBP 고객 수 증가가 실제 상위 100 고객 집행액 회복으로 연결되는지, "상위 100 중 과반이 두 자릿수 성장"이 유지되는지.</li>
+<li><strong>신제품(Audience Unlimited·측정 프레임워크·Zuma·에이전틱)</strong> — 회사는 Audience Unlimited가 초기 캠페인에서 25% 이상 효율 개선, Q1 기준 CPM 30% 절감 등을 보였다고 밝혔다(실적콜). 측정 프레임워크는 알파, Zuma는 출시 단계. <em>검증 포인트</em>: 제품 지표가 아니라 <strong>고객당 집행액 회복</strong>이라는 재무 결과로 나타나는지. Q3 매출이 가이던스 하한 $650M을 얼마나 상회하는지.</li>
+<li><strong>리테일 미디어·데이터 파트너십</strong> — Walmart 갱신, Lyft Ads·Kevel·Dollar General 파트너십(실적콜). <em>검증 포인트</em>: 리테일 데이터 관련 매출 기여 수치의 공개 여부(현재 공시상 확인 불가).</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법의 변화</strong></p>
+<ul>
+<li>Q1 콜(5월): "또 한 번의 견조한 분기", "그 어느 때보다 확신" — 10년 상장 기념과 장기 TAM 서사 중심. Q2 가이던스 ≥$750M, 연간 EBITDA 마진 ≥40% 제시.</li>
+<li>Q2 콜(8월): CEO가 첫 문단에서 "매출 성장이 우리의 기대와 기준에 미달"이라고 인정했고, "실행이 부족했다", "오늘 같은 날은 아프다"는 표현을 썼다. 자신감의 근거는 재무 수치가 아니라 JBP 수, 해외 성장률, 신제품, "대부분 새로 합류한" 리더십 팀으로 옮겨갔다.</li>
+<li>신임 CFO(Nate Olmstead)는 가이던스 철학을 "보수적도 공격적도 아닌 신뢰 가능한 수준", "환경 개선 가정 없음", "가시성이 최근보다 제한적"이라고 설명했다. 이는 직전 분기 가이던스 미스 이후의 방어적 화법이다.</li>
+</ul>
+<p><strong>Q&amp;A에서 반복된 질문과 회피 지점</strong></p>
+<ul>
+<li>Q1·Q2 모두 Oppenheimer 애널리스트가 대행사와의 분쟁 관련 질문을 던졌다. Q1에서 CEO는 "JBP 서명이 대행사 논의와 관련 있는지 언급할 수 없다"고 답을 피했고, Q2에서 "특정 대행사 리스크"를 언급한 질문에도 구체적 답변 없이 "몇몇 대형 고객의 순환적 문제"로 프레이밍했다. 대행사 이슈의 실체는 공시상 확인 불가.</li>
+<li>Q2에서 New Street·Oppenheimer가 부진 원인의 정량 분해(매크로 vs 대행사 vs 실행)를 요청했으나, CEO는 항목별 수치를 제시하지 않고 "대부분의 고객·부서·지역은 잘 되고 있다"는 정성적 설명으로 대응했다.</li>
+<li>"2~3년 후 자동화로 더 작은 조직이 될 수 있는가"라는 질문에는 직접 답하지 않았다.</li>
+</ul>
+<p><strong>공시 문서에 없고 콜에서만 드러난 정보</strong></p>
+<ul>
+<li>채널·지역별 매출 비중과 성장률(비디오 50%대 초반, 오디오 7%, 해외 18%, EMEA·APAC <span class="up">+30%</span>, 중국 <span class="up">+100%</span>).</li>
+<li>경영진 교체: Q1에는 임시 CFO(Tahnil Davis)가, Q2에는 신임 CFO(Nate Olmstead)가 참석. 최고전략책임자 Samantha Jacobson의 OpenAI 이직(이사회는 잔류). CEO는 "리더십 팀 대부분이 새로 합류"했다고 발언.</li>
+<li>대형 고객 역학: Amazon에서 대형 제약 고객 회복(<span class="up">+114%</span> 집행액), P&amp;G 발언 인용을 통한 CPG 압박 설명, 상위 500 밖 고객 <span class="up">+50%</span>.</li>
+<li>자체 데이터센터 투자로 퍼블릭 클라우드 의존 축소(FCF 압박 요인).</li>
+</ul>
+<h2>6. 리스크</h2>
+<p>※ 10-K Item 1A 본문은 제공 발췌에 없어, 10-Q MD&amp;A와 실적콜에서 실제 확인되는 항목만 기재한다.</p>
+<ol>
+<li><strong>대형 광고주 집중 및 CPG·자동차 지출 축소</strong> — 플랫폼 지출 대부분이 Fortune 500 브랜드이며, 그중 일부의 축소만으로 전체 성장률이 12%→3%로 떨어졌다. 회사는 "순환적"이라 주장하나, 근거는 해당 고객사들의 실적 부진이며 회복 시점은 제시하지 못했다.</li>
+<li><strong>저가·저정교 매체로의 이탈(구조적 가능성)</strong> — 회사는 이를 매크로 압박에 따른 일시적 선택으로 설명하지만, 월드가든·리테일 미디어로의 예산 이동이 굳어지면 테이크레이트 기반 모델의 성장 상한이 낮아진다. 10-Q도 "월드가든이 자사 인벤토리를 우선한다"는 경쟁 구도를 인정한다.</li>
+<li><strong>실행 리스크와 리더십 교체</strong> — CEO가 실행 부족을 인정했고, CFO·CSO 교체와 "대부분 새로운 리더십"이 동시에 진행 중이다. 뉴스상 CFO·최고법률책임자 대상 대규모 주식 부여는 잔류 유인 목적으로 추정되며(사실 확인은 Form 4 필요), 인재 유지 비용이 SBC 증가로 이어질 수 있다.</li>
+<li><strong>가이던스 신뢰도</strong> — Q2 가이던스 미스, 연간 EBITDA 마진 40% 목표의 사실상 이탈, 신임 CFO의 "가시성 제한" 발언. 다음 분기 가이던스 추가 하향 가능성을 배제할 수 없다.</li>
+<li><strong>마진·FCF 동반 하락</strong> — 영업비용이 매출보다 빠르게 증가(Q1 SBC 제외 <span class="up">+18%</span>)하고 자체 데이터센터 투자가 확대되어, 밸류에이션의 근거인 FCF 창출력이 약화되고 있다. 분기 FCF는 Q1 $276M → Q2 $136M.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY</td>
+<td>+12% → <span class="up">+3%</span></td>
+<td>급격한 감속</td>
+</tr>
+<tr>
+<td>Q3 매출 가이던스</td>
+<td>≥$650M</td>
+<td>QoQ 약 <span class="down">-9%</span>, 전년 Q2 실적 하회</td>
+</tr>
+<tr>
+<td>조정 EBITDA 마진</td>
+<td>30% → 34% → 약 25%(가이던스)</td>
+<td>연간 40% 목표 이탈</td>
+</tr>
+<tr>
+<td>분기 FCF</td>
+<td>$276M → $136M</td>
+<td>하락 추세</td>
+</tr>
+<tr>
+<td>시총/TTM FCF</td>
+<td>약 8.3배</td>
+<td>저평가이나 분모 축소 중</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>$1.5B</td>
+<td>재무 위험은 낮음(부채 확인 불가)</td>
+</tr>
+<tr>
+<td>당일 거래량 배수</td>
+<td>1.19배</td>
+<td>수급 신호 약함</td>
+</tr>
+</tbody>
+</table></div>
+<p>절대 밸류에이션은 낮지만 이익·현금흐름이 감소 국면이고, 오늘의 상승에 펀더멘털 촉매가 없다. 실적 바닥이 수치로 확인되기 전 "낙폭 과대"만으로 비중을 싣기에는 근거가 부족하다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>2026-09-03 8-K 원문 — 구조조정·경영진 변동·가이던스 수정 등 보고 항목 내용. 제공 발췌만으로는 확인 불가.</li>
+<li>최근 Form 4 — CFO·최고법률책임자 주식 부여의 조건(잔류 목적 여부)과 내부자 매도 유무.</li>
+<li>Q3 2025 매출(10-Q 비교 기준) — Q3 가이던스 $650M이 실제로 YoY 역성장을 의미하는지 확정.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건</strong></p>
+<ul>
+<li><em>보통으로 상향</em>: Q3 매출이 가이던스 하한을 유의미하게 상회하고(전분기 대비 감소폭 축소), Q4 가이던스가 YoY 플러스로 복귀하며, 조정 EBITDA 마진이 30%대를 회복할 때. 또는 상위 100 고객 집행액 회복이 수치로 공개될 때.</li>
+<li><em>회피로 하향</em>: Q3 매출이 $650M 하한에도 미달하거나 Q4 가이던스가 추가 하향될 때, 분기 FCF가 $100M 아래로 떨어질 때, 8-K에서 추가 경영진 이탈 또는 대형 대행사 이탈이 공식 확인될 때.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000014/ttd-20251231.htm">10-K — 2025-12-31_0001671933-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000086/ttd-20260630.htm">10-Q — 2026-06-30_0001671933-26-000086</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000054/ttd-20260331.htm">10-Q — 2026-03-31_0001671933-26-000054</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000119312526382690/d118889d8k.htm">8-K — 2026-09-03_0001193125-26-382690</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000085/ttd-20260806x8kexx991.htm">8-K — 2026-08-06_0001671933-26-000085__EX-99.1__ttd-20260806x8kexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000085/ttd-20260806.htm">8-K — 2026-08-06_0001671933-26-000085</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000074/ex991appointment79.htm">8-K — 2026-07-07_0001671933-26-000074__EX-99.1__ex991appointment79</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000074/ttd-20260707.htm">8-K — 2026-07-07_0001671933-26-000074</a></li>
+<li>Transcript — 2026-08-06 Q2 2026 Transcript</li>
+<li>Transcript — 2026-05-07 Q1 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

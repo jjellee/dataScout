@@ -82,6 +82,10 @@ def classify_for_download(report_nm):
     ]
     if any(kw in nm for kw in important_keywords):
         return "important"
+    # 서술형 공정공시(배당계획·주주환원·사업계획·실적전망) — dart_report가 본문을 인라인 표시
+    if "공정공시" in nm and any(k in nm for k in ["수시공시의무관련사항", "장래사업ㆍ경영계획",
+                                                "장래사업.경영계획", "영업실적등에대한전망"]):
+        return "important"
 
     return None
 
