@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDRL — Seadrill Limited Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SDRL — Seadrill Limited Common Shares</h1>
+<div class="sub">2026-09-16 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">SDRL</span><span class="badge">+6.17%</span><span class="badge">거래량 2.36배</span><span class="badge">$3.11B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>2026년 6월 말 계약 백로그가 $2,934M으로 2025년 말($2,380M) 대비 약 23% 증가했고, 8월 10일 8-K에서 회사는 2026년 연간 매출·조정 EBITDA 가이던스를 상향했다고 밝힘. 펀더멘털 방향은 명확히 개선 중이다.</li>
+<li>2Q26 매출 $449M(YoY <span class="up">+19.1%</span>, QoQ <span class="up">+25.4%</span>), 영업이익률 16.0%(YoY <span class="up">+14.4%</span>p)로 이익 레버리지가 확인되며, 6.75% 2034년 만기 노트 $700M 발행과 RCF $300M 확대로 만기 부담을 2030년대로 밀어냈다.</li>
+<li>다만 오늘 <span class="up">+6.17%</span>, 거래량 2.36배 상승에 대응하는 공시·뉴스가 없고, 60일 수익률 29.1% 이후 52주 고점 대비 <span class="down">-9.2%</span> 구간이라 단기 수급이 이미 상당 부분 반영된 상태다. TTM 잉여현금흐름이 -$132M인 점도 아직 확인 안 된 부분이다.</li>
+<li>따라서 전량 진입보다는 분할 진입으로 '보통' 비중을 두고, 3분기 실적(백로그 실현률·현금흐름)으로 추가 여부를 결정하는 것이 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음, 수집된 뉴스 헤드라인 없음.</li>
+<li>마지막 유의미한 공시는 2026년 8월 10일 2Q26 실적 8-K(가이던스 상향)로, 오늘(9월 16일)과 한 달 이상 간격이 있어 직접 촉매로 보기 어렵다.</li>
+<li>10-Q 기준 회사는 2026년 2월 28일 시작된 이란 분쟁과 호르무즈 해협 봉쇄로 브렌트유가 2분기 평균 약 $103/bbl까지 상승했다고 기재했다. 오늘의 유가 움직임이나 동종업체(해양시추주) 흐름은 제공 자료에 없어 섹터 동조 여부는 추정에 그친다.</li>
+<li>거래대금 $54.5M은 시가총액 $3.11B 대비 약 1.8% 수준으로, 기관 리밸런싱 규모의 수급으로도 설명 가능한 크기다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지·전망 진술만 포함되어 있고 Item 1 사업 섹션 본문은 없다. 아래는 10-Q MD&amp;A '사업 개요'와 8-K 기준이다.</p>
+<ul>
+<li><strong>사업 모델</strong>: 해양 시추 계약자(offshore drilling contractor). 드릴십·반잠수식 리그를 보유·운영하며 고객사 유정 시추를 <strong>일당(dayrate) 계약</strong>으로 수행한다. 천해부터 초심해(ultra-deepwater), 온화·혹독 환경 모두 대상.</li>
+<li><strong>자산</strong>: 2026년 6월 30일 기준 자체 보유 리그 15기. 추가로 Sonangol EP 소유 7세대 드릴십 2기를 관리 계약으로 운영.</li>
+<li><strong>고객군</strong>: 오일 슈퍼메이저, 국영 석유회사(NOC), 독립계 E&amp;P. 고객별·지역별 매출 비중은 발췌 자료상 확인 불가. 10-K 전망 진술에서 "특정 지역에 매출이 집중"되어 있다는 리스크 언급이 있어 지역 편중은 존재하는 것으로 보인다.</li>
+<li><strong>매출 구성</strong>: 백로그 기준 시추 계약 $2,628M(약 90%), 기타(관리 계약·나용선 리스) $306M(약 10%). 2Q26 계약 추가는 미국 걸프·말레이시아에서 발생했다고 회사는 밝힘.</li>
+<li><strong>경쟁 위치</strong>: 10-K 사업 섹션 미제공으로 경쟁사 대비 리그 세대·가동률 등 정량 비교는 공시상 확인 불가. 다만 7세대 드릴십 관리 계약을 수주하는 점, 슈퍼메이저·NOC를 고객으로 둔 점에서 고사양 심해 시장에 위치한 것으로 판단된다(추정).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 2Q26 매출 $449M, YoY <span class="up">+19.1%</span>, QoQ <span class="up">+25.4%</span>. QoQ 역산 시 1Q26 매출은 약 $358M(추정)으로, 한 분기 만에 약 $90M이 늘었다.
+- 해양 시추는 물량(가동 리그 수·가동일)과 단가(dayrate)가 매출을 결정하는데, 단가·가동률 세부는 발췌 자료상 확인 불가. 백로그가 2025년 말 $2,380M → 1Q26 $2,481M → 2Q26 $2,934M으로 두 분기 연속 증가한 점은 물량과 계약 기간 모두 확장 중임을 시사한다.
+- 백로그 인식 스케줄(6월 말 기준): 2026년 잔여 $763M, 2027년 $1,180M, 2028년 $555M, 이후 $436M. 3월 말 대비 2027년 배정분이 $964M → $1,180M, 2028년 이후가 $496M → $991M으로 늘어, 장기 계약 비중이 커졌다.</p>
+<p><strong>마진 방향성</strong>
+- 영업이익률 16.0%, YoY <span class="up">+14.4%</span>p. 1년 전 영업이익률이 2% 미만이었다는 뜻으로, 고정비 성격이 큰 리그 사업에서 가동률·단가 개선이 이익으로 직결되고 있다.
+- 매출총이익률 22.5%로 아직 두텁지 않다. 2Q26 조정 EBITDA $144M(매출 대비 약 32%), 순이익 $29M.
+- 회사는 2026년 조정 EBITDA 가이던스를 $370~420M에서 $420~450M으로, 매출을 $1.43~1.48B에서 $1.50~1.55B(리임버서블 $50M 제외)로 상향했다고 밝힘.
+- 유의점: 매출 가이던스 중간값에 리임버서블을 더하면 약 $1,575M이고, 상반기 매출이 약 $807M(추정)이므로 하반기는 분기당 약 $380M대로 2Q26($449M)보다 낮은 수준이 가이던스에 내재되어 있다(역산 추정). 하반기 드라이독·계약 공백 등이 반영됐을 가능성이 있으나 사유는 발췌 자료상 확인 불가.</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름 -$132M. 2026년 자본지출·장기 정비 가이던스 $200~240M을 회사가 유지했다고 밝힘. EBITDA 가이던스 중간값 $435M 대비 자본지출 부담이 절반 수준이라 연간 기준 FCF 흑자 전환 가능성은 있으나, 이자비용·운전자본·세금이 발췌 자료에 없어 확정할 수 없다.
+- 2Q26 자사주 매입 511,078주(평균 $38.66, 약 $20M). 프로그램은 2026년 12월 31일까지 연장. 현재 주가 $49.76는 매입 평균가 대비 약 29% 높다.</p>
+<p><strong>재무 건전성</strong>
+- 2026년 6월 30일 6.750% 2034년 만기 선순위 노트 $700M 발행, 기존 2030년 노트 상환 완료. RCF 한도 $225M → $300M, 만기 2028년 → 2031년.
+- 현금 잔액·순차입금·RCF 인출 여부는 발췌 자료상 확인 불가. 시가총액 $3.11B 대비 노트 $700M 기준으로 단순 계산하면 EV는 최소 약 $3.8B 이상이며, EBITDA 가이던스 중간값 대비 EV/EBITDA는 약 8.7배 이상(현금 미반영 추정).</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>백로그 실현과 신규 수주 지속</strong>
+   - 6월 말 $2,934M 백로그에 더해 회사는 5월 플릿 스테이터스 이후 미국 걸프·말레이시아에서 약 $200M을 추가했다고 밝힘.
+   - 검증 포인트: 3Q26 10-Q 백로그가 $2.9B 이상 유지되는지, 2027년 배정분이 $1,180M에서 더 늘어나는지, 신규 계약의 dayrate 수준 공개 여부.</p>
+</li>
+<li>
+<p><strong>고유가 환경에서의 해양 투자 회복</strong>
+   - 10-Q MD&amp;A에서 회사는 "글로벌 입찰 활동이 가속되면서 2027년 시장 회복 신호가 보인다"고 밝힘. 다만 같은 문단에서 해양 자본지출 이연이 지속돼 단기 수요에 부정적일 수 있다고도 기재했다.
+   - 검증 포인트: 3분기 MD&amp;A에서 '2027년 회복' 문구가 유지·강화되는지, 브렌트 $100대 유지 시 슈퍼메이저·NOC 입찰 건수 언급이 구체화되는지.</p>
+</li>
+<li>
+<p><strong>가이던스 상향의 후속 이행</strong>
+   - 회사는 2026년 조정 EBITDA $420~450M을 제시했다고 밝힘. 2Q26 $144M을 감안하면 하반기 분기당 약 $110~130M대가 내재(역산 추정).
+   - 검증 포인트: 3Q26 조정 EBITDA가 가이던스 하단 달성 경로에 있는지, 가이던스 재상향 또는 범위 축소 여부.</p>
+</li>
+<li>
+<p><strong>자본 배분(자사주 매입)</strong>
+   - 프로그램 2026년 말까지 연장, 2분기 약 $20M 집행.
+   - 검증 포인트: 3분기 매입 규모가 유지되는지, FCF 흑자 전환과 함께 매입 속도가 올라가는지.</p>
+</li>
+</ol>
+<h2>6. 리스크</h2>
+<p>10-K Item 1A 본문은 발췌에 미포함이며, 아래는 10-K 전망 진술과 10-Q MD&amp;A에서 회사가 실제로 기재한 내용 중 유의미한 것이다.</p>
+<ol>
+<li><strong>유가 급등의 원인이 지정학 리스크라는 점</strong>: 회사는 이란 분쟁(2026년 2월 28일 시작)과 호르무즈 봉쇄로 유가가 상승했으나 장기 영향은 예측 불가하다고 밝힘. 분쟁 완화 시 유가 급락과 시추 수요 재이연이 동시에 올 수 있다.</li>
+<li><strong>단기 해양 자본지출 이연</strong>: 회사는 세계 경제·무역정책·OPEC 증산 우려로 해양 자본지출 이연이 계속되며 단기 시추 수요에 부정적일 수 있다고 MD&amp;A에 기재했다. '2027년 회복'은 회사 전망이지 확정이 아니다.</li>
+<li><strong>백로그의 실현 불확실성</strong>: 회사는 대기·수리·불가항력 요율 적용, 다운타임, 특정 계약에서 수리 지연 시 요율이 0으로 떨어지는 조항, 고객의 계약 해지 권리를 명시했다. 백로그 $2.9B이 그대로 매출이 되지는 않는다.</li>
+<li><strong>비용 인플레이션과 리그 재가동 비용</strong>: 회사는 인건비·자재비 인플레이션이 리그 재가동·운영 비용에 영향을 줄 수 있다고 밝힘. 매출총이익률이 22.5%에 그쳐 비용 상승 흡수 여력이 크지 않다.</li>
+<li><strong>매출의 지역 집중과 관세·무역정책</strong>: 10-K 전망 진술에 특정 지역 매출 집중, 미국 무역정책·관세 영향이 열거되어 있다. 지역별 비중은 발췌 자료상 확인 불가하나, 말레이시아·미국 걸프·앙골라(Sonangol) 등 특정 국가 정책 변화에 노출된다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- 백로그 6개월 증가율 약 23%, 2027년 백로그 $1,180M이 2026년 매출 가이던스 중간값의 약 77%를 이미 커버.
+- 2Q26 매출 YoY <span class="up">+19.1%</span>, 영업이익률 <span class="up">+14.4%</span>p, 조정 EBITDA 가이던스 중간값 상향폭 약 <span class="up">+10%</span>.
+- 만기 2034년·2031년으로 연장되어 향후 5년 내 리파이낸싱 리스크 낮음.
+- 반면 TTM FCF -$132M, 오늘 상승 촉매 부재, 60일 <span class="up">+29.1%</span> 이후 고점 대비 <span class="down">-9.2%</span>로 '적극'으로 올리기엔 현금흐름 증거와 진입 타이밍이 부족.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2Q26 10-Q 전문에서 현금 잔액·RCF 인출액·순차입금을 확인해 실제 EV/EBITDA를 산출할 것(발췌에 없음).
+2. 하반기 분기 매출이 2Q26보다 낮게 내재된 이유(드라이독·계약 공백·리그 이동 여부)를 플릿 스테이터스 리포트에서 확인할 것.
+3. 오늘 거래량 급증이 섹터 전반(동종 해양시추주)의 움직임인지 SDRL 단독인지 확인해, 종목 고유 뉴스 누락 가능성을 배제할 것.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 3Q26 백로그가 $2.9B 아래로 감소하거나 2027년 배정분이 줄어드는 경우.
+- 3Q26 조정 EBITDA가 $110M을 밑돌아 연간 가이던스 하단($420M) 달성 경로에서 이탈하는 경우.
+- 중동 분쟁 완화로 브렌트가 $80 아래로 회귀하면서 회사가 MD&amp;A에서 '2027년 회복' 문구를 철회하거나 자본지출 이연 언급을 강화하는 경우.
+- 자사주 매입이 중단되거나 FCF 적자가 3분기에도 확대되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000173770626000010/sdrl-20251231.htm">10-K — 2025-12-31_0001737706-26-000010</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000173770626000026/sdrl-20260630.htm">10-Q — 2026-06-30_0001737706-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000173770626000016/sdrl-20260331.htm">10-Q — 2026-03-31_0001737706-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000173770626000023/seadrillpressreleaseq22026.htm">8-K — 2026-08-10_0001737706-26-000023__EX-99.1__seadrillpressreleaseq22026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000173770626000023/sdrl-20260810.htm">8-K — 2026-08-10_0001737706-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000119312526290671/d106615d8k.htm">8-K — 2026-06-30_0001193125-26-290671</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000119312526277610/d112984dex991.htm">8-K — 2026-06-22_0001193125-26-277610__EX-99.1__d112984dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1737706/000119312526277610/d112984d8k.htm">8-K — 2026-06-22_0001193125-26-277610</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

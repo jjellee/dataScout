@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIVN — Five9 Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FIVN — Five9 Inc. Common Stock</h1>
+<div class="sub">2026-09-16 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">FIVN</span><span class="badge">+4.00%</span><span class="badge">거래량 1.88배</span><span class="badge">$2.47B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>구독매출 성장률이 3개 분기 연속 가속(Q2 <span class="up">+14%</span> YoY)하고 AI 매출이 <span class="up">+78%</span> YoY로 뛰면서, 2년간 이어진 성장 둔화(DBRR 113%→105%)가 바닥을 지났다는 증거가 8-K와 실적콜 양쪽에서 확인된다.</li>
+<li>회사 가이던스 기준 non-GAAP EPS 중간값 $3.26 대비 현재가 $33.02는 약 10배, TTM FCF $170.2M 대비 FCF 수익률 약 6.9%로, 성장 재가속 국면의 SaaS로서는 절대 밸류에이션이 낮다.</li>
+<li>다만 60일 <span class="up">+70.3%</span> 급등 후 52주 고점 <span class="down">-4.5%</span>에 위치하고, 오늘 상승에 특정 가능한 촉매가 없으며, 조정 매출총이익률·EBITDA 마진·non-GAAP 순이익이 모두 YoY로 후퇴 중이다.</li>
+<li>제공된 10-K·10-Q 발췌가 표지·목차에 그쳐 현금·전환사채·부채 구조를 공시상 확인할 수 없다는 점이 '적극'으로 올리지 못하는 결정적 제약이다.</li>
+<li>결론: 추격 매수가 아닌 분할 진입 전제의 '보통'. Q3(11월 초 예상) 실적에서 DBRR 인플렉션이 실제로 찍히면 상향 검토.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없고, 마지막 실적 공시(8-K, 2026-08-06)와 S&amp;P SmallCap 600 편입(2026-08-03)은 이미 6주 전 이벤트다.</li>
+<li>뉴스 헤드라인 중 "Institutional Buying Sparks Surprise Rally"(TipRanks)는 수급 요인을, "Five9 Soars As Mega AI Deal Ignites Wall Street"는 8월 실적 시점의 약 $100M TCV 수주를 가리키는 것으로 보이나, 헤드라인 날짜가 제공되지 않아 당일 촉매로 특정할 수 없다.</li>
+<li>거래량 배수 1.88배, 거래대금 $96.7M은 유의미하지만 실적일 수준의 급증은 아니다. 20일 수익률 3.7%에 그친 점을 보면 오늘 <span class="up">+4.00%</span>는 60일 랠리 이후 횡보 구간에서의 재개 시도로 읽는 것이 사실에 부합한다.</li>
+<li>참고로 Q1 transcript 페이지에 첨부된 시세 스냅샷(전일 종가 $34.48 → $32.63, <span class="down">-5.37%</span>)은 8월 중 하루 급락이 있었음을 보여주며, 오늘 종가 $33.02는 그 급락 이전 수준을 아직 회복하지 못한 위치다. 공매도 잔량 10.46%(SA 페이지 표기)도 수급 변동성을 키우는 요인이다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>주의: 제공된 10-K 발췌는 표지·목차까지만 포함되어 Item 1 사업 섹션 본문은 확인 불가.</strong> 아래는 8-K(EX-99.1, EX-99.2)와 실적콜 발언으로 재구성한 것이다.</p>
+<p><strong>무엇을 파는가</strong>
+- 회사는 스스로를 "Intelligent CX Platform provider"로 규정한다(8-K). 클라우드 컨택센터(CCaaS)를 기반으로 AI 에이전트, 디지털 워크플로우, 데이터 통합, 인간 상담원을 한 플랫폼에서 운영하는 구조다.
+- 실적콜에서 CEO는 "voice-led enterprise platform"이라는 표현으로 포지셔닝을 좁혔다고 언급. 음성 인터랙션을 AI 에이전트·인간 상담원·양자 협업으로 처리하는 것이 핵심이며, Q2에 Five9 Voice AI Agents를 출시했다.</p>
+<p><strong>매출 구성(8-K EX-99.2 보충지표)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Q2'26</th>
+<th>2024 연간</th>
+<th>방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subscription</td>
+<td>83%</td>
+<td>79%</td>
+<td>상승</td>
+</tr>
+<tr>
+<td>Telecom(통신 사용량)</td>
+<td>11%</td>
+<td>14%</td>
+<td>하락</td>
+</tr>
+<tr>
+<td>Professional Services</td>
+<td>6%</td>
+<td>7%</td>
+<td>하락</td>
+</tr>
+</tbody>
+</table></div>
+<p>구독 비중이 10개 분기 연속 상승했다. 저마진 통신·PS 비중이 줄고 있어 믹스는 개선 방향이다.</p>
+<p><strong>고객군·과금 구조</strong>
+- 실적콜에서 CEO는 금융·헬스케어·보험 등 규제 산업의 복잡한 대기업 고객에 자원을 집중한다고 언급. 근거로 든 것이 Fortune 100 금융사와의 약 $100M TCV 계약(Google Marketplace 경유)이다.
+- CFO는 실적콜에서 "revenue commit model"로 전환 중이라고 언급. 고객이 3~5년간 인간 상담원 좌석과 AI 에이전트 간 믹스를 유연하게 바꾸되 매출 약정은 유지하는 구조로, AI로 인한 좌석 감소 리스크를 계약 구조로 흡수하려는 시도다.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 $100M 계약의 경쟁 입찰(bake-off)에 대해 CEO는 "이 시장에서 예상할 만한 알려진 이름들"이 참여했다고만 답하고 경쟁사를 특정하지 않았다. 소형 Voice AI 스타트업이 경쟁에 있었는지에 대한 질문은 사실상 회피되었다.
+- 해당 수주는 CCaaS 부분에 한정된 것이며, AI 부분은 향후 협의 대상이라고 CEO가 언급. 즉 $100M은 코어 CCaaS 경쟁력의 증거이지 AI 경쟁력의 증거는 아직 아니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'26</th>
+<th>Q2'25</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$312.4M</td>
+<td>$283.3M</td>
+<td>+10.3% YoY, <span class="up">+2.3%</span> QoQ</td>
+</tr>
+<tr>
+<td>구독매출 성장</td>
+<td>+14% YoY</td>
+<td>—</td>
+<td>3개 분기 연속 가속(콜)</td>
+</tr>
+<tr>
+<td>AI 매출 성장</td>
+<td>+78% YoY</td>
+<td>—</td>
+<td>콜 언급, 절대액 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>LTM 구독 DBRR</td>
+<td>107%</td>
+<td>109%</td>
+<td>Q4'25 106% 저점 후 반등</td>
+</tr>
+<tr>
+<td>LTM 구독+통신 DBRR</td>
+<td>106%</td>
+<td>108%</td>
+<td>Q4'25·Q1'26 105% 저점 후 반등</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>물량·단가: CFO가 실적콜에서 동시접속 좌석 수가 CCaaS 구독 성장률과 비슷하게 늘고 있고, 좌석당 구독매출도 한 자릿수 증가 중이라고 언급. 즉 성장은 물량+단가+AI 업셀의 합이며, 아직 좌석 압축(seat compression)은 관측되지 않는다는 것이 회사 입장이다.</li>
+<li>총매출 성장(10%)이 구독 성장(14%)보다 낮은 이유는 통신·PS 비중 축소 때문이며, 이는 마진 관점에서 부정적이지 않다.</li>
+<li>DBRR 113%(Q1'24)에서 105%(Q4'25)로 8%p 하락한 이력은 무겁다. 107%로의 반등은 2개 분기째이며 아직 "추세"라 부르기엔 짧다.</li>
+</ul>
+<p><strong>마진 방향성 — 매출은 가속, 마진은 후퇴</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'26</th>
+<th>Q2'25</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>53.4%</td>
+<td>54.9%</td>
+<td>-1.5%p</td>
+</tr>
+<tr>
+<td>조정 매출총이익률</td>
+<td>61.4%</td>
+<td>63.0%</td>
+<td>-1.6%p</td>
+</tr>
+<tr>
+<td>조정 EBITDA 마진</td>
+<td>22.4%</td>
+<td>24.0%</td>
+<td>-1.6%p</td>
+</tr>
+<tr>
+<td>Non-GAAP 순이익</td>
+<td>$53.5M(17.1%)</td>
+<td>$58.3M(20.6%)</td>
+<td>절대액 <span class="down">-8%</span></td>
+</tr>
+<tr>
+<td>GAAP 순이익</td>
+<td>$3.4M(1.1%)</td>
+<td>$1.2M(0.4%)</td>
+<td>개선, 그러나 미미</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>0.6%</td>
+<td>—</td>
+<td>YoY <span class="up">+1.2%</span>p(지표)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출총이익률 하락 원인은 제공 발췌(10-Q MD&amp;A 본문 미포함)에서 확인 불가. AI 워크로드의 컴퓨팅 비용, 대형 계약 초기 도입 비용, 통신 비용 등이 가능한 요인이나 이는 추정이다.</li>
+<li>8-K 비GAAP 조정항목 목록에 "인력 감축(RIF) 비용, 운영 검토용 컨설팅, 본사 통합 관련 손상차손, 증권 집단소송 법률비용, 사무실 폐쇄 비용"이 나열되어 있다. 구조조정과 소송이 동시에 진행 중임을 시사하며, GAAP 이익이 1%대에 머무는 배경이다.</li>
+<li>GAAP 희석주식수 가정 85.8M vs non-GAAP 76.3M의 차이는 전환사채 등 희석 요인이 존재함을 시사하나, 잔액·만기·전환가는 공시상 확인 불가.</li>
+</ul>
+<p><strong>현금흐름·재무 건전성</strong>
+- Q2 영업현금흐름 $42.1M(전년 $35.1M), TTM FCF $170.2M. 매출 대비 FCF 마진은 약 14%로 GAAP 이익과의 괴리가 크다(주식보상비용이 주 원인으로 추정되나 금액은 공시상 확인 불가).
+- Q1 transcript 페이지의 SA 요약 헤드라인에 "$150M 자사주 매입을 연내 완료 계획"이 언급되어 있으나 진행률은 공시상 확인 불가. 2026-02-13 기준 발행주식 76.5M주(10-K)와 현재 시총 역산치(약 74.8M주)를 비교하면 매입이 일부 진행된 것으로 보이나 이는 추정이다.
+- 현금·유가증권·부채 잔액은 제공 발췌에 없어 <strong>재무 건전성은 공시상 확인 불가</strong>. 이 공백이 비중 판단의 핵심 제약이다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 구독매출 재가속과 DBRR 인플렉션</strong>
+- 회사는 하반기 DBRR 인플렉션을 계속 예고해 왔고, CFO는 실적콜에서 Q3 LTM 구독 DBRR이 1%p 상승(107%→108%)할 것이라고 언급.
+- 검증 포인트: Q3 보충지표에서 LTM 구독 DBRR 108% 이상 확인. 107% 정체 시 재가속 논리가 약해진다.</p>
+<p><strong>② AI 매출 고성장</strong>
+- 회사는 2026년 AI 매출 성장 전망을 "40% 이상"에서 "60% 이상"으로 상향했다고 밝힘(8-K·콜). Q2 실적 <span class="up">+78%</span>.
+- 실현 조건: Voice AI Agents가 비밀번호 초기화 같은 단순 용도에서 복잡 용도로 확장되어야 함(CEO가 콜에서 현재 진행 중이라고 언급).
+- 검증 포인트: Q3 AI 성장률 60% 이상 유지 여부, AI 매출의 절대 규모 또는 총매출 내 비중 공개 여부. 비중이 공개되지 않는 한 78%라는 숫자의 기저 크기를 알 수 없다.</p>
+<p><strong>③ 대형 엔터프라이즈 수주 전환(약 $100M TCV)</strong>
+- CFO는 실적콜에서 연간 가이던스가 신규 로고 수주에 의존하지 않는다고 언급. 즉 $100M 계약의 매출 인식은 가이던스 상단 또는 2027년 업사이드다.
+- 검증 포인트: Q3·Q4 매출이 가이던스 상단($322M)을 넘는지, 그리고 해당 고객의 AI 부분 추가 수주가 공시되는지.</p>
+<p><strong>④ Revenue commit 계약 모델 확산</strong>
+- 좌석 수 대신 매출 약정을 기준으로 계약해 AI 전환기의 매출 가시성을 확보하는 구조. Fortune 100 금융사도 이 모델이라고 CFO가 언급.
+- 검증 포인트: 회사가 해당 모델 적용 고객 비중 또는 RPO(잔여이행의무) 증가를 공시하는지. 현재 RPO는 제공 발췌에서 확인 불가.</p>
+<p><strong>⑤ 조직 재편 효과</strong>
+- CTO·CSO·EVP Transformation 신규 영입, R&amp;D 조직 단일화. 결과는 2~3분기 후 판매 생산성으로 나타난다.
+- 검증 포인트: 영업비용 대비 신규 ARR 효율(공시 시), 그리고 이탈 임원 없이 신임 경영진이 유지되는지.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- CEO(취임 2분기차)의 화법은 "less narrative, more evidence"로 요약된다. 전임 체제와 차별화하려는 의도가 뚜렷하고, 4대 우선순위(성과 문화, 운영 최적화, 코어 강화, AI CX 승리)를 매 분기 지표로 점검하겠다고 밝힘.
+- 자신감의 근거는 세 가지가 반복된다: 구독 3분기 연속 가속, AI <span class="up">+78%</span>, $100M 수주. 반면 마진 하락에 대한 자발적 설명은 발췌 범위에서 보이지 않는다.
+- 가이던스 화법: Q2가 가이던스 상단을 상회했음에도 연간 매출 가이던스 중간값($1.266B)은 Q1 시점 전망(SA 요약 헤드라인 기준 $1.266B)과 동일하다. 즉 "beat but not raise"에 가깝다. AI 성장 전망만 상향하고 총매출은 유지한 것은 보수적 가이던스 관행이거나 CCaaS 코어의 하반기 불확실성을 반영한 것일 수 있다. 어느 쪽인지는 콜 발췌로 확인 불가.
+- CEO가 "$1.3B에서 $3B로" 가는 리더십이라는 표현을 썼는데, 이는 공식 목표가 아닌 포부 수준의 발언으로 읽어야 한다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- 반복 주제: (1) $100M 수주의 경쟁 구도와 AI 포함 여부, (2) 좌석 압축 여부, (3) 하반기 매출 업사이드 원천.
+- 방어/회피 지점: 경쟁사 실명 질문에 "알려진 이름들"로만 답변. 소형 Voice AI 업체 참여 여부는 답하지 않았다. 수주 범위가 CCaaS에 한정된다는 점은 솔직히 인정했다.
+- 좌석 압축 질문에 CFO는 "우리도 고객도 아직 보지 못했다"고 답했으나, 곧바로 revenue commit 모델의 유연성을 강조했다. 압축을 부정하면서 동시에 대비책을 파는 구조로, 회사 스스로 리스크를 인지하고 있다는 신호다.
+- Jefferies·Cantor·RBC 애널리스트가 호명되었으나 질문 없이 Q&amp;A가 종료된 것으로 기록되어 있다. 기술적 문제일 수 있어 의미 부여는 보류한다.</p>
+<p><strong>공시 문서에 없고 콜에서만 드러난 정보</strong>
+- AI 매출 성장률 78%와 연간 전망 60% 이상(8-K 본문에는 "AI revenue accelerating even faster"라는 정성 표현만 있음).
+- Q3 DBRR 1%p 상승 전망.
+- 좌석 수 성장률이 CCaaS 구독 성장과 유사하고 좌석당 매출이 한 자릿수 증가 중이라는 정량 힌트.
+- 연간 가이던스가 신규 로고 수주를 전제하지 않는다는 점.
+- $100M 계약이 CCaaS 부분에 한정되고 Google Marketplace를 통해 체결되었다는 점.
+- Voice AI Agents의 초기 배포 용도가 비밀번호 초기화 등 단순 업무라는 점.</p>
+<h2>6. 리스크</h2>
+<p>10-K Item 1A 본문은 제공 발췌에 포함되지 않아, 실적콜 안전항만 문구·8-K 조정항목·보충지표에서 실제로 확인되는 리스크만 기재한다.</p>
+<p><strong>① 마진 후퇴가 구조적일 가능성</strong>
+조정 매출총이익률 <span class="down">-1.6%</span>p, EBITDA 마진 <span class="down">-1.6%</span>p, non-GAAP 순이익 절대액 <span class="down">-8%</span>가 동시에 발생했다. AI 인터랙션의 컴퓨팅 원가가 인간 좌석 대비 높다면 AI 믹스 확대가 곧 마진 하락을 의미한다. 원인이 MD&amp;A 발췌에 없어 검증 불가한 상태이며, 이것이 가장 큰 미확인 리스크다.</p>
+<p><strong>② 설치 기반 성장 둔화(DBRR)</strong>
+안전항만 문구에 "lower growth rates within our installed base of customers"가 명시되어 있다. DBRR이 113%→105%까지 떨어진 이력이 있고, 반등은 2개 분기에 불과하다. 회사가 예고한 Q3 108%가 미달하면 재가속 스토리 전체가 흔들린다.</p>
+<p><strong>③ AI 솔루션의 시장 수용 실패</strong>
+안전항만 문구에 "unsuccessful development or market acceptance of our AI solutions"가 있다. $100M 계약에서 AI 부분이 제외되었고, 신제품 초기 용도가 단순 업무라는 점은 AI 경쟁력이 아직 대형 고객에게 검증되지 않았음을 뜻한다. 경쟁사 실명을 피한 것도 같은 맥락에서 읽힌다.</p>
+<p><strong>④ 구조조정·소송 비용의 지속</strong>
+8-K 비GAAP 조정항목에 인력 감축, 본사 통합 손상차손, 증권 집단소송 법률비용이 나열되어 있다. 소송의 내용·규모는 공시상 확인 불가하나, GAAP 이익률이 1%대인 상황에서 일회성이라 부르는 비용이 반복되면 non-GAAP 수익성의 신뢰도가 떨어진다.</p>
+<p><strong>⑤ 희석 요인과 재무구조 미확인</strong>
+GAAP 희석주식수 85.8M vs non-GAAP 76.3M의 약 9.5M주 차이는 전환사채 등 잠재 희석을 시사한다. 만기·전환가·현금 잔액이 제공 발췌에 없어, 주가가 오른 지금 전환 조건이 어떻게 작동하는지 판단할 수 없다. 자사주 매입 $150M과 전환사채 상환이 병행될 경우 현금 여력 문제가 생길 수 있다는 점은 추정이다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현재가 / FY26 non-GAAP EPS 중간값</td>
+<td>$33.02 / $3.26 ≈ 10.1배</td>
+<td>구독 재가속 SaaS로서 낮음</td>
+</tr>
+<tr>
+<td>현재가 / FY26 GAAP EPS 중간값</td>
+<td>$33.02 / $0.77 ≈ 43배</td>
+<td>GAAP 기준으로는 싸지 않음</td>
+</tr>
+<tr>
+<td>시총 / FY26 매출 가이던스 중간값</td>
+<td>$2.47B / $1.266B ≈ 1.95배</td>
+<td>낮음</td>
+</tr>
+<tr>
+<td>TTM FCF / 시총</td>
+<td>$170.2M / $2.47B ≈ 6.9%</td>
+<td>우량</td>
+</tr>
+<tr>
+<td>60일 수익률</td>
+<td>+70.3%</td>
+<td>재가속이 상당 부분 반영됨</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-4.5%</td>
+<td>추격 매수 위치</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>밸류에이션은 '적극'을 허용하지만, 60일 <span class="up">+70%</span>의 랠리와 마진 후퇴, 재무구조 미확인이 이를 상쇄한다. 따라서 '보통'이며, 오늘 종가 추격이 아닌 분할 진입을 전제한다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-Q 대차대조표</strong>: 현금·유가증권, 전환사채 잔액·만기·전환가, 자사주 매입 진행률. 제공 발췌에 없으므로 원문 확인이 선행되어야 한다.
+2. <strong>10-Q MD&amp;A의 매출원가 설명</strong>: 조정 매출총이익률 <span class="down">-1.6%</span>p의 원인이 AI 원가인지 일회성인지. AI 원가라면 AI 성장 60%는 마진 희석 요인으로 재해석해야 한다.
+3. <strong>증권 집단소송의 내용과 단계</strong>: 10-K Item 3 Legal Proceedings 원문 확인. 잠재 손해액과 합의 여부.</p>
+<p><strong>판단을 '관망'으로 바꿔야 하는 조건</strong>
+- Q3 LTM 구독 DBRR이 108% 미만(회사 예고 미달)으로 나오는 경우.
+- Q3 조정 매출총이익률이 61% 아래로 추가 하락하면서 회사가 AI 원가를 원인으로 지목하는 경우.
+- Q3 매출이 가이던스 하단($316M) 근처에 머물고 연간 가이던스 중간값이 재차 유지되거나 하향되는 경우. 두 분기 연속 "beat but not raise"는 하반기 코어 약세를 의미한다.
+- 신임 CTO·CSO 중 1명이라도 1년 내 이탈하는 경우. 조직 재편이 성장 논리의 전제이기 때문이다.
+- 반대로 '적극'으로 올릴 조건: Q3에서 DBRR 108% 이상, AI 성장 60% 이상, 연간 가이던스 상향이 동시에 확인되고, 10-Q에서 순현금 상태가 확인되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000023/fivn-20251231.htm">10-K — 2025-12-31_0001288847-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000123/fivn-20260630.htm">10-Q — 2026-06-30_0001288847-26-000123</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000079/fivn-20260331.htm">10-Q — 2026-03-31_0001288847-26-000079</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000121/fivn-supplementalmetricd.htm">8-K — 2026-08-06_0001288847-26-000121__EX-99.2__fivn-supplementalmetricd</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000121/a063026ex991earningsrelease.htm">8-K — 2026-08-06_0001288847-26-000121__EX-99.1__a063026ex991earningsrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000121/fivn-20260806.htm">8-K — 2026-08-06_0001288847-26-000121</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000110/fivn-20260615.htm">8-K — 2026-06-15_0001288847-26-000110</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288847/000128884726000101/fivn-20260526.htm">8-K — 2026-05-26_0001288847-26-000101</a></li>
+<li>Transcript — 2026-08-06 Five9, Inc. (FIVN) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-01 Five9, Inc. (FIVN) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
