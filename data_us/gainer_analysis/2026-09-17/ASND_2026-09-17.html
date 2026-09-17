@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASND — Ascendis Pharma A/S Ordinary Share</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ASND — Ascendis Pharma A/S Ordinary Share</h1>
+<div class="sub">2026-09-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">ASND</span><span class="badge">+3.30%</span><span class="badge">거래량 2.65배</span><span class="badge">$16.27B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>3개 상업 제품(YORVIPATH·SKYTROFA·YUVIWEL)으로 분기 제품매출 €315M(<span class="up">+105%</span> Y/Y), 전환사채 전액 상환, 현금 €812M, 여기에 $400M 자사주 매입 승인까지 더해져 희귀 내분비 프랜차이즈의 현금창출력은 공시로 확인된다.</li>
+<li>다만 오늘 <span class="up">+3.3%</span>는 당일 신규 공시가 없는 상태에서, 9/14~15 발표(자사주 매입 + Novo Nordisk 권리 회수) 직후 급락분을 되돌리는 반등 성격이 강하다. 신규 상승 촉매로 보기 어렵다.</li>
+<li>Novo 권리 회수는 비만·심혈관 TransCon 자산을 되찾는 대신 파트너 자금 없이 자체 개발해야 한다는 뜻이며, 회수 조건·재무 영향은 제공된 공시 발췌에 없어 <strong>공시상 확인 불가</strong>다. 이 불확실성이 해소되기 전에는 '적극'으로 올리기 어렵다.</li>
+<li>지표상 IFRS 영업이익률 65%는 비IFRS 27%와 괴리가 크다. 일회성 항목이 마진을 부풀리고 있을 가능성이 높아(아래 4절), 헤드라인 마진을 그대로 밸류에이션에 쓰면 안 된다.</li>
+<li>결론적으로 핵심 매출 축(YORVIPATH)의 성장 지속성은 확인됐고, 자사주 매입이 하방을 받치는 구간이므로 '보통' 비중으로 분할 진입하되, Novo 회수 조건과 3분기 실적 확인 후 증액 여부를 결정한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 당일 신규 촉매 없음 — 직전 이벤트 소화 후 반등 + 자사주 매입 기대가 결합된 것으로 판단(추정).</strong></p>
+<ul>
+<li>당일(9/17) 신규 SEC 공시는 없다. 직전 공시는 9/15 제출된 6-K 두 건이다. 그중 한 건은 9/14 이사회가 <strong>최대 $400M 자사주 매입 프로그램</strong>을 승인했다는 내용으로 원문이 확인된다. 매입 규모·시점은 시장 상황에 따라 재량으로 정하며 특정 수량 매입 의무는 없다고 공시했다.</li>
+<li>다른 한 건(6-K, 390877)은 원문이 제공되지 않았다. 뉴스 헤드라인(Seeking Alpha, simplywall.st, Stock Titan 등)에 따르면 Novo Nordisk와의 계약 종료로 비만·심장질환 영역의 TransCon 글로벌 권리가 Ascendis로 되돌아왔고, 회사는 월 1회 투여 비만 치료제를 자체 개발하겠다는 계획을 밝힌 것으로 보도됐다. <strong>계약 종료 사유·정산 조건·마일스톤 상실 규모는 공시상 확인 불가.</strong></li>
+<li>뉴스(TradingView, Quiver)는 화요일(9/15) 주가가 자사주 매입에도 불구하고 Novo 권리 회수 부담으로 하락했다고 전한다. 8월 실적 발표 시점 SA 페이지 기준 전일 종가는 $263.04였고 오늘 종가는 $247.69로, 20일 수익률 <span class="down">-0.5%</span>·52주 고점 대비 <span class="down">-10.6%</span>다. 즉 오늘 거래량 2.65배를 동반한 <span class="up">+3.3%</span>는 급락 이틀 뒤의 되돌림으로 읽힌다.</li>
+<li>자사주 매입 $400M은 시가총액 $16.27B의 약 2.5%에 해당한다. 물량 흡수 효과는 있으나 그 자체가 재평가 촉매가 될 크기는 아니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>덴마크 소재, IFRS 기준·유로 표시 재무제표를 쓰는 외국민간발행인(20-F 제출)이다. 핵심은 반감기 연장 프로드러그 플랫폼 <strong>TransCon</strong>으로, 검증된 모(母)약물에 이 기술을 적용해 주 1회 투여 제품을 만든다. 20-F는 회사가 이를 "임상적으로 검증된 모약물·경로의 기존 데이터를 활용"하는 전략으로 설명한다.</p>
+<p><strong>상업 제품 3종(모두 희귀 내분비 질환, 2Q26 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>제품</th>
+<th>성분/개발명</th>
+<th>적응증(공시 기준)</th>
+<th>2Q26 매출</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YORVIPATH</td>
+<td>palopegteriparatide / TransCon PTH</td>
+<td>성인 부갑상선기능저하증(미국 FDA, EU, 영국 승인)</td>
+<td>€252M</td>
+<td>약 80%</td>
+</tr>
+<tr>
+<td>SKYTROFA</td>
+<td>lonapegsomatropin / TransCon hGH</td>
+<td>소아·성인 성장호르몬결핍(미국), 소아 GHD(EU)</td>
+<td>€55M</td>
+<td>약 17%</td>
+</tr>
+<tr>
+<td>YUVIWEL</td>
+<td>navepegritide / TransCon CNP</td>
+<td>연골무형성증 2세 이상(미국 FDA, 2026년 1분기 승인)</td>
+<td>€8M</td>
+<td>약 3%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객군·지역</strong>: 미국이 주력이다. YORVIPATH는 1Q26 실적콜 기준 미국에서 2,700명 이상의 의료진이 6,300명 이상 환자에게 처방했다. 미국 외에는 35개국 이상에서 상업 판매 또는 환자별 특례공급(named patient program)으로 공급하며, 유럽 직접판매(Europe Direct) 시장 6곳에서 완전 급여를 받았다.</li>
+<li><strong>시장 규모(회사 주장)</strong>: 실적콜에서 회사는 미국 만성 부갑상선기능저하 환자를 7만~9만 명, 미국 외는 그 5~10배로 추정한다고 밝혔다.</li>
+<li><strong>경쟁 위치</strong>: YUVIWEL에 대해 회사는 실적콜에서 "위약 대비 선형 성장 이외의 이익(사지 비율·동반질환)을 보인 유일한 제품"이라고 주장했고, 경쟁약 vosoritide로부터의 전환·중단 환자·신규 환자 세 그룹이 모두 유입되고 있다고 언급했다. 부갑상선기능저하증에서의 경쟁 구도는 제공된 발췌에 없어 <strong>공시상 확인 불가</strong>.</li>
+<li><strong>파이프라인·신사업 영역(20-F 기재)</strong>: 종양(oncology)을 독립 치료 영역으로 추진, 안과 자산은 Eyconis라는 별도 법인이 개발·상업화, 'Vision 2030' 목표를 제시. 실적콜에서는 진행·계획 중 임상 20건 이상, 전임상 신규 물질 4종을 언급했다. 비만·심혈관 영역은 이번 Novo 권리 회수로 자체 개발 대상이 됐다(뉴스 기준).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>주의: 제공된 지표표의 "최근 분기 매출 $339.3M"은 회사 공시상 €339M(총매출)이다. 통화 단위가 유로임을 감안해야 한다.</strong></p>
+<p><strong>성장의 질 — 물량 주도</strong></p>
+<ul>
+<li>2Q26 제품매출 €315M(<span class="up">+105%</span> Y/Y), 총매출 €339M. 1Q26 YORVIPATH €197M → 2Q26 €252M으로 분기 대비 약 28% 성장했다. 지표상 매출 QoQ <span class="up">+37.6%</span>는 총매출 기준이다.</li>
+<li>1Q26 YORVIPATH 매출은 회사에 따르면 두 가지 일회성 요인(미국 급여 차질로 무상공급 환자 일시 증가, Europe Direct 확장 관련 일회성)으로 눌렸다. 2Q26 회복은 이 환자들이 급여로 복귀한 효과가 포함됐을 가능성이 높다(추정). 따라서 QoQ 37.6%를 정상 성장률로 외삽하면 안 된다.</li>
+<li>회사는 2Q26 미국 신규 환자 수요가 "일관적"이라고 표현했고, 1Q26에는 분기 1,000명 이상 신규 처방을 밝혔다. 가격 인상 여부는 <strong>공시상 확인 불가</strong>이며, 공시된 내용은 모두 신규 환자·급여 승인율(누적 70%대 중반, 실적콜) 중심이라 성장은 물량 주도로 판단한다.</li>
+<li>YUVIWEL은 7/31까지 220명 이상 등록, 100명 이상 처방의, 등록의 65% 이상 급여 승인. 첫 분기 매출 €8M은 초기 단계이며, 미국 승인 기준으로 일부 국제시장 조기접근 프로그램도 시작했다.</li>
+</ul>
+<p><strong>마진 — 헤드라인과 실질의 괴리</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26 IFRS</th>
+<th>2Q26 비IFRS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영업이익</td>
+<td>€220M (65%)</td>
+<td>€92M (27%)</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>€207M (€2.83/주)</td>
+<td>€61M (€0.90/주)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>IFRS와 비IFRS 영업이익 차이 €128M은 같은 분기에 매각한 희귀소아질환 우선심사바우처(PRV) 순현금 €158M과 규모가 비슷하다. 발췌에서 조정 내역이 잘려 확인되지 않으나, 일회성 이익이 IFRS 영업이익률을 끌어올렸을 가능성이 높다(추정). 지표상 "영업이익률 YoY <span class="up">+98.5%</span>p"도 같은 맥락에서 할인해서 봐야 한다.</li>
+<li>매출총이익률 91.8%(지표)는 희귀질환 특수의약품의 전형적 수준이며, 실질 영업 레버리지는 비IFRS 27%를 기준선으로 삼는 것이 보수적이다.</li>
+</ul>
+<p><strong>현금흐름·재무 건전성</strong></p>
+<ul>
+<li>현금 및 현금성자산 €812M(6/30) vs €616M(12/31). 반기 동안 €196M 증가했는데, 여기에는 PRV 매각 €158M이 포함되고 자사주 매입·RSU 순정산 €56M이 차감돼 있다. 즉 영업에서 창출된 순현금은 헤드라인 증가분보다 크지만, PRV를 제외하면 반기 순증은 제한적이다.</li>
+<li>전환사채는 전액 정산됐다고 공시했다. 부채 구조 세부와 리스 등 기타 부채는 <strong>공시상 확인 불가</strong>.</li>
+<li>TTM 잉여현금흐름 $346.1M(지표) 기준 시가총액 대비 약 47배로, 현금흐름 배수로는 싸지 않다. SA 페이지 기준 선행 PER 20.06배(8월 시점).</li>
+<li>1Q26 실적콜에서 회사가 앞서 제시했던 <strong>연간 영업현금흐름 €500M 목표</strong>에 대해, 경영진은 2분기 이후 업데이트하겠다고 답했다. 2Q26 업데이트 내용은 발췌에 포함되지 않아 <strong>공시상 확인 불가</strong>.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>YORVIPATH 미국 침투 지속</strong> — 회사 추정 미국 환자 7만~9만 명 대비 3월 말 누적 처방 6,300명으로 침투 초기다. 회사는 "수년간 지속 성장"을 주장. <em>검증 포인트</em>: 3Q26 YORVIPATH 매출이 €252M 위에서 유지되는지, 신규 처방 환자 수가 분기 1,000명대를 지키는지, 무상공급 비중이 다시 늘지 않는지.</li>
+<li><strong>YORVIPATH 미국 외 확장</strong> — 35개국 공급, Europe Direct 6곳 완전 급여, 2026년 중 추가 출시 예정(회사 발표). <em>검증 포인트</em>: 급여 확정 국가 수 증가와 미국 외 매출 분리 공시 여부.</li>
+<li><strong>YORVIPATH 라벨 확장</strong> — 60μg 고용량(PaTHway60), 청소년(PaTHway Adolescent), 주 1회 제형 개발을 회사가 밝힘. <em>검증 포인트</em>: 두 시험의 데이터 공개 시점.</li>
+<li><strong>YUVIWEL 미국 램프업 + EU 승인</strong> — EMA 결정 2026년 4분기 예상(회사). 영아(0~2세) 대상 reACHin 시험 목표 등록 완료, 규제 신청 계획. 하연골무형성증 단독요법 3상 하반기 시작 예정. <em>검증 포인트</em>: 3Q26 등록 환자 수(7/31 220명 기준 증가 속도), 급여 승인율, EMA 결과.</li>
+<li><strong>TransCon CNP + hGH 병용</strong> — COACH 2상 78주 데이터에서 평균 연간 성장속도 7.7cm/년, 21명 전원 치료 지속. 회사는 단독요법 대비 "3배 효과"라고 주장. 4Q26 3상 등록 시작 예정. <em>검증 포인트</em>: 3상 개시 공시와 디자인(대조군·1차 평가지표).</li>
+<li><strong>SKYTROFA 적응증 확대</strong> — HighLiGHts 바스켓 3상(ISS, SHOX, Turner, SGA). <em>검증 포인트</em>: 데이터 시점, SKYTROFA 매출 성장 재개 여부(2Q26 €55M).</li>
+<li><strong>비만·심혈관 자체 개발(신규, 뉴스 기준)</strong> — 월 1회 비만 치료제 계획. 개발비 부담·타임라인·회수 조건은 <strong>공시상 확인 불가</strong>. <em>검증 포인트</em>: 3Q26 실적 발표에서 R&amp;D 가이던스 변동과 프로그램 상세 공개.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>톤</strong>: 1Q26 콜에서 CEO Jan Mikkelsen은 "매출 급성장, 흑자, 고가치 파이프라인"을 반복하며 강한 자신감을 보였다. 자신감의 근거로 든 것은 YUVIWEL 초기 처방 속도(주 10명 이상), YORVIPATH 급여 승인율 개선, 3월 매출이 역대 최고 수준이었다는 점이다. 2Q26 콜 프레젠테이션 본문은 발췌에서 누락돼 <strong>톤 변화 여부 확인 불가</strong>.</li>
+<li><strong>가이던스 화법</strong>: 영업현금흐름 €500M 목표에 대해 CEO는 즉답을 피하고 "PRV 매각·YUVIWEL 호조 등 긍정 요인이 많아 2분기 이후 업데이트하겠다"고 답했다. 상향 가능성을 시사하는 화법이지만 확정 수치는 콜에서 나오지 않았다.</li>
+<li><strong>회피·방어 지점</strong>: (1) YUVIWEL 신규/전환 환자 구성 비율을 묻는 Goldman 질문에 "4~5주 데이터로는 의미 없다, 더 기다려야 한다"며 정량 답변을 유보. (2) 2세 미만 오프라벨 사용 여부에 "현재 코멘트할 수 없다"고 답변 거부. (3) 자본배분 우선순위 질문에 CFO는 R&amp;D 투자를 1순위로 언급하며 2030~2040년대 제품 흐름을 강조했다. 이 발언은 이번 $400M 자사주 매입과 함께 놓고 보면, Novo 권리 회수로 늘어날 R&amp;D 부담과 주주환원을 동시에 감당하겠다는 뜻으로 읽힌다(추정).</li>
+<li><strong>콜에서만 드러난 정보</strong>: 미국 누적 급여 승인율 70%대 중반(Jay Wu), 1Q26 무상공급 증가가 "급여 차질" 때문이라는 원인 설명, YUVIWEL 초기 유입이 신규·vosoritide 중단·vosoritide 직접 전환 세 그룹 모두라는 점, 2Q26 콜에 12개 증권사가 참여해 커버리지가 두터워졌다는 점(BMO 신규 Outperform 개시는 SA 뉴스 기준).</li>
+</ul>
+<h2>6. 리스크</h2>
+<p>20-F 리스크 요인 본문은 발췌에 포함되지 않았다. 아래는 공시된 사실·경영진 발언·6-K 리스크 문구 중 실질적으로 유의미한 항목만 추린 것이다.</p>
+<ol>
+<li><strong>단일 제품 집중</strong> — 제품매출의 약 80%가 YORVIPATH다. 1Q26에 실제로 발생한 미국 급여 차질과 무상공급 급증은 이 제품의 급여·접근성 이슈가 곧바로 분기 실적을 흔든다는 것을 보여줬다. 6-K 리스크 문구도 "지급자 급여 결정, 건강기술평가(HTA)"를 명시한다.</li>
+<li><strong>Novo Nordisk 권리 회수의 재무적 영향 미확인</strong> — 파트너 자금으로 진행되던 비만·심혈관 프로그램이 자체 부담으로 전환된다(뉴스 기준). 회수 대가·마일스톤 손실·향후 R&amp;D 증가 폭이 공시 발췌에 없다. 비IFRS 영업이익률 27% 구조에서 대형 대사질환 임상을 자체 자금으로 수행하면 마진 확장이 늦어질 수 있다.</li>
+<li><strong>YUVIWEL의 조건부 승인 성격</strong> — 1Q26 콜 서두에서 회사는 YUVIWEL 승인이 연간 성장속도 개선에 기반하며 "확증시험에서 임상적 이익 검증에 따라 지속 승인이 좌우될 수 있다"고 밝혔다. 경쟁약 대비 우위 주장도 대부분 회사 발언이며, EMA 결정(4Q26)이 부정적이면 유럽 성장 축이 지연된다.</li>
+<li><strong>일회성 이익으로 왜곡된 수익성</strong> — PRV 매각 €158M이 2Q26 IFRS 이익·현금에 반영됐다. 스크리닝 지표(영업이익률 65%, YoY <span class="up">+98.5%</span>p)를 근거로 진입한 자금은 3Q26에 마진이 정상화될 때 실망 매물이 될 수 있다.</li>
+<li><strong>제3자 제조·유통 의존 및 환율</strong> — 6-K 리스크 문구는 제3자 제조·유통·서비스 제공자 의존, 공급망·품질 이슈를 첫 번째로 든다. 또한 재무제표는 유로, 주력 매출은 달러이므로 EUR/USD 변동이 보고 실적에 직접 영향을 준다. 구체적 헤지 정책은 <strong>공시상 확인 불가</strong>.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2Q26 제품매출</td>
+<td>€315M, <span class="up">+105%</span> Y/Y</td>
+<td>성장 확인</td>
+</tr>
+<tr>
+<td>YORVIPATH QoQ</td>
+<td>€197M → €252M</td>
+<td>1Q 일회성 회복 포함</td>
+</tr>
+<tr>
+<td>비IFRS 영업이익률</td>
+<td>27%</td>
+<td>실질 수익성 기준선</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>€812M, 전환사채 전액 상환</td>
+<td>재무 위험 낮음</td>
+</tr>
+<tr>
+<td>자사주 매입</td>
+<td>최대 $400M (시총의 약 2.5%)</td>
+<td>하방 지지</td>
+</tr>
+<tr>
+<td>시총/TTM FCF</td>
+<td>약 47배</td>
+<td>성장 프리미엄 반영, 저평가 아님</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-10.6%</td>
+<td>조정 구간이나 급락 아님</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>9/15 제출된 Novo 관련 6-K(390877) 원문: 권리 회수 조건, 정산금 유무, 회수되는 자산 범위, 향후 R&amp;D 비용 가이던스 변화.</li>
+<li>2Q26 실적 발표에서 회사가 업데이트한 2026년 영업현금흐름 목표(€500M 기준 상향·유지·하향 여부)와 IFRS-비IFRS 조정 내역 중 PRV 매각 이익의 처리.</li>
+<li>자사주 매입 실제 집행 속도: 프로그램은 매입 의무가 없다고 공시했으므로, 다음 분기 공시에서 실제 매입 금액을 확인해야 한다.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong></p>
+<ul>
+<li>3Q26 YORVIPATH 매출이 €252M을 밑돌거나, 무상공급 환자 비중 증가·급여 승인율 하락이 다시 언급될 때.</li>
+<li>Novo 권리 회수에 따라 회사가 R&amp;D 가이던스를 크게 올리고 비IFRS 영업이익률이 20% 아래로 내려갈 때.</li>
+<li>EMA가 YUVIWEL 승인 결정을 연기하거나 부정적 의견을 낼 때.</li>
+</ul>
+<p><strong>판단을 상향할 조건(적극으로 상향)</strong></p>
+<ul>
+<li>Novo 회수 조건이 정산 부담 없이 확인되고, 2Q26 이후 영업현금흐름 목표가 상향 제시됐음이 확인될 때.</li>
+<li>3Q26 YUVIWEL 등록 환자가 7/31 기준 220명 대비 뚜렷하게 가속(분기 등록 300명 이상 수준)하고 매출이 두 자릿수 €M로 올라설 때.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526046590/asnd-20251231.htm">20-F — 2025-12-31_0001193125-26-046590</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526390874/d52763d6k.htm">8-K — 2026-09-14_0001193125-26-390874</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526348046/d31437dex991.htm">8-K — 2026-08-13_0001193125-26-348046__EX-99.1__d31437dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526348046/d31437d6k.htm">8-K — 2026-08-13_0001193125-26-348046</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526337270/d169607d6k.htm">8-K — 2026-08-06_0001193125-26-337270</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000161204226000016/asnd-20260630.htm">8-K — 2026-06-30_0001612042-26-000016</a></li>
+<li>Transcript — 2026-08-13 Ascendis Pharma A/S (ASND) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-09 Ascendis Pharma A/S (ASND) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

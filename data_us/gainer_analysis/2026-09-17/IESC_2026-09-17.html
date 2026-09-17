@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IESC — IES Holdings Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>IESC — IES Holdings Inc. Common Stock</h1>
+<div class="sub">2026-09-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">IESC</span><span class="badge">+4.37%</span><span class="badge">거래량 0.9배</span><span class="badge">$12.95B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 1차 스크린 통과를 뒷받침한다. 최근 분기 매출 $1.24B(YoY <span class="up">+39.6%</span>, QoQ <span class="up">+27.5%</span>), 영업이익률 14.4%(YoY <span class="up">+1.8%</span>p), 2026-06-30 기준 무차입(실적콜 언급), 회사가 밝힌 C&amp;I 부문 매출 2배·기록적 백로그가 근거다.</li>
+<li>그러나 오늘 상승은 공시·실적 촉매가 없고 거래량 배수도 0.9배로 평균 이하다. 20일 <span class="down">-12.0%</span>, 52주 고점 대비 <span class="down">-18.1%</span>의 하락 추세 안에서 나온 반등이며, 뉴스 헤드라인상 하락 원인은 AI 설비투자 심리 위축과 공매도 잔고 증가다.</li>
+<li>$650M 규모 DBM Global 인수(회사 역사상 최대, 2026년 12월 분기 클로징 예정)는 무차입 구조를 차입 구조로 바꾸고, 구조용 철강이라는 신규 사업을 더한다. 인수 대상의 마진·수익성은 제공 공시상 확인 불가하다.</li>
+<li>제공된 시가총액($12.95B)과 10-K 발행주식수(19,854,585주, 2025-11-17)가 정합하지 않는다(19.85M주 × $325.02 ≈ $6.45B). 밸류에이션 판단이 2배 갈리는 문제이므로 진입 전 반드시 확인해야 한다.</li>
+<li>결론적으로, 사업의 질은 '적극'에 가깝지만 촉매 부재·추세 하락·인수 불확실성·데이터 정합성 문제로 한 단계 낮춘 '보통'이며, 분할 진입을 전제한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음. 가장 최근 실질 공시는 2026-08-07 DBM Global 인수 8-K이며, 그 이후의 이벤트는 2026-08-27 Midwest IDEAS 컨퍼런스 발표뿐이다.</li>
+<li>거래량 배수 0.9배, 거래대금 $74.1M으로 '거래량 급증'이라 보기 어렵다. 수급 주도 상승으로 해석하는 것이 타당하다.</li>
+<li>뉴스 헤드라인은 정반대 방향을 가리킨다. MarketBeat는 공매도 잔고 유의미 증가, GuruFocus는 7.6% 하락, TipRanks는 "투자의견 상향에도 AI 우려로 급락"을 보도했다. 즉 최근 20일간 <span class="down">-12.0%</span>의 하락은 AI 데이터센터 투자 심리 위축에 따른 섹터 동조 매도로 읽히며, 오늘 <span class="up">+4.37%</span>는 그 낙폭의 기술적 되돌림 또는 공매도 잔고 증가 후 숏커버링일 가능성이 있다(추정).</li>
+<li>따라서 오늘 상승 자체를 펀더멘털 변화 신호로 취급해서는 안 된다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 forward-looking statement 목록에 그쳐 사업 섹션 본문은 확인 불가하다. 아래는 8-K "About IES", 10-K 표지, 실적콜(컨퍼런스) 발언을 종합한 것이다.</p>
+<p><strong>회사 개요(8-K 기준)</strong>: 전기·기술 시스템 통합 설계·설치와 인프라 솔루션을 제공하는 미국 내 사업자. 데이터센터, 주택, 상업·산업 시설이 주요 최종시장이며 직원 11,000명 이상, 170개 이상 거점(실적콜 언급). 본사 텍사스 슈가랜드, Nasdaq 상장, Large accelerated filer.</p>
+<p><strong>4개 세그먼트(실적콜 발언 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>제품/서비스</th>
+<th>고객군·특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Communications</td>
+<td>구조화 케이블링, 광케이블, AV, 보안, DAS 등 기술 통합 서비스</td>
+<td>데이터센터가 최대 시장. 전국 사업(50개 주, 캐나다·멕시코). 대형 테크 기업(프로젝트 오너) 또는 GC가 직접 고객. 데이터센터 20년 이상 업력</td>
+</tr>
+<tr>
+<td>Residential</td>
+<td>단독·다가구 주택 전기·HVAC·배관 설치</td>
+<td>텍사스·플로리다 집중. 회사는 "미국 최대 주택건설사 대상 전기공사 업체"라고 주장. 2021년 플로리다 인수로 HVAC·배관 추가</td>
+</tr>
+<tr>
+<td>Infrastructure Solutions</td>
+<td>발전기 인클로저, 스위치기어, 버스덕트, 맞춤 전기·기계 부품 제조</td>
+<td>약 300만 sq ft 제조공간, "sold out", "가장 고마진 사업 중 하나"(CEO). 2026년 1월 Gulf Island 인수</td>
+</tr>
+<tr>
+<td>Commercial &amp; Industrial</td>
+<td>전기공사(데이터센터, 교육, 의료 등)</td>
+<td>최근 2년 대형 데이터센터 대응 위해 채용·훈련 집중. 2026년 6월 분기 매출 전년 대비 2배</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>매출 믹스 변화(실적콜 언급)</strong>: Residential 비중이 2년 전 50% 이상 → FY2025 39% → FY2026 YTD 30% 미만. 나머지 세그먼트별 비중은 제공 자료상 확인 불가. 회사는 이 변화가 주택 착공 둔화와 데이터센터 급성장이 겹친 결과라고 설명했다.</p>
+<p><strong>인수 예정 5번째 세그먼트(8-K)</strong>: DBM Global(Schuff Steel, Banker Steel, GrayWolf, DBM Vircon, Aitken 브랜드). 구조용 철강 설계·제작·설치 및 산업 서비스, 200만 sq ft 이상 시설, 직원 약 3,400명, 2026-03-31 기준 TTM 매출 약 $1.3B. 상업·산업·데이터센터·경기장·인프라 시장.</p>
+<p><strong>경쟁 위치</strong>: 회사는 인력 훈련 프로그램(30년), 전국 확장 대응력, 세그먼트 간 통합 판매를 차별점으로 제시했다. 10-K forward-looking 목록은 "제3자 및 전 직원과의 경쟁"과 "소수 고객에 대한 매출 의존"을 리스크로 명시하고 있어, 진입장벽이 높은 사업은 아니라는 점을 회사 스스로 인정한다.</p>
+<p><strong>지배구조 참고</strong>: 10-K 표지상 2025-03-31 비계열 보유 주식 시가는 $1,378.3M이다. 당시 주가는 제공 자료에 없으나, 계열(내부자) 보유 비중이 상당하다는 점을 시사한다(추정). Jeff Gendell이 Executive Chairman으로 8-K에 등장한다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$1.24B (YoY <span class="up">+39.6%</span>, QoQ <span class="up">+27.5%</span>)</td>
+<td>제공 지표</td>
+</tr>
+<tr>
+<td>9M FY2026 영업이익</td>
+<td>$389M (YoY <span class="up">+39%</span>)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>FY2025 매출 / 영업이익 / 조정 EPS</td>
+<td>$3.4B / $384M / $13.66</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>5년 매출 CAGR / 영업이익 CAGR</td>
+<td>23% / 50%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>Infra Solutions YTD 성장</td>
+<td>57% (유기적 32%)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>Gulf Island 9M 매출 기여</td>
+<td>$89M</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>QoQ <span class="up">+27.5%</span>는 C&amp;I 부문의 "step change"(6월 분기 매출 2배)가 주도했다고 회사는 밝혔다. Gulf Island 인수 기여 $89M(9개월 누적)은 분기 매출 $1.24B 대비 작아, 성장의 대부분은 유기적이다.</li>
+<li>단가 vs 물량: 실적콜에서 CEO는 데이터센터 성장이 "가격과 물량 반반"이라고 언급했다. 노무 단가 급등과 광케이블 물량 10배(4년간)가 계약 단가를 밀어올렸다는 설명이다. 가격 기여 절반은 노무 인플레이션 둔화 시 성장률이 꺾일 수 있음을 의미한다.</li>
+<li>믹스: 저마진·부진한 Residential 비중 축소, 고마진 Infra Solutions 확대가 마진 개선의 구조적 배경이다.</li>
+</ul>
+<p><strong>마진 방향성</strong>: 영업이익률 14.4%(YoY <span class="up">+1.8%</span>p), 매출총이익률 27.4%. 5년간 영업이익률 4% 미만 → 11% 초과(FY2025) → 최근 분기 14.4%로 우상향이 지속된다. 다만 9M 영업이익 $389M 중 최근 분기가 약 $179M(14.4% × $1.24B, 계산값)으로 추정되어, 이전 두 분기 평균 약 $105M 대비 급증했다. 한 분기의 급등이 새로운 기준선인지는 Q4 확인이 필요하다.</p>
+<p><strong>현금흐름</strong>: TTM 잉여현금흐름 $228.4M. FY2025 영업이익 $384M, 9M FY2026 영업이익 $389M 대비 FCF 전환율이 낮다. 회사는 성장을 위한 운전자본과 CapEx 투자(제조공간 확장, 재정비 중인 1/3)를 우선순위로 밝혔으므로 의도된 투자 결과로 보이나, 현금흐름표 세부는 공시상 확인 불가.</p>
+<p><strong>재무 건전성</strong>: 실적콜에서 2026-06-30 기준 부채 없음, 부채 상한 정책은 TTM EBITDA 1배 미만이라고 밝혔다. DBM 인수 현금 대가 약 $545M(8-K)은 보유현금과 Wells Fargo 주선 확장 신용시설로 조달 예정이다. FY2025 영업이익 $384M 기준으로도 1배 이내에 들어올 가능성이 높으나, EBITDA 수치는 공시상 확인 불가.</p>
+<p><strong>밸류에이션(데이터 정합성 경고)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th>시가총액</th>
+<th>FY2025 영업이익 배수</th>
+<th>TTM FCF 배수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제공 지표</td>
+<td>$12.95B</td>
+<td>33.7x</td>
+<td>56.7x</td>
+</tr>
+<tr>
+<td>10-K 주식수(19.85M주) × $325.02</td>
+<td>약 $6.45B</td>
+<td>16.8x</td>
+<td>28.2x</td>
+</tr>
+</tbody>
+</table></div>
+<p>두 값이 약 2배 차이 난다. 2025-11-17 이후 주식분할 또는 대규모 발행이 있었다면 제공 지표가 맞고, 아니라면 데이터 오류다. 제공 자료로는 판별 불가하며, 이 확인 없이는 밸류에이션 판단 자체가 불가능하다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) 데이터센터(Communications·C&amp;I·Infra Solutions 공통)</strong>
+- 회사 주장: AI·클라우드 투자가 최대 성장 동력이며 "프로젝트 가시성이 역대 최장", 캠퍼스 단위 배정으로 장기 인력 운용 가능.
+- 실현 조건: 하이퍼스케일러 CapEx 지속, 노무 단가 유지.
+- 검증 포인트: FY2026 10-K(11월 예상)에서 세그먼트별 매출·백로그 수치, C&amp;I 매출 2배 수준이 Q4에도 유지되는지, 백로그 대비 매출 전환 속도.</p>
+<p><strong>2) Infra Solutions 제조 능력 확장</strong>
+- 회사 주장: 300만 sq ft 중 약 1/3이 재정비 중이며 FY2027부터 기여, 현재 "sold out". 추가 확장(매입·임차·증축) 검토 중.
+- 실현 조건: 재정비 완료 시점, 신규 capacity의 수주 채움, 중국산 제품 유입에 따른 마진 압박 방어.
+- 검증 포인트: 세그먼트 영업이익률 추이, 유기적 성장률(Gulf Island 제외 32%가 유지되는지), CapEx 규모.</p>
+<p><strong>3) DBM Global 인수(구조용 철강)</strong>
+- 회사 주장: 기존 GC 고객 기반과 겹치며 교차판매 가능, 경기장·랜드마크 상업 프로젝트로 최종시장 다변화, "강한 현금흐름"(Executive Chairman 발언). 대가 약 $650M(총 $685M, 현금 $545M + 주식 $140M), DBM TTM 매출 $1.3B으로 매출 대비 약 0.5배.
+- 실현 조건: 12월 분기 클로징(규제 승인 포함), 통합 성공, 인수 부채의 신속 상환.
+- 검증 포인트: 클로징 8-K, 확장 신용시설 조건과 차입액, 주식 대가 발행 주수(발행가 기준은 공시상 확인 불가), DBM의 마진·백로그(제공 자료상 확인 불가, 클로징 후 세그먼트 공시로 확인).</p>
+<p><strong>4) Residential 회복</strong>
+- 회사 주장: 다가구 백로그 감소가 안정화, 파이프라인 개선. 신규 수주는 2027년부터 반영. HVAC·배관 확장으로 부진 상쇄.
+- 실현 조건: 금리·소비심리 개선, 주택 착공 회복.
+- 검증 포인트: Residential 세그먼트 매출 감소폭 축소 여부, 다가구 백로그 증가 전환.</p>
+<p><strong>5) 제조업 리쇼어링·전력 인프라</strong>
+- 회사 주장: 반도체·하이테크 제조시설 투자, 전력 신뢰성·백업전원 수요 증가.
+- 검증 포인트: Communications 내 비(非)데이터센터 매출 성장, 발전기 인클로저 수주.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript는 실적 발표 콜이 아니라 2026-08-27 Midwest IDEAS 투자자 컨퍼런스 발표로, 셀사이드 애널리스트 Q&amp;A가 아닌 참석자 질문이었다는 점을 감안해야 한다.</p>
+<p><strong>톤과 자신감의 근거</strong>
+- 경영진 톤은 일관되게 강했다. "프로젝트 가시성이 역대 최장", "제조 capacity sold out", "기록적 백로그", "매출 2배" 등 정량 근거를 동반한 발언이다.
+- 가이던스 화법은 수치 없이 정성적이다. CFO는 "Q3와 9개월간 본 강점과 약점의 추세가 남은 회계연도에도 계속될 것"이라고만 언급했다. FY2027 성장은 "기록적 백로그"와 "제조 capacity 추가 기여"로 방향만 제시했다.
+- CEO가 발표를 서둘러 끝낸 점("blew through that presentation")은 사소하지만, 컨퍼런스 특성상 심층 검증이 이뤄지지 않았음을 뜻한다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- 반복 주제는 "얼마나 recurring한가"와 "데이터센터 성장이 가격인지 물량인지, 지속 가능한가"였다. 질문자가 "bubble"이라는 단어를 썼다.
+- recurring 비율 질문에 회사는 캠퍼스 단위 가시성과 rack and stack·네트워크 turn-up 등 운영 업무를 언급했으나 비율 수치는 제시하지 않았다. 사실상 회피에 가깝다.
+- 가격/물량 질문에는 "반반"이라고 답하며 노무 단가 급등과 광케이블 물량 10배를 근거로 들었다. 이는 성장 절반이 인플레이션 성격임을 인정한 것이다.</p>
+<p><strong>공시 문서에 없고 콜에서만 드러난 정보</strong>
+- 2026-06-30 기준 무차입.
+- C&amp;I 6월 분기 매출 전년 대비 2배, 기록적 백로그.
+- Infra Solutions YTD 57% 성장 중 유기적 32%, Gulf Island 9M 기여 $89M.
+- 제조공간 약 300만 sq ft, 1/3 재정비 중, FY2027 기여.
+- 데이터센터 성장 가격/물량 반반, 광케이블 4년간 10배, 케이블 한 가닥 $200만~300만.
+- 중국산 제품 유입이 제조 부문 원가·마진에 영향을 줄 수 있다는 CEO의 인정("현재는 수요가 그 리스크를 앞선다").
+- Residential 비중 FY2026 YTD 30% 미만.
+- 세그먼트 간 사일로 해체와 교차판매, DBM을 같은 고객 기반에 얹는 계획.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에 리스크 팩터 본문은 없고 forward-looking statement 목록만 있어, 그 목록과 MD&amp;A 성격의 발언, 8-K에서 실질적인 것만 추린다.</p>
+<ol>
+<li>
+<p><strong>데이터센터 단일 동력 의존과 가격 기여</strong>: 세 세그먼트의 최대 성장 동력이 데이터센터이며, 성장의 절반이 노무 단가 상승이다(실적콜). AI CapEx 둔화 시 물량과 단가가 동시에 꺾일 수 있다. 최근 뉴스가 보여주듯 주가는 이미 이 우려에 민감하게 반응하고 있다.</p>
+</li>
+<li>
+<p><strong>고정가 계약의 원가 추정 리스크와 원자재</strong>: 10-K는 고정가 입찰의 추정 오차, 구리·알루미늄·철강·연료·전자부품 가격 전가 능력을 리스크로 명시한다. DBM 인수로 철강 노출이 구조적으로 커진다.</p>
+</li>
+<li>
+<p><strong>DBM 인수의 실행·재무 리스크</strong>: 회사 역사상 최대 인수이자 기존과 다른 업종(구조용 철강)이다. 10-K는 "투자 기준을 충족하는 인수의 미달성 또는 인수 후 저성과", "신규 사업 통합의 어려움"을 명시한다. 무차입에서 약 $545M 현금 조달로 전환되며, DBM의 마진·백로그·부채는 제공 자료상 확인 불가. 규제 승인 조건부라 클로징 지연 가능성도 있다.</p>
+</li>
+<li>
+<p><strong>소수 고객 집중</strong>: 10-K는 "소수 고객으로부터 유의미한 매출"을 리스크로 명시한다. Communications 고객이 "대형 테크 기업"이라는 발언과 결합하면, 하이퍼스케일러 한두 곳의 투자 조정이 실적에 직결될 수 있다.</p>
+</li>
+<li>
+<p><strong>노동력 제약과 전 직원 경쟁</strong>: 10-K는 숙련 인력 확보 비용과 "전 직원과의 경쟁"을 명시한다. CEO는 노동 제약을 오히려 이점으로 설명했으나, 훈련한 인력의 이탈은 이 사업모델의 상시 취약점이다.</p>
+</li>
+<li>
+<p><strong>Residential 부진 지속</strong>: 고금리·소비심리 약화로 단독주택 착공이 부진하며, 다가구 신규 수주는 2027년에야 반영된다(실적콜). 비중 축소로 영향은 줄었으나 30% 가까운 매출이 여전히 이 시장에 있다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- 긍정: 매출 YoY <span class="up">+39.6%</span>, QoQ <span class="up">+27.5%</span>, 영업이익률 14.4%(<span class="up">+1.8%</span>p), 9M 영업이익 <span class="up">+39%</span>, 무차입, TTM FCF $228.4M, C&amp;I 매출 2배·기록적 백로그(회사 주장).
+- 부정: 거래량 배수 0.9배(촉매 없는 반등), 20일 <span class="down">-12.0%</span>·60일 <span class="down">-13.9%</span>·52주 고점 대비 <span class="down">-18.1%</span>의 하락 추세, 공매도 잔고 증가 보도, FCF/영업이익 전환율 저조, 제공 시가총액 기준 TTM FCF 56.7배.
+- 비중을 '적극'으로 올리지 못하는 핵심 이유는 시가총액과 발행주식수 불일치로 밸류에이션이 확정되지 않는다는 점, 그리고 오늘의 움직임이 펀더멘털 신호가 아니라는 점이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>발행주식수와 시가총액 정합성</strong>: 2025-11-17 이후 주식분할·대규모 발행 여부를 최신 10-Q 표지에서 확인한다. $6.45B과 $12.95B 중 어느 쪽이 맞는지에 따라 FY2025 영업이익 배수가 16.8배와 33.7배로 갈린다.
+2. <strong>DBM 인수 재무 조건</strong>: 확장 신용시설의 규모·금리·약정, 주식 대가 $140M의 발행 주수와 기준가, 인수 후 예상 레버리지. 클로징 8-K 또는 후속 8-K에서 확인한다.
+3. <strong>최근 분기 영업이익 급증의 지속성</strong>: 최근 분기 영업이익 약 $179M(계산값)이 이전 분기 평균 약 $105M 대비 급증했다. FY2026 10-K에서 Q4 세그먼트별 영업이익과 백로그 수치로 이것이 새 기준선인지 일회성인지 판단한다.</p>
+<p><strong>판단을 뒤집을 조건('관망'으로 하향)</strong>
+- FY2026 10-K에서 백로그가 전분기 대비 감소하거나 C&amp;I 매출이 직전 분기 수준을 유지하지 못할 때.
+- DBM 클로징이 2026년 12월 분기를 넘겨 지연되거나, 인수 후 부채가 TTM EBITDA 1배를 초과하는 것으로 확인될 때(회사 정책 위반).
+- 데이터센터 노무 단가 하락 또는 주요 고객의 CapEx 축소가 세그먼트 실적에 나타날 때.
+- Infra Solutions 영업이익률이 중국산 제품 유입으로 하락 전환할 때.
+- 시가총액 $12.95B이 맞는 것으로 확인되고 FY2026 실적이 영업이익 $550M 수준(단순 연환산 가정)에 미달할 때. 이 경우 영업이익 배수가 25배를 넘어 성장 둔화 리스크를 흡수하기 어렵다.</p>
+<p><strong>'적극'으로 상향할 조건</strong>
+- 발행주식수 확인 결과 시가총액이 $6.45B 수준으로 판명되고, Q4에서 영업이익 급증이 지속되며, DBM 클로징이 예정대로 완료되고 조달 조건이 회사 정책 안에 있을 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm">10-K — 2025-09-30_0001048268-25-000174</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000104826826000130/iesc-20260630.htm">10-Q — 2026-06-30_0001048268-26-000130</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000104826826000086/iesc-20260331.htm">10-Q — 2026-03-31_0001048268-26-000086</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000149315226036976/ex99-1.htm">8-K — 2026-08-07_0001493152-26-036976__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000149315226036976/ex2-1.htm">8-K — 2026-08-07_0001493152-26-036976__EX-2.1__ex2-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000149315226036976/form8-k.htm">8-K — 2026-08-07_0001493152-26-036976</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000104826826000131/q32026pressrelease-june.htm">8-K — 2026-07-31_0001048268-26-000131__EX-99.1__q32026pressrelease-june</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1048268/000104826826000131/iesc-20260731.htm">8-K — 2026-07-31_0001048268-26-000131</a></li>
+<li>Transcript — 2026-08-27 17th Annual Midwest IDEAS Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

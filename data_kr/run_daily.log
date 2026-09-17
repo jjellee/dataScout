@@ -263043,3 +263043,743 @@ Step 5: Checking for Japan export data updates (16 HS codes)...
 2026-09-16 20:30:12,599 - INFO - Done.
  no data
 Step 6: Committing and pushing to GitHub...
+[main c50c42e71] auto: daily market data, screening, DART, KR insider and Japan exports update [skip ci]
+ 477 files changed, 1024323 insertions(+), 157 deletions(-)
+ create mode 100644 data_dart/20260915/20260914000433.html
+ create mode 100644 data_dart/20260915/20260915000002.html
+ create mode 100644 data_dart/20260915/20260915000004.html
+ create mode 100644 data_dart/20260915/20260915000006.html
+ create mode 100644 data_dart/20260915/20260915000017.html
+ create mode 100644 data_dart/20260915/20260915000020.html
+ create mode 100644 data_dart/20260915/20260915000023.html
+ create mode 100644 data_dart/20260915/20260915000029.html
+ create mode 100644 data_dart/20260915/20260915000051.html
+ create mode 100644 data_dart/20260915/20260915000135.html
+ create mode 100644 data_dart/20260915/20260915000137.html
+ create mode 100644 data_dart/20260915/20260915000140.html
+ create mode 100644 data_dart/20260915/20260915000141.html
+ create mode 100644 data_dart/20260915/20260915000153.html
+ create mode 100644 data_dart/20260915/20260915000162.html
+ create mode 100644 data_dart/20260915/20260915000165.html
+ create mode 100644 data_dart/20260915/20260915000174.html
+ create mode 100644 data_dart/20260915/20260915000176.html
+ create mode 100644 data_dart/20260915/20260915000177.html
+ create mode 100644 data_dart/20260915/20260915000179.html
+ create mode 100644 data_dart/20260915/20260915000194.html
+ create mode 100644 data_dart/20260915/20260915000199.html
+ create mode 100644 data_dart/20260915/20260915000212.html
+ create mode 100644 data_dart/20260915/20260915000215.html
+ create mode 100644 data_dart/20260915/20260915000218.html
+ create mode 100644 data_dart/20260915/20260915000232.html
+ create mode 100644 data_dart/20260915/20260915000242.html
+ create mode 100644 data_dart/20260915/20260915000245.html
+ create mode 100644 data_dart/20260915/20260915000246.html
+ create mode 100644 data_dart/20260915/20260915000251.html
+ create mode 100644 data_dart/20260915/20260915000256.html
+ create mode 100644 data_dart/20260915/20260915000257.html
+ create mode 100644 data_dart/20260915/20260915000258.html
+ create mode 100644 data_dart/20260915/20260915000261.html
+ create mode 100644 data_dart/20260915/20260915000263.html
+ create mode 100644 data_dart/20260915/20260915000265.html
+ create mode 100644 data_dart/20260915/20260915000266.html
+ create mode 100644 data_dart/20260915/20260915000267.html
+ create mode 100644 data_dart/20260915/20260915000269.html
+ create mode 100644 data_dart/20260915/20260915000270.html
+ create mode 100644 data_dart/20260915/20260915000273.html
+ create mode 100644 data_dart/20260915/20260915000274.html
+ create mode 100644 data_dart/20260915/20260915000276.html
+ create mode 100644 data_dart/20260915/20260915000277.html
+ create mode 100644 data_dart/20260915/20260915000281.html
+ create mode 100644 data_dart/20260915/20260915000284.html
+ create mode 100644 data_dart/20260915/20260915000285.html
+ create mode 100644 data_dart/20260915/20260915000288.html
+ create mode 100644 data_dart/20260915/20260915000289.html
+ create mode 100644 data_dart/20260915/20260915000290.html
+ create mode 100644 data_dart/20260915/20260915000294.html
+ create mode 100644 data_dart/20260915/20260915000295.html
+ create mode 100644 data_dart/20260915/20260915000296.html
+ create mode 100644 data_dart/20260915/20260915000297.html
+ create mode 100644 data_dart/20260915/20260915000300.html
+ create mode 100644 data_dart/20260915/20260915000303.html
+ create mode 100644 data_dart/20260915/20260915000304.html
+ create mode 100644 data_dart/20260915/20260915000305.html
+ create mode 100644 data_dart/20260915/20260915000306.html
+ create mode 100644 data_dart/20260915/20260915000307.html
+ create mode 100644 data_dart/20260915/20260915000308.html
+ create mode 100644 data_dart/20260915/20260915000310.html
+ create mode 100644 data_dart/20260915/20260915000312.html
+ create mode 100644 data_dart/20260915/20260915000321.html
+ create mode 100644 data_dart/20260915/20260915000325.html
+ create mode 100644 data_dart/20260915/20260915000326.html
+ create mode 100644 data_dart/20260915/20260915000329.html
+ create mode 100644 data_dart/20260915/20260915000331.html
+ create mode 100644 data_dart/20260915/20260915000332.html
+ create mode 100644 data_dart/20260915/20260915000336.html
+ create mode 100644 data_dart/20260915/20260915000343.html
+ create mode 100644 data_dart/20260915/20260915000344.html
+ create mode 100644 data_dart/20260915/20260915000346.html
+ create mode 100644 data_dart/20260915/20260915000348.html
+ create mode 100644 data_dart/20260915/20260915000351.html
+ create mode 100644 data_dart/20260915/20260915000352.html
+ create mode 100644 data_dart/20260915/20260915000353.html
+ create mode 100644 data_dart/20260915/20260915000354.html
+ create mode 100644 data_dart/20260915/20260915000355.html
+ create mode 100644 data_dart/20260915/20260915000357.html
+ create mode 100644 data_dart/20260915/20260915000358.html
+ create mode 100644 data_dart/20260915/20260915000359.html
+ create mode 100644 data_dart/20260915/20260915000360.html
+ create mode 100644 data_dart/20260915/20260915000361.html
+ create mode 100644 data_dart/20260915/20260915000363.html
+ create mode 100644 data_dart/20260915/20260915000364.html
+ create mode 100644 data_dart/20260915/20260915000365.html
+ create mode 100644 data_dart/20260915/20260915000369.html
+ create mode 100644 data_dart/20260915/20260915000370.html
+ create mode 100644 data_dart/20260915/20260915000371.html
+ create mode 100644 data_dart/20260915/20260915000372.html
+ create mode 100644 data_dart/20260915/20260915000373.html
+ create mode 100644 data_dart/20260915/20260915000374.html
+ create mode 100644 data_dart/20260915/20260915000377.html
+ create mode 100644 data_dart/20260915/20260915000380.html
+ create mode 100644 data_dart/20260915/20260915000381.html
+ create mode 100644 data_dart/20260915/20260915000382.html
+ create mode 100644 data_dart/20260915/20260915000385.html
+ create mode 100644 data_dart/20260915/20260915000388.html
+ create mode 100644 data_dart/20260915/20260915000392.html
+ create mode 100644 data_dart/20260915/20260915000393.html
+ create mode 100644 data_dart/20260915/20260915000395.html
+ create mode 100644 data_dart/20260915/20260915000397.html
+ create mode 100644 data_dart/20260915/20260915000398.html
+ create mode 100644 data_dart/20260915/20260915000400.html
+ create mode 100644 data_dart/20260915/20260915000404.html
+ create mode 100644 data_dart/20260915/20260915000406.html
+ create mode 100644 data_dart/20260915/20260915000407.html
+ create mode 100644 data_dart/20260915/20260915000409.html
+ create mode 100644 data_dart/20260915/20260915000410.html
+ create mode 100644 data_dart/20260915/20260915000411.html
+ create mode 100644 data_dart/20260915/20260915000414.html
+ create mode 100644 data_dart/20260915/20260915000415.html
+ create mode 100644 data_dart/20260915/20260915000420.html
+ create mode 100644 data_dart/20260915/20260915000425.html
+ create mode 100644 data_dart/20260915/20260915000428.html
+ create mode 100644 data_dart/20260915/20260915000431.html
+ create mode 100644 data_dart/20260915/20260915000432.html
+ create mode 100644 data_dart/20260915/20260915000434.html
+ create mode 100644 data_dart/20260915/20260915000436.html
+ create mode 100644 data_dart/20260915/20260915600356.html
+ create mode 100644 data_dart/20260915/20260915600359.html
+ create mode 100644 data_dart/20260915/20260915600651.html
+ create mode 100644 data_dart/20260915/20260915800148.html
+ create mode 100644 data_dart/20260915/20260915800159.html
+ create mode 100644 data_dart/20260915/20260915800211.html
+ create mode 100644 data_dart/20260915/20260915800235.html
+ create mode 100644 data_dart/20260915/20260915800241.html
+ create mode 100644 data_dart/20260915/20260915800263.html
+ create mode 100644 data_dart/20260915/20260915800269.html
+ create mode 100644 data_dart/20260915/20260915800292.html
+ create mode 100644 data_dart/20260915/20260915800304.html
+ create mode 100644 data_dart/20260915/20260915800342.html
+ create mode 100644 data_dart/20260915/20260915800367.html
+ create mode 100644 data_dart/20260915/20260915800391.html
+ create mode 100644 data_dart/20260915/20260915800396.html
+ create mode 100644 data_dart/20260915/20260915800401.html
+ create mode 100644 data_dart/20260915/20260915800448.html
+ create mode 100644 data_dart/20260915/20260915800449.html
+ create mode 100644 data_dart/20260915/20260915800452.html
+ create mode 100644 data_dart/20260915/20260915800456.html
+ create mode 100644 data_dart/20260915/20260915800457.html
+ create mode 100644 data_dart/20260915/20260915800462.html
+ create mode 100644 data_dart/20260915/20260915800471.html
+ create mode 100644 data_dart/20260915/20260915800483.html
+ create mode 100644 data_dart/20260915/20260915800490.html
+ create mode 100644 data_dart/20260915/20260915800507.html
+ create mode 100644 data_dart/20260915/20260915800528.html
+ create mode 100644 data_dart/20260915/20260915800534.html
+ create mode 100644 data_dart/20260915/20260915800535.html
+ create mode 100644 data_dart/20260915/20260915800538.html
+ create mode 100644 data_dart/20260915/20260915800543.html
+ create mode 100644 data_dart/20260915/20260915800561.html
+ create mode 100644 data_dart/20260915/20260915800567.html
+ create mode 100644 data_dart/20260915/20260915800576.html
+ create mode 100644 data_dart/20260915/20260915800578.html
+ create mode 100644 data_dart/20260915/20260915800580.html
+ create mode 100644 data_dart/20260915/20260915800586.html
+ create mode 100644 data_dart/20260915/20260915800591.html
+ create mode 100644 data_dart/20260915/20260915800596.html
+ create mode 100644 data_dart/20260915/20260915800598.html
+ create mode 100644 data_dart/20260915/20260915800608.html
+ create mode 100644 data_dart/20260915/20260915800610.html
+ create mode 100644 data_dart/20260915/20260915800621.html
+ create mode 100644 data_dart/20260915/20260915800628.html
+ create mode 100644 data_dart/20260915/20260915800637.html
+ create mode 100644 data_dart/20260915/20260915800639.html
+ create mode 100644 data_dart/20260915/20260915800648.html
+ create mode 100644 data_dart/20260915/20260915800666.html
+ create mode 100644 data_dart/20260915/20260915800668.html
+ create mode 100644 data_dart/20260915/20260915800672.html
+ create mode 100644 data_dart/20260915/20260915800678.html
+ create mode 100644 data_dart/20260915/20260915800684.html
+ create mode 100644 data_dart/20260915/20260915800708.html
+ create mode 100644 data_dart/20260915/20260915800713.html
+ create mode 100644 data_dart/20260915/20260915800721.html
+ create mode 100644 data_dart/20260915/20260915800722.html
+ create mode 100644 data_dart/20260915/20260915800729.html
+ create mode 100644 data_dart/20260915/20260915800735.html
+ create mode 100644 data_dart/20260915/20260915800737.html
+ create mode 100644 data_dart/20260915/20260915800738.html
+ create mode 100644 data_dart/20260915/20260915800765.html
+ create mode 100644 data_dart/20260915/20260915800772.html
+ create mode 100644 data_dart/20260915/20260915800774.html
+ create mode 100644 data_dart/20260915/20260915800786.html
+ create mode 100644 data_dart/20260915/20260915800788.html
+ create mode 100644 data_dart/20260915/20260915800790.html
+ create mode 100644 data_dart/20260915/20260915800798.html
+ create mode 100644 data_dart/20260915/20260915800800.html
+ create mode 100644 data_dart/20260915/20260915800811.html
+ create mode 100644 data_dart/20260915/20260915800818.html
+ create mode 100644 data_dart/20260915/20260915800820.html
+ create mode 100644 data_dart/20260915/20260915900006.html
+ create mode 100644 data_dart/20260915/20260915900167.html
+ create mode 100644 data_dart/20260915/20260915900247.html
+ create mode 100644 data_dart/20260915/20260915900250.html
+ create mode 100644 data_dart/20260915/20260915900255.html
+ create mode 100644 data_dart/20260915/20260915900266.html
+ create mode 100644 data_dart/20260915/20260915900272.html
+ create mode 100644 data_dart/20260915/20260915900302.html
+ create mode 100644 data_dart/20260915/20260915900311.html
+ create mode 100644 data_dart/20260915/20260915900334.html
+ create mode 100644 data_dart/20260915/20260915900348.html
+ create mode 100644 data_dart/20260915/20260915900350.html
+ create mode 100644 data_dart/20260915/20260915900372.html
+ create mode 100644 data_dart/20260915/20260915900383.html
+ create mode 100644 data_dart/20260915/20260915900386.html
+ create mode 100644 data_dart/20260915/20260915900392.html
+ create mode 100644 data_dart/20260915/20260915900400.html
+ create mode 100644 data_dart/20260915/20260915900403.html
+ create mode 100644 data_dart/20260915/20260915900404.html
+ create mode 100644 data_dart/20260915/20260915900409.html
+ create mode 100644 data_dart/20260915/20260915900417.html
+ create mode 100644 data_dart/20260915/20260915900420.html
+ create mode 100644 data_dart/20260915/20260915900423.html
+ create mode 100644 data_dart/20260915/20260915900427.html
+ create mode 100644 data_dart/20260915/20260915900428.html
+ create mode 100644 data_dart/20260915/20260915900431.html
+ create mode 100644 data_dart/20260915/20260915900436.html
+ create mode 100644 data_dart/20260915/20260915900438.html
+ create mode 100644 data_dart/20260915/20260915900441.html
+ create mode 100644 data_dart/20260915/20260915900446.html
+ create mode 100644 data_dart/20260915/20260915900453.html
+ create mode 100644 data_dart/20260915/20260915900463.html
+ create mode 100644 data_dart/20260915/20260915900464.html
+ create mode 100644 data_dart/20260915/20260915900474.html
+ create mode 100644 data_dart/20260915/20260915900475.html
+ create mode 100644 data_dart/20260915/20260915900479.html
+ create mode 100644 data_dart/20260915/20260915900481.html
+ create mode 100644 data_dart/20260915/20260915900482.html
+ create mode 100644 data_dart/20260915/20260915900499.html
+ create mode 100644 data_dart/20260915/20260915900505.html
+ create mode 100644 data_dart/20260915/20260915900511.html
+ create mode 100644 data_dart/20260915/20260915900519.html
+ create mode 100644 data_dart/20260915/20260915900520.html
+ create mode 100644 data_dart/20260915/20260915900525.html
+ create mode 100644 data_dart/20260915/20260915900530.html
+ create mode 100644 data_dart/20260915/20260915900533.html
+ create mode 100644 data_dart/20260915/20260915900549.html
+ create mode 100644 data_dart/20260915/20260915900552.html
+ create mode 100644 data_dart/20260915/20260915900559.html
+ create mode 100644 data_dart/20260915/20260915900560.html
+ create mode 100644 data_dart/20260915/20260915900563.html
+ create mode 100644 data_dart/20260915/20260915900564.html
+ create mode 100644 data_dart/20260915/20260915900582.html
+ create mode 100644 data_dart/20260915/20260915900603.html
+ create mode 100644 data_dart/20260915/20260915900606.html
+ create mode 100644 data_dart/20260915/20260915900619.html
+ create mode 100644 data_dart/20260915/20260915900620.html
+ create mode 100644 data_dart/20260915/20260915900623.html
+ create mode 100644 data_dart/20260915/20260915900626.html
+ create mode 100644 data_dart/20260915/20260915900635.html
+ create mode 100644 data_dart/20260915/20260915900647.html
+ create mode 100644 data_dart/20260915/20260915900649.html
+ create mode 100644 data_dart/20260915/20260915900650.html
+ create mode 100644 data_dart/20260915/20260915900654.html
+ create mode 100644 data_dart/20260915/20260915900655.html
+ create mode 100644 data_dart/20260915/20260915900657.html
+ create mode 100644 data_dart/20260915/20260915900661.html
+ create mode 100644 data_dart/20260915/20260915900667.html
+ create mode 100644 data_dart/20260915/20260915900671.html
+ create mode 100644 data_dart/20260915/20260915900675.html
+ create mode 100644 data_dart/20260915/20260915900686.html
+ create mode 100644 data_dart/20260915/20260915900689.html
+ create mode 100644 data_dart/20260915/20260915900704.html
+ create mode 100644 data_dart/20260915/20260915900705.html
+ create mode 100644 data_dart/20260915/20260915900709.html
+ create mode 100644 data_dart/20260915/20260915900712.html
+ create mode 100644 data_dart/20260915/20260915900714.html
+ create mode 100644 data_dart/20260915/20260915900718.html
+ create mode 100644 data_dart/20260915/20260915900719.html
+ create mode 100644 data_dart/20260915/20260915900723.html
+ create mode 100644 data_dart/20260915/20260915900728.html
+ create mode 100644 data_dart/20260915/20260915900740.html
+ create mode 100644 data_dart/20260915/20260915900768.html
+ create mode 100644 data_dart/20260915/20260915900784.html
+ create mode 100644 data_dart/20260915/20260915900789.html
+ create mode 100644 data_dart/20260915/20260915900795.html
+ create mode 100644 data_dart/20260915/20260915900799.html
+ create mode 100644 data_dart/20260915/20260915900804.html
+ create mode 100644 data_dart/20260915/20260915900805.html
+ create mode 100644 data_dart/20260915/20260915900806.html
+ create mode 100644 data_dart/20260915/20260915900807.html
+ create mode 100644 data_dart/20260915/20260915900813.html
+ create mode 100644 data_dart/20260915/20260915900814.html
+ create mode 100644 data_dart/20260915/20260915900815.html
+ create mode 100644 data_dart/20260915/20260915900817.html
+ create mode 100644 data_dart/20260915/20260915900819.html
+ create mode 100644 data_dart/20260915/20260915900823.html
+ create mode 100644 data_dart/20260915/20260915900824.html
+ create mode 100644 data_dart/20260916/20260916000029.html
+ create mode 100644 data_dart/20260916/20260916000037.html
+ create mode 100644 data_dart/20260916/20260916000039.html
+ create mode 100644 data_dart/20260916/20260916000040.html
+ create mode 100644 data_dart/20260916/20260916000046.html
+ create mode 100644 data_dart/20260916/20260916000049.html
+ create mode 100644 data_dart/20260916/20260916000052.html
+ create mode 100644 data_dart/20260916/20260916000054.html
+ create mode 100644 data_dart/20260916/20260916000066.html
+ create mode 100644 data_dart/20260916/20260916000068.html
+ create mode 100644 data_dart/20260916/20260916000070.html
+ create mode 100644 data_dart/20260916/20260916000077.html
+ create mode 100644 data_dart/20260916/20260916000104.html
+ create mode 100644 data_dart/20260916/20260916000108.html
+ create mode 100644 data_dart/20260916/20260916000113.html
+ create mode 100644 data_dart/20260916/20260916000115.html
+ create mode 100644 data_dart/20260916/20260916000118.html
+ create mode 100644 data_dart/20260916/20260916000130.html
+ create mode 100644 data_dart/20260916/20260916000135.html
+ create mode 100644 data_dart/20260916/20260916000159.html
+ create mode 100644 data_dart/20260916/20260916000169.html
+ create mode 100644 data_dart/20260916/20260916000177.html
+ create mode 100644 data_dart/20260916/20260916000178.html
+ create mode 100644 data_dart/20260916/20260916000179.html
+ create mode 100644 data_dart/20260916/20260916000187.html
+ create mode 100644 data_dart/20260916/20260916000196.html
+ create mode 100644 data_dart/20260916/20260916000199.html
+ create mode 100644 data_dart/20260916/20260916000200.html
+ create mode 100644 data_dart/20260916/20260916000203.html
+ create mode 100644 data_dart/20260916/20260916000205.html
+ create mode 100644 data_dart/20260916/20260916000208.html
+ create mode 100644 data_dart/20260916/20260916000210.html
+ create mode 100644 data_dart/20260916/20260916000211.html
+ create mode 100644 data_dart/20260916/20260916000212.html
+ create mode 100644 data_dart/20260916/20260916000214.html
+ create mode 100644 data_dart/20260916/20260916000217.html
+ create mode 100644 data_dart/20260916/20260916000219.html
+ create mode 100644 data_dart/20260916/20260916000223.html
+ create mode 100644 data_dart/20260916/20260916000230.html
+ create mode 100644 data_dart/20260916/20260916000233.html
+ create mode 100644 data_dart/20260916/20260916000236.html
+ create mode 100644 data_dart/20260916/20260916000243.html
+ create mode 100644 data_dart/20260916/20260916000247.html
+ create mode 100644 data_dart/20260916/20260916000249.html
+ create mode 100644 data_dart/20260916/20260916000254.html
+ create mode 100644 data_dart/20260916/20260916000262.html
+ create mode 100644 data_dart/20260916/20260916000266.html
+ create mode 100644 data_dart/20260916/20260916000267.html
+ create mode 100644 data_dart/20260916/20260916000275.html
+ create mode 100644 data_dart/20260916/20260916000279.html
+ create mode 100644 data_dart/20260916/20260916000284.html
+ create mode 100644 data_dart/20260916/20260916000286.html
+ create mode 100644 data_dart/20260916/20260916000294.html
+ create mode 100644 data_dart/20260916/20260916000296.html
+ create mode 100644 data_dart/20260916/20260916000308.html
+ create mode 100644 data_dart/20260916/20260916000310.html
+ create mode 100644 data_dart/20260916/20260916000311.html
+ create mode 100644 data_dart/20260916/20260916000314.html
+ create mode 100644 data_dart/20260916/20260916000321.html
+ create mode 100644 data_dart/20260916/20260916000323.html
+ create mode 100644 data_dart/20260916/20260916000324.html
+ create mode 100644 data_dart/20260916/20260916000325.html
+ create mode 100644 data_dart/20260916/20260916000340.html
+ create mode 100644 data_dart/20260916/20260916800015.html
+ create mode 100644 data_dart/20260916/20260916800074.html
+ create mode 100644 data_dart/20260916/20260916800125.html
+ create mode 100644 data_dart/20260916/20260916800164.html
+ create mode 100644 data_dart/20260916/20260916800188.html
+ create mode 100644 data_dart/20260916/20260916800191.html
+ create mode 100644 data_dart/20260916/20260916800210.html
+ create mode 100644 data_dart/20260916/20260916800218.html
+ create mode 100644 data_dart/20260916/20260916800291.html
+ create mode 100644 data_dart/20260916/20260916900101.html
+ create mode 100644 data_dart/20260916/20260916900117.html
+ create mode 100644 data_dart/20260916/20260916900181.html
+ create mode 100644 data_dart/20260916/20260916900193.html
+ create mode 100644 data_dart/20260916/20260916900209.html
+ create mode 100644 data_dart/20260916/20260916900230.html
+ create mode 100644 data_dart/20260916/20260916900255.html
+ create mode 100644 data_dart/20260916/20260916900308.html
+ create mode 100644 data_dart/20260916/disclosures.csv
+ create mode 100644 data_dart/20260916/disclosures.json
+ create mode 100644 data_dart/dart_daily_report_20260915.html
+ create mode 100644 data_jp/daily_prices/jp_prices_20260916.xlsx
+ create mode 100644 data_krx/20260915/disclosures.json
+ create mode 100644 data_krx/krx_daily_report_20260915.html
+ create mode 100644 data_us/daily_prices/us_prices_20260915.xlsx
+ create mode 100644 data_us/gainer_analysis/2026-09-16/ADPT_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/ARQQ_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/CAI_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/CIEN_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/CRWD_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/DK_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/DT_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/FIVN_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/FPS_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/MXL_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/PBF_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/P_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/QCOM_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/RBRK_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/SDRL_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/TEM_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/TWLO_2026-09-16.html
+ create mode 100644 data_us/gainer_analysis/2026-09-16/WAY_2026-09-16.html
+ create mode 100644 data_us/indicator_charts/chart_20260916_global___region.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_individual.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_lithium___resources.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_macro___safe_haven.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_sector_cyclical.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_sector_defensive.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_tech___semi___sw.png
+ create mode 100644 data_us/indicator_charts/chart_20260916_thematic.png
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\353\257\270\352\265\255_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\354\234\240\353\237\275_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\354\235\274\353\263\270_\354\204\271\355\204\260_(topix-17).png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\354\235\274\353\263\270_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\354\244\221\355\231\224\352\266\214_\354\247\200\354\210\230.png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\355\225\234\352\265\255_\354\204\271\355\204\260_(etf).png"
+ create mode 100644 "data_us/indicator_charts/chart_20260916_\355\225\234\352\265\255_\354\247\200\354\210\230.png"
+ create mode 100644 data_us/indicator_charts/heatmap_20260916.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260916_cn.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260916_jp.png
+ create mode 100644 data_us/indicator_charts/heatmap_20260916_kr.png
+ create mode 100644 data_us/sa_transcripts/ADPT/2026-07-30_ADPT_Adaptive-Biotechnologies-Corporation-ADPT-Q2-2026-Earnings-C.md
+ create mode 100644 data_us/sa_transcripts/MXL/2026-07-23_MXL_MaxLinear-Inc-2026-Q2---Results---Earnings-Call-Presentation.md
+ create mode 100644 data_us/sa_transcripts/PBF/2026-07-30_PBF_PBF-Energy-Inc-PBF-Q2-2026-Earnings-Call-Transcript.md
+ create mode 100644 data_us/sa_transcripts/WAY/2026-06-25_WAY_Waystar-Holding-Corp-WAY-Presents-at-46th-Annual-William-Bla.md
+ create mode 100644 data_us/sa_transcripts/WAY/2026-07-29_WAY_Waystar-Holding-Corp-WAY-Q2-2026-Earnings-Call-Transcript.md
+ create mode 100644 data_us/toss_sector/toss_sectors_us_20260916.csv
+ create mode 100644 "data_us/toss_sector/\355\206\240\354\212\244\354\204\271\355\204\260_\353\257\270\352\265\255_\354\225\204\354\271\250\353\246\254\355\217\254\355\212\270_20260916.html"
+To https://github.com/jjellee/dataScout.git
+   89081cb68..c50c42e71  main -> main
+=================================================================
+ Daily Run Completed: Wed Sep 16 08:30:29 PM KST 2026
+=================================================================
+=================================================================
+ Starting Daily Run: Thu Sep 17 08:30:01 PM KST 2026
+=================================================================
+Step 1: Collecting daily market data...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+==================================================
+ Past 6 Months Batch Data Collector
+==================================================
+Fetching trading day list from 20260321 to 20260917...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Total trading days to check: 123 days
+
+Already collected: 121 days (Skipping)
+Remaining to collect: 2 days
+Estimated time: ~0.7 minutes
+
+[1/2] Collecting data for: 2026-09-16
+  -> FAILURE: Failed to collect data for 2026-09-16.
+  --- Error Details ---
+Loading environment variables from .env file...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+
+==================================================
+ Starting Daily Data Collection for: 20260916
+==================================================
+
+1. Fetching KRX Stock Listing (Sectors & Industries) from KIND...
+
+2. Fetching Ticker List from PyKRX...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_ticker_and_name: Expecting value: line 1 column 1 (char 0)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_ticker_and_name: Expecting value: line 1 column 1 (char 0)
+Error: No tickers found for date 20260916. The market might have been closed.
+
+
+  ---------------------
+  Waiting 3.0 seconds before next request...
+[2/2] Collecting data for: 2026-09-17
+  -> FAILURE: Failed to collect data for 2026-09-17.
+  --- Error Details ---
+Loading environment variables from .env file...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+
+==================================================
+ Starting Daily Data Collection for: 20260917
+==================================================
+
+1. Fetching KRX Stock Listing (Sectors & Industries) from KIND...
+
+2. Fetching Ticker List from PyKRX...
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_ticker_and_name: Expecting value: line 1 column 1 (char 0)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_ticker_and_name: Expecting value: line 1 column 1 (char 0)
+Error: No tickers found for date 20260917. The market might have been closed.
+
+
+  ---------------------
+
+==================================================
+ Batch collection completed!
+==================================================
+Step 2b: Generating KOSDAQ Pharmaceutical & Biotech supply/demand chart and uploading to Telegram...
+2026-09-17 20:30:18,507 - INFO - Loading environment variables from .env file...
+2026-09-17 20:30:18,517 - INFO - Using Pretendard font from: /home/inhyuk/Downloads/public/static/alternative/Pretendard-Regular.ttf
+2026-09-17 20:30:18,518 - INFO - Using latest data date: 20260915
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 1267, in get_index_portfolio_deposit_file
+    df = 지수구성종목().fetch(date, ticker[1:], ticker[0])
+         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 1029, in fetch
+    result = self.read(indIdx2=ticker, indIdx=group_id, trdDd=date)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 310, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 286, in main
+    bio_tickers = get_bio_tickers(latest_date)
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 91, in get_bio_tickers
+    tickers_2066 = stock.get_index_portfolio_deposit_file('2066', date_str)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 1311, in get_index_portfolio_deposit_file
+    pdf = krx.get_index_portfolio_deposit_file(target_date, ticker)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260915', '2066')
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_index_portfolio_deposit_file: Expecting value: line 1 column 1 (char 0)
+2026-09-17 20:30:19,959 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 1267, in get_index_portfolio_deposit_file
+    df = 지수구성종목().fetch(date, ticker[1:], ticker[0])
+         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 1029, in fetch
+    result = self.read(indIdx2=ticker, indIdx=group_id, trdDd=date)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 310, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 286, in main
+    bio_tickers = get_bio_tickers(latest_date)
+  File "/home/inhyuk/projects/dataScout/kosdaq_bio_monitor.py", line 97, in get_bio_tickers
+    tickers_2217 = stock.get_index_portfolio_deposit_file('2217', date_str)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 1311, in get_index_portfolio_deposit_file
+    pdf = krx.get_index_portfolio_deposit_file(target_date, ticker)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260915', '2217')
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_index_portfolio_deposit_file: Expecting value: line 1 column 1 (char 0)
+2026-09-17 20:30:20,725 - INFO - Expecting value: line 1 column 1 (char 0)
+2026-09-17 20:30:20,726 - INFO - Combined bio tickers count: 0 (2066: 0, 2217: 0)
+2026-09-17 20:30:20,726 - ERROR - Failed to build bio tickers list.
+Step 3: Running stock supply-demand screener...
+2026-09-17 20:30:21,008 - INFO - Loading environment variables from .env file...
+2026-09-17 20:30:21,010 - INFO - Screening stocks for date: 2026-09-15 (Lookback: ['20260909', '20260910', '20260911', '20260914', '20260915'])
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/screener.py", line 452, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/screener.py", line 126, in main
+    prices_df = pd.concat(price_series_list, axis=1)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/reshape/concat.py", line 395, in concat
+    return op.get_result()
+           ~~~~~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/reshape/concat.py", line 660, in get_result
+    df = cons(data, index=index, copy=self.copy)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 119, in arrays_to_mgr
+    arrays, refs = _homogenize(arrays, index, dtype)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/internals/construction.py", line 611, in _homogenize
+    val = val.reindex(index, copy=False)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/series.py", line 5164, in reindex
+    return super().reindex(
+           ~~~~~~~~~~~~~~~^
+        index=index,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        tolerance=tolerance,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/generic.py", line 5629, in reindex
+    return self._reindex_axes(
+           ~~~~~~~~~~~~~~~~~~^
+        axes, level, limit, tolerance, method, fill_value, copy
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).__finalize__(self, method="reindex")
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/generic.py", line 5652, in _reindex_axes
+    new_index, indexer = ax.reindex(
+                         ~~~~~~~~~~^
+        labels, level=level, limit=limit, tolerance=tolerance, method=method
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 4436, in reindex
+    raise ValueError("cannot reindex on an axis with duplicate labels")
+ValueError: cannot reindex on an axis with duplicate labels
+Step 5: Checking for Japan export data updates (16 HS codes)...
+2026-09-17 20:30:21,690 - INFO - Initializing session...
+2026-09-17 20:30:21,978 - INFO - Fetching 2 months × 2 batches = 4 requests...
+  [1/4] 2026-08 batch 1... no data
+  [2/4] 2026-08 batch 2... no data
+  [3/4] 2026-09 batch 1... no data
+  [4/4] 2026-09 batch 2...2026-09-17 20:30:23,713 - INFO - No data for 2 consecutive months. Stopping.
+2026-09-17 20:30:23,713 - INFO - No updates found. Skipping chart generation.
+2026-09-17 20:30:23,713 - INFO - Done.
+ no data
+Step 6: Committing and pushing to GitHub...

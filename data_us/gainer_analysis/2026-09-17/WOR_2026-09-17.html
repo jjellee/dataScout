@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WOR — Worthington Enterprises Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>WOR — Worthington Enterprises Inc. Common Shares</h1>
+<div class="sub">2026-09-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">WOR</span><span class="badge">+8.24%</span><span class="badge">거래량 3.28배</span><span class="badge">$2.88B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 <span class="up">+8.24%</span>(거래량 3.28배)를 설명할 확정 촉매가 제공 자료에 없다. 이틀 전 8-K는 11월 10일 Investor Day 개최와 세그먼트 명칭 변경 공지로, 실적·가이던스 변경이 아니다.</li>
+<li>직전 분기(FY26 Q4, 5월 결산)는 매출 $371.5M으로 YoY <span class="up">+16.9%</span>였으나 시장 기대 대비 매출·EPS 모두 미달했고(Seeking Alpha 요약 기준), 영업이익률은 6.4%로 YoY <span class="down">-0.5%</span>p 하락했다.</li>
+<li>매출 성장의 상당 부분이 FY26 인수(Elgen, LSI, Hydrostat 자산)에 기인할 가능성이 있으나 유기적 성장률은 제공 발췌에서 확인 불가하다.</li>
+<li>긍정 요인은 TTM 잉여현금흐름 $170.2M(시총 대비 약 5.9%), 유통주식수 감소 추세, 배당 인상(분기 $0.20)이다. 재무 구조는 견조해 보이나 차입 잔액·현금은 발췌에서 확인 불가하다.</li>
+<li>결론적으로 "펀더멘털은 나쁘지 않으나 오늘 급등의 근거가 확인되지 않고, 직전 실적이 기대 미달"이므로 Q1 FY27 실적과 Investor Day 확인 전까지 신규 비중은 보류한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong> 단, 다음 두 가지는 간접 배경으로 거론할 수 있다.</p>
+<ul>
+<li><strong>2026-09-15 8-K (Investor Day 공지):</strong> 회사는 2023년 10월 이후 첫 Investor &amp; Analyst Day를 11월 10일 개최한다고 밝혔고, Building Products → Building Performance Solutions, Consumer Products → Trade &amp; Specialty Solutions로 세그먼트를 개명한다고 밝혔다. 회사는 "분리 이후 유기적 성장, 마진 개선, 규율 있는 자본 배분을 실행해 왔다"고 주장한다. 공시일이 9/15로 오늘(9/17)과 이틀 차이가 있어 직접 촉매로 보기에는 약하다.</li>
+<li><strong>실적 발표 임박 가능성:</strong> 회계연도 1분기는 8월 31일에 끝나며, 직전 Q4(5/31 결산) 실적콜이 6/24에 열린 패턴을 감안하면 Q1 FY27 실적이 9월 하순에 나올 수 있다. 다만 발표 일정은 제공 자료에서 확인 불가하며, 오늘 상승이 실적 선반영인지는 추측이다.</li>
+<li>뉴스 헤드라인(Yahoo Finance, MarketBeat, Quiver 등)은 급등 사실만 전할 뿐 본문이 제공되지 않아 원인 특정에 쓸 수 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지·정의 용어·서두까지만 포함되어 있어 Item 1 사업 섹션 본문은 확인 불가하다. 아래는 10-K 정의 용어와 8-K에서 확인되는 사실 위주로 정리한다.</p>
+<ul>
+<li><strong>세그먼트:</strong> 10-K 기준 Building Products와 Consumer Products 2개 세그먼트. 8-K에 따르면 각각 Building Performance Solutions, Trade &amp; Specialty Solutions로 개명 예정. 세그먼트별 매출 비중은 공시상 확인 불가.</li>
+<li><strong>제품 단서:</strong> 10-K 정의 용어에 HVAC, LPG(액화석유가스), DIY가 포함되어 있고, 실적콜 관련 헤드라인에 "ASME 데이터센터 탱크", "A2L(냉매) 역풍"이 등장한다. 이로부터 압력용기·탱크·HVAC 관련 부품과 소비자용 DIY 제품이 주력임을 추정할 수 있으나 세부 제품 매출은 확인 불가.</li>
+<li><strong>지분법 합작사(JV):</strong> WAVE(Worthington Armstrong Venture), ClarkDietrich(Clarkwestern Dietrich Building Systems), Workhorse, Halo가 정의되어 있으며 "Equity income(지분법이익)"이 별도 용어로 정의된 점에서 JV 이익이 손익에 의미 있게 기여하는 구조로 보인다. JV 지분율과 이익 규모는 발췌에서 확인 불가.</li>
+<li><strong>FY26 인수:</strong> Elgen Manufacturing, LSI Group, Hydrostat 일부 자산. 인수 금액·매출 기여는 확인 불가.</li>
+<li><strong>기타 자산:</strong> Ragasco AS(자회사), Hexagon Composites·Hexagon Purus(오슬로 상장, 투자지분으로 추정), Sustainable Energy Solutions(SES) 관련 용어 존재.</li>
+<li><strong>회사가 주시하는 수요 지표:</strong> ABI(건축 청구 지수), DMI(Dodge Momentum Index), HMI(주택시장지수), LIRA(리모델링 선행지표)가 정의 용어에 포함되어 있어 최종 수요가 비주거 건설·주택·리모델링 경기에 연동됨을 시사한다.</li>
+<li><strong>연혁:</strong> 2023년 12월 1일 철강가공 사업(Worthington Steel)을 분리(spin-off)했고 사명을 Worthington Industries에서 Worthington Enterprises로 변경했다.</li>
+<li><strong>경쟁 위치:</strong> 공시상 확인 불가.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY26 Q4 매출</td>
+<td>$371.5M (YoY <span class="up">+16.9%</span>, QoQ <span class="down">-1.9%</span>)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>27.4%</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>6.4% (YoY <span class="down">-0.5%</span>p)</td>
+</tr>
+<tr>
+<td>EPS (SA 요약)</td>
+<td>$0.97, 컨센서스 대비 $0.09 미달</td>
+</tr>
+<tr>
+<td>매출 (SA 요약)</td>
+<td>컨센서스 대비 $15.04M 미달</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>$170.2M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>YoY <span class="up">+16.9%</span> 성장에 FY26 인수 3건이 포함되어 있어 단가·물량·믹스 분해와 유기적 성장률은 제공 발췌에서 확인 불가하다. QoQ <span class="down">-1.9%</span>는 계절성인지 수요 둔화인지 판별할 MD&amp;A 본문이 없다.</li>
+<li>영업이익률 6.4%는 매출총이익률 27.4% 대비 낮아 판관비 부담이 매출의 20% 안팎(계산치)으로 크다. 영업이익률이 YoY 하락한 점은 A2L 냉매 전환 관련 역풍(실적콜 헤드라인에서 언급)과 인수 통합비용 가능성을 시사하나 확인 불가.</li>
+<li>영업이익 계산치(6.4% × $371.5M ≈ $23.8M)보다 EPS $0.97 × 약 49M주 ≈ $47M(계산치)가 훨씬 크다. SA 요약 EPS가 조정 기준인지 GAAP인지 확인 불가하나, 어느 쪽이든 지분법이익 등 영업외 기여가 이익의 핵심임을 시사한다. 즉 이 회사의 이익 체력은 영업이익률만으로 판단하면 과소평가된다.</li>
+</ul>
+<p><strong>현금흐름·주주환원</strong>
+- TTM FCF $170.2M은 시총 $2.88B 대비 약 5.9%(계산치). 배당은 분기 $0.20(5.3% 인상, SA 뉴스 요약)으로 연 $0.80, 주가 $58.84 기준 수익률 약 1.36%, 연간 지급액 약 $39M(계산치)으로 FCF 대비 여유가 크다.
+- 유통주식수는 2026-01-05 49,546,581주 → 2026-04-06 49,252,994주 → 2026-07-23 48,934,416주로 6개월간 약 1.2% 감소했다. 자사주 매입에 의한 것으로 추정되나 매입 금액은 발췌에서 확인 불가.</p>
+<p><strong>재무 건전성</strong>
+- 10-K 정의 용어에서 확인되는 부채: 2032년 만기 4.30% 선순위채 $200M, 유로화 선순위채 €36.7M(2.06%, 2031) + €55M(2.40%, 2034), $500M 무담보 리볼버(2028-09-27 만기). 2024·2026 만기채는 이미 상환 완료. 리볼버 인출액·현금 잔액·순차입금은 확인 불가.
+- 대형 가속 신고자(Large accelerated filer)이며, 내부통제 감사의견 첨부. 재무제표 오류 정정·restatement 체크 항목은 해당 없음으로 표시.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>데이터센터향 ASME 탱크</strong> — 실적콜 관련 헤드라인에 따르면 회사는 FY27 Q1에 최소 $13M의 ASME 데이터센터 탱크를 출하할 것으로 전망한다고 밝혔다. 매출 $371.5M 대비 3~4% 수준(계산치)으로 아직 규모는 작다.
+   - 검증 포인트: Q1 FY27 실적에서 실제 출하액이 $13M을 넘었는지, 수주 잔고·후속 분기 가이던스가 제시되는지.</li>
+<li><strong>A2L 냉매 전환 역풍 해소</strong> — 회사는 A2L 역풍이 FY27 Q2까지 완화될 것이라고 밝혔다(실적콜 헤드라인).
+   - 검증 포인트: Q1·Q2에서 해당 제품군 물량 회복과 영업이익률 YoY 반전 여부.</li>
+<li><strong>FY26 인수(Elgen, LSI, Hydrostat) 통합</strong> — 인수 시너지·기여도는 공시상 확인 불가.
+   - 검증 포인트: 10-Q MD&amp;A에서 인수 효과 제외 유기적 매출 성장률 공개 여부, 통합 관련 일회성 비용 추이.</li>
+<li><strong>Investor Day(11/10) 중장기 목표 제시</strong> — 회사는 전략·재무 성과·장기 성장 기회를 업데이트한다고 밝혔다. 세그먼트 개명은 포트폴리오 재정의 신호로 읽힌다.
+   - 검증 포인트: 중기 매출·마진·ROIC 목표의 구체성, JV 의존도 축소 여부, 자본 배분 우선순위.</li>
+<li><strong>JV 지분법이익(WAVE, ClarkDietrich 등)</strong> — 이익의 상당 부분을 차지하는 것으로 추정되나 규모 확인 불가.
+   - 검증 포인트: 분기별 지분법이익 추이와 ABI·DMI 등 비주거 건설 지표 방향.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript 자료는 FY26 Q4(2026-06-24) 발표 슬라이드 페이지로, 경영진 발언 본문과 Q&amp;A 원문은 포함되어 있지 않다. 확인 가능한 범위는 아래로 제한된다.</p>
+<ul>
+<li><strong>가이던스 화법:</strong> 실적콜에서 회사는 FY27 Q1 ASME 데이터센터 탱크 출하 "최소 $13M"이라는 구체적 하한 수치를 제시했고, A2L 역풍은 "Q2까지 완화"라는 시점을 특정했다고 언급됐다. 정성적 표현 대신 숫자와 시점을 제시한 점은 자신감의 표현으로 읽히나, 기대치 미달 직후의 방어적 가이던스일 가능성도 배제 못 한다.</li>
+<li><strong>주주환원 시그널:</strong> 실적 미달과 동시에 분기 배당을 5.3% 인상했다. 현금흐름에 대한 경영진의 자신감으로 해석 가능하다.</li>
+<li><strong>시장 반응:</strong> SA 페이지 차트 기준 실적 발표 전후 한 달(6/15~7/14) 주가 범위는 $51.68~$61.86로 변동성이 컸다. 실적 직후 하락(SA 기사 제목 "Worthington Enterprises Falls")이 있었던 것으로 보이나 상세는 확인 불가.</li>
+<li><strong>Q&amp;A 반복 질문·회피 지점:</strong> transcript 본문 미제공으로 확인 불가.</li>
+<li><strong>참고:</strong> SA 퀀트 등급은 매도(1.96), 셀사이드 평균은 매수(3.75)로 엇갈린다. 공매도 잔량 1.83%는 낮은 수준이다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<p>10-K Item 1A 본문이 발췌에 포함되지 않아 아래는 정의 용어, 서두의 forward-looking 항목, 실적 자료에서 실제로 드러난 항목만 추렸다.</p>
+<ol>
+<li><strong>최종 수요의 건설·주택 경기 민감도</strong> — 회사가 ABI, DMI, HMI, LIRA를 핵심 지표로 정의하고 있어 비주거 건설·신규 주택·리모델링 둔화가 매출과 JV 지분법이익에 동시에 타격을 줄 수 있다.</li>
+<li><strong>JV 이익 의존과 통제력 제한</strong> — 영업이익 대비 순이익 규모(계산치)로 볼 때 지분법이익 기여가 크다. JV는 연결 매출에 잡히지 않고 파트너와 의사결정을 공유하므로, 배당 정책·투자 결정에 대한 단독 통제가 어렵다. 지분율·계약 조건은 확인 불가.</li>
+<li><strong>인수 통합 리스크</strong> — FY26에 3건을 인수했고 영업이익률이 YoY 하락했다. 통합 비용, 무형자산 상각, 시너지 미달이 마진 회복을 지연시킬 수 있다.</li>
+<li><strong>규제 전환(A2L 냉매) 역풍</strong> — 실적콜에서 언급된 A2L 관련 역풍은 회사가 Q2까지 완화된다고 밝혔으나, 지연 시 물량·마진 모두에 영향을 준다.</li>
+<li><strong>원자재(강재) 가격 변동</strong> — 10-K 서두 forward-looking 항목에 "원자재·완제품 가격 추세와 가격 변동의 영향"이 명시되어 있다. 철강 분리 이후에도 주요 투입재가 강재인 구조로 추정되며, 가격 전가 시차가 마진 변동성을 만든다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>
+- 긍정: TTM FCF $170.2M(시총 대비 약 5.9%), 배당 인상, 6개월간 유통주식 약 1.2% 감소, 만기 구조가 2028년 이후로 분산된 부채.
+- 부정: 직전 분기 매출·EPS 컨센서스 미달, 영업이익률 6.4%로 YoY 하락, 매출 QoQ <span class="down">-1.9%</span>, 60일 수익률 <span class="down">-4.3%</span>로 중기 추세가 약한 상태에서의 급등.
+- 밸류에이션: SA 페이지 기준 FWD PER 14.64배($54.65 시점). 추정치 불변 가정 시 $58.84에서는 약 15.8배(계산치)로, 저평가라고 보기 어렵다.
+- 오늘 상승은 촉매 미확인 상태의 거래량 3.28배 급등으로, 추격 매수 시 되돌림 리스크가 크다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Q1 FY27(8/31 결산) 실적: ASME 데이터센터 탱크 출하가 $13M 이상인지, 영업이익률이 YoY 하락에서 벗어났는지, 인수 효과 제외 유기적 성장률.
+2. 10-K 본문의 세그먼트별 매출·영업이익, 지분법이익 규모, 리볼버 인출액·순차입금. 제공 발췌만으로는 이익의 원천 구성을 확정할 수 없다.
+3. 오늘 급등의 실제 원인(뉴스 본문·기관 수급). 실적 선반영이나 M&amp;A 루머 등 확인되지 않은 요인이면 이벤트 후 소멸 가능성이 있다.</p>
+<p><strong>판단을 상향(보통 이상)할 조건</strong>
+- Q1 FY27에서 매출·EPS 컨센서스 상회와 영업이익률 YoY 반등이 동시에 확인되고, 11/10 Investor Day에서 구체적 중기 마진·ROIC 목표가 제시될 때.</p>
+<p><strong>판단을 하향(회피)할 조건</strong>
+- Q1에서 A2L 역풍 완화 시점이 Q2 이후로 재차 지연되거나, ASME 탱크 출하가 $13M 하한을 밑돌 때.
+- 리볼버 인출 확대로 순차입금이 증가하면서 자사주 매입이 중단될 때.
+- ABI·DMI 등 비주거 건설 선행지표 악화와 함께 JV 지분법이익이 YoY 감소로 전환될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526325872/wor-20260531.htm">10-K — 2026-05-31_0001193125-26-325872</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526149137/wor-20260228.htm">10-Q — 2026-02-28_0001193125-26-149137</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526008430/wor-20251130.htm">10-Q — 2025-11-30_0001193125-26-008430</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526391980/wor-ex99_1.htm">8-K — 2026-09-15_0001193125-26-391980__EX-99.1__wor-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526391980/wor-20260915.htm">8-K — 2026-09-15_0001193125-26-391980</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526376705/wor-20260831.htm">8-K — 2026-08-31_0001193125-26-376705</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526350842/wor-ex99_1.htm">8-K — 2026-08-12_0001193125-26-350842__EX-99.1__wor-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/108516/000119312526350842/wor-20260812.htm">8-K — 2026-08-12_0001193125-26-350842</a></li>
+<li>Transcript — 2026-06-24 Worthington Enterprises, Inc. 2026 Q4 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

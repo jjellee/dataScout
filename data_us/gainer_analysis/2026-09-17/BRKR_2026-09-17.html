@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRKR — Bruker Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BRKR — Bruker Corporation Common Stock</h1>
+<div class="sub">2026-09-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">BRKR</span><span class="badge">+8.82%</span><span class="badge">거래량 2.15배</span><span class="badge">$9.24B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>당일 <span class="up">+8.82%</span>, 거래량 2.15배의 급등이지만, 당일 전후 SEC 공시는 내부자 매도 사전신고(Form 144) 하나뿐이며 상승을 설명할 회사 발표는 제공된 원문에서 확인되지 않는다.</li>
+<li>2026년 2분기 매출 $838.5M(<span class="up">+5.2%</span> YoY), 매출총이익률 49.6%(전년 동기 44.9%), 영업이익률 9.9%(<span class="up">+6.6%</span>p)로 마진 회복은 뚜렷하다. 다만 직전 1분기는 보고 매출 <span class="up">+2.7%</span>에도 유기적 성장(non-GAAP organic)이 <span class="down">-4.4%</span>였고, 2분기 유기적 성장률은 발췌 원문이 잘려 공시상 확인 불가다.</li>
+<li>TTM 잉여현금흐름 $64.5M은 시가총액 $9.24B 대비 약 0.7% 수준으로, 현금창출력이 밸류에이션을 정당화하기에는 얇다.</li>
+<li>6.375% 강제전환우선주(2,760,000주)의 보통주 전환에 따른 희석과 3분기부터 적용되는 세그먼트 개편(과거 수치 재작성)이 겹쳐, 비교 가능한 실적 추세를 확인하려면 최소 한 분기 더 필요하다.</li>
+<li>결론적으로 마진 개선 추세는 긍정적이나, 촉매 미확인·유기적 성장 둔화·얇은 FCF가 겹쳐 신규 비중 확대보다는 3분기 실적(개편 세그먼트 기준) 확인 후 진입이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>당일 전후 SEC 공시는 2026-09-15자 Form 144(내부자 지분 매도 사전신고) 한 건뿐이다. 이는 매도 신고로, 상승 촉매가 될 수 없다. 뉴스 헤드라인(MarketBeat, Stock Titan)도 VP의 $105,740 매도, 임원의 2,000주 매도 예정을 전하고 있다.</li>
+<li>2026-08-14자 8-K가 존재하나 제공된 발췌는 표지 부분에서 잘려 있어 보고 항목과 내용은 공시상 확인 불가다.</li>
+<li>뉴스 헤드라인에 "Fusion 딜(Fusion Bet / Fusion Deal)"과 "UBS 목표주가"가 반복 언급되지만, 해당 거래의 내용·규모·조건은 제공된 SEC 원문 어디에도 없어 사실 여부와 상승 기여도를 검증할 수 없다. 또한 이 헤드라인들은 "주가 되돌림(Pulls Back)", "하락(Slides)"을 표제로 하고 있어 당일 <span class="up">+8.82%</span>와는 방향이 어긋난다. 오늘 이전 시점의 기사일 가능성이 높으며, 당일 촉매로 특정할 수 없다.</li>
+<li>GuruFocus 헤드라인은 "5.8% 상승, 여전히 저평가"라는 밸류에이션 관점의 기사로, 새로운 사실을 담고 있지 않다.</li>
+<li>정리하면 당일 급등은 회사 공시로 뒷받침되지 않는다. 미확인 M&amp;A 관련 관측, 목표주가 변경, 또는 분석기기(Laboratory Analytical Instruments) 섹터 동조 매수 가능성을 열어두되, 공시로 확인될 때까지는 추정으로 취급해야 한다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품·기술 (10-K 사업 섹션 기준)</strong>
+- 고성능 과학기기와 분석·진단 솔루션을 개발·제조·판매한다. 기술 플랫폼은 자기공명(NMR/EPR), 질량분석, 가스·액체 크로마토그래피, X선, 현미경, 계측, 분자분광이다.
+- 응용 영역은 구조 프로테오믹스, 신약 발굴, 제약·바이오 연구 및 생산, 식품·소재 과학, 임상 미생물학, 분자진단 등이다. 회사는 전임상 영상, 임상 피노믹스, 프로테오믹스·멀티오믹스, 공간·단일세포 생물학 등 "포스트 지노믹" 생명과학 분야에서 차별화된 시스템을 제공한다고 밝힘.</p>
+<p><strong>세그먼트 구조</strong>
+- 2026년 2분기까지 4개 보고 세그먼트: BSI BioSpin(NMR·EPR, 전임상 영상, 바이오파마·응용, 서비스, 데이터 솔루션), BSI CALID(화학·응용·생명과학·체외진단·탐지), BSI NANO, BEST(에너지·초전도 기술).
+- 2026년 3분기부터 세그먼트를 개편: BSI Biosystems(BIOS: 구 BioSpin 사업부 통합 + SciY + Chemspeed + Daltonics 질량분석 + Optics), BSI Microbiology and Infection Diagnostics(BMID: 미생물학·분자진단·바이오메디컬 시스템), BSI NANO, BEST. 회사는 의사결정·책임·고객 집중·혁신을 강화하기 위한 조직 간소화라고 밝힘. 과거 수치는 3분기 10-Q부터 재작성된다.
+- 세그먼트별 매출·이익 비중, 지역별 매출 구성, 소모품·서비스 대 장비 매출 비율은 제공된 발췌에 없어 공시상 확인 불가.</p>
+<p><strong>고객군·경쟁 위치</strong>
+- 고객은 생명·소재과학 연구기관, 바이오제약, 응용시장, 미생물학·체외진단, 나노기술 분야로 다양하다. 10-Q는 "정부 경기부양 프로그램과 학술 연구 예산의 시기"를 분기 변동 요인으로 명시하고 있어, 학술·정부 자금 의존도가 유의미함을 시사한다.
+- 시장점유율·주요 경쟁사 비교는 제공된 발췌에 포함되지 않아 공시상 확인 불가. 다만 NMR·초전도(BEST) 등 진입장벽이 높은 기술을 자체 보유한 점은 10-K 사업 설명에서 확인된다.</p>
+<p><strong>자본 구조 관련</strong>
+- 보통주 152,219,250주(2026-02-20 기준)와 6.375% Series A 강제전환우선주 2,760,000주(BRKRP)가 상장돼 있다. 전환 비율·전환 시점은 발췌에 없어 공시상 확인 불가.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이 (GAAP, $M)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>2Q25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>823.4</td>
+<td>838.5</td>
+<td>797.4</td>
+</tr>
+<tr>
+<td>매출 YoY</td>
+<td>+2.7%</td>
+<td>+5.2%</td>
+<td>-0.4%</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>379.8</td>
+<td>416.0</td>
+<td>357.9</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>46.1%</td>
+<td>49.6%</td>
+<td>44.9%</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>1.2%</td>
+<td>9.9%</td>
+<td>3.3%*</td>
+</tr>
+<tr>
+<td>영업활동현금흐름</td>
+<td>71.2</td>
+<td>확인 불가</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>*2Q25 영업이익률은 제공 지표(9.9%, YoY <span class="up">+6.6%</span>p)에서 역산한 값.</p>
+<p><strong>성장의 질</strong>
+- 1분기는 보고 매출 <span class="up">+2.7%</span>였으나 환율 중립(CER) 성장 <span class="down">-1.8%</span>, 유기적 성장 <span class="down">-4.4%</span>였다. 즉 보고 성장의 상당 부분이 환율과 인수 효과였고, 기존 사업 물량은 역성장했다. 이는 단가·물량·믹스 중 물량 측면의 약세를 시사한다.
+- 2분기는 보고 <span class="up">+5.2%</span>로 개선됐고 전년 동기 <span class="down">-0.4%</span> 대비 기저가 낮았다. 2분기 CER·유기적 성장률은 발췌가 잘려 공시상 확인 불가. 따라서 2분기 가속이 유기적 회복인지 환율·인수 효과의 연장인지는 아직 판단할 수 없다.
+- 상반기 누적 매출 $1,661.9M(<span class="up">+3.9%</span>), 매출총이익 $795.8M으로 상반기 매출총이익률은 약 47.9%(전년 상반기 약 46.9%)다.</p>
+<p><strong>마진 방향성</strong>
+- 2분기 GAAP 매출총이익률 49.6%는 전년 동기 44.9%, 직전 1분기 46.1% 대비 뚜렷한 개선이다. 1분기 non-GAAP 매출총이익률이 50.0%(전년 51.3%)였으므로, GAAP-non-GAAP 격차(구조조정·무형자산상각·IT 전환 비용 등)가 2분기에 축소됐거나 원가 개선이 있었을 가능성이 있으나, 2분기 조정 내역은 공시상 확인 불가.
+- 영업이익률은 1분기 1.2%에서 2분기 9.9%로 급반등했다. 1분기 non-GAAP 영업이익률 10.2%(전년 12.7%)와 비교하면 2분기 GAAP 영업이익률이 1분기 non-GAAP 수준에 근접한 셈이어서, 일회성 비용 감소 효과가 컸을 가능성이 있다. 이는 추정이다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM 잉여현금흐름 $64.5M. 시가총액 $9.24B 대비 약 0.7%로 낮다. 1분기 non-GAAP FCF는 $47.0M(전년 $39.0M), 영업활동현금흐름 $71.2M(전년 $65.0M)로 전년 대비 개선 추세이나 절대 규모가 작다.
+- 부채 규모, 현금 잔고, 이자비용, 신용 약정은 제공된 발췌에 없어 공시상 확인 불가. 10-K 서두에서 회사는 이자비용·통화스왑·배당·자사주 매입에 대한 전망을 언급하고 있어 차입과 파생 헤지가 존재함은 확인되나 수치는 알 수 없다.
+- 6.375% 우선주 배당은 고정 현금 유출 요인이며, 강제전환 시 보통주 희석이 발생한다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 마진 정상화(구조조정·비용 절감)</strong>
+- 10-K와 10-Q 모두 "비용 절감 이니셔티브"와 "구조조정 이니셔티브의 영향"을 전망 항목으로 명시한다. 2분기 영업이익률 9.9%는 그 효과가 나타나기 시작했음을 시사한다.
+- 검증 포인트: 3분기 10-Q에서 GAAP 영업이익률이 9%대 이상을 유지하는지, non-GAAP 조정 항목(구조조정·IT 전환 비용) 규모가 감소하는지.</p>
+<p><strong>② 세그먼트 개편을 통한 사업 집중</strong>
+- 회사는 3분기부터 BIOS·BMID·NANO·BEST 체제로 전환해 의사결정과 고객 집중을 강화한다고 밝힘. 특히 미생물학·감염진단(BMID)을 별도 세그먼트로 분리한 것은 진단 사업의 가시성을 높이려는 의도로 읽힌다. 이는 추정이다.
+- 검증 포인트: 3분기 10-Q의 재작성된 세그먼트별 매출·영업이익에서 BMID의 성장률과 마진이 기기 사업(BIOS)보다 높은지.</p>
+<p><strong>③ 포스트 지노믹 생명과학(프로테오믹스·공간생물학·멀티오믹스)</strong>
+- 10-K는 프로테오믹스·멀티오믹스, 공간·단일세포 생물학, 임상 피노믹스를 차별화 영역으로 제시한다. 질량분석(Daltonics)이 BIOS로 통합된 것과 연결된다.
+- 검증 포인트: 유기적 성장률이 1분기 <span class="down">-4.4%</span>에서 플러스로 전환하는지. 2분기 유기적 성장률은 확인 불가이므로 3분기 수치가 첫 확인 지점이다.</p>
+<p><strong>④ M&amp;A</strong>
+- 10-K는 "중요한 인수의 적시 완료(규제 승인·조건 충족 포함)"와 "인수 기업 통합"을 전망 항목으로 명시해 M&amp;A가 성장 전략의 축임을 보여준다. 뉴스의 "Fusion 딜"이 이에 해당하는지는 공시상 확인 불가.
+- 검증 포인트: 8-K로 인수 계약 체결·완료가 공시되는지, 공시 시 대가·자금조달 방식·희석 여부.</p>
+<p><strong>⑤ 수주잔고(Backlog)</strong>
+- 회사는 "수주잔고와 매출에 대한 기대"를 전망 항목으로 반복 명시하지만, 잔고 수치는 발췌에 없어 공시상 확인 불가.
+- 검증 포인트: 3분기 10-Q에서 수주잔고 절대 규모와 전년 대비 방향.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에는 Item 1A 리스크 섹션 본문이 포함되지 않았다. 아래는 10-K 전망 항목과 10-Q MD&amp;A의 분기 변동 요인 중 이 회사에 실질적인 것만 추린 것이다.</p>
+<p><strong>① 정부·학술 연구 예산 의존</strong>
+- 10-Q는 "정부 경기부양 프로그램과 학술 연구 예산의 시기"를 분기 변동 요인으로 명시하고, 10-K는 "정부 자금 결정의 영향"을 별도 항목으로 든다. 1분기 유기적 성장 <span class="down">-4.4%</span>는 이 수요층의 약세와 연결됐을 가능성이 있으나 원인 분해는 공시상 확인 불가.</p>
+<p><strong>② 관세·미중 갈등·대만 공급망</strong>
+- 10-Q는 미국 관세 부과·변경, 미중 긴장, 대만·중국 등 공급망 핵심국의 분쟁 가능성을 명시한다. 유럽·북미·아시아에 제조거점을 둔 구조상 관세는 원가와 수요 양쪽에 영향을 줄 수 있다. 중국 매출 비중은 공시상 확인 불가.</p>
+<p><strong>③ 구조조정·IT 전환 비용과 GAAP-non-GAAP 괴리</strong>
+- 1분기 GAAP 영업이익률 1.2% 대 non-GAAP 10.2%의 9%p 격차는 구조조정·인수통합·IT 전환·무형자산상각 비용의 규모가 크다는 뜻이다. 10-Q는 "글로벌 IT 전환 활동의 영향"과 "자가보험 건강보험 비용 추정 변동"을 별도 전망 항목으로 명시한다. 이 비용이 지속되면 2분기 마진 반등이 일회성일 수 있다.</p>
+<p><strong>④ 얇은 잉여현금흐름과 우선주 희석</strong>
+- TTM FCF $64.5M은 시가총액 대비 약 0.7%다. 6.375% 우선주 배당은 고정 유출이며, 강제전환 시 보통주가 희석된다. M&amp;A를 병행하는 구조에서 현금 여력이 제약될 수 있다. 차입 규모는 공시상 확인 불가.</p>
+<p><strong>⑤ 긴 매출 인식 사이클과 분기 변동성</strong>
+- 10-Q는 주문·선수금 수령부터 선적·고객 인수·대금 완납까지의 시차, 고객의 시설 준비 기간, 정부 라이선스 취득 기간을 분기 변동 요인으로 명시한다. 초고자장 NMR 등 대형 장비 특성상 분기 실적의 예측 가능성이 낮고, 한 분기의 개선을 추세로 단정하기 어렵다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong>
+- 촉매 부재: 당일 전후 SEC 공시는 Form 144(내부자 매도) 1건. 회사 발표 없이 <span class="up">+8.82%</span>, 거래량 2.15배.
+- 성장의 질: 1분기 보고 <span class="up">+2.7%</span> 대 유기적 <span class="down">-4.4%</span>. 2분기 <span class="up">+5.2%</span>의 유기적 구성은 확인 불가.
+- 마진: 2분기 매출총이익률 49.6%(<span class="up">+4.7%</span>p YoY), 영업이익률 9.9%(<span class="up">+6.6%</span>p)는 긍정적이나, 1분기 GAAP 1.2%와의 진폭이 커 지속성 미확인.
+- 현금: TTM FCF $64.5M, 시가총액 대비 약 0.7%.
+- 위치: 52주 고점 대비 <span class="down">-5.7%</span>, 20일 <span class="up">+6.7%</span>, 60일 <span class="up">+7.3%</span>로 이미 고점권에서 급등해 진입 시 안전마진이 작다.
+- 내부자: VP 및 임원의 매도 신고가 당일 전후 이어짐(소액이나 방향은 매도).</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2026-08-14자 8-K 원문과 뉴스의 "Fusion 딜"이 실제 공시된 거래인지, 그렇다면 대가·자금조달·희석 조건이 무엇인지.
+2. 2분기 10-Q 전문에서 non-GAAP 유기적 성장률·CER 성장률·조정 항목 규모(1분기 <span class="down">-4.4%</span>에서 개선됐는지).
+3. 우선주 전환 조건(전환 비율·시점)과 순부채 규모, 즉 희석과 레버리지의 실제 크기.</p>
+<p><strong>판단을 상향(보통 이상)으로 바꿀 조건</strong>
+- 3분기 10-Q에서 개편 세그먼트 기준으로 유기적 성장이 플러스 전환하고, GAAP 영업이익률이 9%대를 2개 분기 연속 유지하며, 분기 FCF가 1분기 $47.0M 수준을 상회하는 것이 확인될 때.</p>
+<p><strong>판단을 하향(회피)으로 바꿀 조건</strong>
+- 3분기 유기적 성장이 다시 마이너스이거나, GAAP 영업이익률이 1분기 수준(1%대)으로 되돌아가는 경우.
+- 뉴스상 "Fusion 딜"이 대규모 현금·주식 인수로 확인되면서 순부채 증가 또는 보통주 추가 발행이 동반되는 경우.
+- 내부자 매도가 Form 144 소액 신고를 넘어 임원·이사 다수의 대규모 매도로 확대되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526082523/brkr-20251231.htm">10-K — 2025-12-31_0001193125-26-082523</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526335226/brkr-20260630.htm">10-Q — 2026-06-30_0001193125-26-335226</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526211889/brkr-20260331.htm">10-Q — 2026-03-31_0001193125-26-211889</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526352279/brkr-20260814.htm">8-K — 2026-08-14_0001193125-26-352279</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526331511/brkr-ex99_1.htm">8-K — 2026-08-04_0001193125-26-331511__EX-99.1__brkr-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526331511/brkr-20260804.htm">8-K — 2026-08-04_0001193125-26-331511</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526326150/brkr-20260730.htm">8-K — 2026-07-30_0001193125-26-326150</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1109354/000119312526234630/brkr-20260521.htm">8-K — 2026-05-21_0001193125-26-234630</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
