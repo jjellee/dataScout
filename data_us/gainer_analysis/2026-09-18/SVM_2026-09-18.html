@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVM — Silvercorp Metals Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SVM — Silvercorp Metals Inc. Common Shares</h1>
+<div class="sub">2026-09-18 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">SVM</span><span class="badge">+8.68%</span><span class="badge">거래량 1.04배</span><span class="badge">$2.68B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>당일 <span class="up">+8.68%</span>는 9/17 6-K(자사주 매입 프로그램 갱신)와 시점이 겹치지만, 직전 프로그램에서 실제 매입이 0주였고 거래량 배수도 1.04배에 그쳐 종목 고유 촉매로 보기 어렵다.</li>
+<li>펀더멘털 자체는 강하다. 분기 매출 $138.7M(YoY <span class="up">+70.5%</span>), 영업이익률 54.4%, 현금 $387M과 시장가치 $304M의 투자자산(합계 약 $691M, 시총의 약 26%)을 보유한다.</li>
+<li>그러나 이익의 원천이 거의 전적으로 은 판매단가(실적콜 기준 Q1 실현가 $69/oz 이상, YoY <span class="up">+135%</span>)이고, 핵심 중국 광산은 안전 설비 업그레이드로 은 생산량이 YoY <span class="down">-17%</span> 감소한 상태다. 실현 은가도 Q4 $78 → Q1 $69로 꺾였다.</li>
+<li>40-F/AIF의 사업·리스크 원문이 제공되지 않아 중국 광산 라이선스, 전환사채 잔액, 키르기스스탄·에콰도르 프로젝트 조건 등을 공시로 검증할 수 없다.</li>
+<li>결론적으로 현 시점 진입은 "은 가격 방향성 베팅"에 가깝다. 생산 정상화와 자사주 매입 실행 여부를 확인한 뒤 비중을 결정하는 것이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>시점상 일치하는 공시</strong>: 2026-09-17 6-K(Exhibit 99.1)로 회사는 9/21부터 1년간 최대 8,848,585주(발행주식 221,214,642주의 약 4%)를 매입·소각하는 NCIB(Normal Course Issuer Bid) 개시를 공시했다. TSX 일일 매입 한도는 261,176주다.</p>
+<p><strong>촉매로서의 강도는 약함</strong>:
+- 같은 공시에서 회사는 2025년 9월~2026년 9월의 직전 NCIB(최대 8,747,245주)에서 "한 주도 매입하지 않았다"고 명시했다. 뉴스 헤드라인(Stock Titan)도 이 점을 지적한다.
+- 공시 문구는 "시장 상황이 주가를 저평가 상태로 만들 경우에 대비한 유연성 확보"이며, 매입 규모·시기에 대한 확약은 없다.
+- 거래량 배수 1.04배, 거래대금 $24.4M으로 수급 급증이라 보기 어렵다.</p>
+<p><strong>판단</strong>: 확인된 촉매 없음 — 자사주 갱신 공시가 계기가 됐을 수 있으나, 실질은 은 가격·귀금속 섹터 동조 가능성이 더 크다. 당일 은 가격 데이터는 제공되지 않아 공시상 확인 불가.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>회사는 Form 40-F 제출 외국기업이며, 10-K 사업 섹션에 해당하는 AIF 원문은 제공되지 않았다. 아래는 6-K 및 실적콜에서 확인되는 범위로 한정한다.</p>
+<p><strong>제품</strong>: 은·금·납·아연을 생산하는 캐나다(밴쿠버) 본사 광산 기업이다(6-K "About Silvercorp"). 실적콜 기준 은이 매출의 77%(Q1 FY27), 78%(Q4 FY26)를 차지해 사실상 은 가격에 연동되는 순수 은 광산주다. 판매는 제련소 공제(smelter deductions) 후 실현가 기준으로 인식된다.</p>
+<p><strong>생산 지역</strong>:
+- <strong>중국</strong>: 핵심 생산 기지. Q1 FY27 자본지출 약 $22M이 투입됐으며, 6월부터 안전 업그레이드로 생산이 일시 둔화됐다(실적콜).
+- <strong>에콰도르 El Domo</strong>: 개발 단계 프로젝트. Q4 FY26 $13M, Q1 FY27 $12M 투자. Santa Barbara 프로젝트는 Q1에 매각($6M 이익).
+- <strong>키르기스스탄</strong>: 2026년 1월 Tulkubash·Kyzyltash 금 프로젝트를 $92M에 인수(실적콜). 5월에 ZAAV 신규 채굴 라이선스(2062년 6월까지 20년 연장) 대가로 정부에 $60M 현금 지급. Chaarat ZAAV에 Q1 $2.6M 투자.</p>
+<p><strong>Q1 FY27 생산량(실적콜)</strong>: 은 약 150만 oz, 금 2,500 oz 이상, 납 1,300만(단위는 transcript 표기 기준), 아연 400만 lb. 금 <span class="up">+24%</span>, 은 <span class="down">-17%</span>, 납 <span class="down">-15%</span>, 아연 <span class="down">-15%</span> (YoY).</p>
+<p><strong>전략(6-K)</strong>: 회사는 ①장수명 광산의 FCF 창출, ②시추를 통한 유기적 성장, ③M&amp;A, ④ESG를 4대 축으로 제시한다. 경쟁 위치 및 고객(제련소) 구성은 제공 자료에서 확인 불가.</p>
+<p><strong>지배구조</strong>: Dr. Rui Feng이 회장·CEO를 겸임한다(AGM 통지). 9/25 AGM에서 이사 선임, Deloitte 재선임, 정관 개정, 주식보상제도 개정이 안건이다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q4 FY26 (3월 분기)</th>
+<th>Q1 FY27 (6월 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$147M (YoY <span class="up">+96%</span>, 분기 최고)</td>
+<td>$138.7M (YoY <span class="up">+70.5%</span>, QoQ <span class="down">-5.9%</span>)</td>
+</tr>
+<tr>
+<td>실현 은가(제련공제 후)</td>
+<td>$78/oz 이상 (<span class="up">+183%</span>)</td>
+<td>$69/oz 이상 (<span class="up">+135%</span>)</td>
+</tr>
+<tr>
+<td>조정 순이익</td>
+<td>$59.3M ($0.27/주)</td>
+<td>$53.9M ($0.24/주)</td>
+</tr>
+<tr>
+<td>보고 순이익</td>
+<td>-$0.7M (파생부채 평가손 $60M)</td>
+<td>$59.4M ($0.27/주, 일회성 $17M 포함)</td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>$90M</td>
+<td>약 $62M</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>$58M</td>
+<td>약 $29M</td>
+</tr>
+<tr>
+<td>기말 현금</td>
+<td>$422M</td>
+<td>$387M</td>
+</tr>
+</tbody>
+</table></div>
+<p>(출처: 실적콜. 매출·마진 지표는 제공된 시장 지표와 일치)</p>
+<p><strong>성장의 질 — 단가 주도, 물량 역행</strong>: YoY 매출 <span class="up">+70%</span>는 실현 은가 <span class="up">+135%</span>가 만든 것이다. 은 생산량은 <span class="down">-17%</span>로 물량은 오히려 줄었다. 즉 성장이 전적으로 가격 요인이며, 회사가 통제할 수 없는 변수에 의존한다. QoQ <span class="down">-5.9%</span> 감소도 실현 은가 하락($78 → $69)과 생산 둔화가 겹친 결과다.</p>
+<p><strong>마진</strong>: 영업이익률 54.4%(YoY <span class="up">+16.5%</span>p), 매출총이익률 61.1%. 가격 상승이 고정비 구조 위에서 그대로 이익으로 전환됐다. 회사는 Q4 콜에서 "매출 <span class="up">+96%</span>에 조정순이익 <span class="up">+303%</span>"로 레버리지를 강조했다. 반대로 은가 하락 시 마진 축소도 같은 배율로 발생한다.</p>
+<p><strong>보고 이익의 노이즈</strong>: Q4 FY26 보고 순이익은 전환사채 전환권 파생부채 평가손 $60M으로 적자였다. 회사는 이후 현금결제 옵션을 제거해 전환권을 자본으로 재분류했고, 향후 손익 변동성이 사라진다고 밝혔다. Q1 FY27 보고 순이익에는 투자이익 $11M과 Santa Barbara 매각이익 $6M이 포함돼 조정치($53.9M)가 실질에 가깝다. 전환사채 원금 잔액은 제공 자료에서 확인 불가.</p>
+<p><strong>현금흐름</strong>: 운전자본 변동 전 영업현금흐름 $70.4M(<span class="up">+82%</span>). 다만 성장 투자(중국 $22M, El Domo $12M, ZAAV $2.6M)와 ZAAV 라이선스 대금 $60M으로 분기 중 현금이 $35M 줄었다. TTM FCF $79.1M은 시총 대비 약 3%로, 현 주가가 이미 상당 부분 은가 상승을 반영한 수준이다.</p>
+<p><strong>재무 건전성</strong>: 현금 $387M + 투자자산 시장가치 $304M(6/30 기준). 여기에 미인출 위안화 기간대출 약 $220M이 있다. 부채 총액과 전환사채 잔액은 확인 불가하나, 유동성 측면의 압박은 보이지 않는다. 전액 실행 시 약 $107M(8.85M주 × $12.15)이 드는 NCIB를 감당할 여력은 충분하다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>중국 광산 생산 정상화</strong>: 회사는 6월 시작된 안전 업그레이드로 인한 둔화를 "일시적"이라고 밝혔다. 실현 조건은 업그레이드 완료 시점.
+   - 검증 포인트: FY27 2Q(9월말 분기) 생산 보고에서 은 생산량이 전년 수준(Q1 기준 약 180만 oz 상당)으로 회복되는지.</p>
+</li>
+<li>
+<p><strong>키르기스스탄 금 프로젝트(Tulkubash·Kyzyltash·ZAAV)</strong>: 인수 $92M, 라이선스 $60M을 이미 지출했다. 회사는 20년 라이선스 연장으로 장기 개발 기반을 확보했다고 밝혔다.
+   - 검증 포인트: 개발 일정·자본지출 계획·생산 개시 목표의 공시 여부. 현재 제공 자료에는 수치가 없다.</p>
+</li>
+<li>
+<p><strong>에콰도르 El Domo 개발</strong>: 분기당 $12~13M씩 투자 중이다.
+   - 검증 포인트: 건설 진척률, 총 예산 대비 집행률, 생산 개시 목표. 모두 공시상 확인 불가.</p>
+</li>
+<li>
+<p><strong>자본 배분(NCIB 실행)</strong>: 프로그램 자체는 승인됐으나 실행 이력이 없다.
+   - 검증 포인트: 월별 TSX 매입 보고에서 실제 매입 주수 확인. 9/21 이후 첫 한 달 실적이 시금석이다.</p>
+</li>
+<li>
+<p><strong>포트폴리오 정리·투자자산 현금화</strong>: Santa Barbara 매각($6M 이익), 투자자산 $304M.
+   - 검증 포인트: 추가 매각·회수 공시 여부.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>: Q4 FY26 콜에서 사장 Lon Shaver는 "은 광산주에게 분명히 좋은 시기", "수익성 있고 성장하며 여전히 저평가"라고 말했다. Q1 FY27 콜에서는 생산 둔화에도 "강한 분기"로 규정했다. 자신감의 근거는 은 가격이며, 회사 스스로도 이를 숨기지 않는다.</p>
+<p><strong>화법 변화</strong>: Q4 콜의 "aggressive growth strategy"라는 표현이 Q1에도 "growth strategy"로 이어지며, 강한 현금과 미인출 대출을 그 실행 수단으로 반복 강조했다. 정량 가이던스(연간 생산·비용 목표)는 제공된 발췌에서 확인되지 않는다.</p>
+<p><strong>Q&amp;A</strong>: 제공된 transcript 발췌에 Q&amp;A 본문이 포함되지 않아 애널리스트의 반복 질문과 회피 지점은 확인 불가. 참석 애널리스트는 BMO, ROTH, Matthew O'Keefe 3인이다.</p>
+<p><strong>콜에서만 드러난 정보</strong>:
+- 실현 은가($78 → $69/oz)와 은 매출 비중(77~78%).
+- 6월 시작된 중국 광산 안전 업그레이드와 그로 인한 은·납·아연 -15~17% 감산.
+- ZAAV 라이선스 $60M, 키르기스스탄 인수 $92M, 위안화 대출 $220M 미인출 등 자본 배분 수치.
+- 전환사채 현금결제 옵션 제거로 파생부채 회계 노이즈 해소.
+- Seeking Alpha 집계 기준 Q1 EPS는 컨센서스를 하회했고 매출은 상회했다(SEC 공시가 아닌 SA 집계이므로 참고치).</p>
+<h2>6. 리스크</h2>
+<p>40-F/AIF 리스크 섹션 원문이 제공되지 않아, 6-K의 주의문구와 실적콜에서 실제로 확인되는 항목만 든다.</p>
+<ol>
+<li>
+<p><strong>은 가격 단일 변수 의존</strong>: 매출의 77~78%가 은이며, 성장이 전부 단가에서 왔다. 실현가가 이미 Q4 → Q1에 약 12% 하락했다. 은가가 되돌릴 경우 54%의 영업이익률은 같은 레버리지로 축소된다.</p>
+</li>
+<li>
+<p><strong>중국 광산 생산 차질의 지속 기간</strong>: 안전 업그레이드는 6월에 시작됐고 종료 시점은 공시상 확인 불가. 회사는 "일시적"이라고 하지만, 2개 분기 이상 이어지면 물량 감소가 단가 효과를 상쇄한다.</p>
+</li>
+<li>
+<p><strong>고위험 관할권 성장 투자</strong>: 키르기스스탄(인수 $92M + 라이선스 $60M)과 에콰도르(분기 $12~13M)에 이미 $150M 이상이 투입됐다. 6-K 주의문구도 중국·에콰도르·키르기스스탄의 규제 환경을 명시적으로 거론한다. 이 자산의 경제성·일정 관련 공시 수치가 없어 시장이 가치를 부여하기 어렵다.</p>
+</li>
+<li>
+<p><strong>자본 배분 신뢰도</strong>: 자사주 프로그램을 1년간 0주 실행했다. 회장·CEO 겸임 구조에서 현금 $387M이 주주환원보다 M&amp;A로 흐를 가능성이 크며, 이번 갱신도 실행 여부가 미지수다.</p>
+</li>
+<li>
+<p><strong>전환사채 및 파생부채</strong>: Q4 FY26에 $60M 평가손이 발생할 만큼 규모가 있는 전환사채가 존재한다. 회계 노이즈는 해소됐다고 밝혔지만, 원금·전환가·희석 규모는 공시상 확인 불가.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>:
+- 현금+투자자산 약 $691M은 시총의 약 26%로 하방을 일부 지지한다.
+- 조정 순이익 연환산(Q1 × 4 ≈ $216M) 기준 P/E는 약 12배 수준이나, 이는 은가 $69/oz가 유지된다는 가정에 전적으로 의존한다.
+- TTM FCF 수익률 약 3%는 성장 투자를 감안해도 저평가라 부르기 어렵다.
+- 은 생산량 <span class="down">-17%</span>, 실현가 QoQ 하락, 52주 고점 대비 <span class="down">-22.7%</span>라는 추세는 모멘텀 소멸을 시사한다.
+- 당일 촉매(NCIB 갱신)는 실행 이력이 없어 실질 가치가 없다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>:
+1. FY27 2Q(9월말 분기) 생산 보고에서 중국 광산 은 생산량이 회복됐는지, 업그레이드 완료가 명시됐는지.
+2. 9/21 이후 NCIB 실제 매입 주수(TSX 월별 보고). 첫 달에 의미 있는 매입이 없으면 이번 공시는 무시해도 된다.
+3. AIF·재무제표 주석에서 전환사채 잔액·전환가, 키르기스스탄·에콰도르 프로젝트의 총 자본지출·생산 개시 목표를 직접 확인.</p>
+<p><strong>판단을 상향(보통)으로 바꿀 조건</strong>:
+- 은 생산량이 전년 수준으로 회복되고 실현 은가가 $69/oz 이상을 유지하는 분기가 확인될 때.
+- NCIB 실행이 확인되고, 성장 프로젝트에 정량 가이던스가 붙을 때.</p>
+<p><strong>판단을 하향(회피)으로 바꿀 조건</strong>:
+- 중국 광산 생산 차질이 2개 분기 이상 지속되거나 규제·라이선스 이슈로 확대될 때.
+- 실현 은가가 추가 하락하며 영업이익률이 40%대 아래로 내려올 때.
+- 키르기스스탄·에콰도르에 추가 대규모 현금 투입이 공시되면서 현금이 $300M 아래로 감소할 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000127956926000891/ex991.htm">8-K — 2026-09-17_0001279569-26-000891__EX-99.1__ex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000127956926000891/silvercorp6k.htm">8-K — 2026-09-17_0001279569-26-000891</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-4.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.4__tm2624133d1_ex99-4</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-3.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.3__tm2624133d1_ex99-3</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926102306/tm2624133d1_ex99-2.htm">8-K — 2026-08-26_0001104659-26-102306__EX-99.2__tm2624133d1_ex99-2</a></li>
+<li>Transcript — 2026-08-11 Silvercorp Metals Inc. (SVM:CA) Q1 2027 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-29 Silvercorp Metals Inc. (SVM:CA) Q4 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

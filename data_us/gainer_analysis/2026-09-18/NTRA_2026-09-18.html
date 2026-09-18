@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NTRA — Natera Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>NTRA — Natera Inc. Common Stock</h1>
+<div class="sub">2026-09-18 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">NTRA</span><span class="badge">+6.07%</span><span class="badge">거래량 2.37배</span><span class="badge">$52.80B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>펀더멘털 자체는 1차 스크린 통과가 정당함. Q2 매출 <span class="up">+37.7%</span>(회사 기준 true-up 제외 시 약 40%), 임상 MRD 물량 <span class="up">+56%</span>, 연간 가이던스 중간값 $100M 상향, 분기 현금 순증 전환, 현금 $1.09B 대비 부채 $80M으로 재무 부담 없음.</li>
+<li>그러나 오늘 <span class="up">+6.07%</span> 상승은 실적·규제·공시상 확인되는 촉매가 없고, 당일 전후 유일한 SEC 공시는 내부자 매도 신고(Form 144)임. 60일 <span class="up">+56%</span>, 사상 최고가 경신 상태에서 촉매 없는 거래량 급증은 수급·모멘텀 성격이 강함.</li>
+<li>시가총액 $52.8B는 2026년 가이던스 중간값($2.88B) 대비 약 18.3배 매출배수이며, 영업이익률은 여전히 <span class="down">-10.1%</span>, TTM 잉여현금흐름 $51.2M(시총 대비 0.1%)임. 성장 프리미엄은 이미 주가에 상당 부분 반영됨.</li>
+<li>신규로 의미있는 비중을 싣기에는 안전마진이 부족하다고 판단함. 기존 보유분은 유지, 신규 진입은 Q3 실적(11월 초 예상) 확인 또는 유의미한 조정 후 '보통'으로 상향 검토.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/모멘텀 가능성.</strong></p>
+<ul>
+<li>당일 전후 SEC 공시는 2026-09-15 Form 144(내부자 매도 사전신고) 1건뿐이며, 이는 상승 촉매가 아니라 오히려 반대 방향의 신호임. 뉴스 헤드라인도 "사상 최고가 경신·기술적 강세"(Barchart), "고평가 판단"(GuruFocus), "임원 $34.8M 매도"(Moomoo), "의장 사전계획(preset plan)에 따른 매도"(Stock Titan)로, 회사 발 신규 호재는 없음.</li>
+<li>마지막 펀더멘털 이벤트는 8월 6일 Q2 실적 및 가이던스 상향으로, 이후 6주간 주가가 재평가 국면에 있었음(20일 <span class="up">+12.7%</span>, 60일 <span class="up">+56.0%</span>). 오늘은 그 연장선상의 모멘텀 매수와 신고가 돌파 매수가 겹친 것으로 보는 것이 합리적임(추정).</li>
+<li>내부자 매도가 사전계획(Rule 10b5-1 추정)에 따른 것이라는 보도가 있으나, 계획 여부·규모의 공식 확인은 Form 144 원문에서 해야 하며 제공 발췌에는 세부 수치가 없어 <strong>공시상 확인 불가</strong>로 둠.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 원문 발췌는 사업 섹션 본문이 아닌 forward-looking statement 목록 위주라, 아래는 10-K 서두·8-K·실적콜에서 확인되는 범위로 한정함.</p>
+<ul>
+<li><strong>핵심 제품군(3축)</strong>: 회사는 스스로를 "cell-free DNA 및 정밀의학 기업"으로 정의하며, 종양학·여성건강·장기건강 세 영역으로 사업을 나눔(8-K EX-99.1).</li>
+<li>종양학: <strong>Signatera</strong>(종양정보 기반 MRD 검사, 매출 성장의 주력), <strong>LATITUDE</strong>(소량), 조기암검진(ECD, 개발 단계·매출 없음).</li>
+<li>여성건강: <strong>Panorama</strong>(NIPT, 회사는 버전 9라고 언급), <strong>Horizon</strong>(보인자 검사), Fetal Focus, IVF 관련 제품, BRCA.</li>
+<li>장기건강: <strong>Prospera</strong>(이식 후 모니터링, Q2에 Medicare 커버리지 확대), <strong>Renasight</strong>(신장질환 유전자 검사), <strong>Zenith</strong>(희귀질환, 신규 런칭).</li>
+<li><strong>매출 인식 구조</strong>: 10-K는 "예측 가능한 미래에 매출의 상당 부분이 Signatera·Panorama·Horizon에서 발생할 것"으로 밝힘. 매출은 검사 결과 보고(tests reported) 기준으로 인식되며, Q2 처리 검사 1,043,900건, 보고 985,500건. 제품별 매출 비중은 <strong>공시상 확인 불가</strong>.</li>
+<li><strong>고객·지불자</strong>: 병원·클리닉·검사실 파트너를 통한 처방 기반이며, 실질 지불자는 Medicare 및 민간 보험사임. 따라서 커버리지·ASP(평균판매단가)가 매출을 좌우하는 구조이고, 회계상 보험금 회수 추정(revenue accrual)의 변경이 분기 매출에 반영됨(Q2 $52.3M).</li>
+<li><strong>경쟁 위치</strong>: 실적콜에서 Signatera가 "MRD 검사 최초 FDA 동반진단 승인, 최초 일본 PMDA 승인"이라고 언급했고, NCCN이 근침윤성 방광암에서 Category 1 권고를 부여함. GS 컨퍼런스에서 CFO는 종양정보 기반 MRD에서 "시장 선도적 지위", "약 10년의 선행"이라고 표현하며 신규 진입자 존재를 인정함. 자체 CLIA 인증 실험실 2곳 운영, 일부 장비·소모품은 단일 공급자 의존(10-K).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 — 물량과 단가가 동시에 기여</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 2026</th>
+<th>Q2 2025</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$752.8M</td>
+<td>$546.6M</td>
+<td>+37.7%</td>
+</tr>
+<tr>
+<td>매출(true-up 제외, 역산)</td>
+<td>$700.5M</td>
+<td>$501.3M</td>
+<td>+39.7%</td>
+</tr>
+<tr>
+<td>처리 검사</td>
+<td>1,043,900</td>
+<td>853,100</td>
+<td>+22.4%</td>
+</tr>
+<tr>
+<td>종양학 검사</td>
+<td>296,700</td>
+<td>188,800</td>
+<td>+57.2%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>64.5%</td>
+<td>63.4%</td>
+<td>+1.1%p</td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>$75.8M</td>
+<td>$110.4M</td>
+<td>손실 축소</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>-10.1%</td>
+<td>-20.2%</td>
+<td>+10.1%p</td>
+</tr>
+<tr>
+<td>순손실/주당</td>
+<td>$67.0M / -$0.47</td>
+<td>$100.9M / -$0.74</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>물량 <span class="up">+22.4%</span>에 매출 <span class="up">+37.7%</span>이므로 단가·믹스 기여가 15%p 안팎으로 큼. 회사는 "물량 증가와 ASP 개선"이 원인이라 밝혔고, 실적콜에서 "ASP의 연속 분기 개선"을 언급함. 고단가 종양학 검사가 <span class="up">+57%</span>로 전체 물량보다 2.5배 빠르게 늘어난 것이 믹스 개선의 핵심.</li>
+<li><strong>true-up 의존도는 계속 점검 필요</strong>: 회수 추정 변경에 따른 매출 증가분이 Q2 $52.3M(매출총이익률 2.7%p), Q1 $61.0M으로 매 분기 $50~60M 수준. 회사는 이를 제외한 성장률(약 40%)을 별도 제시하므로 투명성은 있으나, 이 항목이 사라지면 매출총이익률은 62%대로 낮아짐.</li>
+</ul>
+<p><strong>마진 방향성</strong>
+- 매출총이익률은 Q1 64.7% → Q2 64.5%로 GAAP 기준 소폭 하락. 회사는 true-up 제외 시 non-GAAP 기준 0.5%p 개선이라고 밝힘. 실적콜에서 CFO는 신규 Signatera 환자 급증과 COGS 미최적화 신제품 비중 확대가 원인이며, 12~18개월간 COGS 절감 프로젝트가 반영될 것이라 언급.
+- 영업비용 $555.3M(<span class="up">+21.5%</span>)은 매출 성장(<span class="up">+37.7%</span>)을 크게 밑돌아 영업레버리지가 작동 중. 다만 Q2에 인수 무형자산 상각 $5.7M이 새로 발생(전년 없음) — 인수 대상·규모는 <strong>공시상 확인 불가</strong>.
+- 2026 가이던스: 매출총이익률 64~66%, SG&amp;A $1.125~1.225B, R&amp;D $800~900M. R&amp;D는 ECD 임상(FIND) 조기 등록으로 상향된 것이라고 회사가 밝힘.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- Q2 현금 약 $3.6M 순증, 6월말 현금·현금성·제한 현금 $1,091.5M(연초 $1,076.1M). 부채는 UBS 신용한도 $80.3M(30일 SOFR+50bp)뿐. 회사는 2026년 연간 현금흐름 플러스를 가이던스로 제시.
+- TTM 잉여현금흐름 $51.2M은 시총 대비 0.1%로, 밸류에이션은 현금흐름이 아니라 성장률에 전적으로 의존하는 구조임.
+- 가중평균 주식수 136.4M → 143.3M(<span class="up">+5.1%</span>)로 주식보상·발행에 따른 희석이 연 5% 안팎 진행 중.</p>
+<p><strong>가이던스의 보수성(제공 지표로 역산, 추정)</strong>
+- QoQ <span class="up">+8.1%</span>에서 역산한 Q1 매출은 약 $696M, 상반기 합계 약 $1,449M. 가이던스 중간값 $2.88B는 하반기 약 $1,431M, 분기당 약 $715M을 의미하며 이는 Q2 실적($752.8M)보다 낮음. true-up 제외 Q2($700.5M) 수준에서 성장 가정을 거의 두지 않은 보수적 가이던스로 해석되며, 실적콜에서 "이 범위 달성에 매우 자신 있다"는 발언과 부합함.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>Signatera 임상 물량 확대(국내)</strong>
+   - 근거: Q2 임상 MRD 약 283K건, 전분기 대비 +34K로 역대 최대 증가. FDA 동반진단 승인, NCCN Category 1(방광암) 확보.
+   - 실현 조건: 신규 환자 시작(new patient starts)이 이후 재발 모니터링·감시 검사로 전환.
+   - 검증 포인트: Q3 임상 MRD 순증이 Q1 기상 효과가 제거된 상태에서도 +20K 이상 유지되는지. 회사 스스로 Q1→Q2 증가폭이 과장됐다고 인정했으므로 Q3 순증이 진짜 기울기임.</p>
+</li>
+<li>
+<p><strong>적응증·보험 커버리지 확장</strong>
+   - 근거: 실적콜에서 방광암·다양한 종양(long tail) 채택 확대 언급. 추가 종양 커버리지 확보 시 매출 기회 확대.
+   - 검증 포인트: Medicare(MolDX) 신규 종양 커버리지 결정 공시, 그리고 ASP의 전분기 대비 추가 개선 여부.</p>
+</li>
+<li>
+<p><strong>일본 진출(Signatera CRC)</strong>
+   - 근거: PMDA 승인. 실적콜에서 연말 CRC 런칭, "보험 급여가 실제 unlock"이라고 언급. 파트너 유통 + 직접 영업 병행.
+   - 검증 포인트: 일본 급여 결정 시점과 급여 단가. 급여 전에는 물량 기여 미미하다고 회사가 밝힘.</p>
+</li>
+<li>
+<p><strong>여성건강·장기건강의 꾸준한 성장</strong>
+   - 근거: 계절적 약세인 Q2에 여성건강 한 자릿수 후반 성장, Fetal Focus·신규 Panorama로 신규 계정 확보. Prospera Medicare 커버리지 확대, Renasight·Zenith 런칭.
+   - 검증 포인트: Q3 총 처리 검사가 1.05M 이상으로 증가하는지, 여성건강 물량 성장률이 유지되는지.</p>
+</li>
+<li>
+<p><strong>조기암검진(ECD) — 2028년 이후 옵션</strong>
+   - 근거: 실적콜에서 FIND 연구 등록 Q3 완료, 2027년 판독, 2028년 상업화를 언급. CFO는 "4천만 명 미검진 CRC 시장"이라고 표현.
+   - 검증 포인트: FIND 등록 완료 공시(Q3), 2027년 데이터 판독. 현재는 R&amp;D 비용($800~900M 가이던스)만 발생.</p>
+</li>
+<li>
+<p><strong>COGS 절감 사이클</strong>
+   - 근거: 실적콜에서 신제품 물량 확인 후 워크플로 최적화, 12~18개월 내 반영 언급.
+   - 검증 포인트: true-up 제외 매출총이익률이 분기마다 0.5%p 이상 개선되는지.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 "exceptional quarter", "clearly on a roll"이라고 표현했고, 가이던스를 "완전히 리셋(completely reset)"했다고 언급. 자신감의 근거는 (1) 상반기 채용한 영업조직의 본격 가동, (2) FDA 승인 후 신규 계정·신규 환자 유입 증가, (3) ASP 연속 개선의 세 가지로 구체적임.
+- 가이던스 화법은 상향 폭은 크지만 하반기 가정이 Q2 실적 수준 이하로 보수적(4절 역산). "OpEx는 유지"라고 명시해 레버리지 메시지를 강조.
+- 다만 CEO가 Q1→Q2 MRD 증가분 34K에 대해 "Q1이 기상 요인으로 인위적으로 낮았던 만큼 과장된 측면이 있다"고 선제적으로 언급한 점은 주목할 만함. 이는 Q3 순증이 34K에 못 미칠 가능성을 미리 관리하는 발언임.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>매출총이익률이 대규모 매출 분기에도 왜 많이 안 올랐는가</strong>(Guggenheim): CFO는 신규 Signatera 환자 급증·미최적화 신제품 비중을 이유로 들며 12~18개월 후 개선을 약속. 즉 마진 개선은 지연되어 있고, 근거는 "과거 10년간 COGS 프로젝트에서 높은 수익률을 냈다"는 실적 기반 주장임.
+- <strong>R&amp;D 증가가 ECD 일정 가속인지</strong>: CEO는 "일정대로"라고 답하며, 비용은 "시간이 지나면 사라질 것"이라고 설명. 2027년까지 R&amp;D 부담 지속을 사실상 인정.
+- <strong>일본 침투 속도</strong>(Morgan Stanley): 회사는 미국 CRC 초기 채택률을 "맞추거나 넘을 것"이라 했으나, 급여 확정 전에는 처방이 어렵다는 구조를 함께 밝혀 시점 리스크를 인정.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- Q1 MRD 물량이 기상 이벤트로 수천 건 억제됐다는 점.
+- 신규 환자 시작(new patient starts)이 "way up"이며 이는 향후 감시 검사 성장의 선행지표라는 경영진 해석.
+- 위상 변이(phased variants) 기반 차세대 Signatera를 올해 후반 런칭 예정(GS 컨퍼런스).
+- 실현 ASP가 상장 당시(10년 전)보다 높다는 CFO 발언(GS 컨퍼런스).
+- ECD 타임라인: FIND 등록 Q3 2026 완료, 판독 2027, 런칭 2028. FDA 승인 연구 규모 25,000~40,000명.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>보험 급여·환급 리스크와 회계 추정 의존</strong>: 10-K는 "제3자 지불자 커버리지 확보·유지 실패, 이미 수령한 급여의 환불 요구 가능성, 정책 변경에 따른 급여 인하"를 명시. 매 분기 $50~60M의 회수 추정 변경이 매출에 반영되는 구조상, 급여 환경 악화 시 성장률·마진이 동시에 훼손됨. 10-K는 미세결실 검사(Panorama)의 급여 확대가 SMART 연구 결과에 의존한다고도 밝힘.</p>
+</li>
+<li>
+<p><strong>제품 집중과 MRD 경쟁 심화</strong>: 매출 대부분이 Signatera·Panorama·Horizon에서 발생한다고 10-K가 밝힘. GS 컨퍼런스에서 CFO가 MRD 신규 진입자를 인정했으며, 차세대 Signatera 전환 과정에서 기존 임상 근거와 신버전 간 연속성 문제가 생길 수 있음(추정).</p>
+</li>
+<li>
+<p><strong>운영 집중도</strong>: 10-K와 8-K는 CLIA 실험실 2곳 중 하나가 가동 불능 시 검사 수행 불가, 일부 장비·소모품의 단일 공급자 의존을 명시. 분기 100만 건 처리 규모에서 운영 사고는 즉시 매출 손실로 연결됨.</p>
+</li>
+<li>
+<p><strong>소송·규제 조사</strong>: 10-K forward-looking 항목에 "조사, 소환장, 정보 요청 등 규제·행정 절차 대응 능력과 관련 소송 비용"이 별도로 열거됨. 구체 사건 내용은 발췌에 없어 <strong>공시상 확인 불가</strong>이나, 회사가 IP 소송과 상업화 관련 소송 비용을 반복 언급하는 점은 유의.</p>
+</li>
+<li>
+<p><strong>수익성 전환 지연</strong>: 8-K 안전항 문구는 "예측 가능한 미래에 순손실 지속"을 명시. R&amp;D 가이던스 $800~900M, ECD 상업화는 2028년으로, 그 사이 GAAP 영업이익 흑자 전환 시점은 회사가 제시하지 않음. 연 5% 안팎의 주식 희석도 지속.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong>
+- 밸류에이션: 시총 $52.8B / 2026 가이던스 중간값 $2.88B = 약 18.3배 매출배수. 영업이익률 <span class="down">-10.1%</span>, TTM FCF 수익률 0.1%.
+- 주가 위치: 52주 고점 대비 0.0%(신고가), 60일 <span class="up">+56.0%</span>, 2025년 6월말 $168.94 대비 약 2.2배.
+- 촉매 부재: 당일 전후 실적·규제·계약 공시 없음. 유일한 공시는 내부자 매도 신고.
+- 펀더멘털 긍정 요인은 명확하나(매출 <span class="up">+37.7%</span>, MRD <span class="up">+56%</span>, 현금 $1.09B), 이는 8월 6일 이후 6주간 주가에 반영된 정보임.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Form 144 원문에서 매도 주체·수량·10b5-1 계획 여부를 확인하고, 이후 Form 4 제출로 실제 체결 규모를 확인할 것. 계획 외 재량 매도라면 부정 신호 강화.
+2. Q3 실적(11월 초 예상)에서 임상 MRD 순증이 기상 효과 없이 +20K 이상, true-up 제외 매출총이익률 전분기 대비 개선 여부.
+3. Medicare 추가 종양 커버리지 결정 또는 일본 급여 확정 등 공시 가능한 촉매 일정.</p>
+<p><strong>판단을 상향(보통/적극)으로 바꿀 조건</strong>
+- 주가가 20일선 수준으로 조정되거나 매출배수가 15배 안팎으로 낮아진 상태에서 Q3 MRD 순증과 마진 개선이 동시에 확인될 때 → 보통.
+- 여기에 Medicare 신규 종양 커버리지 또는 일본 급여 확정이 더해지고 회사가 GAAP 영업이익 흑자 전환 시점을 제시할 때 → 적극.</p>
+<p><strong>판단을 하향(회피)으로 바꿀 조건</strong>
+- Q3 임상 MRD 순증이 10K대로 급감하거나, true-up 제외 매출총이익률이 2분기 연속 하락.
+- 급여 환불·조사 관련 구체 사건이 8-K로 공시되거나, 내부자 매도가 계획 외로 복수 임원에게 확산.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000110465926020881/ntra-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-020881</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000162828026054525/ntra-20260630.htm">10-Q — 2026-06-30_0001628280-26-054525</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000162828026032478/ntra-20260331.htm">10-Q — 2026-03-31_0001628280-26-032478</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000160482126000015/ntra-20260630xex992.htm">8-K — 2026-08-06_0001604821-26-000015__EX-99.2__ntra-20260630xex992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000160482126000015/ntra-20260630xex991.htm">8-K — 2026-08-06_0001604821-26-000015__EX-99.1__ntra-20260630xex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000160482126000015/ntra-20260806.htm">8-K — 2026-08-06_0001604821-26-000015</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000160482126000005/ntra-20260701.htm">8-K — 2026-07-01_0001604821-26-000005</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1604821/000160482126000003/exhibit101.htm">8-K — 2026-06-11_0001604821-26-000003__EX-10.1__exhibit101</a></li>
+<li>Transcript — 2026-08-06 Natera, Inc. (NTRA) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-12 Natera, Inc. (NTRA) Presents at Goldman Sachs 47th Annual Global Healthcare Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
