@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAES — SEALSQ Corp Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LAES — SEALSQ Corp Ordinary Shares</h1>
+<div class="sub">2026-09-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">LAES</span><span class="badge">+5.36%</span><span class="badge">거래량 0.97배</span><span class="badge">$525.7M</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>당일 <span class="up">+5.36%</span>는 확인된 SEC 공시 없이 나온 움직임이며, 거래량 배수 0.97배로 "거래량 급증" 요건 자체가 충족되지 않았다. 수급 신호로 볼 근거가 약하다.</li>
+<li>H1 2026 매출 $11.2M(<span class="up">+131%</span> YoY), 매출총이익률 약 48%로 성장의 방향은 확인되지만, 영업손실 $32.2M은 매출의 약 3배로 사업 자체로는 아직 자기 자본 조달이 불가능한 단계다.</li>
+<li>6월말 현금·현금성자산·제한현금 $486.1M은 시가총액 $525.7M의 약 92%에 해당한다. 다만 회사가 이 현금을 양자 스타트업 지분투자·인수(목표 배분 $200M)로 전환 중이어서, 주주 입장에서 "현금 하방"으로 간주하기 어렵다.</li>
+<li>52주 고점 대비 <span class="down">-69.2%</span>, 60일 <span class="down">-25.6%</span>의 하락 추세가 진행 중이며, 이를 반전시킬 촉매(QS7001 양산 수주 등)는 공시상 아직 확인되지 않는다.</li>
+<li>FY2026 가이던스($27~36M) 달성 여부와 하반기 손실 폭 축소가 확인되기 전까지는 의미 있는 비중을 실을 근거가 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 가장 최근의 실질 공시는 9월 11일 H1 2026 실적(6-K)이며, 실적콜은 9월 15일에 열렸으므로 당일(9월 22일) 움직임과는 시차가 있다.</li>
+<li>뉴스 헤드라인상 SEALSQ·WISeKey·스위스 쥐라(Jura)주 간 포스트퀀텀 반도체·사이버보안 센터 설립 MoU(250개 이상 고용 창출 계획)가 확인된다. 다만 이는 구속력 없는 MoU 단계이며, SEC 원문으로 제공된 자료에는 해당 내용이 없어 금액·일정은 공시상 확인 불가다.</li>
+<li>"양자 경쟁에서 $2B 밸류에이션을 목표로 하는 나스닥 상장 후보" 헤드라인은 어느 법인을 가리키는지 제공 자료로 특정할 수 없다. 8-K 발췌상 SEALSQ가 매도인(Seller)으로 참여하는 WISeSat.Space(SpaceAIQ)와 Columbus Acquisition Corp.의 SPAC 합병 건이 진행 중이라는 사실은 확인되지만, 해당 밸류에이션 수치와의 연결은 추측 영역이다.</li>
+<li>거래대금 $12.6M, 거래량 배수 0.97배로 평소 수준의 거래였다. 저가주 특성상 5% 내외 변동은 노이즈 범위로 해석하는 것이 타당하다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>20-F 및 H1 2026 반기보고서 기준, SEALSQ는 영국령 버진아일랜드 법인이며 본사는 스위스 제네바 인근에 있다. 스위스 상장사 WISeKey International의 계열사로, 외국 민간 발행인(FPI) 및 신흥성장기업(EGC) 지위를 갖는다.</p>
+<p><strong>제품·서비스 (반기보고서 3.1절 구성 기준)</strong>
+- 인증 보안 마이크로컨트롤러: 기존 Vault-IC 보안 요소(secure element) 제품군과 차세대 포스트퀀텀 보안 요소 QS7001, QVault TPM. H1 2026 매출 성장의 1차 동력은 Vault-IC의 수요 회복이었다.
+- ASIC 설계 서비스: 2025년 8월 인수한 프랑스 IC'Alps. H1 2026에 약 $2.5M 매출을 기여했으며, 이는 반기 매출의 약 22%다.
+- 트러스트 서비스: PKI 구독, 디지털 아이덴티티, 신뢰 프로비저닝. 회사는 PKI 구독이 지속 성장 중이라고 밝힘.
+- 스페인 무르시아의 Quantix Edge Security 반도체 설계센터에서 초기 매출이 발생하기 시작했다고 밝힘.</p>
+<p><strong>지역별 매출 (H1 2026)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지역</th>
+<th>매출</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>북미</td>
+<td>$5.6M</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>EMEA</td>
+<td>$3.7M</td>
+<td>33%</td>
+</tr>
+<tr>
+<td>APAC</td>
+<td>$1.9M</td>
+<td>17%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군·경쟁 위치</strong>
+- 제공된 발췌에는 고객사명이나 고객 집중도 수치가 없어 공시상 확인 불가다. CEO 서한에서 Parrot(포스트퀀텀 보안 드론), Lattice Semiconductor(협업), 인도 Kaynes Semicon과의 SEALKAYNESQ 합작법인을 언급했다.
+- 회사는 스스로를 "실리콘 Root of Trust에서 양자컴퓨팅·광자 인터커넥트·보안통신·궤도 클라우드까지 이어지는 7계층 Quantum Vertical Stack"으로 정의한다. 이는 보안 반도체 회사라기보다 지주회사형 양자 생태계 투자 플랫폼에 가까운 서술이며, 현재 매출은 거의 전부 보안 반도체·PKI·ASIC 설계에서 나온다.
+- 경쟁사 대비 위치를 판단할 시장점유율·벤치마크 자료는 발췌에 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>제공된 분기 지표 항목(최근 분기 매출, YoY, 영업이익률, FCF 등)은 모두 미제공이다. FPI로서 분기 공시 의무가 없으며, 아래는 9월 11일 6-K의 H1 2026 반기 실적(US GAAP, 미감사) 기준이다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목 (천 달러)</th>
+<th>H1 2026</th>
+<th>H1 2025</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>11,151</td>
+<td>4,825</td>
+<td>+131%</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>5,408</td>
+<td>1,626</td>
+<td>+233%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>약 48%</td>
+<td>약 34%</td>
+<td>개선</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>(8,718)</td>
+<td>(4,724)</td>
+<td>+85%</td>
+</tr>
+<tr>
+<td>판매·마케팅</td>
+<td>(7,181)</td>
+<td>(6,025)</td>
+<td>+19%</td>
+</tr>
+<tr>
+<td>G&amp;A</td>
+<td>(23,103)</td>
+<td>(13,776)</td>
+<td>+68%</td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>(32,162)</td>
+<td>(21,237)</td>
+<td>+51%</td>
+</tr>
+<tr>
+<td>순손실</td>
+<td>(27,789)</td>
+<td>(20,030)</td>
+<td>+39%</td>
+</tr>
+<tr>
+<td>EBITDA 손실</td>
+<td>(29,500)</td>
+<td>(20,900)</td>
+<td>악화</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 매출 증가분 약 $6.3M 중 약 $2.5M은 IC'Alps 인수 효과다. 인수 효과를 제외한 유기적 성장은 약 $3.8M, 즉 약 80% 수준으로 추정된다(발췌 수치에서 계산한 값이며 회사가 유기적 성장률을 별도로 공시하지는 않았다).
+- 회사는 매출총이익률 개선을 ASIC 설계 매출 추가와 제품 믹스 개선으로 설명한다. 단가·물량 분해는 공시상 확인 불가다.
+- 포스트퀀텀 제품(QS7001, QVault TPM)의 매출 기여는 발췌에 수치가 없다. 인증 단계(EAL5+ 물리보안 테스트 통과, NIST 엔트로피 소스 검증)임을 고려하면 H1 매출은 사실상 기존 제품군에서 나온 것으로 본다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익은 $3.8M 늘었으나 영업비용은 약 $14.5M 늘었다. 특히 G&amp;A $23.1M은 매출의 2배가 넘는다. 회사는 인수기업 통합, 무형자산 상각, 법률·감사·자문·거래 비용을 이유로 든다.
+- 영업손실 폭 확대는 회사가 "계획된 투자"라고 밝힘. 다만 G&amp;A 중 일회성과 구조적 비용의 비율은 공시상 확인 불가다.
+- 순손실이 영업손실보다 약 $4.4M 작은 것은 유동성 자산의 이자수익 등 영업외수익 때문이다. 즉 현재 손실 축소의 상당 부분은 사업이 아니라 현금 보유에서 나온다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- 6월말 현금·현금성자산·제한현금 $486.1M, 단기투자 포함 유동성 약 $495M. 반기 EBITDA 손실 $29.5M 기준 영업 소진만 보면 수년치 여유가 있다.
+- 다만 CEO 서한상 SEALQuantum Sovereign Vertical Stack에 목표 배분 $200M을 설정했고, Miraex 인수, Wecan Group 다수지분 인수, Quobly 시리즈A 리드 투자, EeroQ 추가 자금 약정을 이미 집행했다. 개별 금액은 발췌에 없어 공시상 확인 불가다. 지분법 손실 $397K가 H1에 처음 잡혔다.
+- 부채 규모, TTM 잉여현금흐름, 영업현금흐름은 제공 자료에 없어 공시상 확인 불가다.
+- 희석: 2025년 12월 31일 기준 보통주 1억9,153만 주. 당일 시가총액 $525.7M을 종가 $2.36으로 나누면 약 2억2,300만 주가 산출되어 연초 이후 약 16% 증가가 추정된다(시가총액 산출 기준이 확인되지 않아 추정치). 회사는 WKSI(well-known seasoned issuer)이며 F-3 셸프(File No. 333-290963)가 유효해 추가 발행 여지가 열려 있다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>QS7001 포스트퀀텀 보안 요소의 상용화</strong>
+   회사는 EAL5+ 물리보안 테스트 통과와 NIST 엔트로피 소스 검증을 달성했다고 밝힘. 파이프라인 $225M(2029년까지) 중 $100M 이상이 QS7001·QVault TPM 관련이라고 밝혔으나, 회사 스스로 "경영진 추정이며 전환·고객 검증·기술 통합 리스크가 있다"고 명시했다.
+   검증 포인트: 다음 공시에서 EAL5+ 최종 인증 완료 여부, 설계 확정(design-win)이나 양산 발주(production commitment) 수, 포스트퀀텀 제품 매출의 별도 공시 여부.</p>
+</li>
+<li>
+<p><strong>FY2026 가이던스 $27~36M 달성</strong>
+   H1 $11.2M을 빼면 H2에 $15.8~24.8M이 필요하며, 이는 H1 대비 1.4~2.2배다. 회사는 가이던스를 재확인했다고 밝힘.
+   검증 포인트: FY 실적에서 하한 $27M 도달 여부. 미달 시 가이던스 신뢰도가 다음 해까지 훼손된다.</p>
+</li>
+<li>
+<p><strong>IC'Alps ASIC 설계 및 지역 설계센터(무르시아, 인도 사난드) 확장</strong>
+   ASIC 설계는 매출총이익률 개선의 원인으로 지목되었다.
+   검증 포인트: IC'Alps 매출의 반기 대비 증가, 설계센터별 매출 공시 여부, SEALKAYNESQ 합작법인의 손익 인식 시점.</p>
+</li>
+<li>
+<p><strong>양자 생태계 지분투자(Miraex, Wecan, Quobly, EeroQ, Quantisimo)</strong>
+   회사는 이를 "기술 시너지와 장기 주주가치"로 설명하지만, 현 시점에서는 현금 유출과 지분법 손실로만 나타난다.
+   검증 포인트: 투자 금액·지분율·평가 방법의 공시, 지분법 손실 추이, 이들 투자에서 발생하는 매출 연계(예: Miraex 광자 기술의 제품화).</p>
+</li>
+<li>
+<p><strong>SpaceAIQ(WISeSat.Space) SPAC 합병</strong>
+   SEALSQ는 매도인으로 참여하며 합병 완료 시 Pubco 주식을 수취한다. 지분 규모·평가액은 발췌에 없어 공시상 확인 불가다.
+   검증 포인트: 합병 완료 여부, SEALSQ가 수취하는 Pubco 지분의 장부가·공정가치 반영, 상장 후 록업 조건.</p>
+</li>
+</ol>
+<h2>6. 리스크</h2>
+<p>제공된 20-F 발췌는 목차와 표지만 포함되어 리스크 팩터 본문은 확인할 수 없다. 아래는 MD&amp;A·보도자료·거래 구조에서 직접 읽히는 것만 정리했다.</p>
+<ol>
+<li>
+<p><strong>매출 대비 과대한 비용 구조와 인수 주도 성장</strong>
+   H1 영업비용 약 $39M은 매출의 3.5배다. 매출 성장의 약 40%가 인수(IC'Alps)에서 왔고, G&amp;A 증가도 인수 통합·상각·거래 비용이 주원인이다. 유기적 사업의 단위경제성이 아직 증명되지 않았다.</p>
+</li>
+<li>
+<p><strong>현금의 성격 변화: 운영 자금에서 벤처 포트폴리오로</strong>
+   $486M 현금은 시가총액의 대부분을 설명하지만, 회사는 $200M 배분 목표와 복수의 지분투자를 진행 중이다. 비상장 양자 스타트업 지분은 유동성이 낮고 평가가 불투명해, 현금이 소진된 뒤 주주가 들고 있는 것은 검증 불가한 장부가치가 된다.</p>
+</li>
+<li>
+<p><strong>WISeKey 계열 지배구조와 이해상충</strong>
+   SEALSQ는 WISeKey의 계열사이고, Class F 주식(1,499,800주)이 존재한다. Class F의 의결권 내용은 발췌에 없어 공시상 확인 불가하나, SpaceAIQ Pubco 구조에서 Class F가 총 의결권의 49.9%를 갖도록 설계된 점은 그룹의 지배구조 관행을 시사한다. SpaceAIQ 합병, 쥐라주 센터 MoU 등 주요 거래가 모두 WISeKey와 공동으로 이뤄지고 있어 소수주주 이익과 그룹 이익이 어긋날 소지가 있다. 20-F에 관련당사자 거래 항목(Item 7.B)이 별도로 있으나 본문은 미제공이다.</p>
+</li>
+<li>
+<p><strong>희석 리스크</strong>
+   WKSI 지위와 유효한 F-3 셸프, 6-K 정보의 F-3 편입 명시는 회사가 시장 발행을 상시 준비하고 있음을 뜻한다. 연초 이후 주식수 약 16% 증가 추정과 함께, 저가 구간에서의 추가 발행은 주당 가치를 빠르게 훼손한다.</p>
+</li>
+<li>
+<p><strong>포스트퀀텀 수요의 시점 불확실성</strong>
+   회사는 "10년 이상 준비한 시장이 이제 형성되기 시작"이라고 밝힘. 파이프라인 $225M은 2029년까지의 누적치이며 경영진 추정이다. 정부 규제 일정에 의존하는 수요는 지연이 흔하고, 그 사이 기존 Vault-IC 제품의 수요 회복이 지속될지도 확인이 필요하다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 (관망)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현금 / 시가총액</td>
+<td>약 92%</td>
+<td>표면적 하방은 있으나 현금이 비유동 지분으로 전환 중</td>
+</tr>
+<tr>
+<td>H1 영업손실 / H1 매출</td>
+<td>약 2.9배</td>
+<td>자립 불가, 손실 확대 추세</td>
+</tr>
+<tr>
+<td>반기 EBITDA 소진</td>
+<td>$29.5M</td>
+<td>운영 소진만으로는 여유 충분</td>
+</tr>
+<tr>
+<td>가이던스 달성 필요 H2 매출</td>
+<td>$15.8~24.8M</td>
+<td>H1 대비 1.4~2.2배 필요</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-69.2%</td>
+<td>하락 추세 미반전</td>
+</tr>
+<tr>
+<td>거래량 배수</td>
+<td>0.97배</td>
+<td>수급 전환 신호 없음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 9월 15일 실적콜 transcript 확보 후, H2 매출 가시성(수주 잔고·발주 확정 여부)과 G&amp;A 정상화 시점에 대한 경영진 발언을 확인한다. 이번 리포트는 transcript 없이 작성되었다.
+2. 20-F Item 7(주요 주주·관련당사자 거래)과 Class F 의결권 조항을 원문에서 확인해 WISeKey의 지배력과 이해상충 범위를 파악한다.
+3. 반기보고서 5절(요약 재무제표)에서 부채, 영업현금흐름, 지분투자 장부가, 현금 중 제한현금 비율을 확인한다. 보도자료의 $486.1M은 제한현금을 포함한 수치다.</p>
+<p><strong>판단을 상향(보통)으로 바꿀 조건</strong>
+- QS7001 또는 QVault TPM의 양산 발주가 고객명 또는 금액과 함께 공시되는 경우.
+- FY2026 매출이 가이던스 하한 $27M 이상으로 확정되고, H2 영업손실이 H1 대비 축소되는 경우.</p>
+<p><strong>판단을 하향(회피)으로 바꿀 조건</strong>
+- F-3 셸프를 통한 추가 유상증자나 ATM 발행이 현 주가 수준에서 공시되는 경우.
+- FY2026 가이던스 하향 또는 하한 미달.
+- 비상장 양자 스타트업 투자 누적액이 현금의 상당 부분을 차지하면서 지분법 손실이나 손상차손이 확대되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000110465926037706/laes-20251231x20f.htm">20-F — 2025-12-31_0001104659-26-037706</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000121390026099027/ea030520701ex99-2.pdf">8-K — 2026-09-11_0001213900-26-099027__EX-99.2__ea030520701ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000121390026099027/ea030520701ex99-1.htm">8-K — 2026-09-11_0001213900-26-099027__EX-99.1__ea030520701ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000121390026099027/ea0305207-6k_sealsq.htm">8-K — 2026-09-11_0001213900-26-099027</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000121390026091234/ea030250301ex99-4.htm">8-K — 2026-08-18_0001213900-26-091234__EX-99.4__ea030250301ex99-4</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1951222/000121390026091234/ea030250301ex99-3.htm">8-K — 2026-08-18_0001213900-26-091234__EX-99.3__ea030250301ex99-3</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

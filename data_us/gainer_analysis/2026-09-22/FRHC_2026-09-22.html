@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FRHC — Freedom Holding Corp. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FRHC — Freedom Holding Corp. Common Stock</h1>
+<div class="sub">2026-09-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">FRHC</span><span class="badge">+5.87%</span><span class="badge">거래량 2.01배</span><span class="badge">$11.11B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>최근 분기 매출 $720.9M(YoY <span class="up">+39.9%</span>, QoQ <span class="up">+35.6%</span>), 영업이익률 28.7%로 외형·수익성 지표는 강하지만, 제공된 10-K/10-Q 발췌가 사업 개요·전망문구 수준에 그쳐 성장의 구성(브로커리지 수수료 vs. 자기매매·평가이익 vs. 은행 이자수익)을 공시상 확인할 수 없다.</li>
+<li>오늘 상승의 촉매는 뉴스상 '세계 체스 선수권 스폰서십'으로, 시가총액 $11.11B 기업의 이익 체력을 바꾸는 이벤트가 아니다. 9월 17일 8-K와 9월 18일 13D/A는 존재만 확인되고 내용은 제공되지 않았다.</li>
+<li>60일 수익률 <span class="up">+34.9%</span>, 52주 고점 대비 <span class="down">-0.5%</span>로 이미 고점권이며, 거래대금 $25.2M은 기관이 의미 있는 비중을 실기에는 얇다.</li>
+<li>10-K가 스스로 열거한 리스크(러시아-우크라이나 전쟁·제재, 규제조사 및 '예비 판단', 카자흐스탄 AI 데이터센터 자금조달·GPU 조달, 자기자본 투자의 시장위험)는 일반론이 아니라 이 회사의 구조적 리스크다.</li>
+<li>실적콜 transcript가 없어 경영진 톤·가이던스를 검증할 수 없다. 다음 10-Q 세그먼트 실적과 8-K/13D/A 내용을 확인한 뒤 재판단이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>뉴스상 촉매</strong>: TipRanks "Freedom Holding Pops After Landing World Chess Deal", simplywall.st "World Championship Sponsorship" 헤드라인으로 보아 세계 체스 선수권 관련 스폰서십 계약이 당일 상승의 표면적 촉매로 보인다. 계약 금액·기간·회계 처리 방식은 제공 자료에 없어 공시상 확인 불가.</li>
+<li><strong>공시</strong>: 2026-09-17 8-K(보고 사건일 9월 16일)는 표지만 제공되어 항목(Item)과 내용을 확인할 수 없다. 2026-09-18 SCHEDULE 13D/A는 5% 이상 주주의 지분 변동 보고인데, 보고자·변동 방향(매수/매도/약정 변경) 역시 제공되지 않았다. 체스 스폰서십과 8-K가 동일 사안인지도 확인 불가.</li>
+<li><strong>실적</strong>: 당일 실적 발표는 없다. 다만 AD HOC NEWS 헤드라인 2건이 '최근 실적에 대한 관심'과 '높은 밸류에이션'을 언급해, 6월 분기 실적(매출 <span class="up">+39.9%</span> YoY) 이후의 모멘텀 수급이 이어지고 있는 것으로 추정된다.</li>
+<li><strong>판단</strong>: 촉매는 스폰서십 뉴스로 특정되나 펀더멘털 이벤트가 아니다. 거래량 2.01배·거래대금 $25.2M 규모를 감안하면 52주 신고가 부근에서의 모멘텀 매수 성격이 강하다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K·10-Q 개요(Overview) 기준.</p>
+<ul>
+<li><strong>법인 구조</strong>: 네바다주 지주회사(본사 뉴욕 40 Wall Street), 회계연도는 3월 말 결산. 대형 가속신고자(Large Accelerated Filer)이며 404(b) 내부통제 감사 대상.</li>
+<li><strong>핵심 사업</strong>: 회사는 자회사를 통해 증권 브로커리지, 고객 및 자기계정 증권 딜링, 마켓메이킹, 투자리서치·자문, 소매·기업 은행업, 보험상품을 영위한다고 밝힘.</li>
+<li><strong>부수 사업</strong>: 결제·정보처리 서비스 등 "라이프스타일 솔루션"을 보유하며, 이를 핵심 금융업을 보완하는 '디지털 핀테크 생태계'로 묶고 있다고 밝힘. 앱은 Tradernet, Freedom SuperApp, Freedom Business로 명시.</li>
+<li><strong>신사업</strong>: 카자흐스탄 내 통신·미디어·헬스 부문 진출, Freedom Media, 카자흐스탄 AI 데이터센터('Kazakhstan Sovereign AI Hub') 개발이 전망문구에 반복 등장한다. 회사는 이를 위한 자금조달과 GPU 조달을 전제 조건으로 밝힘.</li>
+<li><strong>지역·고객군</strong>: 전망문구가 카자흐스탄, 러시아-우크라이나 전쟁, 이란·중동, 인도-파키스탄 분쟁을 열거하는 점에서 중앙아시아·CIS 및 인접 지역 중심의 소매 고객 기반으로 추정된다. 세그먼트별 매출 구성·지역별 비중은 발췌에 포함되지 않아 공시상 확인 불가.</li>
+<li><strong>경쟁 위치</strong>: 회사는 "매우 경쟁적이고 빠르게 변하는 환경"과 "수수료 하방 압력"을 리스크로 명시. 시장점유율·경쟁사 비교 수치는 공시상 확인 불가.</li>
+<li><strong>지분 구조</strong>: 10-K 표지상 2025-09-30 기준 비계열(non-affiliate) 보유 주식의 시가는 $3.23B, 2026-05-28 기준 발행주식은 61,292,581주. 현 시총 $11.11B 대비 비계열 물량이 소수여서 대주주·계열 지분이 큰 구조로 추정되나, 구체적 지분율은 제공 발췌에 없다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p>제공 지표 기준. MD&amp;A 본문(세그먼트·비용 분석)은 발췌에 포함되지 않았다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$720.9M</td>
+<td>6월 분기(FY2027 1Q)로 추정</td>
+</tr>
+<tr>
+<td>매출 YoY / QoQ</td>
+<td>+39.9% / <span class="up">+35.6%</span></td>
+<td>QoQ 증가폭이 이례적으로 큼</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>28.7% (YoY <span class="down">-0.9%</span>p)</td>
+<td>고마진 유지, 소폭 하락</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>51.3%</td>
+<td>금융업 특성상 해석 제한</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$923.5M</td>
+<td>아래 참조</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성장의 질</strong>: 매출이 전분기 대비 35.6% 급증한 것은 수수료 수입만으로 설명되기 어려운 폭이다. 10-K가 "자기자본 투자의 가치에 영향을 미치는 시장위험"을 명시하는 점에서 자기매매·보유증권 평가이익이 기여했을 가능성이 있다(추정, 공시상 확인 불가). 단가·물량·믹스 분해는 발췌에 없다.</li>
+<li><strong>마진</strong>: 영업이익률 28.7%는 브로커·은행 복합 모델로서 높은 수준이나 YoY <span class="down">-0.9%</span>p 하락했다. 통신·미디어·헬스·AI 데이터센터 등 비금융 신사업 투자가 비용을 늘리는 방향이라 마진 하락 추세가 지속될지 확인이 필요하다.</li>
+<li><strong>현금흐름</strong>: TTM FCF -$923.5M은 액면상 경고 신호이나, 브로커·은행은 고객 예탁금·매매목적 증권·대출 증감이 영업현금흐름에 섞여 들어오므로 FCF만으로 현금 창출력을 판단하기 어렵다. 다만 AI 데이터센터 CAPEX가 실제 집행되면 별도의 자금 소요가 발생하며, 회사도 "자금조달 확보"를 전제 조건으로 밝히고 있다.</li>
+<li><strong>재무 건전성</strong>: 자본적정성·유동성 규제 준수를 리스크로 명시하고 있으나 실제 비율·부채 수치는 발췌에 없어 공시상 확인 불가.</li>
+<li><strong>단순 연환산 배수(계산치)</strong>: 분기 매출 ×4 = 약 $2.88B, 시총 $11.11B 대비 약 3.9배. 분기 영업이익 약 $207M(매출 × 28.7%) ×4 = 약 $828M, 시총 대비 약 13.4배. 순이익·EPS는 제공되지 않아 P/E는 확인 불가. 연환산은 QoQ <span class="up">+35.6%</span>의 지속을 가정하는 셈이어서 상방 편향이 크다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<p>회사가 전망문구에서 제시한 축 기준. 각각 실현 조건이 공시에 명시돼 있다.</p>
+<ol>
+<li><strong>디지털 핀테크 생태계(SuperApp·Tradernet·Freedom Business)</strong>: 브로커리지·은행·보험·결제를 한 앱에 묶어 교차판매. 검증 포인트: 다음 10-Q에서 고객 계좌 수·예탁자산·세그먼트별 매출 증가율. 발췌에 수치 없음.</li>
+<li><strong>은행 부문 확장</strong>: 12월 분기 10-Q가 "은행 세그먼트 확장 계획"을 명시. 검증 포인트: 이자수익·대출잔액·순이자마진 추이, 자본적정성 비율.</li>
+<li><strong>카자흐스탄 통신·미디어·헬스 진출(Freedom Media 포함)</strong>: 회사는 "성공적 실행 능력"을 리스크로 병기. 검증 포인트: 신규 세그먼트의 매출 기여와 영업손실 규모, 인수 통합 진행.</li>
+<li><strong>AI 데이터센터(Kazakhstan Sovereign AI Hub)</strong>: 회사는 자금조달과 GPU 조달을 전제로 밝힘. 검증 포인트: 8-K를 통한 파이낸싱·GPU 공급계약 공시 여부, CAPEX 가이던스, 연결 부채 증가.</li>
+<li><strong>인수·지역 확장</strong>: "다양한 지역에서의 인수 및 사업 확장"을 반복 언급. 검증 포인트: 인수 대금 규모와 영업권 증가, 13D/A 등 지분 변동과의 연관성.</li>
+</ol>
+<h2>6. 리스크</h2>
+<p>10-K·10-Q 전망문구와 리스크 열거 중 이 회사에 실질적인 것만 선별.</p>
+<ol>
+<li><strong>제재·지정학 노출</strong>: 회사는 러시아-우크라이나 전쟁의 직·간접 영향, 자금이동·자본시장 접근·제3자 IT 서비스 접근을 제한하는 경제제재와 역제재를 리스크 최상단에 둔다. 이란 전쟁·중동, 인도-파키스탄 분쟁도 추가됐다. 고객 기반·운영 지역이 이 리스크에 직접 노출된 구조다.</li>
+<li><strong>규제 조사와 '예비 판단'</strong>: 10-K는 "규제 조사, 그 예비 판단(preliminary determinations)과 잠재적 결과"를 전망문구에 명시했다. 어떤 규제기관의 어떤 조사인지, 예비 판단의 내용은 발췌에 없어 공시상 확인 불가하나, 문구 자체가 진행 중인 조사에서 회사에 불리한 예비 결론이 있었을 가능성을 시사한다(추정).</li>
+<li><strong>자기자본 투자의 시장위험과 실적 변동성</strong>: 자기계정 딜링·마켓메이킹·자기자본 투자가 매출에 포함되므로 시장 하락 시 매출·이익이 급변할 수 있다. QoQ <span class="up">+35.6%</span>의 매출 급증은 반대 방향으로도 같은 진폭이 가능함을 뜻한다.</li>
+<li><strong>비금융 신사업의 자본 소요</strong>: 통신·미디어·헬스·AI 데이터센터는 금융업과 시너지가 검증되지 않았고, AI 데이터센터는 대규모 자금조달과 GPU 조달이 전제다. 자본적정성 규제를 받는 금융지주가 CAPEX 집중 사업을 병행하는 구조적 긴장이 있다.</li>
+<li><strong>유통물량·지배구조</strong>: 비계열 보유 시가가 $3.23B(2025-09-30)로 시총 대비 낮아 유통주식이 제한적이며, 이는 주가 변동성 확대와 기관 진입·청산 시 시장충격 비용으로 이어진다. 최근 13D/A 내용은 미확인.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong>
+- 강점: 매출 <span class="up">+39.9%</span> YoY, 영업이익률 28.7%, 시총/연환산 영업이익 약 13.4배(계산치, 상방 편향).
+- 약점: 52주 고점 대비 <span class="down">-0.5%</span>·60일 <span class="up">+34.9%</span>로 고점 진입 위험, 거래대금 $25.2M의 얕은 유동성, 촉매가 스폰서십 뉴스라는 비펀더멘털 이벤트, 순이익·세그먼트·자본비율 등 핵심 재무 수치가 제공 공시에서 확인 불가.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2026-09-17 8-K의 Item과 내용, 2026-09-18 13D/A의 보고자·지분 변동 방향. 대주주 매도라면 상승 국면의 물량 출회 신호.
+2. 최근 10-Q 세그먼트 주석에서 브로커리지 수수료·이자수익·자기매매 손익의 비중과 QoQ <span class="up">+35.6%</span>의 원천. 평가이익 비중이 크면 이익의 질을 할인해야 한다.
+3. 10-K 리스크·법적절차 항목에서 '규제 조사의 예비 판단' 실체와 잠재 제재 규모, 그리고 AI 데이터센터 자금조달 구조(부채/지분/파트너).</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- 보통으로 상향: 8-K·10-Q에서 수수료·이자 중심의 반복적 매출 성장이 확인되고, 규제 조사가 종결 또는 경미한 제재로 정리되며, 주가가 60일 급등분을 일부 되돌린 뒤 거래대금이 유지될 때.
+- 회피로 하향: 13D/A가 대주주 지분 축소로 확인되거나, 규제 조사의 예비 판단이 영업허가·자본에 영향을 주는 내용이거나, AI 데이터센터 자금조달이 연결 부채를 급증시키는 구조로 공시될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000012/frhc-20260331.htm">10-K — 2026-03-31_0000924805-26-000012</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000047/frhc-20260630.htm">10-Q — 2026-06-30_0000924805-26-000047</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000006/frhc-20251231.htm">10-Q — 2025-12-31_0000924805-26-000006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000051/frhc-20260917.htm">8-K — 2026-09-17_0000924805-26-000051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000028/frhc-20260710.htm">8-K — 2026-07-10_0000924805-26-000028</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000026/ex991pressreleasedatedjuly.htm">8-K — 2026-07-10_0000924805-26-000026__EX-99.1__ex991pressreleasedatedjuly</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000026/frhc-20260710.htm">8-K — 2026-07-10_0000924805-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/924805/000092480526000020/ex991pressreleasedatedjune.htm">8-K — 2026-06-29_0000924805-26-000020__EX-99.1__ex991pressreleasedatedjune</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

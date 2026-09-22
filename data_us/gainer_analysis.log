@@ -11252,3 +11252,641 @@
 2026-09-19 08:56:48,708 - WARNING - Claude CLI failed rc=1: 
 2026-09-19 08:56:48,708 - ERROR - AMAT: LLM 분석 실패
 2026-09-19 08:56:48,708 - ERROR - 생성된 리포트가 없습니다.
+2026-09-22 08:50:02,811 - INFO - Nasdaq 스크리너 수신: 7132종목
+2026-09-22 08:50:03,321 - INFO - 1차(상승률·시총·거래대금) 통과: 77종목
+2026-09-22 08:50:08,178 - INFO - 2차(거래량 급증 2.0배↑) 통과: 21종목
+2026-09-22 08:50:08,186 - INFO - 쿨다운(7일)으로 8종목 제외
+2026-09-22 08:50:18,366 - INFO - 3차(펀더멘털) 통과: 10종목
+2026-09-22 08:50:36,680 - ERROR - $LWLG: possibly delisted; no price data found  (period=1y)
+2026-09-22 08:50:36,681 - ERROR - 
+1 Failed download:
+2026-09-22 08:50:36,681 - ERROR - ['LWLG']: possibly delisted; no price data found  (period=1y)
+2026-09-22 08:50:38,290 - INFO - 워치리스트 트랙: 72종목 (GRAL +33.7%, ARQQ +16.9%, FSLY +14.9%, AXTI +14.1%, FIVN +14.0%, LUNR +12.9%, ALAB +12.4%, AKAM +12.3%, INTC +12.1%, META +11.4%, AMD +9.9%, QCOM +9.3%, P +9.1%, TWLO +9.1%, BMNR +8.7%, NET +8.7%, WOLF +8.3%, LFTO +7.7%, GDDY +7.5%, SHOP +7.3%, INOD +6.8%, DDOG +6.6%, CRDO +6.5%, WIX +6.4%, NVTS +6.4%, MDB +6.2%, MXL +6.0%, GLW +5.9%, FRHC +5.9%, RBRK +5.9%, ASTS +5.8%, LSCC +5.7%, SMCI +5.4%, MRVL +5.4%, LAES +5.4%, DUOL +5.3%, CBRS +5.1%, CRWV +5.0%, CRWD +4.9%, CIEN +4.9%, LRCX +4.9%, MPWR +4.9%, RGTI +4.9%, ONTO +4.8%, TSEM +4.6%, GDS +4.5%, ATRO +4.4%, SNPS +4.4%, CDNS +4.2%, NBIS +4.1%, APH +4.1%, KLAC +3.9%, SITM +3.9%, XE +3.8%, SHAK +3.8%, AMKR +3.8%, AEHR +3.7%, CLS +3.5%, IONQ +3.5%, VECO +3.5%, ARWR +3.5%, GAP +3.5%, QBTS +3.4%, FN +3.4%, AAOI +3.3%, COTY +3.3%, FTNT +3.2%, ESTC +3.2%, EL +3.1%, PLTR +3.1%, TSLA +3.0%, NU +3.0%)
+2026-09-22 08:52:24,399 - INFO - 최종 선정: 81종목 (워치리스트 72 + 전체시장 9)
+
+선정 종목
+  ★WL GRAL   + 33.68%  vol× 5.6     $4.82B  score=0.742  매출 YoY +25.7%, QoQ +9.6%, 영업적자(-332.0%)
+  ★WL ARQQ   + 16.89%  vol× 1.9    $566.9M  score=0.349  
+  ★WL FSLY   + 14.92%  vol× 2.4     $4.37B  score=0.597  매출 YoY +23.3%, QoQ +6.0%, 영업적자(-7.9%)
+  ★WL AXTI   + 14.14%  vol× 1.6     $5.24B  score=0.600  매출 YoY +164.8%, QoQ +76.8%, 영업이익률 21.9%
+  ★WL FIVN   + 13.98%  vol× 2.5     $2.77B  score=0.596  매출 YoY +10.3%, QoQ +2.3%, 영업이익률 0.6%
+  ★WL LUNR   + 12.93%  vol× 1.8     $3.60B  score=0.543  매출 YoY +304.3%, QoQ +10.8%, 영업적자(-23.2%)
+  ★WL ALAB   + 12.36%  vol× 2.0    $59.11B  score=0.647  매출 YoY +104.5%, QoQ +27.3%, 영업이익률 22.7%
+  ★WL AKAM   + 12.33%  vol× 1.6    $16.87B  score=0.438  매출 YoY +5.4%, QoQ +2.4%, 영업이익률 7.6%
+  ★WL INTC   + 12.14%  vol× 2.0   $643.62B  score=0.600  매출 YoY +25.4%, QoQ +18.8%, 영업이익률 12.2%
+  ★WL META   + 11.43%  vol× 2.9     $1.89T  score=0.576  매출 YoY +28.0%, QoQ +8.0%, 영업이익률 30.9%
+  ★WL AMD    +  9.95%  vol× 2.6     $1.00T  score=0.643  매출 YoY +50.1%, QoQ +12.5%, 영업이익률 17.3%
+  ★WL QCOM   +  9.29%  vol× 1.6   $203.99B  score=0.348  매출 YoY -4.0%, 영업이익률 16.3%, TTM FCF 흑자
+  ★WL P      +  9.14%  vol× 2.5    $37.87B  score=0.584  매출 YoY +37.7%, QoQ +12.6%, 영업이익률 5.3%
+  ★WL TWLO   +  9.11%  vol× 1.9    $40.86B  score=0.557  매출 YoY +22.0%, QoQ +6.6%, 영업이익률 7.8%
+  ★WL BMNR   +  8.70%  vol× 1.1    $17.04B  score=0.499  매출 YoY +2167.8%, QoQ +321.5%, 영업적자(-25.5%)
+  ★WL NET    +  8.67%  vol× 1.3   $125.22B  score=0.474  매출 YoY +35.9%, QoQ +8.8%, 영업적자(-7.9%)
+  ★WL WOLF   +  8.28%  vol× 1.2     $1.47B  score=0.213  매출 YoY -24.1%, 영업적자(-70.8%), TTM FCF 적자
+  ★WL LFTO   +  7.69%  vol× 1.4     $2.99B  score=0.457  매출 YoY +35.4%, QoQ +6.7%, 영업이익률 35.3%
+  ★WL GDDY   +  7.50%  vol× 1.5    $13.27B  score=0.425  매출 YoY +6.6%, QoQ +2.5%, 영업이익률 27.1%
+  ★WL SHOP   +  7.33%  vol× 2.4   $178.72B  score=0.558  매출 YoY +33.7%, QoQ +13.0%, 영업이익률 17.6%
+  ★WL INOD   +  6.84%  vol× 2.0     $2.10B  score=0.579  매출 YoY +57.8%, QoQ +2.3%, 영업이익률 17.2%
+  ★WL DDOG   +  6.58%  vol× 0.9    $87.99B  score=0.484  매출 YoY +35.6%, QoQ +11.4%, 영업이익률 0.7%
+  ★WL CRDO   +  6.47%  vol× 1.6    $35.20B  score=0.505  매출 YoY +114.7%, QoQ +9.6%, 영업이익률 25.2%
+  ★WL WIX    +  6.42%  vol× 1.0     $3.50B  score=0.334  매출 YoY +14.9%, QoQ +4.0%, 영업적자(-5.6%)
+  ★WL NVTS   +  6.39%  vol× 1.0     $3.17B  score=0.308  매출 YoY -27.3%, QoQ +22.5%, 영업적자(-255.0%)
+  ★WL MDB    +  6.19%  vol× 0.8    $32.81B  score=0.475  매출 YoY +30.5%, QoQ +12.2%, 영업이익률 3.7%
+  ★WL MXL    +  5.99%  vol× 1.8     $7.80B  score=0.507  매출 YoY +55.2%, QoQ +23.1%, 영업적자(-2.4%)
+  ★WL GLW    +  5.89%  vol× 1.1   $136.94B  score=0.435  매출 YoY +16.6%, QoQ +8.7%, 영업이익률 15.5%
+  ★WL FRHC   +  5.87%  vol× 2.0    $11.11B  score=0.417  매출 YoY +39.9%, QoQ +35.6%, 영업이익률 28.7%
+  ★WL RBRK   +  5.86%  vol× 1.0    $23.42B  score=0.428  매출 YoY +37.9%, QoQ +10.4%, 영업적자(-16.8%)
+  ★WL ASTS   +  5.76%  vol× 1.4    $24.09B  score=0.437  매출 YoY +2626.6%, QoQ +113.9%, 영업적자(-544.6%)
+  ★WL LSCC   +  5.66%  vol× 1.9    $16.65B  score=0.559  매출 YoY +62.2%, QoQ +17.7%, 영업이익률 13.3%
+  ★WL SMCI   +  5.40%  vol× 1.4    $27.07B  score=0.482  매출 YoY +93.2%, QoQ +8.6%, 영업이익률 13.4%
+  ★WL MRVL   +  5.38%  vol× 1.0   $225.70B  score=0.475  매출 YoY +36.5%, QoQ +13.3%, 영업이익률 16.7%
+  ★WL LAES   +  5.36%  vol× 1.0    $525.7M  score=0.167  
+  ★WL DUOL   +  5.30%  vol× 1.1     $6.99B  score=0.377  매출 YoY +18.3%, QoQ +2.2%, 영업이익률 11.4%
+  ★WL CBRS   +  5.10%  vol× 1.2    $49.53B  score=0.175  영업적자(-265.0%), TTM FCF 적자
+  ★WL CRWV   +  5.00%  vol× 2.1    $47.12B  score=0.401  매출 YoY +112.5%, QoQ +23.9%, 영업적자(-1.9%)
+  ★WL CRWD   +  4.92%  vol× 1.1   $255.32B  score=0.419  매출 YoY +25.8%, QoQ +6.2%, 영업적자(-2.3%)
+  ★WL CIEN   +  4.92%  vol× 1.3    $51.90B  score=0.479  매출 YoY +37.0%, QoQ +6.4%, 영업이익률 18.1%
+  ★WL LRCX   +  4.92%  vol× 1.4   $378.25B  score=0.484  매출 YoY +30.0%, QoQ +15.1%, 영업이익률 37.4%
+  ★WL MPWR   +  4.92%  vol× 1.6    $62.79B  score=0.540  매출 YoY +47.6%, QoQ +21.9%, 영업이익률 31.0%
+  ★WL RGTI   +  4.89%  vol× 1.1     $5.52B  score=0.414  매출 YoY +185.3%, QoQ +16.8%, 영업적자(-546.2%)
+  ★WL ONTO   +  4.76%  vol× 1.0    $13.54B  score=0.467  매출 YoY +35.3%, QoQ +17.5%, 영업이익률 19.6%
+  ★WL TSEM   +  4.57%  vol× 1.8    $26.43B  score=0.496  매출 YoY +23.7%, QoQ +11.2%, 영업이익률 19.6%
+  ★WL GDS    +  4.45%  vol× 2.2     $6.86B  score=0.277  매출 YoY +6.5%, 영업이익률 14.2%, TTM FCF 적자
+  ★WL ATRO   +  4.43%  vol× 1.3     $2.95B  score=0.474  매출 YoY +27.0%, QoQ +12.7%, 영업이익률 15.6%
+  ★WL SNPS   +  4.38%  vol× 0.9    $77.01B  score=0.504  매출 YoY +42.4%, QoQ +8.8%, 영업이익률 14.5%
+  ★WL CDNS   +  4.24%  vol× 1.0    $81.21B  score=0.407  매출 YoY +24.2%, QoQ +7.5%, 영업이익률 28.4%
+  ★WL NBIS   +  4.14%  vol× 1.3    $63.29B  score=0.411  매출 YoY +454.0%, QoQ +45.9%, 영업적자(-30.2%)
+  ★WL APH    +  4.09%  vol× 1.1   $199.05B  score=0.401  매출 YoY +58.4%, QoQ +18.3%, TTM FCF 흑자
+  ★WL KLAC   +  3.94%  vol× 1.1   $240.37B  score=0.357  매출 YoY +15.2%, QoQ +7.1%, 영업이익률 42.5%
+  ★WL SITM   +  3.92%  vol× 2.1    $19.19B  score=0.548  매출 YoY +126.5%, QoQ +38.6%, 영업이익률 10.6%
+  ★WL XE     +  3.81%  vol× 0.6     $6.65B  score=0.169  QoQ +25.6%, 영업적자(-219.5%), TTM FCF 적자
+  ★WL SHAK   +  3.79%  vol× 1.6     $2.44B  score=0.324  매출 YoY +17.2%, QoQ +13.9%, 영업이익률 6.7%
+  ★WL AMKR   +  3.76%  vol× 0.8    $12.97B  score=0.390  매출 YoY +25.6%, QoQ +12.7%, 영업이익률 10.5%
+  ★WL AEHR   +  3.68%  vol× 1.0     $3.17B  score=0.346  매출 YoY +33.7%, QoQ +82.6%, 영업적자(-6.4%)
+  ★WL CLS    +  3.54%  vol× 1.1    $39.60B  score=0.446  매출 YoY +62.4%, QoQ +16.1%, 영업이익률 9.8%
+  ★WL IONQ   +  3.53%  vol× 0.9    $15.43B  score=0.385  매출 YoY +286.8%, QoQ +23.8%, 영업적자(-421.3%)
+  ★WL VECO   +  3.51%  vol× 1.3     $2.70B  score=0.209  매출 YoY -5.4%, 영업적자(-0.4%), TTM FCF 흑자
+  ★WL ARWR   +  3.48%  vol× 1.8     $9.72B  score=0.422  매출 YoY +171.0%, QoQ +2.1%, 영업적자(-226.0%)
+  ★WL GAP    +  3.46%  vol× 0.6     $7.46B  score=0.321  매출 YoY -2.0%, QoQ +4.4%, 영업이익률 18.5%
+  ★WL QBTS   +  3.45%  vol× 1.0     $6.72B  score=0.271  매출 YoY -0.6%, QoQ +7.6%, 영업적자(-1732.1%)
+  ★WL FN     +  3.35%  vol× 0.8    $14.39B  score=0.486  매출 YoY +44.6%, QoQ +8.4%, 영업이익률 10.2%
+  ★WL AAOI   +  3.33%  vol× 1.3     $9.23B  score=0.402  매출 YoY +86.4%, QoQ +27.0%, 영업적자(-12.4%)
+  ★WL COTY   +  3.29%  vol× 0.8     $2.21B  score=0.205  매출 YoY +1.3%, 영업적자(-3.6%), TTM FCF 흑자
+  ★WL FTNT   +  3.17%  vol× 0.8   $128.57B  score=0.438  매출 YoY +25.6%, QoQ +10.7%, 영업이익률 33.7%
+  ★WL ESTC   +  3.16%  vol× 0.5     $9.42B  score=0.324  매출 YoY +15.1%, QoQ +6.1%, 영업적자(-0.8%)
+  ★WL EL     +  3.12%  vol× 1.0    $34.86B  score=0.316  매출 YoY +6.3%, 영업이익률 7.0%, 마진 +2.9%p 개선
+  ★WL PLTR   +  3.07%  vol× 0.8   $439.79B  score=0.482  매출 YoY +92.8%, QoQ +18.6%, 영업이익률 47.1%
+  ★WL TSLA   +  3.03%  vol× 1.1     $1.48T  score=0.395  매출 YoY +25.5%, QoQ +26.1%, 영업이익률 1.4%
+  ★WL NU     +  3.00%  vol× 0.7    $68.27B  score=0.318  매출 YoY +50.2%, QoQ +6.5%, TTM FCF 적자
+      RMBS   + 10.69%  vol× 2.3    $10.52B  score=0.593  매출 YoY +20.4%, QoQ +15.1%, 영업이익률 36.7%
+      HHH    +  8.93%  vol× 2.8     $3.92B  score=0.584  매출 YoY +330.2%, QoQ +375.7%, 영업이익률 20.1%
+      AMC    +  7.04%  vol× 3.0     $2.58B  score=0.566  매출 YoY +14.2%, QoQ +52.7%, 영업이익률 15.0%
+      LION   +  6.89%  vol× 2.3     $3.42B  score=0.559  매출 YoY +47.7%, 영업이익률 3.7%, 마진 +4.8%p 개선
+      SNX    +  5.05%  vol× 2.4    $22.36B  score=0.529  매출 YoY +31.0%, QoQ +14.1%, 영업이익률 2.7%
+      DOCN   + 12.31%  vol× 2.2    $17.19B  score=0.504  매출 YoY +28.6%, QoQ +9.0%, 영업이익률 10.4%
+      ACMR   +  6.22%  vol× 2.1     $5.07B  score=0.477  매출 YoY +36.0%, QoQ +26.7%, 영업이익률 17.0%
+      BETA   +  5.60%  vol× 2.4     $5.16B  score=0.473  매출 YoY +145.7%, QoQ +44.7%, 영업적자(-1078.7%)
+      CTRI   +  5.12%  vol× 2.1     $2.05B  score=0.411  매출 YoY +32.9%, QoQ +33.0%, 영업이익률 2.5%
+
+2026-09-22 08:52:24,400 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-09-22 08:52:25,431 - INFO - [1/81] GRAL 분석 시작
+2026-09-22 08:52:25,444 - INFO - GRAL: SEC 원문 다운로드 중…
+2026-09-22 08:52:29,615 - INFO - GRAL: complete: saved=0 skipped=82 errors=0 requests=16 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 08:52:29,646 - INFO - GRAL: transcript 2건 확보 — 2026-08-06 GRAIL, Inc. (GRAL) Q2 2026 Earnings Call Tran, 2026-06-10 GRAIL, Inc. (GRAL) Presents at Goldman Sachs 
+2026-09-22 08:52:29,646 - INFO - GRAL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 08:54:54,862 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 08:54:54,904 - INFO - GRAL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/GRAL_2026-09-22.html
+2026-09-22 08:54:54,904 - INFO - [2/81] ARQQ 분석 시작
+2026-09-22 08:54:54,907 - INFO - ARQQ: SEC 원문 다운로드 중…
+2026-09-22 08:54:55,663 - INFO - ARQQ: complete: saved=0 skipped=60 errors=0 requests=2 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 08:54:55,673 - INFO - ARQQ: transcript 1건 확보 — 2026-05-21 Arqit Quantum Inc. (ARQQ) Q2 2026 Earnings Ca
+2026-09-22 08:54:55,673 - INFO - ARQQ: LLM 분석 요청 [claude-cli fable] (SEC 35,790자 + transcript 27,363자)
+2026-09-22 08:57:08,374 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 08:57:08,380 - INFO - ARQQ: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ARQQ_2026-09-22.html
+2026-09-22 08:57:08,380 - INFO - [3/81] FSLY 분석 시작
+2026-09-22 08:57:08,381 - INFO - FSLY: SEC 원문 다운로드 중…
+2026-09-22 08:57:09,306 - INFO - FSLY: complete: saved=0 skipped=75 errors=0 requests=2 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 08:57:09,318 - INFO - FSLY: transcript 2건 확보 — 2026-08-10 Fastly, Inc. (FSLY) Presents at The KeyBanc T, 2026-08-06 Fastly, Inc. (FSLY) Q2 2026 Earnings Call Tra
+2026-09-22 08:57:09,319 - INFO - FSLY: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 08:59:20,909 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 08:59:20,916 - INFO - FSLY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/FSLY_2026-09-22.html
+2026-09-22 08:59:20,916 - INFO - [4/81] AXTI 분석 시작
+2026-09-22 08:59:20,922 - INFO - AXTI: SEC 원문 다운로드 중…
+2026-09-22 08:59:23,795 - INFO - AXTI: complete: saved=0 skipped=79 errors=0 requests=11 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 08:59:23,805 - INFO - AXTI: transcript 2건 확보 — 2026-07-31 AXT, Inc. (AXTI) Q2 2026 Earnings Call Transc, 2026-07-30 Q2 2026 Transcript
+2026-09-22 08:59:23,806 - INFO - AXTI: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:01:46,809 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:01:46,814 - INFO - AXTI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AXTI_2026-09-22.html
+2026-09-22 09:01:46,814 - INFO - [5/81] FIVN 분석 시작
+2026-09-22 09:01:46,816 - INFO - FIVN: SEC 원문 다운로드 중…
+2026-09-22 09:01:54,428 - INFO - FIVN: complete: saved=0 skipped=94 errors=0 requests=30 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:01:54,438 - INFO - FIVN: transcript 2건 확보 — 2026-08-06 Five9, Inc. (FIVN) Q2 2026 Earnings Call Tran, 2026-05-01 Five9, Inc. (FIVN) Q1 2026 Earnings Call Tran
+2026-09-22 09:01:54,440 - INFO - FIVN: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:04:18,303 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:04:18,311 - INFO - FIVN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/FIVN_2026-09-22.html
+2026-09-22 09:04:18,311 - INFO - [6/81] LUNR 분석 시작
+2026-09-22 09:04:18,313 - INFO - LUNR: SEC 원문 다운로드 중…
+2026-09-22 09:04:19,554 - INFO - LUNR: complete: saved=0 skipped=115 errors=0 requests=3 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:04:19,563 - INFO - LUNR: transcript 2건 확보 — 2026-08-13 Q2 2026 Transcript, 2026-05-14 Q1 2026 Transcript
+2026-09-22 09:04:19,563 - INFO - LUNR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:06:45,846 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:06:45,853 - INFO - LUNR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LUNR_2026-09-22.html
+2026-09-22 09:06:45,853 - INFO - [7/81] ALAB 분석 시작
+2026-09-22 09:06:45,855 - INFO - ALAB: SEC 원문 다운로드 중…
+2026-09-22 09:06:46,956 - INFO - ALAB: complete: saved=0 skipped=57 errors=0 requests=4 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:06:46,966 - INFO - ALAB: transcript 2건 확보 — 2026-08-04 Q2 2026 Transcript, 2026-06-04 Astera Labs, Inc. (ALAB) Presents at 2026 Eve
+2026-09-22 09:06:46,967 - INFO - ALAB: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:09:24,249 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:09:24,254 - INFO - ALAB: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ALAB_2026-09-22.html
+2026-09-22 09:09:24,254 - INFO - [8/81] AKAM 분석 시작
+2026-09-22 09:09:24,262 - INFO - AKAM: SEC 원문 다운로드 중…
+2026-09-22 09:09:25,412 - INFO - AKAM: complete: saved=0 skipped=69 errors=0 requests=4 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:09:25,425 - INFO - AKAM: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-05-07 Q1 2026 Transcript
+2026-09-22 09:09:25,427 - INFO - AKAM: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:12:45,759 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:12:45,765 - INFO - AKAM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AKAM_2026-09-22.html
+2026-09-22 09:12:45,765 - INFO - [9/81] INTC 분석 시작
+2026-09-22 09:12:45,775 - INFO - INTC: SEC 원문 다운로드 중…
+2026-09-22 09:12:49,388 - INFO - INTC: complete: saved=0 skipped=90 errors=0 requests=14 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:12:49,403 - INFO - INTC: transcript 2건 확보 — 2026-07-23 Intel Corporation (INTC) Q2 2026 Earnings Cal, 2026-06-02 Intel Corporation (INTC) Presents at Bank of 
+2026-09-22 09:12:49,404 - INFO - INTC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:16:12,102 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:16:12,107 - INFO - INTC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/INTC_2026-09-22.html
+2026-09-22 09:16:12,108 - INFO - [10/81] META 분석 시작
+2026-09-22 09:16:12,112 - INFO - META: SEC 원문 다운로드 중…
+2026-09-22 09:16:13,978 - INFO - META: complete: saved=0 skipped=57 errors=0 requests=7 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:16:13,992 - INFO - META: transcript 2건 확보 — 2026-07-29 Meta Platforms, Inc. (META) Q2 2026 Earnings , 2026-04-30 Meta Platforms, Inc. (META) Q1 2026 Earnings 
+2026-09-22 09:16:13,993 - INFO - META: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:18:49,267 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:18:49,271 - INFO - META: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/META_2026-09-22.html
+2026-09-22 09:18:49,271 - INFO - [11/81] AMD 분석 시작
+2026-09-22 09:18:49,283 - INFO - AMD: SEC 원문 다운로드 중…
+2026-09-22 09:18:51,380 - INFO - AMD: complete: saved=0 skipped=84 errors=0 requests=8 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:18:51,395 - INFO - AMD: transcript 2건 확보 — 2026-08-04 Q2 2026 Transcript, 2026-07-24 Advanced Micro Devices, Inc. (AMD) Presents a
+2026-09-22 09:18:51,396 - INFO - AMD: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:21:54,134 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:21:54,140 - INFO - AMD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AMD_2026-09-22.html
+2026-09-22 09:21:54,140 - INFO - [12/81] QCOM 분석 시작
+2026-09-22 09:21:54,147 - INFO - QCOM: SEC 원문 다운로드 중…
+2026-09-22 09:21:57,995 - INFO - QCOM: complete: saved=0 skipped=56 errors=0 requests=15 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:21:58,008 - INFO - QCOM: transcript 2건 확보 — 2026-07-29 QUALCOMM Incorporated (QCOM) Q3 2026 Earnings, 2026-06-25 QUALCOMM Incorporated (QCOM) Analyst/Investor
+2026-09-22 09:21:58,008 - INFO - QCOM: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:24:46,642 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:24:46,648 - INFO - QCOM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/QCOM_2026-09-22.html
+2026-09-22 09:24:46,648 - INFO - [13/81] P 분석 시작
+2026-09-22 09:24:46,648 - INFO - P: SEC 원문 다운로드 중…
+2026-09-22 09:24:49,237 - INFO - P: complete: saved=0 skipped=41 errors=0 requests=10 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:24:49,248 - INFO - P: transcript 2건 확보 — 2026-08-26 Q2 2027 Transcript, 2026-06-03 Everpure, Inc. (P) Presents at Bank of Americ
+2026-09-22 09:24:49,249 - INFO - P: LLM 분석 요청 [claude-cli fable] (SEC 21,950자 + transcript 30,000자)
+2026-09-22 09:27:14,447 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:27:14,451 - INFO - P: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/P_2026-09-22.html
+2026-09-22 09:27:14,451 - INFO - [14/81] TWLO 분석 시작
+2026-09-22 09:27:14,460 - INFO - TWLO: SEC 원문 다운로드 중…
+2026-09-22 09:27:17,846 - INFO - TWLO: complete: saved=0 skipped=50 errors=0 requests=13 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:27:17,859 - INFO - TWLO: transcript 2건 확보 — 2026-08-07 Twilio Inc. (TWLO) Q2 2026 Earnings Call Tran, 2026-06-02 Twilio Inc. (TWLO) Presents at 46th Annual Wi
+2026-09-22 09:27:17,860 - INFO - TWLO: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:29:49,584 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:29:49,589 - INFO - TWLO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/TWLO_2026-09-22.html
+2026-09-22 09:29:49,589 - INFO - [15/81] BMNR 분석 시작
+2026-09-22 09:29:49,613 - INFO - BMNR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 09:32:30,360 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:32:30,364 - INFO - BMNR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/BMNR_2026-09-22.html
+2026-09-22 09:32:30,364 - INFO - [16/81] NET 분석 시작
+2026-09-22 09:32:30,376 - INFO - NET: SEC 원문 다운로드 중…
+2026-09-22 09:32:32,259 - INFO - NET: complete: saved=0 skipped=66 errors=0 requests=7 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:32:32,274 - INFO - NET: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-06-09 Investor Day 2026 Transcript
+2026-09-22 09:32:32,275 - INFO - NET: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:34:58,971 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:34:58,976 - INFO - NET: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/NET_2026-09-22.html
+2026-09-22 09:34:58,976 - INFO - [17/81] WOLF 분석 시작
+2026-09-22 09:34:59,007 - INFO - WOLF: transcript 2건 확보 — 2026-08-19 Q4 2026 Transcript, 2026-05-05 Wolfspeed, Inc. 2026 Q3 - Results - Earnings 
+2026-09-22 09:34:59,008 - INFO - WOLF: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 27,483자)
+2026-09-22 09:37:38,799 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:37:38,805 - INFO - WOLF: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/WOLF_2026-09-22.html
+2026-09-22 09:37:38,805 - INFO - [18/81] LFTO 분석 시작
+2026-09-22 09:37:38,807 - INFO - LFTO: SEC 원문 다운로드 중…
+2026-09-22 09:37:39,675 - INFO - LFTO: complete: saved=0 skipped=18 errors=0 requests=3 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:37:39,685 - INFO - LFTO: transcript 1건 확보 — 2026-08-12 Q2 2026 Transcript
+2026-09-22 09:37:39,686 - INFO - LFTO: LLM 분석 요청 [claude-cli fable] (SEC 27,224자 + transcript 30,000자)
+2026-09-22 09:40:32,359 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:40:32,363 - INFO - LFTO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LFTO_2026-09-22.html
+2026-09-22 09:40:32,363 - INFO - [19/81] GDDY 분석 시작
+2026-09-22 09:40:32,376 - INFO - GDDY: SEC 원문 다운로드 중…
+2026-09-22 09:40:33,516 - INFO - GDDY: complete: saved=0 skipped=55 errors=0 requests=4 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:40:33,532 - INFO - GDDY: transcript 2건 확보 — 2026-06-02 GoDaddy Inc. (GDDY) Presents at 2026 Evercore, 2026-05-18 GoDaddy Inc. (GDDY) Presents at J.P. Morgan 5
+2026-09-22 09:40:33,533 - INFO - GDDY: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:43:13,310 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:43:13,316 - INFO - GDDY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/GDDY_2026-09-22.html
+2026-09-22 09:43:13,316 - INFO - [20/81] SHOP 분석 시작
+2026-09-22 09:43:13,325 - INFO - SHOP: SEC 원문 다운로드 중…
+2026-09-22 09:43:14,186 - INFO - SHOP: complete: saved=0 skipped=56 errors=0 requests=3 manifest={'saved': 83443, 'unavailable': 6}
+2026-09-22 09:43:14,199 - INFO - SHOP: transcript 2건 확보 — 2026-08-05 Shopify Inc. (SHOP) Q2 2026 Earnings Call Tra, 2026-05-05 Shopify Inc. (SHOP) Q1 2026 Earnings Call Tra
+2026-09-22 09:43:14,200 - INFO - SHOP: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:46:04,039 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:46:04,044 - INFO - SHOP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SHOP_2026-09-22.html
+2026-09-22 09:46:04,044 - INFO - [21/81] INOD 분석 시작
+2026-09-22 09:46:04,046 - INFO - INOD: SEC 원문 다운로드 중…
+2026-09-22 09:46:09,171 - INFO - INOD: complete: saved=2 skipped=58 errors=0 requests=20 manifest={'saved': 83445, 'unavailable': 6}
+2026-09-22 09:46:09,184 - INFO - INOD: transcript 1건 확보 — 2026-05-08 Innodata Inc. (INOD) Q1 2026 Earnings Call Tr
+2026-09-22 09:46:09,184 - INFO - INOD: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:48:35,286 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:48:35,291 - INFO - INOD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/INOD_2026-09-22.html
+2026-09-22 09:48:35,291 - INFO - [22/81] DDOG 분석 시작
+2026-09-22 09:48:35,300 - INFO - DDOG: SEC 원문 다운로드 중…
+2026-09-22 09:48:36,149 - INFO - DDOG: complete: saved=0 skipped=49 errors=0 requests=3 manifest={'saved': 83445, 'unavailable': 6}
+2026-09-22 09:48:36,162 - INFO - DDOG: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-06-04 Datadog, Inc. (DDOG) Presents at Bank of Amer
+2026-09-22 09:48:36,162 - INFO - DDOG: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:51:05,048 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 09:51:05,053 - INFO - DDOG: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/DDOG_2026-09-22.html
+2026-09-22 09:51:05,053 - INFO - [23/81] CRDO 분석 시작
+2026-09-22 09:51:05,064 - INFO - CRDO: SEC 원문 다운로드 중…
+2026-09-22 09:51:06,151 - INFO - CRDO: complete: saved=0 skipped=55 errors=0 requests=4 manifest={'saved': 83445, 'unavailable': 6}
+2026-09-22 09:51:06,161 - INFO - CRDO: transcript 2건 확보 — 2026-09-01 Q1 2027 Transcript, 2026-06-04 Credo Technology Group Holding Ltd (CRDO) Pre
+2026-09-22 09:51:06,162 - INFO - CRDO: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 09:56:10,068 - WARNING - Claude CLI failed rc=1: 
+2026-09-22 09:56:10,068 - ERROR - CRDO: LLM 분석 실패
+2026-09-22 09:56:10,068 - INFO - [24/81] WIX 분석 시작
+2026-09-22 09:56:10,077 - INFO - WIX: SEC 원문 다운로드 중…
+2026-09-22 09:56:10,910 - INFO - WIX: complete: saved=0 skipped=47 errors=0 requests=2 manifest={'saved': 83445, 'unavailable': 6}
+2026-09-22 09:56:10,921 - INFO - WIX: transcript 2건 확보 — 2026-08-04 Wix.com Ltd. (WIX) Q2 2026 Earnings Call Tran, 2026-05-13 Wix.com Ltd. (WIX) Q1 2026 Earnings Call Tran
+2026-09-22 09:56:10,922 - INFO - WIX: LLM 분석 요청 [claude-cli fable] (SEC 36,054자 + transcript 30,000자)
+2026-09-22 10:00:24,561 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:00:24,566 - INFO - WIX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/WIX_2026-09-22.html
+2026-09-22 10:00:24,566 - INFO - [25/81] NVTS 분석 시작
+2026-09-22 10:00:24,579 - INFO - NVTS: SEC 원문 다운로드 중…
+2026-09-22 10:00:30,681 - INFO - NVTS: complete: saved=4 skipped=108 errors=0 requests=24 manifest={'saved': 83449, 'unavailable': 6}
+2026-09-22 10:00:30,695 - INFO - NVTS: transcript 2건 확보 — 2026-07-27 Navitas Semiconductor Corporation (NVTS) Q2 2, 2026-05-06 Navitas Semiconductor Corporation (NVTS) Q1 2
+2026-09-22 10:00:30,696 - INFO - NVTS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:03:13,116 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:03:13,122 - INFO - NVTS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/NVTS_2026-09-22.html
+2026-09-22 10:03:13,122 - INFO - [26/81] MDB 분석 시작
+2026-09-22 10:03:13,135 - INFO - MDB: SEC 원문 다운로드 중…
+2026-09-22 10:03:14,737 - INFO - MDB: complete: saved=0 skipped=54 errors=0 requests=6 manifest={'saved': 83449, 'unavailable': 6}
+2026-09-22 10:03:14,750 - INFO - MDB: transcript 2건 확보 — 2026-09-01 Q2 2027 Transcript, 2026-08-25 The Six Five Summit: AI Unleashed 2026 Transc
+2026-09-22 10:03:14,751 - INFO - MDB: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:05:46,391 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:05:46,396 - INFO - MDB: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/MDB_2026-09-22.html
+2026-09-22 10:05:46,396 - INFO - [27/81] MXL 분석 시작
+2026-09-22 10:05:46,405 - INFO - MXL: SEC 원문 다운로드 중…
+2026-09-22 10:05:53,673 - INFO - MXL: complete: saved=23 skipped=34 errors=0 requests=26 manifest={'saved': 83472, 'unavailable': 6}
+2026-09-22 10:05:53,692 - INFO - MXL: transcript 1건 확보 — 2026-07-23 MaxLinear, Inc. 2026 Q2 - Results - Earnings 
+2026-09-22 10:05:53,692 - INFO - MXL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 13,416자)
+2026-09-22 10:08:23,588 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:08:23,593 - INFO - MXL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/MXL_2026-09-22.html
+2026-09-22 10:08:23,593 - INFO - [28/81] GLW 분석 시작
+2026-09-22 10:08:23,599 - INFO - GLW: SEC 원문 다운로드 중…
+2026-09-22 10:08:27,479 - INFO - GLW: complete: saved=2 skipped=58 errors=0 requests=15 manifest={'saved': 83474, 'unavailable': 6}
+2026-09-22 10:08:27,489 - INFO - GLW: transcript 2건 확보 — 2026-07-28 Corning Incorporated (GLW) Q2 2026 Earnings C, 2026-05-19 Corning Incorporated (GLW) Presents at J.P. M
+2026-09-22 10:08:27,489 - INFO - GLW: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:11:06,620 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:11:06,626 - INFO - GLW: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/GLW_2026-09-22.html
+2026-09-22 10:11:06,626 - INFO - [29/81] FRHC 분석 시작
+2026-09-22 10:11:06,635 - INFO - FRHC: SEC 원문 다운로드 중…
+2026-09-22 10:11:08,056 - INFO - FRHC: complete: saved=2 skipped=24 errors=0 requests=5 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:11:08,074 - INFO - FRHC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 10:13:14,981 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:13:14,986 - INFO - FRHC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/FRHC_2026-09-22.html
+2026-09-22 10:13:14,986 - INFO - [30/81] RBRK 분석 시작
+2026-09-22 10:13:14,987 - INFO - RBRK: SEC 원문 다운로드 중…
+2026-09-22 10:13:17,819 - INFO - RBRK: complete: saved=0 skipped=64 errors=0 requests=11 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:13:17,832 - INFO - RBRK: transcript 2건 확보 — 2026-08-27 Q2 2027 Transcript, 2026-06-11 Rubrik, Inc. (RBRK) Analyst/Investor Day Tran
+2026-09-22 10:13:17,834 - INFO - RBRK: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:15:40,966 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:15:40,971 - INFO - RBRK: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/RBRK_2026-09-22.html
+2026-09-22 10:15:40,971 - INFO - [31/81] ASTS 분석 시작
+2026-09-22 10:15:40,981 - INFO - ASTS: SEC 원문 다운로드 중…
+2026-09-22 10:15:47,114 - INFO - ASTS: complete: saved=0 skipped=176 errors=0 requests=24 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:15:47,125 - INFO - ASTS: transcript 2건 확보 — 2026-08-10 AST SpaceMobile, Inc. (ASTS) Q2 2026 Earnings, 2026-05-12 AST SpaceMobile, Inc. (ASTS) Q1 2026 Earnings
+2026-09-22 10:15:47,125 - INFO - ASTS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:18:11,240 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:18:11,245 - INFO - ASTS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ASTS_2026-09-22.html
+2026-09-22 10:18:11,245 - INFO - [32/81] LSCC 분석 시작
+2026-09-22 10:18:11,263 - INFO - LSCC: SEC 원문 다운로드 중…
+2026-09-22 10:18:12,910 - INFO - LSCC: complete: saved=0 skipped=74 errors=0 requests=6 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:18:12,922 - INFO - LSCC: transcript 2건 확보 — 2026-05-19 Lattice Semiconductor Corporation (LSCC) Pres, 2026-05-04 Lattice Semiconductor Corporation (LSCC) Q1 2
+2026-09-22 10:18:12,923 - INFO - LSCC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:22:00,040 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:22:00,045 - INFO - LSCC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LSCC_2026-09-22.html
+2026-09-22 10:22:00,045 - INFO - [33/81] SMCI 분석 시작
+2026-09-22 10:22:00,053 - INFO - SMCI: SEC 원문 다운로드 중…
+2026-09-22 10:22:03,169 - INFO - SMCI: complete: saved=0 skipped=122 errors=0 requests=12 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:22:03,183 - INFO - SMCI: transcript 2건 확보 — 2026-08-11 Q4 2026 Transcript, 2026-06-10 Investor update Transcript
+2026-09-22 10:22:03,184 - INFO - SMCI: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:25:17,790 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:25:17,796 - INFO - SMCI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SMCI_2026-09-22.html
+2026-09-22 10:25:17,797 - INFO - [34/81] MRVL 분석 시작
+2026-09-22 10:25:17,809 - INFO - MRVL: SEC 원문 다운로드 중…
+2026-09-22 10:25:24,162 - INFO - MRVL: complete: saved=0 skipped=100 errors=0 requests=25 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:25:24,176 - INFO - MRVL: transcript 2건 확보 — 2026-08-27 Q2 2027 Transcript, 2026-08-26 The Six Five Summit: AI Unleashed 2026 Transc
+2026-09-22 10:25:24,176 - INFO - MRVL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:28:00,751 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:28:00,756 - INFO - MRVL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/MRVL_2026-09-22.html
+2026-09-22 10:28:00,756 - INFO - [35/81] LAES 분석 시작
+2026-09-22 10:28:00,781 - INFO - LAES: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 10:30:16,020 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:30:16,026 - INFO - LAES: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LAES_2026-09-22.html
+2026-09-22 10:30:16,026 - INFO - [36/81] DUOL 분석 시작
+2026-09-22 10:30:16,027 - INFO - DUOL: SEC 원문 다운로드 중…
+2026-09-22 10:30:17,039 - INFO - DUOL: complete: saved=0 skipped=73 errors=0 requests=2 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:30:17,048 - INFO - DUOL: transcript 2건 확보 — 2026-08-05 Duolingo, Inc. (DUOL) Q2 2026 Earnings Call T, 2026-05-05 Duolingo, Inc. (DUOL) Q1 2026 Earnings Call T
+2026-09-22 10:30:17,049 - INFO - DUOL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:32:50,528 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:32:50,534 - INFO - DUOL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/DUOL_2026-09-22.html
+2026-09-22 10:32:50,534 - INFO - [37/81] CBRS 분석 시작
+2026-09-22 10:32:50,545 - INFO - CBRS: SEC 원문 다운로드 중…
+2026-09-22 10:32:51,609 - INFO - CBRS: complete: saved=0 skipped=27 errors=0 requests=3 manifest={'saved': 83476, 'unavailable': 6}
+2026-09-22 10:32:51,619 - INFO - CBRS: transcript 2건 확보 — 2026-07-09 RAISE Summit 2026 Transcript, 2026-06-24 Cerebras Systems Inc. (CBRS) Q1 2026 Earnings
+2026-09-22 10:32:51,620 - INFO - CBRS: LLM 분석 요청 [claude-cli fable] (SEC 31,811자 + transcript 30,000자)
+2026-09-22 10:36:08,754 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:36:08,760 - INFO - CBRS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CBRS_2026-09-22.html
+2026-09-22 10:36:08,760 - INFO - [38/81] CRWV 분석 시작
+2026-09-22 10:36:08,770 - INFO - CRWV: SEC 원문 다운로드 중…
+2026-09-22 10:36:11,204 - INFO - CRWV: complete: saved=4 skipped=76 errors=0 requests=10 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:36:11,214 - INFO - CRWV: transcript 2건 확보 — 2026-08-11 Q2 2026 Transcript, 2026-06-03 CoreWeave, Inc. (CRWV) Presents at Bank of Am
+2026-09-22 10:36:11,215 - INFO - CRWV: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:38:35,269 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:38:35,273 - INFO - CRWV: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CRWV_2026-09-22.html
+2026-09-22 10:38:35,273 - INFO - [39/81] CRWD 분석 시작
+2026-09-22 10:38:35,276 - INFO - CRWD: SEC 원문 다운로드 중…
+2026-09-22 10:38:39,637 - INFO - CRWD: complete: saved=0 skipped=50 errors=0 requests=17 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:38:39,651 - INFO - CRWD: transcript 2건 확보 — 2026-08-26 Q2 2027 Transcript, 2026-06-03 CrowdStrike Holdings, Inc. (CRWD) Q1 2027 Ear
+2026-09-22 10:38:39,652 - INFO - CRWD: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:41:33,041 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:41:33,047 - INFO - CRWD: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CRWD_2026-09-22.html
+2026-09-22 10:41:33,047 - INFO - [40/81] CIEN 분석 시작
+2026-09-22 10:41:33,053 - INFO - CIEN: SEC 원문 다운로드 중…
+2026-09-22 10:41:34,500 - INFO - CIEN: complete: saved=0 skipped=67 errors=0 requests=5 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:41:34,511 - INFO - CIEN: transcript 2건 확보 — 2026-09-03 Q3 2026 Transcript, 2026-06-04 Ciena Corporation (CIEN) Q2 2026 Earnings Cal
+2026-09-22 10:41:34,511 - INFO - CIEN: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:45:33,063 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:45:33,069 - INFO - CIEN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CIEN_2026-09-22.html
+2026-09-22 10:45:33,069 - INFO - [41/81] LRCX 분석 시작
+2026-09-22 10:45:33,086 - INFO - LRCX: SEC 원문 다운로드 중…
+2026-09-22 10:45:34,686 - INFO - LRCX: complete: saved=0 skipped=53 errors=0 requests=6 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:45:34,698 - INFO - LRCX: transcript 2건 확보 — 2026-07-30 Lam Research Corporation (LRCX) Q4 2026 Earni, 2026-06-02 Lam Research Corporation (LRCX) Presents at B
+2026-09-22 10:45:34,699 - INFO - LRCX: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:47:51,659 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:47:51,665 - INFO - LRCX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LRCX_2026-09-22.html
+2026-09-22 10:47:51,665 - INFO - [42/81] MPWR 분석 시작
+2026-09-22 10:47:51,677 - INFO - MPWR: SEC 원문 다운로드 중…
+2026-09-22 10:47:53,189 - INFO - MPWR: complete: saved=0 skipped=68 errors=0 requests=5 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:47:53,201 - INFO - MPWR: transcript 2건 확보 — 2026-07-30 Monolithic Power Systems, Inc. (MPWR) Q2 2026, 2026-06-11 Monolithic Power Systems, Inc. (MPWR) Shareho
+2026-09-22 10:47:53,202 - INFO - MPWR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 19,919자)
+2026-09-22 10:50:07,423 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:50:07,428 - INFO - MPWR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/MPWR_2026-09-22.html
+2026-09-22 10:50:07,428 - INFO - [43/81] RGTI 분석 시작
+2026-09-22 10:50:07,441 - INFO - RGTI: SEC 원문 다운로드 중…
+2026-09-22 10:50:11,809 - INFO - RGTI: complete: saved=0 skipped=89 errors=0 requests=17 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:50:11,820 - INFO - RGTI: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-05-21 Canaccord Genuity Virtual Quantum Symposium T
+2026-09-22 10:50:11,821 - INFO - RGTI: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:52:25,784 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:52:25,789 - INFO - RGTI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/RGTI_2026-09-22.html
+2026-09-22 10:52:25,789 - INFO - [44/81] ONTO 분석 시작
+2026-09-22 10:52:25,795 - INFO - ONTO: SEC 원문 다운로드 중…
+2026-09-22 10:52:30,887 - INFO - ONTO: complete: saved=0 skipped=65 errors=0 requests=20 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:52:30,899 - INFO - ONTO: transcript 1건 확보 — 2026-05-05 Onto Innovation Inc. (ONTO) Q1 2026 Earnings 
+2026-09-22 10:52:30,899 - INFO - ONTO: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:55:14,670 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:55:14,675 - INFO - ONTO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ONTO_2026-09-22.html
+2026-09-22 10:55:14,675 - INFO - [45/81] TSEM 분석 시작
+2026-09-22 10:55:14,691 - INFO - TSEM: SEC 원문 다운로드 중…
+2026-09-22 10:55:15,515 - INFO - TSEM: complete: saved=0 skipped=99 errors=0 requests=2 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 10:55:15,526 - INFO - TSEM: transcript 2건 확보 — 2026-08-04 Q2 2026 Transcript, 2026-05-13 Tower Semiconductor Ltd. (TSEM) Q1 2026 Earni
+2026-09-22 10:55:15,527 - INFO - TSEM: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 10:58:04,569 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 10:58:04,575 - INFO - TSEM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/TSEM_2026-09-22.html
+2026-09-22 10:58:04,575 - INFO - [46/81] GDS 분석 시작
+2026-09-22 10:58:04,601 - INFO - GDS: transcript 2건 확보 — 2026-08-13 GDS Holdings Limited (GDS) Q2 2026 Earnings C, 2026-05-20 GDS Holdings Limited (GDS) Q1 2026 Earnings C
+2026-09-22 10:58:04,601 - INFO - GDS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:01:44,878 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:01:44,884 - INFO - GDS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/GDS_2026-09-22.html
+2026-09-22 11:01:44,884 - INFO - [47/81] ATRO 분석 시작
+2026-09-22 11:01:44,895 - INFO - ATRO: SEC 원문 다운로드 중…
+2026-09-22 11:01:51,313 - INFO - ATRO: complete: saved=0 skipped=92 errors=0 requests=25 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:01:51,325 - INFO - ATRO: transcript 2건 확보 — 2026-08-11 Q2 2026 Transcript, 2026-05-12 Q1 2026 Transcript
+2026-09-22 11:01:51,326 - INFO - ATRO: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:05:34,038 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:05:34,045 - INFO - ATRO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ATRO_2026-09-22.html
+2026-09-22 11:05:34,045 - INFO - [48/81] SNPS 분석 시작
+2026-09-22 11:05:34,060 - INFO - SNPS: SEC 원문 다운로드 중…
+2026-09-22 11:05:35,818 - INFO - SNPS: complete: saved=0 skipped=67 errors=0 requests=6 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:05:35,833 - INFO - SNPS: transcript 2건 확보 — 2026-08-26 Q3 2026 Transcript, 2026-06-09 Synopsys, Inc. (SNPS) Presents at Mizuho Tech
+2026-09-22 11:05:35,834 - INFO - SNPS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:07:50,421 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:07:50,425 - INFO - SNPS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SNPS_2026-09-22.html
+2026-09-22 11:07:50,425 - INFO - [49/81] CDNS 분석 시작
+2026-09-22 11:07:50,433 - INFO - CDNS: SEC 원문 다운로드 중…
+2026-09-22 11:07:54,781 - INFO - CDNS: complete: saved=0 skipped=65 errors=0 requests=17 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:07:54,796 - INFO - CDNS: transcript 2건 확보 — 2026-07-27 Cadence Design Systems, Inc. (CDNS) Q2 2026 E, 2026-06-09 Cadence Design Systems, Inc. (CDNS) Presents 
+2026-09-22 11:07:54,797 - INFO - CDNS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:10:21,246 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:10:21,251 - INFO - CDNS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CDNS_2026-09-22.html
+2026-09-22 11:10:21,251 - INFO - [50/81] NBIS 분석 시작
+2026-09-22 11:10:21,264 - INFO - NBIS: SEC 원문 다운로드 중…
+2026-09-22 11:10:21,854 - INFO - NBIS: complete: saved=0 skipped=81 errors=0 requests=2 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:10:21,864 - INFO - NBIS: transcript 2건 확보 — 2026-08-12 Q2 2026 Transcript, 2026-07-16 Investor update Transcript
+2026-09-22 11:10:21,865 - INFO - NBIS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:13:12,507 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:13:12,511 - INFO - NBIS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/NBIS_2026-09-22.html
+2026-09-22 11:13:12,511 - INFO - [51/81] APH 분석 시작
+2026-09-22 11:13:12,526 - INFO - APH: SEC 원문 다운로드 중…
+2026-09-22 11:13:18,614 - INFO - APH: complete: saved=0 skipped=89 errors=0 requests=24 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:13:18,625 - INFO - APH: transcript 2건 확보 — 2026-07-29 Amphenol Corporation (APH) Q2 2026 Earnings C, 2026-04-29 Amphenol Corporation (APH) Q1 2026 Earnings C
+2026-09-22 11:13:18,625 - INFO - APH: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:16:09,496 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:16:09,503 - INFO - APH: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/APH_2026-09-22.html
+2026-09-22 11:16:09,503 - INFO - [52/81] KLAC 분석 시작
+2026-09-22 11:16:09,519 - INFO - KLAC: SEC 원문 다운로드 중…
+2026-09-22 11:16:12,842 - INFO - KLAC: complete: saved=0 skipped=61 errors=0 requests=13 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:16:12,857 - INFO - KLAC: transcript 2건 확보 — 2026-07-28 KLA Corporation (KLAC) Q4 2026 Earnings Call , 2026-06-03 KLA Corporation (KLAC) Presents at Bank of Am
+2026-09-22 11:16:12,857 - INFO - KLAC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:19:18,778 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:19:18,784 - INFO - KLAC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/KLAC_2026-09-22.html
+2026-09-22 11:19:18,784 - INFO - [53/81] SITM 분석 시작
+2026-09-22 11:19:18,793 - INFO - SITM: SEC 원문 다운로드 중…
+2026-09-22 11:19:22,882 - INFO - SITM: complete: saved=0 skipped=78 errors=0 requests=16 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:19:22,897 - INFO - SITM: transcript 2건 확보 — 2026-08-05 SiTime Corporation (SITM) Q2 2026 Earnings Ca, 2026-05-07 SiTime Corporation (SITM) Q1 2026 Earnings Ca
+2026-09-22 11:19:22,898 - INFO - SITM: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:22:27,789 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:22:27,795 - INFO - SITM: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SITM_2026-09-22.html
+2026-09-22 11:22:27,795 - INFO - [54/81] XE 분석 시작
+2026-09-22 11:22:27,803 - INFO - XE: SEC 원문 다운로드 중…
+2026-09-22 11:22:29,215 - INFO - XE: complete: saved=0 skipped=22 errors=0 requests=5 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:22:29,228 - INFO - XE: transcript 2건 확보 — 2026-08-13 Q2 2026 Transcript, 2026-06-04 Q1 2026 Transcript
+2026-09-22 11:22:29,229 - INFO - XE: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:25:06,112 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:25:06,117 - INFO - XE: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/XE_2026-09-22.html
+2026-09-22 11:25:06,117 - INFO - [55/81] SHAK 분석 시작
+2026-09-22 11:25:06,119 - INFO - SHAK: SEC 원문 다운로드 중…
+2026-09-22 11:25:10,761 - INFO - SHAK: complete: saved=0 skipped=73 errors=0 requests=18 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:25:10,774 - INFO - SHAK: transcript 2건 확보 — 2026-08-05 Shake Shack Inc. (SHAK) Q2 2026 Earnings Call, 2026-05-07 Shake Shack Inc. (SHAK) Q1 2026 Earnings Call
+2026-09-22 11:25:10,775 - INFO - SHAK: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:28:27,743 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:28:27,749 - INFO - SHAK: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SHAK_2026-09-22.html
+2026-09-22 11:28:27,749 - INFO - [56/81] AMKR 분석 시작
+2026-09-22 11:28:27,763 - INFO - AMKR: SEC 원문 다운로드 중…
+2026-09-22 11:28:33,640 - INFO - AMKR: complete: saved=0 skipped=65 errors=0 requests=23 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:28:33,652 - INFO - AMKR: transcript 2건 확보 — 2026-07-27 Amkor Technology, Inc. (AMKR) Q2 2026 Earning, 2026-05-22 Amkor Technology, Inc. (AMKR) Analyst/Investo
+2026-09-22 11:28:33,653 - INFO - AMKR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:31:36,840 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:31:36,845 - INFO - AMKR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AMKR_2026-09-22.html
+2026-09-22 11:31:36,845 - INFO - [57/81] AEHR 분석 시작
+2026-09-22 11:31:36,861 - INFO - AEHR: SEC 원문 다운로드 중…
+2026-09-22 11:31:41,283 - INFO - AEHR: complete: saved=0 skipped=63 errors=0 requests=17 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:31:41,293 - INFO - AEHR: transcript 1건 확보 — 2026-07-14 Aehr Test Systems, Inc. (AEHR) Q4 2026 Earnin
+2026-09-22 11:31:41,293 - INFO - AEHR: LLM 분석 요청 [claude-cli fable] (SEC 32,527자 + transcript 30,000자)
+2026-09-22 11:34:21,409 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:34:21,414 - INFO - AEHR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AEHR_2026-09-22.html
+2026-09-22 11:34:21,414 - INFO - [58/81] CLS 분석 시작
+2026-09-22 11:34:21,431 - INFO - CLS: SEC 원문 다운로드 중…
+2026-09-22 11:34:25,375 - INFO - CLS: complete: saved=0 skipped=73 errors=0 requests=15 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:34:25,388 - INFO - CLS: transcript 2건 확보 — 2026-05-19 Celestica Inc. (CLS:CA) Shareholder/Analyst C, 2026-04-28 Celestica Inc. 2026 Q1 - Results - Earnings C
+2026-09-22 11:34:25,389 - INFO - CLS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 28,244자)
+2026-09-22 11:37:46,683 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:37:46,721 - INFO - CLS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CLS_2026-09-22.html
+2026-09-22 11:37:46,721 - INFO - [59/81] IONQ 분석 시작
+2026-09-22 11:37:46,752 - INFO - IONQ: transcript 2건 확보 — 2026-08-05 Q2 2026 Transcript, 2026-06-10 Rosenblatt 6th Annual Age of AI Technology Su
+2026-09-22 11:37:46,752 - INFO - IONQ: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:40:15,961 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:40:15,965 - INFO - IONQ: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/IONQ_2026-09-22.html
+2026-09-22 11:40:15,965 - INFO - [60/81] VECO 분석 시작
+2026-09-22 11:40:15,980 - INFO - VECO: SEC 원문 다운로드 중…
+2026-09-22 11:40:18,047 - INFO - VECO: complete: saved=0 skipped=73 errors=0 requests=7 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:40:18,057 - INFO - VECO: transcript 1건 확보 — 2026-05-05 Q1 2026 Transcript
+2026-09-22 11:40:18,057 - INFO - VECO: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:43:21,774 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:43:21,779 - INFO - VECO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/VECO_2026-09-22.html
+2026-09-22 11:43:21,779 - INFO - [61/81] ARWR 분석 시작
+2026-09-22 11:43:21,795 - INFO - ARWR: SEC 원문 다운로드 중…
+2026-09-22 11:43:23,721 - INFO - ARWR: complete: saved=0 skipped=81 errors=0 requests=7 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:43:23,731 - INFO - ARWR: transcript 2건 확보 — 2026-06-29 Arrowhead Pharmaceuticals, Inc. (ARWR) Discus, 2026-06-10 Arrowhead Pharmaceuticals, Inc. (ARWR) Presen
+2026-09-22 11:43:23,732 - INFO - ARWR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:45:59,499 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:45:59,504 - INFO - ARWR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ARWR_2026-09-22.html
+2026-09-22 11:45:59,504 - INFO - [62/81] GAP 분석 시작
+2026-09-22 11:45:59,528 - INFO - GAP: transcript 2건 확보 — 2026-08-27 Q2 2027 Transcript, 2026-05-28 Q1 2027 Transcript
+2026-09-22 11:45:59,528 - INFO - GAP: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:48:01,219 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:48:01,224 - INFO - GAP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/GAP_2026-09-22.html
+2026-09-22 11:48:01,224 - INFO - [63/81] QBTS 분석 시작
+2026-09-22 11:48:01,251 - INFO - QBTS: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-06-04 D-Wave Quantum Inc. (QBTS) Analyst/Investor D
+2026-09-22 11:48:01,252 - INFO - QBTS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:50:03,169 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:50:03,172 - INFO - QBTS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/QBTS_2026-09-22.html
+2026-09-22 11:50:03,172 - INFO - [64/81] FN 분석 시작
+2026-09-22 11:50:03,176 - INFO - FN: SEC 원문 다운로드 중…
+2026-09-22 11:50:04,315 - INFO - FN: complete: saved=0 skipped=53 errors=0 requests=3 manifest={'saved': 83480, 'unavailable': 6}
+2026-09-22 11:50:04,325 - INFO - FN: transcript 2건 확보 — 2026-08-17 Q4 2026 Transcript, 2026-05-18 J.P. Morgan 54th Annual Global Technology, Me
+2026-09-22 11:50:04,326 - INFO - FN: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:52:43,098 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:52:43,104 - INFO - FN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/FN_2026-09-22.html
+2026-09-22 11:52:43,104 - INFO - [65/81] AAOI 분석 시작
+2026-09-22 11:52:43,133 - INFO - AAOI: transcript 2건 확보 — 2026-08-06 Q2 2026 Transcript, 2026-05-08 Applied Optoelectronics, Inc. (AAOI) Q1 2026 
+2026-09-22 11:52:43,134 - INFO - AAOI: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:55:24,115 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:55:24,121 - INFO - AAOI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AAOI_2026-09-22.html
+2026-09-22 11:55:24,121 - INFO - [66/81] COTY 분석 시작
+2026-09-22 11:55:24,134 - INFO - COTY: SEC 원문 다운로드 중…
+2026-09-22 11:55:29,811 - INFO - COTY: complete: saved=1 skipped=61 errors=0 requests=22 manifest={'saved': 83481, 'unavailable': 6}
+2026-09-22 11:55:29,827 - INFO - COTY: transcript 2건 확보 — 2026-08-19 Q4 2026 Prepared Remarks Transcript, 2026-06-10 16th Annual East Coast IDEAS Conference Trans
+2026-09-22 11:55:29,828 - INFO - COTY: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 11:57:58,684 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 11:57:58,690 - INFO - COTY: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/COTY_2026-09-22.html
+2026-09-22 11:57:58,690 - INFO - [67/81] FTNT 분석 시작
+2026-09-22 11:57:58,700 - INFO - FTNT: SEC 원문 다운로드 중…
+2026-09-22 11:58:02,101 - INFO - FTNT: complete: saved=0 skipped=43 errors=0 requests=13 manifest={'saved': 83481, 'unavailable': 6}
+2026-09-22 11:58:02,114 - INFO - FTNT: transcript 2건 확보 — 2026-07-29 Fortinet, Inc. (FTNT) Q2 2026 Earnings Call T, 2026-06-04 Fortinet, Inc. (FTNT) Discusses Quantum Compu
+2026-09-22 11:58:02,115 - INFO - FTNT: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 12:00:11,672 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:00:11,677 - INFO - FTNT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/FTNT_2026-09-22.html
+2026-09-22 12:00:11,677 - INFO - [68/81] ESTC 분석 시작
+2026-09-22 12:00:11,686 - INFO - ESTC: SEC 원문 다운로드 중…
+2026-09-22 12:00:12,662 - INFO - ESTC: complete: saved=0 skipped=61 errors=0 requests=2 manifest={'saved': 83481, 'unavailable': 6}
+2026-09-22 12:00:12,673 - INFO - ESTC: transcript 2건 확보 — 2026-08-27 Q1 2027 Transcript, 2026-06-10 Elastic N.V. (ESTC) Presents at Rosenblatt 6t
+2026-09-22 12:00:12,673 - INFO - ESTC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 12:02:56,622 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:02:56,627 - INFO - ESTC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ESTC_2026-09-22.html
+2026-09-22 12:02:56,627 - INFO - [69/81] EL 분석 시작
+2026-09-22 12:02:56,642 - INFO - EL: SEC 원문 다운로드 중…
+2026-09-22 12:03:02,600 - INFO - EL: complete: saved=2 skipped=90 errors=0 requests=23 manifest={'saved': 83483, 'unavailable': 6}
+2026-09-22 12:03:02,611 - INFO - EL: transcript 2건 확보 — 2026-08-19 Q4 2026 Transcript, 2026-06-02 23rd annual dbAccess Global Consumer Conferen
+2026-09-22 12:03:02,612 - INFO - EL: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 12:05:51,343 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:05:51,349 - INFO - EL: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/EL_2026-09-22.html
+2026-09-22 12:05:51,349 - INFO - [70/81] PLTR 분석 시작
+2026-09-22 12:05:51,362 - INFO - PLTR: SEC 원문 다운로드 중…
+2026-09-22 12:05:54,447 - INFO - PLTR: complete: saved=0 skipped=57 errors=0 requests=12 manifest={'saved': 83483, 'unavailable': 6}
+2026-09-22 12:05:54,460 - INFO - PLTR: transcript 2건 확보 — 2026-08-03 Q2 2026 Transcript, 2026-05-04 Q1 2026 Transcript
+2026-09-22 12:05:54,461 - INFO - PLTR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 12:08:35,043 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:08:35,048 - INFO - PLTR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/PLTR_2026-09-22.html
+2026-09-22 12:08:35,049 - INFO - [71/81] TSLA 분석 시작
+2026-09-22 12:08:35,063 - INFO - TSLA: SEC 원문 다운로드 중…
+2026-09-22 12:08:36,673 - INFO - TSLA: complete: saved=0 skipped=64 errors=0 requests=6 manifest={'saved': 83483, 'unavailable': 6}
+2026-09-22 12:08:43,648 - INFO - TSLA: transcript 2건 확보 — 2026-07-22 Tesla, Inc. (TSLA) Q2 2026 Earnings Call Tran, 2026-07-23 Tesla, Inc. 2026 Q2 - Results - Earnings Call
+2026-09-22 12:08:43,656 - INFO - TSLA: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 29,270자)
+2026-09-22 12:11:08,657 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:11:08,662 - INFO - TSLA: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/TSLA_2026-09-22.html
+2026-09-22 12:11:08,662 - INFO - [72/81] NU 분석 시작
+2026-09-22 12:11:08,672 - INFO - NU: SEC 원문 다운로드 중…
+2026-09-22 12:11:09,756 - INFO - NU: complete: saved=0 skipped=77 errors=0 requests=4 manifest={'saved': 83483, 'unavailable': 6}
+2026-09-22 12:11:49,641 - INFO - NU: transcript 2건 확보 — 2026-08-13 Q2 2026 Transcript, 2026-08-06 Nu Holdings Ltd. (NU) Shareholder/Analyst Cal
+2026-09-22 12:11:49,650 - INFO - NU: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 20,840자)
+2026-09-22 12:14:21,833 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:14:21,839 - INFO - NU: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/NU_2026-09-22.html
+2026-09-22 12:14:21,839 - INFO - [73/81] RMBS 분석 시작
+2026-09-22 12:14:21,839 - INFO - RMBS: SEC 원문 다운로드 중…
+2026-09-22 12:14:37,879 - INFO - RMBS: complete: saved=60 skipped=0 errors=0 requests=62 manifest={'saved': 83543, 'unavailable': 6}
+2026-09-22 12:14:37,888 - INFO - RMBS: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:16:41,760 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:16:41,764 - INFO - RMBS: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/RMBS_2026-09-22.html
+2026-09-22 12:16:44,390 - INFO - [74/81] HHH 분석 시작
+2026-09-22 12:16:44,390 - INFO - HHH: SEC 원문 다운로드 중…
+2026-09-22 12:17:23,060 - INFO - HHH: complete: saved=123 skipped=0 errors=0 requests=149 manifest={'saved': 83666, 'unavailable': 6}
+2026-09-22 12:17:23,075 - INFO - HHH: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:19:06,072 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:19:06,075 - INFO - HHH: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/HHH_2026-09-22.html
+2026-09-22 12:19:08,703 - INFO - [75/81] AMC 분석 시작
+2026-09-22 12:19:08,704 - INFO - AMC: SEC 원문 다운로드 중…
+2026-09-22 12:19:53,491 - INFO - AMC: complete: saved=125 skipped=0 errors=0 requests=169 manifest={'saved': 83791, 'unavailable': 6}
+2026-09-22 12:20:49,336 - INFO - AMC: transcript 1건 확보 — 2026-07-20 AMC Entertainment Holdings, Inc. (AMC) Q2 202
+2026-09-22 12:20:49,336 - INFO - AMC: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 30,000자)
+2026-09-22 12:23:29,251 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:23:29,255 - INFO - AMC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/AMC_2026-09-22.html
+2026-09-22 12:23:31,868 - INFO - [76/81] LION 분석 시작
+2026-09-22 12:23:31,869 - INFO - LION: SEC 원문 다운로드 중…
+2026-09-22 12:24:40,014 - INFO - LION: complete: saved=64 skipped=0 errors=0 requests=70 manifest={'saved': 83855, 'unavailable': 6}
+2026-09-22 12:24:40,035 - INFO - LION: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:26:33,697 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:26:33,701 - INFO - LION: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/LION_2026-09-22.html
+2026-09-22 12:26:36,418 - INFO - [77/81] SNX 분석 시작
+2026-09-22 12:26:36,419 - INFO - SNX: SEC 원문 다운로드 중…
+2026-09-22 12:27:01,533 - INFO - SNX: complete: saved=80 skipped=0 errors=0 requests=98 manifest={'saved': 83935, 'unavailable': 6}
+2026-09-22 12:27:01,548 - INFO - SNX: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:28:53,295 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:28:53,300 - INFO - SNX: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/SNX_2026-09-22.html
+2026-09-22 12:28:55,871 - INFO - [78/81] DOCN 분석 시작
+2026-09-22 12:28:55,883 - INFO - DOCN: SEC 원문 다운로드 중…
+2026-09-22 12:28:57,770 - INFO - DOCN: complete: saved=2 skipped=69 errors=0 requests=8 manifest={'saved': 83937, 'unavailable': 6}
+2026-09-22 12:28:57,780 - INFO - DOCN: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:31:38,160 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:31:38,164 - INFO - DOCN: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/DOCN_2026-09-22.html
+2026-09-22 12:31:40,703 - INFO - [79/81] ACMR 분석 시작
+2026-09-22 12:31:40,703 - INFO - ACMR: SEC 원문 다운로드 중…
+2026-09-22 12:32:16,453 - INFO - ACMR: complete: saved=99 skipped=0 errors=0 requests=140 manifest={'saved': 84036, 'unavailable': 6}
+2026-09-22 12:32:16,464 - INFO - ACMR: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:35:19,778 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:35:19,783 - INFO - ACMR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/ACMR_2026-09-22.html
+2026-09-22 12:35:22,369 - INFO - [80/81] BETA 분석 시작
+2026-09-22 12:35:22,369 - INFO - BETA: SEC 원문 다운로드 중…
+2026-09-22 12:35:34,913 - INFO - BETA: complete: saved=33 skipped=0 errors=0 requests=36 manifest={'saved': 84069, 'unavailable': 6}
+2026-09-22 12:35:34,922 - INFO - BETA: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:38:10,945 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:38:10,951 - INFO - BETA: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/BETA_2026-09-22.html
+2026-09-22 12:38:13,352 - INFO - [81/81] CTRI 분석 시작
+2026-09-22 12:38:13,352 - INFO - CTRI: SEC 원문 다운로드 중…
+2026-09-22 12:38:39,048 - INFO - CTRI: complete: saved=94 skipped=0 errors=0 requests=101 manifest={'saved': 84163, 'unavailable': 6}
+2026-09-22 12:38:39,056 - INFO - CTRI: LLM 분석 요청 [claude-cli fable] (SEC 40,000자 + transcript 68자)
+2026-09-22 12:40:39,417 - INFO - Claude CLI response generated (subscription, fable).
+2026-09-22 12:40:39,423 - INFO - CTRI: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-09-22/CTRI_2026-09-22.html
+2026-09-22 12:40:42,027 - INFO - 발송 보류 71종목(판정 미달): GRAL(관망), ARQQ(회피), FSLY(보통), AXTI(보통), FIVN(보통), LUNR(관망), ALAB(보통), AKAM(관망), INTC(관망), META(관망), AMD(보통), QCOM(관망), P(보통), TWLO(보통), BMNR(관망), NET(보통), WOLF(관망), LFTO(관망), GDDY(보통), SHOP(보통), INOD(보통), DDOG(보통), WIX(관망), NVTS(관망), MDB(보통), MXL(보통), GLW(관망), FRHC(관망), RBRK(관망), ASTS(관망), LSCC(보통), SMCI(보통), MRVL(보통), LAES(관망), DUOL(관망), CBRS(보통), CRWV(관망), CRWD(보통), CIEN(보통), LRCX(보통), MPWR(보통), RGTI(관망), ONTO(보통), TSEM(보통), GDS(보통), ATRO(보통), SNPS(보통), CDNS(보통), NBIS(보통), APH(보통), KLAC(보통), SITM(보통), XE(관망), SHAK(관망), AMKR(보통), AEHR(관망), CLS(보통), IONQ(관망), VECO(관망), ARWR(관망), GAP(보통), QBTS(관망), FN(보통), AAOI(관망), COTY(관망), FTNT(보통), ESTC(보통), EL(보통), PLTR(보통), TSLA(관망), NU(보통)
+2026-09-22 12:40:43,987 - INFO - 완료: 80종목 리포트 생성 · 텔레그램 발송

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACMR — ACM Research Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ACMR — ACM Research Inc. Class A Common Stock</h1>
+<div class="sub">2026-09-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">ACMR</span><span class="badge">+6.22%</span><span class="badge">거래량 2.1배</span><span class="badge">$5.07B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>최근 분기(2026년 2분기) 매출 $292.9M(<span class="up">+36.0%</span> YoY, <span class="up">+26.7%</span> QoQ), 영업이익률 17.0%(<span class="up">+2.3%</span>p YoY)로 성장과 영업 레버리지가 동시에 확인됨. 순현금(현금성+예금+단기투자 − 차입) 약 $1.1B로 재무 여력은 충분함.</li>
+<li>다만 TTM 잉여현금흐름 −$119.8M, 매출총이익률 하락(2025년 2분기 48.5% → 46.0%), 2분기 순이익의 약 2/3가 비영업 평가이익·지분법이익이라는 점에서 이익의 질은 헤드라인보다 낮음.</li>
+<li>오늘 <span class="up">+6.22%</span>는 공시·실적 촉매가 없는 반등이며, 60일 −31.9%, 52주 고점 대비 −42.7%로 추세는 여전히 하락 국면. 실적콜 transcript 미확보로 경영진 톤 검증도 불가.</li>
+<li>사업의 실질이 중국 자회사(ACM Shanghai, 74.6% 보유)에 있어 소수주주 귀속·규제·지정학 디스카운트가 구조적으로 붙음. 펀더멘털은 '적극'급이나 구조·현금흐름·수급 요인으로 '보통'에서 분할 진입이 적정.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음. 가장 최근 공시는 2026-08-17 8-K(ACM Shanghai의 2026년 8월 14일 상반기 실적 컨퍼런스콜 투자자관계 기록)로 한 달 이상 경과.</li>
+<li>뉴스 헤드라인은 "AI Chip Boom" 등 섹터 일반론(TipRanks)과 "전망은 개선됐는데 급락한 AI 주식 3선"(MarketBeat)으로, 종목 고유 이벤트가 아니라 낙폭과대 인식과 반도체 장비 섹터 동조로 해석됨.</li>
+<li>거래량 2.1배, 거래대금 $113.8M은 유의미하나, 60일 −31.9% 하락 뒤의 반등이므로 숏커버·기술적 매수 가능성을 배제 못함(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>무엇을 파는가(10-K, 8-K 기준)</strong>
+- 10-K: 1998년 캘리포니아에서 설립된 델라웨어 법인으로, 글로벌 반도체 산업용 자본장비(capital equipment)를 공급. 2005년부터 사업은 실질적으로 상하이 자회사 ACM Research (Shanghai)를 통해 영위하며, 이 자회사는 상하이 STAR 마켓(688082)에 별도 상장.
+- 8-K(2026-08-17, ACM Shanghai 투자자관계 기록): 회사는 3대 제품군을 세정(cleaning), 전기도금(electroplating), 어드밴스드 패키징 장비로 분류하고, 2026년 상반기 신규 수주가 세 제품군 모두에서 크게 늘었으며 특히 전기도금 장비가 두드러졌다고 밝힘.
+- 제품별·지역별·고객별 매출 구성은 제공된 발췌에 없음 — 공시상 확인 불가.</p>
+<p><strong>어디서 만드는가·구조</strong>
+- 10-K: 제품 개발·제조·지원·서비스의 상당 대부분(substantial majority)을 중국 본토의 ACM Shanghai에서 수행. 한국 자회사에서 추가 개발과 서브시스템 생산, 미국 본사(Fremont)는 중국 외 지역(북미·유럽·아시아 일부) 판매·마케팅 담당.
+- ACM Research는 ACM Shanghai 지분 74.6%를 직접 보유(VIE 구조 아님). 즉 ACMR 주주는 상하이 자회사 이익의 약 3/4에 대한 간접 청구권만 가짐.
+- 지배구조: Class A 60.7M주, Class B 5.0M주(2026년 2월 25일 기준)의 이중 주식 구조. Class B의 의결권 차등 내용은 발췌에 없음 — 공시상 확인 불가.</p>
+<p><strong>고객·경쟁 위치</strong>
+- 8-K Q&amp;A에서 SK하이닉스 증설 관련 질문에 회사는 "오랜 긍정적 관계를 유지하며 정기적으로 소통 중"이라고만 답변. 구체적 수주 내용은 밝히지 않음.
+- 경쟁사 대비 점유율·시장 위치 수치는 발췌에 없음 — 공시상 확인 불가. 10-Q는 Gartner(2025년 12월) 및 Frost &amp; Sullivan(2026년 6월) 시장 자료를 인용하지만 해당 수치는 발췌에 포함되지 않음.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 손익 추이(10-Q 기준, 단위 $M)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2025 1Q</th>
+<th>2025 2Q</th>
+<th>2026 1Q</th>
+<th>2026 2Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>172.3</td>
+<td>215.4</td>
+<td>231.3</td>
+<td>292.9</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>47.9%</td>
+<td>48.5%</td>
+<td>46.4%</td>
+<td>46.0%</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>25.8</td>
+<td>31.7</td>
+<td>36.2</td>
+<td>49.7</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>15.0%</td>
+<td>14.7%</td>
+<td>15.6%</td>
+<td>17.0%</td>
+</tr>
+<tr>
+<td>순이익(연결)</td>
+<td>25.0</td>
+<td>36.3</td>
+<td>26.2</td>
+<td>122.3</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 매출은 YoY 34~36%대가 두 분기 연속 유지되며 2분기 QoQ <span class="up">+26.7%</span>로 가속. 단가·물량·믹스 분해는 공시상 확인 불가.
+- 매출총이익률은 전년 대비 약 2.5%p 하락(2025 2Q 48.5% → 2026 2Q 46.0%). 영업이익률 개선(<span class="up">+2.3%</span>p)은 전적으로 영업비용 레버리지에서 나옴: 영업비용/매출 비율이 33.8% → 29.0%로 내려감. R&amp;D는 절대액으로 <span class="up">+25%</span>(33.8 → 42.3) 늘었으나 매출 대비 15.7% → 14.4%로 낮아짐.
+- 즉 "마진 개선"의 실체는 제품 마진이 아니라 고정비 희석임. 매출 증가세가 꺾이면 영업이익률은 빠르게 되돌아갈 수 있는 구조(추론).</p>
+<p><strong>이익의 질 — 2분기 순이익 $122.3M의 해석</strong>
+- 2분기 세전이익 $135.7M 중 단기투자 미실현 평가이익 $69.6M과 지분법이익 $21.1M을 합한 $90.7M(약 67%)이 비영업 항목. 이를 제외한 세전이익은 약 $45M 수준으로 영업이익과 비슷한 규모(계산치).
+- 기타비용(net)이 2026년 1분기 −$9.3M, 2분기 −$9.8M으로 전년(−$0.3M, −$0.3M) 대비 급증. 원인은 발췌에 없음 — 공시상 확인 불가. 환율 관련일 가능성은 추정에 불과함.
+- 1분기 사례가 시사적: 매출 <span class="up">+34%</span>에도 ACMR 귀속 순이익은 $20.4M → $17.3M으로 감소. 소수주주(NCI) 귀속이 $4.6M → $8.9M으로 늘고(연결 순이익의 34%), 기타비용이 커진 결과. 2분기 귀속 순이익은 발췌가 잘려 확인 불가.</p>
+<p><strong>현금흐름·운전자본</strong>
+- TTM 잉여현금흐름 −$119.8M. 대차대조표 변화(2025년 말 → 2026년 6월 말)와 부합: 재고 $702.6M → $783.1M(+$80.5M), 매출채권 $504.3M → $538.4M(+$34.1M), 유형자산 $314.8M → $384.6M(+$69.8M).
+- 재고는 분기 매출의 약 2.7배로 높음. 장비업 특성상 수주 대응 선행 생산일 수 있으나(추정), 매출 성장이 둔화되면 재고 부담으로 전환됨.
+- 고객선수금(advances from customers)은 $187.8M → $165.6M으로 −11.8%. 8-K에서 회사가 밝힌 "신규 수주 강한 증가"와 방향이 다름. 수주 인식·선수금 조건 변화일 수 있으나 공시상 확인 불가 — 3분기 10-Q에서 반드시 확인할 항목.</p>
+<p><strong>재무 건전성</strong>
+- 현금 $969.2M + 단기예금 $365.1M + 단기투자 $105.1M = $1,439.4M(제한현금 제외). 차입 총액 $340.9M(단기 $107.2M + 유동성 장기 $40.8M + 장기 $192.9M). 순현금 약 $1.10B(계산치).
+- 총부채 $994.1M 대비 총자본 $2,405.1M으로 레버리지 낮음. 단, 현금의 상당 부분이 중국 자회사에 있을 가능성이 높으며(추론), 자회사 배당·송금 제약은 발췌에 없음 — 공시상 확인 불가.
+- 자본잉여금(APIC)이 2025년 말 $1,115.5M → 2026년 6월 말 $1,361.8M으로 +$246.3M 급증(2분기에만 +$167.1M). 원인(모회사 증자, 자회사 지분 변동, 주식보상 등)은 발췌에 없음 — 공시상 확인 불가. 시가총액 $5.07B을 종가로 나눈 내재 주식수 약 69.7M주는 2026년 2월 기준 65.7M주보다 약 6% 많아 희석 가능성을 시사함(계산·추정).</p>
+<p><strong>밸류에이션(참고, 계산치)</strong>
+- 상반기 매출 $524.2M × 2 = 연환산 약 $1.05B 기준 P/S 약 4.8배. 상반기 영업이익 $85.9M × 2 = 약 $172M 기준, 순현금 차감 EV 약 $3.97B → EV/영업이익 약 23배. 소수주주 지분(NCI $545M)을 EV에 가산하면 더 높아짐. 트레일링 4개 분기 수치는 제공되지 않아 정확한 배수는 산출 불가.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 전기도금(ECP) 장비의 전 공정 확산</strong>
+- 8-K에서 회사는 상반기 수주에서 전기도금 장비가 특히 강했다고 밝힘(문장이 "front-end c…"에서 잘려 세부 내용 확인 불가).
+- 검증 포인트: 3분기 10-Q의 제품별 매출 공시 여부, 매출총이익률이 46% 선을 지키는지(믹스 변화가 마진에 미치는 영향).</p>
+<p><strong>② 어드밴스드 패키징 장비</strong>
+- 8-K에서 회사는 패키징 장비도 유의미한 수주 증가를 기록했다고 밝힘. AI 관련 패키징 수요와의 연결은 뉴스 헤드라인 수준의 추정이며 공시상 근거는 없음.
+- 검증 포인트: 패키징 장비 매출 비중·주요 고객이 공시에 등장하는지, 중국 외 고객 비중 변화.</p>
+<p><strong>③ 한국 메모리 고객(SK하이닉스) 확대</strong>
+- 8-K에서 회사는 SK하이닉스와 오랜 긍정적 관계를 유지하고 있으며, 공시 요건에 해당하면 적시에 공시하겠다고만 밝힘. 즉 현 시점에서 확정 수주 공시는 없음.
+- 검증 포인트: 8-K 또는 STAR 마켓 공시로 구체적 수주가 나오는지, 10-Q 지역별 매출에서 한국 비중이 늘어나는지.</p>
+<p><strong>④ 생산능력 확충</strong>
+- 유형자산이 반기에 $69.8M 늘었고 TTM FCF가 음수인 것은 회사가 설비 투자 중임을 시사(사실). 투자 대상·완공 시점은 발췌에 없음 — 공시상 확인 불가.
+- 검증 포인트: 고객선수금 반등 여부(수주 → 선수금 → 매출의 선행 지표), 재고회전 개선 여부.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>중국 규제 승인 리스크(10-K 명시)</strong>: 회사는 나스닥 상장 유지에 CSRC·CAC 등 중국 당국의 허가가 필요 없다고 판단하고 있으나, 10-K는 이 판단이 틀릴 경우 회사에 중대한 악영향이 있을 수 있다고 명시함. 판단 근거가 "현행 법령"이므로 법령 변경 시 재평가 대상.</p>
+</li>
+<li>
+<p><strong>자회사 구조에 따른 이익 유출과 통제 한계</strong>: ACMR은 ACM Shanghai 지분 74.6%만 보유하고, 10-K는 ACMR 주주가 ACM Shanghai 지분을 직접 보유할 수 없다고 명시. 2026년 1분기 연결 순이익의 34%가 소수주주에 귀속되어, 매출 성장률과 ACMR 귀속 이익 성장률 사이 괴리가 발생함(사실). APIC 급증의 원인이 자회사 지분 변동이라면 귀속 비율이 추가로 변할 수 있음(추정).</p>
+</li>
+<li>
+<p><strong>제조·개발 거점의 중국 집중</strong>: 10-K상 제품 개발·제조의 상당 대부분이 중국 본토에서 이뤄짐. 미·중 수출통제나 관세가 장비 부품 조달·해외 고객 판매에 미칠 영향은 발췌된 10-K 문단에 없어 구체 내용은 공시상 확인 불가하나, 구조상 노출은 명백함(추론).</p>
+</li>
+<li>
+<p><strong>현금흐름과 운전자본 부담</strong>: TTM FCF −$119.8M, 재고 $783M(분기 매출의 2.7배), 고객선수금 감소. 성장 둔화 시 재고 평가손과 마진 훼손이 동시에 나타날 수 있는 구조(사실 기반 추론).</p>
+</li>
+<li>
+<p><strong>이익의 변동성</strong>: 2분기 순이익의 2/3가 단기투자 평가이익·지분법이익. 평가이익은 시장 상황에 따라 반전될 수 있으며, 기타비용 −$9~10M/분기의 원인이 불명확함. 헤드라인 EPS 기반 밸류에이션은 신뢰도가 낮음.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong>
+- 매출 <span class="up">+36.0%</span> YoY / <span class="up">+26.7%</span> QoQ, 영업이익률 17.0%(<span class="up">+2.3%</span>p), 상반기 영업이익 <span class="up">+49.5%</span> YoY($57.5M → $85.9M).
+- 순현금 약 $1.1B, 총부채/총자본 0.41배 — 재무 리스크로 인한 강제 매도 가능성은 낮음.
+- 52주 고점 대비 −42.7%, 연환산 P/S 약 4.8배로 성장률 대비 부담스럽지 않은 수준(계산치).
+- '적극'으로 올리지 못하는 이유: FCF 음수, 매출총이익률 하락, 이익의 질, 소수주주 귀속 비율, 촉매 부재, transcript 미확인.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>APIC +$246M의 정체</strong>: 2026년 상반기 10-Q 주석(note 13 자본, note 12 관계자)에서 모회사 증자인지 자회사 지분 변동인지, 희석 규모와 향후 ACMR 귀속 비율 변화를 확인.
+2. <strong>2분기 ACMR 귀속 순이익과 비영업 항목 분해</strong>: 평가이익 $69.6M의 대상 자산(note 11), 지분법이익 $21.1M의 원천(note 10), 기타비용 −$9.8M의 성격. 이를 제외한 귀속 EPS로 밸류에이션 재산출.
+3. <strong>수주와 선수금의 방향 일치 여부</strong>: 8-K의 "수주 강한 증가" 주장과 선수금 −11.8%의 괴리 원인. 3분기 10-Q에서 선수금이 반등하지 않으면 회사 주장의 신뢰도를 낮춰야 함.</p>
+<p><strong>판단을 '관망'으로 바꿔야 할 조건</strong>
+- 3분기 매출총이익률이 45% 아래로 내려가면서 영업이익률 개선이 멈출 때(레버리지 효과 소진 신호).
+- 3분기에도 영업현금흐름이 음수이고 재고가 분기 매출 3배를 넘어설 때.
+- 중국 당국의 해외상장 관련 규제 변경, 또는 미국의 대중 장비 규제가 ACM Shanghai를 직접 겨냥하는 공시가 나올 때.
+- APIC 급증이 ACMR 주주 가치 희석(대규모 증자·전환)으로 확인되고 그 자금 용처가 공시되지 않을 때.
+- 주가가 오늘 반등에도 60일 하락 추세를 되돌리지 못하고 거래량 없이 재차 저점을 갱신할 때(수급 판단, 펀더멘털과 별개).</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026013231/acmr-20251231.htm">10-K — 2025-12-31_0001628280-26-013231</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026054832/acmr-20260630.htm">10-Q — 2026-06-30_0001628280-26-054832</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026032842/acmr-20260331.htm">10-Q — 2026-03-31_0001628280-26-032842</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026059251/recordsofinvestorrelatio.htm">8-K — 2026-08-17_0001628280-26-059251__EX-99.1__recordsofinvestorrelatio</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026059251/acmr-20260817.htm">8-K — 2026-08-17_0001628280-26-059251</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026054581/acmr-q22026xearningsreleas.htm">8-K — 2026-08-07_0001628280-26-054581__EX-99.1__acmr-q22026xearningsreleas</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026054581/acmr-20260807.htm">8-K — 2026-08-07_0001628280-26-054581</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1680062/000162828026044506/recordsofinvestorrelatio.htm">8-K — 2026-06-18_0001628280-26-044506__EX-99.1__recordsofinvestorrelatio</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

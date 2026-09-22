@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APH — Amphenol Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>APH — Amphenol Corporation Common Stock</h1>
+<div class="sub">2026-09-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">APH</span><span class="badge">+4.09%</span><span class="badge">거래량 1.07배</span><span class="badge">$199.05B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>Q2 2026 실적(8-K Ex.99.1)은 매출 $8.8B(<span class="up">+55%</span>, 유기 <span class="up">+30%</span>), 수주 $10.7B(book-to-bill 1.23), 조정 영업이익률 29.8%로 펀더멘털 자체는 대형주 중 최상위권이며, 순부채/EBITDA 1.3배로 CommScope 인수 직후임에도 재무 여력이 충분함.</li>
+<li>그러나 오늘 <span class="up">+4.09%</span>는 4일 내 공시가 없고 거래량 배수도 1.07배에 그쳐, 회사 고유 촉매가 아닌 AI 인프라 섹터 동조·분할 후 수급으로 해석됨. 추격 매수 근거로는 약함.</li>
+<li>Q3 가이던스(분할 후 조정 EPS $0.70~0.71)를 연율화하면 종가 $80.72 기준 P/E 약 29~31배(추정)로, 성장률 대비 부담스럽진 않으나 관세 환급 $80M 같은 일회성 요인이 마진에 섞여 있어 "질"을 한 분기 더 확인할 필요가 있음.</li>
+<li>결론: 코어 포지션으로 편입할 가치는 충분하나, 오늘의 상승을 이유로 비중을 늘릴 근거는 없음. 10월 말 Q3 실적에서 수주·마진의 지속성을 확인하며 분할 매수하는 접근이 적절함.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>SEC 공시: 최근 4일 내 공시 없음. 가장 최근 8-K(9/4 제출)는 9/2 2대1 액면분할 완료와 배당 조정($0.25→$0.125)을 알리는 Item 8.01로, 이미 8/6에 발표된 내용의 사후 확인이라 신규 정보가 아님.</li>
+<li>배당 기준일: 9/22(오늘)이 3분기 배당 기준일. 그러나 배당금은 분할 후 주당 $0.125로 종가 대비 약 0.15% 수준이어서 4% 상승을 설명할 수 없음. 뉴스(Quiver Quantitative)가 "dividend timing"을 언급하지만 정황적 요인에 그침.</li>
+<li>뉴스 헤드라인: AI 수요 모멘텀(Quiver, simplywall.st), 분할 후 후속 매수(Quiver)를 거론하나, 모두 기존 정보의 재해석. GuruFocus는 GF Value 기준 "과대평가"를 함께 지적함.</li>
+<li>거래량: 20일 중앙값 대비 1.07배, 거래대금 $940.6M. 시가총액 $199B 종목의 일상 회전율 범위 내로, 기관의 대규모 신규 자금 유입 신호로 보기 어려움.</li>
+<li>가격 위치: 20일 <span class="up">+2.8%</span>, 60일 <span class="down">-2.2%</span>, 52주 고점 대비 <span class="down">-8.4%</span>. 두 달간 박스권에 있던 종목이 AI 인프라 섹터 강세일에 동반 반등한 모양새로 판단됨(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>전제:</strong> 제공된 10-K 발췌는 표지와 목차만 포함되어 있어 Item 1 사업 섹션 본문은 공시상 확인 불가. 아래는 8-K 보도자료의 회사 소개와 실적콜 세그먼트 설명에 근거함.</p>
+<p><strong>제품:</strong> 회사는 8-K에서 스스로를 "전기·전자·광 커넥터 및 인터커넥트 시스템, 안테나, 센서 및 센서 기반 제품, 동축·고속·광·특수 케이블의 세계 최대 설계·제조·판매업체 중 하나"로 소개함. 실적콜에서는 이산 커넥터부터 전력 케이블 어셈블리, 버스바, 수냉식 버스바, 모바일 기기용 힌지(메커니즘)까지 포트폴리오가 확장됐다고 언급.</p>
+<p><strong>세그먼트 (Q2 2026, 실적콜 기준):</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>매출</th>
+<th>매출 비중(계산)</th>
+<th>YoY(USD/유기)</th>
+<th>영업이익률</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Communications Solutions</td>
+<td>$5.4B</td>
+<td>약 61%</td>
+<td>+85% / <span class="up">+42%</span></td>
+<td>33.6%</td>
+</tr>
+<tr>
+<td>Harsh Environment Solutions</td>
+<td>$1.9B</td>
+<td>약 22%</td>
+<td>+28% / <span class="up">+22%</span></td>
+<td>30.1%</td>
+</tr>
+<tr>
+<td>Interconnect and Sensor Systems</td>
+<td>$1.5B</td>
+<td>약 17%</td>
+<td>+17% / <span class="up">+13%</span></td>
+<td>21.0%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Communications Solutions가 매출의 6할, 마진도 가장 높음. CommScope(2026년 1월 인수) 상당 부분과 IT 데이터콤(AI 데이터센터)이 여기에 속하는 것으로 실적콜 문맥상 파악되나, 시장별 매출 금액은 제공 발췌에서 확인 불가.</li>
+<li>실적콜에서 산업(Industrial) 시장은 매출의 약 20%라고 언급됨. 방산은 "세계 방산 인터커넥트 1위"라고 회사가 주장(Q1 콜).</li>
+</ul>
+<p><strong>최종시장:</strong> 8-K는 자동차, 상업항공, 통신네트워크, 방산, 산업, IT 데이터콤, 모바일 기기 7개 시장을 열거. 회사는 이를 "시장·지역 다변화 전략"의 핵심으로 제시함.</p>
+<p><strong>고객·유통:</strong> 자체 영업조직, 독립 대리점, 글로벌 전자부품 유통망을 병행. 실적콜에서 CommScope가 150~180개국 유통망을 통해 건설·빌딩 커넥티비티 시장에 판매하며, 이 유통 관계를 기존 Amphenol 제품에도 활용하겠다고 밝힘.</p>
+<p><strong>경쟁 위치:</strong> 회사는 "기업가적 문화"와 "광범위한 기술 포지션"을 경쟁우위로 반복 주장. 다만 10-K 경쟁 섹션이 제공되지 않아 경쟁사 대비 점유율 등 객관적 수치는 공시상 확인 불가.</p>
+<p><strong>약 40개국 제조:</strong> 8-K 회사 소개에 명시.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>지표 정합성 주의:</strong> 제공된 시장 지표표의 "최근 분기 매출 $7.62B, YoY 58.4%, QoQ 18.3%"는 Q1 2026 수치와 일치하며, 최신 분기(Q2 2026, 7/29 8-K)는 매출 $8.8B, YoY <span class="up">+55%</span>, QoQ <span class="up">+15%</span>임. 아래는 Q2 기준으로 서술함.</p>
+<p><strong>성장의 질:</strong>
+- 총성장 55% 중 유기성장 30%, 나머지는 CommScope 등 인수 효과. 인수 제외 유기 30%도 이 규모의 부품사로선 이례적으로 높음.
+- 물량·단가 분해는 공시상 확인 불가. 다만 실적콜에서 "모든 최종시장이 book-to-bill 1 이상", "한 시장을 제외한 전 시장에서 유기성장"이라 밝혀 특정 고객·단가 인상보다 광범위한 물량 증가에 가까운 것으로 추정됨. 유기성장이 없었던 한 시장은 제공된 발췌(중략 구간)에서 확인 불가.
+- 수주 $10.7B(<span class="up">+94%</span> YoY, 유기 <span class="up">+63%</span>)가 매출을 23% 초과. Q1도 book-to-bill 1.24로 두 분기 연속 수주가 매출을 크게 앞섬. 이는 향후 2~3분기 매출 가시성을 뒷받침함.</p>
+<p><strong>마진 방향성:</strong>
+- 조정 영업이익률 29.8%(Q1 27.3% → +250bp QoQ, +420bp YoY). 다만 IEEPA 관세 환급 $80M이 포함되어 있어 이를 제외하면 약 28.9%(계산: 80/8,800 ≈ 0.9%p)로 추정됨.
+- CFO는 QoQ 개선 요인을 (1) 매출 증가에 따른 전환 레버리지, (2) CommScope 등 피인수사 수익성 개선, (3) 관세 환급 순으로 설명. 즉 일회성이 아닌 구조적 요인이 주도했다는 게 회사 입장.
+- Q3 가이던스는 "추가 관세 환급을 포함하지 않는다"고 명시되어, Q3 마진이 29% 미만으로 나와도 가이던스 범위 내라면 악화로 보기 어려움.</p>
+<p><strong>세율 상승:</strong> 조정 실효세율이 24.5%→27%로 상향되어 2026년 내내 유지될 것이라고 회사는 밝힘. 중국 세무 이슈와 고세율 지역으로의 이익 이동이 원인. EPS 성장률을 약 3%p 갉아먹는 요인.</p>
+<p><strong>현금흐름:</strong>
+- Q2 영업현금흐름 $1.6B(순이익의 88%), FCF $1.2B(68%). Q1은 각각 120%, 89%. 고성장 국면에서 운전자본 소요가 늘어 Q2 전환율이 하락했으나 회사는 "정상 범위"라고 밝힘.
+- TTM FCF $4.63B(제공 지표). 시가총액 $199B 대비 FCF 수익률 약 2.3%(계산).
+- Q2 자사주 150만주($208M, 평균 $141 분할 전) + 배당 $307M = $515M 환원.</p>
+<p><strong>재무 건전성:</strong>
+- 총부채 $18.8B, 순부채 $13.4B, 현금 $5.4B, 총유동성 $8.4B. 순레버리지 1.3배(Q1 1.6배에서 개선).
+- 분기 순이자비용 약 $200M(회사 가이던스). 연 $800M으로 EBITDA($3B/분기) 대비 부담은 제한적.
+- 상장 채권: 2029년 3.375%, 2032년 3.125%, 2034년 3.875% 선순위 노트.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) AI 데이터센터 인터커넥트(IT 데이터콤)</strong>
+- 회사는 Q2 IT 데이터콤 유기성장을 "exceptional"이라고 표현. Communications Solutions 유기 <span class="up">+42%</span>의 핵심. 실적콜에서 랙 내 고전압·고전력 전환에 따라 전력 인터커넥트(버스바, 수냉식 버스바, 전력 케이블 어셈블리)가 새 기회라고 언급.
+- 검증 포인트: Q3 Communications Solutions 유기성장률이 40%대를 유지하는지, 세그먼트 마진 33.6%가 관세 환급 제거 후에도 32% 이상인지.</p>
+<p><strong>2) CommScope 인수 시너지</strong>
+- 회사는 2026년 CommScope 매출 기여를 $4.1B→$4.6B, 조정 EPS 기여를 $0.15→$0.30(분할 전)으로 상향. 실적콜에서 건설·빌딩 커넥티비티라는 신시장과 유통망 교차판매를 강조.
+- 검증 포인트: Q3 콜에서 CommScope 연간 가이던스 재상향 여부, 피인수사 마진 개선 언급 지속 여부.</p>
+<p><strong>3) 방산 구조적 증가</strong>
+- Q1 콜에서 방산 유기성장 21%(전년 연간 25%)를 밝히고, CEO는 "장기 구조적 수요 변화 가능성"이라고 표현. Trexon 등 인수로 RF 인터커넥트까지 확장.
+- 검증 포인트: Harsh Environment 세그먼트 유기성장 20%대 유지 여부, 미국 국방예산 관련 언급.</p>
+<p><strong>4) 산업 시장 광범위 성장</strong>
+- Q2 산업 유기 <span class="up">+18%</span>. 실적콜에서 계측, 공장자동화, 배터리 저장, 중장비, 대체에너지, 안전 등 "부진한 하위 시장을 찾기 어렵다"고 언급.
+- 검증 포인트: Q3 산업 유기성장이 두 자릿수를 유지하는지.</p>
+<p><strong>5) 모바일 기기 메커니즘(힌지)</strong>
+- Q2 모바일 유기 <span class="up">+14%</span>. 회사는 20년 이상 힌지를 제조해 왔으며 "새로운 아키텍처를 위한 첨단 메커니즘의 업계 리더"라고 주장. 특정 고객 프로그램 언급은 거부.
+- 검증 포인트: 하반기 스마트폰 신제품 시즌의 모바일 매출 계절성 강도.</p>
+<p><strong>6) 지속적 M&amp;A</strong>
+- Q2 El.Com(연매출 약 $150M, 이탈리아)과 Wilder Technologies(약 $15M) 인수. 소규모 볼트온 지속.
+- 검증 포인트: 레버리지 1.3배를 유지하면서 추가 인수를 이어가는지, 대형 인수 재개 시 부채 증가 폭.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤:</strong>
+- Q1·Q2 모두 "record"가 반복되며, CEO는 "extremely proud", "outstanding"을 다용. 가이던스 상단 초과를 두 분기 연속 달성한 뒤의 자신감이 뚜렷함.
+- 가이던스 화법: "현 시장 상황 지속과 고정 환율을 가정"이라는 통상 문구에 Q2에는 "추가 관세 환급 미포함"이 추가됨. 일회성 이익을 사전에 분리하려는 보수적 장치로 읽힘.
+- Q1에서 순차 마진이 -20bp였던 점을 CFO가 인수 희석 효과로 설명했고, Q2에 +250bp로 반전시켜 그 설명이 사실로 확인된 점은 신뢰도를 높이는 요소.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 회피 지점:</strong>
+- AI 데이터센터 아키텍처 변화의 정량 영향(TD Cowen): CEO는 "스프레드시트에 채울 숫자는 줄 수 없다"며 명시적으로 정량화를 거부. 대신 전력 인터커넥트 포지션을 강조. 랙당 콘텐츠 가치 변화는 투자자가 외부에서 추정해야 함.
+- 특정 고객 프로그램(모바일, Goldman): "특정 고객 프로그램은 언급하지 않겠다"고 일관되게 방어.
+- 전력 전자(인버터 등) 진출 가능성(UBS): "지금까지 의미 있게 한 것이 없다"고 답하며 인터커넥트 전략 고수를 확인. 사업 확장 범위에 규율이 있다는 신호.
+- 방산 재고 재축적 레버리지(Baird): 정량 대신 "제품 폭과 생산능력을 모두 갖춘 독보적 위치"라고 답변.</p>
+<p><strong>공시에 없고 콜에서만 드러난 정보:</strong>
+- 수주 유기성장 <span class="up">+63%</span>(YoY), 모든 최종시장 book-to-bill 1 이상.
+- 중국 세무 이슈: Q4 2025 $100M + Q1 2026 $130M 누계 $230M 충당, 추가로 과거 기간 세무 가정 재평가로 $160M 추가 세금 비용 인식(조정 EPS에서 제외). 실효세율 27%로 상향 및 연내 유지.
+- 분기 순이자비용 약 $200M 가이던스.
+- 자사주 매입 평균가 $141(분할 전, Q2), 약 $140(Q1). 현 분할 후 $80.72는 분할 전 $161.44 상당으로, 회사 매입 단가보다 약 15% 높음(계산).
+- CommScope의 150~180개국 유통망, 산업 시장이 매출 약 20%.
+- Q2 GAAP 영업이익에 CommScope 인수 백로그 상각 $24M 포함.</p>
+<h2>6. 리스크</h2>
+<p><strong>전제:</strong> 제공된 10-K 발췌에 Item 1A 리스크 팩터 본문이 없어, 아래는 8-K·실적콜에서 실제로 드러난 사안만 정리함.</p>
+<ol>
+<li>
+<p><strong>중국 세무 분쟁의 확대 가능성.</strong> 이미 $230M 충당 + $160M 추가 세금 비용이 발생했고, 회사는 "수령한 납세 통지 전액"을 커버했다고 밝혔으나 추가 통지 여부는 공시상 확인 불가. 실효세율 상향(27%)이 이미 EPS 성장률을 낮추고 있으며, 40개국 제조 구조에서 다른 국가의 유사 조치 가능성은 배제할 수 없음.</p>
+</li>
+<li>
+<p><strong>Communications Solutions 편중과 AI 캐펙스 사이클 민감도.</strong> 매출 61%, 가장 높은 마진(33.6%)이 한 세그먼트에 집중. 유기 <span class="up">+42%</span>는 하이퍼스케일러 캐펙스에 좌우되며, 회사가 랙당 콘텐츠 정량화를 거부한 만큼 아키텍처 전환(고전압화 등)이 인터커넥트 콘텐츠를 늘릴지 줄일지 외부에서 검증하기 어려움.</p>
+</li>
+<li>
+<p><strong>관세 환급 일회성과 마진 기저 효과.</strong> Q2 조정 영업이익률 29.8% 중 약 0.9%p는 IEEPA 관세 환급. Q3 가이던스가 이를 제외한 만큼 마진 하락이 헤드라인 리스크가 될 수 있으며, 관세 정책 재변동 시 반대 방향의 비용 발생 가능.</p>
+</li>
+<li>
+<p><strong>CommScope 통합과 부채.</strong> 총부채 $18.8B는 인수 이전 대비 크게 늘어난 수준(정확한 이전 수치는 공시상 확인 불가). 현재 레버리지 1.3배는 EBITDA 급증에 기댄 것으로, AI 수요 둔화 시 분모 축소로 비율이 빠르게 악화될 수 있음. CommScope 가이던스 상향은 긍정적이나 저마진 사업 통합이 초기 단계.</p>
+</li>
+<li>
+<p><strong>고성장 국면의 현금 전환율 하락.</strong> FCF/순이익이 Q1 89%→Q2 68%로 하락. 회사는 정상 범위라고 밝혔으나, 수주가 매출을 23% 초과하는 상황에서 재고·미수금 축적이 지속되면 FCF가 이익 성장을 따라가지 못할 수 있음.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>"보통"을 뒷받침하는 정량 근거:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>유기성장(Q2)</td>
+<td>+30%</td>
+<td>최상위</td>
+</tr>
+<tr>
+<td>Book-to-bill(Q1/Q2)</td>
+<td>1.24 / 1.23</td>
+<td>가시성 높음</td>
+</tr>
+<tr>
+<td>조정 영업이익률(관세 제외 추정)</td>
+<td>약 28.9%</td>
+<td>구조적 개선</td>
+</tr>
+<tr>
+<td>순레버리지</td>
+<td>1.3배</td>
+<td>건전</td>
+</tr>
+<tr>
+<td>추정 FY26 P/E(분할 후 EPS 약 $2.6 가정)</td>
+<td>약 31배</td>
+<td>성장 대비 적정~다소 부담</td>
+</tr>
+<tr>
+<td>FCF 수익률(TTM)</td>
+<td>약 2.3%</td>
+<td>낮음</td>
+</tr>
+<tr>
+<td>오늘 거래량 배수</td>
+<td>1.07배</td>
+<td>촉매 부재</td>
+</tr>
+</tbody>
+</table></div>
+<p>FY26 EPS 추정은 H1 실적(분할 후 $0.53 + $0.675)과 Q3 가이던스($0.705), Q4를 Q3와 동일하다고 가정한 계산치이며 회사 가이던스가 아님.</p>
+<p><strong>진입 전 확인할 것 3가지:</strong>
+1. Q3 실적(10월 말 예상)에서 매출이 가이던스 $9.3~9.4B를 충족하고, book-to-bill이 1.0 이상을 유지하는지. 두 분기 연속 1.2배대 이후 첫 정상화 분기가 될 수 있음.
+2. Q3 조정 영업이익률이 관세 환급 없이 28.5% 이상인지. 이 수준이면 Q2 개선이 구조적이었음이 확인됨.
+3. 중국 세무 이슈 관련 추가 통지·충당 유무와 실효세율 27% 유지 여부. 10-Q 세금 주석에서 확인.</p>
+<p><strong>판단을 뒤집을 조건(→ 관망):</strong>
+- Q3 book-to-bill이 1.0 미만으로 떨어지거나 Communications Solutions 유기성장이 30% 미만으로 급감할 때.
+- 관세 제외 조정 영업이익률이 28% 미만으로 하락하고 회사가 이를 인수 희석 이외의 요인으로 설명할 때.
+- 중국 세무 관련 추가 충당이 $100M 이상 발생하거나 다른 국가로 확산될 때.
+- 대형 인수 발표로 순레버리지가 2.5배를 넘어설 때.</p>
+<p><strong>판단을 상향할 조건(→ 적극):</strong>
+- Q3 실적이 가이던스 상단을 3분기 연속 초과하고 CommScope 연간 기여가 재상향될 때.
+- 52주 고점 대비 <span class="down">-15%</span> 이상 조정이 발생해 추정 P/E가 25배 이하로 내려올 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926013549/aph-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-013549</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926089194/aph-20260630x10q.htm">10-Q — 2026-06-30_0001104659-26-089194</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926054128/aph-20260331x10q.htm">10-Q — 2026-03-31_0001104659-26-054128</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926105485/tm2624775d1_8k.htm">8-K — 2026-09-02_0001104659-26-105485</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926091969/tm2622441d1_ex99-1.htm">8-K — 2026-08-06_0001104659-26-091969__EX-99.1__tm2622441d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926091969/tm2622441d1_8k.htm">8-K — 2026-08-06_0001104659-26-091969</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926087904/aph-20260729xex99d1.htm">8-K — 2026-07-29_0001104659-26-087904__EX-99.1__aph-20260729xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820313/000110465926087904/aph-20260729x8k.htm">8-K — 2026-07-29_0001104659-26-087904</a></li>
+<li>Transcript — 2026-07-29 Amphenol Corporation (APH) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-04-29 Amphenol Corporation (APH) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

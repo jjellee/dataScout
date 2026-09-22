@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTC — Intel Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>INTC — Intel Corporation Common Stock</h1>
+<div class="sub">2026-09-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">INTC</span><span class="badge">+12.14%</span><span class="badge">거래량 2.02배</span><span class="badge">$643.62B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 <span class="up">+12.14%</span>는 회사 고유 촉매가 아니다. 최근 4일 내 공시가 없고, 헤드라인은 Meta의 AI 에이전트 발표에 따른 반도체 섹터 동반 랠리(AMD 시총 $1T 돌파 동반)를 가리킨다. 20일 수익률 <span class="up">+35.2%</span>에 거래량 2.02배가 얹힌 추격 매수 구간이다.</li>
+<li>펀더멘털 개선은 사실이다. Q2 매출 $16.13B(YoY <span class="up">+25.4%</span>, QoQ <span class="up">+18.8%</span>), 영업이익률 12.2%(YoY <span class="up">+22.2%</span>p), 실적콜에서 "7분기 연속 가이던스 상회"라고 언급.</li>
+<li>그러나 가격이 이를 앞서 있다. 시총 $643.62B 대비 TTM FCF $2.83B(FCF 수익률 약 0.44%, 계산치). 실적콜 시점 선행 PER 91.7배를 현 종가로 환산하면 약 111배(계산치). 3분기 매출 가이던스 $15.8~16.8B는 중간값 기준 Q2 대비 약 <span class="up">+1%</span>로 성장 속도가 꺾인다.</li>
+<li>8/10 주당 $95에 $20B 유상증자를 단행했고, 현 주가는 발행가 대비 약 <span class="up">+28%</span>다. 2026년 CapEx $20B 이상 계획(실적콜 요약) 대비 자체 현금창출력이 약해 추가 조달 가능성이 남아 있다.</li>
+<li>신규로 의미있는 비중을 싣기보다 10월 하순 3분기 실적과 발행가 근접 조정을 기다리는 것을 권고한다. 기존 보유분은 유지.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 회사 고유 촉매 없음 — 섹터 동조 랠리.</strong></p>
+<ul>
+<li>공시: 최근 4일 내 8-K·기타 공시 없음. 가장 최근 공시는 8/10 유상증자 가격결정 8-K(8/12 종결 예정)로 오늘 상승과 무관.</li>
+<li>뉴스: Barron's는 "Meta의 Muse AI 에이전트가 Intel·칩주 랠리를 촉발, AMD 시총 $1T"라고 보도. Yahoo Finance는 "AI 지출 우려 완화"를 원인으로 지목. AMD·Qualcomm이 동반 급등한 점에서 개별 재료보다 섹터 베타로 해석하는 것이 타당하다.</li>
+<li>거래대금 $23.18B, 거래량 20일 중앙값 대비 2.02배는 섹터 랠리치고 강한 수급이다. Quiver Quantitative가 "SPY 상승분의 상당 부분이 INTC 움직임"이라고 언급한 점은 지수 내 비중이 커진 결과다.</li>
+<li>참고로 60일 수익률 <span class="down">-8.3%</span>, 20일 수익률 <span class="up">+35.2%</span>는 8/10 $20B 증자 발표 전후 급락 후 최근 한 달간 되돌린 궤적으로 읽힌다(추정). 증자 물량 소화가 끝난 뒤 오버행 해소 효과가 섹터 랠리와 겹쳤을 가능성이 있으나 공시로 확인되는 사항은 아니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지·목차·Forward-Looking Statements까지만 포함되어 있고 사업 섹션 본문(제품·고객·세그먼트 매출 구성)은 들어 있지 않다. 따라서 <strong>세그먼트별 매출 비중, 주요 고객 비중, 지역별 매출은 공시상 확인 불가</strong>다. 아래는 10-K 서두와 transcript에서 교차 확인되는 범위로 한정한다.</p>
+<ul>
+<li><strong>핵심 자산 두 가지</strong>: BofA 컨퍼런스(6/2)에서 CFO Zinsner는 Intel의 존재 이유를 "수십 년 x86 CPU 축적"과 "전공정·후공정 제조 역량" 두 가지로 정리했다. 제품과 제조(파운드리)에 경영진 시간이 "50대 50"으로 배분된다고 언급.</li>
+<li><strong>제품 사업</strong>: 클라이언트(PC)와 데이터센터 CPU. Zinsner는 AI로 인해 CPU 시장이 "완만한 성장이 아닌 폭발적 성장"으로 바뀌었다고 언급. IR 담당 Pitzer는 CPU TAM 회복 외에 ASIC, 어드밴스드 패키징을 성장 축으로 추가 언급.</li>
+<li><strong>파운드리 사업</strong>: 10-K는 "Intel 14A에 대해 의미있는 외부 고객을 확보하지 못하면 14A 및 차세대 선단 공정 추진을 중단할 수 있다"는 조건부 리스크를 명시. 18A는 진행 중이고, 14A는 "산업 표준에 가까운 PDK"로 제공한다고 컨퍼런스에서 언급. 미국 내 개발·제조 기반의 "안전한 공급망" 수요를 파운드리 논거로 제시.</li>
+<li><strong>경쟁 위치</strong>: 10-K는 "높은 경쟁 강도와 빠른 기술 변화"를 첫 번째 리스크로 명시. 외부 파운드리 사용도 병행 중(10-K FLS "external foundry usage"). 헤드라인상 AMD 시총 $1T와 비교하면 Intel 시총 $643.62B는 CPU 경쟁사 대비 열위 평가다.</li>
+<li><strong>주주 구조 특이점</strong>: 10-K는 "미국 정부의 상당한 지분 취득"을 리스크 항목으로 명시. 지분율은 발췌에서 확인 불가.</li>
+<li><strong>정부 지원</strong>: 10-K FLS에 "정부 보조금·인센티브 기대"와 "대체 자금조달 구조" 언급. 규모는 공시상 확인 불가.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2 2026 매출</td>
+<td>$16.13B</td>
+<td>컨센서스 대비 +$1.68B 상회(SA 요약)</td>
+</tr>
+<tr>
+<td>매출 YoY / QoQ</td>
+<td>+25.4% / <span class="up">+18.8%</span></td>
+<td>전년 Q2 약 $12.86B, 전분기 약 $13.58B(역산)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>12.2%</td>
+<td>전년 동기 약 <span class="down">-10%</span>(YoY <span class="up">+22.2%</span>p에서 역산)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>40.4%</td>
+<td></td>
+</tr>
+<tr>
+<td>EPS</td>
+<td>$0.42</td>
+<td>컨센서스 $0.22 대비 +$0.20(SA 요약)</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$2.83B</td>
+<td>시총 대비 0.44%(계산치)</td>
+</tr>
+<tr>
+<td>3Q 가이던스</td>
+<td>매출 $15.8~16.8B, EPS $0.38</td>
+<td>회사 제시(SA 요약)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>: 단가·물량·믹스 분해는 MD&amp;A 본문이 발췌에 없어 공시상 확인 불가. 실적콜에서 CEO Lip-Bu Tan은 "제품 수요가 늘어나는 공급을 계속 앞지른다"고 언급했고, 이는 물량이 공급 제약에 걸려 있다는 뜻이다. 공급 제약 하에서 매출이 QoQ <span class="up">+18.8%</span> 늘었다는 것은 가격·믹스 기여가 컸을 가능성을 시사하나 이는 추정이다. Zinsner는 컨퍼런스에서 "제때 나오는 제품은 가격 측면에서 마진 개선 기회가 있다"고 언급.</p>
+<p><strong>마진 방향성</strong>: 영업이익률이 1년 만에 적자에서 12.2%로 전환한 것은 (1) 매출 증가에 따른 고정비 레버리지, (2) 인력 10만 명 이상에서 8만 명 미만으로 감축(컨퍼런스 언급) 등 OpEx 절감의 결과다. Zinsner는 "OpEx를 매출 증가율보다 낮게, 혹은 평탄하게 유지"하겠다고 언급. 다만 파운드리는 2027년 말 손익분기 목표라고 회사는 밝힘. 즉 현재 마진은 제품 사업이 파운드리 적자를 흡수하는 구조다(파운드리 손익 수치는 확인 불가).</p>
+<p><strong>현금흐름과 자본조달</strong>: TTM FCF $2.83B는 2026년 CapEx $20B 이상 계획을 감당할 수 없는 규모다. 실제로 8/10 $20B 규모 유상증자(주당 $95, 210,526,315주, 순수입 약 $19.7B, 용도는 CapEx·운전자본 포함 일반 목적)를 실행했다. 이는 사실상 올해 CapEx를 주주 희석으로 조달한 것이다.</p>
+<p><strong>주식 수와 희석</strong>: 4,995M(1/16) → 5,026M(4/17) → 5,044M(7/17)으로 분기당 약 20~30M주씩 늘어나던 추세에 증자 210.5M주가 더해졌다. 시총 $643.62B를 종가 $121.78로 나누면 약 5,285M주(계산치)로, 초과배정옵션 31.6M주까지 행사된 수준과 일치한다(행사 여부는 공시상 확인 불가, 추정). 7월 대비 약 4.8% 희석.</p>
+<p><strong>재무 건전성</strong>: 현금·부채 잔액은 발췌에 없어 확인 불가. BofA 컨퍼런스에서 애널리스트 Arya가 "팹 바이아웃 이후 레버리지 비율이 약 4배로 돌아왔다"고 질문했고, Zinsner는 이 수치를 부인하지 않았으나 직접 확인하지도 않았다. 증자 이후 레버리지는 낮아졌을 것이나 2Q 10-Q(6/27 기준)에는 반영되지 않는다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>AI발 CPU 수요 회복(클라이언트·데이터센터)</strong>
+   회사는 CPU 시장이 AI로 인해 구조적 성장 국면에 들어갔다고 밝힘. 실현 조건은 공급 확대다.
+   검증 포인트: 3분기 매출이 가이던스 상단($16.8B)에 근접하는지, 실적콜에서 "공급 제약" 표현이 유지되는지, 데이터센터 매출 YoY(발췌 미제공)가 공시되면 확인.</p>
+</li>
+<li>
+<p><strong>파운드리: 18A 램프와 14A 외부 고객</strong>
+   10-K는 14A 외부 대형 고객 미확보 시 차세대 공정 추진을 중단할 수 있다고 명시. 이 조건이 파운드리 성장 논거의 전부다.
+   검증 포인트: 14A 대형 외부 고객 계약 공시(8-K) 여부, 2027년 말 파운드리 손익분기 목표에 대한 회사 언급 변화.</p>
+</li>
+<li>
+<p><strong>ASIC·어드밴스드 패키징</strong>
+   Pitzer는 "구조적으로 두 자릿수 성장 사업"의 근거로 이 둘을 언급. 매출 기여 수치는 공시상 확인 불가.
+   검증 포인트: 10-Q나 실적콜에서 패키징·ASIC 관련 매출 또는 고객 수가 처음으로 정량 공개되는지.</p>
+</li>
+<li>
+<p><strong>비용 구조와 "Rule of 45"</strong>
+   회사는 매출 성장률과 영업이익률 합계 45를 다년간 목표로 밝힘. Zinsner는 "다년간의 열망적 목표"라고 표현.
+   검증 포인트: 매출총이익률 40.4%가 유지·상승하는지, OpEx가 매출 대비 평탄한지.</p>
+</li>
+<li>
+<p><strong>생산능력 확충</strong>
+   Zinsner는 "1~2년 내 준비되는 복수의 클린룸"이 있어 장비 투입만 남았다고 언급. 회사는 장기 CapEx 집약도를 20%대로 밝혔으나 단기 상승 가능성을 열어 뒀다.
+   검증 포인트: 2026년 CapEx 실집행이 $20B를 얼마나 초과하는지, 추가 자본조달 공시 여부.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- Q2 콜에서 CEO는 "7분기 연속 재무 기대치 상회", "15년 이상 만의 최강 매출 성장", "수요가 공급을 계속 앞지른다"고 언급. 자신감의 근거는 실적 자체이며, 15개월 전 도입한 "운영 규율"의 성과라고 프레이밍했다.
+- 다만 3분기 가이던스(매출 $15.8~16.8B, EPS $0.38)는 Q2 실적($16.13B, $0.42) 대비 중간값 기준 매출 소폭 증가, EPS는 소폭 감소다. "최강 성장" 화법과 QoQ 정체 가이던스 사이의 간극은 공급 제약 또는 보수적 가이던스 관행(7분기 연속 상회) 중 어느 쪽인지 판별이 필요하다.
+- 콜 시점 시장 반응: 정규장 $100.23(<span class="down">-2.33%</span>)에서 시간외 $104.61(<span class="up">+4.37%</span>)로 실적 발표 직후 반응은 긍정적이었다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- Q2 콜의 Q&amp;A 본문은 발췌에 포함되지 않았다(참여 애널리스트 7명 명단만 확인). 따라서 아래는 6/2 BofA 컨퍼런스 기준이다.
+- <strong>Rule of 45 vs 컨센서스</strong>: Arya가 "컨센서스는 저두자릿수 성장, 한자릿수 후반~저두자릿수 영업이익률이라 산술적으로 안 된다"고 압박. Zinsner는 시점을 특정하지 않고 "다년간 열망적 목표"로 후퇴. 회사가 시한을 못 박지 않은 점이 방어 지점이다.
+- <strong>레버리지 4배와 CapEx 집약도</strong>: Arya가 "성공적 파운드리는 CapEx 집약도 30%대 중반, 레버리지는 4배 근처"라고 지적. Zinsner는 레버리지 수치에 답하지 않고 "장기 20%대, 단기 상승은 성공의 결과인 고급 문제"로 우회. 두 달 뒤 $20B 증자가 나온 것을 감안하면 이 회피는 자금조달 계획을 시사한 대목으로 사후 해석된다.
+- <strong>파운드리 손익분기(2027년 말)</strong>: "달성 못 할 유일한 이유는 파운드리가 예상보다 너무 성공해 스타트업 비용이 늘어나는 경우"라는 화법은 목표 미달 시 변명의 여지를 미리 확보한 표현이다.</p>
+<p><strong>공시 문서에는 없고 콜·컨퍼런스에서만 드러난 정보</strong>
+- 조직 구조조정 수치: 관리 계층 12단계→6단계, 부사장 400명 이상→200명, 임직원 10만 명 이상→8만 명 미만.
+- 14A는 18A보다 "산업 표준에 가까운 PDK"로 설계됐고, 18A에서 구현한 GAA·후면전력을 재사용해 개발 난이도가 낮다는 언급. "14A는 이미 앞서 있다"는 발언.
+- 주가 상승이 외부 인재 영입에 도움이 됐다는 CFO 언급. 경영진이 주가 수준을 채용·조달 수단으로 활용하고 있음을 시사한다.
+- CEO의 문화 발언: "문제를 숨기면 해고"라는 원칙으로 초기 몇 달간 "몰랐던 나쁜 정보가 대거 드러났다"고 CFO가 언급. 투명성 개선의 반대급부로 과거 공시의 신뢰도에 대한 의문은 남는다.</p>
+<h2>6. 리스크</h2>
+<p>10-K 리스크 섹션 본문은 발췌에 없고, Forward-Looking Statements의 리스크 요약 목록만 제공되었다. 그중 이 종목에 실질적인 것만 추린다.</p>
+<ol>
+<li>
+<p><strong>14A 중단 조건부 리스크</strong>: 10-K는 "Intel 14A에 대해 의미있는 외부 고객을 확보하지 못하면 14A 및 차세대 선단 공정 추진을 중단하거나 일시 정지할 수 있다"고 명시. 파운드리 성장 논거와 현재 밸류에이션의 상당 부분이 이 한 조건에 걸려 있다.</p>
+</li>
+<li>
+<p><strong>자본조달과 희석의 반복</strong>: 2026년 CapEx $20B 이상(회사 계획) 대비 TTM FCF $2.83B. 이미 $20B 증자를 실행했고, 10-K는 "대체 자금조달 구조"와 "부채 의무·자본 접근성"을 리스크로 명시. 컨퍼런스에서 언급된 레버리지 약 4배(애널리스트 발언)를 감안하면 CapEx 집약도가 단기 상승할 경우 추가 증자 가능성이 있다.</p>
+</li>
+<li>
+<p><strong>미국 정부 지분과 정책 의존</strong>: 10-K는 "미국 정부의 상당한 지분 취득"과 "정부 보조금·인센티브·정책 우선순위 기대"를 리스크로 열거. 정부가 주주이자 보조금 제공자이자 규제자인 구조는 자본배분 자율성과 정책 변경 리스크를 동시에 만든다. 지분율·조건은 공시상 확인 불가.</p>
+</li>
+<li>
+<p><strong>공급 제약과 차세대 공정 실행</strong>: "수요가 공급을 앞지른다"는 것은 매출 상한이 생산능력에 묶여 있다는 뜻이다. 10-K는 "차세대 제품·공정 도입 시 결함·에라타"와 "수율 전망"을 리스크로 명시. 18A 수율이 계획에 못 미치면 공급 제약이 길어지고 마진 개선도 지연된다.</p>
+</li>
+<li>
+<p><strong>지정학·무역</strong>: 10-K는 미중 무역 긴장, 중국-대만 긴장, 관세·수출통제를 명시. 미국 내 제조 기반은 파운드리 수주에는 유리하나, 제품 판매 측면에서 중국 노출은 여전하다(지역별 매출은 확인 불가).</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>
+- 밸류에이션: 선행 PER 약 111배(계산치), FCF 수익률 0.44%. 3분기 가이던스 중간값 기준 QoQ 성장 약 <span class="up">+1%</span>로 25% YoY 성장률이 향후 분기에 급격히 둔화될 수 있다(전년 Q3 기저는 확인 불가).
+- 가격 위치: 20일 <span class="up">+35.2%</span>, 증자 발행가 $95 대비 <span class="up">+28%</span>, 52주 고점 대비 <span class="down">-13.6%</span>(고점 약 $141, 계산치). 거래량 2.02배 급증일에 신규 진입하는 것은 추격 매수다.
+- 촉매 부재: 오늘 상승은 섹터 뉴스이며 회사 공시가 없다. 다음 회사 고유 이벤트는 10월 하순 3분기 실적이다.
+- 펀더멘털 개선 자체는 부인할 수 없다(7분기 연속 상회, 영업이익률 <span class="up">+22.2%</span>p). 따라서 회피가 아닌 관망이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3분기 실적(10월 하순): 매출이 $16.8B 상단에 근접하는지, 4분기 가이던스가 QoQ 성장을 회복하는지, 매출총이익률 40.4% 유지 여부.
+2. 3분기 10-Q의 증자 후 재무상태: 현금·총부채, 레버리지, 그리고 2026년 CapEx 집행 추이. 추가 조달 계획 언급이 있는지.
+3. 14A 외부 대형 고객 확보 공시 여부. 10-K가 명시한 "중단 조건"이 해소되는지가 파운드리 프리미엄의 전제다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- 관망 → 보통으로 상향: 3분기 실적이 가이던스 상단을 상회하고 4분기 가이던스가 QoQ 성장으로 복귀, 또는 14A 대형 고객 8-K 공시. 주가가 발행가 $95~105 구간으로 조정되면 밸류에이션 부담이 완화되어 분할 진입 가능.
+- 관망 → 회피로 하향: 3분기 매출이 가이던스 하단($15.8B) 미달, 매출총이익률 40% 하회, 6개월 내 추가 유상증자 발표, 또는 회사가 14A 추진 재검토를 공식 언급.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm">10-K — 2025-12-27_0000050863-26-000011</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000157/intc-20260627.htm">10-Q — 2026-06-27_0000050863-26-000157</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000079/intc-20260328.htm">10-Q — 2026-03-28_0000050863-26-000079</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000119312526346806/d117670dex992.htm">8-K — 2026-08-10_0001193125-26-346806__EX-99.2__d117670dex992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000119312526346806/d117670dex991.htm">8-K — 2026-08-10_0001193125-26-346806__EX-99.1__d117670dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000119312526346806/d117670d8k.htm">8-K — 2026-08-10_0001193125-26-346806</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000155/q226earningsrelease.htm">8-K — 2026-07-23_0000050863-26-000155__EX-99.1__q226earningsrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/50863/000005086326000155/intc-20260723.htm">8-K — 2026-07-23_0000050863-26-000155</a></li>
+<li>Transcript — 2026-07-23 Intel Corporation (INTC) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-02 Intel Corporation (INTC) Presents at Bank of America 2026 Global Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
