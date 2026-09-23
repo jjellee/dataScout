@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLLN — BillionToOne Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BLLN — BillionToOne Inc. Class A Common Stock</h1>
+<div class="sub">2026-09-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">BLLN</span><span class="badge">+11.76%</span><span class="badge">거래량 2.13배</span><span class="badge">$5.48B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>Q2 2026 매출 $109.4M(<span class="up">+64%</span> YoY), 매출총이익률 70%, 영업이익 흑자 전환($5.5M), 분기 FCF $5.1M·TTM FCF $33.1M으로 "고성장 + 수익성 전환"이 공시로 확인되는 구간이다.</li>
+<li>다만 오늘 <span class="up">+11.76%</span>(거래량 2.13배)는 당일 전후 실적·8-K 공시가 없고, 확인되는 유일한 공시는 임원 매도 관련 Form 144다. 촉매 없는 급등을 추격할 근거는 부족하다.</li>
+<li>시가총액 $5.48B은 회사 2026년 매출 가이던스 중간값($457.5M) 대비 약 12배(계산값)로, 영업이익률 5%의 초기 수익성 단계에서 고평가 부담이 존재한다.</li>
+<li>매출 QoQ <span class="up">+1.0%</span>에 그친 반면 검사 물량은 QoQ 약 <span class="up">+4%</span>(188k→196k)여서, 검사당 매출이 소폭 하락했을 가능성이 있다(계산값). 이 부분이 Q3에서 해소되는지 확인 전에는 '적극'으로 올리기 어렵다.</li>
+<li>결론: 펀더멘털은 편입 자격이 있으나 진입 시점·가격의 문제. 분할 매수로 기본 비중을 구축하고, Q3 실적(가이던스 경로 확인)과 Q4 MRD 출시 확인 후 비중 확대 여부를 결정한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>제공된 당일 전후 SEC 공시는 2026-09-21 Form 144 한 건뿐이며, 이는 뉴스 헤드라인(Stock Titan)에 따르면 법무책임자(legal chief)가 사전 설정된 거래계획에 따라 3.5만주를 매도하는 건이다. 당일 종가 기준 약 $4.1M(계산값) 규모로, 상승 촉매가 아니라 오히려 중립~소폭 부정 요인이다.</li>
+<li>뉴스 헤드라인(timothysykes, StocksToTrade, MarketBeat)은 모두 "강한 마진에 모멘텀 트레이더 유입"이라는 사후적 해설로, 신규 정보가 담겨 있지 않다.</li>
+<li>가격 맥락: 20일 수익률 <span class="up">+20.0%</span>인데 60일 수익률은 <span class="down">-1.8%</span>, 52주 고점 대비 <span class="down">-22.6%</span>다. 즉 최근 두 달 조정 후 반등 국면에서 모멘텀 수급이 붙은 형태로 해석된다(추정).</li>
+<li>회사가 Q4 2026 출시를 예고한 MRD 검사(10-Q)에 대한 기대가 선반영되고 있을 가능성은 있으나, 이를 뒷받침하는 당일 공시·뉴스는 없다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>기술 플랫폼.</strong> 10-K/10-Q에 따르면 회사는 단일분자 차세대 시퀀싱(smNGS) 플랫폼과 특허받은 정량 카운팅 템플릿(QCT)을 기반으로, 세포유리 DNA(cfDNA)에서 희소한 유전 신호를 단일 분자 수준으로 검출·정량하는 분자진단 검사를 판매한다.</p>
+<p><strong>제품군 (두 축).</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업</th>
+<th>제품</th>
+<th>내용(공시 기준)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>산전(Prenatal)</td>
+<td>UNITY (Fetal Risk Screen)</td>
+<td>2019년 출시. 부계 샘플·침습 검사 없이 모체 혈액만으로 겁상적혈구병·낭포성섬유증 등 열성 질환의 태아 위험을 평가하는 최초의 단일유전자 NIPT(sgNIPT). 2024년 태아 항원 검사가 국가 진료 가이드라인 변경을 이끌어 보험 계약 확대·ASP 상승에 기여했다고 회사는 밝힘</td>
+</tr>
+<tr>
+<td>산전</td>
+<td>Unity Confirm</td>
+<td>2026년 5월 출시. 순환 태아세포를 포집해 고위험 스크리닝 결과를 비침습적으로 확인하는 검사</td>
+</tr>
+<tr>
+<td>산전</td>
+<td>130유전자 패널</td>
+<td>2026년 8월 확장 발표. 회사는 현재 가장 큰 단일유전자 NIPT 패널이라고 밝힘</td>
+</tr>
+<tr>
+<td>종양(Oncology)</td>
+<td>Northstar Select / Response</td>
+<td>2023년 출시. Select는 치료 선택용 액체생검(기존 대비 50% 이상 많은 실행가능 변이 검출을 회사가 주장), Response는 메틸화 기반 종양부담 정량 모니터링</td>
+</tr>
+<tr>
+<td>종양</td>
+<td>Northstar PGx / Select CH / Origin</td>
+<td>2026년 1월·2월·8월 각각 출시된 Select 부가 기능(항암제 안전성, 클론성 조혈, 조직 기원 추정)</td>
+</tr>
+<tr>
+<td>종양</td>
+<td>MRD 검사 (개발 중)</td>
+<td>조직 불요 범암종 미세잔존질환 검사. 회사는 2026년 4분기 상용화를 예상한다고 밝힘</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객·수익 모델.</strong> 의사·의료기관이 검사를 처방하면 결과 전달 시점에 환자의 민간보험·Medicaid·Medicare·환자 본인에게 청구한다. 매출 = 검사 물량 × 보험 상환으로 실현되는 ASP. 회사는 물량 증가 → 보험사 인네트워크 계약 확대 → 거절률 하락·ASP 상승 → 영업 설득력 강화라는 플라이휠을 핵심 동력으로 설명한다.</p>
+<p><strong>매출 구성 (Q2 2026, 8-K).</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>금액</th>
+<th>비중(계산값)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>산전 임상검사</td>
+<td>$94.2M</td>
+<td>86%</td>
+<td>+55%</td>
+</tr>
+<tr>
+<td>종양 임상검사</td>
+<td>$13.7M</td>
+<td>12.5%</td>
+<td>+176%</td>
+</tr>
+<tr>
+<td>기타(계산값 잔여분)</td>
+<td>약 $1.5M</td>
+<td>1.4%</td>
+<td>구성 항목은 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>합계</td>
+<td>$109.4M</td>
+<td>100%</td>
+<td>+64%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치.</strong> 회사는 미국 임신 10건 중 1건 이상에서 검사를 수행하고 있으며(Q1 10-Q에서는 11건 중 1건), 누적 150만 건 이상의 검사 중 최근 12개월에 약 72.6만 건이 처리됐다고 밝힘. 경쟁사 명칭·점유율은 제공된 발췌에서 확인 불가.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 — 물량과 단가가 함께 기여.</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>Q2 2025</th>
+<th>Q2 2026</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$66.6M</td>
+<td>$109.4M</td>
+<td>+64%</td>
+</tr>
+<tr>
+<td>검사 전달 건수</td>
+<td>145k</td>
+<td>196k</td>
+<td>+35%</td>
+</tr>
+<tr>
+<td>검사당 매출(계산값)</td>
+<td>약 $459</td>
+<td>약 $558</td>
+<td>약 <span class="up">+21%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>65%</td>
+<td>70%</td>
+<td>+5%p</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>-$1.6M</td>
+<td>+$5.5M</td>
+<td>흑자 전환</td>
+</tr>
+<tr>
+<td>영업이익률(계산값)</td>
+<td>-2.4%</td>
+<td>5.0%</td>
+<td>+7.4%p</td>
+</tr>
+</tbody>
+</table></div>
+<p>물량 <span class="up">+35%</span>에 검사당 매출 <span class="up">+21%</span>가 곱해져 매출 <span class="up">+64%</span>가 나왔다. 검사당 매출 상승은 회사가 설명하는 인네트워크 확대에 따른 ASP 개선과, 단가가 상대적으로 높은 종양 검사 비중 상승(4.9M→13.7M)의 믹스 효과가 합쳐진 결과로 해석된다(추정, 제품별 ASP는 공시상 확인 불가).</p>
+<p><strong>QoQ 정체는 주의 포인트.</strong> 매출 QoQ <span class="up">+1.0%</span>이므로 Q1 2026 매출은 약 $108.3M(계산값). 같은 기간 전달 검사는 188k→196k로 약 <span class="up">+4%</span> 늘었다. 검사당 매출이 약 $576→$558로 3%가량 낮아진 셈이다(계산값). 계절성·수금 시점·믹스 변화 중 무엇 때문인지는 발췌된 MD&amp;A에 설명이 없다.</p>
+<p><strong>마진 방향성.</strong> 매출총이익률 70.5%는 전년 대비 5%p 개선. 회사는 ASP 상승·COGS 하락·운영 효율 개선의 결합이 순이익 창출의 주된 동력이라고 밝힘. 영업이익률은 5%로 아직 낮으나 방향은 우상향이다.</p>
+<p><strong>현금흐름·재무 건전성.</strong> Q2 FCF $5.1M(회사 정의: 영업현금흐름 - 자본지출), TTM FCF $33.1M. 현금 잔액·부채 규모는 제공된 발췌에서 확인 불가. 2025년 11월 6일 나스닥 상장으로 조달한 자금이 있으나 금액은 공시상 확인 불가.</p>
+<p><strong>가이던스.</strong> 회사는 2026년 연간 매출 $450M~$465M 가이던스를 유지(reiterate)한다고 밝힘. 상반기 합산 약 $217.7M(계산값)이므로 하반기에 $232M~$247M, 분기 평균 $116M~$124M이 필요하다. Q2 $109.4M 대비 6~13% 높은 분기 매출을 하반기에 내야 한다는 뜻이다(계산값).</p>
+<p><strong>주식 수·지배구조.</strong> 10-K 기준 2026년 3월 6일 Class A 41.4M주 + Class B 4.55M주. Class B의 의결권 조건은 발췌에서 확인 불가. 회사는 신흥성장기업(EGC)·비가속 신고자이며 내부통제(404(b)) 외부감사 인증을 받지 않았다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>산전 검사의 ASP 상승(인네트워크 확대).</strong> 회사는 물량 증가가 보험 계약을 끌어내고 거절률을 낮춰 ASP를 높인다고 설명한다. 검사당 매출 <span class="up">+21%</span> YoY가 이를 뒷받침한다.
+   검증 포인트: Q3 검사당 매출(매출 ÷ 전달 건수)이 Q2 $558 수준을 회복·상회하는지. QoQ 하락이 이어지면 플라이휠 둔화 신호.</p>
+</li>
+<li>
+<p><strong>산전 패널 확장(130유전자 패널, Unity Confirm).</strong> 이미 미국 임신 10건 중 1건을 검사하는 만큼, 침투율보다 검사당 가치 상승이 산전 성장의 다음 축이다. 신제품의 별도 매출 기여는 공시상 확인 불가.
+   검증 포인트: Q3 10-Q에서 "1 in 10" 지표의 추가 개선 여부, 130유전자 패널의 보험 적용·청구 코드 언급 여부.</p>
+</li>
+<li>
+<p><strong>종양 사업의 스케일업.</strong> Q2 종양 매출 $13.7M(<span class="up">+176%</span>)로 비중 12.5%. PGx·CH·Origin 부가 기능이 Select의 검사당 가치를 높이는 구조.
+   검증 포인트: Q3 종양 매출이 $15M 이상으로 QoQ 성장이 유지되는지, 종양 매출 비중이 15%를 향해 가는지.</p>
+</li>
+<li>
+<p><strong>MRD 검사 출시(회사 예상 Q4 2026).</strong> 조직 불요 범암종 MRD는 반복 검사 특성상 종양 매출의 구조적 확장을 가져올 수 있다(추정). 다만 출시 지연·보험 적용 지연 가능성이 있다.
+   검증 포인트: Q4 내 출시 8-K 또는 보도자료 존재 여부, 초기 상환 경로(Medicare 커버리지 등) 언급 여부.</p>
+</li>
+<li>
+<p><strong>가이던스 달성 경로.</strong> 하반기 분기 평균 $116M~$124M 필요(계산값).
+   검증 포인트: Q3 매출이 $113M 미만이면 가이던스 하단 달성이 어려워진다.</p>
+</li>
+</ol>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>보험 상환 의존 구조.</strong> 매출이 물량 × 보험 상환 ASP로 결정되며, 회사 스스로 인네트워크 여부가 거절률과 ASP를 좌우한다고 밝힘. 주요 보험사의 계약 조건 변경, 코드 재조정, 가이드라인 후퇴가 발생하면 물량이 유지되더라도 매출이 꺾일 수 있다. Q2의 검사당 매출 QoQ 하락(계산값)은 이 민감도를 보여주는 초기 신호일 수 있다.</p>
+</li>
+<li>
+<p><strong>산전 집중도(매출의 86%).</strong> 이미 미국 임신 10건 중 1건을 검사하는 수준이라 침투율 상승 여력이 과거만큼 크지 않다(추정). 미국 출생아 수 감소는 물량의 구조적 상한으로 작용한다. 종양 사업이 아직 작아 산전 둔화를 상쇄하기 어렵다.</p>
+</li>
+<li>
+<p><strong>종양·MRD 실행 리스크.</strong> 회사는 MRD 검사를 Q4 2026 출시 예상이라고 밝혔으나, 10-K는 임상 유효성·유용성 근거 확보 능력을 핵심 불확실성으로 명시한다. 출시가 늦어지거나 근거 데이터가 약하면 현재 주가에 반영된 종양 확장 기대가 빠질 수 있다(추정).</p>
+</li>
+<li>
+<p><strong>신규 상장사 거버넌스·물량 부담.</strong> EGC·비가속 신고자로 내부통제 외부감사 인증이 없고, 이중 클래스(Class B) 구조가 존재한다. 2025년 11월 상장 후 첫 해로, Form 144(2026-09-21)에서 확인되듯 임원의 계획 매도가 진행 중이다. 추가 내부자·초기투자자 물량 출회는 공시상 확인 불가하나 배제할 수 없다.</p>
+</li>
+<li>
+<p><strong>밸류에이션·모멘텀 의존.</strong> 시가총액 $5.48B은 2026년 가이던스 매출의 약 12배, TTM FCF 대비 약 166배(계산값)다. 영업이익률 5% 단계에서 이 배수는 성장률 유지가 전제다. 60일 수익률 <span class="down">-1.8%</span>, 52주 고점 대비 <span class="down">-22.6%</span>는 이 종목이 이미 한 차례 기대 조정을 겪었음을 보여준다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- 긍정: 매출 <span class="up">+64%</span> YoY, 물량 <span class="up">+35%</span>와 검사당 매출 <span class="up">+21%</span>의 동반 성장, 매출총이익률 70%(<span class="up">+5%</span>p), 영업이익 흑자 전환, TTM FCF $33.1M, 연간 가이던스 유지.
+- 부정: 매출 QoQ <span class="up">+1.0%</span>에 검사당 매출 QoQ 약 <span class="down">-3%</span>(계산값), 하반기 분기당 6~13% 추가 성장 필요(계산값), 가이던스 매출 대비 약 12배 밸류에이션, 오늘 급등의 확인된 촉매 부재, 임원 매도 Form 144.
+- 종합: 사업의 질은 '적극'에 가깝지만, 가격과 타이밍 근거가 부족해 한 단계 낮춘 '보통'. 오늘 종가($116.07) 추격 매수는 피하고, 급등분 일부 반납 시 분할 진입을 권한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Form 144 원문에서 매도 주식 수·계획 채택일을 확인하고, 다른 임원·초기투자자의 추가 Form 144/Form 4 제출 여부를 점검한다.
+2. Q2 10-Q 전체 MD&amp;A에서 검사당 매출 QoQ 하락 사유(계절성·수금·믹스) 설명이 있는지, 산전 ASP 추이에 대한 회사 언급을 확인한다. 제공된 발췌에는 없다.
+3. 현금 잔액·부채·상장 조달금 사용 계획을 10-Q 재무제표에서 확인한다. 발췌에서는 확인 불가.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- Q3 매출이 $113M 미만이거나 회사가 가이던스를 하향할 때.
+- Q3 검사당 매출이 Q2 $558보다 추가 하락하고, 회사가 이를 구조적 ASP 압박(보험사 계약 조건 변화)으로 설명할 때.
+- MRD 검사 출시가 2026년을 넘겨 지연된다고 공시할 때.
+- 임원·초기투자자 매도가 복수 건으로 이어지며 총 규모가 유의미하게 커질 때.</p>
+<p><strong>판단을 '적극'으로 올릴 조건</strong>
+- Q3 매출 $118M 이상 + 매출총이익률 70% 이상 유지 + 종양 매출 $15M 이상.
+- MRD 검사 Q4 출시가 공시로 확인되고 초기 상환 경로가 제시될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000017/blln-20251231.htm">10-K — 2025-12-31_0002070849-26-000017</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000050/blln-20260630.htm">10-Q — 2026-06-30_0002070849-26-000050</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000031/blln-20260331.htm">10-Q — 2026-03-31_0002070849-26-000031</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000048/a991blln-earningspressrele.htm">8-K — 2026-08-05_0002070849-26-000048__EX-99.1__a991blln-earningspressrele</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000048/blln-20260805.htm">8-K — 2026-08-05_0002070849-26-000048</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000042/blln-20260623.htm">8-K — 2026-06-23_0002070849-26-000042</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000040/blln-20260610.htm">8-K — 2026-06-10_0002070849-26-000040</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2070849/000207084926000029/a991blln-earningspressrele.htm">8-K — 2026-05-06_0002070849-26-000029__EX-99.1__a991blln-earningspressrele</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

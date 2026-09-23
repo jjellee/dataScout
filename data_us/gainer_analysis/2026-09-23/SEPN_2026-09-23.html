@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEPN — Septerna Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SEPN — Septerna Inc. Common Stock</h1>
+<div class="sub">2026-09-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">SEPN</span><span class="badge">+4.77%</span><span class="badge">거래량 1.34배</span><span class="badge">$1.88B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 상승(<span class="up">+4.77%</span>, 거래량 1.34배)은 공시·뉴스 촉매가 확인되지 않으며, 거래량 배수도 '급증'이라 부르기엔 약해 수급성 움직임으로 판단됨.</li>
+<li>핵심 가치 동인인 SEP-479(경구 PTH1R 작용제) Phase 1 데이터는 2026년 6월 30일자 10-Q에서 "2027년 1분기"로 시점이 밀렸고, 2번째 프로그램 SEP-631은 CSU Phase 2b 계획을 철회하고 전략 재검토 중임. 즉 향후 2개 분기 동안 주가를 정당화할 임상 이벤트가 비어 있음.</li>
+<li>매출($26.7M/분기)은 전액 Novo Nordisk 협업 연구서비스 수익이며, 제품 매출은 0. TTM FCF +$105.1M은 협업 계약금 유입에 따른 일회성 성격일 가능성이 높음(현금·투자자산 잔액은 제공 발췌에서 확인 불가).</li>
+<li>2025년 6월 30일 종가 $10.57 → 현재 $40.38로 약 4배 상승한 시가총액 $1.88B는 임상 PoC 이전 자산에 상당한 기대를 선반영한 수준. 데이터 없이 비중을 싣기보다 2027년 1분기 SEP-479 readout 전후 재평가가 합리적.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음, 수집된 뉴스 헤드라인 없음.</li>
+<li>가장 최근 8-K는 2026년 8월 25일 Rajiv Patni 박사 CMO 선임 건으로, 약 한 달 전 이벤트라 당일 촉매로 보기 어려움.</li>
+<li>거래량 배수 1.34배, 거래대금 $16.6M은 시총 $1.88B 대비 약 0.9% 회전에 불과. 20일 수익률 <span class="down">-0.3%</span>, 52주 고점 대비 <span class="down">-16.2%</span>로 박스권 내 반등 성격이 강함.</li>
+<li>바이오텍 섹터 전반의 동조 움직임 또는 소형 바이오 순환매 가능성이 있으나, 제공 자료로는 검증 불가.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>정체성:</strong> 임상 단계 바이오텍. GPCR(G단백질 결합 수용체)을 세포 밖에서 온전한 구조·기능으로 재구성하는 자체 'Native Complex Platform'을 기반으로 경구 소분자 신약을 발굴함. 10-K에 따르면 초기 집중 영역은 내분비, 면역·염증, 대사질환 3개.</p>
+<p><strong>파이프라인(10-K·10-Q 기준):</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>프로그램</th>
+<th>타깃/기전</th>
+<th>적응증</th>
+<th>단계</th>
+<th>소유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEP-479</td>
+<td>PTH1R 경구 작용제</td>
+<td>부갑상선기능저하증</td>
+<td>Phase 1 (2026.4 첫 투약)</td>
+<td>자체</td>
+</tr>
+<tr>
+<td>SEP-631</td>
+<td>MRGPRX2 음성 알로스테릭 조절제</td>
+<td>비만세포 매개 질환(CSU 등)</td>
+<td>Phase 1 완료, 후속 전략 재검토 중</td>
+<td>자체</td>
+</tr>
+<tr>
+<td>TSHR 프로그램</td>
+<td>TSH 수용체 NAM</td>
+<td>그레이브스병</td>
+<td>전임상(개발후보 선정 전)</td>
+<td>자체</td>
+</tr>
+<tr>
+<td>인크레틴 수용체 작용제(GLP-1·GIP·글루카곤 등)</td>
+<td>경구 소분자</td>
+<td>비만·2형 당뇨 등 대사질환</td>
+<td>연구 단계, 미공개 2개 타깃 포함</td>
+<td>Novo Nordisk 파트너십</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수익 구조:</strong> 10-Q는 "매출은 전적으로 연구서비스에서 발생"했고 "제품 매출은 없다"고 명시. 사실상 유일한 고객은 Novo Nordisk이며, 10-K 전망 문구상 향후 마일스톤·글로벌 순매출 기반 단계별 로열티 수취 가능성을 언급함. 협업 계약금 규모·마일스톤 총액은 제공 발췌에 없어 공시상 확인 불가.</p>
+<p><strong>경쟁 위치:</strong> 실적콜에서 SEP-479에 대해 "우리가 아는 한 최초의 유효한 경구 소분자 PTH1R 작용제"라고 언급했고, 기존 치료제는 Ascendis의 YORVIPATH 등 펩타이드 주사제라고 설명함. 즉 경구 편의성이 차별화 축. 다만 SEP-479는 "1세대 화합물이 예상치 못한 안전성 소견으로 중단된 뒤의 2세대 화합물"이라는 점도 콜에서 스스로 밝힘.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>매출의 질:</strong> 분기 매출 $26.7M, YoY +22,375.6%는 전년 동기 매출이 사실상 0에 가까웠음을 의미(Novo 계약 이전). QoQ <span class="up">+0.8%</span>로 두 분기 연속 거의 동일한 수준이며, 이는 계약금을 기간에 걸쳐 안분 인식하는 협업 수익의 전형적 패턴으로 추정됨. 단가·물량·믹스 개념이 적용되지 않는 매출이며, 계약 수행 의무가 소진되면 소멸하는 성격임을 감안해야 함.</p>
+<p><strong>손익:</strong> 영업이익률 <span class="down">-62.9%</span>는 매출 대비 영업손실 약 $16.8M 수준을 역산 시사. 10-Q 기준 순손실은 2026년 1분기 $8.6M(전년 $21.5M), 상반기 누계 $21.7M(전년 $46.3M)으로, 협업 수익 인식 덕에 손실 폭이 전년 대비 절반 이하로 축소됨. 그러나 회사는 "향후 수년간 유의미하고 증가하는 영업손실을 계속 예상"한다고 밝힘. 누적결손금은 2026년 6월 30일 기준 $188.9M.</p>
+<p><strong>현금흐름·재무 건전성:</strong> TTM 잉여현금흐름 +$105.1M은 임상 단계 바이오텍으로선 이례적인 플러스이며, Novo 계약금 수령 시점이 TTM 구간에 포함된 결과로 보는 것이 합리적(추정). 현금·현금성자산·투자자산 잔액과 부채 규모는 제공 발췌에 없어 공시상 확인 불가. 실적콜에서 경영진은 "2029년까지의 현금 런웨이"를 언급함. 회사가 밝힌 런웨이를 신뢰한다면 향후 2~3년 희석 리스크는 제한적이나, SEP-631 후속 임상·TSHR 개발후보 진입 등 지출 증가 시 런웨이 가정이 바뀔 수 있음.</p>
+<p><strong>주식 수:</strong> 2026년 3월 2일 기준 발행주식 44,906,374주. 시총 $1.88B/종가 $40.38 역산 시 약 46.5M주로, 이후 소폭 증가했을 가능성이 있으나 사유는 공시상 확인 불가.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① SEP-479 Phase 1 (부갑상선기능저하증) — 최대 가치 동인</strong>
+- 회사는 2026년 6월 30일자 10-Q에서, 진행 중인 Phase 1의 PK 데이터상 말단 반감기가 약 3~4일로 관찰되어 1일 1회 투여를 뒷받침할 것으로 예상하며, 정상상태 PK를 완전히 특성화하기 위해 MAD 코호트 투약을 14일로 연장하고 SAD·MAD 데이터를 2027년 1분기에 함께 발표하겠다고 밝힘.
+- 실적콜에서 경영진은 원숭이 PK/PD에서 단회 투약 후 내인성 PTH 약 80% 감소, 혈청 칼슘 0.3~0.5 mg/dL 상승이 건강인 대상 목표 범위라고 설명함. Phase 1의 핵심 판정 기준은 (a) 내인성 PTH 억제, (b) 혈청 칼슘 상승 폭, (c) 고칼슘혈증 외 이상반응 유무.
+- <strong>검증 포인트:</strong> 3분기 10-Q에서 데이터 발표 시점이 2027년 1분기로 유지되는지, 코호트 수·용량 범위 변경 여부, 안전성 관련 추가 언급 유무.</p>
+<p><strong>② SEP-631 (MRGPRX2) — 방향 전환 중</strong>
+- 10-Q(6월 30일자): "MRGPRX2 분야의 새로 등장한 임상 데이터에 근거해" 2026년 하반기 예정이던 CSU Phase 2b를 철회하고, 고미충족 비만세포 매개 질환 대상 "자본 효율적 신호탐색 임상" 전략을 평가 중이라고 밝힘.
+- 실적콜(5월)에서는 icatibant 피부유발 시험에서 최저용량 10mg으로도 저농도 자극 반응을 식염수 수준까지 억제했다고 강조했고, 아토피피부염·간질성방광염·편두통·천식 등도 탐색 대상으로 언급함.
+- <strong>검증 포인트:</strong> 대체 적응증과 시험 디자인이 언제 확정되는지. CSU 철회 사유가 된 "분야의 임상 데이터"가 무엇인지 회사가 설명하는지(경쟁사 데이터로 추정되나 공시상 확인 불가).</p>
+<p><strong>③ TSHR 프로그램 (그레이브스병)</strong>
+- 실적콜에서 "개발후보 선정에 대한 가시성이 있으며 올해 후반 발표 예정"이라고 언급.
+- <strong>검증 포인트:</strong> 2026년 내 개발후보 지명 및 IND 일정 제시 여부.</p>
+<p><strong>④ Novo Nordisk 협업 — 유일한 현금 창출원</strong>
+- 10-K는 마일스톤·로열티 수취 가능성을, 실적콜은 협업이 "순조롭게 진행 중"이라고 언급. 구체적 마일스톤 조건·금액은 제공 발췌에 없음.
+- <strong>검증 포인트:</strong> 분기 협업 매출 수준의 지속성, 마일스톤 달성 공시, 타깃 추가·확대 여부.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>주의:</strong> 제공된 transcript는 2026년 5월 13일 BofA 헬스케어 컨퍼런스 발표로 정규 실적콜이 아니며, "(중략)" 이후 부분은 NewAmsterdam(obicetrapib)의 별도 세션 내용이 섞여 있어 본 리포트에서는 배제함. Septerna 관련 Q&amp;A는 플랫폼 차별성에 대한 1개 질문만 확인됨.</p>
+<p><strong>경영진 톤과 자신감의 근거</strong>
+- CEO Jeff Finer의 톤은 명확히 낙관적. "모든 프로그램이 의미 있는 Phase 1 readout을 갖는다"는 포트폴리오 논리와 "2029년까지 현금 런웨이"를 반복 강조.
+- SEP-479 자신감의 근거는 전임상(원숭이 PK/PD, 3종 GLP 독성시험에서 표적 관련 고칼슘혈증 외 소견 없음)이며, 인체 데이터는 아직 없음.</p>
+<p><strong>가이던스 화법의 변화(콜 vs 이후 공시)</strong>
+- 5월 콜: SEP-479 데이터 "올해 말 또는 내년 초", SEP-631 "올해 후반 CSU Phase 2 진입".
+- 8월 10-Q: SEP-479 "2027년 1분기"로 구체화·후퇴, SEP-631 CSU Phase 2b 철회. 3개월 사이 두 리드 프로그램의 일정·전략이 모두 보수적으로 바뀐 점은 톤과 실제 진행 간 괴리를 시사.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- SEP-479가 안전성 소견으로 중단된 1세대 화합물의 후속이라는 점.
+- 인체 반감기 전망치 40~80시간(이후 10-Q에서 3~4일로 확인, 콜 전망과 부합).
+- SEP-631의 Ki 약 500pM, 24시간 반감기, 음식 영향 없음, 위약과 구별되지 않는 내약성.
+- 자체 개발한 "건강인 칼슘 상승 0.3~0.5 mg/dL" 번역 기준. 이는 회사의 해석 프레임이므로, 실제 데이터 발표 시 이 기준을 그대로 적용해 성공 여부를 판단하는 것이 타당한지는 별도 검토가 필요함.</p>
+<p><strong>방어·회피 지점</strong>
+- 유일한 Q&amp;A인 "왜 이 플랫폼이 다른 GPCR 접근보다 성과를 낼 것인가, 오프타깃 우려는?"에 대해 플랫폼 기술 설명으로 답변했고, 오프타깃 리스크에 대한 직접 답변은 발췌 범위 내에서 확인되지 않음.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>SEP-631 전략 공백과 원인 불투명성.</strong> CSU Phase 2b 철회 사유가 "분야의 새로운 임상 데이터"라는 점은 동일 표적의 경쟁 데이터가 기대에 못 미쳤을 가능성(추측)을 시사하며, 이는 SEP-631 자체의 기전 가치에 대한 시장 재평가로 이어질 수 있음. 대체 적응증·디자인이 미정인 상태.</p>
+</li>
+<li>
+<p><strong>SEP-479 데이터 지연과 1세대 안전성 이력.</strong> 발표 시점이 2027년 1분기로 밀렸고, 반감기 3~4일은 편의성 측면에선 긍정적이나 축적으로 인한 고칼슘혈증 관리 난이도를 높일 수 있음(추측). 1세대 화합물이 안전성 문제로 중단된 이력상 2세대의 인체 안전성이 핵심 검증 대상.</p>
+</li>
+<li>
+<p><strong>단일 파트너 수익 의존.</strong> 매출 100%가 Novo 협업에서 발생하며, 협업 종료·축소 시 매출과 현금 유입이 동시에 소멸. 10-K도 협업 유지 및 이익 실현 가능성을 리스크로 명시.</p>
+</li>
+<li>
+<p><strong>밸류에이션 대비 검증 부재.</strong> 15개월간 약 4배 상승했으나 인체 유효성 데이터는 SEP-631 Phase 1 피부유발 시험이 유일하고, 그마저도 후속 개발이 재검토 중. 시총 $1.88B는 SEP-479 성공을 상당 부분 선반영한 수준으로 판단됨.</p>
+</li>
+<li>
+<p><strong>경영진 교체기 실행 리스크.</strong> 2026년 8월 신임 CMO 선임은 임상 조직 강화로 긍정 해석 가능하나, 두 리드 프로그램 전략 변경 직후의 인사라는 점에서 개발 전략이 다시 조정될 가능성도 열려 있음.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>
+- 오늘 거래량 1.34배·회전율 약 0.9%: 기관 신규 유입으로 보기엔 약한 수급.
+- 20일 수익률 <span class="down">-0.3%</span>, 52주 고점 대비 <span class="down">-16.2%</span>: 추세 전환보다 박스권 반등.
+- 분기 매출 $26.7M은 QoQ <span class="up">+0.8%</span>로 성장이 아닌 계약금 안분 인식, 제품 매출 0.
+- 순손실 반기 $21.7M, 누적결손 $188.9M, 회사 언급 런웨이 2029년: 단기 희석 리스크 낮음(긍정).
+- 다음 가치 이벤트(SEP-479 데이터)까지 약 2개 분기 공백.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3분기 10-Q(11월 예상)에서 현금·투자자산 잔액과 분기 현금소진율을 확인해 "2029년 런웨이" 주장의 정합성 검증. 제공 발췌에는 잔액이 없음.
+2. SEP-631의 대체 적응증·임상 디자인·개시 시점 발표 여부, 그리고 CSU 철회 배경에 대한 회사 설명.
+3. SEP-479 Phase 1의 코호트 진행 상황(SAD 완료 여부, MAD 14일 투약 개시 여부)과 2027년 1분기 발표 일정 유지 여부.</p>
+<p><strong>판단을 상향(관망→보통)할 조건</strong>
+- SEP-479 SAD 단계에서 내인성 PTH 억제·칼슘 상승 방향이 사전 공개되고 안전성 이슈가 없다는 회사 언급이 나올 때.
+- Novo 협업에서 마일스톤 달성이 공시되어 협업 수익이 일회성이 아님이 확인될 때.
+- TSHR 개발후보 지명으로 플랫폼 재현성이 3번째 프로그램에서 입증될 때.</p>
+<p><strong>판단을 하향(관망→회피)할 조건</strong>
+- SEP-479 발표 시점이 2027년 1분기를 넘어 재차 연기되거나, 안전성 관련 프로토콜 변경(용량 축소·코호트 중단)이 공시될 때.
+- SEP-631 후속 개발이 사실상 보류되거나 자산 매각·라이선스 아웃으로 전환될 때.
+- Novo 협업의 타깃 축소·종료 통지가 공시될 때.
+- 현금 잔액이 회사 언급 런웨이와 명백히 불일치해 2027년 내 자금조달 필요성이 드러날 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526098507/sepn-20251231.htm">10-K — 2025-12-31_0001193125-26-098507</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526342353/sepn-20260630.htm">10-Q — 2026-06-30_0001193125-26-342353</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526216759/sepn-20260331.htm">10-Q — 2026-03-31_0001193125-26-216759</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526364210/d172697dex991.htm">8-K — 2026-08-22_0001193125-26-364210__EX-99.1__d172697dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526364210/d172697d8k.htm">8-K — 2026-08-22_0001193125-26-364210</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526342328/sepn-ex99_1.htm">8-K — 2026-08-10_0001193125-26-342328__EX-99.1__sepn-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526342328/sepn-20260810.htm">8-K — 2026-08-10_0001193125-26-342328</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1984086/000119312526290649/sepn-20260626.htm">8-K — 2026-06-26_0001193125-26-290649</a></li>
+<li>Transcript — 2026-05-13 Bank of America Global Healthcare Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

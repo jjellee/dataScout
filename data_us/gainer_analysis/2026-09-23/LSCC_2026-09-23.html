@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LSCC — Lattice Semiconductor Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LSCC — Lattice Semiconductor Corporation Common Stock</h1>
+<div class="sub">2026-09-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">LSCC</span><span class="badge">+4.51%</span><span class="badge">거래량 1.97배</span><span class="badge">$17.40B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>2Q26(7/4 마감) 매출 $201.1M, YoY <span class="up">+62%</span>, QoQ <span class="up">+17.7%</span>로 1Q 콜 가이던스 중간값($185M)을 약 8.7% 상회했고, 8-K에서 3Q26 FPGA 매출 YoY <span class="up">+65%</span> 성장을 가이던스로 제시함. 성장 가속과 비트-앤-레이즈 패턴은 공시로 확인됨.</li>
+<li>GAAP 매출총이익률 70.3%(YoY <span class="up">+1.9%</span>p), 조정 EBITDA 마진 43.0%, 분기 FCF $81.3M(마진 40.4%)로 영업 레버리지가 실제 현금으로 이어지고 있음.</li>
+<li>다만 시가총액 $17.4B는 TTM FCF $163M 대비 약 107배, 2Q 연환산 non-GAAP EPS($0.53×4) 기준 약 58배로 성장을 상당 부분 선반영한 수준이며, AMI 인수로 약 $1B 미만의 신규 부채와 THL 파트너스 대상 $650M 주식 발행(락업 12개월, 분기 25%씩 해제)이 더해짐.</li>
+<li>오늘 <span class="up">+4.51%</span>는 최근 4일 내 SEC 공시가 없고 특정 촉매가 확인되지 않아, 신규 진입은 3Q 실적(AMI 연결 첫 분기)과 락업 해제 물량을 확인한 뒤 확대하는 것이 합리적임.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시 없음. 가장 최근 실질적 이벤트는 8월 4일 2Q26 실적 8-K로, 7주 전 자료임.</li>
+<li>뉴스 헤드라인 중 StockStory·GuruFocus 기사는 주가 움직임을 후행적으로 설명하는 유형이며, 제공된 자료에는 본문이 없어 원인을 특정할 수 없음. "LSCC hosts candidates at Humphreys Park event"(Vincennes Sun-Commercial)는 지역 언론 기사로 동일 약어를 쓰는 다른 조직일 가능성이 높아 무관한 것으로 판단함.</li>
+<li>가격 맥락: 52주 고점 대비 <span class="down">-21.1%</span>, 60일 <span class="down">-11.7%</span>, 20일 <span class="up">+7.3%</span>. 60일 구간 하락은 5월 초 AMI 인수 발표(부채·희석) 이후의 조정과 시기가 겹치나, 인과는 공시로 확인 불가하며 추정임. 오늘 거래량 배수 1.97배·거래대금 $316.5M은 기관성 수급 유입을 시사하지만 근거 자료 없음.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지·목차·forward-looking 문단만 포함되어 있어 Item 1 사업 섹션 본문은 확인 불가. 아래는 10-Q MD&amp;A 개요와 콜 발언을 기반으로 함.</p>
+<p><strong>제품</strong>: 저전력·소형 프로그래머블 로직(FPGA)이 핵심이며, 실리콘 인에이블링 제품, 시스템 솔루션, 설계 서비스, IP 라이선스로도 수익화함(10-Q). CEO는 JPM 컨퍼런스에서 제품군을 pre-Nexus / Nexus(약 20만 로직셀까지) / Avant(약 60만 로직셀까지) 3개로 정리했고, 대형 FPGA·SoC 통합 로드맵을 취임 후 폐기해 소형·중형에 집중한다고 밝힘. 처리 프로세서(NXP·ST·Renesas) 및 데이터센터 CPU·GPU·BMC·NIC 옆의 "컴패니언 칩"으로 포지셔닝해 보안 부트, 전원 시퀀싱, 플랫폼 관리, I/O 확장, 센서 브리징을 담당한다고 함(1Q 콜).</p>
+<p><strong>엔드마켓 구성(2Q26, 10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>엔드마켓</th>
+<th>2Q26 매출</th>
+<th>비중</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute &amp; Communications</td>
+<td>$125.9M</td>
+<td>62.6%</td>
+<td>+83%</td>
+</tr>
+<tr>
+<td>Industrial &amp; Embedded</td>
+<td>$75.1M</td>
+<td>37.4%</td>
+<td>+36%</td>
+</tr>
+</tbody>
+</table></div>
+<p>1Q26부터 엔드마켓을 2개 그룹으로 재편했고 소비자 부문은 Industrial &amp; Embedded에 흡수됨. 1Q 10-Q는 C&amp;C 성장의 주원인을 "범용·AI 서버를 포함한 데이터센터 수요와 유선 네트워킹 부품"으로, I&amp;E는 "산업·항공우주 고객 수요 회복"으로 설명함. 회사는 AI를 별도 엔드마켓으로 분류하지 않으며 "AI 관련 매출이 향후 수년간 성장할 것"으로 기대한다고 밝힘.</p>
+<p><strong>고객·채널</strong>: 유통사가 매출의 상당 부분을 차지하며, 엔드마켓 배분은 유통사·최종고객 제공 데이터에 회사 판단을 더한 추정치임(10-Q). 1Q 10-Q는 아시아 매출이 YoY <span class="up">+71%</span> 증가했고 그 원인이 하이퍼스케일러(원문 절단)에 있다고 기재함. 특정 고객 매출 비중은 제공 발췌에서 확인 불가.</p>
+<p><strong>제조</strong>: 팹리스. 팹은 UMC·Samsung·TSMC, 구형 노드 사용(1Q 콜 Q&amp;A). 조립·테스트는 외주(OSAT)이며 여기서 병목이 발생 중이라고 밝힘.</p>
+<p><strong>경쟁</strong>: CEO는 Altera·Xilinx(AMD)의 SoC형 FPGA가 10~15년 된 인터페이스에 묶여 있다고 주장하며, 자사는 최신 프로세서와 파트너링하는 방식으로 차별화한다고 함(JPM 컨퍼런스). 이는 회사 측 주장임. 1Q 콜에서 Altera가 독립 회사로 내부 제조 역량을 갖춘 점이 공급 제약 환경에서 우위가 되지 않느냐는 질문에 CEO는 "우리 공급망은 문제가 아니다"라고만 답함.</p>
+<p><strong>AMI 인수</strong>: 서버 펌웨어(BIOS/BMC·매니지빌리티) 회사로, 8-K에 따르면 8월 4일 시점 인수 완료. CEO는 2019년부터 협업해 왔고 사업 중복이 없으며 "실리콘 파트너에 중립적(Switzerland)"인 관리·제어 플랫폼을 목표로 한다고 밝힘. AMI 자체 매출·마진은 제공 자료에서 확인 불가.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이(10-Q·8-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$124.0M</td>
+<td>$170.9M</td>
+<td>$201.1M</td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>68.4%</td>
+<td>68.8%</td>
+<td>70.3%</td>
+</tr>
+<tr>
+<td>R&amp;D / 매출</td>
+<td>35.1%</td>
+<td>29.7%</td>
+<td>31.9%</td>
+</tr>
+<tr>
+<td>SG&amp;A / 매출</td>
+<td>28.1%</td>
+<td>23.5%</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>3.8%</td>
+<td>15.3%</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>GAAP EPS</td>
+<td>확인 불가</td>
+<td>확인 불가</td>
+<td>$0.14</td>
+</tr>
+<tr>
+<td>non-GAAP EPS</td>
+<td>확인 불가</td>
+<td>확인 불가</td>
+<td>$0.53</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성장의 질</strong>: 2Q 매출 YoY <span class="up">+62%</span>는 두 엔드마켓 모두 성장한 결과이며 특히 C&amp;C가 <span class="up">+83%</span>로 견인함. 단가·물량 분해는 공시에 없으나, CEO는 (1) 서버 대수, (2) AI 서버 비중, (3) 랙당 FPGA 수(10개→수백 개), (4) 보안 요구 증가에 따른 대형 FPGA·ASP 상승, (5) 스토리지·분산 아키텍처 확산을 곱셈 요인으로 제시함(JPM 컨퍼런스). 올해 2억 유닛 초과 출하, 2.5억으로 향한다고 밝혀 물량 성장이 주된 동력임을 시사함. 전분기 대비 C&amp;C <span class="up">+18%</span>, I&amp;E <span class="up">+17%</span>로 양쪽 모두 고르게 증가함.</li>
+<li><strong>마진 방향</strong>: 매출총이익률은 3분기 연속 상승(68.4→68.8→70.3%). CFO는 OSAT 가격 인상 압력이 있으나 협상과 고객 전가로 마진을 방어했고 연말까지 유지 가능하다고 밝힘. 2Q GAAP 영업이익률 11.1%는 인수관련 비용 $4.4M(매출의 2.2%)을 포함한 수치로, 이를 제외하면 13%대. 제공된 시장 지표의 13.3%는 이 조정에 가까운 값으로 보임. 상반기 GAAP 영업이익률은 13.0%(전년 4.8%). 영업비용은 R&amp;D <span class="up">+48%</span>, SG&amp;A <span class="up">+44%</span>로 매출 성장(<span class="up">+62%</span>)보다 낮아 레버리지가 작동하고 있음.</li>
+<li><strong>GAAP-non-GAAP 괴리</strong>: 2Q GAAP EPS $0.14 대 non-GAAP $0.53으로 차이가 큼. 조정 항목 내역(주식보상·인수비용 등)은 제공 발췌에 없어 확인 불가. GAAP 순이익 $19.4M이 영업이익 $22.4M보다 작아 영업외 손실 또는 세금이 존재하나 세부는 확인 불가.</li>
+<li><strong>현금흐름</strong>: 2Q 영업현금흐름 $88.3M(마진 43.9%), FCF $81.3M(40.4%). TTM FCF $163.0M 중 2Q 한 분기가 절반을 차지해 현금 창출이 최근 급격히 개선되고 있음. CFO는 지난 2년간 인프라 캐치업 자본지출이 높았으나 앞으로 줄어들 것이라고 밝힘.</li>
+<li><strong>재무 건전성</strong>: AMI 인수로 "약 $1B 미만"의 부채를 조달했고(CFO), 2027년 말까지 레버리지 2배 이하로 축소한다는 것이 회사 목표임. 인수 후 현금·부채 잔액과 이자비용은 제공 자료에서 확인 불가. 유통 주식은 2월 9일 기준 1억 3,679만 주이며, 오늘 시가총액/종가 역산 시 약 1억 4,200만 주로 THL 대상 신주가 반영된 것으로 추정됨.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>데이터센터 FPGA 콘텐츠 증가</strong>: 회사는 서버 시장이 YoY 85% 성장 중이고 수요가 2027년 하반기까지 강하다고 밝힘. 백로그가 2027년까지 확장됐다고 함(1Q 콜). 회사는 하이퍼스케일러 CapEx가 2027년 $1조를 넘을 것이라는 외부 수치를 인용했으며, 이는 회사가 인용한 전망치임.
+   → 검증 포인트: 3Q C&amp;C 매출이 QoQ 두 자릿수 성장을 유지하는지, 8-K 가이던스 "FPGA 매출 YoY <span class="up">+65%</span>"를 실제 달성하는지. CFO가 1Q 콜에서 "서버의 극단적 YoY 성장률은 연중 지속되지 않을 수 있다"고 한 점과 대조할 것.</li>
+<li><strong>Industrial &amp; Embedded 회복</strong>: 채널 재고가 3개월→약 2개월로 줄었고 2Q에 2개월 미만을 예상한다고 밝힘(1Q 콜). 2Q I&amp;E YoY <span class="up">+36%</span>는 1Q 콜에서 CFO가 제시한 연간 약 10% 성장 범위를 크게 넘어섬.
+   → 검증 포인트: 3Q 10-Q에서 채널 재고 개월 수, I&amp;E 매출이 $75M 수준을 유지하는지(2Q25 저기저 효과 소멸 후 YoY 둔화 폭).</li>
+<li><strong>AMI 통합에 따른 플랫폼 확장</strong>: 회사는 FPGA 루트오브트러스트와 AMI 펌웨어를 결합해 "가장 완전한 보안 관리·제어 플랫폼"을 만들고 Red Hat 방식의 오픈소스 전략을 추구한다고 밝힘. AMI CEO는 OCP 플래티넘 멤버로 Meta·Microsoft·Google과 협업 중이라고 언급함.
+   → 검증 포인트: 3Q 실적에서 AMI 매출·마진 별도 공시 여부, 통합 비용 규모, 레버리지 비율 첫 공개치.</li>
+<li><strong>Far-Edge AI(센서 근접 전처리)</strong>: CEO는 NVIDIA·Qualcomm이 담당하는 근거리 엣지 AI는 추구하지 않고, 센서 옆 전처리에 집중한다고 밝힘. Sony·TI·ADI 등 센서 파트너십 언급.
+   → 검증 포인트: 휴머노이드·로보틱스 관련 디자인윈이 매출로 전환되는 시점은 회사가 제시하지 않음. I&amp;E 내 로보틱스 기여도 언급 여부 확인.</li>
+<li><strong>가격·마진 확대 여지</strong>: CEO는 마진 구조 개선으로 "이전에 피했던 기회를 추구할 수 있다"고 밝혔으며, 이는 매출총이익률을 더 올리기보다 매출 기회를 넓히는 방향이라고 답함.
+   → 검증 포인트: 3Q 매출총이익률이 70%대를 유지하는지, OSAT 비용 전가가 지속되는지.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>톤</strong>: CEO는 "say what we do and do what we say", "multiyear growth cycle의 초입"이라는 표현을 반복하며 매우 자신감 있는 화법을 사용함. 근거로 제시한 것은 백로그가 2027년까지 확장됨, 리드타임 연장, 부킹 가속, 채널 재고 정상화이며 모두 콜에서만 언급된 정성 정보임(백로그 금액은 미공개). 2Q 실적이 가이던스를 8.7% 상회해 1Q 콜의 낙관이 사후 검증된 셈임.</li>
+<li><strong>가이던스 화법</strong>: 1Q 콜에서는 2Q 매출 $185M(YoY 약 50%)·EPS $0.44(YoY 약 80%)를 제시했고, 8-K 3Q 가이던스는 "FPGA 매출 YoY <span class="up">+65%</span>, EPS는 그보다 빠른 성장"으로 성장률 표현이 상향됨. 다만 8-K 가이던스가 "FPGA 매출" 기준으로 한정된 점은 AMI 연결 매출을 별도로 볼 가능성을 시사하며, 3Q 총매출 절대치는 제공 자료에서 확인 불가.</li>
+<li><strong>반복 질문과 방어 지점</strong>: (1) AMI와 기존 사업의 중복 여부 → CEO는 "경쟁하는 영역 없음, 완전 보완적"으로 답했으나 AMI 재무 세부는 "클로징 후 공개"로 유보함. (2) THL 락업 → CFO는 "연내 25%씩", CEO·IR은 "클로징 후 12개월"로 답변이 즉석에서 정정되어 정확한 해제 일정이 불명확함. (3) 70%+ 마진의 구조적 지속성 → CEO는 마진을 더 올리기보다 매출 기회 확대에 쓰겠다고 답해 마진 가이던스 상향은 회피함. (4) Altera의 내부 제조 우위 → 구체 비교 없이 "우리 공급망은 문제 없다"로 짧게 방어함. (5) ROIC가 낮은 이유(JPM) → CFO는 매출이 $700M대 중반에서 $500M대 초반으로 급감했던 것이 원인이라고 인정했으며, 이는 이 회사가 2년 전 큰 다운사이클을 겪었음을 상기시키는 발언임.</li>
+<li><strong>공시에 없고 콜에서만 드러난 정보</strong>: 부채 규모 "약 $1B 미만"과 2027년 말 레버리지 2배 이하 목표, 백로그 2027년 확장, 채널 재고 개월 수, 올해 2억 유닛 이상 출하, 랙당 FPGA 수 10→수백 개, 웨이퍼는 4Q25부터 선매입해 재고 축적 중, OSAT 공급사 다변화 진행 중, 서버 부문 YoY 85% 성장.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>인수 부채와 희석</strong>: 약 $1B 미만의 신규 부채는 이 회사가 역사적으로 "강한 대차대조표"를 유지해 온 것과 대비되며, 10-K forward-looking 문단도 "부채가 전략적 유연성·유동성에 미치는 영향, 대출 약정 위반 시 영향"을 명시함. THL이 보유한 $650M 상당 주식은 락업 해제 시 오버행이 되며, 1Q 콜에서 해제 일정 답변이 정정된 만큼 향후 8-K·프록시로 확인이 필요함.</li>
+<li><strong>데이터센터 집중과 성장률 정상화</strong>: C&amp;C가 매출의 62.6%, 성장의 대부분을 차지함. 1Q 10-Q는 아시아 매출 <span class="up">+71%</span>가 하이퍼스케일러 관련임을 시사하며, 특정 고객·유통사 의존도는 확인 불가. CFO 스스로 서버 부문의 극단적 성장률이 연중 지속되지 않을 수 있다고 언급함. 이 회사는 2년 전 매출이 30% 이상 감소한 다운사이클을 겪은 바 있음(JPM 컨퍼런스 CFO 발언).</li>
+<li><strong>조립·테스트(OSAT) 병목과 비용 인상</strong>: CFO는 웨이퍼는 확보됐으나 조립·테스트에서 산업 전반의 제약과 공급사 가격 인상을 겪고 있다고 밝힘. 전가가 막히면 매출총이익률 70% 유지가 어려워질 수 있음.</li>
+<li><strong>엔드마켓 데이터의 추정 성격</strong>: 10-Q는 엔드마켓 배분이 유통사·고객 제공 데이터와 회사 판단에 의존하며, 최종 고객이 미확정인 매출도 과거 사용 패턴으로 배분한다고 명시함. C&amp;C <span class="up">+83%</span>라는 수치 자체가 회계상 추정을 포함함.</li>
+<li><strong>지정학·무역</strong>: 10-K는 아시아 태평양 지역 매출 집중, 대만-중국 관계 악화, 미중 관세·수출 규제를 핵심 불확실성으로 열거함. 팹 3사 중 UMC·TSMC가 대만 기반임.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2Q 매출 vs 가이던스 중간값</td>
+<td>$201.1M vs $185M (<span class="up">+8.7%</span>)</td>
+<td>비트-앤-레이즈 확인</td>
+</tr>
+<tr>
+<td>2Q non-GAAP EPS vs 가이던스</td>
+<td>$0.53 vs $0.44 (<span class="up">+20%</span>)</td>
+<td>영업 레버리지 실증</td>
+</tr>
+<tr>
+<td>조정 EBITDA 마진 / FCF 마진</td>
+<td>43.0% / 40.4%</td>
+<td>현금 전환 양호</td>
+</tr>
+<tr>
+<td>시가총액 / TTM FCF</td>
+<td>약 107배</td>
+<td>고평가</td>
+</tr>
+<tr>
+<td>시가총액 / 2Q FCF 연환산</td>
+<td>약 54배</td>
+<td>성장 지속 전제 시에도 부담</td>
+</tr>
+<tr>
+<td>시가총액 / 2Q non-GAAP EPS 연환산</td>
+<td>약 58배</td>
+<td>AMI 이자비용 미반영</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-21.1%</td>
+<td>인수 발표 후 조정 국면</td>
+</tr>
+</tbody>
+</table></div>
+<p>성장·마진·현금흐름은 "적극"에 가깝지만, 밸류에이션이 성장을 선반영하고 있고 인수 후 재무구조·락업·3Q 첫 연결 실적이 미확인 상태라 "보통"으로 판단함.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3Q26 실적(11월 초 예상)에서 FPGA 매출 YoY <span class="up">+65%</span> 달성 여부와 AMI 연결 후 총매출·이자비용·레버리지 비율 첫 공개치.
+2. THL 락업 해제의 정확한 일정(클로징 시점 기준 첫 25% 해제 시점)과 Form 4·13D/G 등을 통한 실제 매도 여부.
+3. 3Q 10-Q의 채널 재고 개월 수와 매출총이익률이 70%대를 유지하는지, OSAT 비용 전가 지속 여부.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 3Q FPGA 매출 성장률이 가이던스 65%에 미달하거나 4Q 가이던스가 QoQ 감소를 시사하는 경우.
+- AMI 연결 후 GAAP 영업이익률이 인수관련 비용·무형자산 상각으로 한 자릿수로 재하락하고, 회사가 레버리지 2배 이하 목표 시점을 연기하는 경우.
+- THL이 락업 해제 즉시 대량 매도를 시작하거나, 매출총이익률이 68% 아래로 하락(OSAT 비용 전가 실패)하는 경우.
+- 오늘과 같은 무촉매 급등이 반복되면서 60일 수익률이 플러스로 돌아서 밸류에이션 부담이 추가로 커지는 경우에는 신규 진입 대신 실적 확인 후 대응으로 전환.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926004100/lscc20260103_10k.htm">10-K — 2026-01-03_0001437749-26-004100</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025657/lscc20260704_10q.htm">10-Q — 2026-07-04_0001437749-26-025657</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926014686/lscc20260404_10q.htm">10-Q — 2026-04-04_0001437749-26-014686</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025650/ex_971139.htm">8-K — 2026-08-04_0001437749-26-025650__EX-99.1__ex_971139</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025650/lscc20260602_8k.htm">8-K — 2026-08-04_0001437749-26-025650</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/ex_993320.htm">8-K — 2026-07-27_0001437749-26-024519__EX-99.1__ex_993320</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/ex_993742.htm">8-K — 2026-07-27_0001437749-26-024519__EX-10.1__ex_993742</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/lscc20260723_8k.htm">8-K — 2026-07-27_0001437749-26-024519</a></li>
+<li>Transcript — 2026-05-19 Lattice Semiconductor Corporation (LSCC) Presents at J.P. Morgan 54th Annual Global Technology, Media and Communications Conference Transcript</li>
+<li>Transcript — 2026-05-04 Lattice Semiconductor Corporation (LSCC) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

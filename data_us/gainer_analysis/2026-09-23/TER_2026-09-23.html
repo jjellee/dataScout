@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TER — Teradyne Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TER — Teradyne Inc. Common Stock</h1>
+<div class="sub">2026-09-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · fable</div>
+<div class="badges"><span class="badge">TER</span><span class="badge">+4.50%</span><span class="badge">거래량 0.96배</span><span class="badge">$62.33B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 강하다. 2026년 2분기(6월 28일 종료) 매출 $1.33B(YoY <span class="up">+103.9%</span>), 영업이익률 33.2%(YoY <span class="up">+18.9%</span>p), 매출총이익률 59.8%, TTM FCF $799.9M으로, 실적콜에서 "2분기 연속 사상 최대 매출, AI 매출 비중 60% 이상"이라고 언급됨.</li>
+<li>그러나 오늘 상승(<span class="up">+4.50%</span>)은 거래량 배수 0.96배로 수급 확인이 안 되며, 촉매도 SEC 공시가 아닌 파트너십 뉴스(GS Microelectronics 테스트센터)와 반도체 섹터 강세 수준이다.</li>
+<li>주가는 52주 고점 대비 <span class="down">-17.6%</span>, 60일 수익률 <span class="down">-8.7%</span>로 조정 국면이고, 제공 지표로 산출한 시총/TTM FCF는 약 78배로 밸류에이션 부담이 크다.</li>
+<li>회사가 실적콜에서 "컴퓨트 매출은 상반기 집중"이라고 밝힌 만큼, 하반기 매출 방향성(3분기 가이던스 및 실적)이 확인되기 전까지는 단계적 분할 진입이 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>SEC 공시</strong>: 최근 4일 내 공시 없음. 공시 촉매는 아니다.</li>
+<li><strong>뉴스</strong>: GS Microelectronics(GSME)와의 전략적 파트너십 및 신규 반도체 테스트센터(AI·실리콘 포토닉스·차량용 칩 대상) 발표가 당일 헤드라인의 중심이다. 다만 이 파트너십의 금액·매출 기여는 제공된 자료에서 확인 불가.</li>
+<li><strong>섹터</strong>: 헤드라인상 "칩 섹터 강세 동조"가 함께 언급된다.</li>
+<li><strong>수급 판단</strong>: 거래량 배수 0.96배(20일 중앙값 미만), 거래대금 $923.6M. 거래량 급증을 동반한 상승이 아니므로, <strong>"약한 뉴스 촉매 + 섹터 동조 가능성"</strong>으로 특정한다. 20일 수익률 <span class="up">+9.3%</span>는 조정 후 되돌림 구간에 있음을 시사한다.</li>
+<li>참고로 GuruFocus 헤드라인은 GF Value $218.64 대비 고평가를 언급하고 있으나, 이는 제3자 밸류에이션 모델 값으로 사실 판단의 근거로는 쓰지 않는다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K(FY2025) 기준 3개 세그먼트:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>내용</th>
+<th>매출 비중(회사 언급)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Semiconductor Test</td>
+<td>반도체·HDD·SSD 테스트 시스템. 웨이퍼·패키지·시스템레벨 테스트. AI/ML 학습 ASIC, HPC, 메모리(HBM·DRAM) 등</td>
+<td>약 80% (BofA 컨퍼런스에서 CEO 언급)</td>
+</tr>
+<tr>
+<td>Product Test</td>
+<td>2025년 3월 신설. 보드 테스트, 무선 테스트, PIC(광집적회로) 테스트, 방산·항공 계측</td>
+<td>약 10%</td>
+</tr>
+<tr>
+<td>Robotics</td>
+<td>협동로봇 팔, 자율이동로봇</td>
+<td>약 10%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객군</strong>: IDM, 팹리스, 파운드리, OSAT. 10-K는 "소수 대형 고객이 테스트 장비 구매의 상당 부분을 차지하며, 이 집중은 예측 가능한 미래에도 지속될 것"이라고 명시한다.</li>
+<li><strong>매출 동인</strong>: 10-K는 2025년 Semi Test 성장이 네트워킹 AI 수요와 VIP(수직계열 하이퍼스케일러) 컴퓨트 솔루션에서 왔고, 2025년 하반기 매출의 과반이 AI 관련 고객이었다고 밝힌다. 메모리는 HBM·DRAM 파이널 테스트 점유율 확대로 시장 축소에도 매출이 안정적이었다고 함.</li>
+<li><strong>경쟁 위치</strong>: BofA 컨퍼런스에서 CEO는 2025년 반도체 ATE 시장 점유율을 "30% 안팎"이라고 밝혔다. 네트워킹 스위치 실리콘에서는 Teradyne 점유율이 높고, AI 가속기에서는 경쟁사 점유율이 높다고 스스로 인정했다. 머천트 GPU 고객에서는 "fast follower" 단계로, 3~4년간 점유율 상한을 약 30%로 본다고 언급.</li>
+<li><strong>인오가닉 확장</strong>: Infineon 테스트장비 조직 인수($18.3M, 2025.1), Quantifi Photonics 인수($127.2M, 2025.5), MultiLane과 JV(MLTP) 설립에 약 $157M 투자해 75% 지분 확보 예정(2026.1 발표, 상반기 종결 예정). 모두 AI 데이터센터 고속 I/O·광 테스트를 겨냥한다.</li>
+<li><strong>통화</strong>: 테스트 매출은 대부분 달러, Robotics 매출은 대부분 외화. 달러 강세는 Robotics에 부정적이라고 10-K가 밝힘.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 2분기 매출 $1.33B는 YoY <span class="up">+103.9%</span>, QoQ <span class="up">+3.6%</span>. 실적콜에서 3개 사업부 모두 YoY·QoQ 성장했다고 언급. 성장의 주축은 AI 컴퓨트·네트워킹·HBM 테스트로, 물량(웨이퍼·트랜지스터 수)과 테스트 강도(advanced packaging에 따른 다이당 테스트 증가) 양쪽에서 나온다는 것이 회사 설명이다. 단가 요인의 정량 기여는 공시상 확인 불가.
+- 실적콜에서 비GAAP EPS $2.47(YoY <span class="up">+300%</span> 이상)이라고 언급. GAAP EPS는 제공 발췌에 없음.</p>
+<p><strong>마진</strong>
+- 영업이익률 33.2%로 YoY <span class="up">+18.9%</span>p. 매출 2배 성장에 따른 영업 레버리지가 그대로 반영된 구조다. 매출총이익률 59.8%.
+- CFO는 실적콜 Q&amp;A에서 2027년 매출총이익률에 "근본적 변화는 없고, 컴퓨트 비중이 높은 제품 믹스에 따라 연간 범위 내에서 움직일 것"이라고 밝힘.</p>
+<p><strong>현금흐름·재무 건전성 (10-Q, 2026년 6월 28일 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2026.6.28</th>
+<th>2025.12.31</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현금 및 현금성자산</td>
+<td>$349.5M</td>
+<td>$293.8M</td>
+</tr>
+<tr>
+<td>매출채권</td>
+<td>$1,109.7M</td>
+<td>$786.9M</td>
+</tr>
+<tr>
+<td>재고</td>
+<td>$403.3M</td>
+<td>$379.6M</td>
+</tr>
+<tr>
+<td>단기차입금</td>
+<td>$0</td>
+<td>$200.0M</td>
+</tr>
+<tr>
+<td>영업권</td>
+<td>$663.8M</td>
+<td>$521.0M</td>
+</tr>
+<tr>
+<td>무형자산</td>
+<td>$101.9M</td>
+<td>$51.3M</td>
+</tr>
+<tr>
+<td>총자산</td>
+<td>$4,925.6M</td>
+<td>$4,183.6M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>TTM FCF $799.9M. 단기차입금 $200M은 1분기에 전액 상환됐다.</li>
+<li><strong>주의 포인트 1</strong>: 매출채권이 연초 대비 41% 증가했다. 2분기 매출 $1.33B 대비 매출채권 $1.11B는 약 75일 수준의 회전일수로 낮지 않다. 대형 고객 집중 구조에서 회수 조건의 변화 여부는 공시 발췌만으로는 확인 불가.</li>
+<li><strong>주의 포인트 2</strong>: 1분기→2분기 영업권 +$150M, 무형자산 +$53M 증가는 MLTP JV 종결에 따른 것으로 추정되나, 발췌에서 직접 확인되지는 않음.</li>
+<li>2026년 8월 7일 PNC 주간 신규 리볼빙 신용계약을 체결(8-K EX-10.1). 한도·조건은 발췌에서 확인 불가. 현금 $350M 수준에서 M&amp;A·JV 투자를 이어가는 만큼 유동성 백업 성격으로 해석된다.</li>
+<li>지분법 투자 $515M이 자산의 상당 부분을 차지한다(대상 기업은 발췌에 미기재).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>ATE TAM 구조적 확대(WFE 연동)</strong>
+   - 회사는 WFE가 2020년대 말 $250B에 근접하고, 이 경우 ATE TAM이 $20B 이상에 이를 수 있다고 밝힘(2025년 ATE TAM 약 $9B 대비). 근거는 트랜지스터·비트 생산량의 15~20% CAGR과 advanced packaging에 따른 테스트 강도 상승.
+   - 검증 포인트: 다음 분기 실적콜에서 SOC TAM·메모리 TAM 전망치 상향 여부, WFE 대비 테스트 장비 비율(회사 언급 약 8%) 유지 여부.</p>
+</li>
+<li>
+<p><strong>머천트 GPU 고객 진입 및 2차 하이퍼스케일러 듀얼 플랫폼 인증</strong>
+   - 실적콜에서 1분기 첫 머천트 GPU 주문 수주, 2분기 납품, 3분기 두 번째 하이퍼스케일러 상관 검증 완료로 "2027년 점유율 확대에 대한 확신이 커졌다"고 언급. BofA 컨퍼런스에서는 "fast follower 단계에서는 점유율 상한이 약 30%"라고 밝힘.
+   - 검증 포인트: 후속 디바이스 전환 주문 발표 여부, 컴퓨트 매출의 하반기 절벽 여부(회사는 상반기 집중을 사전 고지함).</p>
+</li>
+<li>
+<p><strong>메모리(HBM·DRAM·NAND 파이널 테스트)</strong>
+   - 실적콜에서 2026년 메모리 TAM은 2025년 대비 40% 이상 크고, 상반기→하반기 뚜렷한 성장이 있을 것이라고 밝힘. Magnum 테스터의 로직 테스트 기능이 HBM 베이스 다이 테스트에서 스윙툴 우위를 준다고 언급.
+   - 검증 포인트: 3분기 메모리 매출의 QoQ 성장률, 컴퓨트 둔화를 메모리가 상쇄하는지 여부.</p>
+</li>
+<li>
+<p><strong>네트워킹·CPO·고속 I/O(Quantifi, MLTP, Photon 100)</strong>
+   - 실적콜에서 CPO 테스트 TAM을 2028년 $300~700M으로 제시하되 "정직하게 넓게 잡은 범위"라고 표현. 2027년은 하단 쪽인 약 $200M 수준을 겨냥한다고 언급.
+   - 검증 포인트: MLTP JV 종결 확인 및 Product Test 세그먼트 매출 기여, CPO 관련 초기 양산 주문 공시.</p>
+</li>
+<li>
+<p><strong>자동차·산업(파워, 와이드밴드갭)</strong>
+   - CEO는 2027년 이전 고점 회복 가능성을 "직감 수준"이라고 답변. Infineon 인수 조직은 와이드밴드갭 디스크리트 테스트에서 리더십을 노린다고 밝힘.
+   - 검증 포인트: 중국 로컬 경쟁 언급 강도, 자동차·산업 매출의 하반기 반등 여부.</p>
+</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 "다년간 성장 국면"을 명시적으로 선언했고, 자신감의 근거를 WFE 장기 전망과 트랜지스터·비트 생산량 증가율이라는 상위 지표로 설명했다. 2025년까지는 "TAM 성장 속도에 대한 가시성이 낮다"고 했던 화법이, 2026년 2분기 콜에서는 "$20B ATE TAM에 이르는 경로가 보인다"는 표현으로 바뀌었다.
+- 장기 모델은 "ATE TAM $12~14B이면 Teradyne이 $6B 회사"로 고정하고, 도달 시점은 명시하지 않는 화법을 유지한다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- 매출총이익률 변동성 질문이 두 차례 이상 나왔고, CFO는 "연간 범위 내 믹스 문제"로 일관되게 방어했다.
+- Morgan Stanley의 메모리 TAM vs 비트 성장률 질문에 CEO는 "오프라인에서 답하겠다"며 즉답을 회피했다. 슬라이드가 메모리 ATE TAM을 투영하려는 의도가 아니었다고 정정한 점은, 메모리 테스트 성장률의 지속성에 대한 회사 확신이 SOC 대비 약하다는 신호로 읽힌다.
+- 자동차·산업 고점 회복 시점은 "아직 작업을 다 하지 않았다, 직감"이라고 답해 정량 근거가 없음을 스스로 인정했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- AI 매출 비중 60% 이상, 비GAAP EPS $2.47.
+- 컴퓨트 매출의 상반기 집중과 하반기 메모리 성장이라는 분기 내 믹스 전환 구도.
+- 두 번째 하이퍼스케일러 상관 검증 완료(3분기), 머천트 GPU 고객에서 "fast follower" 위치와 30% 점유율 상한.
+- BofA 컨퍼런스에서 듀얼 벤더 전략이 네트워킹에서는 하방 리스크, 머천트 컴퓨트에서는 상방 리스크라는 트레이드오프를 CEO가 직접 인정. 네트워킹 100% 점유율 방어는 "아마 불가능"이라고 언급.
+- CPO 테스트 TAM $300~700M(2028), 2027년은 약 $200M 하단 지향.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>고객 집중과 컴퓨트 매출의 상반기 편중</strong>: 10-K는 소수 고객이 매출의 상당 부분을 차지한다고 명시하고, 실적콜에서 컴퓨트 매출이 상반기에 집중된다고 밝혔다. 3분기 매출이 QoQ로 꺾일 경우 "2분기 연속 사상 최대"라는 서사가 끊기며 밸류에이션 재조정 압력이 커진다.</li>
+<li><strong>무역 규제와 수출통제</strong>: 10-K는 "현재 무역 제한이 특정 시장에서 경쟁력을 제한하고 있으며, 일부 경쟁사는 동일한 제한을 받지 않는다"고 명시한다. 실적콜에서 중국 파워 반도체의 로컬 경쟁도 언급됐다.</li>
+<li><strong>듀얼 벤더 전략의 네트워킹 점유율 잠식</strong>: 머천트 컴퓨트 고객 확보의 대가로 기존 강점인 네트워킹 점유율이 하락할 수 있다고 CEO가 직접 인정했다. 컴퓨트 점유율 상승 속도(3~4년, 상한 30%)보다 네트워킹 잠식이 빠르면 순효과가 마이너스가 될 수 있다.</li>
+<li><strong>매출채권 급증과 운전자본 부담</strong>: 매출채권이 연초 대비 41% 늘어 $1.11B에 달하고 선급금도 $468M 수준이다. 매출 성장 속도를 감안해도 현금 전환이 매출 인식보다 늦어지고 있어, TTM FCF $799.9M의 지속성을 다음 분기 현금흐름표로 검증해야 한다.</li>
+<li><strong>인오가닉 확장에 따른 영업권 및 통합 리스크</strong>: 1년 반 사이 Infineon AET, Quantifi, MLTP JV까지 3건의 거래를 진행해 영업권이 $664M으로 늘었다. CPO·고속 I/O 시장 형성이 지연되면 손상 리스크가 있으며, 회사 스스로 CPO TAM 범위를 넓게 잡을 만큼 불확실성을 인정했다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 긍정: 매출 YoY <span class="up">+103.9%</span>, 영업이익률 33.2%, TTM FCF $799.9M, 단기차입금 전액 상환, AI 매출 비중 60% 이상(콜 언급).
+- 부정: 시총 $62.33B / TTM FCF $799.9M ≈ 78배. 분기 비GAAP EPS $2.47을 단순 연환산하면 약 40배. 10-K 기준 2025년 6월 말 비관계자 시가총액 $12.7B에서 15개월 만에 약 5배로 확대된 주가는 이미 다년 성장을 상당 부분 반영하고 있다.
+- 수급: 거래량 배수 0.96배, 52주 고점 대비 <span class="down">-17.6%</span>, 60일 <span class="down">-8.7%</span>. 오늘 상승은 추세 전환 확인이 아니라 조정 내 반등 성격이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3분기 가이던스 및 실적: 컴퓨트 상반기 집중을 메모리 하반기 성장이 상쇄해 QoQ 매출이 유지되는지. 제공 발췌에 3분기 가이던스 수치가 없어 공시상 확인 불가.
+2. 2026년 6월 28일 기준 6개월 영업현금흐름과 매출채권 회수 추이: 매출채권 증가가 일시적 청구 타이밍인지, 회수 조건 변화인지.
+3. GSME 파트너십과 MLTP JV의 실체: 8-K 공시 여부, 매출 기여 시점, 투자 규모. 뉴스 헤드라인 이상의 정보가 없으면 오늘 촉매의 지속력은 낮다.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 전환)</strong>
+- 3분기 매출이 QoQ 감소로 전환하고 회사가 4분기 가이던스에서 회복을 제시하지 못할 때.
+- 실적콜에서 네트워킹 점유율 하락이 정량적으로 확인되거나, 머천트 GPU 후속 디바이스 전환이 지연된다고 언급될 때.
+- 수출통제 강화로 중국 관련 매출 제한이 10-Q 리스크 섹션에 신규 반영될 때.
+- 매출채권이 매출 성장률을 계속 상회하며 증가하고 영업현금흐름이 순이익을 크게 하회할 때.</p>
+<p><strong>적극으로 상향할 조건</strong>
+- 3분기 실적에서 메모리·네트워킹이 컴퓨트 둔화를 상쇄하며 사상 최대 매출을 이어가고, 거래량을 동반한 52주 고점 돌파가 확인될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526059002/ter-20251231.htm">10-K — 2025-12-31_0001193125-26-059002</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526327715/ter-20260628.htm">10-Q — 2026-06-28_0001193125-26-327715</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526201058/ter-20260329.htm">10-Q — 2026-03-29_0001193125-26-201058</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526342367/ter-ex10_1.htm">8-K — 2026-08-07_0001193125-26-342367__EX-10.1__ter-ex10_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526342367/ter-20260807.htm">8-K — 2026-08-07_0001193125-26-342367</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526321933/ter-ex99_1.htm">8-K — 2026-07-28_0001193125-26-321933__EX-99.1__ter-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526321933/ter-20260728.htm">8-K — 2026-07-28_0001193125-26-321933</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/97210/000119312526215848/ter-20260508.htm">8-K — 2026-05-08_0001193125-26-215848</a></li>
+<li>Transcript — 2026-07-29 Teradyne, Inc. (TER) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-03 Teradyne, Inc. (TER) Presents at Bank of America 2026 Global Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
