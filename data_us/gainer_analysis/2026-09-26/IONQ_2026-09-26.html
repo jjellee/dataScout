@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IONQ — IonQ Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>IONQ — IonQ Inc. Common Stock</h1>
+<div class="sub">2026-09-26 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">IONQ</span><span class="badge">+5.74%</span><span class="badge">거래량 2.42배</span><span class="badge">$17.14B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>매출 성장은 확인됨:</strong> Q2 매출은 $80.1M(YoY <span class="up">+287%</span>)입니다. 실적콜에서 회사는 오가닉 성장률 132%, RPO $485M(전년 $122M)을 제시함.</li>
+<li><strong>손실 규모는 매출보다 훨씬 큼:</strong> Q2 영업손실은 약 $337M(영업이익률 <span class="down">-421%</span>)입니다. TTM FCF는 -$483.9M입니다. 매출총이익률 24.9%로 보면 흑자 경로가 아직 보이지 않습니다.</li>
+<li><strong>현금 잔고와 희석 여부를 확인할 수 없음:</strong> 제공된 발췌에는 현금 잔고와 SkyWater 인수($1.8B, 대부분 주식 교환) 뒤의 주식 수가 없습니다. 그래서 자금이 얼마나 버틸지와 희석이 얼마나 될지 계산할 수 없습니다.</li>
+<li><strong>밸류에이션 부담이 큼:</strong> 시총 $17.14B는 FY26 연결 매출 가이던스($450~460M) 대비 약 37~38배입니다. 오늘 상승(<span class="up">+5.74%</span>)의 촉매도 공시로 확인되지 않습니다.</li>
+<li><strong>결론:</strong> 성장은 진짜지만 현금 소진과 희석 리스크를 정량화할 수 없습니다. 의미 있는 비중을 싣는 판단은 결합법인 첫 10-Q(Q3)를 확인한 뒤로 미루는 것이 적절합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>공시로 확인된 촉매는 없습니다.</strong> 최근 4일 내 SEC 공시가 없습니다. 가장 최근 8-K는 9/8 Investor Day 가이던스 상향으로, 이미 약 2.5주가 지났습니다.</p>
+<ul>
+<li><strong>후보 촉매:</strong> CNBC 헤드라인 "IonQ shares rise after company says it made a major quantum computing breakthrough"가 가장 직접적인 후보입니다. 다만 기사 본문과 날짜가 제공되지 않았습니다. 어떤 '돌파'인지, 오늘 나온 기사인지는 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>섹터 동조 가능성:</strong> 양자컴퓨팅 3사 비교 기사(Motley Fool)와 "Nvidia QPU Catalyst"(Seeking Alpha) 헤드라인을 보면 섹터 전체 테마가 움직였을 가능성도 있습니다(추정).</li>
+<li><strong>수급으로 본 판단:</strong> 거래량은 20일 중앙값의 2.42배로, 뚜렷하긴 하나 극단적 수준은 아닙니다. 60일 수익률 <span class="down">-11.5%</span>, 52주 고점 대비 <span class="down">-45.2%</span>인 구간에서 나온 반등입니다.</li>
+<li><strong>판단:</strong> 확인된 촉매 없음(뉴스상 기술 발표 가능성) — 수급/섹터 동조 가능성.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-Q MD&amp;A에 공시된 매출원은 다음과 같습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>매출원</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>양자컴퓨터 하드웨어 판매</td>
+<td>온프레미스 또는 클라우드 형태 전체 시스템 판매, 유지보수·지원 포함</td>
+</tr>
+<tr>
+<td>QCaaS</td>
+<td>AWS Braket, Microsoft Azure Quantum, Google Cloud Marketplace, 자체 클라우드</td>
+</tr>
+<tr>
+<td>전문 서비스</td>
+<td>알고리즘 공동개발 컨설팅</td>
+</tr>
+<tr>
+<td>양자 네트워킹·보안·센싱</td>
+<td>실적콜과 Rosenblatt 행사에서 Geneva 기반 보안사업(ID Quantique) 언급</td>
+</tr>
+<tr>
+<td>위성 데이터 서비스</td>
+<td>SAR 이미징 등 data-as-a-service. 향후 양자 PNT 서비스 계획은 회사 주장</td>
+</tr>
+<tr>
+<td>반도체 파운드리(신규)</td>
+<td>2026-07-31 SkyWater 인수 완료. 파운드리, 첨단 패키징, Technology as a Service</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>매출 구성:</strong> 제품별·유형별 매출 비중은 제공 발췌상 <strong>공시상 확인 불가</strong>입니다. 실적콜 기준으로는 다음과 같습니다.</li>
+<li>해외 고객 비중 50%</li>
+<li>상업(비 미국정부) 비중 60%</li>
+<li>멀티제품 판매 비중 25%(YoY <span class="up">+40%</span>)</li>
+<li><strong>고객:</strong> 실적콜에서 5세대 시스템을 한국·스위스에 대규모 공급했다고 언급함. 10-K 전망 문구에는 "일부 경우 소수 고객·최종고객에 의존"한다고 명시되어 있습니다.</li>
+<li><strong>경쟁 위치(회사 주장):</strong> 회사는 "미국·동맹 생태계에서 유일한 수직계열화 풀스택 양자 플랫폼이자 최대 머천트 공급자"라고 밝힘. 트랩드이온 방식을 레이저 제어에서 전자식 큐비트 제어(EQC)로 전환해 반도체 공정으로 확장하겠다는 전략입니다. 경쟁사 대비 정량 비교 자료는 제공되지 않았습니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 2025</th>
+<th>Q1 2026</th>
+<th>Q2 2026</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>약 $20.7M(역산)</td>
+<td>약 $64.6M(역산)</td>
+<td>$80.1M</td>
+<td>YoY <span class="up">+287%</span>, QoQ <span class="up">+23.8%</span></td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>$160.6M</td>
+<td>$271.5M</td>
+<td>$337.3M</td>
+<td>반기 공시값에서 역산</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>약 <span class="down">-776%</span></td>
+<td>약 <span class="down">-420%</span></td>
+<td>-421.3%</td>
+<td></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>공시상 확인 불가</td>
+<td>공시상 확인 불가</td>
+<td>24.9%</td>
+<td></td>
+</tr>
+<tr>
+<td>Adj. EBITDA</td>
+<td>–</td>
+<td>–</td>
+<td>-$120.3M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>GAAP 순손실</td>
+<td>–</td>
+<td>–</td>
+<td>약 $1.9B</td>
+<td>실적콜. 워런트 평가손실 $1.6B(비현금) 포함</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>역산 방법: Q2 영업손실은 반기 $608.8M에서 Q1 $271.5M을 빼서 구했습니다. 전년 Q2도 같은 방식입니다(236.3 - 75.7). 과거 분기 매출은 제공된 YoY·QoQ 변화율로 역산했습니다.</li>
+</ul>
+<p><strong>성장의 질</strong>
+- 총성장 287%와 실적콜에서 밝힌 오가닉 성장 132% 사이의 차이는 인수(M&amp;A) 기여분입니다.
+- 오가닉 기준으로도 3자릿수 성장이지만, 헤드라인 성장률의 절반 이상은 인수 효과입니다.
+- 실적콜에서 Q2 매출이 5세대 시스템 출하로 내부 기대치를 20% 웃돌았다고 언급함. 이는 매출이 시스템 인도 시점에 크게 좌우된다는 뜻입니다. 분기 변동성이 크다고 봐야 합니다(추정).
+- 단가와 물량 분해는 <strong>공시상 확인 불가</strong>입니다.</p>
+<p><strong>마진 방향성</strong>
+- 영업이익률은 YoY <span class="up">+354.7%</span>p 개선됐지만, 이는 분모(매출) 효과입니다.
+- 영업손실 절대액은 YoY <span class="up">+110%</span>, QoQ <span class="up">+24%</span>로 매출 증가율과 비슷한 속도로 늘었습니다. 분기 대비 영업레버리지는 아직 나타나지 않습니다.
+- 매출총이익률 24.9%는 하드웨어·인수사업 믹스를 반영한 것으로 보입니다(추정). SkyWater 파운드리 편입이 마진 믹스에 미칠 영향은 <strong>공시상 확인 불가</strong>입니다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF는 -$483.9M입니다.
+- 회사는 반도체 로드맵에 "$30억 투자"를 언급함(Rosenblatt 행사). 실적콜에서는 통합 관련 "$120M 지출"을 언급함.
+- 누적결손금은 3월 말 $388.7M에서 6월 말 $2,256.5M으로 늘었습니다. 대부분 Q2 워런트 평가손실 때문입니다.
+- <strong>현금·유가증권 잔고, 부채, 인수 후 주식 수는 제공 발췌상 공시상 확인 불가</strong>입니다. 이 종목의 핵심 변수인데 검증할 수 없는 상태입니다.
+- 10-K 표지에 Well-Known Seasoned Issuer(WKSI)로 체크되어 있습니다. 대규모 주식 발행을 빠르게 할 수 있는 지위입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) 5세대 시스템 판매와 차세대 선주문</strong>
+- 회사 주장: 올해 100큐비트 시스템 출하, 내년 256큐비트 반도체 기반 시스템 판매. 실적콜에서 다세대 계약과 차세대 기종 예약이 진행 중이라고 언급함.
+- 실현 조건: 온프레미스 인도 일정을 지키는 것, 모듈 업그레이드 모델을 고객이 받아들이는 것.
+- 검증 포인트: Q3·Q4 RPO가 $485M에서 더 늘어나는지. 시스템 매출 인식 시점이 분기별로 어떻게 분포하는지.</p>
+<p><strong>2) SkyWater 수직계열화</strong>
+- 회사 주장: 256큐비트 칩은 풀 프로토타입 QPU 단계이고, 10K 칩은 테이프아웃을 시작함. 2027년 목표이며 고객 인도는 그다음 해.
+- 실현 조건: 파운드리 통합 비용 통제, 기존 SkyWater 외부 고객을 유지하는 것.
+- 검증 포인트: 결합법인 10-Q에서 공시되는 SkyWater 매출·마진 기여. 내부거래 제거 규모.</p>
+<p><strong>3) 보안·네트워킹·센싱 크로스셀</strong>
+- 실적콜에서 멀티제품 판매가 YoY <span class="up">+40%</span>로 매출의 25%라고 언급함. 신규 QKD 제품 출시와 Skyloom 광단말 84기 배치도 언급함.
+- 실현 조건: '암호 해독 시점이 가까워졌다'는 인식이 기업 보안 예산으로 이어지는 것.
+- 검증 포인트: 멀티제품 비중이 25%를 넘어 계속 오르는지.</p>
+<p><strong>4) 정부·국방(Golden Dome 등)</strong>
+- Rosenblatt 행사에서 CFO가 "초기 단계 공시가 있었다"고만 언급함. 구체적 계약 규모는 <strong>확인 불가</strong>입니다.
+- 검증 포인트: 8-K나 보도자료로 공시되는 정부 수주.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법</strong>
+- 톤이 매우 공격적입니다. CEO는 "우리 시대의 맨해튼 프로젝트", "1+1=30"이라고 표현함.
+- 자신감의 근거로는 다섯 분기 연속 사상 최대 매출, RPO 4배 증가, 오가닉 100% 성장 목표를 듦.
+- 가이던스는 두 단계로 나뉘었습니다.
+  - 8월 실적콜: IonQ 단독 FY26 가이던스를 $280~290M으로 상향함. 결합 가이던스는 유보함.
+  - 9/8 8-K: 결합 기준 $450~460M을 발표함.
+- 두 수치를 단순 비교하면 SkyWater의 5개월 기여는 약 $170M입니다(내부거래 제거 후, 추정). 다만 단독 가이던스가 그대로 유지됐는지는 <strong>공시상 확인 불가</strong>입니다.</p>
+<p><strong>Q&amp;A 방어 지점</strong>
+- Northland 애널리스트가 핵심을 짚었습니다. 단독 가이던스가 시사하는 하반기 매출 $135~145M은 Q2 연율($160M)보다 낮아 분기 매출 감소를 뜻한다는 지적입니다.
+- CFO는 "매출 감소를 계획하지 않는다"고 답함. 이유로는 SkyWater 결합, 내부거래 제거, $120M 지출 배분을 들었습니다. 3·4분기 매출 배분은 명시하지 않았습니다.
+- 수치로 반박하지 않고 보수적 가이던스 관행으로 설명한 셈입니다. 이 질문은 해소되지 않은 쟁점으로 봐야 합니다.
+- SkyWater 측이 대가 대부분을 IonQ 주식으로 받은 것을 CEO는 신뢰의 신호로 제시함. 투자자 입장에서는 희석 요인입니다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- Q2 GAAP 순손실 약 $1.9B, 이 중 워런트 평가손실 $1.6B
+- Adj. EBITDA -$120.3M
+- RPO $485M
+- 오가닉 성장률 132%
+- 해외 50%, 상업 60%
+- Nexus Photonics 인수
+- 손익분기 수준(breakeven) 양자오류정정 시연 주장
+- Sandia 파트너십
+- Rosenblatt 행사: 2030년 200만 큐비트 로드맵, 데이터센터 GPU 옆에 QPU를 배치하려는 고객 3곳 언급, 향후 M&amp;A는 "더 선별적"으로 하겠다는 발언</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>현금 소진과 희석</strong>
+   - 반기 영업손실 $608.8M, TTM FCF -$483.9M입니다. MD&amp;A에서 회사는 "상당한 손실이 예측 가능한 미래까지 지속될 것"이라고 밝힘.
+   - WKSI 지위와 주식 교환 방식 M&amp;A 관행을 감안하면 추가 희석 가능성이 높습니다(추정).
+   - 현금 잔고를 확인할 수 없어 자금이 얼마나 버틸지 산정이 불가합니다.</p>
+</li>
+<li>
+<p><strong>SkyWater 통합과 마진 믹스</strong>
+   - 10-K 전망 문구에 인수 통합과 시너지 실현 위험이 명시되어 있습니다.
+   - 파운드리 매출이 들어오면서 헤드라인 성장률은 부풀려지고, 오가닉 성장이 가려질 수 있습니다.</p>
+</li>
+<li>
+<p><strong>워런트로 인한 GAAP 변동성</strong>
+   - 행사가 $11.50 워런트(IONQ WS)가 상장되어 있습니다. 주가가 오르면 평가손실이 커지는 구조라 Q2에만 $1.6B가 반영됐습니다. 이익 지표를 사실상 해석할 수 없게 만듭니다.</p>
+</li>
+<li>
+<p><strong>고객 집중과 매출 인식 변동성</strong>
+   - 10-K에 소수 고객 의존이 명시되어 있습니다.
+   - 시스템 인도 시점에 따라 분기 매출이 크게 흔들릴 수 있습니다. 하반기 단독 가이던스가 시사하는 분기 매출 정체가 이를 반영했을 가능성이 있습니다(추정).</p>
+</li>
+<li>
+<p><strong>수출통제와 지정학</strong>
+   - 10-K에 수출통제·기술수출 제한이 명시되어 있습니다. 해외 매출 비중이 50%인 만큼 한국·스위스 같은 해외 시스템 판매에 직접 영향을 줄 수 있습니다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 시총 $17.14B 대비 매출 배수
+  - 결합 FY26 가이던스 기준 약 37~38배
+  - 단독 가이던스 기준 약 59~61배
+  - Q2 연율 기준 약 54배
+- EV는 현금을 확인할 수 없어 산출이 불가합니다.
+- Q2 영업손실 $337M은 매출의 4.2배입니다. 손실은 분기 대비 매출과 같은 속도(<span class="up">+24%</span>)로 늘었습니다.
+- 반면 RPO $485M(YoY 약 4배)과 오가닉 성장 132%는 수요가 실재한다는 증거입니다. '회피'가 아닌 '관망'으로 판단한 이유입니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 10-Q(결합법인 첫 분기)의 현금·주식 수:</strong> 분기말 현금·유가증권, SkyWater 인수 후 발행주식 수, 분기 영업현금흐름을 확인해 자금 여력을 산정해야 합니다.
+2. <strong>오가닉과 인수분 분리 공시:</strong> SkyWater 제외 IonQ 매출이 Q2 $80.1M 수준을 유지하거나 넘는지. 즉 애널리스트가 제기한 하반기 역성장 우려가 해소되는지.
+3. <strong>통합 후 매출총이익률과 Adj. EBITDA:</strong> 24.9%인 매출총이익률이 지켜지는지. 매출 증가율보다 영업손실 증가율이 낮아지는지(영업레버리지가 생기는지).</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통'으로 올리는 조건:</strong>
+  - Q3 오가닉 매출이 QoQ 성장
+  - RPO $485M 이상 유지
+  - 영업손실 증가율이 매출 증가율을 명확히 하회
+  - 현금 여력 2년 이상 확인
+- <strong>'회피'로 내리는 조건:</strong>
+  - 단독 매출이 QoQ 감소
+  - 추가 대규모 주식 발행, 또는 주식 교환 방식 M&amp;A 재개
+  - 분기 FCF 적자 확대
+  - 결합 가이던스 $450~460M 하향</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526071562/ionq-20251231.htm">10-K — 2025-12-31_0001193125-26-071562</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526341001/ionq-20260630.htm">10-Q — 2026-06-30_0001193125-26-341001</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526211876/ionq-20260331.htm">10-Q — 2026-03-31_0001193125-26-211876</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526384388/ionq-ex99_1.htm">8-K — 2026-09-08_0001193125-26-384388__EX-99.1__ionq-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526384388/ionq-20260908.htm">8-K — 2026-09-08_0001193125-26-384388</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526374694/ionq-ex99_1.htm">8-K — 2026-08-24_0001193125-26-374694__EX-99.1__ionq-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526374694/ionq-20260824.htm">8-K — 2026-08-24_0001193125-26-374694</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1824920/000119312526338998/ionq-20260807.htm">8-K — 2026-08-07_0001193125-26-338998</a></li>
+<li>Transcript — 2026-08-05 Q2 2026 Transcript</li>
+<li>Transcript — 2026-06-10 Rosenblatt 6th Annual Age of AI Technology Summit Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

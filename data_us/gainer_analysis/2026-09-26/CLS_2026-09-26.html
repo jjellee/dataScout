@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLS — Celestica Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CLS — Celestica Inc. Common Stock</h1>
+<div class="sub">2026-09-26 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CLS</span><span class="badge">+3.24%</span><span class="badge">거래량 1.4배</span><span class="badge">$42.95B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>최근 분기 매출은 $4.70B로 전년 대비 <span class="up">+62.4%</span>, 전 분기 대비 <span class="up">+16.1%</span> 늘었다. 매출이 커지는 중에도 영업이익률 9.8%(YoY <span class="down">-0.1%</span>p)를 유지했고, TTM 잉여현금흐름도 $518.7M 흑자다. 펀더멘털 모멘텀은 분명하다.</li>
+<li>반면 시가총액 $42.95B는 TTM FCF의 약 83배다(단순 계산). EMS 업종에서 매출총이익률 12.3%는 얇은 편이다. 성장이 이미 가격에 상당 부분 반영돼 있다고 본다.</li>
+<li>오늘 상승(<span class="up">+3.24%</span>)을 설명할 공시나 실적 촉매는 확인되지 않았다. 거래량도 20일 중앙값의 1.4배에 그쳐 '급증'으로 보기 어렵다. 오히려 당일 전후로 Form 144(내부자 매도 예정 신고)가 제출됐다.</li>
+<li>제공된 SEC 발췌는 10-K 표지와 미래예측진술 목록까지만 담고 있다. 그래서 세그먼트 매출 구성, 고객 집중도, 회사 가이던스는 공시상 확인 불가다. 핵심 변수를 검증할 수 없는 상태에서 적극 비중은 과하다.</li>
+<li>결론은 중립 비중까지 분할 진입이다. 다음 분기에 마진 개선과 FCF 전환이 확인되면 비중을 늘리는 구조가 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시</strong>: 당일 전후 공시는 2026-09-23 Form 144 한 건뿐이다. Form 144는 내부자의 매도 예정 신고라서 상승 촉매가 아니라 오히려 부담 요인이다. 신고 주식 수와 금액은 제공 자료상 확인 불가다.</li>
+<li><strong>뉴스</strong>:</li>
+<li>Trefis 헤드라인 "8-Day Winning Streak To An 18% Gain"은 연속 상승 자체를 다룬 기사로, 새 재료가 아니다.</li>
+<li>Stock Titan 헤드라인에 따르면 Todd C. Cooper(뉴스상 president)는 계획 매도 후 73,252주를 보유 중이다.</li>
+<li>MarketBeat는 내부자 매도 이후 주가가 2.2% 하락했다고 보도했다. 하락 시점과 오늘 상승의 관계는 확인 불가다.</li>
+<li>Seeking Alpha의 "2027 Could Unlock The Next Growth Phase"는 외부 의견 기사이고 회사 발표가 아니다.</li>
+<li><strong>가격·수급 해석(추정)</strong>: 60일 수익률은 <span class="up">+1.1%</span>, 52주 고점 대비 <span class="down">-20.9%</span>인데 20일 수익률은 <span class="up">+15.1%</span>다. 고점 이후 조정 폭을 되돌리는 흐름으로 보이며, 오늘 상승도 그 연장선으로 판단한다. 거래대금 $1.11B, 거래량 1.4배로 새로운 대형 수급이 들어왔다는 증거는 약하다. AI 데이터센터 인프라 섹터 전반의 흐름에 동조했을 가능성이 있으나, 이는 제공 자료로 검증할 수 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 Item 1(Business) 본문이 없다. 아래는 10-K 표지·미래예측진술 목록과 주주총회 CEO 발언으로 확인되는 범위만 정리했다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>확인 내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>세그먼트</td>
+<td>CCS(Connectivity &amp; Cloud Solutions)와 ATS(Advanced Technology Solutions) 2개 세그먼트</td>
+<td>주총 CEO 발언</td>
+</tr>
+<tr>
+<td>CCS</td>
+<td>차세대 데이터센터 인프라를 구축하는 하이퍼스케일러를 지원한다. CEO는 회사가 "400G·800G 이더넷 스위치의 인정받는 시장 리더"이며 "차세대 1.6T 스위칭 솔루션을 공급하고 있다"고 밝힘</td>
+<td>주총 CEO 발언</td>
+</tr>
+<tr>
+<td>ATS</td>
+<td>전문 시장별 팀과 글로벌 디자인센터를 기반으로 한 "엔지니어링 주도 전략"을 추진한다고 밝힘</td>
+<td>주총 CEO 발언</td>
+</tr>
+<tr>
+<td>사업 방향</td>
+<td>설비투자 확대 계획과 증설, 기술 플랫폼·로드맵 투자, 제조·서비스에 AI 도입 등을 미래예측진술 항목으로 열거함</td>
+<td>10-K</td>
+</tr>
+<tr>
+<td>세그먼트별 매출 비중</td>
+<td>공시상 확인 불가</td>
+<td>—</td>
+</tr>
+<tr>
+<td>고객 집중도(상위 고객 비중)</td>
+<td>공시상 확인 불가</td>
+<td>—</td>
+</tr>
+<tr>
+<td>경쟁사·점유율</td>
+<td>공시상 확인 불가</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>구조적 특징(추정)</strong>: 매출총이익률 12.3%, 영업이익률 9.8%라는 수익 구조로 보면, CLS는 고부가 설계 역량을 얹은 전자제조서비스(EMS/ODM)형 모델에 가깝다. 이 구조에서는 물량과 믹스가 이익을 결정하며 단가 결정력은 제한적이다.</p>
+<p><strong>참고 사항(공시 사실)</strong>:
+- 공시 양식이 20-F(FY2023, IFRS 기준)에서 10-K(FY2025)로 바뀌었다.
+- 등록 증권 명칭이 Subordinate Voting Shares에서 Common Shares로 바뀌었다.
+- 발행주식수는 118,952,174주(FY2023 말)에서 114,967,854주(2026-02-19)로 약 3.3% 줄었다(단순 계산). 감소 원인(자사주 매입 등)은 제공 발췌상 확인 불가다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장 규모</strong>
+- 최근 분기 매출 $4.70B, YoY <span class="up">+62.4%</span>, QoQ <span class="up">+16.1%</span>.
+- 역산하면 전년 동기 매출은 약 $2.89B, 직전 분기는 약 $4.05B다(단순 계산).
+- QoQ 16%는 연율로 환산하면 60%대 성장이 유지되는 속도다. 분기 간 성장이 둔화되지 않았다는 점이 긍정적이다.</p>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- 제공 자료에는 MD&amp;A 본문, 세그먼트 매출, 제품별 실적이 없다. 따라서 성장을 단가, 물량, 믹스로 나눠 볼 수 없다(공시상 확인 불가).
+- 추정: CEO 발언의 중심이 하이퍼스케일러와 400G/800G/1.6T 스위치에 있으므로, 성장의 주축은 CCS의 데이터센터 네트워킹 물량으로 보인다. 확인이 필요한 가설이다.</p>
+<p><strong>마진 방향성</strong>
+- 영업이익률 9.8%(YoY <span class="down">-0.1%</span>p). 매출이 62% 늘었는데 이익률이 제자리라는 점은 영업레버리지가 거의 작동하지 않았다는 뜻이다.
+- 매출총이익률 12.3%와 영업이익률 9.8%의 차이로 보면 판관비와 R&amp;D 등은 매출의 약 2.5% 수준이다(단순 계산). 이미 매우 얇기 때문에 비용 절감으로 이익률을 더 끌어올릴 여지는 작다. 이익률이 오르려면 매출총이익률, 즉 믹스가 개선돼야 한다.
+- 최근 분기 영업이익은 약 $461M으로 추산된다($4.70B × 9.8%, 단순 계산).</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 $518.7M으로 흑자다.
+- 다만 최근 분기 영업이익(약 $461M) 하나와 비슷한 규모다. 고성장에 따른 운전자본 증가와 증설 투자로 이익이 현금으로 전환되는 비율이 낮은 것으로 추정한다.
+- 10-K 미래예측진술에 "설비투자 확대 계획·증설 및 그 자금 조달"이 명시돼 있어, 앞으로도 FCF가 이익을 따라가지 못할 가능성이 있다.</p>
+<p><strong>재무 건전성</strong>
+- 부채, 현금, 차입 한도 등 재무상태표 수치는 제공 자료에 없다(공시상 확인 불가).
+- 10-K는 "예상 비용·운전자본 요구·계약상 의무와 그 조달 방법"을 미래예측진술 항목으로 두고 있지만, 구체 수치는 발췌에 없다.</p>
+<p><strong>밸류에이션(단순 계산, 참고용)</strong>
+- 시가총액 / TTM FCF: 약 82.8배
+- 시가총액 / 최근 분기 매출 연율화($18.8B): 약 2.3배
+- 2025-06-30 기준 비계열 지분 시가총액은 약 $17.9B(10-K 표지)였다. 현재 전체 시가총액 $42.95B와 비교하면 약 15개월 만에 두 배 이상이 된 것이다. 정의가 달라(비계열 지분 vs 전체) 엄밀한 비교는 아니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 근거</th>
+<th>실현 조건</th>
+<th>검증 포인트(다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 하이퍼스케일러 데이터센터 네트워킹(CCS)</td>
+<td>CEO는 400G·800G 이더넷 스위치의 시장 리더이며 1.6T를 공급하고 있다고 밝힘(주총)</td>
+<td>하이퍼스케일러의 설비투자 지속, 1.6T 전환 시점에 공급 지위 유지</td>
+<td>10-Q의 CCS 매출과 세그먼트 이익률, 1.6T 램프 관련 서술</td>
+</tr>
+<tr>
+<td>② 신규 대형 프로그램 수주</td>
+<td>CEO는 "이전 분기들에 발표한 상당한 신규 프로그램 수주"를 언급함(주총). 수주 규모와 고객은 제공 자료상 확인 불가</td>
+<td>수주가 실제 양산 매출로 전환될 것</td>
+<td>신규 프로그램 양산 시점 언급, 프로그램 이관·손실 공시 여부</td>
+</tr>
+<tr>
+<td>③ 증설과 설비투자 확대</td>
+<td>10-K 미래예측진술에 "설비투자 확대 계획·증설" 명시</td>
+<td>증설이 수요와 맞아 가동률이 유지될 것, 자금 조달 부담이 제한적일 것</td>
+<td>분기 capex 금액과 FCF 추이, 차입 변동</td>
+</tr>
+<tr>
+<td>④ ATS 엔지니어링 주도 전략</td>
+<td>CEO는 ATS가 "잘 수행 중"이라고 밝힘(주총). 정량 수치 없음</td>
+<td>비데이터센터 부문의 안정적 이익 기여</td>
+<td>ATS 매출 YoY와 세그먼트 마진</td>
+</tr>
+<tr>
+<td>⑤ AI 활용한 제조 효율화</td>
+<td>10-K 미래예측진술 항목에 포함</td>
+<td>매출총이익률 개선으로 이어질 것</td>
+<td>매출총이익률 12.3% 대비 개선 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>자료의 성격</strong>: 제공된 transcript는 분기 실적콜이 아니라 2026-05-19 연례 주주총회 녹취다. 애널리스트 Q&amp;A가 없고, 가이던스 수치도 나오지 않았다.</p>
+<p><strong>경영진 톤</strong>
+- CEO는 1분기 실적과 관련해 "연초 매우 강한 출발을 했고 궤도에 대한 확신을 유지한다"고 언급했다.
+- 또 "2025년은 규율 있는 실행과 탁월한 성장의 해"였으며 "이제 막 시작했다(we are just getting started)"고 말했다.
+- 톤은 자신감 있다. 다만 근거가 되는 수치(1분기 매출·이익, 연간 전망)는 녹취에 없다. 자신감을 정량적으로 뒷받침하지 않은 수사적 발언으로 분류한다.</p>
+<p><strong>가이던스 화법의 변화</strong>: 비교할 이전 콜 녹취가 없어 판단할 수 없다.</p>
+<p><strong>Q&amp;A</strong>: 질의응답 세션에서 질문이 한 건도 없었고, 안건별 온라인 질문도 없었다. 따라서 답변을 회피하거나 방어한 지점은 확인할 수 없다.</p>
+<p><strong>공시 문서에는 없고 주총에서 드러난 정보</strong>
+- 기술: 1.6T 스위칭 솔루션을 "공급 중(delivering)"이라고 언급했다.
+- 이사회 변동:
+  - 이사회 의장 Mike Wilson이 은퇴했다.
+  - Luis Muller가 이사회를 떠났다.
+  - Rob Mionis가 의장과 CEO를 함께 맡은 것으로 녹취에서 확인된다. 이사회 견제 기능 측면의 거버넌스 체크 포인트다.
+  - 이사 후보 9명이 선임됐다.
+- 감사인: KPMG LLP가 재선임됐다.
+- 안건: 이사 선임, 감사인 선임, 경영진 보수에 대한 권고적 결의(say-on-pay)가 모두 사전 위임 기준으로 필요 찬성을 얻어 통과됐다. 찬성률은 녹취에 없다.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에는 Item 1A(Risk Factors) 본문이 포함되지 않았다. 아래는 10-K 미래예측진술 항목에서 회사가 직접 언급한 변수, 그리고 제공 지표와 공시로 확인되는 사실에 한정했다.</p>
+<ol>
+<li><strong>증설 투자와 자금 조달 부담</strong>: 10-K는 "설비투자 확대 계획·증설 및 그 자금 조달"을 불확실성 항목으로 둔다. 매출총이익률 12%대 사업에서 증설 속도가 수요를 앞서면 가동률 하락과 FCF 악화가 동시에 올 수 있다. 현재 TTM FCF $518.7M은 시가총액 대비 약 1.2% 수익률에 그친다.</li>
+<li><strong>프로그램 이관·손실·계약 종료</strong>: 10-K는 "프로그램 수주·이관·손실·계약 종료(disengagement)의 잠재적 영향"을 명시한다. 성장이 하이퍼스케일러 대상 네트워킹에 집중된 것으로 추정되는 만큼, 특정 고객의 프로그램 변화가 실적에 크게 영향을 줄 수 있다. 고객 집중도 수치는 공시상 확인 불가다.</li>
+<li><strong>관세와 무역정책</strong>: 10-K는 "미국 정부가 제안·시행한 관세와 보복 관세 등 사업 국가 간 무역정책의 잠재적 영향"을 명시한다. 캐나다 법인이 미국 고객에 공급하는 구조이므로, 얇은 마진에 비용 전가가 늦어지면 곧바로 이익이 훼손된다.</li>
+<li><strong>부품 공급 제약</strong>: 10-K는 "특정 핵심 부품의 인도·가용성 시점"과 "소재·부품·공급망 제약"을 명시한다. 1.6T 같은 차세대 제품 램프 초기에 부품이 병목이 되면 매출 인식이 늦어질 수 있다.</li>
+<li><strong>내부자 매도와 밸류에이션</strong>: 2026-09-23 Form 144가 제출됐고, 뉴스 헤드라인상 president의 계획 매도가 보도됐다. 계획 매도(10b5-1 추정)라서 신호 강도는 제한적이다. 그러나 FCF 약 83배 밸류에이션에서 내부자 매도가 이어지면 수급 부담이 된다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'의 정량 근거</strong></p>
+<p>긍정 요인:
+- 매출 YoY <span class="up">+62.4%</span>, QoQ <span class="up">+16.1%</span>로 성장이 둔화되지 않았다.
+- 영업이익률 9.8%로 고성장 중에도 수익성을 방어했다.
+- TTM FCF가 $518.7M 흑자다.
+- 발행주식수가 약 3.3% 줄었다(FY2023 말 대비, 원인 확인 불가).</p>
+<p>제약 요인:
+- 영업이익률이 YoY <span class="down">-0.1%</span>p로 영업레버리지가 부재하다.
+- 시가총액/TTM FCF 약 83배다.
+- 거래량 1.4배로 오늘 상승의 신뢰도가 낮다.
+- 당일 전후 Form 144가 제출됐다.
+- 세그먼트, 고객, 가이던스 정보가 공시상 확인 불가다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>최근 10-Q의 세그먼트 데이터</strong>: CCS와 ATS의 매출 비중과 세그먼트 이익률, 상위 고객 매출 비중. 성장이 한두 고객에 얼마나 몰려 있는지 확인해야 한다.
+2. <strong>FCF와 이익의 괴리 원인</strong>: 분기 capex, 재고·매출채권 증가 폭, 차입 변동을 본다. 증설 투자 때문인지 운전자본 부담 때문인지 구분해야 한다.
+3. <strong>Form 144의 규모와 성격</strong>: 신고 주식 수, 보유 대비 비중, 10b5-1 계획 매도 여부, 다른 임원의 동반 매도 여부를 확인한다.</p>
+<p><strong>판단을 뒤집을 조건</strong></p>
+<p>'관망'으로 하향:
+- 다음 분기 매출이 QoQ 감소하거나, YoY 성장률이 30%대 이하로 급격히 둔화될 때.
+- 영업이익률이 9% 아래로 떨어지고 매출총이익률도 12.3%에서 하락할 때. 믹스 악화나 관세 비용 전가 실패로 해석한다.
+- capex 확대로 분기 FCF가 적자로 전환되고 차입이 증가할 때.
+- 10-Q나 8-K에서 주요 프로그램의 이관·손실·계약 종료가 공시될 때.
+- Form 144가 복수 임원에게서 연속 제출될 때.</p>
+<p>'적극'으로 상향:
+- 영업이익률이 10%를 명확히 상향 돌파할 때. 1.6T 등 고부가 믹스 효과가 확인되는 경우다.
+- TTM FCF가 영업이익 증가를 따라 의미 있게 확대될 때.
+- 회사가 연간 가이던스를 상향할 때(공시 또는 실적콜 기준).</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089426000011/cls-20251231.htm">10-K — 2025-12-31_0001030894-26-000011</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089424000009/cls-20231231.htm">20-F — 2023-12-31_0001030894-24-000009</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089426000044/cls-20260630.htm">10-Q — 2026-06-30_0001030894-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089426000032/cls-20260331.htm">10-Q — 2026-03-31_0001030894-26-000032</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000110465926107079/tm2625204d1_ex99-1.htm">8-K — 2026-09-11_0001104659-26-107079__EX-99.1__tm2625204d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000110465926107079/tm2625204d1_8k.htm">8-K — 2026-09-11_0001104659-26-107079</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000110465926092676/tm2621135d2_8k.htm">8-K — 2026-08-05_0001104659-26-092676</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089426000043/cls-20260630prcondensedfs.htm">8-K — 2026-07-27_0001030894-26-000043__EX-99.1__cls-20260630prcondensedfs</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1030894/000103089426000043/cls-20260727.htm">8-K — 2026-07-27_0001030894-26-000043</a></li>
+<li>Transcript — 2026-05-19 Celestica Inc. (CLS:CA) Shareholder/Analyst Call Prepared Remarks Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

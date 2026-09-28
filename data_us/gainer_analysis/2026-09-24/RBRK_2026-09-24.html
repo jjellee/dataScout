@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RBRK — Rubrik Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>RBRK — Rubrik Inc. Class A Common Stock</h1>
+<div class="sub">2026-09-24 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">RBRK</span><span class="badge">+3.31%</span><span class="badge">거래량 0.89배</span><span class="badge">$23.96B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>펀더멘털은 강합니다.</strong> 2분기(FY27 Q2) Subscription ARR은 $1.66B로 전년 대비 33% 늘었고, 신규 순증 ARR은 약 $96M으로 전년 대비 35% 늘어 성장이 다시 빨라졌습니다. 매출총이익률은 GAAP 78.4%이고, TTM 잉여현금흐름(FCF)은 $286.2M입니다. 순현금 성장주 요건은 모두 충족합니다.</li>
+<li><strong>밸류에이션 부담이 큽니다.</strong> 시가총액 $23.96B는 TTM FCF의 약 84배입니다(단순 계산). GAAP 영업이익률은 여전히 <span class="down">-16.8%</span>입니다. 60일 동안 <span class="up">+59.8%</span> 오른 뒤 52주 고점에 있어 가격에 선반영된 폭이 큽니다.</li>
+<li><strong>보고 매출 성장률이 크게 둔화됩니다.</strong> 회사는 3분기 매출 성장률을 <span class="up">+23%</span>로 제시했고, material rights 효과를 제외한 정상화 기준은 31%라고 밝혔습니다. 헤드라인 성장률이 2분기 38%에서 23%로 떨어지는 구간이라 주가 변동성이 커질 수 있습니다.</li>
+<li><strong>오늘 상승을 설명할 확인된 촉매가 없습니다.</strong> 거래량은 20일 중앙값의 0.89배로, 스크린 전제와 달리 거래량 급증이 확인되지 않습니다.</li>
+<li><strong>정리하면,</strong> 코어 편입 후보로는 적합합니다. 다만 지금 가격대에서 '의미 있는 비중'을 한 번에 싣는 것보다 분할 편입이 적절합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급·모멘텀 연장 또는 섹터 동조 가능성이 있습니다.</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없습니다. 마지막 실적 발표(8-K)는 2026-08-27로 약 한 달 전입니다.</li>
+<li><strong>뉴스:</strong> 헤드라인은 두 가지입니다.</li>
+<li>Piper Sandler가 "향후 몇 년간 hyper-growth 지속 가능"이라고 코멘트했습니다(Stocktwits).</li>
+<li>신규 Code Security 출시 기사가 있습니다(Yahoo Finance).</li>
+<li>두 건 모두 날짜와 내용이 확인되지 않아 오늘 상승과의 인과관계를 특정할 수 없습니다.</li>
+<li>Stocktwits 헤드라인("2026년 들어 거의 오르지 않았다")은 60일 <span class="up">+59.8%</span>와 방향이 맞지 않습니다. 연초 대비 수익률은 확인할 수 없습니다.</li>
+<li><strong>수급:</strong> 거래량 0.89배, 거래대금 $341.2M으로 평소 수준입니다. 20일 <span class="up">+17.9%</span>, 52주 고점 대비 0.0%인 상태에서 추세가 이어진 것으로 보입니다.</li>
+<li>ChartMill 헤드라인에 따르면 Minervini 트렌드 템플릿은 통과했습니다. 다만 같은 기사가 셋업 등급에서는 진입 시점이 나쁘다(Poor Entry)고 평가했습니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- <strong>Rubrik Security Cloud(RSC)가 핵심입니다.</strong> Zero Trust Data Security 플랫폼으로, 엔터프라이즈·클라우드·SaaS·비정형 데이터·ID 제공자 전반의 데이터를 보호하고 사이버 공격 뒤 복구를 지원합니다.
+  - 기본 형태는 클라우드 네이티브 SaaS입니다.
+  - 규제 고객용 자체 관리형 RSC-Private, 미국 공공부문용 RSC-Government가 있습니다.
+- <strong>Rubrik Agent Cloud(RAC):</strong> 2026년 2월 상용화된 AI 에이전트 운영 제품군입니다. 에이전트 행위 감사, 가드레일, 오류 되돌리기(undo) 기능을 제공합니다. 회사는 FY27에도 RSC가 매출 대부분이자 ARR 성장의 주동력일 것이라고 밝혔습니다.
+- <strong>Resilience Guardian:</strong> FY27 1분기에 출시했습니다.
+  - 1분기 10-Q는 이를 "term-based subscription license program"으로 기술했습니다.
+  - 2분기 10-Q는 "subscription support service offering"으로 기술을 바꿨습니다.
+  - 매출 인식 방식이 달라졌는지는 공시상 확인할 수 없습니다.</p>
+<p><strong>과금 구조</strong>
+- 구독의 대부분은 3년 계약에 선불 결제이고, 갱신은 통상 1년 단위입니다(10-Q).
+- 이 구조가 현금흐름을 앞당기는 원천입니다. 반대로 갱신 주기가 짧아지면 현금흐름에 부담이 생길 수 있습니다.
+- RSC(RSC-Private 제외)는 계약 기간에 걸쳐 나눠서(ratable) 매출로 인식합니다.</p>
+<p><strong>매출 구성</strong>
+- 2분기 총매출 $427.3M 중 구독 매출이 $407M(<span class="up">+37%</span> YoY)으로 약 95%입니다(실적콜 요약 기준, 비중은 단순 계산).
+- Cloud ARR은 $1.48B(<span class="up">+39%</span>)로 Subscription ARR의 약 89%입니다. CFO는 실적콜에서 "89% cloud"라고 언급했습니다.</p>
+<p><strong>고객군</strong>
+- 연 $100K 이상 고객은 3,084곳(<span class="up">+23%</span>)이고, Subscription ARR의 88%를 차지합니다.
+- 연 $1M 이상 고객 수는 57% 넘게 늘었습니다(실적콜).
+- 대기업 중심 구조입니다.</p>
+<p><strong>경쟁 위치</strong>
+- 10-K 사업 섹션의 경쟁사 서술은 제공된 발췌에 없어 공시상 확인할 수 없습니다.
+- 회사 측 주장은 두 가지입니다.
+  - 사이버 레질리언스라는 개념을 회사가 처음 만들었다는 입장입니다.
+  - 인베스터데이에서 NPS 80 이상(엔터프라이즈 B2B 상위 1%)이라고 밝혔습니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>FY27 Q2</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$427.3M</td>
+<td>YoY <span class="up">+37.9%</span>, QoQ <span class="up">+10.4%</span></td>
+</tr>
+<tr>
+<td>구독 매출</td>
+<td>$407M</td>
+<td>YoY <span class="up">+37%</span></td>
+</tr>
+<tr>
+<td>Subscription ARR</td>
+<td>$1.66B</td>
+<td>YoY <span class="up">+33%</span>, 순증 약 $96M(순증 YoY <span class="up">+35%</span>)</td>
+</tr>
+<tr>
+<td>Cloud ARR</td>
+<td>$1.48B</td>
+<td>YoY <span class="up">+39%</span></td>
+</tr>
+<tr>
+<td>NRR</td>
+<td>119% 초과</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>GAAP 78.4% / Non-GAAP 81%</td>
+<td>장기 목표 범위 77~82%</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>-16.8%</td>
+<td>YoY <span class="up">+13.7%</span>p 개선 (분기 영업손실 약 -$72M, 역산)</td>
+</tr>
+<tr>
+<td>ARR 기여이익률</td>
+<td>14%</td>
+<td>YoY +460bp</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>$65.7M (마진 15%)</td>
+<td>전년 $57.5M, 영업현금흐름 마진 18%</td>
+</tr>
+<tr>
+<td>현금성 자산 / 전환사채</td>
+<td>$1.75B / $1.13B</td>
+<td>순현금 약 $0.62B (계산)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>ARR 성장 33%보다 매출 성장 38%가 높은 이유는 일회성 요인 때문입니다.</strong>
+  - material rights(Subscription Credits)가 행사되거나 소멸할 때 매출이 인식됩니다.
+  - RCDM-T 라이선스는 일부를 한 번에 인식(upfront)했습니다.
+  - 10-Q는 RCDM-T 전환이 FY2026에 대부분 끝났고, Subscription Credit 효과도 계속 줄어든다고 밝혔습니다.
+  - 1분기 10-Q에는 "through fiscal 2027 … significantly decline sequentially"라고 적혀 있었습니다. 2분기 10-Q에서는 "through fiscal 2027"이 빠지고 "continue to decline"으로 바뀌었습니다. 종료 시점 표현이 사라졌다는 사실만 확인되며, 그 의미는 공시상 확인할 수 없습니다.
+  - 따라서 실제 성장 체력을 보려면 매출보다 ARR을 봐야 합니다.
+- <strong>물량과 단가를 나눠 보면 이렇습니다.</strong>
+  - 물량: $100K 이상 고객 <span class="up">+23%</span>
+  - 단가·교차판매: NRR 119% 초과, $1M 이상 고객 <span class="up">+57%</span>
+  - 성장은 기존 대형 고객 확장과 대형화가 이끌고 있습니다. 단가(ARPU) 수치 자체는 확인할 수 없습니다.
+- <strong>믹스:</strong> Cloud ARR <span class="up">+39%</span>가 전체 ARR <span class="up">+33%</span>를 웃돌고 있습니다. 실적콜에서 한 애널리스트는 가이던스로 볼 때 Non-cloud ARR도 올해 약 10% 성장으로 돌아선다고 추정했고, CFO는 이를 부정하지 않았습니다. CFO는 Non-cloud의 마진이 더 높다고 언급했습니다.</p>
+<p><strong>마진 방향성</strong>
+- GAAP 영업이익률이 1년 만에 13.7%p 개선됐고, ARR 기여이익률도 460bp 올랐습니다. 레버리지가 실제로 나오고 있습니다.
+- 다만 GAAP 적자(<span class="down">-16.8%</span>)와 FCF 흑자(<span class="up">+15%</span>)의 차이가 30%p를 넘습니다.
+  - 이 차이는 주식보상비용(SBC)과 선불 청구 구조에서 나오는 것으로 추정합니다.
+  - SBC 금액은 제공 자료에서 확인할 수 없습니다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 $286.2M입니다. 회사는 FY FCF 가이던스를 $323~333M으로 제시했습니다.
+- 순현금 상태입니다. 전환사채 $1.13B는 주가 상승에 따른 희석 요인이 될 수 있지만, 전환 조건은 제공 자료에 없습니다.</p>
+<p><strong>밸류에이션 (제공 수치로 단순 계산)</strong>
+- EV는 약 $23.3B입니다(시가총액 $23.96B − 현금 $1.75B + 전환사채 $1.13B).
+- EV/Subscription ARR: 약 14.1배
+- EV/FY27 매출 가이던스 중간값($1.689B): 약 13.8배
+- EV/FY27 FCF 가이던스 중간값($328M): 약 71배
+- 시가총액/TTM FCF: 약 84배</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① RSC 코어: 데이터 보안과 사이버 복구</strong>
+- 회사는 FY27에도 RSC가 ARR 성장의 주동력이라고 밝혔습니다.
+- 회사는 FY Subscription ARR 가이던스를 $1.88~1.885B(<span class="up">+29%</span>)로 올렸습니다.
+  - 달성하려면 하반기 순증 ARR이 약 $220~225M이어야 합니다(역산).
+  - 분기 평균 약 $110M으로, 2분기 $96M보다 많아야 합니다.
+- <strong>검증 포인트:</strong> 3분기 순증 ARR이 $96M 이상이고 전년 대비 성장이 유지되는지</p>
+<p><strong>② Identity Resilience</strong>
+- 실적콜에서 "가장 빠르게 성장하는 제품 라인 중 하나"라고 언급했습니다.
+- 규제 산업 밖의 신규 고객과 기존 고객 확장이 동시에 일어나고 있다고 설명했습니다.
+- 2분기에 identity roll forward 기능을 출시했습니다.
+- Strata Identity 인수분은 이번 분기 ARR과 가이던스에 포함되지 않았습니다.
+- <strong>검증 포인트:</strong> 제품별 ARR이 공개되는지, 그리고 NRR 119% 초과가 유지되는지(교차판매 효과)</p>
+<p><strong>③ RAC(Rubrik Agent Cloud), AI 에이전트 보안</strong>
+- 실적콜 기준 유료 고객은 15곳 이상이고, 경영진은 POC가 실제 도입으로 잘 전환되고 있다고 언급했습니다.
+- 규모는 아직 미미합니다. 회사도 FY27 주동력은 RSC라고 공시했습니다.
+- <strong>검증 포인트:</strong> 유료 고객 수 증가세, 그리고 RAC를 별도 지표로 공개하는지</p>
+<p><strong>④ Rubrik Flex (플랫폼 통합 계약)</strong>
+- 1분기에 대형 해외 계약이 있었다고 인베스터데이에서 언급했습니다.
+- 올해는 선별적으로 적용하고 최소 계약 규모 조건을 둔다고 밝혔습니다.
+- ARR은 총계약액(TCV)을 계약 기간으로 나눠 산정한다고 설명했습니다.
+- <strong>검증 포인트:</strong> Flex 비중이 늘 때 RPO·청구액의 변동성과 ARR 산정 방식이 일관되는지</p>
+<p><strong>⑤ Non-cloud와 소버린(Sovereign) 수요</strong>
+- 규제·지정학 요인으로 Non-cloud 사업이 다시 성장하고 있다고 실적콜에서 언급했습니다.
+- <strong>검증 포인트:</strong> Subscription ARR에서 Cloud ARR을 뺀 값의 분기 증감</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- 매우 공격적이고 자신감이 높습니다.
+- CEO는 "10분기 연속 전 지표 상회", "Let me repeat, accelerated"라며 순증 ARR 가속을 강조했습니다.
+- 근거로 Mythos 등 frontier AI 모델이 "특이점(singularity) 순간"을 만들었다는 서사를 제시했습니다. Anthropic의 Project Glasswing에 참여하고 있다고도 공개했습니다.
+- 수요 논리의 핵심은 "AI 에이전트가 기계 속도로 공격하므로 기존 보안 도구는 무력하다"는 주장입니다. 이 주장은 회사 측 서사이며, 정량으로 검증되지는 않았습니다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 모든 지표 가이던스를 상향했습니다.
+- 3분기 매출은 보고 기준 <span class="up">+23%</span>와 정상화 기준 <span class="up">+31%</span>를 함께 제시했습니다. material rights 효과가 빠진다는 점을 미리 알린 것입니다.
+- 인베스터데이(6월)에서 CFO는 "성장이 급가속하는 모습보다 안정적인 모습을 보게 될 것"이라고 했습니다. 장기 모델상 20%대 성장으로의 둔화를 부정하지 않은 것입니다.
+- 장기 마진은 한 애널리스트가 CFO의 인베스터데이 슬라이드를 "80% 매출총이익률, 25% FCF 마진"으로 요약해 질문했습니다. 회사는 투자 기간이라며 보수적인 목표를 유지했습니다.
+- 정리하면, 단기(분기 실적)는 공격적이고 장기(모델)는 보수적인 화법입니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>하드웨어 가격과 공급망:</strong> 회사는 3분기 연속 "Subscription ARR에 중대한 영향 없음"이라고 답했습니다. 소규모로 판매하는 아시아태평양 하드웨어의 리드타임은 오히려 개선됐다고 했습니다.
+- <strong>Cloud ARR 대 Non-cloud:</strong> CFO는 전체 Subscription ARR을 보라며 초점을 돌렸습니다. Non-cloud 성장률은 직접 확인해 주지 않았습니다.
+- <strong>재가속 여부(인베스터데이):</strong> "화이트스페이스가 거의 무한한데 왜 감속을 모델링하느냐"는 질문에 "커브를 쌓는 기술이 필요하다"는 원론적 답변에 그쳤습니다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- NRR 119% 초과, $1M 이상 고객 <span class="up">+57%</span>
+- RAC 유료 고객 15곳 이상
+- Project Glasswing 참여
+- Strata Identity 인수분 ARR 미반영
+- Flex 계약 방식과 최소 규모 조건
+- Non-cloud 마진이 더 높다는 점</p>
+<h2>6. 리스크</h2>
+<p>참고로 10-K 리스크 섹션 원문은 제공된 발췌에 포함되지 않았습니다. 아래는 MD&amp;A와 실적콜에서 확인되는 사항입니다.</p>
+<ol>
+<li><strong>보고 매출 성장률 급감 구간 진입</strong>
+   - 3분기 가이던스는 <span class="up">+23%</span>로, 2분기 38%에서 15%p 낮아집니다.
+   - material rights 효과가 줄고 RCDM-T upfront 인식이 끝나는 데 따른 것입니다.
+   - 헤드라인 성장률을 보는 투자자에게는 둔화로 비칠 수 있습니다. 2분기 10-Q에서 효과 종료 시점 표현("through fiscal 2027")이 빠져 추정 불확실성도 남아 있습니다.</li>
+<li><strong>밸류에이션과 모멘텀 과열</strong>
+   - EV/FY FCF 가이던스는 약 71배이고, 60일 <span class="up">+59.8%</span> 뒤 52주 고점에 있습니다.
+   - ARR 순증이 한 분기만 둔화돼도 가치 재평가 폭이 클 수 있습니다.</li>
+<li><strong>GAAP 적자와 희석</strong>
+   - GAAP 영업이익률은 <span class="down">-16.8%</span>입니다.
+   - FCF와의 차이가 SBC 때문이라면 실질 주주 수익은 FCF보다 낮습니다(SBC 금액은 확인 불가).
+   - 전환사채 $1.13B가 있고, Class A·Class B 이중 주식 구조입니다. Class B의 의결권 배수는 발췌에서 확인할 수 없습니다.</li>
+<li><strong>현금흐름 구조의 취약성</strong>
+   - 신규 계약은 주로 3년 선불이고 갱신은 1년 단위입니다. 갱신 비중이 커질수록 FCF 마진이 압박받을 수 있습니다.
+   - Flex 도입이 늘면 청구액과 RPO의 변동성도 커질 수 있습니다.</li>
+<li><strong>AI 신사업의 실체 부족</strong>
+   - RAC 유료 고객은 15곳 수준입니다.
+   - 주가에 반영된 AI 서사에 비해 매출 기여가 확인되지 않습니다.
+   - 회사도 FY27 동력은 RSC라고 공시했습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ('보통' 판단)</strong>
+- <strong>긍정 요인:</strong>
+  - Subscription ARR <span class="up">+33%</span>, 순증 ARR 성장 전년 대비 <span class="up">+35%</span>(가속)
+  - NRR 119% 초과
+  - ARR 기여이익률 +460bp, GAAP 영업이익률 <span class="up">+13.7%</span>p
+  - FCF 마진 15%
+  - 순현금 약 $0.6B
+  - FY 가이던스 전 항목 상향
+- <strong>'적극'을 막는 요인:</strong>
+  - 시가총액/TTM FCF 약 84배
+  - 3분기 보고 매출 성장률 23%로 둔화
+  - 거래량 확인 없는 52주 고점
+  - 확인된 촉매 부재</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3분기 순증 ARR:</strong> 연간 가이던스 달성 경로(하반기 약 $220M+)에 맞춰 $96M 이상인지
+2. <strong>SBC 규모와 희석률:</strong> 10-Q 현금흐름표로 확인합니다. FCF에서 SBC를 뺀 실질 FCF 마진이 플러스인지 봐야 합니다.
+3. <strong>매출 둔화에 대한 시장 반응:</strong> 3분기 실적 발표 때 정상화 성장률 31%가 실제로 나오는지, 그리고 헤드라인 23%에 주가가 어떻게 반응하는지 확인합니다. 조정 시 분할 매수 구간으로 활용합니다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 순증 ARR이 2분기 연속 전년 대비 감소하거나, FY ARR 가이던스를 동결 또는 하향할 때
+- NRR이 115% 아래로 떨어지거나 $100K 이상 고객 증가율이 20% 아래로 둔화할 때
+- Flex나 갱신 구조 변화로 FCF 가이던스($323~333M)를 하향할 때
+- 정상화 성장률도 30% 아래로 내려가, 둔화가 일회성 요인 소멸 때문이 아니라 본업 둔화로 확인될 때</p>
+<p><strong>'적극'으로 상향할 조건</strong>
+- 3분기와 4분기에 순증 ARR 가속이 이어지는 것
+- RAC와 Identity Resilience가 별도 지표로 의미 있는 규모를 보이는 것</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000013/rbrk-20260131.htm">10-K — 2026-01-31_0001943896-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000060/rbrk-20260731.htm">10-Q — 2026-07-31_0001943896-26-000060</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000047/rbrk-20260430.htm">10-Q — 2026-04-30_0001943896-26-000047</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000055/rubrikinc-991pressrelease7.htm">8-K — 2026-08-26_0001943896-26-000055__EX-99.1__rubrikinc-991pressrelease7</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000055/rbrk-20260826.htm">8-K — 2026-08-26_0001943896-26-000055</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000041/rubrikinc-991pressrelease4.htm">8-K — 2026-06-04_0001943896-26-000041__EX-99.1__rubrikinc-991pressrelease4</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000041/rbrk-20260604.htm">8-K — 2026-06-04_0001943896-26-000041</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1943896/000194389626000049/rbrk-20260603.htm">8-K — 2026-06-03_0001943896-26-000049</a></li>
+<li>Transcript — 2026-08-27 Q2 2027 Transcript</li>
+<li>Transcript — 2026-06-11 Rubrik, Inc. (RBRK) Analyst/Investor Day Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -2692,3 +2692,524 @@ Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (ch
 2026-09-22 22:20:06,298 - INFO - Expecting value: line 1 column 1 (char 0)
 2026-09-22 22:20:10,834 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_krx/treasury_stock_trades.xlsx (974KB, 325종목·9,159행·79일)
 2026-09-22 22:20:14,772 - INFO - Telegram upload OK
+2026-09-23 22:20:01,826 - INFO - 20260923 유가증권: 48행 파싱 (20260923000789)
+2026-09-23 22:20:01,843 - INFO - 20260923 코스닥: 57행 파싱 (20260923000790)
+2026-09-23 22:20:01,845 - INFO - 20260923 코넥스: 1행 파싱 (20260923000772)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+2026-09-23 22:20:02,732 - INFO - Loaded 23870 closing prices from cache.
+2026-09-23 22:20:02,733 - INFO - Loaded 1789 option-date LLM results from cache.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260923', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:03,163 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260922', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:03,620 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260921', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:04,083 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260920', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:04,691 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260919', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:05,124 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260918', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:05,587 - INFO - Expecting value: line 1 column 1 (char 0)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 241, in get_market_cap_by_ticker
+    df = 전종목시세().fetch(date, market2mktid[market])
+         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 155, in fetch
+    result = self.read(mktId=mktId, trdDd=trdDd)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 59, in read
+    return resp.json()
+           ~~~~~~~~~^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 289, in build_excel
+    shares = load_listed_shares(date_str)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 258, in load_listed_shares
+    df = stock.get_market_cap_by_ticker(ds, market="ALL")
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 32, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 424, in get_market_cap_by_ticker
+    df = krx.get_market_cap_by_ticker(date, market, acending)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20260917', 'ALL', False)
+Arguments: ({},)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+Error occurred in get_market_cap_by_ticker: Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:06,010 - INFO - Expecting value: line 1 column 1 (char 0)
+2026-09-23 22:20:10,501 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_krx/treasury_stock_trades.xlsx (985KB, 328종목·9,265행·80일)
+2026-09-23 22:20:14,407 - INFO - Telegram upload OK
+2026-09-24 22:20:02,077 - INFO - 2026-09-24: 공시 없음 (휴장일)
+2026-09-24 22:20:02,143 - WARNING - 20260924: 체결내역 공시 없음 (휴장일?) — 엑셀·발송 생략
+2026-09-25 22:20:02,210 - INFO - 2026-09-25: 공시 없음 (휴장일)
+2026-09-25 22:20:02,281 - WARNING - 20260925: 체결내역 공시 없음 (휴장일?) — 엑셀·발송 생략
