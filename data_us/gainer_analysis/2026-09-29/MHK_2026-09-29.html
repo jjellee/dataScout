@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MHK — Mohawk Industries Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MHK — Mohawk Industries Inc. Common Stock</h1>
+<div class="sub">2026-09-29 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">MHK</span><span class="badge">+4.76%</span><span class="badge">거래량 1.03배</span><span class="badge">$8.48B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 <span class="up">+4.76%</span> 상승을 설명하는 공시나 실적 촉매는 확인되지 않는다. 거래량도 20일 중앙값의 1.03배로 평소 수준이어서, 전제로 주어진 '거래량 급증'은 지표로 확인되지 않는다.</li>
+<li>2Q26 영업이익률은 전년 대비 <span class="up">+1.8%</span>p 개선됐다. 그러나 같은 분기 IEEPA 관세 환급으로 매출원가가 $49.3M 줄었고, 이는 매출 대비 약 1.6%p(계산치)다. 개선폭의 대부분이 일회성 환급에서 나왔다. 환급 판결에는 미 정부가 항소한 상태다.</li>
+<li>2Q 물량 증가에는 신제품 초기 입점 재고와 가격 인상 전 고객 선매입이 섞여 있다. 회사는 하반기에 원가 상승분이 재고를 거쳐 마진에 반영된다고 밝혔다. 3Q 조정 EPS 가이던스 $2.50~2.60도 2Q 실적 $3.67보다 낮다.</li>
+<li>반대로 TTM 잉여현금흐름은 $811.5M으로, 시가총액 대비 약 10% 수준(계산치)이다. 자사주 매입도 이어지고 있어 밸류에이션 하방은 두텁다.</li>
+<li>결론적으로 "싸지만 이익의 질과 방향이 불확실한" 구간이다. 3Q 실적에서 환급을 뺀 마진과 가격-원가 스프레드를 확인한 뒤 비중을 정하는 편이 합리적이다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 안에 제출된 공시가 없다. 가장 최근 8-K(2026-09-01)는 An Nuyttens의 Flooring ROW 부문 사장 선임(10월 중순 부임)으로, 오늘 주가와는 시점이 맞지 않는다.</li>
+<li><strong>뉴스 헤드라인:</strong></li>
+<li>'Simply Wall St의 8% 저평가' 기사는 제3자 밸류에이션 코멘트로, 주가를 움직일 새 정보가 아니다.</li>
+<li>이사 Suzanne Helen의 약 $100K 매도는 오히려 부정적 신호다. 규모는 작고, Form 4 원문이 제공되지 않아 공시로는 확인할 수 없다.</li>
+<li>나머지 두 건(Manx Radio, Metal Hawk)은 MHK와 무관한 동명 기사다.</li>
+<li><strong>수급 지표:</strong> 거래량 배수 1.03배, 거래대금 $132.6M으로 특별한 수급 이벤트의 흔적이 없다. 20일 수익률 <span class="down">-4.2%</span> 이후의 기술적 반등, 또는 주택·금리 민감 업종의 동반 상승일 가능성이 있다. 다만 이는 추정이며 제공된 자료로 검증할 수 없다.</li>
+<li><strong>참고:</strong> Seeking Alpha 페이지에는 8월 초 주가가 $136.60으로 표시돼 있다. 현재 종가 $125.16은 2Q 실적 서프라이즈 직후보다 낮은 수준이다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- 세라믹·포세린 타일, 천연석, 카펫, 러그, 라미네이트, 원목, LVT, 하이브리드, 시트 비닐 등 주요 바닥재 전 카테고리를 다룬다.
+- 10-K와 콜에 따르면 카운터톱, 패널, 단열재 등 인접 제품으로도 확장하고 있다.
+- 원료부터 제조·유통까지 수직계열화돼 있다(10-K).</p>
+<p><strong>브랜드</strong>
+- Daltile, Marazzi, Mohawk, Karastan, Pergo, Quick-Step, Unilin, IVC, Kerama Marazzi, Eliane, Vitromex 등.</p>
+<p><strong>고객과 용도</strong>
+- 주거용과 상업용, 리모델링과 신축을 모두 다룬다.
+- 2Q26 기준 상업용 수요는 안정적이고, 주거용은 부진하다(10-Q MD&amp;A).</p>
+<p><strong>매출 구성 (2025년 매출 $10.8B, 10-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global Ceramic</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Flooring NA</td>
+<td>34%</td>
+</tr>
+<tr>
+<td>Flooring ROW</td>
+<td>26%</td>
+</tr>
+<tr>
+<td>미국 매출</td>
+<td>54%</td>
+</tr>
+<tr>
+<td>미국 외 매출</td>
+<td>46%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>생산과 판매 거점</strong>
+- 19개국에서 생산하고 약 180개국에 판매한다.
+- 장기자산의 대부분은 미국과 유럽에 있다.
+- 호주, 브라질, 말레이시아, 멕시코, 뉴질랜드, <strong>러시아</strong>에서도 사업을 운영한다.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 연간 매출 기준 세계 최대 바닥재 제조사라고 밝힌다.
+- 시장점유율 수치는 공시상 확인 불가다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<h3>분기 실적 추이</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$2,728.7M (<span class="up">+8.0%</span> YoY)</td>
+<td>약 $2.99B (<span class="up">+6.8%</span> YoY, 불변환율 <span class="up">+5%</span>)</td>
+</tr>
+<tr>
+<td>순이익(지배주주)</td>
+<td>$117.1M (전년 $72.6M)</td>
+<td>$196.1M (전년 $146.5M, <span class="up">+33.9%</span>)</td>
+</tr>
+<tr>
+<td>EPS</td>
+<td>조정 $1.90 (SA 헤드라인)</td>
+<td>GAAP $3.22 / 조정 $3.67</td>
+</tr>
+<tr>
+<td>관세 환급 효과</td>
+<td>—</td>
+<td>EPS 약 $0.63 (실적콜)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>성장의 질: 1Q와 2Q의 차이</h3>
+<p><strong>1Q26: 외형 성장은 비유기적 요인이 이끌었다</strong>
+- 매출 증가 요인(10-Q):
+  - 출하일수 증가: +$143M
+  - 환율: +$127M
+  - 주문관리시스템(OMS) 전환의 기저효과: +$50M
+- 매출 감소 요인:
+  - 물량: -$100M
+  - 가격·믹스: -$15M
+- 즉 기초체력(물량과 가격)은 역성장이었다.</p>
+<p><strong>2Q26: 물량·가격·믹스가 모두 플러스로 전환됐다</strong>
+- 회사는 2Q 성장 요인으로 물량 증가, 가격·믹스 개선, 우호적 환율을 들었다(10-Q MD&amp;A).
+- 다만 실적콜에서 물량에 <strong>신제품 초기 입점 재고와, 가격 인상 발표를 앞둔 일부 고객의 재고 확충</strong>이 포함됐다고 언급했다. 따라서 이 개선이 추세적인지는 3Q에 검증해야 한다.</p>
+<p><strong>부문별 2Q 매출 (실적콜)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>매출</th>
+<th>보고 기준</th>
+<th>불변환율 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global Ceramic</td>
+<td>$1.2B</td>
+<td>+7.9%</td>
+<td>+4.6%</td>
+</tr>
+<tr>
+<td>Flooring NA</td>
+<td>$976M</td>
+<td>+3.1%</td>
+<td>+4.7%</td>
+</tr>
+<tr>
+<td>Flooring ROW</td>
+<td>발췌본에서 확인 불가</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>마진</h3>
+<ul>
+<li>2Q 매출총이익률은 26.6%, 영업이익률은 8.5%(전년 대비 <span class="up">+1.8%</span>p)다.</li>
+<li><strong>관세 환급 효과:</strong></li>
+<li>2Q에 IEEPA 관세 환급으로 매출원가가 $49.3M 줄었다. 이는 2025년 1분기 이후 인식했던 관세 비용을 되돌린 것이다.</li>
+<li>환급액을 빼면 영업이익률 개선폭은 약 <span class="up">+0.2%</span>p 안팎으로 줄어드는 것으로 추정한다. 매출 $2.99B 대비 1.65%p를 차감한 계산이며, 회사가 공시한 수치는 아니다.</li>
+<li><strong>하반기 방향성:</strong> 실적콜에서 회사는 원자재·에너지·운송비 상승분이 하반기에 재고를 거쳐 마진에 반영되고, 추가 가격 인상이 필요할 수 있다고 언급했다.</li>
+<li><strong>3Q 가이던스:</strong> 조정 EPS $2.50~2.60(SA 헤드라인 기준)이다. 2Q 조정 EPS $3.67, 환급분을 뺀 약 $3.04(계산치)보다 모두 낮다.</li>
+</ul>
+<h3>현금흐름과 자본배분</h3>
+<ul>
+<li>TTM 잉여현금흐름은 $811.5M이다.</li>
+<li>2026년 설비투자 계획은 1Q 시점 약 $480M에서 2Q 시점 약 $460M으로 줄었다.</li>
+<li>2Q에 자사주 60만 주 이상을 약 $60M에 매입했다(실적콜).</li>
+<li>관세 환급은 $70.7M을 신청해 7월 4일 기준 $65.5M을 수령했다.</li>
+</ul>
+<h3>재무 건전성</h3>
+<ul>
+<li>회사는 "강한 대차대조표"를 갖췄고, 투자·인수·자사주 매입·부채 상환을 감당할 수 있다고 밝혔다.</li>
+<li>순부채, 차입금 만기, 이자보상배율 등 구체적 수치는 제공된 발췌에서 <strong>공시상 확인 불가</strong>다.</li>
+</ul>
+<h3>데이터 확인 사항</h3>
+<ul>
+<li><strong>시가총액 불일치:</strong> 10-K 표지의 발행주식수는 61,460,358주(2026-02-19 기준)다. 여기에 종가 $125.16을 곱하면 약 $7.69B로, 제공된 시가총액 $8.48B와 차이가 난다. 이 주식수로 계산한 FCF 수익률은 약 10.6%, 제공 시가총액 기준으로는 약 9.6%다.</li>
+<li><strong>10-K 표지 체크 항목:</strong> "과거 재무제표 오류 수정 반영"과 "보상 환수 분석이 필요한 재작성" 항목이 모두 체크돼 있다. 해당 오류의 내용과 규모는 발췌에서 <strong>공시상 확인 불가</strong>다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 신제품 입점과 믹스 개선</strong>
+- 내용:
+  - 미국에서 프리미엄 타일·카운터톱 입점이 늘었다.
+  - Flooring NA는 하드·소프트 서피스 모두에서 점유율을 높였다고 회사는 밝혔다.
+  - 이탈리아 R&amp;D 센터를 활용한 글로벌 신제품 개발을 진행 중이다.
+- 실현 조건: 초기 입점 재고 이후에도 재주문(sell-through)이 이어져야 한다.
+- 검증 포인트: 3Q 물량 기여도가 플러스로 유지되는지, 불변환율 매출 증가율이 2Q의 <span class="up">+5%</span>에서 얼마나 둔화되는지.</p>
+<p><strong>② 가격 인상을 통한 원가 전가</strong>
+- 내용: 여러 제품과 지역에서 가격 인상을 실행했고, 회사는 가격 실현율이 "기대에 부합한다"고 밝혔다(실적콜).
+- 실현 조건: 경쟁사들도 가격을 따라 올려야 하고, 물량 이탈이 제한적이어야 한다.
+- 검증 포인트: 3Q MD&amp;A의 '가격·믹스' 기여 금액이 '투입원가 상승' 금액을 상쇄하는지.</p>
+<p><strong>③ 구조조정과 생산성</strong>
+- 내용:
+  - 2022년 이후 누적 연간 절감 효과는 약 $360M이다.
+  - 신규 절감 프로젝트는 약 $60M 규모이며, 약 $50M의 현금 구조조정 비용이 들고 대부분 2027년 말까지 완료된다.
+- 실현 조건: 창고 통합과 생산능력 최적화가 계획대로 진행돼야 한다.
+- 검증 포인트: 분기별 구조조정 비용 집행액과 MD&amp;A에서 "생산성" 기여가 계속 언급되는지.</p>
+<p><strong>④ 주택 경기 회복 (옵션 가치)</strong>
+- 회사는 주택 부족, 기록적인 주택 자산가치, 노후 주택 재고가 향후 수요를 뒷받침할 수 있다고 밝혔다.
+- 다만 CFO는 콜에서 "단기적으로 시장 수요 개선을 예상하지 않는다"고 언급했다.
+- 검증 포인트: 미국·유럽의 주택 거래량과 모기지 금리. 이는 제공 자료 밖의 지표다.</p>
+<p><strong>⑤ 관세 환급 잔여분</strong>
+- 신청액 $70.7M 가운데 $65.5M을 받았다. 잔여분은 약 $5.2M(계산치)으로 크지 않다.
+- 검증 포인트: 상향 여력보다는 항소 결과에 따른 환수 위험 쪽이 더 중요하다.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<h3>톤과 가이던스 화법</h3>
+<ul>
+<li>경영진은 2Q 실적이 "기대를 크게 상회"했고 "시장을 아웃퍼폼"했다고 말하며 자신감을 보였다.</li>
+<li>그 근거로는 중동 분쟁의 수요 타격이 예상보다 작았던 점과 신제품 반응을 들었다.</li>
+<li>그러나 3Q 가이던스는 보수적이다.</li>
+<li>하반기 원가 반영과 추가 가격 인상 가능성을 언급했다.</li>
+<li>CFO는 "단기 수요 개선을 예상하지 않는다"고 말했다.</li>
+<li>요약하면 2Q 서프라이즈를 연간 전망 상향으로 연결하지 않았다.</li>
+</ul>
+<h3>Q&amp;A에서 반복된 질문과 방어 지점</h3>
+<ul>
+<li><strong>서프라이즈의 원천 (BofA, TRG):</strong> 시장 요인인지 점유율 요인인지를 여러 애널리스트가 반복해서 물었다.</li>
+<li>CEO는 "시장 회복력"과 "신제품 초과 성과"를 모두 들었다.</li>
+<li>그런데 CFO는 "신제품 입점 상당 부분은 이미 가이던스에 반영돼 있었다"고 정정했다.</li>
+<li>두 답변을 종합하면, 서프라이즈는 주로 시장이 예상보다 덜 나빴던 데서 나왔다고 해석된다. 이 해석은 추정이다.</li>
+<li><strong>월별 추이와 7월 흐름:</strong> "월별 변동성이 크지 않았다"는 정성적 답변만 있었고, 구체적인 수치는 제시하지 않았다. 사실상 답변을 회피한 것으로 본다.</li>
+<li><strong>경쟁사 행태:</strong> "경쟁이 치열하고 업계가 물량을 쫓고 있다"고 인정했다. 동시에 가격 실현율은 기대에 부합한다며 방어했다.</li>
+</ul>
+<h3>공시에는 없고 콜에서만 드러난 정보</h3>
+<ul>
+<li>2Q 물량에 가격 인상 전 고객 재고 확충이 포함됐다. 이는 3Q 물량의 반락 위험을 뜻한다.</li>
+<li>관세 환급의 EPS 효과는 약 $0.63이며, 2Q 가이던스에는 포함되지 않았던 금액이다.</li>
+<li>신규 구조조정의 현금 비용은 약 $50M이며, 대부분 2027년 말까지 완료된다.</li>
+<li>경영진 교체:</li>
+<li>Jeff Lorberbaum은 25년 만에 CEO에서 물러나 의장으로 남는다.</li>
+<li>후임 CEO Paul De Cock은 Unilin 출신으로, Flooring NA 부문을 이끌었고 COO를 맡아왔다.</li>
+<li>8-K에 따르면 그가 겸임하던 ROW 부문장 자리는 외부 인사(Solvay 출신)가 맡는다.</li>
+</ul>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>관세 환급의 일회성과 환수 가능성</strong>
+   - 2Q의 매출원가 절감 $49.3M과 EPS 효과 $0.63은 반복되지 않는다.
+   - 10-Q에 따르면 미 정부가 CIT 명령에 항소했다. 항소가 받아들여지면 이미 받은 $65.5M의 환급이 지연·축소·거부될 수 있다고 회사는 밝혔다.</p>
+</li>
+<li>
+<p><strong>하반기 가격-원가 스프레드 역전</strong>
+   - 중동 분쟁에 따른 에너지·연료·운송비 상승이 하반기에 재고를 거쳐 매출원가에 반영된다(10-Q, 실적콜).
+   - 업계가 물량을 쫓는 상황이어서 추가 가격 인상이 받아들여질지는 불확실하다.</p>
+</li>
+<li>
+<p><strong>물량 선반영의 반작용</strong>
+   - 2Q 물량에는 초기 입점 재고와 가격 인상 전 선매입이 들어 있다.
+   - 주택 거래는 역사적 저점 부근에 머물러 있고, 신축도 부진하다(10-Q). 3Q 이후 물량이 다시 역성장으로 돌아설 위험이 있다.</p>
+</li>
+<li>
+<p><strong>러시아 사업</strong>
+   - Global Ceramic과 ROW 부문에 러시아 사업이 있다.
+   - 회사는 법률·규제·재무·평판 위험과 함께, 외국인 소유 사업의 국유화 같은 보복 조치 가능성을 명시했다(10-Q).
+   - 러시아 매출과 자산 규모는 공시상 확인 불가다.</p>
+</li>
+<li>
+<p><strong>거버넌스와 회계 신뢰도</strong>
+   - 10-K 표지에 오류 수정 재작성 및 보상 환수 분석 항목이 체크돼 있으나, 세부 내용은 확인 불가다.
+   - 여기에 CEO 교체와 최대 해외 부문장 교체가 겹쳐 경영 연속성에 과도기 위험이 있다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<p><strong>비중 확대를 지지하는 요인</strong>
+- TTM 잉여현금흐름 $811.5M으로, FCF 수익률은 약 9.6~10.6%(계산치)다.
+- 분기 자사주 매입 약 $60M.
+- 52주 고점 대비 <span class="down">-10.7%</span>.
+- 2Q 불변환율 매출 <span class="up">+5%</span>로, 1Q의 물량 -$100M 대비 개선됐다.</p>
+<p><strong>관망을 지지하는 요인</strong>
+- 영업이익률 개선 <span class="up">+1.8%</span>p 가운데 약 1.6%p가 관세 환급이다.
+- 3Q 조정 EPS 가이던스 $2.50~2.60은 2Q 대비 전분기 역성장이다.
+- 거래량 배수가 1.03배에 불과하고, 오늘 상승의 촉매가 없다.
+- CFO가 단기 수요 개선을 예상하지 않는다고 밝혔다.</p>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>3Q 실적:</strong> 관세 환급을 뺀 매출총이익률이 전년 대비 유지 또는 개선됐는지, MD&amp;A에서 '가격·믹스' 기여가 '투입원가 상승'을 상쇄했는지.</li>
+<li><strong>3Q 물량:</strong> 선매입과 초기 입점 효과가 빠진 뒤에도 물량 기여가 플러스인지, 부문별 불변환율 성장률이 어떤지.</li>
+<li><strong>공시 리스크 해소:</strong> 10-K 재무제표 재작성의 성격과 규모(원문 주석 확인), CIT 항소 진행 상황과 환급 환수 가능성.</li>
+</ol>
+<h3>판단을 바꿀 조건</h3>
+<p><strong>보통 이상으로 상향할 조건</strong>
+- 3Q에 환급을 제외하고도 영업이익률이 전년 대비 개선되고, 물량이 플러스를 유지하는 경우.
+- 새 CEO가 구조조정 절감 목표를 추가하거나 자본배분(자사주 확대 등)을 강화하는 경우.</p>
+<p><strong>회피로 하향할 조건</strong>
+- 3Q 가이던스($2.50~2.60)에 미달하거나, 4Q 가이던스에서 가격-원가 스프레드가 역전되는 경우.
+- 항소 결과로 관세 환급을 되돌려야 하는 경우.
+- 재작성 이슈가 추가 정정이나 내부통제 취약점으로 확대되는 경우.
+- 러시아 사업에 대한 제재·국유화 등 손상 이벤트가 발생하는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000085196826000011/mhk-20251231.htm">10-K — 2025-12-31_0000851968-26-000011</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000085196826000033/mhk-20260704.htm">10-Q — 2026-07-04_0000851968-26-000033</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000085196826000018/mhk-20260404.htm">10-Q — 2026-04-04_0000851968-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000110465926104307/tm2624393d1_ex99-1.htm">8-K — 2026-09-01_0001104659-26-104307__EX-99.1__tm2624393d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000110465926104307/tm2624393d1_8k.htm">8-K — 2026-09-01_0001104659-26-104307</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000085196826000031/a2026q2pressreleaseandtabl.htm">8-K — 2026-07-30_0000851968-26-000031__EX-99.1__a2026q2pressreleaseandtabl</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000085196826000031/mhk-20260730.htm">8-K — 2026-07-30_0000851968-26-000031</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851968/000110465926072955/tm2617713d1_ex99-1.htm">8-K — 2026-06-11_0001104659-26-072955__EX-99.1__tm2617713d1_ex99-1</a></li>
+<li>Transcript — 2026-07-31 Mohawk Industries, Inc. (MHK) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-05 Mohawk Industries, Inc. 2026 Q1 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

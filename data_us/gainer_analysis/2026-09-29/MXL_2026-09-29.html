@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MXL — MaxLinear Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MXL — MaxLinear Inc. Common Stock</h1>
+<div class="sub">2026-09-29 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">MXL</span><span class="badge">+10.00%</span><span class="badge">거래량 1.67배</span><span class="badge">$8.51B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적</strong>: 광(optical) 데이터센터 제품 덕분에 성장세가 뚜렷하다. Q2'26 매출은 $168.8M으로 전년 대비(YoY) <span class="up">+55%</span>, 전분기 대비(QoQ) <span class="up">+23%</span>였고, 인프라 사업은 YoY <span class="up">+145%</span>였다(8-K). 회사는 2026년 광 데이터센터 매출 가이던스를 세 분기 연속 올렸다.</li>
+<li><strong>이익과 현금</strong>: GAAP 영업이익률은 아직 <span class="down">-2.4%</span>이고, TTM 잉여현금흐름(FCF)은 $0.65M로 사실상 손익분기점이다. 이익과 현금흐름으로 본 검증은 아직 끝나지 않았다.</li>
+<li><strong>밸류에이션</strong>: 시가총액 $8.51B은 Q2 매출 연환산($675M)의 약 12.6배다(단순 계산). 성장이 계속된다는 기대가 이미 상당 부분 가격에 들어가 있다.</li>
+<li><strong>변동성</strong>: Q2 실적 발표 다음 날 주가가 <span class="down">-20.27%</span> 빠진 전례가 있다(Seeking Alpha 페이지 기재). 이후 20일 동안 <span class="up">+45.8%</span> 반등했다. 한 번에 사지 말고 나눠서 비중을 쌓는 편이 맞다.</li>
+<li><strong>결론</strong>: 성장의 방향은 공시와 경영진 발언이 서로 맞는다. 다만 영업흑자 전환, 소송, 중화권 비중 리스크가 남아 있다. 따라서 '적극'이 아니라 '보통'으로 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시</strong>: 최근 4일 안에 SEC 공시가 없다. 마지막 실적 공시는 7/23 8-K(Q2 실적)이다.</li>
+<li><strong>뉴스</strong>: 제공된 헤드라인에는 날짜가 없다. 오늘 상승과 인과관계가 있는지 확인할 수 없다.</li>
+<li>촉매 후보로는 "기존 케이블망에서 최대 12Gbps를 지원하는 새 브로드밴드 플랫폼"(Stock Titan) 제품 발표 헤드라인이 있다. 하지만 이 헤드라인은 브로드밴드 사업부 이야기다. 지금 주가를 움직이는 광/AI 테마와는 결이 다르다.</li>
+<li>"AI 광 사업 136% 급증… $63에서 매수할 만한가?"(TradingKey) 헤드라인은 20일 전 주가 수준(약 $64, 역산)과 맞는다. 오늘 뉴스라기보다 최근 반등 국면의 서사로 보인다.</li>
+<li><strong>거래 지표</strong>: 거래량은 20일 중앙값의 1.67배로 '급증'치고는 크지 않다. 20일 수익률 <span class="up">+45.8%</span>로 이미 이어지던 반등 추세 위에 AI 광 섹터의 매수세가 더해진 것으로 추정한다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품 (10-Q MD&amp;A)</strong>: 반도체 설계만 하고 생산은 외부 파운드리에 맡기는 팹리스 기업이다. 통신용 SoC(시스템온칩)를 판다. RF, 아날로그·믹스드시그널, DSP(디지털 신호처리)를 CMOS 공정에서 하나의 칩으로 통합하는 역량이 핵심이다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>주요 제품</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인프라(데이터센터·통신)</td>
+<td>광 모듈용 고속 광 인터커넥트 DSP와 TIA(광 수신 증폭 칩), 저장장치용 가속기 Panther, 4G/5G 무선 액세스·백홀용 칩</td>
+<td>실적콜에서 "최근 분기 매출의 50% 이상"이라고 언급</td>
+</tr>
+<tr>
+<td>브로드밴드</td>
+<td>DOCSIS(케이블), PON(광가입자망), DSL 모뎀·게이트웨이용 RF/SoC</td>
+<td>주요 고객은 사업자향 장비 업체</td>
+</tr>
+<tr>
+<td>커넥티비티</td>
+<td>Wi-Fi·유선 라우터</td>
+<td></td>
+</tr>
+<tr>
+<td>산업·멀티마켓</td>
+<td>인터페이스 칩, 전력관리 칩</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>변화의 신호</strong>: 6개월 누적 10-Q는 매출원 서술 맨 앞에 광 인터커넥트를 놓았다. 1분기 10-Q에서는 브로드밴드 RF가 맨 앞이었다. 또 1분기 10-Q에 있던 "채널 과잉재고 회복" 문구가 6개월 누적 10-Q에서는 빠졌다. 성장 동력이 재고 정상화에서 신제품 채택으로 넘어갔다는 뜻으로 읽힌다.</p>
+<p><strong>고객 구조 (6개월 누적 10-Q)</strong>:
+- 최대 고객 1곳이 매출의 11%, 상위 10개 고객이 55%다.
+- 장기 구매계약은 없고 모두 발주(PO) 기반이다.
+- 한 번 채택(design-in)되면 제품 수명은 브로드밴드 24~60개월, 산업·인프라 24~84개월 이상이다.</p>
+<p><strong>지역 (6개월 누적 10-Q)</strong>:
+- 아시아 출하 비중이 81%다. 홍콩 48%, 중국 본토 12%, 베트남 10%다.
+- 회사는 최종 시스템은 상당 부분 유럽·북미에서 팔린다고 밝혔다.</p>
+<p><strong>경쟁 위치</strong>:
+- 실적콜에서 DSP 시장은 소수 업체가 지배한다는 취지의 질문이 나왔다. 해당 발언 원문은 중략돼 있어 경쟁사 이름은 확인할 수 없다.
+- 회사는 전력 소모가 적다는 점과 포트폴리오가 넓어졌다는 점을 차별점으로 제시했다.
+- 실적콜 요약본에 따르면 회사는 향후 수년 안에 점유율 20~25%를 목표로 한다.
+- 현재 점유율은 공시상 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 (8-K, GAAP)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'25</th>
+<th>Q1'26</th>
+<th>Q2'26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$108.8M</td>
+<td>$137.2M</td>
+<td>$168.8M</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>56.5%</td>
+<td>57.5%</td>
+<td>57.8%</td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>$86.1M</td>
+<td>$96.1M</td>
+<td>$101.8M</td>
+</tr>
+<tr>
+<td>매출총이익(역산)</td>
+<td>약 $61.5M</td>
+<td>약 $78.9M</td>
+<td>약 $97.6M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>물량과 단가가 함께 기여</strong>:
+  - 실적콜에서 800G DSP 단가는 $35~50, 1.6T는 $80~100에 TIA를 더하면 $100 이상이라고 언급했다. 기술 세대가 바뀔 때마다 단가가 오르는 구조다.
+  - 올해 광 매출 구성은 800G 약 70%, 400G 약 30%라고 했다.
+  - 현재 성장은 대부분 800G 물량 확대와 점유율 상승에서 나온다고 판단한다.
+- <strong>가격 결정력</strong>: 실적콜에서 가격은 확고하고 웨이퍼 원가 상승분도 대부분 고객에게 넘겼다고 언급했다. 공급 부족 국면이 만든 일시적 가격 결정력일 가능성을 분리해서 봐야 한다.</p>
+<p><strong>마진</strong>
+- <strong>매출총이익률</strong>: 57.8%로 +130bp(YoY) 좋아졌지만 개선 속도는 느리다. 실적콜에서 과거 60%대 초중반이었다가 지난 하락기에 58%까지 내려왔다고 언급했다. 회사는 현재 60%를 가이드하고 장기 목표로 65%를 제시했다.
+- <strong>영업 레버리지</strong>:
+  - Q2 영업비용은 YoY <span class="up">+18%</span>로 매출 증가율 <span class="up">+55%</span>를 크게 밑돈다.
+  - 매출총이익 증가분(약 $36M)이 영업비용 증가분(약 $15.7M)의 두 배를 넘는다.
+- <strong>데이터 불일치</strong>:
+  - 제공 지표는 영업이익률이 YoY <span class="up">+15.1%</span>p 개선됐다고 한다.
+  - 그런데 8-K 수치로 역산하면 Q2'25 영업이익률은 약 <span class="down">-22.7%</span>다. 그 경우 개선폭은 약 <span class="up">+20%</span>p가 된다. 산출 기준이 다른 것으로 보이며, 원본 손익계산서로 확인해야 한다.
+- <strong>Q3 흑자전환 가능성(추정)</strong>:
+  - Seeking Alpha 뉴스 헤드라인에 따르면 Q3 매출 가이던스는 $210~220M이다.
+  - 매출총이익률 약 60%에 영업비용이 Q2 수준에서 소폭 늘어난다고 가정하면 GAAP 영업흑자 전환이 가능한 구간이다.
+  - 영업비용 가이던스는 공시상 확인할 수 없다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF는 $653K로 사실상 0이다. 매출이 급증했는데도 현금 창출은 아직 나타나지 않았다.
+- 실적콜에서 선급금과 신용장으로 파운드리 생산능력을 확보한다고 언급했다. 이 선급금이 앞으로 운전자본과 현금 유출을 키울 수 있다.
+- 현금 잔고, 차입금, 재고, 매출채권 수준은 공시상 확인할 수 없다. 제공된 발췌에 재무상태표가 없다.
+- <strong>희석 여부</strong>:
+  - 10-K 기준 발행주식은 86.45M주였다(2026/1/22).
+  - 시가총액 ÷ 종가로 역산하면 약 90.7M주다.
+  - 희석이나 전환 가능 증권 여부는 공시상 확인할 수 없어 추가 확인이 필요하다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 800G 광 DSP 점유율 확대</strong>
+- <strong>회사 주장</strong>: 2026년 광 데이터센터 매출 가이던스를 $210~230M으로 올렸다(Seeking Alpha 헤드라인). 실적콜에서 연초 가이던스는 "$100M 이상"이었다고 언급했다.
+- <strong>실현 조건</strong>: 파운드리 공급 확보, 신규 고객 유지, 가격 유지.
+- <strong>검증 포인트</strong>:
+  - Q3 실적에서 광 매출이 연간 가이던스 경로에 맞게 나오는지 본다.
+  - 인프라 사업의 YoY 성장률이 <span class="up">+145%</span>에서 얼마나 둔화하는지 본다.</p>
+<p><strong>② 1.6T 제품 전환 (Rushmore DSP + Washington TIA)</strong>
+- <strong>회사 주장</strong>: 실적콜에서 고객 인증이 진행 중이라고 언급했다. 출시는 2027년 중반, 본격 양산은 그다음 해로 제시했다.
+- <strong>실현 조건</strong>: 인증 통과, 일정 준수, TIA 동시 채택.
+- <strong>검증 포인트</strong>:
+  - 다음 실적 발표에서 인증 완료 고객 수나 초기 매출 시점이 언급되는지 본다.
+  - 400G가 둔화하는 속도를 800G가 메우는지 본다.</p>
+<p><strong>③ Panther 저장장치 가속기</strong>
+- <strong>회사 주장</strong>: 실적콜에서 작년 매출이 $15~20M였고, 2026년과 2027년에 각각 두 배가 될 것이라고 언급했다. AMD와 레퍼런스 설계를 했다고도 했다.
+- <strong>실현 조건</strong>: AMD가 연결해 준 고객의 채택, 메모리·저장장치 쪽 새 활용처 확보.
+- <strong>검증 포인트</strong>:
+  - AMD 연계 고객에서 매출이 발생하는지 본다.
+  - 인프라 매출 안에서 Panther가 별도로 공개되는지 본다.
+  - 규모는 아직 작아 전체 실적에 미치는 영향은 제한적이다.</p>
+<p><strong>④ 사업 믹스 개선에 따른 매출총이익률 상승</strong>
+- <strong>회사 주장</strong>: 인프라 사업은 회사 평균보다 마진이 높다. 목표는 60%, 장기 65%다.
+- <strong>실현 조건</strong>: 인프라 비중 확대 속도가 웨이퍼 가격 인상 속도보다 빨라야 한다.
+- <strong>검증 포인트</strong>: Q3 GAAP 매출총이익률이 60%에 닿는지 본다. Q2까지는 57.8%였다.</p>
+<p><strong>⑤ 새 파운드리(삼성) 추가와 공급망 다변화</strong>
+- <strong>회사 주장</strong>: 실적콜 요약본에 따르면 TSMC 의존도를 줄이고 첨단 공정 생산능력을 확보하려고 삼성을 추가했다.
+- <strong>검증 포인트</strong>:
+  - 삼성 공정 제품의 수율과 양산 일정을 본다.
+  - 선급금이 현금흐름표에 얼마나 반영되는지 본다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<blockquote>
+<p>제공된 transcript는 <strong>9/9 Citi TMT 컨퍼런스 파이어사이드 챗</strong>(CFO Steve Litchfield)이다. 7/23 Q2 실적콜 자료는 슬라이드 페이지 메타데이터뿐이고 본문과 Q&amp;A가 없다. 따라서 실제 실적콜 Q&amp;A 분석은 할 수 없다.</p>
+</blockquote>
+<p><strong>톤과 자신감의 근거</strong>
+- 전반적으로 매우 자신감 있는 톤이다. CFO는 "이제 막 시작 단계", "점유율 상승은 초기 국면"이라고 언급했다.
+- 근거로 세 가지를 들었다.
+  - 26~28주 리드타임.
+  - 고객이 내년 전체 물량을 발주하거나 최소한 예측치를 줬다는 점.
+  - 가이던스를 세 분기 연속 올린 점.
+- 가이던스 화법은 "보수적으로 시작했다"는 것이다. 공급 부족 때문에 투자자와 고객 모두에게 과도하게 약속하지 않으려 했다고 설명했다. 앞으로도 가이던스를 올릴 여지가 있다고 암시하는 화법이다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>가격 질문</strong>: 원가 전가를 넘어 가격을 올리는지 물었다. CFO는 "누가 듣고 있는지 모르겠다"며 농담으로 넘겼고, 이어 가치를 보상받겠다는 원론적 답변을 했다. 사실상 답하지 않은 것이다.
+- <strong>매출총이익률 가이던스</strong>: 웨이퍼 프리미엄 상승을 이유로 너무 공격적으로 올리지 않겠다며 신중한 태도를 보였다.
+- <strong>2028년 800G 수요</strong>: "논쟁이 있다"며 구체적인 답을 하지 않았다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 광 제품 구성 비중: 800G 약 70%, 400G 약 30%.
+- 세대별 단가 범위: 800G $35~50, 1.6T $100 이상.
+- 리드타임 26~28주.
+- Panther의 작년 매출 $15~20M, AMD 레퍼런스 설계.
+- 선급금·신용장을 통한 생산능력 확보, 삼성 파운드리 추가.
+- 3.2T용 차세대 제품(Big Sky)과 리타이머(retimer) 로드맵. 이 내용은 요약본에만 있다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>중화권 매출 집중과 수출통제</strong>
+   - 홍콩과 중국 본토 출하 비중이 합쳐서 60%다(6개월 누적 10-Q).
+   - 10-K는 미·중 긴장, 수출통제, 관세를 주요 전망 리스크로 명시했다.
+   - 광 모듈 조립 업체가 중화권에 몰려 있는 만큼, 규제가 바뀌면 핵심 성장 사업부가 직접 타격을 받는다.</li>
+<li><strong>공급 제약과 원가 상승</strong>
+   - 실적콜에서 웨이퍼 가격과 프리미엄이 크게 오르고 있다고 언급했다.
+   - 원가 전가가 막히면 매출총이익률 목표(60%→65%)가 늦어진다.
+   - 생산능력 확보용 선급금은 현금흐름에 부담이 된다.</li>
+<li><strong>Silicon Motion 소송</strong>
+   - 회사는 2023년 인수합병 계약을 해지했고, Silicon Motion이 이에 반발했다(10-Q).
+   - 10-K는 계약 위반을 이유로 손해배상 책임이 생길 수 있다는 점을 전망 리스크로 명시했다.
+   - 청구 금액과 진행 단계는 제공된 발췌만으로는 공시상 확인할 수 없다. 결과에 따라 한 번에 큰 현금 유출이 생길 수 있다.</li>
+<li><strong>고객 집중과 PO 기반 수주</strong>
+   - 상위 10개 고객이 매출의 55%이고 장기계약은 없다.
+   - 공급 부족 국면에서 고객이 물량을 이중으로 발주했다면, 수급이 풀릴 때 발주 취소나 재고 조정 위험이 있다. 10-Q에는 과거에 채널 재고가 과잉이었던 이력이 있다.</li>
+<li><strong>경쟁과 기술 전환</strong>
+   - 경쟁사가 과점하는 DSP 시장에서 점유율을 빼앗아 오는 구도다.
+   - NPO/CPO 같은 새 구조로 넘어가면 DSP 의존도가 줄 수 있다. 회사는 칩 탑재량 증가로 상쇄할 수 있다고 주장하지만 아직 검증되지 않았다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>방향</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>긍정</td>
+<td>매출 YoY <span class="up">+55%</span>, QoQ <span class="up">+23%</span></td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>Q3 가이던스 중간값 $215M은 QoQ 약 <span class="up">+27%</span>다 (헤드라인 기준)</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>매출총이익률은 3개 분기 연속 개선됐다 (56.5%→57.5%→57.8%)</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>영업비용 증가율(<span class="up">+18%</span>)이 매출 증가율(<span class="up">+55%</span>)보다 크게 낮다</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>영업이익률 <span class="down">-2.4%</span>, TTM FCF $0.65M</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>시가총액은 Q2 매출 연환산의 약 12.6배, Q3 가이던스 연환산의 약 9.9배다</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>60일 수익률 <span class="down">-3.4%</span>, 52주 고점 대비 <span class="down">-26.7%</span>, 실적 발표 다음 날 <span class="down">-20%</span> 이력. 변동성이 크다</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q2 10-Q 재무상태표와 현금흐름표</strong>: 현금과 차입금, 재고와 매출채권 증가 속도, 파운드리 선급금 규모를 본다. 발행주식이 86.45M주에서 약 90.7M주로 늘었는지도 확인한다.
+2. <strong>Silicon Motion 소송 현황</strong>: 10-K 법적 절차(Legal Proceedings) 항목에서 청구 금액, 중재·소송 단계, 충당금 계상 여부를 본다.
+3. <strong>Q3 실적(10월 말 예상)</strong>:
+   - 가이던스 $210~220M 달성 여부.
+   - GAAP 매출총이익률 60% 도달과 GAAP 영업흑자 전환 여부.
+   - 광 매출 연간 가이던스를 다시 올리는지 여부.</p>
+<p><strong>판단을 뒤집을 조건 (관망 또는 회피로 전환)</strong>
+- Q3 매출이 가이던스 하단에 못 미치거나, Q4 가이던스에서 QoQ 성장이 멈출 때.
+- 매출총이익률이 58% 아래로 떨어져, 원가 전가가 한계에 왔다는 신호가 나올 때.
+- 매출이 느는데도 재고, 매출채권, 선급금 증가로 FCF가 마이너스로 돌아설 때.
+- Silicon Motion 소송에서 큰 규모의 손해배상 가능성이 공시될 때.
+- 중화권 광 모듈 고객을 겨냥한 미국 수출통제가 강화될 때.
+- Rushmore 1.6T 양산 일정(2027년 중반)이 늦어진다고 공식 언급될 때.</p>
+<p><strong>반대로 '적극'으로 올릴 조건</strong>: Q3에 GAAP 영업흑자 전환과 매출총이익률 60% 이상을 확인하고, 동시에 FCF가 의미 있게 플러스로 돌아서는 경우다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000011/mxl-20251231.htm">10-K — 2025-12-31_0001288469-26-000011</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000051/mxl-20260630.htm">10-Q — 2026-06-30_0001288469-26-000051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000029/mxl-20260331.htm">10-Q — 2026-03-31_0001288469-26-000029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000050/a06302026exhibit991.htm">8-K — 2026-07-23_0001288469-26-000050__EX-99.1__a06302026exhibit991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000050/mxl-20260723.htm">8-K — 2026-07-23_0001288469-26-000050</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000045/mxl-20260528.htm">8-K — 2026-05-28_0001288469-26-000045</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000035/a20260520ex101amendedandre.htm">8-K — 2026-05-20_0001288469-26-000035__EX-10.1__a20260520ex101amendedandre</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1288469/000128846926000035/mxl-20260520.htm">8-K — 2026-05-20_0001288469-26-000035</a></li>
+<li>Transcript — 2026-09-09 Citi’s 2026 Global TMT Conference Transcript</li>
+<li>Transcript — 2026-07-23 MaxLinear, Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

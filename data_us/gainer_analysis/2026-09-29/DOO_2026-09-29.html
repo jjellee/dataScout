@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOO — BRP Inc. Common Subordinate Voting Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>DOO — BRP Inc. Common Subordinate Voting Shares</h1>
+<div class="sub">2026-09-29 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">DOO</span><span class="badge">+3.21%</span><span class="badge">거래량 0.85배</span><span class="badge">$4.07B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>2Q FY27(2026년 7월 31일 종료 분기) 매출은 C$2,236.8M로 전년 대비 <span class="up">+18.5%</span> 늘었다. 반면 매출총이익률은 21.1%에서 11.7%로 9.4%p 떨어졌고, 영업이익은 C$90.4M 흑자에서 C$50.0M 적자로 돌아섰다. 매출은 늘었는데 이익은 크게 줄었다.</li>
+<li>회사는 FY27 Normalized 희석 EPS 가이던스를 C$4.00~4.50으로 올렸다. 그래도 FY26 실적(C$5.21, 주총에서 CFO 발표)보다 14~23% 낮은 수준이다. 상반기 실적(C$1.66)을 빼면 하반기 EPS는 C$2.34~2.84가 되는데, 전년 하반기(C$3.82)보다 약 26~39% 적다. 이익 하락이 하반기에도 이어진다는 뜻이다.</li>
+<li>북미 파워스포츠 소매판매는 <span class="up">+1%</span>에 그쳤는데 매출은 <span class="up">+18.5%</span> 늘었다. 매출 증가의 상당 부분이 소매 수요가 아니라 ORV 출하 확대에서 나온 것으로 보인다. 딜러 재고가 쌓이고 있을 가능성이 있다.</li>
+<li>오늘 <span class="up">+3.21%</span> 상승에는 공시나 실적 같은 촉매가 없고, 거래량도 20일 중앙값의 0.85배로 평소보다 적다. 스크린 전제였던 '거래량 급증'과 맞지 않는다.</li>
+<li>긍정 요인도 있다. 북미 ORV 점유율 상승, 가이던스 상향, TTM FCF $1.19B, 배당 인상이다. 다만 마진이 바닥을 쳤다는 신호와 딜러 재고 데이터를 확인하기 전까지는 의미 있는 비중을 싣기 어렵다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 있다.</strong></p>
+<ul>
+<li>최근 4일 안에 SEC 공시가 없다. 가장 최근 실적 발표(6-K, 2Q FY27)는 2026년 9월 3일로, 약 4주 전이다.</li>
+<li>거래량 배수 0.85배, 거래대금 $13.1M으로 거래가 적었다. 새로운 정보가 가격에 반영됐다기보다는 20일 <span class="down">-8.5%</span> 하락 뒤의 기술적 반등일 가능성이 더 크다(추정).</li>
+<li>뉴스 헤드라인 중 "How Export Halt Will Impact BRP Stock Investors"(simplywall.st)는 수출 중단 이슈가 있다는 것을 보여준다. 다만 제공된 SEC 원문에는 관련 내용이 없어 무엇이 중단됐는지, 규모가 얼마인지, 오늘 주가와 관련이 있는지는 <strong>공시상 확인 불가</strong>다. 방향으로 보면 오히려 악재 성격이다.</li>
+<li>나머지 헤드라인(Seeking Alpha의 "Q2 Net Loss: I'm Still Buying It" 등)은 9월 실적에 대한 의견 기사여서 당일 촉매로 보기 어렵다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공 자료에는 연간보고서(BRP는 Form 40-F 제출 기업)의 사업 섹션이 없다. 아래 내용은 6-K 보도자료, MD&amp;A 용어집, 주총 발언을 근거로 했다.</p>
+<p><strong>제품군과 FY26 매출 구성</strong> (보도자료 FY26 수치 기준, 비중은 계산값)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>FY26 매출 (C$M)</th>
+<th>비중</th>
+<th>FY27 가이던스 (C$M)</th>
+<th>가이던스 기준 증감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year-Round Products</td>
+<td>4,802.4</td>
+<td>약 56.9%</td>
+<td>5,475~5,600</td>
+<td>+14.0%~<span class="up">+16.6%</span></td>
+</tr>
+<tr>
+<td>Seasonal Products</td>
+<td>2,291.5</td>
+<td>약 27.1%</td>
+<td>2,375~2,450</td>
+<td>+3.6%~<span class="up">+6.9%</span></td>
+</tr>
+<tr>
+<td>PA&amp;A, OEM 엔진 및 기타</td>
+<td>1,348.8</td>
+<td>약 16.0%</td>
+<td>1,375~1,425</td>
+<td>+1.9%~<span class="up">+5.6%</span></td>
+</tr>
+<tr>
+<td>합계</td>
+<td>8,442.7</td>
+<td>100%</td>
+<td>9,225~9,475 (세 부문 합산)</td>
+<td>+9.3%~<span class="up">+12.2%</span></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Year-Round</strong>: Can-Am 브랜드의 ORV(ATV, SSV)가 중심이다. 발표 제품에는 Defender HD10 2세대, 전동 Outlander, Outlander MAX 6x6이 있다. 3륜차 Ryker도 Can-Am 제품이지만, 어느 부문으로 분류되는지는 발췌상 확인 불가다.</li>
+<li><strong>Seasonal</strong>: Sea-Doo(PWC, 폰툰 보트), Ski-Doo·Lynx(스노모빌)다.</li>
+<li><strong>PA&amp;A·OEM</strong>: 부품·액세서리·의류와 Rotax 엔진의 외부 판매다.</li>
+<li><strong>고객군</strong>: 딜러 네트워크를 통해 최종 소비자에게 판다. 회사는 Club BRP 딜러 행사를 열고, "딜러와 라이더에게 가장 선호되는 OEM"을 목표로 한다고 밝혔다. 2Q에는 미국에서 자체 소매금융 프로그램 BRP Financial Services를 시작했다.</li>
+<li><strong>지역별 매출 비중</strong>: 미국, 캐나다, 해외(International)로 나뉜다는 것만 나온다. 구체적 비중은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>경쟁 위치</strong>: 북미 ORV 점유율이 올랐다고 공시했다. 그러면서 목표를 "Can-Am을 북미 1위 ORV 브랜드로"라고 제시했는데, 이는 아직 1위가 아니라는 뜻이다. 경쟁사 이름과 점유율 수치는 <strong>공시상 확인 불가</strong>다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p>(단위: C$M. Q1 수치는 6개월 누계에서 2Q를 빼서 계산했다.)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q FY27 (계산)</th>
+<th>2Q FY27</th>
+<th>2Q FY26</th>
+<th>1H FY27</th>
+<th>1H FY26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>2,391.8</td>
+<td>2,236.8</td>
+<td>1,888.2</td>
+<td>4,628.6</td>
+<td>3,735.1</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>561.6</td>
+<td>262.5</td>
+<td>397.7</td>
+<td>824.1</td>
+<td>792.5</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>약 23.5%</td>
+<td>11.7%</td>
+<td>21.1%</td>
+<td>17.8%</td>
+<td>21.2%</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>225.5</td>
+<td>(50.0)</td>
+<td>90.4</td>
+<td>175.5</td>
+<td>184.3</td>
+</tr>
+<tr>
+<td>Normalized EBITDA</td>
+<td>334.4</td>
+<td>138.8</td>
+<td>213.2</td>
+<td>473.2</td>
+<td>414.0</td>
+</tr>
+<tr>
+<td>Normalized EBITDA 마진 (계산)</td>
+<td>약 14.0%</td>
+<td>약 6.2%</td>
+<td>약 11.3%</td>
+<td>약 10.2%</td>
+<td>약 11.1%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>127.3</td>
+<td>(136.8)</td>
+<td>57.1</td>
+<td>(9.5)</td>
+<td>218.1</td>
+</tr>
+<tr>
+<td>Normalized 순이익</td>
+<td>134.5</td>
+<td>(13.0)</td>
+<td>66.9</td>
+<td>121.5</td>
+<td>101.5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 회사는 매출 증가 원인을 "ORV 출하 증가와 SSV 믹스 개선"이라고 밝혔다. 가격 효과와 물량 효과를 나눈 수치는 발췌에 없어 <strong>공시상 확인 불가</strong>다.
+- 같은 분기 북미 소매판매는 <span class="up">+1%</span>였다. 출하(sell-in)가 소매(sell-through)를 크게 앞질렀다. 회사는 "지속되는 소매 모멘텀을 지원하기 위한 출하"라고 설명했지만, 딜러 재고 수치가 발췌에 없어 채널 재고가 적정한지는 검증할 수 없다.</p>
+<p><strong>마진 방향</strong>
+- 2Q 매출총이익률 11.7%는 1Q(약 23.5%)와 전년 동기(21.1%)보다 모두 크게 낮다. SSV 믹스가 좋아졌는데도 마진이 무너졌으므로 원가 쪽 충격이 컸던 것으로 보인다(추정).
+- 순손실(C$136.8M)과 Normalized 순손실(C$13.0M)의 차이는 약 C$124M으로, 정상화 조정 항목이 컸다. 뉴스 헤드라인(Pluang)은 "일회성 비용"이라고 표현했지만, 항목별 내역(관세, 구조조정, 손상 등)은 발췌된 조정표에서 <strong>공시상 확인 불가</strong>다.
+- 정상화 조정 뒤에도 EBITDA 마진은 약 6.2%로 전년(약 11.3%)의 절반 수준이다. 일회성 비용만으로 설명되지 않는 기저 수익성 악화가 있다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- 시장 지표상 TTM FCF는 $1.19B다. 주총에서 CFO는 "FY26에 C$929M의 강한 현금흐름을 창출했다"고 언급했고, 그 돈으로 장기부채 C$336M 상환, 자사주 매입 C$50M, 배당을 포함한 주주환원 C$113M을 집행했다고 밝혔다.
+- 시가총액($4.07B)과 비교하면 FCF 수익률이 비정상적으로 높게 계산된다. 통화 차이(C$와 US$), 운전자본 회수 같은 일시적 요인이 섞였을 가능성이 있어 수치를 그대로 믿기 어렵다. 순부채, 레버리지, 운전자본 수치는 발췌에 없어 <strong>공시상 확인 불가</strong>다.
+- 중단영업손익은 2Q +C$2.7M(전년 -C$33.6M)으로, 정리된 사업에서 나오던 손실은 줄었다.
+- 매출 성장률이 높은데도 FY27 EPS 가이던스는 FY26보다 낮다. 성장이 이익으로 이어지지 않는 구조가 FY27 내내 계속된다는 뜻이다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORV 점유율 확대</td>
+<td>회사는 Can-Am을 "북미 1위 ORV 브랜드"로 만드는 것이 목표라고 밝힘</td>
+<td>출하 증가가 소매판매 증가로 이어져야 함</td>
+<td>3Q 북미 ORV 소매 증감률이 출하 증감률을 따라잡는지, 딜러 재고 증감</td>
+</tr>
+<tr>
+<td>6개월 주기 신제품</td>
+<td>회사는 "향후 4년간 6개월마다 주요 오프로드 제품을 발표"한다고 밝힘</td>
+<td>제품 사이클이 가격 결정력과 믹스 개선으로 이어져야 함</td>
+<td>신형 Defender HD10 등의 판매 반응, 판촉비 증감</td>
+</tr>
+<tr>
+<td>관세 비용 축소</td>
+<td>회사는 "순 관세 비용 감소"를 가이던스 상향 이유로 밝힘</td>
+<td>무역 환경이 더 나빠지지 않아야 함. 수출 중단 헤드라인은 반대 신호</td>
+<td>3Q 매출총이익률이 20%대로 회복하는지</td>
+</tr>
+<tr>
+<td>BRP Financial Services</td>
+<td>미국 자체 브랜드 소매금융을 출시함</td>
+<td>금리와 신용 환경, 연체 관리</td>
+<td>금융 프로그램 이용률, 관련 충당금 공시 여부</td>
+</tr>
+<tr>
+<td>Seasonal·PA&amp;A</td>
+<td>가이던스상 FY27 부문별 증가율은 각각 +3.6~6.9%, +1.9~5.6%</td>
+<td>스노모빌 시즌 수요</td>
+<td>4Q 스노모빌 출하와 소매</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>가이던스로 역산하면 하반기 매출은 C$4,596~4,846M으로, 전년 하반기(C$4,707.6M)와 비교해 약 <span class="down">-2%</span>~<span class="up">+3%</span>다. 상반기 <span class="up">+23.9%</span> 성장이 하반기에는 거의 멈춘다는 뜻이다. 상반기 출하가 앞당겨졌다는 해석과 들어맞는다(추정).</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>제공 자료의 한계</strong>: 이번 transcript는 2026년 5월 28일 <strong>연례 주주총회</strong>의 준비 발언이다. 2Q FY27 실적콜 transcript는 제공되지 않았고, 1Q 자료는 슬라이드 페이지뿐이다. 애널리스트 Q&amp;A는 분석할 수 없다. 주총 Q&amp;A에서도 질문이 한 건도 나오지 않았다.</p>
+<ul>
+<li><strong>경영진 톤</strong>: CEO Denis Le Vot는 주총에서 "관세와 지정학적 긴장에도 불구하고 적응력으로 대응할 것"이라고 말했다. 단기 우선순위로는 "관세 완화 조치 실행과 M28 계획 실행"을 꼽았다. 방어적이지만 자신감을 유지하는 화법이다. 수치 목표는 제시하지 않았다.</li>
+<li><strong>경영진 교체</strong>: CEO는 주총에서 "BRP에서의 여정을 시작하며"라고 언급했고, "차기 전략계획을 수립 중"이라고 밝혔다. 2Q 보도자료에서는 "재무 리더십 전환 계획"도 발표했다. 1년 안에 CEO와 CFO가 모두 바뀌는 셈이어서 전략과 가이던스의 연속성을 점검해야 한다. 차기 CFO와 전환 일정은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>자본배분 신호</strong>: 주총에서 CFO는 "2026년 3월 분기배당을 16% 넘게 올려 C$0.25로 만들었다"고 언급했다. 현금창출력에 자신 있다는 신호다.</li>
+<li><strong>가이던스 화법의 변화</strong>: 1Q 자료 페이지에 따르면 1Q EPS는 $1.83으로 컨센서스를 $0.72 웃돌았고, 매출은 $2.39B(<span class="up">+29.5%</span>)였다. 회사는 2Q에 대해서도 "기대를 상회했다"고 밝혔다. 두 분기 연속 기대를 넘고 가이던스를 올렸지만, 절대 수준은 여전히 전년보다 낮다. 기대치를 보수적으로 잡아 두고 넘어서는 전략일 가능성이 있다(추정).</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>출하와 소매의 괴리(채널 재고)</strong>: 2Q 매출은 <span class="up">+18.5%</span>인데 북미 소매는 <span class="up">+1%</span>다. 소매가 따라오지 못하면 하반기나 FY28에 출하 조정과 판촉비 증가가 올 수 있다. 딜러 재고 수치는 발췌상 확인 불가다.</li>
+<li><strong>매출총이익률 붕괴의 원인이 불투명함</strong>: 11.7%라는 매출총이익률과 약 C$124M의 정상화 조정 항목 내역이 발췌에서 확인되지 않는다. 일회성인지 구조적인지 판단할 수 없다.</li>
+<li><strong>관세·무역 환경</strong>: 회사는 "변동성 높은 지정학·무역 환경"을 직접 언급했다. 가이던스 상향도 관세 비용 감소에 기대고 있다. 무역 조건이 반대로 움직이면 가이던스를 다시 내릴 수 있다. 수출 중단 뉴스의 실체는 확인이 필요하다.</li>
+<li><strong>경영진 동시 교체</strong>: 새 CEO가 차기 전략계획을 짜는 중이고, CFO도 교체될 예정이다. 이 기간에는 비용 재설정(kitchen-sink)이나 가이던스 방식 변경이 일어날 수 있다.</li>
+<li><strong>이익 역성장 가이던스</strong>: 가이던스 상단 기준으로도 FY27 EPS는 FY26보다 약 14% 낮다. 하반기 역산 EPS는 전년보다 26~39% 감소한다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'을 뒷받침하는 정량 근거</strong>
+- 2Q 매출총이익률 11.7%로 전년 대비 <span class="down">-9.4%</span>p, 영업이익률 <span class="down">-2.3%</span>로 전년 대비 <span class="down">-7.2%</span>p.
+- Normalized EBITDA는 전년 대비 <span class="down">-34.9%</span>, 마진은 약 6.2%로 전년 약 11.3%에서 떨어졌다.
+- FY27 EPS 가이던스 C$4.00~4.50은 FY26 C$5.21보다 14~23% 낮다. 하반기 역산 EPS는 전년 하반기보다 26~39% 낮다.
+- 매출 성장(<span class="up">+18.5%</span>)과 북미 소매(<span class="up">+1%</span>)의 차이가 17.5%p다.
+- 반대 방향 근거도 있다. 주가는 52주 고점 대비 <span class="down">-30%</span>이고, TTM FCF는 $1.19B다. 밸류에이션 부담은 낮아졌지만, 환율 데이터가 없어 US$ 주가 기준 PER은 계산하지 않았다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2Q MD&amp;A의 정상화 조정표: 약 C$124M 일회성 항목의 구성(관세, 구조조정, 손상 등)과 반복 가능성.
+2. 딜러 재고 수준과 3Q 북미 ORV 소매 증감률: 출하와 소매의 괴리가 좁혀지는지.
+3. 수출 중단 뉴스의 실체, 그리고 순부채와 FCF의 통화·구성: 가이던스의 전제와 재무 여력을 검증하기 위해서다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통'으로 올릴 조건</strong>: 3Q 매출총이익률이 20%대로 돌아오고, 북미 소매 증가율이 한 자릿수 중반 이상으로 올라서 출하와의 차이가 좁혀지고, 일회성 항목이 실제로 반복되지 않는다는 것이 확인되는 경우.
+- <strong>'회피'로 내릴 조건</strong>: 딜러 재고 증가가 공시되거나 출하가 조정되는 경우, 3Q에도 정상화 기준 매출총이익률이 10%대에 머무는 경우, 관세나 수출 중단 때문에 가이던스를 내리는 경우, CFO 교체와 함께 대규모 손상이나 재설정 비용이 발표되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1748797/000119312526380894/d118875dex991.htm">8-K — 2026-09-03_0001193125-26-380894__EX-99.1__d118875dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1748797/000119312526380894/d118875d6k.htm">8-K — 2026-09-03_0001193125-26-380894</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1748797/000119312526380888/d117601dex994.htm">8-K — 2026-09-03_0001193125-26-380888__EX-99.4__d117601dex994</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1748797/000119312526380888/d117601dex993.htm">8-K — 2026-09-03_0001193125-26-380888__EX-99.3__d117601dex993</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1748797/000119312526380888/d117601dex992.htm">8-K — 2026-09-03_0001193125-26-380888__EX-99.2__d117601dex992</a></li>
+<li>Transcript — 2026-05-28 BRP Inc. (DOO:CA) Shareholder/Analyst Call Prepared Remarks Transcript</li>
+<li>Transcript — 2026-05-30 BRP Inc. 2027 Q1 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
