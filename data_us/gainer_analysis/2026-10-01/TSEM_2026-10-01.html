@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSEM — Tower Semiconductor Ltd. Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TSEM — Tower Semiconductor Ltd. Ordinary Shares</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">TSEM</span><span class="badge">+3.71%</span><span class="badge">거래량 0.73배</span><span class="badge">$26.50B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적 모멘텀은 확인됨.</strong> Q2'26 매출은 $460M(YoY <span class="up">+24%</span>)이고, 영업이익은 $90M으로 전년의 2.3배임. 영업이익률은 YoY <span class="up">+8.9%</span>p 개선됨. Q3 가이던스 $520M(YoY <span class="up">+31%</span>, QoQ <span class="up">+13%</span>)도 회사 기록치임(6-K, 2026-08-04).</li>
+<li><strong>SiPho(실리콘 포토닉스) 성장은 계약으로 일부 뒷받침됨.</strong> 연환산 매출은 $180M에서 $680M으로 늘었음. 2027년분 SiPho 계약 $1.3B와 선수금 약 $290M이 있어 AI 데이터센터 광연결 수요가 매출로 이어지는 구조임.</li>
+<li><strong>밸류에이션은 이미 2028 목표를 상당 부분 반영함.</strong> 시가총액 $26.5B는 회사가 제시한 2028년 순이익 목표 $1.2B의 약 22배, Q2 순이익 연환산(약 $364M)의 약 73배임. TTM FCF $300.6M 기준 FCF 수익률은 약 1.1%에 그침.</li>
+<li><strong>오늘 상승은 수급 근거가 약함.</strong> 거래량은 20일 중앙값의 0.73배로, 급증이 아니라 평균 미만임. 당일 공시도 없음.</li>
+<li><strong>판단:</strong> 펀더멘털 방향성은 좋지만, 2028 목표 달성의 실행 리스크(일본 증설, 웨이퍼 단가, 가동률)와 높은 capex 부담이 남아 있음. 한 번에 큰 비중을 싣기보다 Q3 실적(11월 예상)을 확인하며 나눠 담는 편이 적절함.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없음. 가장 최근 실적 공시는 2026-08-04 Q2 발표로, 약 2개월 전임.</li>
+<li>뉴스 헤드라인 중 "Index Addition and AI Optics Shipments"(simplywall.st)가 있으나, 어떤 지수에 언제 편입되는지는 제공 자료로 확인할 수 없음. 공시상 확인 불가.</li>
+<li>거래량 배수가 0.73배여서, 지수 편입에 따른 대규모 패시브 매수가 오늘 있었다고 보기는 어려움.</li>
+<li>20일 수익률 <span class="up">+14.3%</span>, 52주 고점 대비 <span class="down">-26.0%</span>임. 고점에서 조정받은 뒤 반등하는 흐름에서 AI 광통신 섹터와 함께 움직인 것으로 해석하는 게 합리적임. 다만 이는 추정임.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>사업 모델</strong>
+- 아날로그·특수공정 전문 파운드리(위탁생산)임. 고객사 설계를 받아 웨이퍼를 생산·판매함.
+- 공정 플랫폼은 SiGe, BiCMOS, mixed-signal/CMOS, RF CMOS, RFSOI, CMOS 이미지센서, 전력관리(BCD·700V), 포토닉스, MEMS 등임(6-K 회사 소개).</p>
+<p><strong>생산 거점(20-F)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>팹</th>
+<th>위치</th>
+<th>구경</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fab 2</td>
+<td>이스라엘 Migdal Haemek</td>
+<td>200mm</td>
+<td>Fab 1은 2025년까지 운영</td>
+</tr>
+<tr>
+<td>Fab 3</td>
+<td>미국 Newport Beach</td>
+<td>200mm</td>
+<td></td>
+</tr>
+<tr>
+<td>Fab 9</td>
+<td>미국 San Antonio</td>
+<td>200mm</td>
+<td></td>
+</tr>
+<tr>
+<td>Fab 7</td>
+<td>일본 Uozu</td>
+<td>300mm</td>
+<td>TPSCo(지분 51%) 운영</td>
+</tr>
+<tr>
+<td>Fab 5</td>
+<td>일본 Tonami</td>
+<td>200mm</td>
+<td>TPSCo 운영</td>
+</tr>
+<tr>
+<td>Fab 10</td>
+<td>이탈리아 Agrate</td>
+<td>300mm</td>
+<td>ST와 클린룸 공유, 약 1/3 사용</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>2026년 3월 일본 사업 재편에 합의함. Tower가 Fab 7을 100% 소유하고, Fab 5는 NTCJ(Nuvoton 자회사)에 넘기는 구조임. 종결 목표는 2027-04-01이며 규제 승인이 조건임.</li>
+</ul>
+<p><strong>매출 구성 (Q2'26, 실적콜 자동요약 기준이므로 원문 대조 필요)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>매출 비중</th>
+<th>성장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF 인프라(SiPho+SiGe)</td>
+<td>49%</td>
+<td>QoQ <span class="up">+43%</span>, YoY <span class="up">+140%</span></td>
+</tr>
+<tr>
+<td>― 이 중 SiPho</td>
+<td>연환산 $680M (분기 약 $170M, 매출의 약 37%)</td>
+<td>QoQ 60% 이상, YoY 270% 이상</td>
+</tr>
+<tr>
+<td>전력관리</td>
+<td>14%</td>
+<td>YoY 성장</td>
+</tr>
+<tr>
+<td>센서/디스플레이</td>
+<td>12%</td>
+<td>YoY 보합</td>
+</tr>
+<tr>
+<td>RF 모바일</td>
+<td>12%</td>
+<td>300mm 전환 진행 중</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>SiPho 비중은 연환산 금액을 4로 나눈 계산치임.</li>
+</ul>
+<p><strong>고객</strong>
+- SiPho 활성 고객은 50곳 이상이라고 실적콜에서 언급함.
+- Coherent는 장기 대량 계약 고객으로 공개됨. NVIDIA는 1.6T 개발 파트너로 언급됨.
+- 고객별 매출 비중은 공시 발췌상 확인 불가함.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 CEO는 TSMC의 디지털 통합(원스톱) 역량과는 경쟁할 수 없다고 인정함.
+- 대신 III-V 소재 등을 이용한 변조(modulation) 성능에서 차별화하겠다고 밝힘. TSMC가 CPO에 Tower의 PIC를 채택하는 구도도 가능하다는 입장임.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익 (6-K 2026-08-04)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'25</th>
+<th>Q1'26</th>
+<th>Q2'26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>약 $371M (역산)</td>
+<td>$414M</td>
+<td>$460M</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>$80M</td>
+<td>공시상 확인 불가</td>
+<td>$138M (29.9%)</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>$40M</td>
+<td>공시상 확인 불가</td>
+<td>$90M (19.6%)</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$47M</td>
+<td>$65M</td>
+<td>$91M (일회성 제외, 희석 EPS $0.79)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>믹스 효과:</strong> 이익 증가의 핵심은 고마진 SiPho/SiGe 비중 확대임. 실적콜에서 QoQ 매출 증가분 중 58%가 매출총이익으로 이어졌다고 언급함.
+- <strong>단가 효과:</strong> Q1 콜에서 200mm 전력관리 공정 가격을 13% 인상했다고 언급함. 공급 부족을 이용한 것이 아니라 가치 재평가라는 설명임.
+- <strong>물량 효과:</strong> SiPho 생산능력을 2025년 4분기 대비 2026년 말까지 5배로 늘리는 계획이 진행 중임(Q1 콜).
+- <strong>약한 고리:</strong> 센서/디스플레이는 YoY 보합으로, 성장이 AI 광통신에 집중돼 있음.</p>
+<p><strong>마진 방향성</strong>
+- 회사는 2028년 매출총이익률 45%, 영업이익률 38%, 순이익률 33%를 목표로 제시함. 현재 대비 매출총이익률 약 <span class="up">+15%</span>p가 필요함.
+- 판관비·R&amp;D 비율을 약 7%로 낮추겠다고 밝힘. 현재 매출총이익률과 영업이익률 차이는 약 10%p임.
+- 세율은 Pillar Two 영향으로 15~18%를 가정하고, 금융수익은 분기 약 $10M이라고 밝힘(Q1 콜).</p>
+<p><strong>현금흐름</strong>
+- Q2 영업현금흐름 $177M에서 순설비투자 $187M을 빼면 <strong>분기 FCF는 약 -$10M으로 적자</strong>임. TTM FCF $300.6M과 달리 최근 분기는 증설 투자가 현금창출을 넘어섬.
+- SiPho/SiGe 증설 capex는 $920M이며, Q2까지 50%를 집행했고 나머지는 2027년까지 집행 예정임(실적콜 자동요약).
+- 별도로 일본 dual-track 증설에 약 $30억을 투자한다고 회사는 밝힘. 일본 정부 보조금 $10억을 차감한 금액임(6-K 2026-07-14).</p>
+<p><strong>재무 건전성 (실적콜 자동요약)</strong>
+- 유동비율 4.9배, 자기자본 $3.1B, 총자산 $3.8B, 유동자산 $2B임.
+- 선수금 $290M은 부채로 계상돼 있음.
+- 차입금 규모는 제공 발췌상 확인 불가함.
+- 실적콜에서 외부 자금조달이나 희석 계획은 없다고 언급함.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SiPho (AI 데이터센터 광 트랜시버)</td>
+<td>회사는 4분기에 연환산 $10억을 넘고 2027년에도 고성장한다고 밝힘. 2027년 계약은 $1.3B임.</td>
+<td>Q3 SiPho 연환산이 $680M에서 약 $850M 이상으로 가는지. Q4 가이던스로 $1B 경로를 역산할 수 있는지.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>일본 300mm 증설 Track 1 (Arai 전환 + Fab 7 최대 가동)</td>
+<td>2027년 4분기 완전 생산 준비 목표. 2028 목표 매출 $36억·순이익 $12억의 근거임.</td>
+<td>METI 보조금 집행 일정, 장비 반입 진척, Fab 7 지분 재편 승인 진행</td>
+</tr>
+<tr>
+<td>3</td>
+<td>일본 Track 2 (Fab 7 인접 신규 300mm 팹)</td>
+<td>관련 계약 체결·종결이 전제임. 회사는 2029년부터 크게 이익에 기여한다고 밝힘.</td>
+<td>관련 계약 체결 공시 여부, 총투자액 확정</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SiGe/RF 인프라</td>
+<td>YoY <span class="up">+140%</span>(자동요약)임. 광 모듈 전기 칩 수요가 원천임.</td>
+<td>RF 인프라 비중이 50%를 넘어 유지되는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td>마진 레버리지</td>
+<td>고마진 믹스와 판관비율 7%로 2028년 영업이익률 38% 달성</td>
+<td>Q3 매출총이익률이 30% 이상으로 더 오르는지. 매출 증가분의 매출총이익 전환율 50% 이상 유지</td>
+</tr>
+<tr>
+<td>6</td>
+<td>300mm RF 모바일 전환, 기존 공정 가격 인상</td>
+<td>기존 사업의 수익성 재정비</td>
+<td>전력관리·RF 모바일 매출이 YoY 플러스를 유지하는지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- Q1 콜은 "solid"에서 출발해 하반기 강세를 예고하는 화법이었음.
+- Q2 콜에서는 "fervent growth trajectory"로 톤이 강해짐. 2028 모델을 "고객으로 이미 채워졌다(fully spoken for by our customers)"는 표현도 6-K에 처음 등장함.
+- 자신감의 근거는 계약($1.3B), 선수금($290M), 그리고 Q2 실적이 가이던스 중간값 $455M을 넘긴 것임.
+- 가이던스 화법은 "분기마다 매출·마진 성장" 반복(Q1)에서, 연환산 $20억 돌파와 2028 모델 상향(Q2)으로 바뀌며 점점 공격적이 됨.</p>
+<p><strong>반복된 질문과 회사의 방어·회피 지점</strong>
+- <strong>중국 광모듈(InnoLight) 대미 수출 제한 보도 질문:</strong> CEO는 "생각은 많지만 공개적으로 말하고 싶지 않다"고 답함. 콜에서 InnoLight가 언급된 맥락상 중국계 모듈 업체가 고객 체인에 포함된 것으로 추정되며, 이 부분이 명확한 회피 지점임.
+- <strong>TSMC의 CPO/원스톱 경쟁 질문(Q1):</strong> 디지털 영역 열위는 인정하고 PIC 성능과 레퍼런스 디자인으로 방어함.
+- <strong>NVIDIA 관계 질문:</strong> "PR 외에는 말할 수 없다"고 답함.
+- <strong>2028 모델의 최대 변수 질문:</strong> CFO는 웨이퍼 단가, 원가·설치·인증 시점, 가동률 85%를 들었음. 그중 가장 큰 변수는 웨이퍼 판매단가라고 답함.</p>
+<p><strong>공시에 없고 콜에서만 드러난 정보</strong>
+- 2027년 SiPho 계약 $1.3B, 선수금 약 $290M, 2028년에는 그보다 "훨씬 큰" 계약이 있음(Q1 콜).
+- 2028 모델의 세부 수치: 매출총이익 $16.3억(45%), 영업이익률 38%(Q2 콜).
+- 200mm 전력관리 가격 13% 인상, 세율 15~18% 가이드(Q1 콜).
+- Fab 7 첫 SiPho 웨이퍼 수율 95%(Q1 콜).
+- 인화인듐(InP) 원재료가 한때 부족했으나 IQE와의 다년 공급계약으로 해결했다고 언급함(Q2 콜).</p>
+<h2>6. 리스크</h2>
+<p>※ 20-F의 Item 3.D 리스크 원문은 제공 발췌에 포함되지 않음(목차까지만 있음). 아래는 MD&amp;A, 6-K, 실적콜에 근거함.</p>
+<ol>
+<li><strong>AI 광통신 한 축에 집중됨.</strong> RF 인프라가 매출의 49%이고, SiPho 선수금은 최대 고객들에게서 받았음. 하이퍼스케일러의 광모듈 수요가 꺾이거나 주요 고객이 이탈하면 이익 레버리지가 반대로 작동함. 다른 부문(센서 보합 등)은 이를 상쇄할 만한 성장력이 없음.</li>
+<li><strong>대규모 증설 집행 리스크와 FCF 압박.</strong> $920M 증설과 일본 $30억(보조금 차감) 투자가 겹침. Q2에 이미 FCF가 적자였음. Track 1 준비 시점(2027년 4분기)이 늦어지거나 Track 2 계약이 지연되면 2028 모델이 미뤄짐. 일본 재편 종결(2027-04)도 규제 승인이 조건임.</li>
+<li><strong>웨이퍼 단가.</strong> CFO가 2028 모델의 최대 변수로 직접 지목함. 실적콜 자동요약은 업계 공급이 늘고 있다고 전함. TSMC 등의 SiPho 증설로 가격 경쟁이 붙으면 매출총이익률 45% 목표가 흔들림.</li>
+<li><strong>미·중 광통신 공급망 규제.</strong> 중국 광모듈 업체의 대미 수출 제한 보도에 경영진이 답변을 피했음. 고객 체인 노출 정도가 공시상 확인 불가하다는 점 자체가 리스크임.</li>
+<li><strong>이스라엘 본사·팹 소재.</strong> 본사와 Fab 2가 이스라엘 Migdal Haemek에 있는 것은 구조적 사실임. 다만 지정학 리스크의 구체적 공시 문구는 발췌상 확인 불가함.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<p>긍정 요인:
+- 매출 YoY <span class="up">+23.7%</span>, QoQ <span class="up">+11.2%</span>. Q3 가이던스는 QoQ <span class="up">+13%</span>로 성장이 가속 중임.
+- 영업이익률 19.6%(YoY <span class="up">+8.9%</span>p). 매출 증가분의 매출총이익 전환율 58%로 레버리지가 실증됨.
+- 2027년 SiPho 계약 $1.3B는 2026년 SiPho 연환산 $680M의 약 1.9배임.</p>
+<p>부담 요인:
+- 시가총액은 2028 회사 목표 순이익의 약 22배임. 이 목표는 매출이 Q3 연환산($20.8억) 대비 약 73% 더 늘고 순이익률이 20%에서 33%로 올라야 달성됨.
+- TTM FCF 수익률 약 1.1%이고, 최근 분기 FCF는 적자임.
+- 오늘 거래량 배수 0.73배로 수급 확인이 안 됨.</p>
+<p>종합하면 '보통'임. 성장의 가시성은 높지만, 현재 주가가 이미 목표 실행을 상당 부분 선반영하고 있음.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 실적(11월 예상):</strong> 매출이 가이던스 범위 $494~546M의 중간값 $520M 이상인지, 매출총이익률이 30%를 넘어 개선되는지, Q4 가이던스가 SiPho 연환산 $1B 달성과 맞는지.
+2. <strong>현금흐름과 자금조달:</strong> 증설 capex 대비 영업현금흐름 추이를 확인함. "외부 조달·희석 없음" 발언이 유지되는지, 일본 Track 2 계약 체결 시 총투자액과 조달 구조가 어떻게 나오는지.
+3. <strong>지수 편입 실체와 고객 정책 리스크:</strong> 편입된 지수와 시점을 1차 출처로 확인함. 미국의 중국 광모듈 규제가 구체화될 경우 Tower 고객 체인에 미칠 영향도 확인함.</p>
+<p><strong>판단을 뒤집을 조건 (관망 이하로 전환)</strong>
+- Q3 매출이 가이던스 중간값에 못 미치거나, Q4 가이던스가 QoQ 성장 둔화를 시사하는 경우.
+- 매출총이익률이 30% 언저리에서 정체해, 매출 증가분의 이익 전환율이 크게 떨어지는 경우. 단가나 믹스의 훼손 신호임.
+- SiPho 장기계약 조정이나 선수금 감소, 또는 주요 고객 관련 미·중 규제가 실제로 시행되는 경우.
+- 일본 Fab 7 재편 승인 지연, Track 1 일정 연기, 증자·전환사채 등 희석성 자금조달 공시가 나오는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326002318/zk2635149.htm">20-F — 2025-12-31_0001178913-26-002318</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326003776/exhibit_99-1.htm">8-K — 2026-08-04_0001178913-26-003776__EX-99.1__exhibit_99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326003776/zk2635828.htm">8-K — 2026-08-04_0001178913-26-003776</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326003477/zk2635682.htm">8-K — 2026-07-14_0001178913-26-003477</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326003423/zk2635656.htm">8-K — 2026-07-07_0001178913-26-003423</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/928876/000117891326004158/exhibit_99-2.htm">8-K — 2026-06-30_0001178913-26-004158__EX-99.2__exhibit_99-2</a></li>
+<li>Transcript — 2026-08-04 Q2 2026 Transcript</li>
+<li>Transcript — 2026-05-13 Tower Semiconductor Ltd. (TSEM) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COHR — Coherent Corp. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>COHR — Coherent Corp. Common Stock</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">COHR</span><span class="badge">+3.46%</span><span class="badge">거래량 1.0배</span><span class="badge">$57.22B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적은 확인됨.</strong> FY2026(6월 결산) 매출은 $7.12B로 전년 대비 <span class="up">+23%</span>임. 4분기(6월 분기) 매출은 $2.05B로 YoY <span class="up">+33.7%</span>, QoQ <span class="up">+13.3%</span>이고, YoY 성장률이 3분기 <span class="up">+20.5%</span>보다 높아짐. 회사는 3분기 실적 발표 때 4분기 가이던스를 매출 $1.91~2.05B, non-GAAP EPS $1.52~1.72로 냈는데, 실제는 매출이 범위 상단, EPS($1.74)가 범위 위였음.</li>
+<li><strong>오늘 상승은 근거가 약함.</strong> 등락률은 <span class="up">+3.46%</span>이지만 거래량 배수가 1.0배라 거래량 급증은 아님. 당일 공시도 없어 촉매를 특정할 수 없음.</li>
+<li><strong>현금흐름이 가장 큰 걱정거리임.</strong> TTM 잉여현금흐름이 -$1.03B임. 연말 현금 $2.59B와 레버리지 0.7배는 영업으로 번 돈보다 NVIDIA의 $2B 지분투자와 사업 매각에 더 기댄 것으로 보임.</li>
+<li><strong>밸류에이션 여유가 없음.</strong> 종가 $292.21 기준으로 FY26 non-GAAP EPS($5.61)의 약 52배임. 1분기 가이던스 중간값(EPS $1.95)을 연간으로 환산해도 약 37배임(단순 계산). 회사가 "분기 매출 $3B"를 말하지만 실제 증거가 나오기 전에 공격적으로 비중을 싣기에는 근거가 부족함.</li>
+<li><strong>결론:</strong> 기본 비중으로 시작함. FY27 1분기 실적에서 현금흐름이 돌아서고 가이던스가 지켜지는지 확인한 뒤 '적극'으로 올릴지 검토함.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 안에 SEC 공시가 없음. 가장 최근 8-K는 2026-08-27자인데, 제공된 발췌가 표지에서 잘려 있어 내용은 공시상 확인 불가임.</li>
+<li>뉴스 헤드라인 중 "Why Coherent (COHR) Stock Is Up Today"(barchart, Yahoo Finance)가 있지만 본문이 제공되지 않아 이유를 알 수 없음. 나머지 헤드라인은 의견 기사이거나 비교 기사임("3 Reasons Investors Love…", "PLTR vs. COHR", "DCF Says Worth $52").</li>
+<li>거래량 배수 1.0배와 거래대금 $1.66B는 평소 수준임. 새로운 정보에 반응한 매수라기보다는 AI 광학 섹터의 반등이나 기술적 반등에 가까워 보임(추정).</li>
+<li>주가 위치(지표 기준): 52주 고점 대비 <span class="down">-31.5%</span>, 60일 <span class="down">-8.4%</span>, 20일 <span class="up">+5.8%</span>. 하락 추세 안에서 짧게 반등하는 구간임.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품과 서비스 (10-K 기준)</strong>
+- 수직계열화된 제조 기업임. 레이저, 트랜시버, 광·광전자 소자, 모듈, 시스템과 엔지니어드 소재를 만듦.
+- 주요 시장은 데이터센터, 통신, 산업용임.
+- 10-Q에 따르면 소재 성장, 반도체 레이저, 아이솔레이터 같은 수동 광학, 트랜시버, 전송장비, 반도체 장비용 고출력 레이저까지 기술 스택을 안에서 갖추고 있음.</p>
+<p><strong>보고 부문 (FY26부터 2개)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>4분기 매출 비중</th>
+<th>성장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Datacenter &amp; Communications</td>
+<td>79%</td>
+<td>FY26 <span class="up">+40%</span>, 4분기 YoY <span class="up">+59%</span></td>
+</tr>
+<tr>
+<td>Industrial</td>
+<td>약 21%(역산)</td>
+<td>FY26과 4분기 모두 보합</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>실적콜에서 언급된 세부 성장률: 데이터센터 FY26 <span class="up">+41%</span>, 4분기 YoY <span class="up">+66%</span>, QoQ <span class="up">+24%</span>. 통신 FY26 <span class="up">+54%</span>, 4분기 YoY <span class="up">+56%</span>.</li>
+</ul>
+<p><strong>고객</strong>
+- 하이퍼스케일러와 클라우드 사업자, 대형 장비 및 제품 회사임.
+- 10-K는 이 고객들이 "상당한 협상력"을 가졌다고 명시함.
+- 2026-03-02 NVIDIA와 다년 전략 계약을 맺음. 비독점 계약이고, 수십억 달러 규모의 구매 약정과 차세대 레이저·광네트워킹 제품에 대한 생산능력 접근권이 포함됨.
+- 고객별 매출 비중은 공시상 확인 불가임.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 스스로를 "photonic technology의 글로벌 리더"라고 밝힘.
+- 인듐인화물(InP)을 자체 생산하는 것이 핵심 차별점으로 보임. 10-Q는 업계 전반의 InP 공급 부족 속에서 텍사스 Sherman 공장을 증설 중이라고 기재함.
+- 10-K는 고객이 이 기술을 직접 내재화(backward integration)해 회사를 대체할 위험을 리스크로 명시함.</p>
+<p><strong>포트폴리오 정리</strong>
+- 실적콜에서 FY26 중 항공우주·방산 사업과 Munich 제품 사업부를 매각했다고 언급함.
+- 그래서 보고 기준 성장률(4분기 <span class="up">+34%</span>)과 매각분을 뺀 pro forma 성장률(<span class="up">+42%</span>)이 다름.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- <strong>물량:</strong> 성장의 주된 원천임. 10-Q는 하이퍼스케일러의 AI 데이터센터 투자로 트랜시버 수요가 크게 늘었고, ZR/ZR+와 통신 전송 제품 출하량이 증가했다고 설명함. 회사는 4분기 말까지 자체 InP 생산량을 전년 대비 두 배로 늘린다고 밝힘.
+- <strong>단가:</strong> 실적콜에서 장기공급계약(LTA)이 대부분 물량과 가격을 함께 정한다고 언급함. 애널리스트 질문의 전제("레이저 가격이 계속 오른다")를 보면 가격이 오르는 환경으로 보이지만, 평균판매단가(ASP) 수치는 공시상 확인 불가임.
+- <strong>믹스:</strong> 1.6T 트랜시버, OCS(광회로스위치), CPO(공동패키징 광학) 같은 신제품 비중이 커지면 마진이 개선될 것이라고 회사는 밝힘(CFO 발언). 아직은 기대 단계임.</p>
+<p><strong>마진</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>4분기</th>
+<th>FY26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>38.5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>non-GAAP 매출총이익률</td>
+<td>40.2%</td>
+<td>39.4% (+152bp)</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>14.9% (YoY <span class="up">+5.4%</span>p)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>non-GAAP 영업이익률</td>
+<td>21.8%</td>
+<td>20.5% (FY25 17.8%)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>GAAP과 non-GAAP 영업이익률 차이가 약 7%p로 큼. 무형자산 상각, 구조조정 비용, 주식보상 등이 원인으로 추정되지만 항목별 금액은 공시상 확인 불가임.</li>
+<li>구조조정 비용은 계속 나오고 있음. 2025 Plan으로 FY26 상반기에 $28M을 인식했고, FY25 연간은 $107M이었음.</li>
+<li>영업 레버리지: 4분기 non-GAAP 판관비는 매출의 8.2%(FY26 9.2%)로 내려갔고, R&amp;D는 10.2%(FY26 9.7%)로 올라감.</li>
+</ul>
+<p><strong>현금흐름 — 가장 큰 약점</strong>
+- TTM 잉여현금흐름은 -$1.03B임.
+- 실적콜에서 밝힌 FY26 설비투자는 $556M(FY25 $131M)임. 정의가 같다고 가정하고 단순 역산하면 영업현금흐름도 약 -$0.47B 수준임(추정).
+- 이익이 나는데 영업현금흐름이 마이너스인 이유(재고 증가, 매각 관련 세금, 선급금 등)는 제공 자료로는 공시상 확인 불가임. 진입 전에 반드시 확인해야 함.
+- 회사는 설비투자가 높은 ROI와 18개월 회수 기간을 갖는다고 밝힘. 회사 주장임.</p>
+<p><strong>재무 건전성</strong>
+- 연말 현금 $2.59B. 실적콜 기준 레버리지는 FY25 2배에서 0.7배로 낮아졌고, FY26에 부채 $513M를 상환함.
+- 이 개선은 영업현금 창출보다 NVIDIA의 $2B 보통주 사모 발행(2026-03-02)과 사업 매각에 기댄 것으로 해석됨(추정).
+- 10-K는 여전히 "상당한 부채"와 5.000% 2029년 만기 선순위채의 약정 제한을 리스크로 기재함.
+- 주식 수는 10-K 기준 195,832,246주(2026-08-10)로, 시가총액 $57.22B와 맞음. 10-Q MD&amp;A에 시리즈 B 우선주 전환 항목이 있어 지분 희석 이력이 있음. 세부 내용은 발췌에 없음.</p>
+<h2>5. 성장 드라이버</h2>
+<p>아래 전망은 모두 회사가 밝힌 것임.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>검증 포인트 (다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AI 데이터센터 트랜시버(800G→1.6T)</td>
+<td>하이퍼스케일러 투자 지속, 1.6T 수율 개선</td>
+<td>데이터센터 매출의 QoQ 성장률(4분기 <span class="up">+24%</span>)이 유지되는지, 수주잔고 기간 언급(현재 "2028년까지")</td>
+</tr>
+<tr>
+<td>2</td>
+<td>InP 생산능력 확대</td>
+<td>Sherman 증설 일정, 자체 InP 생산량을 2027년 말까지 다시 두 배로</td>
+<td>1분기 InP 생산량 2배 달성 여부, 설비투자 규모와 공급 부족 해소 발언</td>
+</tr>
+<tr>
+<td>3</td>
+<td>신규 매출원: OCS(시장 $4B+ 주장), CPO/NPO, 멀티레일 시스템, PhotonLink(통합 광학, 시장 $15B+ 주장)</td>
+<td>고객 인증(qualification) 통과</td>
+<td>CPO 레이저와 PhotonLink의 12월 분기 첫 매출 인식 여부</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NVIDIA 전략 계약</td>
+<td>구매 약정이 실제 출하로 이어짐</td>
+<td>10-Q의 계약 관련 주석, 선수금이나 구매약정 공시</td>
+</tr>
+<tr>
+<td>5</td>
+<td>마진 확대와 영업 레버리지</td>
+<td>원가 절감, 가격 최적화, 신제품 믹스</td>
+<td>1분기 non-GAAP 매출총이익률이 가이던스 39.5~41.5%의 중간 이상인지, 영업비용 $400~420M 안인지, 영업비용률이 목표 모델(18%) 아래인지</td>
+</tr>
+<tr>
+<td>6</td>
+<td>산업 부문 회복(반도체 장비)</td>
+<td>반도체 장비 사이클</td>
+<td>산업 부문이 보합에서 벗어나 YoY 플러스로 돌아서는지</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>경로 계산:</strong> 1분기 가이던스 중간값은 매출 $2.3B(QoQ 약 <span class="up">+12%</span>), EPS $1.95임. "FY27 4분기 매출 $3B 이상"을 달성하려면 남은 세 분기 동안 분기당 평균 약 <span class="up">+9%</span>씩 성장해야 함(단순 계산, 추정).</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- 매우 자신감 있는 톤임. CEO는 근거 세 가지를 들었음: ① 또 한 번의 사상 최대 수주, ② InP 등 핵심 부품 공급 확대, ③ 신규 매출원 램프업.
+- 가이던스 화법이 강해짐. 연간 매출 수치 대신 "FY27 말 첫 $3B 분기"라는 이정표를 처음 제시함. 회사는 EPS가 매출보다 훨씬 빠르게 성장할 것이라고 밝힘.
+- 콜 중간 생략으로 영향 규모는 확인되지 않지만, 위험 요인으로 미국의 광트랜시버 수입 제한 가능성이 언급됨.</p>
+<p><strong>Q&amp;A에서 방어하거나 비켜 간 지점</strong>
+- <strong>증분 매출총이익률 (BofA Vivek Arya):</strong> 상반기 증분 마진이 40%대 중반 이상이었는데 9월 분기 가이던스는 40%대 초반이라는 지적이었음. CFO는 9월 분기에 대한 구체적 설명 없이 "효과가 나타나는 시점이 다르다"고 하고, 답을 영업비용 레버리지로 돌림. 단기 마진 확대 속도가 둔해질 수 있다는 신호로 읽힘(해석).
+- <strong>CPO 레이저 문제설 (Rosenblatt Mike Genovese):</strong> Substack 등에서 퍼진 문제설을 직접 물었음. CEO는 12월 분기 출하용 양산 웨이퍼를 이미 투입했고, 고객이 "가능한 빨리 더 보내 달라"고 한다고 답함. 인증 완료 여부를 명시적으로 확인하지는 않았음.
+- <strong>레이저 가격이 언제까지 오르나:</strong> CEO는 LTA에 계약 기간 동안의 가격이 정해져 있어 가시성이 좋다고만 답함. 가격 상승이 이어질지, 중국 경쟁이 어떤 영향을 줄지에는 직접 답하지 않음. 가격이 고정돼 있다는 것은 하방 방어인 동시에 추가 가격 인상 여력을 제한함(해석).</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 수주잔고가 2028년까지, LTA가 2020년대 말까지 이어진다는 언급.
+- 거의 모든 전략 고객이 CPO 또는 NPO(근접 패키징 광학)를 논의 중이라는 언급.
+- FY27 1분기 가이던스 수치.
+- 설비투자 회수 기간 18개월.
+- 영업비용 목표 모델 18%를 1분기 가이던스 중간값에서 이미 밑돈다는 언급.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>대형 고객 협상력과 내재화 (10-K):</strong> 소수의 대형 고객이 조건을 정할 수 있고, 주문 취소나 지연이 실적에 바로 반영됨. 고객이 직접 기술을 내재화할 위험도 10-K에 명시돼 있음. NVIDIA 계약은 비독점임.</li>
+<li><strong>현금 소진과 투자 집약도:</strong> 설비투자가 4배 이상 늘면서 TTM 잉여현금흐름이 -$1.03B임. 10-K는 증설 투자에서 기대 수익을 못 낼 위험을 별도 항목으로 둠. 수요가 꺾이면 고정비와 감가상각 부담이 커짐.</li>
+<li><strong>생산 인증과 공급망 (10-K):</strong> 자사 및 외주 라인의 양산 인증 실패 위험, 제한된 공급원, 희토류·희귀가스 가격과 수급 위험이 있음. CPO 레이저 인증 문제설이 시장에 돌고 있음(콜).</li>
+<li><strong>통상과 규제:</strong> 10-K는 관세, 지정학, 수출입 규제를 리스크로 명시함. 콜에서는 미국의 광트랜시버 수입 제한 가능성이 언급됨. 해외 생산 비중이 높다면 직접 영향을 받을 수 있음. 지역별 생산 비중은 공시상 확인 불가임.</li>
+<li><strong>부채와 영업권:</strong> 5.000% 2029년 만기 선순위채와 신용공여 약정의 제한이 있음. 인수로 생긴 영업권과 무형자산의 손상 가능성도 10-K에 명시됨.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ('보통' 판단)</strong>
+- <strong>긍정:</strong>
+  - 4분기 매출 YoY <span class="up">+33.7%</span>로 3분기 <span class="up">+20.5%</span>보다 높아짐.
+  - GAAP 영업이익률이 YoY <span class="up">+5.4%</span>p.
+  - 4분기는 가이던스 상단에서 상회(beat-and-raise).
+  - 1분기 매출 가이던스 중간값이 QoQ <span class="up">+12%</span>.
+  - 레버리지 0.7배, 현금 $2.59B.
+- <strong>부정:</strong>
+  - TTM 잉여현금흐름 -$1.03B.
+  - GAAP과 non-GAAP 영업이익률 격차 약 7%p.
+  - FY26 non-GAAP EPS 기준 약 52배, 1분기 가이던스 연환산 기준 약 37배(단순 계산).
+  - 60일 <span class="down">-8.4%</span>, 52주 고점 대비 <span class="down">-31.5%</span>로 추세가 약함.
+  - 오늘 거래량 배수 1.0배로 수급 확인이 안 됨.
+- 뉴스의 "DCF 적정가 $52"는 본문과 가정을 알 수 없어 판단 근거에서 제외함.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>FY26 10-K 현금흐름표:</strong> 영업현금흐름이 마이너스인 원인(운전자본, 재고, 세금, 선급금)과 4분기 단독 현금흐름. 일시적 요인이면 판단을 올릴 수 있음.
+2. <strong>NVIDIA 계약의 구조:</strong> 구매 약정의 기간, 규모, 선급 여부, 증설 의무가 10-K 주석에 공시됐는지. 2026-08-27자 8-K의 실제 내용도 함께 확인함.
+3. <strong>FY27 1분기 실적(11월 초 예상, 직전 발표 일정 기준 추정):</strong> 매출 $2.2~2.4B 중 중간 이상인지, non-GAAP 매출총이익률 40% 이상인지, CPO와 PhotonLink 12월 분기 첫 매출 일정이 다시 확인되는지.</p>
+<p><strong>'적극'으로 올릴 조건</strong>
+- 1분기에 가이던스 상단을 넘기고 분기 영업현금흐름이 플러스로 돌아섬.
+- CPO 또는 PhotonLink의 첫 매출이 확인됨.</p>
+<p><strong>'관망'으로 낮출 조건</strong>
+- 1분기 매출이나 매출총이익률이 가이던스 중간을 밑돌거나, 2분기 가이던스 증가율이 QoQ 한 자릿수 초반으로 둔화됨.
+- CPO 레이저 매출 인식이 미뤄지거나 고객 인증 문제가 공식 확인됨.
+- 영업현금흐름 적자가 이어지면서 추가 지분 발행이나 차입이 이루어짐.
+- 미국의 광트랜시버 수입 제한이 실제로 시행되고, 회사가 영향을 정량적으로 밝히지 않음.
+- 대형 고객의 주문 지연이나 취소가 공시되거나 콜에서 언급됨.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000020/iivi-20260630.htm">10-K — 2026-06-30_0000820318-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000013/iivi-20260331.htm">10-Q — 2026-03-31_0000820318-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000006/iivi-20251231.htm">10-Q — 2025-12-31_0000820318-26-000006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526375462/d110649d8k.htm">8-K — 2026-08-27_0001193125-26-375462</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526346860/d128030dex992.htm">8-K — 2026-08-12_0001193125-26-346860__EX-99.2__d128030dex992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526346860/d128030dex991.htm">8-K — 2026-08-12_0001193125-26-346860__EX-99.1__d128030dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526346860/d128030d8k.htm">8-K — 2026-08-12_0001193125-26-346860</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526208972/d57080dex992.htm">8-K — 2026-05-06_0001193125-26-208972__EX-99.2__d57080dex992</a></li>
+<li>Transcript — 2026-08-12 Q4 2026 Transcript</li>
+<li>Transcript — 2026-05-06 Coherent Corp. 2026 Q3 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

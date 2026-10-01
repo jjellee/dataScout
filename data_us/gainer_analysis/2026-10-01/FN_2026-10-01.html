@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FN — Fabrinet Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FN — Fabrinet Ordinary Shares</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FN</span><span class="badge">+3.45%</span><span class="badge">거래량 0.99배</span><span class="badge">$15.20B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>성장은 공시로 확인된다.</strong> 4Q FY26(6월 말 종료) 매출은 $1,315.8M으로 전년 대비 <span class="up">+44.6%</span>였다. 회사가 낸 1Q FY27 가이던스 중간값은 $1.40B이고, 회사는 이를 전년 대비 <span class="up">+43%</span>라고 밝혔다. 데이터센터 매출은 <span class="up">+68%</span> 늘어 전체 매출의 51%가 됐다.</li>
+<li><strong>주가 부담은 과열 수준이 아니다.</strong> 종가 $424.12 기준 PER은 FY26 non-GAAP EPS($14.09)로 약 30.1배다. 1Q FY27 가이던스 중간값($4.175)을 연율화한 $16.7 기준으로는 약 25.4배다. 주가는 52주 고점보다 43.2% 낮다.</li>
+<li><strong>그래도 '적극'은 아니다. 이익의 질이 약하다.</strong> TTM 잉여현금흐름(FCF)은 $3.0M으로 사실상 0이다. 매출총이익률 12.0~12.2%는 경영진이 5월에 말한 12.5~13% 범위보다 낮다. 가이던스대로라면 다음 분기 이익률은 0.5%p가량 낮아진다.</li>
+<li><strong>오늘 상승의 근거가 약하다.</strong> 거래량 배수는 0.99배라 '거래량 급증'이라는 전제가 지표로 확인되지 않는다. 확인된 촉매도 없다.</li>
+<li><strong>권고.</strong> 기본 비중을 담되, 이미 끝난 1Q FY27 실적(9/25 종료, 11월 초 발표 추정)에서 마진과 현금흐름이 확인되면 늘리는 단계적 접근이 맞다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다.</li>
+<li><strong>뉴스:</strong></li>
+<li>GuruFocus 기사는 "주가 3.5% 상승, 그러나 GF Value 기준 고평가"라는 사후 서술일 뿐 촉매가 아니다.</li>
+<li>같은 광통신 밸류체인의 Lumentum(LITE) 헤드라인이 함께 나온다. 섹터 동조 가능성이 있지만, 헤드라인만으로 내용은 확인할 수 없다.</li>
+<li><strong>수급:</strong> 거래량 배수 0.99배, 거래대금 $320.5M이다. 평소 수준의 거래량에서 오른 것이라 새 정보를 반영한 재평가로 보기 어렵다.</li>
+<li><strong>추세:</strong> 20일 수익률은 <span class="up">+5.5%</span>, 60일 수익률은 −9.4%다. 하락 추세 안에서의 단기 반등 구간이다.</li>
+<li><strong>고점 대비 하락 원인:</strong> 52주 고점 대비 −43.2%의 원인은 제공된 공시·transcript로 확인할 수 없다(공시상 확인 불가). 펀더멘털은 사상 최대 실적인데 주가는 크게 빠졌다. 이 괴리를 설명할 정보가 없다는 점 자체가 리스크 요인이다.</li>
+<li><strong>데이터 오류:</strong> 지표의 섹터 분류 'Utilities'는 잘못된 것이다. 10-K상 이 회사는 광학·전자 위탁생산(contract manufacturing) 기업이다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>정체성</strong>
+- 자체 제품이 없는 순수 위탁생산업체(pure-play contract manufacturer)다. 첨단 광학 패키징과 정밀 광학·전기기계·전자 제조 서비스를 OEM에 제공한다(8-K 보도자료).
+- 공정 설계, 공급망 관리, 패키징, 최종 조립, 테스트까지 맡는다.
+- 생산 거점은 태국(주력), 미국, 중국, 이스라엘이다.</p>
+<p><strong>매출 구성 (4Q FY26, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>매출</th>
+<th>YoY</th>
+<th>QoQ</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터센터 (트랜시버·DCI·HPC)</td>
+<td>$669M</td>
+<td>+68%</td>
+<td>+13%</td>
+<td>51%</td>
+</tr>
+<tr>
+<td>통신 인프라</td>
+<td>$413M</td>
+<td>+40%</td>
+<td>+1%</td>
+<td>31%</td>
+</tr>
+<tr>
+<td>자동차·산업·기타</td>
+<td>$234M</td>
+<td>+8%</td>
+<td>+9%</td>
+<td>18%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>4분기부터 분류를 바꿨다. 경영진은 과거 '텔레콤'으로 분류하던 제품의 최종 고객도 하이퍼스케일러라는 이유를 들었다(실적콜). 과거 시계열과 직접 비교하기 어려워졌다는 점에 유의해야 한다.</li>
+</ul>
+<p><strong>고객 집중도 (10% 이상 고객, 실적콜)</strong>
+- Cisco 20%, Nvidia 16%, Nokia 11%, Amazon 11%다. 상위 4개사 합계가 약 58%다.
+- 10-K 리스크 요약 첫 항목도 "소수 고객 의존 및 고객의 가격·마진 압박"이다.</p>
+<p><strong>경쟁 위치 (회사 주장, 5월 JPM 컨퍼런스)</strong>
+- 회사는 다음을 차별점으로 들었다.
+  - 제조 공간의 약 70%가 클린룸이다.
+  - 일부 제품은 자재명세서(BOM)의 60~70%를 내재화한다.
+  - 자체 제품이 없어 고객과 경쟁하지 않는다.
+  - 경쟁사가 ODM으로 전환하면 오히려 반사이익을 얻는다.
+- 이 차별점들을 독립적으로 검증할 수치는 공시상 확인 불가다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익 (GAAP, 8-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>4Q FY26</th>
+<th>4Q FY25</th>
+<th>FY26</th>
+<th>FY25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$1,315.8M</td>
+<td>$909.7M</td>
+<td>$4.64B</td>
+<td>$3.42B</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$139.3M</td>
+<td>$87.2M</td>
+<td>$473.0M</td>
+<td>$332.5M</td>
+</tr>
+<tr>
+<td>희석 EPS</td>
+<td>$3.83</td>
+<td>$2.42</td>
+<td>$13.05</td>
+<td>$9.17</td>
+</tr>
+<tr>
+<td>Non-GAAP EPS</td>
+<td>$4.10</td>
+<td>$2.65</td>
+<td>$14.09</td>
+<td>$10.17</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>물량 주도 성장이다.</strong> 데이터센터가 QoQ <span class="up">+13%</span>로 성장을 끌었고, 통신 인프라는 QoQ <span class="up">+1%</span>로 정체됐다.
+- <strong>가격·단가·믹스 효과는 구분할 수 없다.</strong> 단가와 물량을 분해한 수치는 공시상 확인 불가다.
+- <strong>성장 가속 흐름:</strong> 경영진에 따르면 연간 성장률은 FY25 19%, FY26 36%였다. 경영진은 12분기 연속 사상 최대 매출, 6분기 연속 성장률 가속이라고 언급했다(실적콜).
+- <strong>4Q GAAP 순이익의 일회성 항목:</strong> Raytek 지분 재평가 이익 $56.7M(비현금)과 태국 세금 충당금 $57.4M이 들어 있다. 두 항목이 거의 상쇄돼 표면 이익의 왜곡은 크지 않다.</p>
+<p><strong>마진 방향성</strong>
+- <strong>매출총이익률:</strong> 지표상 12.0%, 실적콜 기준 12.2%다. 실적콜 수치는 QoQ +10bp, YoY −30bp다.
+  - 5월 JPM 컨퍼런스에서 경영진은 12.5~13% 범위를 유지해 왔다고 말했다. 4Q는 그 범위 아래에 있다.
+  - 원인으로는 신제품 램프업 비용이 언급됐다(JPM 컨퍼런스).
+- <strong>영업이익률:</strong> 지표상 10.2%(YoY <span class="up">+0.4%</span>p), 실적콜 기준 10.9%로 3년 내 최고다. 판관비가 매출의 1.3%에 불과하다. 따라서 영업이익률은 사실상 매출총이익률이 결정한다.
+- <strong>[추정] 1Q FY27 가이던스에 마진 압박이 들어 있다.</strong>
+  - 매출 중간값은 QoQ <span class="up">+6.4%</span>인데, non-GAAP EPS 중간값($4.175)은 4Q 대비 <span class="up">+1.8%</span>에 그친다.
+  - non-GAAP 순이익률로 환산하면 약 11.3% → 약 10.8%로, 약 50bp 하락이다.
+- <strong>[추정] GAAP와 non-GAAP 차이가 커진다.</strong>
+  - 4Q 차이는 $0.27/주였는데, 1Q 가이던스 중간값 차이는 $0.71/주다.
+  - 금액으로 환산하면 분기 약 $26M으로 4Q의 약 $10M보다 크다.
+  - 무엇이 제외되는지(태국 top-up tax인지, AWS 워런트 관련인지 등)는 공시상 확인 불가다.</p>
+<p><strong>현금흐름 — 가장 약한 고리</strong>
+- 4Q 영업현금흐름 $55M, CapEx $92M으로 FCF는 −$37M이다.
+- FY26 영업현금흐름은 $257M이고 FCF는 $4M이다(지표상 TTM $3.0M).
+- 영업현금흐름은 순이익($473M)의 약 54%에 그친다. CFO는 CapEx와 운전자본 증가 때문이라고 설명했다.
+- CFO는 단기 FCF 압박이 계속될 것이라 말하면서도, 투자 ROIC가 40%라고 밝혔다. 회사 주장이다.
+- 시가총액 대비 TTM FCF 수익률은 사실상 0%다.</p>
+<p><strong>재무 건전성</strong>
+- 현금·단기투자는 4Q 말 $876M이다. 5월 컨퍼런스 당시 CFO는 "1B에 가까운 현금"이라고 했으므로 감소 추세다.
+- 8월 17일 태국 Bank of Ayudhya에서 THB 2.5B(약 $75M) 텀론을 차입했고, 자금은 CapEx에 쓴다(8-K).
+  - 같은 날 신용한도를 THB 2.61B + $100M으로 늘렸고, 인출 기간을 2044년까지 연장했다.
+  - 약정 조건: 부채비율(IBD/E) 1.0배 이하, 모회사 지급보증, 은행이 일방적으로 한도를 감액·취소할 수 있는 조항.
+- 순현금 상태로 판단되지만, 차입금 총액은 제공된 발췌로는 확인 불가다.
+- 그동안 자체 현금으로 증설하던 기업이 차입을 시작했다는 점은 현금 소진 속도를 보여주는 신호다.
+- 자사주매입 잔여 한도는 $169M이고, 4Q 매입은 거의 없었다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DCI (데이터센터 간 연결)</strong></td>
+<td>연율 매출이 $1B 수준에 근접했고, 주요 업체가 모두 고객이라고 밝힘(실적콜)</td>
+<td>데이터센터 부문 QoQ 성장이 <span class="up">+10%</span> 이상 유지되는지</td>
+</tr>
+<tr>
+<td><strong>트랜시버 고객 다변화</strong> (하이퍼스케일러 직거래, 머천트)</td>
+<td>회사는 12~18개월에 걸쳐 램프업하며, 기존 대형 고객과 맞먹는 규모가 될 수 있다고 밝힘(JPM)</td>
+<td>10% 이상 고객 명단 변화, Amazon 비중 추이</td>
+</tr>
+<tr>
+<td><strong>HPC</strong></td>
+<td>"계속 강하다"는 언급뿐, 앞으로 따로 공개하지 않음</td>
+<td>개별 공개가 없어 검증이 어렵다. Nvidia 매출 비중 추이로 간접 확인</td>
+</tr>
+<tr>
+<td><strong>OCS·ELSFP 등 신제품</strong></td>
+<td>회사는 OCS 출하가 "아직 매우 작다"고 밝힘. 큰 램프업에 참여할 것이라 자신함</td>
+<td>신규 고객 확보나 매출 기여에 대한 정량 언급이 있는지</td>
+</tr>
+<tr>
+<td><strong>증설</strong></td>
+<td>Chonburi Building 10이 매출 기준 $3B 생산능력을 추가함. 회사 목표는 총 $12B 생산능력(JPM)</td>
+<td>4Q 말 입주 완료 여부, 감가상각 증가에 따른 매출총이익률 영향</td>
+</tr>
+<tr>
+<td><strong>통신 인프라</strong> (LEO 위성, 멀티레일 증폭기)</td>
+<td>회사는 좋은 위치에 있다고 밝힘</td>
+<td>4Q QoQ <span class="up">+1%</span> 정체가 다시 늘어나는지</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>공통 실현 조건은 두 가지다. 레이저(EML) 공급 병목이 풀려야 하고, 고객의 장기 수요 전망이 확정 주문으로 이어져야 한다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법</strong>
+- 톤은 매우 강하다.
+  - "demand is just insatiable", "staggering demand picture", "no end in sight" 같은 표현을 썼다.
+  - "FY27도 성장 가속이 not beyond the bounds of possibility"라며, 분기 단위 가이던스 원칙 밖까지 언급했다.
+- 자신감의 근거로 경영진은 고객이 2027년 말 이후까지 수요 전망을 준다고 했다. 다만 CEO 스스로 "확정 주문은 아니다(not firm orders)"라고 단서를 달았다. 장기 수요 근거가 '구속력 없는 예측'이라는 점이 핵심이다.</p>
+<p><strong>Q&amp;A 반복 질문과 방어 지점</strong>
+- <strong>성장 가속 지속 여부:</strong> 애널리스트(Northland)가 직접 지적했다. 가이던스 중간값 <span class="up">+43%</span>는 4Q의 <span class="up">+45%</span>보다 낮아 "가속 흐름이 끊길 수 있다"는 것이다. 회사는 분기 가이던스 원칙을 되풀이하면서도 가속 가능성을 열어뒀다.
+- <strong>OCS:</strong> 회사는 "고객의 램프 일정은 고객이 말할 사안"이라며 시점과 규모를 답하지 않았다.
+- <strong>HPC 개별 실적:</strong> 앞으로 따로 공개하지 않겠다고 해 투명성이 낮아졌다.
+- <strong>FCF:</strong> 5월 JPM 컨퍼런스 질문에 CFO는 단기 압박을 인정하고 ROIC로 방어했다.</p>
+<p><strong>공시에는 없고 콜·컨퍼런스에서만 나온 정보</strong>
+- 고객별 매출 비중: Cisco 20%, Nvidia 16%, Nokia 11%, Amazon 11%.
+- 부문별 매출, DCI 연율 매출 약 $1B, 매출총이익률 12.2%, 판관비율 1.3%.
+- 태국 top-up tax(OECD 글로벌 최저한세)가 앞으로 세금 비용에 영향을 줄 수 있다는 언급.
+- 중국의 트랜시버 금지 등 규제 리스크 언급.
+- 지난해 AWS와 워런트 발행을 동반한 파트너십을 맺었다는 언급(JPM). 워런트 조건과 희석 규모는 공시상 확인 불가다.
+- 에너지 공급 병목은 특히 EML 레이저이고, 회사는 일시적이지만 해소에 시간이 걸린다고 봤다(JPM).</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>고객 집중과 가격 협상력</strong>
+   - 상위 4개사가 약 58%를 차지하고, 10-K 리스크 요약 첫 항목이다.
+   - 매출총이익률 12% 수준의 위탁생산 구조에서는 대형 고객이 가격을 압박하면 그대로 이익 훼손으로 이어진다.
+   - 분석가 질문에 '최대 고객발 역풍(headwind)'이 언급된 점으로 볼 때, 고객 한 곳의 제품 전환이 실적을 흔들 수 있다. 구체적 내용은 공시상 확인 불가다.</li>
+<li><strong>현금 전환 부진과 증설 리스크</strong>
+   - FY26 FCF는 $4M이고, 현금은 약 $1B에서 $876M으로 줄었으며, 텀론을 새로 차입했다.
+   - 회사 주장대로라면 Building 10 하나로 $3B, 전체로 $12B의 생산능력을 짓는다. FY26 매출 $4.64B 대비 공격적인 증설이다.
+   - 10-K는 고객 약정이 단기이고 주문 취소·지연 위험이 있다고 적고 있다. 수요가 꺾이면 증설 부담이 빠르게 커질 수 있다.</li>
+<li><strong>마진 하방</strong>
+   - 매출총이익률은 회사가 말한 범위 아래에 있고, 가이던스는 다음 분기 이익률이 더 낮아질 것을 암시한다[추정].
+   - 신제품 램프업 비용, 증설 감가상각, 태국 최저한세가 겹치는 구간이다.</li>
+<li><strong>데이터센터 단일 테마 의존</strong>
+   - 데이터센터 비중이 51%까지 올랐다.
+   - 10-K는 "데이터센터·통신 인프라 시장이 기대만큼 확장하지 않으면" 성장이 둔화될 수 있다고 명시한다.
+   - AI 인프라 투자 사이클과 주가가 같이 움직일(베타) 위험이 커졌다.</li>
+<li><strong>지정학·규제·공급</strong>
+   - 생산이 태국에 집중돼 있고 중국에도 거점이 있다. 중국 트랜시버 금지 언급, EML 레이저 병목이 걸려 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ('보통')</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>방향</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(+)</td>
+<td>매출 YoY <span class="up">+44.6%</span>, 1Q 가이던스 <span class="up">+43%</span>(회사 제시)</td>
+</tr>
+<tr>
+<td>(+)</td>
+<td>데이터센터 <span class="up">+68%</span>, FY26 non-GAAP EPS <span class="up">+39%</span></td>
+</tr>
+<tr>
+<td>(+)</td>
+<td>Forward PER 약 25배(가이던스 연율화 기준), 52주 고점 대비 −43.2%</td>
+</tr>
+<tr>
+<td>(+)</td>
+<td>순현금 성격의 대차대조표(현금 $876M)</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>TTM FCF $3.0M, 영업현금흐름/순이익 54%</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>매출총이익률 12.0~12.2%로 회사가 말한 범위 아래</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>가이던스상 순이익률 약 50bp 하락[추정]</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>상위 4개사 약 58% 집중</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>오늘 거래량 0.99배, 촉매 없음</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>고점 대비 −43% 하락 원인 미확인</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>1Q FY27 실적(9/25 분기 종료, 이미 끝남).</strong>
+   - 매출이 $1.40B 이상인지.
+   - 매출총이익률이 12% 이상을 지키는지.
+   - 데이터센터 QoQ 성장이 이어지는지.
+2. <strong>GAAP와 non-GAAP 차이가 커진 원인.</strong>
+   - 가이던스 기준 약 $26M/분기의 차이가 무엇인지 확인해야 한다(top-up tax, AWS 워런트, 주식보상 등).
+   - 원인에 따라 non-GAAP EPS 기준 밸류에이션의 신뢰도가 달라진다.
+3. <strong>52주 고점 대비 −43% 하락의 원인.</strong>
+   - 고객 이탈, 경쟁사 진입, 섹터 디레이팅 중 무엇인지 파악해야 한다.
+   - 제공된 자료로는 확인 불가이므로 별도로 확인해야 한다.</p>
+<p><strong>판단을 '관망'으로 바꿀 조건</strong>
+- 1Q 매출이 가이던스 하단($1.375B)에 못 미치거나, 2Q 가이던스 YoY 성장률이 30%대 초반 이하로 급격히 꺾일 때.
+- 매출총이익률이 12% 밑으로 떨어지고, 경영진이 원인을 일시적 램프업 비용이 아닌 가격 압박으로 설명할 때.
+- 10% 이상 고객의 비중이 크게 줄거나 명단에서 빠질 때. 특히 Nvidia, Cisco.
+- 분기 FCF 적자가 두 분기 이상 이어지면서 추가 차입이 늘거나, 현금이 $700M대로 떨어질 때.</p>
+<p><strong>'적극'으로 올릴 조건</strong>
+- 1Q에 매출총이익률이 12.5% 이상으로 회복될 때.
+- 영업현금흐름이 순이익의 80% 이상으로 정상화될 때.
+- 하이퍼스케일러 직거래 고객이 10% 이상 고객 명단에 추가될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000028/fn-20260626.htm">10-K — 2026-06-26_0001408710-26-000028</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000016/fn-20260327.htm">10-Q — 2026-03-27_0001408710-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000008/fn-20251226.htm">10-Q — 2025-12-26_0001408710-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-2026811xex991q426.htm">8-K — 2026-08-11_0001408710-26-000026__EX-99.1__fn-2026811xex991q426</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-2026811xex101cfaamendme.htm">8-K — 2026-08-11_0001408710-26-000026__EX-10.1__fn-2026811xex101cfaamendme</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-20260811.htm">8-K — 2026-08-11_0001408710-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000014/fn-2026504xex991q326.htm">8-K — 2026-05-04_0001408710-26-000014__EX-99.1__fn-2026504xex991q326</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000014/fn-20260504.htm">8-K — 2026-05-04_0001408710-26-000014</a></li>
+<li>Transcript — 2026-08-17 Q4 2026 Transcript</li>
+<li>Transcript — 2026-05-18 J.P. Morgan 54th Annual Global Technology, Media and Communications Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

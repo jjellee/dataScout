@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MGNI — Magnite Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MGNI — Magnite Inc. Common Stock</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">MGNI</span><span class="badge">+9.70%</span><span class="badge">거래량 2.09배</span><span class="badge">$3.68B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>실적 모멘텀은 수치로 확인됩니다. 실적콜에서 CTV contribution ex-TAC 성장률은 Q1 <span class="up">+30%</span>에서 Q2 <span class="up">+36%</span>로 올라갔고, DV+는 <span class="down">-5%</span>에서 <span class="up">+2%</span>로 플러스 전환했다고 언급했습니다. 제공 지표상 영업이익률은 16.2%로 전년보다 3.5%p 올랐습니다.</li>
+<li>TTM FCF $200.3M은 시가총액 $3.68B의 약 5.4%입니다(P/FCF 약 18.4배, 산출치). 이익과 현금이 함께 나오는 구조입니다.</li>
+<li>다만 오늘 상승은 공시가 아니라 뉴스(BofA 목표가 $38 상향, Google 애드테크 관련 보도)가 이끌었습니다. 제공 자료에는 Google 구제조치 판결의 구체적 내용이 없어 촉매를 검증할 수 없습니다.</li>
+<li>주가는 52주 고점(<span class="down">-0.0%</span>)에 있고 60일 수익률은 <span class="up">+23.1%</span>입니다. 재무상태표(현금·차입금)는 제공 발췌에서 확인할 수 없고, CFO 교체는 오늘(10/1) 발효됩니다.</li>
+<li>따라서 비중은 편입하되 분할로 접근하고, 적극 상향은 Q3 실적과 판결 내용을 확인한 뒤 판단하는 것이 맞다고 봅니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 내 공시는 없습니다. 공시는 촉매가 아닙니다.</li>
+<li><strong>뉴스(유력 촉매):</strong></li>
+<li>"BofA Securities Maintains Magnite With Buy Rating, Raises Target Price to $38"와 "BofA Securities Lifts Magnite (MGNI) Price Target 50% Amid DOJ F…" 헤드라인이 있습니다.</li>
+<li>"Magnite Gets Price Target Boost As Google Ad-Tech Changes Open New Growth Path" 헤드라인도 있습니다.</li>
+<li>정리하면 <strong>BofA 목표가 상향 + Google 애드테크(DOJ) 관련 진전 보도</strong>가 촉매로 보입니다.</li>
+<li><strong>확인되지 않는 부분:</strong></li>
+<li>판결·구제조치의 구체 내용, 시행 시점, Magnite 매출에 미칠 정량 효과는 제공 자료에서 <strong>공시상 확인 불가</strong>입니다. 헤드라인이 잘려 있어 "DOJ F…"의 의미도 특정할 수 없습니다.</li>
+<li><strong>참고할 배경:</strong> Q1 실적콜(5/6)에서 경영진은 다음과 같이 언급했습니다.</li>
+<li>"Google과 경쟁 시 우리 win rate가 매우 낮다. 행태적 변화가 생기면 효과가 거의 즉각적일 수 있다."</li>
+<li>"2026년 내 유리한 판결과 효과를 전적으로 예상한다."</li>
+<li>시장이 오늘 이 시나리오를 선반영하기 시작한 것으로 해석할 수 있습니다. 이는 추정입니다.</li>
+<li><strong>반대 의견:</strong> Seeking Alpha 헤드라인은 "Trades Slightly Above Its Fair Value (Downgrade)"입니다.</li>
+<li><strong>수급:</strong> 거래량은 20일 중앙값의 2.09배, 거래대금은 $106.2M입니다. 뉴스 기반 갭업("Shares Gap Up")과 맞는 수급입니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>정체성(10-Q MD&amp;A):</strong></li>
+<li>회사는 스스로를 "세계 최대 독립 옴니채널 SSP(sell-side platform)이자 최대 독립 프로그래매틱 CTV 마켓플레이스"라고 밝힙니다.</li>
+<li>매체사(퍼블리셔)의 광고 인벤토리를 자동 판매·수익화하는 인프라를 제공합니다. 월 수조 건의 광고 요청을 처리하며, "walled garden"에 대한 독립 대안으로 포지셔닝합니다.</li>
+<li><strong>제품:</strong></li>
+<li><strong>SpringServe (CTV)</strong>: 2025년 4월 차세대 버전을 발표했고, 스트리밍 SSP와 애드서버를 통합했습니다. 프로그래매틱과 직판 인벤토리를 함께 관리하며 mediation, 수율 최적화, 라이브 DAI, 광고 포딩 기능을 제공합니다.</li>
+<li><strong>ClearLine</strong>: 바이어가 프리미엄 CTV 인벤토리에 직접 접근하고 큐레이션할 수 있는 도구입니다.</li>
+<li><strong>DV+</strong>: 웹 디스플레이, 모바일 인앱, 온라인 비디오, 오디오, 커머스미디어 등 CTV 외 채널입니다.</li>
+<li><strong>고객군:</strong></li>
+<li>셀러 측은 CTV 채널·앱·웹사이트 운영자입니다. 콜에서는 Disney/ESPN, Netflix, Roku, VIZIO, Walmart, WBD, LG Ads, Paramount, Samsung이 언급됐습니다.</li>
+<li>바이어 측은 광고주, 에이전시, 트레이딩 데스크, DSP입니다.</li>
+<li><strong>매출 구성:</strong></li>
+<li>실적콜 기준 Q1·Q2 모두 CTV가 contribution ex-TAC의 51%입니다(DV+ 약 49%).</li>
+<li>GAAP 매출의 채널별 분해는 발췌에서 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>집중도:</strong></li>
+<li>Q2 콜에서 CFO는 "개별 퍼블리셔 중 contribution ex-TAC의 5%를 넘는 곳은 없다"고 언급했습니다.</li>
+<li>Top 10 비중은 비공개입니다.</li>
+<li><strong>경쟁 위치:</strong></li>
+<li>10-K는 "재무·기술·마케팅 자원이 더 큰 기업들과 경쟁"한다고 적고 있습니다.</li>
+<li>바이어·셀러가 플랫폼을 우회해 직접 연동할 수 있는 점도 리스크로 명시돼 있습니다.</li>
+<li>회사 주장상 차별점은 CTV에서 애드서빙, mediation, 수익화를 하나의 레이어로 통합한 유일한 스케일 플랫폼이라는 점입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$192.8M</td>
+<td>YoY <span class="up">+11.2%</span>, QoQ <span class="up">+17.3%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>67.8%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>영업이익률(GAAP)</td>
+<td>16.2%</td>
+<td>YoY <span class="up">+3.5%</span>p</td>
+</tr>
+<tr>
+<td>Adj. EBITDA 마진</td>
+<td>37% (Q2 실적콜)</td>
+<td>컨센서스 대비 +$8M 상회</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$200.3M</td>
+<td>시총 대비 FCF 수익률 약 5.4% (산출)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(믹스):</strong>
+- 실적콜 기준 Q2 CTV ex-TAC는 <span class="up">+36%</span>, DV+는 <span class="up">+2%</span>, 모바일 인앱은 <span class="up">+17%</span>(Q1 <span class="up">+8%</span>)입니다.
+- CTV 51%·DV+ 49% 비중과 각 성장률로 역산하면 전사 contribution ex-TAC 성장률은 약 17% 안팎입니다. 이는 <strong>추정</strong>입니다.
+- 반면 GAAP 매출 성장률은 11.2%로 이 추정치와 차이가 있습니다. 원인(총액/순액 인식 구성, TAC 변동 등)은 제공 자료로 <strong>공시상 확인 불가</strong>입니다.
+- 따라서 성장 판단은 non-GAAP 지표(ex-TAC)에 의존하고 있다는 점을 유념해야 합니다.</p>
+<p><strong>단가 vs 물량:</strong>
+- 테이크레이트나 광고 노출 물량 수치는 제공되지 않았습니다.
+- Q1 콜에서 CEO는 "에이전틱 환경에서도 take rate 내구성에 자신 있다"고 언급했습니다. 다만 10-K는 수수료 인하·리베이트 요구와 테이크레이트 하락을 리스크로 명시합니다.</p>
+<p><strong>마진 방향성:</strong>
+- 영업이익률이 <span class="up">+3.5%</span>p 개선됐습니다.
+- Q1 콜에서 CFO는 "CTV의 클라우드 비용이 하락했고, CTV와 DV+의 증분 마진은 대체로 동일하다"고 언급했습니다. 즉 믹스 변화가 마진을 구조적으로 끌어올리는 요인은 아니며, 비용 효율화와 레버리지가 개선의 주 원인입니다.
+- Q2 콜에서 회사는 연간 마진 확대 기대치를 상향했다고 밝혔습니다. 구체 수치는 발췌에 없습니다.
+- GAAP 영업이익률(16.2%)과 Adj. EBITDA 마진(37%)의 차이를 구성하는 SBC·무형자산상각 규모는 <strong>공시상 확인 불가</strong>입니다.</p>
+<p><strong>현금흐름·재무건전성:</strong>
+- TTM FCF $200.3M은 양호합니다.
+- 현금, 차입금(전환사채·기타 차입), 자사주 매입 규모는 발췌에 없어 <strong>공시상 확인 불가</strong>입니다.
+- 순현금인지 순차입인지는 편입 전에 반드시 확인해야 합니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CTV 프로그래매틱 전환</strong></td>
+<td>회사는 CTV 프로그래매틱이 "변곡점에 도달했다"고 밝힘. Top 10 CTV 계정 성장률은 Q1 mid-30%에서 Q2 mid-to-high 40%로 가속</td>
+<td>CTV ex-TAC 성장률이 30%대 중반 이상 유지되는지, Top 10 외 계정 성장률(Q1 mid-20s)이 추이를 따라가는지</td>
+</tr>
+<tr>
+<td><strong>라이브 스포츠</strong></td>
+<td>Q1 March Madness 매출 <span class="up">+80%</span> YoY. Q2에는 월드컵이 "브로드캐스트 스토리"라 기여가 제한적이었다고 언급. 가을 미식축구·대학농구 수익화에 "매우 자신"한다고 밝힘</td>
+<td>Q3·Q4 콜에서 라이브 스포츠의 정량 기여 언급과 이벤트성 클라우드 비용 급증 여부</td>
+</tr>
+<tr>
+<td><strong>Samsung 홈스크린 등 OEM</strong></td>
+<td>Samsung이 SpringServe로 홈스크린 인벤토리를 처음 프로그래매틱으로 개방. WPP는 Pause ads로 확장</td>
+<td>Samsung 인벤토리 램프 속도와 OEM 코호트 성장률 코멘트</td>
+</tr>
+<tr>
+<td><strong>DV+ 안정화(모바일 인앱·커머스미디어)</strong></td>
+<td>모바일 인앱 <span class="up">+8%</span>에서 <span class="up">+17%</span>로 가속. 커머스미디어 파트너 21곳 중 13곳이 배포·램프 중(Q1 기준). 다만 CEO는 오픈웹 디스플레이는 역성장할 것이라고 언급</td>
+<td>DV+ 성장률이 플러스로 유지되는지. 디스플레이 역성장이 AI 검색 트래픽 감소로 가속되는지</td>
+</tr>
+<tr>
+<td><strong>Google 애드테크 구제조치</strong></td>
+<td>CEO는 "행태적 변화 시 즉각적 효과, 2026년 내 영향"을 예상한다고 언급. 기술적 변경은 6~9개월이 걸릴 수 있다고 함</td>
+<td>판결이 행태적 조치인지 구조적 조치인지, 시행 시점, 회사의 정량화 여부</td>
+</tr>
+<tr>
+<td><strong>에이전틱 광고 (Magnite Orchestration)</strong></td>
+<td>CEO는 "거래 파트너 수가 줄고 스케일 SSP가 system of record가 된다"고 언급. 다만 현재 단계는 "crawl stage"라고 스스로 인정</td>
+<td>매출 기여는 단기 기대 제외. 채택 고객 수 코멘트만 추적</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거:</strong>
+- Q1에서는 "strong first quarter"였고, CTV는 가이던스에 부합(in line)했으며 비용 효율화로 EBITDA가 상회했습니다.
+- Q2에서는 "outstanding… significantly exceeded"로 표현이 격상됐고, 연간 ex-TAC와 마진 전망을 동시에 상향했습니다.
+- 자신감은 정량 수치가 뒷받침합니다. ex-TAC는 컨센서스를 약 $10M 상회했고(CTV $6M, DV+ $4M), EBITDA는 $8M 상회했습니다.
+- 다만 Q1에 비해 톤 상향폭이 크고, CEO가 "these results are just the beginning" 같은 서사형 표현을 늘렸다는 점은 유의해야 합니다.</p>
+<p><strong>가이던스 화법:</strong>
+- Q1에는 "CTV in line"이라는 보수적 표현을 썼지만, Q2에는 "raising both"로 바뀌었습니다.
+- 상향된 가이던스의 절대 수치는 발췌에서 <strong>확인 불가</strong>입니다.</p>
+<p><strong>Q&amp;A 반복 질문과 방어 지점:</strong>
+- <em>Google 구제조치 시점(Q1, Rosenblatt)</em>: CEO는 "유리한 판결과 2026년 영향"을 단언했지만, 정량 추정은 제시하지 않았습니다.
+- <em>DV+에서 CTV로의 예산 재배분(Q1, RBC)</em>: CEO는 "가속은 아니고 안정화"라고 답했지만, 오픈웹 디스플레이 역성장은 인정했습니다.
+- <em>고객 집중도(Q2, B. Riley)</em>: Top 10 CTV 계정의 비중은 <strong>답변을 회피(비공개)</strong>했습니다. 대신 "개별 퍼블리셔 5% 미만"으로 방어했고, CTV는 "30여 개 스트리머가 중요한 시장이라 상대적으로 더 집중돼 있다"고 인정했습니다.
+- <em>에이전틱 AI가 공급망을 축소하고 테이크레이트에 미칠 영향(Q1·Q2)</em>: 양 분기 연속 질문이 나왔습니다. 회사는 "system of record 역할은 불변"이라고 방어했지만, 테이크레이트 수치는 제시하지 않았습니다.</p>
+<p><strong>콜에서만 드러난 정보:</strong>
+- CTV 51% 비중, 채널별 성장률, Top 10 계정 성장 구간, 퍼블리셔별 5% 미만 집중도가 있습니다.
+- March Madness <span class="up">+80%</span>, Samsung 홈스크린 수주, 커머스미디어 21/13 파트너 수, Google 대비 낮은 win rate 발언도 콜에서만 나왔습니다.
+- Q2 콜은 David Day의 마지막 콜이었습니다. 이후 9/21 8-K로 CAO 출신 Brian Gephart가 10/1부로 CFO에 승격됐습니다. 내부 승계라 연속성 측면에서는 긍정적이지만, 첫 가이던스(Q3 실적)의 톤은 확인해야 합니다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>디스인터미디에이션과 테이크레이트 압박 (10-K):</strong>
+   - 바이어·셀러는 플랫폼을 우회해 직접 연동할 수 있습니다. 10-K는 SPO(supply path optimization) 실패 가능성, 수수료 인하·리베이트 요구, 테이크레이트 하락 가능성을 명시합니다.
+   - CEO가 전망한 에이전틱 환경의 "파트너 수 축소"는 Magnite가 승자가 되지 못할 경우 역방향 리스크가 됩니다.</li>
+<li><strong>CTV 인벤토리 접근성과 집중도 (10-K + 콜):</strong>
+   - 10-K는 CTV 성장이 회사가 접근할 수 없는 플랫폼에서 일어나거나, 수용 가능한 조건으로 인벤토리 접근을 유지하지 못할 가능성을 적고 있습니다.
+   - 매출의 51%가 CTV이고, CFO가 인정했듯 CTV는 소수 스트리머에 집중돼 있습니다. Top 10 계정의 가속 성장은 반대로 이들에 대한 의존도 상승을 뜻할 수 있습니다(추정).</li>
+<li><strong>AI로 인한 오픈웹 디스플레이 잠식 (10-K):</strong>
+   - 10-K는 AI가 검색 유입 트래픽을 이미 감소시켰고 앞으로도 감소시킬 가능성이 높으며, 이것이 웹 디스플레이 인벤토리 감소로 이어질 수 있다고 명시합니다.
+   - DV+의 <span class="up">+2%</span> 턴어라운드가 이 구조적 역풍을 계속 이길 수 있는지가 관건입니다.</li>
+<li><strong>Google 이벤트의 기대 선반영:</strong>
+   - 오늘 상승은 판결·구제조치 기대에 기대고 있습니다. 조치가 행태적 수준에 그치거나 시행이 2027년 이후로 밀리면 기대가 되돌려질 수 있습니다.
+   - 10-K는 Google LLC 상대 소송의 기대 효과를 forward-looking 항목으로 분류하고 있습니다. 불확실하다는 뜻입니다.</li>
+<li><strong>실적 변동성과 재무 가시성:</strong>
+   - 10-K는 계절성과 업계 통합으로 실적이 기대를 밑돌 수 있고, 지속적 수익성을 달성하지 못할 수 있다고 명시합니다.
+   - 차입 구조는 <strong>공시상 확인 불가</strong>여서 레버리지 리스크를 평가할 수 없습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'의 정량 근거:</strong>
+- (+) CTV 성장률 <span class="up">+30%</span>에서 <span class="up">+36%</span>로 가속, DV+ <span class="down">-5%</span>에서 <span class="up">+2%</span>로 전환(실적콜)
+- (+) 영업이익률 16.2%(YoY <span class="up">+3.5%</span>p), Adj. EBITDA 마진 37%(실적콜)
+- (+) TTM FCF $200.3M, 시총 대비 FCF 수익률 약 5.4%(산출)
+- (−) 52주 고점, 60일 <span class="up">+23.1%</span>, 뉴스 기반 <span class="up">+9.7%</span> 갭업. 촉매(판결 내용)는 미검증
+- (−) GAAP 매출 성장률 11.2%가 ex-TAC 추정 성장률(약 17%, 추정)보다 낮음. 괴리 원인은 확인 불가
+- (−) 재무상태표(순차입 여부) 확인 불가, CFO 교체 직후</p>
+<p><strong>진입 전 확인할 것 3가지:</strong>
+1. <strong>Google 구제조치의 실제 내용과 시행 일정:</strong> 행태적 조치인지 기술적 조치인지 원문으로 확인해야 합니다. 뉴스 헤드라인이 아니라 법원 문서와 회사 8-K·보도자료로 봐야 합니다.
+2. <strong>최신 10-Q 재무상태표:</strong> 현금, 전환사채·기타 차입의 만기 구조, 자사주 매입 여부를 확인하고, 순현금 기준으로 FCF 수익률을 다시 계산해야 합니다.
+3. <strong>상향된 연간 가이던스 수치와 새 CFO의 Q3 가이던스 화법:</strong> Q2 보도자료에서 연간 ex-TAC와 EBITDA 마진 가이던스의 절대치를 확인하고, 컨센서스 대비 여유가 있는지 봐야 합니다.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향):</strong>
+- Q3 CTV ex-TAC 성장률이 Q1 수준(<span class="up">+30%</span>)을 밑돌거나, 라이브 스포츠 시즌에도 가속 코멘트가 없을 때
+- DV+가 다시 역성장으로 돌아서고, 모바일 인앱 성장률(<span class="up">+17%</span>)이 한 자릿수로 둔화될 때
+- Google 구제조치가 행태적 수준에 그치거나 시행이 2027년 이후로 밀리고, 회사가 2026년 영향 발언을 철회하거나 약화할 때
+- 새 CFO 체제에서 연간 가이던스가 유지에 그치거나 하향되고, 마진 확대 기대가 후퇴할 때
+- 재무상태표 확인 결과 순차입 부담이 커 FCF 수익률의 매력이 크게 줄어들 때</p>
+<p><strong>상향 조건(적극):</strong> 판결의 구체 효과가 공시로 확인되고, Q3에서 CTV 30%대 중후반 성장과 DV+ 플러스 성장이 함께 유지되면 적극으로 올릴 수 있습니다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000159597426000007/mgni-20251231.htm">10-K — 2025-12-31_0001595974-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000162828026053343/mgni-20260630.htm">10-Q — 2026-06-30_0001628280-26-053343</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000159597426000022/mgni-20260331.htm">10-Q — 2026-03-31_0001595974-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000159597426000032/exhibit991-cfoannouncement.htm">8-K — 2026-09-21_0001595974-26-000032__EX-99.1__exhibit991-cfoannouncement</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000159597426000032/mgni-20260921.htm">8-K — 2026-09-21_0001595974-26-000032</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000162828026053334/a991-earningsq22026.htm">8-K — 2026-08-05_0001628280-26-053334__EX-99.1__a991-earningsq22026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000162828026053334/mgni-20260805.htm">8-K — 2026-08-05_0001628280-26-053334</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1595974/000162828026042512/mgni-20260608.htm">8-K — 2026-06-08_0001628280-26-042512</a></li>
+<li>Transcript — 2026-08-05 Magnite, Inc. (MGNI) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-07 Magnite, Inc. (MGNI) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

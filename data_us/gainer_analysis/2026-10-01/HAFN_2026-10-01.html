@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAFN — Hafnia Limited Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>HAFN — Hafnia Limited Common Shares</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">HAFN</span><span class="badge">+5.92%</span><span class="badge">거래량 2.01배</span><span class="badge">$4.83B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>최근 분기 실적은 매출 $815.8M(YoY <span class="up">+47.2%</span>, QoQ <span class="up">+21.5%</span>), 영업이익률 29.4%(YoY <span class="up">+14.4%</span>p)입니다. TTM FCF는 $584.4M으로 시가총액 대비 FCF 수익률이 약 12.1%(산출)입니다. 이익과 현금 창출력은 1차 스크린 통과 수준을 크게 웃돕니다.</li>
+<li>다만 1주일 전인 2026-09-24에 약 $300M(35,488,875주) 규모의 유상 배정을 마쳤습니다. 배정가는 주당 약 $8.45로 추정(산출)됩니다. 자금 사용처는 제공 자료에서 공시상 확인 불가입니다. 주가가 52주 고점 대비 <span class="down">-4.4%</span>인 시점에 회사가 직접 지분을 판 셈이어서 밸류에이션 신호로 읽힐 여지가 있습니다.</li>
+<li>운임(TCE)·부채·배당정책 등 해운주 판단에 꼭 필요한 변수가 제공 자료에 없습니다. 오늘 상승의 촉매도 공시로 특정되지 않습니다.</li>
+<li>따라서 '적극'은 근거가 부족하고 '회피'할 이유도 없습니다. 아래 체크포인트를 확인하면서 나눠서 진입하는 '보통' 비중이 적정합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급 또는 섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시는 없습니다. 직전 공시는 2026-09-24~25 6-K(유상 배정 완료와 프로스펙터스 보충서 제출)로, 오늘(10/1) 상승과 직접 연결하기 어렵습니다.</li>
+<li><strong>뉴스:</strong> "BTIG, Buy 의견과 목표주가 $12 유지" 헤드라인이 있습니다. 다만 발표일이 확인되지 않고, 의견과 목표가를 '유지'한 것이어서 거래량 2.01배와 <span class="up">+5.92%</span>를 단독으로 설명하는 촉매로 보기는 어렵습니다. 목표가 $12는 종가 $9.67 대비 약 <span class="up">+24%</span> 여력입니다(산출).</li>
+<li><strong>정황상 추정(사실 아님):</strong></li>
+<li>배정 완료로 '추가 발행 우려(오버행)'가 해소됐을 가능성이 있습니다.</li>
+<li>20일 <span class="up">+15.7%</span>, 60일 <span class="up">+38.4%</span> 흐름을 보면 프로덕트 탱커 업황에 동조했을 가능성이 있습니다.</li>
+<li>배정가 대비 주가가 약 <span class="up">+14%</span> 오른 상태여서, 배정 물량이 시장에 소화되는 과정에서 거래량이 커졌을 가능성이 있습니다.</li>
+<li>섹터 분류가 'Consumer Discretionary / Transportation Services'로 되어 있으나, 실제 사업은 석유제품·화학제품 해상운송입니다. 섹터 동조를 판단할 때는 에너지 해운(탱커) 피어와 비교해야 합니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>20-F 발췌가 사업 섹션(Item 4) 앞부분에서 잘려 있어, 매출 구성비와 고객별 비중은 공시상 확인 불가입니다. 확인 가능한 범위만 정리합니다.</p>
+<ul>
+<li><strong>서비스:</strong></li>
+<li>석유, 석유제품, 화학제품의 해상운송을 합니다. 선대는 프로덕트 탱커로 구성됩니다.</li>
+<li>일부는 화학제품 운송 요건을 갖춘 선박이지만, 회사는 이를 별도 선종이 아니라 프로덕트 탱커의 변형으로 분류한다고 밝힙니다.</li>
+<li><strong>수익 구조(20-F 정의 기준), 세 갈래:</strong>
+  1. <strong>자사 선대 운용:</strong> 'Hafnia Fleet'은 자가 보유 또는 세일앤리스백 선박, 용선해 들여온 TC 선박, 50% 의결권 JV 선박으로 구성됩니다. 여기서 정기용선과 항해용선 수익을 냅니다.
+  2. <strong>풀(Pool) 운영:</strong> LR2, LR1, MR, Handy, Chemical-MR, Chemical-Handy, Panamax, Specialised(Small·City) 풀을 운영합니다. 제3자 선박(Pool Vessels)까지 상업적으로 관리합니다.
+  3. <strong>통합 플랫폼:</strong> 회사 소개(6-K)에 따르면 기술관리, 상업·용선 서비스, 풀 관리, 대규모 벙커(선박유) 조달 데스크를 함께 제공합니다.</li>
+<li><strong>규모:</strong> 6-K 회사 소개 기준으로 약 180척을 소유·운영하고, 직원은 육상과 해상을 합쳐 4,000명 이상입니다. 사무소는 싱가포르, 코펜하겐, 휴스턴, 두바이에 있습니다.</li>
+<li><strong>고객군:</strong> 회사는 국영·국제 메이저 석유사, 화학사, 트레이딩사, 유틸리티 업체가 고객이라고 밝힙니다. 고객 집중도는 공시상 확인 불가입니다.</li>
+<li><strong>지배구조와 경쟁 위치:</strong></li>
+<li>BW Group 계열사입니다. 회사는 자신을 "세계 선도 탱커 선주 중 하나"라고 밝힙니다. 시장점유율 수치는 공시상 확인 불가입니다.</li>
+<li>상장은 오슬로(HAFNI)와 NYSE(HAFN) 이중상장이고, 회계기준은 IFRS입니다.</li>
+<li><strong>핵심 지표 정의:</strong> 회사는 TCE(항해 매출에서 연료비·항만비·중개수수료 등 항해비용을 뺀 금액)와 Adjusted EBITDA(비IFRS)를 경영 지표로 씁니다. 그런데 이번 분기 TCE/일 수치가 제공되지 않아 운임 수준을 직접 검증할 수 없습니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>4-1. 성장 규모(제공 지표 기준, 분기 회계기간은 명시되지 않음)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$815.8M</td>
+<td>제공 지표</td>
+</tr>
+<tr>
+<td>전년 동기 매출</td>
+<td>약 $554.2M</td>
+<td>815.8 ÷ 1.472로 산출</td>
+</tr>
+<tr>
+<td>직전 분기 매출</td>
+<td>약 $671.4M</td>
+<td>815.8 ÷ 1.215로 산출</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>약 $239.8M</td>
+<td>815.8 × 29.4%로 산출</td>
+</tr>
+<tr>
+<td>전년 동기 영업이익률</td>
+<td>약 15.0%</td>
+<td>29.4% − 14.4%p로 산출</td>
+</tr>
+<tr>
+<td>전년 동기 영업이익</td>
+<td>약 $83M</td>
+<td>산출</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>증분 마진:</strong> 전년 대비 매출이 약 $262M 늘었고 영업이익은 약 $157M 늘었습니다. 증분 마진은 약 60%(산출)로, 강한 영업 레버리지가 확인됩니다.</li>
+</ul>
+<p><strong>4-2. 성장의 질: 단가, 물량, 믹스 (추정 포함)</strong></p>
+<ul>
+<li>증분 마진이 60%에 이른다는 점은 선박 수(물량)가 늘어난 효과보다 운임 상승(단가) 효과가 컸을 가능성을 시사합니다. 선박이 늘면 용선료, 선원비, 감가상각이 함께 늘어 증분 마진이 이렇게 높게 나오기 어렵기 때문입니다. 다만 이는 추정입니다. TCE/일, 운항일수, 선대 변동 데이터는 공시상 확인 불가입니다.</li>
+<li><strong>매출 회계 유의점:</strong> 회사 정의상 매출에는 항해용선 수익(항해비용을 매출에 포함해 총액으로 인식)과 풀 관련 수익이 섞여 있습니다. 따라서 매출 성장률이 실제 이익 체력(TCE)을 과대·과소 표시할 수 있습니다.</li>
+<li><strong>비용 구조:</strong> 매출총이익률 30.9%와 영업이익률 29.4%의 차이가 1.5%p에 불과합니다. 판관비 부담이 매우 낮고 비용 대부분이 선박 단위에서 발생하는 구조로, 운임이 바뀌면 이익이 거의 그대로 연동됩니다. 운임이 하락할 때도 같은 레버리지가 반대로 작동합니다.</li>
+</ul>
+<p><strong>4-3. 마진 방향성</strong></p>
+<ul>
+<li>매출 QoQ <span class="up">+21.5%</span>로, 직전 분기 대비로도 가속하고 있습니다. 회사의 가이던스나 다음 분기 운임 계약(fixture) 현황은 제공 자료에 없어 공시상 확인 불가입니다.</li>
+</ul>
+<p><strong>4-4. 현금흐름</strong></p>
+<ul>
+<li>TTM FCF는 $584.4M입니다. 시가총액 $4.83B 대비 FCF 수익률은 약 12.1%(산출)입니다.</li>
+<li>배정 후 발행주식 수 증가를 반영한 시가총액은 약 $5.16B, FCF 수익률은 약 11.3%로 추정됩니다(산출: 2025년 말 497,989,642주 + 35,488,875주 ≈ 5.335억 주, × $9.67).</li>
+<li>제공된 시가총액 $4.83B는 배정 전 주식 수 기준으로 보입니다. 이 역시 추정입니다.</li>
+</ul>
+<p><strong>4-5. 재무 건전성</strong></p>
+<ul>
+<li>순차입금, 선박 담보대출 만기 구조, 세일앤리스백 부채 규모는 모두 공시상 확인 불가입니다. 발췌에서 Adjusted EBITDA가 대주단 재무약정 준수 판단에 쓰인다는 언급만 확인됩니다.</li>
+<li>배당정책과 배당성향도 공시상 확인 불가입니다. 해운주에서 주주환원은 핵심 밸류 변수이므로 이 공백은 판단에 큰 제약입니다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<p>회사가 제시한 구체적인 성장 전략이나 가이던스는 제공 발췌에 없습니다. 아래 항목은 공시된 사업 구조에서 도출한 것입니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>실현 조건</th>
+<th>검증 포인트(다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 운임 레버리지</td>
+<td>프로덕트 탱커 TCE가 현 수준 이상으로 유지되어야 함</td>
+<td>다음 분기 TCE/일과 운항일수 공시, 계약 완료(fixed) 비율</td>
+</tr>
+<tr>
+<td>② $300M 유상 배정 자금 투입</td>
+<td>사용처(선박 매입, 신조선 발주, 부채 상환, M&amp;A 등)가 주당 이익을 늘리는 방향이어야 함. 사용처는 공시상 확인 불가</td>
+<td>프로스펙터스 보충서의 '자금 사용처(Use of Proceeds)' 항목, 다음 분기 선대 변동과 순차입금 변화</td>
+</tr>
+<tr>
+<td>③ 풀·플랫폼 사업 확장</td>
+<td>제3자 선박의 풀 편입이 늘어나 수수료성 수익이 증가해야 함</td>
+<td>풀 선박 수, Combined Fleet 규모 변화(20-F/6-K)</td>
+</tr>
+<tr>
+<td>④ JV 선대(신조선 포함)</td>
+<td>회사는 JV 보유 선박에 신조선이 포함된다고 밝힘</td>
+<td>인도 일정, 지분법 이익 추이</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. 리스크</h2>
+<p>20-F 리스크 요인(Item 3.D) 원문은 제공 발췌에 포함되어 있지 않습니다. 아래는 제공된 공시에서 직접 확인되는 사항만 다룹니다.</p>
+<ol>
+<li><strong>희석과 자금 사용처 불투명</strong>
+   - 35,488,875주를 신주로 발행했습니다. 2025년 말 유통주식 대비 약 7.1% 희석입니다(산출).
+   - 고점 부근에서 자금을 조달했는데 사용처가 확인되지 않습니다. 자금이 운임 정점 부근의 고가 선박 매입에 쓰이면 사이클이 꺾일 때 자본효율이 떨어집니다. 이는 추정입니다.</li>
+<li><strong>배정 물량 차익실현 압력</strong>
+   - 배정가는 약 $8.45로 추정되고, 현재가는 이보다 약 <span class="up">+14%</span> 높습니다(산출). 배정 투자자의 차익실현 매물이 나올 수 있습니다.
+   - 주간사 계약서상 주간사에는 인수 의무가 없습니다. 즉 확정 인수가 아닌 매각 대행 방식(best-efforts)입니다.
+   - 락업 조건은 공시상 확인 불가입니다.</li>
+<li><strong>대주주(BW Group) 관련 구조</strong>
+   - 배정은 BW Group 보유 주식을 빌려 먼저 결제하고, 회사가 신주를 발행해 상환하는 대차 방식이었습니다.
+   - BW Group의 지분율, 보호예수, 향후 매각 계획은 공시상 확인 불가입니다. 지배주주 의사결정에 소수주주가 노출된다는 점은 상시 변수입니다.</li>
+<li><strong>이익의 운임 민감도</strong>
+   - 판관비 비중이 약 1.5%p에 불과해 운임 변동이 영업이익에 거의 그대로 전달됩니다.
+   - 영업이익률은 전년 동기 약 15%에서 29.4%로 1년 만에 두 배가 됐습니다. 반대로 운임이 하락하면 같은 속도로 되돌려질 수 있는 구조입니다.</li>
+<li><strong>지표 비교 가능성</strong>
+   - 회사는 TCE와 Adjusted EBITDA를 자체 정의로 산출하며, 타사와 비교가 어려울 수 있다고 밝힙니다.
+   - 산업 데이터(Clarksons Research)에도 추정과 주관적 판단이 섞여 있고 검증 절차가 제한적이라는 단서가 붙어 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 (보통)</strong></p>
+<ul>
+<li><strong>긍정 요인:</strong></li>
+<li>매출 YoY <span class="up">+47.2%</span>, QoQ <span class="up">+21.5%</span></li>
+<li>영업이익률 29.4%(<span class="up">+14.4%</span>p), 증분 마진 약 60%(산출)</li>
+<li>TTM FCF $584.4M, 배정 후 기준 FCF 수익률 약 11~12%(산출)</li>
+<li>BTIG 목표가 $12 대비 여력 약 <span class="up">+24%</span>(산출)</li>
+<li><strong>제약 요인:</strong></li>
+<li>52주 고점 대비 <span class="down">-4.4%</span>, 60일 <span class="up">+38.4%</span>로 이미 많이 올랐습니다.</li>
+<li>1주 전 약 7.1% 희석 배정이 있었고, 자금 사용처는 확인 불가입니다.</li>
+<li>TCE, 부채, 배당 데이터가 없습니다.</li>
+<li>오늘 상승의 촉매가 확인되지 않습니다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>프로스펙터스 보충서(2026-09-23 예비본, 2026-09-24 확정본)의 자금 사용처, 락업, BW Group 지분 변동을 확인합니다.</li>
+<li>최근 분기의 TCE/일, 운항일수, 다음 분기 계약 완료 비율을 확인해 성장이 단가에서 온 것인지 물량에서 온 것인지 판별합니다.</li>
+<li>순차입금, 대출 만기, 배당정책(배당성향)을 확인해 FCF가 실제로 주주에게 돌아오는 비율을 봅니다.</li>
+</ol>
+<p><strong>판단을 바꿀 조건</strong></p>
+<ul>
+<li><strong>관망으로 하향하는 경우:</strong></li>
+<li>다음 분기 TCE/일이 전 분기보다 하락하고 매출이 QoQ 역성장으로 돌아설 때</li>
+<li>조달 자금이 운임 정점 부근 중고선이나 신조선 고가 매입에 쓰인 것으로 확인될 때</li>
+<li>추가 지분 발행이나 BW Group 지분 매각이 공시될 때</li>
+<li>주가가 배정가(약 $8.45) 아래로 이탈해 배정 물량이 손실 매물로 바뀔 때</li>
+<li><strong>적극으로 상향하는 경우:</strong></li>
+<li>자금 사용처가 높은 수익을 내는 선대 확장이나 부채 축소로 확인될 때</li>
+<li>높은 배당성향 정책이 유지될 때</li>
+<li>다음 분기 TCE가 현 수준을 유지하는 것이 확인될 때</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126015278/ef20060668.htm">20-F — 2025-12-31_0001140361-26-015278</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126037712/ef20082798_ex99-3.htm">8-K — 2026-09-25_0001140361-26-037712__EX-99.3__ef20082798_ex99-3</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126037712/ef20082798_ex99-2.htm">8-K — 2026-09-25_0001140361-26-037712__EX-99.2__ef20082798_ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126037712/ef20082798_ex99-1.htm">8-K — 2026-09-25_0001140361-26-037712__EX-99.1__ef20082798_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126037712/ef20082798_6k.htm">8-K — 2026-09-25_0001140361-26-037712</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1815779/000114036126037510/ef20082700_ex99-2.htm">8-K — 2026-09-24_0001140361-26-037510__EX-99.2__ef20082700_ex99-2</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

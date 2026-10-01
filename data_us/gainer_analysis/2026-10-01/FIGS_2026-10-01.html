@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIGS — FIGS Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FIGS — FIGS Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-01 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FIGS</span><span class="badge">+3.23%</span><span class="badge">거래량 1.05배</span><span class="badge">$2.34B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 좋습니다. 2Q26 매출은 $196.6M(<span class="up">+28.8%</span> YoY), 상반기 FCF는 $38.6M으로 흑자 전환했고, 해외 매출은 <span class="up">+67.0%</span>, 활성고객은 <span class="up">+13.2%</span> 늘었습니다. 성장이 여러 축에서 함께 나오고 있습니다.</li>
+<li>다만 2Q 매출총이익률 75.2%에는 <strong>IEEPA 관세 환급 효과 780bp</strong>가 들어 있습니다. 이를 빼면 약 67.4%로 전년 대비 <span class="up">+0.4%</span>p 수준이고, 영업이익률도 약 10.1%로 내려갑니다(계산값). 헤드라인 마진은 반복되지 않는 일회성 효과로 부풀려져 있습니다.</li>
+<li>연간 매출 성장 가이던스는 약 20%입니다(Seeking Alpha 뉴스 헤드라인 기준). 상반기 <span class="up">+28.5%</span>와 비교하면 하반기 성장률은 20%를 밑돌아야 계산이 맞습니다. 감속이 이미 예고된 셈입니다.</li>
+<li>오늘 상승(<span class="up">+3.23%</span>)은 거래량 배수가 1.05배로 사실상 평소 수준이고, 확인된 촉매도 없습니다. 60일 수익률 <span class="up">+40%</span>로 실적 재평가는 이미 상당 부분 주가에 반영됐습니다.</li>
+<li>정리하면 기본 비중으로 분할 편입이 적절합니다. 의미 있는 비중 확대는 3Q 실적에서 환급 효과를 뺀 마진과 하반기 성장률을 확인한 뒤가 맞습니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없습니다. 가장 최근 실적 관련 공시는 2026-08-06 8-K(2Q 실적 발표)로, 약 2개월 전 이벤트입니다.</li>
+<li>뉴스 헤드라인 중 "Shares Surge 3.2%"(gurufocus)는 주가 움직임을 다시 적은 기사일 뿐 원인을 제시하지 않습니다. 나머지 헤드라인도 밸류에이션 논쟁(현금흐름 기준 44% 고평가 주장, 반대로 소폭 저평가론)이라 촉매로 보기 어렵습니다.</li>
+<li>거래량 배수 1.05배, 거래대금 $36.9M은 "거래량 급증"이라는 스크린 전제와 맞지 않습니다. 20일 수익률이 <span class="down">-9.2%</span>여서 단기 조정 뒤 기술적 반등일 가능성이 있습니다(추정).</li>
+<li>참고로 Seeking Alpha 페이지에 공매도 잔량 12.62%가 표기돼 있어, 숏 커버링 등 수급 요인일 가능성도 배제할 수 없습니다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 10-K 발췌는 표지와 목차에서 끊겨 있어 사업(Item 1) 본문을 확인할 수 없습니다. 아래 내용은 10-Q MD&amp;A 개요와 8-K를 근거로 했습니다.</p>
+<ul>
+<li><strong>제품</strong>: 의료종사자용 스크럽(scrubwear)이 중심입니다. 비스크럽 제품으로 아우터, 언더스크럽, 신발, 압박양말, 랩코트, 라운지웨어를 팝니다. 설계는 대부분 자체에서 하고, 생산은 제3자 공급사에 맡깁니다.</li>
+<li><strong>매출 구성(2Q26, 8-K)</strong></li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>매출</th>
+<th>YoY</th>
+<th>비중(계산)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>스크럽</td>
+<td>$161.2M</td>
+<td>+26.5%</td>
+<td>82.0%</td>
+</tr>
+<tr>
+<td>비스크럽</td>
+<td>$35.4M</td>
+<td>+40.3%</td>
+<td>18.0%</td>
+</tr>
+<tr>
+<td>미국</td>
+<td>$158.7M</td>
+<td>+22.2%</td>
+<td>80.7%</td>
+</tr>
+<tr>
+<td>해외</td>
+<td>$37.9M</td>
+<td>+67.0%</td>
+<td>19.3%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>채널</strong>: DTC 디지털(웹사이트·모바일 앱)이 주력입니다. 여기에 B2B(TEAMS)와 오프라인 매장(Community Hubs)이 더해집니다. 채널별 매출 분해는 공시상 확인할 수 없습니다.</li>
+<li><strong>고객군</strong>: 의료종사자 개인이 대상이며, 활성고객은 약 310만 명입니다(2026-06-30). 회사는 고객 유입이 주로 입소문과 데이터 기반 브랜드·퍼포먼스 마케팅에서 나온다고 밝혔습니다.</li>
+<li><strong>수익 모델의 특징</strong>: 회사는 스크럽이 "대체로 비재량적이고 교체 수요 중심"이라 재고 리스크가 낮다고 밝혔습니다. 초도 물량을 적게 잡고 데이터에 따라 재발주하는 방식을 씁니다.</li>
+<li><strong>경쟁 위치</strong>: 회사는 원자재화된 상품을 브랜드화한 "카테고리 정의 브랜드"라고 스스로 밝혔습니다. 경쟁사 대비 점유율 수치는 공시상 확인할 수 없습니다.</li>
+<li><strong>지배구조</strong>: Class A 158,093,481주와 Class B 8,283,641주가 있는 이중 클래스 구조입니다(2026-02-13). Class B의 의결권 배수는 제공 자료로 확인할 수 없습니다. 회사는 스스로를 창업자 경영(founder-led) 기업이라고 밝혔습니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이(10-Q·8-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q25</th>
+<th>1Q26</th>
+<th>2Q25</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$124.9M</td>
+<td>$159.9M (<span class="up">+28.0%</span>)</td>
+<td>$152.6M</td>
+<td>$196.6M (<span class="up">+28.8%</span>)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>67.6%</td>
+<td>67.7%</td>
+<td>67.0%</td>
+<td>75.2%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$(0.1)M</td>
+<td>$6.3M</td>
+<td>$7.1M</td>
+<td>$28.4M</td>
+</tr>
+<tr>
+<td>Adj. EBITDA 마진</td>
+<td>—</td>
+<td>8.7%</td>
+<td>—</td>
+<td>18.6%</td>
+</tr>
+<tr>
+<td>활성고객</td>
+<td>2.7M</td>
+<td>3.0M (<span class="up">+12.2%</span>)</td>
+<td>2.7M</td>
+<td>3.1M (<span class="up">+13.2%</span>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 8-K에 따르면 매출 증가는 "주문 수 증가와 AOV 상승" 덕분입니다. 매출 성장(<span class="up">+28.8%</span>)이 활성고객 성장(<span class="up">+13.2%</span>)의 2배를 넘어, 고객당 구매 빈도나 객단가가 함께 올랐다고 봐야 합니다.
+- 매출총이익 개선 요인에 "가격(pricing)"이 들어 있어 가격 인상도 기여했습니다. 다만 가격 효과와 물량 효과를 나눈 수치는 공시상 확인할 수 없습니다.
+- 믹스를 보면 비스크럽(<span class="up">+40.3%</span>)과 해외(<span class="up">+67.0%</span>)가 본업보다 빨리 크고 있습니다. 미국 매출도 <span class="up">+22.2%</span>로 코어가 둔화되는 모습은 아닙니다.</p>
+<p><strong>마진 방향성: 환급 효과를 빼고 봐야 합니다</strong>
+- 2Q 매출총이익률 +820bp 가운데 <strong>780bp가 IEEPA 관세 환급 인식분</strong>입니다. 이를 빼면 약 67.4%로 전년 대비 약 +40bp입니다(계산값). 가격과 효율화로 높아진 관세를 상쇄한 정도입니다.
+- 환급 인식액은 약 $15.3M으로 추정됩니다(780bp × $196.6M, 계산값). 회사가 추정한 IEEPA 관세 납부 총액은 약 $20.6M입니다. 남은 환급 규모와 시점은 발췌가 잘려 있어 공시상 확인할 수 없습니다.
+- 영업비용은 $112.6M(<span class="up">+21.9%</span>)이고 매출 대비 57.3%입니다. 전년 대비 약 3.2%p 영업 레버리지가 났습니다(전년 약 60.5%는 지표로 역산).
+- 영업이익률은 17.9%(<span class="up">+11.4%</span>p)지만, 환급분을 빼면 약 10.1%입니다(계산값). 그래도 전년 6.5%보다 약 <span class="up">+3.6%</span>p 높아, 실질 개선 자체는 있습니다.
+- 연간 영업이익률 가이던스는 약 10.8%로 상향됐습니다(Seeking Alpha 뉴스 헤드라인 기준). 2Q의 17.9%가 이어지는 수준이 아니라는 점을 회사 가이던스도 보여줍니다.
+- Adj. EBITDA($36.6M)에서 환급분을 조정했는지는 공시상 확인할 수 없습니다.</p>
+<p><strong>현금흐름</strong>
+- 1Q26 영업현금흐름은 $(3.2)M, FCF는 $(5.6)M로 마이너스였습니다. 상반기 누계는 영업현금흐름 $43.7M, FCF $38.6M입니다. 이를 역산하면 <strong>2Q 단독 FCF는 약 $44.2M</strong>입니다(계산값).
+- ⚠ 10-Q 발췌에 상반기 전년 비교값이 "$(3.2)M → $43.7M"으로 적혀 있는데, 이는 1Q26 수치와 같습니다. 발췌 오류 가능성이 있어 원문 확인이 필요합니다.
+- TTM FCF는 $97.2M입니다. 시가총액 $2.34B 기준으로 P/FCF 약 24배, FCF 수익률 약 4.2%입니다(계산값). 다만 2Q FCF에 환급 현금이 들어왔는지는 공시상 확인할 수 없어, 경상 FCF는 이보다 낮을 수 있습니다.</p>
+<p><strong>재무 건전성</strong>
+- 현금, 차입금, 재고 잔액은 제공 발췌에 없어 공시상 확인할 수 없습니다. 따라서 순현금과 EV 산출도 불가합니다.
+- 자사주 매입 승인 한도를 $100M 늘렸습니다(8-K). 기존 잔여 한도와 실제 매입 실적은 공시상 확인할 수 없습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 근거</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 해외 확장</td>
+<td>해외 매출 <span class="up">+67.0%</span>로 비중 19.3%까지 확대</td>
+<td>관세·물류비를 감내하면서 마진 유지</td>
+<td>해외 성장률 50% 이상 유지 여부. APAC 둔화(아래 콜 내용)가 확대되는지</td>
+</tr>
+<tr>
+<td>② 비스크럽 레이어링 확장</td>
+<td>+40.3%. 실적콜에서 "최근 3년 중 가장 강한 비스크럽 성장"이라고 언급</td>
+<td>교차구매 확대, 재고 소진 리스크 관리</td>
+<td>비스크럽 비중이 18%를 넘어 계속 오르는지</td>
+</tr>
+<tr>
+<td>③ 원단·제품 혁신 (FORMx, FIBREx)</td>
+<td>실적콜에서 FORMx 원단 믹스가 전년 대비 거의 2배라고 언급. 하반기에 FIBREx를 본격 부각하겠다고 밝힘</td>
+<td>신제품이 AOV와 가격 결정력으로 이어질 것</td>
+<td>3Q AOV 추이, 가격 인상 효과 지속 여부</td>
+</tr>
+<tr>
+<td>④ 미국 코어 e-커머스</td>
+<td>미국 <span class="up">+22.2%</span>. 실적콜에서 성장이 코어 미국 e-커머스에서 나왔다고 언급</td>
+<td>활성고객 증가율 10% 이상 유지</td>
+<td>활성고객 증가율(2Q <span class="up">+13.2%</span>)이 유지되거나 가속하는지</td>
+</tr>
+<tr>
+<td>⑤ TEAMS(B2B)·Community Hubs</td>
+<td>회사는 "시장 확장 드라이버"라고 밝힘</td>
+<td>매장 단위 경제성 입증</td>
+<td>별도 수치가 공시되지 않아 공시상 확인 불가. 경영진 정성 코멘트로만 추적 가능</td>
+</tr>
+<tr>
+<td>⑥ 자본환원</td>
+<td>자사주 매입 승인 $100M 증액</td>
+<td>하반기 FCF 흑자 지속</td>
+<td>3Q 10-Q의 실제 매입 주식 수와 희석 상쇄 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>※ 제공된 transcript는 <strong>1Q26 실적콜(2026-05-07) 원문</strong>과 <strong>2Q26 발표 자료 페이지</strong>뿐입니다. 2Q 실적콜 원문은 제공되지 않아 2Q 경영진 발언은 확인할 수 없습니다.</p>
+<p><strong>경영진 톤과 자신감의 근거</strong>
+- CEO는 1Q 실적콜에서 "incredible start", "sustainable", "We're leading this industry by miles"라고 언급했습니다. 톤이 매우 공격적이고 자신감이 높습니다.
+- 자신감의 근거로는 활성고객 300만 명 첫 돌파, 계획에 없던 유류할증료를 흡수하고도 Adj. EBITDA 마진이 내부 기대보다 170bp 높았다는 점을 들었습니다.
+- 반면 CFO는 신중했습니다. 소비자 압박 가능성을 "하반기 가이던스에 반영했다"고 언급했습니다. 가이던스를 보수적으로 잡아 상회 여지를 남기는 화법으로 읽힙니다(해석).</p>
+<p><strong>애널리스트 Q&amp;A의 반복 주제와 방어 지점</strong>
+- 마진 경로(Dana Telsey 질문)에 대해 CFO는 다음과 같이 분기별 흐름을 제시했습니다.
+  - 연간 매출총이익률은 FY25의 66.5% 대비 "소폭 상승"
+  - 2Q는 관세 부담이 커져 "소폭 하락"
+  - <strong>3Q는 전년 반품 처리 관련 유리한 효과가 정상화되면서 하락</strong>
+  - 4Q는 전년 일회성 재고 상각과 비교되는 만큼 큰 폭 개선
+- 실제 2Q는 환급분을 빼면 +40bp여서 "소폭 하락" 가이던스를 넘어섰습니다(계산 기반 해석).
+- 소비자 체력(Morgan Stanley 질문)에 대해 CFO는 소득 계층 전반에서 강세가 이어지고 있다고 답했습니다. 다만 <strong>"APAC 지역에서 약간의 둔화"</strong>가 있었다고 실적콜에서 언급했습니다. 해외 고성장 축에서 나온 균열 신호라 주시할 필요가 있습니다.
+- 명시적으로 답변을 회피한 대목은 발췌 범위에서 확인되지 않습니다. 다만 FORMx 원단 믹스는 "거의 2배"라는 정성 표현만 있고 절대 비중은 공개하지 않았습니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 유가 상승에 따른 인바운드 운임 부담과 <strong>관세 환급(duty drawback) 프로그램 일시 중단</strong>
+- 연중 재고를 유지하는 핵심 스타일 약 15개와, 단기 완판을 노리는 신규 컬러·스타일 드롭으로 나뉜 이원화 머천다이징 전략
+- 3Q 매출총이익률 하락이 전년 반품 처리 관련 유리한 효과의 기저 때문이라는 구체적 이유</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K 리스크 섹션(Item 1A) 본문은 제공 발췌에 없습니다. 아래는 10-Q MD&amp;A와 실적콜 근거입니다.</p>
+<ol>
+<li><strong>관세 체제 재편 (Section 301)</strong>: 2026-07-24부터 공급사 소재국을 포함한 약 60개국에 10.0~12.5% 관세가 발효됐습니다. 회사도 범위·지속기간·추가 인상·법적 분쟁에 "상당한 불확실성"이 있다고 밝혔습니다. 2Q 마진을 끌어올린 환급과 달리 하반기에는 비용으로 작용합니다.</li>
+<li><strong>일회성 이익의 정상화 착시</strong>: 2Q 매출총이익률에서 780bp, 영업이익률에서도 상당 부분이 환급 효과입니다. 3Q는 회사 스스로 매출총이익률 하락을 가이드했습니다. 그래서 3Q 실적에서는 "마진이 급락한 것처럼 보이는" 헤드라인 리스크가 큽니다.</li>
+<li><strong>하반기 성장 감속</strong>: 연간 약 20% 가이던스가 맞다면 하반기 성장률은 20% 미만이어야 합니다(상반기 <span class="up">+28.5%</span>). 회사는 유가와 소비자 지출 압박을 하반기 리스크로 들었습니다(실적콜). 밸류에이션이 성장률에 민감한 구간이라 감속 폭이 관건입니다.</li>
+<li><strong>비용 측 외부 변수</strong>: 유가 상승에 따른 운임·유류할증료와 duty drawback 중단을 실적콜에서 언급했습니다. 원가 압박 요인이 관세 외에도 여러 개 겹쳐 있습니다.</li>
+<li><strong>밸류에이션과 수급</strong>: Seeking Alpha 페이지에 Forward PER 39.67, 공매도 잔량 12.62%가 표기돼 있습니다. 60일 <span class="up">+40%</span> 랠리 뒤라 기대치가 이미 높습니다. 뉴스에서도 "현금흐름 기준 44% 고평가" 주장이 나오고 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>판단에 유리한 근거</th>
+<th>판단에 불리한 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 <span class="up">+28.8%</span>, 활성고객 <span class="up">+13.2%</span>, 해외 <span class="up">+67.0%</span></td>
+<td>2Q 매출총이익률의 780bp는 일회성 환급 효과</td>
+</tr>
+<tr>
+<td>환급 제외 영업이익률 약 10.1%로도 전년 대비 약 <span class="up">+3.6%</span>p 개선(계산)</td>
+<td>연간 가이던스상 하반기 성장률 20% 미만</td>
+</tr>
+<tr>
+<td>상반기 FCF $38.6M, 2Q 단독 약 $44.2M(계산)</td>
+<td>P/FCF 약 24배, Forward PER 약 40배</td>
+</tr>
+<tr>
+<td>자사주 매입 승인 $100M 증액</td>
+<td>오늘 거래량 1.05배로 촉매 없음, 공매도 12.6%</td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 펀더멘털 개선은 진짜지만 헤드라인 숫자가 부풀려져 있고, 주가는 이미 재평가됐습니다. 그래서 적극이 아닌 <strong>보통</strong>으로 판단합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q26 경상 매출총이익률</strong>: 환급 효과를 빼고 전년 대비 하락 폭이 회사 가이드("하락") 안에 있는지, Section 301 관세 비용이 얼마인지 확인합니다. 3Q 실적 발표는 통상 일정상 11월 초로 추정됩니다.
+2. <strong>남은 IEEPA 환급 규모와 인식 시점</strong>: 약 $20.6M 중 2Q 인식분(약 $15.3M 추정)을 뺀 잔액이 하반기에 추가로 인식되는지, FCF에 환급 현금이 얼마나 들어갔는지 3Q 10-Q에서 확인합니다.
+3. <strong>하반기 성장률과 해외·APAC 추이</strong>: 3Q 매출 성장률이 15~20% 범위를 지키는지(가이던스와의 정합성), 해외 성장률과 APAC 둔화 코멘트가 어떻게 바뀌는지 봅니다. 2Q 실적콜 원문도 따로 확보해 검토할 필요가 있습니다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 환급 제외 기준으로 3Q 매출총이익률이 전년 대비 큰 폭(예: 200bp 이상)으로 하락하고, 가격 인상으로 관세를 상쇄하지 못한다는 점이 확인될 때
+- 활성고객 증가율이 10% 아래로 떨어지거나, 매출 성장률이 활성고객 증가율 밑으로 수렴할 때(AOV·주문 빈도 모멘텀이 꺾였다는 신호)
+- 연간 매출이나 영업이익률 가이던스를 하향할 때. 특히 유가·소비 둔화를 이유로 하향한다면 1Q 실적콜의 낙관적 톤과 어긋나므로 신뢰도 하락으로 해석합니다.
+- 자사주 매입이 실제로 집행되지 않은 채 희석만 계속되거나, 재고가 매출 증가율을 크게 웃돌며 쌓일 때(재고 수치는 현재 공시상 확인 불가)</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026012333/figs-20251231.htm">10-K — 2025-12-31_0001628280-26-012333</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026054342/figs-20260630.htm">10-Q — 2026-06-30_0001628280-26-054342</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026032216/figs-20260331.htm">10-Q — 2026-03-31_0001628280-26-032216</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026054319/figs-q22026xearningsreleas.htm">8-K — 2026-08-06_0001628280-26-054319__EX-99.1__figs-q22026xearningsreleas</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026054319/figs-20260806.htm">8-K — 2026-08-06_0001628280-26-054319</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026041604/figs-20260603.htm">8-K — 2026-06-03_0001628280-26-041604</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026032106/figs-q12026xearningsreleas.htm">8-K — 2026-05-07_0001628280-26-032106__EX-99.1__figs-q12026xearningsreleas</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846576/000162828026032106/figs-20260507.htm">8-K — 2026-05-07_0001628280-26-032106</a></li>
+<li>Transcript — 2026-05-08 FIGS, Inc. (FIGS) Q1 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-08-07 FIGS, Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
