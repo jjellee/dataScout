@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGEN — Precigen Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>PGEN — Precigen Inc. Common Stock</h1>
+<div class="sub">2026-10-02 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">PGEN</span><span class="badge">+6.33%</span><span class="badge">거래량 3.47배</span><span class="badge">$3.06B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>확인된 사실</strong>: Papzimeos는 미국에서 성인 RRP(재발성 호흡기 유두종증) 치료제로 유일하게 FDA 승인을 받은 제품입니다. 2025년 8월 정식 승인(full approval)을 받았고, 2032년 8월 14일까지 희귀의약품 독점권이 있습니다. 출시 4개 분기째인 최근 분기에 매출 $55.0M(QoQ <span class="up">+136.4%</span>), 영업이익률 41.2%를 기록했습니다. 상업화가 실제 숫자로 나타나고 있습니다.</li>
+<li><strong>오늘 상승의 근거는 확인되지 않았습니다</strong>: 최근 4일간 SEC 공시가 없습니다. 뉴스에 나온 'FDA Platform Technology Designation'도 공시로는 확인되지 않습니다. 종가가 52주 고점이고 60일 수익률이 <span class="up">+47.7%</span>라서, 지금 들어가면 이미 오른 가격을 추격하는 셈입니다.</li>
+<li><strong>핵심 데이터가 없습니다</strong>: 매출 중 제품 매출과 기타 매출(라이선스·협력)의 비율, 치료 1회분 가격, 치료 환자 수, 현금 잔고가 제공된 발췌에서 모두 확인되지 않습니다. TTM 잉여현금흐름은 −$115.2M입니다.</li>
+<li><strong>판단</strong>: 사업의 질은 비중을 실을 만한 수준입니다. 다만 매출의 질과 현금 여력을 검증할 수 없어 '적극'은 보류합니다. 기본 비중으로 시작하고, 3분기(9월 말 마감) 실적을 확인한 뒤 늘리는 분할 접근을 권합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>공시로 확인된 촉매는 없습니다. 수급과 모멘텀이 이어졌을 가능성이 큽니다.</strong></p>
+<ul>
+<li><strong>SEC 공시</strong>: 최근 4일 안에 나온 공시가 없습니다. 가장 최근 8-K는 2026-08-04자이며, 본문 발췌가 잘려 있어 내용은 공시상 확인 불가입니다.</li>
+<li><strong>뉴스 헤드라인</strong>: 'FDA Platform Technology Designation'(Simply Wall St, Seeking Alpha)과 'Institutional Crossover Effect'(Seeking Alpha)가 언급됩니다.</li>
+<li>지정을 받은 날짜, 대상 플랫폼, 범위는 제공된 SEC 원문에 없어 공시상 확인 불가입니다.</li>
+<li>헤드라인만 보면 오늘이 아니라 이전에 나온 재료를 다시 해석한 기사일 가능성이 있습니다(추정).</li>
+<li><strong>수급 정황</strong>:</li>
+<li>거래량이 20일 중앙값의 3.47배, 거래대금은 $100.0M입니다.</li>
+<li>20일 수익률 <span class="up">+17.1%</span>, 60일 <span class="up">+47.7%</span>, 종가는 52주 고점입니다.</li>
+<li>'Institutional Crossover' 헤드라인과 함께 보면 기관 매수가 들어오는 국면일 수 있습니다. 근거는 헤드라인뿐이므로 추정입니다.</li>
+<li><strong>결론</strong>: 오늘 상승은 새로운 펀더멘털 이벤트보다는 상업화 모멘텀이 다시 평가받은 결과에 가깝습니다. 이벤트 드리븐 진입의 근거로는 약합니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>상업화 제품: Papzimeos (zopapogene imadenovec-drba, PRGN-2012)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용(출처: 10-Q MD&amp;A)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>적응증</td>
+<td>성인 RRP. HPV 6·11 만성 감염으로 호흡기에 양성 종양이 반복해서 생기는 희귀질환</td>
+</tr>
+<tr>
+<td>기전</td>
+<td>복제하지 않는 아데노바이러스 벡터 기반 면역치료제. HPV 6·11 융합 항원을 발현시켜 면역반응을 유도</td>
+</tr>
+<tr>
+<td>투여</td>
+<td>12주 동안 피하주사 4회</td>
+</tr>
+<tr>
+<td>규제 지위</td>
+<td>2025년 8월 FDA 정식 승인으로 확증 임상 의무가 없음. Breakthrough Therapy와 희귀의약품 지정을 받았고, 2026년 5월 7년 희귀의약품 독점권(2032-08-14까지)을 부여받음</td>
+</tr>
+<tr>
+<td>임상 근거</td>
+<td>Phase 1/2 피보탈 임상: 완전관해(CR) 51%(18/35명), Grade 2를 넘는 치료 관련 이상반응 없음. 완전관해 환자 18명 중 15명(83%)이 36개월 이상 관해 유지(중앙 추적 36개월, 2026-04-30 데이터 컷오프)</td>
+</tr>
+<tr>
+<td>시장 규모</td>
+<td>회사는 미국 성인 RRP 환자를 약 27,000명으로 추정한다고 밝힘</td>
+</tr>
+<tr>
+<td>유럽</td>
+<td>EMA가 MAA를 접수해 심사 중이며, EU 희귀의약품 지정을 받음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>파이프라인</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>후보</th>
+<th>플랫폼</th>
+<th>단계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRGN-2009</td>
+<td>AdenoVerse(고릴라 아데노벡터)</td>
+<td>NCI와의 공동연구계약(CRADA)으로 신규 진단 HPV 연관 구인두암 Phase 2 2건 진행(펨브롤리주맙 병용, 선행항암 병용). 재발·전이성 자궁경부암 Phase 2(펨브롤리주맙 병용) 별도 진행</td>
+</tr>
+<tr>
+<td>PRGN-3006</td>
+<td>UltraCAR-T</td>
+<td>Phase 1b 등록 완료</td>
+</tr>
+<tr>
+<td>PRGN-3005 / 3007</td>
+<td>UltraCAR-T</td>
+<td>2024년 8월 파이프라인 우선순위 조정으로 등록 중단</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군과 매출 구성</strong>
+- 처방 주체(이비인후과 등), 유통 구조, 지급자(보험) 구성은 제공된 발췌에서 공시상 확인 불가입니다.
+- 매출 중 제품 매출과 협력·라이선스 매출의 비율도 공시상 확인 불가입니다.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 Papzimeos가 성인 RRP에서 "first and only FDA-approved therapy"라고 밝힙니다.
+- 기존 표준 치료는 반복 수술입니다. 이는 RRP 질환 일반에 대한 이해에서 나온 설명이며 원문에서 확인한 내용이 아니므로 추정입니다.
+- 2032년까지 희귀의약품 독점권이 있어 같은 적응증의 동일 약물 진입은 규제상 막혀 있습니다. 다만 기전이 다른 경쟁 약물의 개발 현황은 공시상 확인 불가입니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 지표 해석</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$55.0M</td>
+<td>직전 10-Q 기준 2026년 2분기로 추정. 3분기는 아직 보고 전</td>
+</tr>
+<tr>
+<td>YoY</td>
+<td>+6,322.7%</td>
+<td>전년 동기 매출이 약 $0.9M 수준이었다는 계산이 나옴(역산 추정). 승인 전 기저라서 의미 없음</td>
+</tr>
+<tr>
+<td>QoQ</td>
+<td>+136.4%</td>
+<td>직전 분기 약 $23.3M(역산 추정)에서 2.4배로 증가. 출시 초기 가속 구간</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>94.9%</td>
+<td>아래 '마진' 항목 참고</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>41.2%</td>
+<td>분기 영업이익 약 $22.7M(계산값). 출시 1년차 바이오텍으로는 이례적으로 이른 흑자</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>−$115.2M</td>
+<td>손익은 흑자로 돌아섰지만 현금흐름은 아직 크게 마이너스</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- 치료 1회분 가격, 치료를 시작한 환자 수, 처방 기관 수가 제공된 발췌에 없어 단가와 물량을 나눠 볼 수 없습니다(공시상 확인 불가).
+- 구조적으로 짚을 점이 있습니다(추정). Papzimeos는 12주 동안 4회 투여하는 정해진 치료 과정이고, 환자의 83%에서 36개월 이상 관해가 유지됩니다.
+  - 따라서 환자 한 명당 매출이 계속 반복되는 만성 투여형이 아니라, 한 번 치료하면 끝나는 일회성 구조에 가깝습니다.
+  - 출시 초기에는 수술을 반복하던 기존 환자 수요가 한꺼번에 몰려 매출이 빠르게 늘 수 있습니다. 이 수요가 소진되면 성장 곡선이 꺾일 위험이 있습니다.
+- 매출에 일회성 라이선스·마일스톤 수익이 섞였는지 확인되지 않아, 영업이익률 41.2%의 지속성은 판단을 유보합니다.</p>
+<p><strong>마진 방향성</strong>
+- 10-K의 미래예측 진술 목록에는 "출시 전 재고(pre-launch inventory)에서 나올 미래 매출과 그 판매 시기에 대한 기대"와 "Papzimeos 매출총이익률에 대한 기대"가 별도 항목으로 들어 있습니다.
+- 승인 전에 만든 재고를 이미 비용으로 처리했다면, 그 재고를 파는 동안에는 매출원가가 낮게 잡혀 매출총이익률이 부풀려집니다(일반적 회계 관행에 근거한 추정).
+- 따라서 94.9%는 정상 수준이라기보다 일시적으로 높은 수치일 수 있습니다. 출시 전 재고가 소진되는 시점과 정상 매출원가율은 공시상 확인 불가입니다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF는 −$115.2M입니다. 영업 흑자 분기는 최근에야 나타났고, 운전자본(매출채권·재고) 증가도 영향을 줬을 수 있습니다(추정).
+- 현금 잔고, 차입금, 현금 소진 가능 기간은 제공된 발췌에서 공시상 확인 불가입니다. 투자 판단의 핵심 공백입니다.
+- 발행주식 수(희석 정황):
+  - 2026-02-15 기준 353,928,672주입니다.
+  - 현재 시가총액 $3.06B를 종가 $8.56으로 나누면 약 3.57억 주가 나옵니다(계산값).
+  - 소폭 늘어난 것으로 보이지만, 데이터 기준 시점 차이일 수 있습니다.
+- 2025-06-30 기준 비계열 주주 보유분의 시가는 약 $219.4M였습니다. 현재 시가총액 $3.06B와 차이가 매우 큽니다. 1년여 사이 주가가 크게 재평가됐다는 점, 그리고 계열 주주 지분이 클 가능성을 시사합니다. 지분 구조는 공시상 확인 불가이며 이 해석은 추정입니다.
+- 회사는 10-K 기준 비가속신고기업(non-accelerated filer)이자 소규모 보고기업(smaller reporting company)입니다. 내부통제에 대한 외부감사인의 404(b) 인증 대상이 아닙니다.</p>
+<p><strong>밸류에이션(계산값)</strong>
+- 최근 분기 매출을 연환산하면 약 $220M입니다. 시가총액 $3.06B 기준 약 13.9배입니다.
+- 출시 초기 가속 구간의 분기를 단순 연환산한 값이므로 참고용입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>미국 Papzimeos 침투 확대</td>
+<td>회사가 추정한 환자 약 27,000명 중 치료 시작 환자가 늘어야 함. 처방 기관 확대와 보험 급여 확보가 필요</td>
+<td>3분기 매출이 QoQ 성장을 유지하는지(둔화 폭), 제품 매출만 따로 공시되는지, 치료 시작 환자 수나 처방 기관 수를 공개하는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td>장기 독점</td>
+<td>2032-08-14까지 희귀의약품 독점권이 있음. 장기 관해 데이터(83%, 36개월 이상)가 처방 근거를 강화함</td>
+<td>추가 장기 추적 데이터 공개, 경쟁 기전 약물의 임상 진입 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td>유럽 진출</td>
+<td>EMA MAA 심사 통과 후 국가별 가격·급여 협상이 필요</td>
+<td>EMA 심사 진행 단계(CHMP 의견 일정), 유럽 상업화 방식(직판 또는 파트너)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>마진·현금흐름 정상화</td>
+<td>출시 전 재고 소진 후에도 높은 매출총이익률을 유지하고, 영업 흑자가 현금흐름 흑자로 이어져야 함</td>
+<td>매출원가율 변화, 분기 영업현금흐름 부호, 기말 현금</td>
+</tr>
+<tr>
+<td>5</td>
+<td>AdenoVerse 플랫폼 확장(PRGN-2009)</td>
+<td>구인두암·자궁경부암 Phase 2에서 의미 있는 데이터가 나와야 함</td>
+<td>Phase 2 중간 데이터 공개 일정. 뉴스상 'Platform Technology Designation'은 공시로 확인한 뒤에만 반영</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UltraCAR-T</td>
+<td>PRGN-3006 Phase 1b 결과에 달려 있음. 3005·3007은 중단 상태</td>
+<td>3006 데이터 공개 여부. 현재 가치 기여도는 낮다고 판단</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. 리스크</h2>
+<p><em>제공된 10-K 발췌에는 리스크 팩터 본문이 빠져 있습니다. 아래 리스크는 10-K의 미래예측 진술 항목과 10-Q MD&amp;A, 제공 지표를 근거로 추렸습니다.</em></p>
+<ol>
+<li><strong>단일 제품 집중과 일회성 치료 구조</strong>
+   - 매출은 사실상 Papzimeos 하나에 기대고 있습니다.
+   - 12주 4회 투여 후 장기 관해가 유지되는 구조라서, 기존 환자 수요가 소진된 뒤 성장이 꺾일 위험이 있습니다(추정).
+   - 환자 27,000명은 회사 추정치이며, 실제 치료 대상 비율은 공시상 확인 불가입니다.</li>
+<li><strong>매출총이익률의 일시적 부풀림 가능성</strong>
+   - 10-K가 출시 전 재고와 매출총이익률 기대를 미래예측 진술로 따로 적고 있습니다.
+   - 94.9%가 정상 수준이 아닐 수 있고, 재고가 소진되면 마진이 낮아질 수 있습니다.</li>
+<li><strong>현금 소진과 희석</strong>
+   - TTM FCF는 −$115.2M이고 현금 잔고는 확인 불가입니다.
+   - 10-K 미래예측 진술에 "추가 자금조달 필요성"과 "공모 자금 사용"이 들어 있습니다.
+   - 주가가 52주 고점인 국면은 회사가 증자하기에 유리한 시점이기도 합니다.</li>
+<li><strong>제조</strong>
+   - 10-K는 "당사 또는 제3자가 제품을 적시에 일관되게 제조할 수 있는 능력"을 미래예측 진술 항목으로 명시합니다.
+   - 바이러스 벡터 생물학적 제제에서 공급 차질이 생기면 매출에 곧바로 영향을 줍니다.</li>
+<li><strong>유럽 승인 불확실성과 소송</strong>
+   - EMA 심사가 진행 중입니다.
+   - 10-K는 "진행 중이거나 향후 있을 소송의 결과"를 미래예측 진술로 들고 있으나, 구체적 내용은 공시상 확인 불가입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- <strong>긍정 요인</strong>:
+  - 매출 QoQ <span class="up">+136.4%</span>($55.0M), 영업이익률 41.2%, 매출총이익률 94.9%
+  - 완전관해 51%, 완전관해 환자 중 83%가 36개월 이상 관해 유지
+  - 독점권 2032-08-14까지
+- <strong>제약 요인</strong>:
+  - TTM FCF −$115.2M
+  - 60일 수익률 <span class="up">+47.7%</span>, 종가가 52주 고점(−0.0%)
+  - 연환산 매출 대비 약 13.9배(계산값)
+  - 오늘 상승의 공시상 촉매 없음
+  - 매출 구성, 가격, 환자 수, 현금이 모두 확인 불가</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>2분기 10-Q 재무제표 주석</strong>: 매출 $55.0M 중 제품 매출 비중과 일회성 수익(라이선스·마일스톤) 포함 여부. 출시 전 재고가 매출원가에 미친 영향과 남은 재고.
+2. <strong>현금과 자금조달 여력</strong>: 기말 현금, 부채, 유효한 증권신고서(shelf registration)나 ATM(시장가 분할 발행) 프로그램이 있는지. 2026-08-04자 8-K 원문 내용도 확인.
+3. <strong>오늘 재료의 실체</strong>: 'FDA Platform Technology Designation'이 회사 보도자료나 8-K로 확인되는지. 확인된다면 대상 플랫폼과 실질적 효과(후속 BLA 심사 효율화 등)는 무엇인지.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>관망으로 낮출 조건</strong>:
+  - 3분기 매출이 정체되거나 역성장해 출시 초기 수요 소진 신호가 보일 때
+  - 2분기 매출에 상당한 일회성 수익이 섞였던 것으로 확인될 때
+  - 대규모 유상증자나 ATM 발행이 공시될 때
+  - 매출총이익률이 정상화되면서 영업 적자로 돌아설 때
+  - 제조나 공급 차질이 공시될 때
+- <strong>적극으로 올릴 조건</strong>:
+  - 3분기에도 제품 매출이 두 자릿수 QoQ 성장을 이어갈 때
+  - 영업현금흐름이 흑자로 돌아설 때
+  - 현금으로 자금조달 필요성이 해소된 것이 확인될 때
+  - EMA가 긍정적 의견을 낼 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000135609026000009/pgen-20251231.htm">10-K — 2025-12-31_0001356090-26-000009</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000135609026000030/pgen-20260630.htm">10-Q — 2026-06-30_0001356090-26-000030</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000135609026000017/pgen-20260331.htm">10-Q — 2026-03-31_0001356090-26-000017</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000095010326011876/dp251262_8k.htm">8-K — 2026-08-04_0000950103-26-011876</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000095010326009441/dp248898_8k.htm">8-K — 2026-06-18_0000950103-26-009441</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000095010326007158/dp246650_ex9901.htm">8-K — 2026-05-13_0000950103-26-007158__EX-99.1__dp246650_ex9901</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1356090/000095010326007158/dp246650_8k.htm">8-K — 2026-05-13_0000950103-26-007158</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

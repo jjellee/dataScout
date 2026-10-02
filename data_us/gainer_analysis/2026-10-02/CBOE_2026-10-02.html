@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CBOE — Cboe Global Markets Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CBOE — Cboe Global Markets Inc. Common Stock</h1>
+<div class="sub">2026-10-02 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CBOE</span><span class="badge">+5.17%</span><span class="badge">거래량 2.29배</span><span class="badge">$30.78B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>이번 상승의 촉매는 S&amp;P DJI와 맺은 <strong>SPX 옵션 독점 라이선스 25년 연장(2051년까지)</strong>입니다(2026-09-29 8-K, Ex.99.2). Cboe의 핵심 독점 상품인 SPX 옵션에 걸려 있던 장기 리스크를 줄이는 <strong>구조적 호재</strong>로 봅니다. 하루짜리 수급 이벤트가 아닙니다.</li>
+<li>펀더멘털도 받쳐줍니다. 최근 분기 매출은 $1.44B(YoY <span class="up">+22.9%</span>, QoQ <span class="up">+13.4%</span>), 영업이익률은 33.0%(YoY <span class="up">+2.6%</span>p), TTM FCF는 $1.87B입니다. 시가총액 대비 FCF 수익률은 약 6.1%(지표에서 계산)입니다.</li>
+<li>비수익 사업 정리(일본 철수, 호주·캐나다 매각, CEDX 종료, 상장사업 중단)로 <strong>핵심 미국 파생상품 사업에 집중하는 방향</strong>이 공시로 확인됩니다.</li>
+<li>다만 '적극'으로 올리지 않은 이유가 세 가지 있습니다.</li>
+<li>연장 계약의 <strong>경제 조건(로열티 등)은 제공된 공시상 확인할 수 없습니다.</strong></li>
+<li>매출 성장이 <strong>물량·단가·변동성 중 무엇에서 왔는지</strong> 확인할 수 없습니다.</li>
+<li>주가가 <strong>52주 고점 대비 <span class="down">-24.9%</span></strong>에 머물러 있으며, 그 원인이 제공 자료에 없습니다.</li>
+<li>그래서 기본 비중을 실을 수는 있지만, 비중 확대는 3Q26 실적에서 성장의 질을 확인한 뒤로 미루는 것이 맞다고 판단합니다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: 공시(8-K) — SPX 옵션 독점 라이선스 25년 연장</strong></p>
+<ul>
+<li>2026-09-29 8-K Ex.99.2 보도자료에 따르면 Cboe와 S&amp;P DJI는 독점 라이선스 계약을 <strong>2051년까지 25년 연장</strong>했다고 발표했습니다.</li>
+<li>Cboe는 S&amp;P 500 Index(SPX) 옵션의 <strong>독점 거래 권리를 계속 보유</strong>합니다.</li>
+<li>양사는 전통적인 지수 파생상품을 넘어 <strong>토큰화 옵션 계약(tokenized options contracts)</strong> 같은 신상품에서도 협력할 수 있다고 밝혔습니다. 원문 표현은 "may collaborate"로, 확정 사업이 아닙니다.</li>
+<li>양사 협력은 1983년 SPX 옵션 출시 이후 40년 넘게 이어져 왔습니다.</li>
+<li>뉴스 헤드라인 "Cboe stock surges 5% on S&amp;P 500 licensing deal extension"(Investing.com)도 당일 상승을 이 계약에 직접 연결합니다.</li>
+<li>거래량은 20일 중앙값의 2.29배, 거래대금은 $630.1M입니다. 대형 기관 자금이 들어온 것으로 해석할 수 있습니다(해석).</li>
+<li>부차적 재료도 있습니다. 헤드라인상 "KPI Contracts" 신상품이 있고, Robinhood가 10월 출시를 준비한다는 보도가 있습니다.</li>
+<li><strong>KPI 계약의 구조, 출시일, 수익 기여는 제공된 SEC 공시상 확인할 수 없습니다.</strong> 뉴스 헤드라인 수준의 정보일 뿐입니다.</li>
+</ul>
+<p><strong>확인할 점</strong>
+- 계약의 <strong>경제 조건</strong>(로열티 요율, 최소 보장액, 독점 범위의 변화)은 제공된 Ex.99.2 발췌에 없습니다.
+- Ex.99.1의 내용도 제공되지 않았습니다.
+- 시장이 '연장' 자체를 반겼는지, '좋은 조건의 연장'을 반겼는지 아직 구분할 수 없습니다.</p>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>포지션(10-Q 개요):</strong> 미국 최대 옵션거래소이자 미국 3위 주식거래소 운영사입니다. 유럽에서는 거래대금 기준 최대급 주식거래소(Cboe Europe Equities)와 범유럽 청산소(Cboe Clear Europe)를 운영합니다. VIX 지수와 SPX 옵션을 처음 만든 회사이기도 합니다.</p>
+<p><strong>5개 보고 세그먼트(10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>무엇을 파는가</th>
+<th>경쟁 성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Options</strong></td>
+<td>자체 지수옵션(SPX, VIX), 개별주식·ETP 옵션, 옵션 시세 데이터, 지수 라이선싱, 라우팅·접속료. Cboe Predicts도 여기에 상장됨</td>
+<td><strong>SPX·VIX는 독점</strong>, 개별주식·ETP 옵션은 여러 거래소에 동시 상장되는 경쟁 시장</td>
+</tr>
+<tr>
+<td><strong>North American Equities</strong></td>
+<td>BZX·BYX·EDGX·EDGA 미국 주식·ETP 거래, BIDS 블록거래 ATS, ETP 상장(BZX), 시세 데이터</td>
+<td>경쟁 시장(미국 3위)</td>
+</tr>
+<tr>
+<td><strong>Europe and Asia Pacific</strong></td>
+<td>Cboe Europe·NL 주식 거래, ETP 상장, Cboe Clear Europe 청산, Cboe Australia</td>
+<td>경쟁 시장. CEDX는 2026-02-23 종료, 호주는 매각 진행 중</td>
+</tr>
+<tr>
+<td><strong>Futures</strong></td>
+<td>(세부 설명은 발췌에 없음)</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td><strong>Global FX</strong></td>
+<td>FX 현물 거래</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군:</strong> 옵션·주식 시장 참여자(브로커, 마켓메이커, 기관)와 시세 데이터 구매자입니다. 세부 고객 비중은 공시상 확인할 수 없습니다.</p>
+<p><strong>매출 구성:</strong> 세그먼트별 매출과 이익 비중은 <strong>제공 발췌에 없어 공시상 확인할 수 없습니다.</strong>
+- 해석: 사업 설명만 보면 이익의 핵심은 독점 상품(SPX·VIX)이 있는 <strong>Options 세그먼트</strong>일 가능성이 높습니다. 이번 라이선스 연장이 주가에 크게 반영된 이유도 여기에 있다고 봅니다.</p>
+<p><strong>포트폴리오 재편(10-Q)</strong>
+- 2025년 전략 검토 이후 다음을 진행했습니다.
+  - 일본 주식사업 철수
+  - 호주·캐나다 매각 추진
+  - 미국·유럽 기업상장 사업 중단
+  - ETP 상장, CEDX, 소규모 리스크·시장분석 사업 비용 절감
+- 2026-04-22 호주·캐나다 사업을 TMX에 <strong>약 $300M</strong>에 매각하기로 확정 계약했습니다.
+  - 회사는 호주 매각이 <strong>2026년 3분기에 종결될 것으로 예상</strong>한다고 밝혔습니다.
+  - 캐나다 매각의 종결 시점은 따로 밝히지 않았습니다.
+- 2026-05-01 추가 전략 재편 조치를 발표했고, 회사는 <strong>2026년 말까지 대부분 완료할 것으로 예상</strong>한다고 밝혔습니다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$1.44B</td>
+<td>직전 분기 매출은 약 $1.27B(QoQ <span class="up">+13.4%</span>에서 역산)</td>
+</tr>
+<tr>
+<td>매출 YoY</td>
+<td>+22.9%</td>
+<td>성숙한 거래소 사업자로서는 높은 성장</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>33.0% (YoY <span class="up">+2.6%</span>p)</td>
+<td>영업 레버리지 확인. 분기 영업이익은 약 $475M(계산)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>40.0%</td>
+<td>아래 설명 참조</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$1.87B</td>
+<td>시가총액 $30.78B 대비 약 6.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- <strong>공시상 확인 불가.</strong> ADV, 계약당 수익(RPC), 세그먼트별 매출이 제공 발췌에 없습니다.
+- 그래서 YoY <span class="up">+22.9%</span>가 다음 중 무엇에서 왔는지 구분할 수 없습니다.
+  - 구조적 물량 증가(0DTE·리테일 등)
+  - 변동성 확대에 따른 일시적 물량 증가
+  - 수수료 인상
+  - SPX·VIX 비중 확대
+- 이 점이 '적극' 판단을 막는 가장 큰 이유입니다.</p>
+<p><strong>마진 방향성</strong>
+- 영업이익률이 1년 새 2.6%p 올랐습니다.
+- 손실 사업 정리(일본, CEDX, 상장사업)가 이어지고, 회사가 2026년 말까지 추가 재편을 마무리하겠다고 밝혔습니다. 따라서 <strong>비용 쪽 개선은 구조적일 가능성</strong>이 있습니다(추정).
+- 다만 재편 관련 일회성 비용의 규모는 공시상 확인할 수 없습니다.</p>
+<p><strong>매출총이익률 40%에 대한 해석</strong>
+- 거래소 사업자는 보통 유동성 리베이트, 라우팅 비용, 규제 수수료 등을 매출원가로 처리합니다. 그래서 총매출 기준 매출총이익률은 낮게 보입니다.
+- 순매출 기준 수익성은 이보다 높을 것으로 추정되지만, <strong>해당 수치는 공시상 확인할 수 없습니다.</strong></p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF $1.87B는 현금 창출력이 뛰어나다는 뜻입니다.
+- 호주·캐나다 매각 대금(약 $300M)이 들어오면 추가 유동성이 생깁니다.
+- 부채, 현금, 자사주 매입, 배당 데이터는 <strong>제공 자료에 없어 공시상 확인할 수 없습니다.</strong></p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① SPX 독점의 장기 확정과 연관 상품 확장</strong>
+- 실현 조건: 연장 계약의 로열티 조건이 기존 대비 크게 나빠지지 않아야 합니다. 그리고 토큰화 옵션 등 공동 신상품이 실제 출시돼야 합니다. 현재는 "may collaborate"로 표현된 단계입니다.
+- 검증 포인트
+  - 3Q26 10-Q에서 계약 조건과 로열티 비용 변화를 공시하는지
+  - 라이선스 비용 항목의 추이
+  - 공동 신상품 발표 여부</p>
+<p><strong>② 예측시장(Cboe Predicts)과 KPI 계약</strong>
+- 사실: 2026-06-23 XSP 기반 바이너리 옵션(XSPBW, XSPBX)을 출시했습니다. Cboe Options에 상장되고 OCC가 청산합니다.
+- KPI 계약은 뉴스 헤드라인상 10월 출시와 Robinhood 참여가 보도된 상태이며, SEC 공시로는 확인할 수 없습니다.
+- 실현 조건: 리테일 브로커의 실제 유통과 의미 있는 거래량이 필요합니다.
+- 검증 포인트
+  - 3Q·4Q 실적에서 Predicts와 KPI 거래량을 따로 공개하는지
+  - Options 세그먼트 매출에 기여하는지</p>
+<p><strong>③ 포트폴리오 정리를 통한 마진 확대</strong>
+- 실현 조건
+  - 호주 매각이 회사 예상대로 3Q26에 종결돼야 합니다.
+  - 캐나다 매각이 규제 승인을 받아야 합니다.
+  - 5월 발표한 재편이 회사 예상대로 연말까지 대부분 끝나야 합니다.
+- 검증 포인트
+  - 3Q26 10-Q에서 호주 매각 종결 여부
+  - 매각 손익
+  - 영업이익률이 33% 이상을 유지하는지</p>
+<p><strong>④ 핵심 사업(Options)의 물량 성장</strong>
+- 실현 조건: 변동성이 정상화돼도 거래량이 유지돼야 합니다.
+- 검증 포인트
+  - 3Q26의 세그먼트별 매출
+  - 성장률이 YoY <span class="up">+20%</span>대를 유지하는지, 아니면 변동성 기저효과로 둔화하는지</p>
+<blockquote>
+<p>5-1절은 실적콜 transcript가 제공되지 않아 생략합니다.</p>
+</blockquote>
+<hr>
+<h2>6. 리스크</h2>
+<p>※ 제공된 10-K 발췌는 표지, 목차, 용어 정의까지만 포함합니다. 아래는 <strong>10-Q MD&amp;A와 8-K에서 확인되는 사실</strong>을 바탕으로 정리했고, 10-K Item 1A 리스크 원문의 구체적 문구는 공시상 확인할 수 없습니다.</p>
+<ol>
+<li><strong>라이선스 경제 조건이 불투명함</strong>
+   - 독점은 연장됐지만 로열티 조건은 공개 자료에서 확인할 수 없습니다.
+   - 연장 대가로 비용이 올랐다면 Options 세그먼트 마진이 희석될 수 있습니다(추정).
+   - 핵심 이익원이 S&amp;P DJI와의 단일 계약에 묶여 있는 의존 구조 자체는 그대로입니다.</li>
+<li><strong>실적의 변동성 민감도</strong>
+   - 성장 요인을 분해할 데이터가 없어서, 최근 분기 고성장이 시장 변동성 확대에 따른 일시적 물량일 가능성을 배제할 수 없습니다.
+   - 52주 고점 대비 <span class="down">-24.9%</span>와 20일 <span class="down">-5.8%</span>라는 주가 흐름은 시장이 이 지속성을 의심했을 가능성을 보여줍니다(해석). 하락의 실제 원인은 제공 자료에 없습니다.</li>
+<li><strong>구조조정과 매각 실행 리스크</strong>
+   - 호주·캐나다 매각은 규제 승인이 조건입니다.
+   - 캐나다 매각은 종결 시점이 제시되지 않았습니다.
+   - 2026년 말까지 진행되는 재편 과정에서 일회성 비용과 사업 공백이 생길 수 있습니다.</li>
+<li><strong>신상품의 규제·흥행 불확실성</strong>
+   - 예측시장(Predicts)과 KPI 계약은 초기 단계입니다. 규제 환경과 리테일 수요에 따라 성과가 크게 달라질 수 있습니다.
+   - 토큰화 옵션은 아직 협력 가능성만 언급된 수준입니다.</li>
+<li><strong>경영진 교체</strong>
+   - COO가 교체됐습니다(Isaacson 은퇴 → Johnston).
+   - Fischer가 2026-06-01부터 글로벌 주식·현물 시장 총괄을 맡았습니다.
+   - 운영 연속성은 단기적으로 점검할 대상입니다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거('보통')</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>근거</th>
+<th>수치</th>
+<th>방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 성장</td>
+<td>YoY <span class="up">+22.9%</span>, QoQ <span class="up">+13.4%</span></td>
+<td>긍정</td>
+</tr>
+<tr>
+<td>수익성</td>
+<td>영업이익률 33.0%, YoY <span class="up">+2.6%</span>p</td>
+<td>긍정</td>
+</tr>
+<tr>
+<td>현금 창출</td>
+<td>TTM FCF $1.87B, 시가총액 대비 약 6.1%</td>
+<td>긍정(밸류에이션 부담 제한적)</td>
+</tr>
+<tr>
+<td>해자</td>
+<td>SPX 독점 2051년까지 연장</td>
+<td>강한 긍정(구조적)</td>
+</tr>
+<tr>
+<td>주가 위치</td>
+<td>52주 고점 대비 <span class="down">-24.9%</span>, 60일 <span class="up">+4.6%</span></td>
+<td>중립. 반등 여지와 미해명 디레이팅이 공존</td>
+</tr>
+<tr>
+<td>정보 공백</td>
+<td>라이선스 조건, 성장 분해, 재무구조 미확인</td>
+<td>비중 상한 제약</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>라이선스 연장의 경제 조건:</strong> Ex.99.1과 이후 10-Q에서 로열티 구조 변화를 공시하는지 확인합니다.
+2. <strong>3Q26 세그먼트별 매출과 Options 물량·단가:</strong> YoY <span class="up">+22.9%</span> 성장이 구조적인지, 변동성에 따른 일시적 효과인지 분해합니다.
+3. <strong>52주 고점 대비 <span class="down">-24.9%</span> 하락의 원인:</strong> 경쟁, 규제, 실적 둔화 우려 가운데 무엇이었는지 확인하고, 그 원인이 이번 공시로 해소됐는지 판단합니다.</p>
+<p><strong>판단을 '관망'으로 바꿀 조건</strong>
+- 라이선스 연장 비용이 크게 늘어 Options 세그먼트 마진이 눈에 띄게 떨어질 경우
+- 3Q26 매출 성장률이 한 자릿수로 급감하고, 그 원인이 변동성 기저효과로 확인될 경우
+- 영업이익률이 33%를 밑돌면서 재편 효과가 숫자로 확인되지 않을 경우
+- 호주·캐나다 매각이 규제 문제로 지연되거나 무산될 경우</p>
+<p><strong>판단을 '적극'으로 올릴 조건</strong>
+- 라이선스 조건이 기존과 비슷한 수준으로 확인될 경우
+- 3Q26에 성장률 20%대와 마진 확대가 유지될 경우
+- Predicts·KPI 계약의 의미 있는 초기 거래량이 공시될 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000162828026010013/cboe-20251231.htm">10-K — 2025-12-31_0001628280-26-010013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000162828026051239/cboe-20260630.htm">10-Q — 2026-06-30_0001628280-26-051239</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000162828026029112/cboe-20260331.htm">10-Q — 2026-03-31_0001628280-26-029112</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000110465926111989/tm2626203d1_ex99-2.htm">8-K — 2026-09-28_0001104659-26-111989__EX-99.2__tm2626203d1_ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000110465926111989/tm2626203d1_ex99-1.htm">8-K — 2026-09-28_0001104659-26-111989__EX-99.1__tm2626203d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000110465926111989/tm2626203d1_ex10-1.htm">8-K — 2026-09-28_0001104659-26-111989__EX-10.1__tm2626203d1_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000110465926111989/tm2626203d1_8k.htm">8-K — 2026-09-28_0001104659-26-111989</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1374310/000162828026051217/cboe-20260731xex991.htm">8-K — 2026-07-31_0001628280-26-051217__EX-99.1__cboe-20260731xex991</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
