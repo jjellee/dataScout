@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EXPO — Exponent Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>EXPO — Exponent Inc. Common Stock</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">EXPO</span><span class="badge">+6.85%</span><span class="badge">거래량 2.0배</span><span class="badge">$3.32B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>비용을 고객에게 그대로 청구하는 통과성 매출(reimbursements)을 뺀 순매출이 실질 성장률이다. 2Q26 순매출은 <span class="up">+12%</span>($148.9M)로, 스크린 지표의 총매출 <span class="up">+20.9%</span>보다 크게 낮다. 회사는 3Q 순매출 성장률을 +8~10%로 제시해 하반기 둔화를 스스로 예고했다.</li>
+<li>스크린상 영업이익률 <span class="up">+4.2%</span>p 개선은 이연보상(deferred compensation) 평가이익 변동($17.0M→$11.8M) 영향이 크다. 실적콜에서 제시된 순매출 대비 EBITDA 마진 개선폭은 <span class="up">+0.9%</span>p(27.8%→28.7%)에 그친다.</li>
+<li>사업의 질은 높다. 가동률 상승, 빌링단가 <span class="up">+4%</span>, 연간 가이던스 상향이 확인된다. 다만 TTM FCF $108.6M 기준 시가총액 대비 FCF 수익률은 약 3.3%(P/FCF 약 31배, 추산)로 싸지 않다. 그동안 주가를 받쳐준 대규모 자사주 매입도 회사가 감속을 예고했다.</li>
+<li>오늘 상승에는 확인된 공시·실적 촉매가 없다. 기본 비중 편입은 가능하다. 의미 있는 비중 확대는 3Q 실적에서 대형 연구 프로젝트를 제외한 순매출 성장을 확인한 뒤로 미루는 것이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 직전 실적 발표와 배당·자사주 매입 한도 증액은 2026-07-30로 두 달 이상 지났다.</li>
+<li>뉴스 중 실질적인 사건은 Stock Titan의 "로보틱스·에너지저장·운송 라이브 데모" 기사 하나뿐이다. 이는 회사의 기술 시연 행사 성격으로 보이며, 수치나 가이던스 정보는 담겨 있지 않다. GuruFocus 기사("6.8% 랠리 이후 매수 늦었나")는 상승 이후의 해설이므로 원인이 아니다.</li>
+<li>정황상 추정:</li>
+<li>20일 수익률 <span class="down">-3.9%</span>의 단기 조정 이후 반등이다.</li>
+<li>거래량 배수는 2.0배로, 이벤트성 급등 치고는 크지 않다.</li>
+<li>회계 3분기 종료 시점(7/3 + 13주 ≈ 10/2, 추산)과 맞물린 실적 발표 전 포지셔닝 가능성이 있다. 이는 추측이며 근거 자료는 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>무엇을 파는가 (10-K)</strong>
+- 과학·엔지니어링 컨설팅 회사다. 90개 이상의 기술 분야를 다루며, 17개 실무 조직(practice)이 2개 보고 세그먼트로 묶여 있다.
+- 사업은 두 갈래다.
+  - <strong>사후 대응형(reactive)</strong>: 사고·고장 원인 분석, 소송·분쟁 지원. 1967년 Failure Analysis Associates로 시작한 원류 사업이다.
+  - <strong>선제 대응형(proactive)</strong>: 제품 개발 단계의 안전성·신뢰성·규제 대응, 사용자 연구.
+- 10-K는 다수의 업무가 대기업, 변호사, 보험사에서 직접 의뢰된다고 밝힌다. 소송 대비나 소송 진행 중인 사건이 많다.</p>
+<p><strong>어떻게 돈을 버는가</strong>
+- 계약 방식은 시간·재료비 정산형(T&amp;M) 또는 고정가다.
+- 표준 시간당 단가는 $225~$1,375이며, 매 회계연도 초에 단가를 인상한다.
+- 청구는 월 단위이고 결제 조건은 30일이다. 고객은 언제든 계약을 해지할 수 있다.
+- 따라서 매출은 "청구 가능 시간 × 실현 단가"로 결정되는 인력 기반 모델이다.</p>
+<p><strong>세그먼트 (2Q26, 총매출 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>매출</th>
+<th>비중</th>
+<th>YoY</th>
+<th>순매출 YoY(실적콜)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engineering &amp; Other Scientific</td>
+<td>$148.8M</td>
+<td>86.7%</td>
+<td>+23.0%</td>
+<td>+13%</td>
+</tr>
+<tr>
+<td>Environmental &amp; Health</td>
+<td>$22.8M</td>
+<td>13.3%</td>
+<td>+8.6%</td>
+<td>+9%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군 (2025년 매출 비중, 10-K)</strong>
+- 소비재 21%, 에너지·유틸리티 20%, 운송 16%, 화학 11%.</p>
+<p><strong>경쟁 위치</strong>
+- 10-K 발췌에는 경쟁사 실명이나 점유율이 없어 <strong>공시상 확인 불가</strong>다.
+- 회사는 55년 이상의 사고·고장 분석 경험과 다학제 역량을 차별점으로 내세운다.</p>
+<h2>4. 실적·재무 분석</h2>
+<h3>성장의 질 — 총매출 성장률은 통과성 매출로 부풀려져 있다</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>2Q25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$166.3M (<span class="up">+14%</span>)</td>
+<td>$171.6M (<span class="up">+21%</span>)</td>
+<td>$142.0M</td>
+</tr>
+<tr>
+<td>순매출(통과성 매출 제외)</td>
+<td>$151.8M (<span class="up">+10%</span>)</td>
+<td>$148.9M (<span class="up">+12%</span>)</td>
+<td>$132.9M</td>
+</tr>
+<tr>
+<td>통과성 매출(차감 추산)</td>
+<td>$14.5M</td>
+<td><strong>$22.8M</strong></td>
+<td>$9.1M</td>
+</tr>
+<tr>
+<td>청구 가능 시간</td>
+<td>399K (<span class="up">+6%</span>)</td>
+<td>390K (<span class="up">+9%</span>, 10-Q 기준)</td>
+<td>359K</td>
+</tr>
+<tr>
+<td>가동률</td>
+<td>76%</td>
+<td>74%</td>
+<td>72%</td>
+</tr>
+<tr>
+<td>평균 기술직 정규직 환산 인원(FTE)</td>
+<td>1,013</td>
+<td>1,012</td>
+<td>958</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>2Q 통과성 매출은 전년 대비 약 2.5배로 늘었다(추산). 회사는 사용자 연구 프로젝트 증가 때문이라고 밝혔다. CFO도 순매출이 기초 실적을 더 잘 보여준다고 명시했다.</li>
+<li><strong>순매출은 전분기 대비 약 <span class="down">-1.9%</span> 감소</strong>했다(151.8 → 148.9, 추산). 스크린의 QoQ <span class="up">+3.2%</span>는 통과성 매출 효과다.</li>
+<li>성장 분해: 청구 가능 시간 +8~9%(실적콜은 8%, 10-Q는 9%)와 실현 단가 약 <span class="up">+4%</span>가 순매출 <span class="up">+12%</span>와 정합한다. 물량과 단가가 균형 잡힌 성장이다.</li>
+<li><strong>일회성 요소</strong>: 대형 사용자 연구 1건이 순매출의 약 4%(약 $6.0M, 추산)를 차지했다. 회사 예상치는 2%였다. 이를 제외하면 순매출 성장률은 대략 한 자릿수 후반으로 추산된다. 전년 동기에 같은 프로젝트의 기여가 있었는지는 공시상 확인 불가다.</li>
+<li>세그먼트별 차이:</li>
+<li>Environmental &amp; Health는 1Q 청구 가능 시간이 <span class="down">-5%</span>, 가동률이 72%→69%로 약했다. 2Q 청구 가능 시간 <span class="up">+3%</span>로 회복했지만 FTE는 정체(202명)다.</li>
+<li>성장은 Engineering 세그먼트에 집중되어 있다.</li>
+</ul>
+<h3>마진 방향성 — 개선은 맞지만 폭은 작다</h3>
+<ul>
+<li>순매출 대비 EBITDA 마진(실적콜): 2Q26 28.7%($42.7M, <span class="up">+16%</span>), 전년 27.8%.</li>
+<li>보상비용은 $100.6M(<span class="up">+3.2%</span>)으로, 총매출 대비 58.6%(전년 68.7%)다. 다만 여기에는 이연보상 평가이익 $11.8M(전년 $17.0M)이 포함되어 있다. 이 손익은 기타수익에서 상쇄되므로 순이익에는 영향이 없다.</li>
+<li>이를 조정한 보상비용 증가율은 <span class="up">+10%</span>(실적콜)다.</li>
+<li><strong>스크린상 영업이익률 <span class="up">+4.2%</span>p 개선 중 약 3%p는 이 평가손익 변동의 착시로 추산된다.</strong></li>
+<li>순이익은 <span class="up">+11%</span>로 EBITDA 증가율(<span class="up">+16%</span>)보다 낮다. 이연보상 상쇄분 감소와 이자수익 감소($716K)가 원인이다. 희석 EPS는 <span class="up">+15%</span>($0.52→$0.60)로, 자사주 매입에 따른 주식 수 <span class="down">-5%</span> 효과가 반영됐다.</li>
+<li>부담 요인(실적콜): 일반관리비(G&amp;A) <span class="up">+20%</span>($7.4M), 주식보상비용 $6.7M(전년 $5.2M), 기타영업비용 <span class="up">+7%</span>.</li>
+<li>법인세율은 27.9%로 전년과 같다.</li>
+</ul>
+<h3>현금흐름·주주환원</h3>
+<ul>
+<li>TTM FCF는 $108.6M이고, 2Q 설비투자는 $1.8M에 그친다. 자본 경량형 사업이다.</li>
+<li>LTM 주주환원은 $272M(자사주 $211M + 배당 $61M)으로 <strong>TTM FCF의 약 2.5배</strong>다. 보유 현금을 소진해 환원했고, 그 결과 이자수익이 줄었다.</li>
+<li>2Q 자사주 매입은 $67.4M으로, 평균 단가는 $59.88이다. 오늘 종가는 이보다 약 17% 높다.</li>
+<li>분기 배당은 $0.31로, 연환산 시 배당수익률은 약 1.8%(추산)다. 자사주 매입 한도는 $50M 증액됐다.</li>
+</ul>
+<h3>재무 건전성</h3>
+<ul>
+<li>분기말 현금 잔액과 차입금은 제공 자료에서 <strong>공시상 확인 불가</strong>다.</li>
+<li>CFO는 현금이 "운영에 편안한 수준"까지 내려왔으며, $50~70M 범위에서 운영할 수 있다고 언급했다.</li>
+</ul>
+<h3>밸류에이션 (참고, 추산)</h3>
+<ul>
+<li>시가총액 $3.32B ÷ TTM FCF $108.6M ≈ 30.6배.</li>
+<li>상반기 EPS($0.59 + $0.60)를 단순 연환산한 $2.38 기준 PER은 약 29배다. TTM EPS는 제공 자료로 산출할 수 없다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>AI 탑재 기기 사용자 연구</strong>: 회사는 고객이 AI 하드웨어(글래스, 웨어러블, 몰입형 기기) 개발을 가속하면서 프로젝트의 범위·규모·복잡도가 커지고 있다고 밝힘</td>
+<td>대형 연구 1건에 대한 의존을 벗어나 고객·산업이 다변화되어야 함</td>
+<td>3Q 통과성 매출 수준, 대형 연구의 순매출 기여도 공개 여부, Engineering 세그먼트 순매출 성장률</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>유틸리티 리스크관리·인프라</strong>: 회사는 전력 수요 증가, 극한 기상, 전력망 복잡화로 수요가 늘고 있다고 밝힘</td>
+<td>1Q·2Q에 이어 지속성이 확인되어야 함</td>
+<td>에너지·유틸리티 관련 언급이 계속되는지, 데이터센터 관련 수주 사례가 구체화되는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>사후 대응형 분쟁·고장 분석</strong>: 소비재(리콜), 화학(우려 물질), 운송(ADAS 고장) 수요</td>
+<td>소송·리콜 사이클에 좌우되며 수주잔고가 없어 가시성이 낮음</td>
+<td>사후 대응형 업무 성장 코멘트, Environmental &amp; Health 세그먼트 청구 가능 시간</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>단가 인상과 가동률 레버리지</strong></td>
+<td>FTE 증가율(4~5%)을 웃도는 청구 가능 시간 증가</td>
+<td>3Q 가동률 74~75%, 실현 단가 +3~4% 가이던스 달성 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>주당 가치 증대(자사주 매입)</strong></td>
+<td>FCF 범위 안에서의 지속성</td>
+<td>3Q 매입액. 회사는 상반기보다 낮은 속도를 예고함</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스</strong>
+- CEO는 "또 한 번의 강한 분기"라며 자신감 있는 톤을 유지했다. 연간 가이던스도 상향했다.
+  - FY26 순매출: +9~10%
+  - FY26 EBITDA 마진(순매출 대비): 27.8~28.1%
+  - 상향 전 수치는 제공 자료에 없어 확인 불가다.
+- 다만 상반기 순매출 성장률이 약 <span class="up">+11%</span>(추산)이므로, 연간 +9~10%는 <strong>하반기 성장률이 상반기보다 낮다는 뜻</strong>이다. 3Q 가이던스(+8~10%)도 같은 방향이다.
+- CFO는 하반기 성장이 전년 두 자릿수 성장 위에 쌓이는 것이라고 강조했다. 성장 둔화를 기저 효과로 설명하는 화법이다.
+- 대형 연구가 기대(2%)보다 컸다(4%)는 점을 경영진이 직접 공개했다. 이는 상방 서프라이즈의 일부가 반복되기 어려운 요소였음을 인정한 것이다.</p>
+<p><strong>Q&amp;A 반복 주제와 방어 지점</strong>
+- <strong>선제형/사후형 믹스</strong>: 경영진은 과거 사후 대응 위주였던 실무(인간공학, 생체역학 등)가 선제형으로 확장되고 있다고 답했다. 다만 믹스 수치는 제시하지 않았다.
+- <strong>사용자 연구 다변화(UBS)</strong>: 고객 수, 산업(생명과학, FDA 규제 의료기기 웨어러블), 기술 형태 측면에서 다변화되고 있다는 정성적 답변에 그쳤다. <strong>상위 고객 집중도나 해당 사업의 매출 비중은 정량화하지 않았다.</strong> 이것이 핵심 회피 지점이다.
+- <strong>박사 인력 공급 축소(Truist)</strong>: 최상위권 대학 출신 위주로 채용하며, 연간 채용의 약 5% 이하만 취업비자 후원이 필요하다고 방어했다.
+- <strong>자사주 매입 속도(UBS)</strong>: CFO는 하반기 FCF가 $100M을 넘을 것으로 예상했다. 다만 매입 속도는 상반기나 작년 하반기보다 낮을 것이라고 명시했다.
+- <strong>리쇼어링·데이터센터(Truist)</strong>: 공급망 다변화에 따른 기술 실사, 고장률 증가가 수요 기회라는 정성적 답변이었다.
+- 제공된 발췌는 중간이 생략되어 있다. William Blair와 JPMorgan의 질문 일부는 확인할 수 없다.</p>
+<p><strong>공시에는 없고 실적콜에서만 확인된 정보</strong>
+- 실현 단가 <span class="up">+4%</span>
+- EBITDA $42.7M, 마진 28.7%
+- 이연보상 평가이익 $11.8M(전년 $17.0M)
+- 주식보상비용 $6.7M, G&amp;A <span class="up">+20%</span>
+- 자사주 평균 매입 단가 $59.88, LTM 환원 $272M
+- 3Q·FY 가이던스(순매출, EBITDA 마진, FTE, 가동률, 단가)
+- 현금 운영 범위 $50~70M, 하반기 FCF $100M 초과 기대
+- 위성 성능 이슈 프로젝트 사례</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>수주잔고 부재와 고객의 수시 해지권(10-K)</strong>: 매출 가시성이 구조적으로 낮다. 가이던스가 빗나가면 주가 변동 폭이 클 수 있다.</li>
+<li><strong>대형 사용자 연구와 AI 하드웨어 고객 집중</strong>: 프로젝트 1건이 순매출의 약 4%를 차지한다. 고객 개발 일정이 바뀌면 순매출과 가동률이 동시에 빠질 수 있고, 회사는 집중도를 정량 공개하지 않았다.</li>
+<li><strong>헤드라인 지표의 왜곡</strong>: 통과성 매출과 이연보상 평가손익 때문에 총매출 성장률과 영업이익률이 실질보다 좋아 보인다. 스크린 지표 기반의 매수세는 실적 발표 때 실망 매물로 바뀔 수 있다.</li>
+<li><strong>주주환원 감속과 현금 소진</strong>: LTM 환원액이 FCF의 2.5배였고, 현금은 운영 하한 근처까지 내려왔다. 주식 수 감소에 따른 EPS 부양 효과(<span class="down">-5%</span>)가 앞으로 축소된다.</li>
+<li><strong>핵심 인력 확보와 비용 인플레(10-K, 실적콜)</strong>: 인력 기반 모델이라 FTE 증가율(4.5~5%)을 가동률과 단가로 소화해야 한다. G&amp;A <span class="up">+20%</span>와 주식보상비용 증가가 마진 확대를 제약하고 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(+) 실질 성장</td>
+<td>순매출 <span class="up">+12%</span>: 청구 가능 시간 +8~9%, 단가 <span class="up">+4%</span></td>
+</tr>
+<tr>
+<td>(+) 효율 개선</td>
+<td>가동률 72%→74%, EBITDA 마진 <span class="up">+0.9%</span>p</td>
+</tr>
+<tr>
+<td>(+) 가이던스·현금창출</td>
+<td>FY 가이던스 상향, TTM FCF $108.6M, 설비투자 부담 미미</td>
+</tr>
+<tr>
+<td>(−) 하반기 둔화</td>
+<td>3Q 순매출 +8~10%, FY +9~10%는 상반기 약 11%보다 낮음</td>
+</tr>
+<tr>
+<td>(−) 일회성 기여</td>
+<td>대형 연구 4% 중 기대 초과분은 약 2%p</td>
+</tr>
+<tr>
+<td>(−) 밸류에이션</td>
+<td>P/FCF 약 31배, 단순 연환산 PER 약 29배, 배당수익률 약 1.8%</td>
+</tr>
+<tr>
+<td>(−) 촉매 부재</td>
+<td>오늘 상승의 공시·실적 근거 없음, 자사주 매입 감속 예고</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3Q 순매출이 +8~10%의 상단 이상인지, 그리고 대형 연구의 기여도가 공개되는지. 핵심은 일회성을 제외한 성장이다.
+2. 3Q 가동률이 74~75%를 달성하는지. 동시에 FTE가 4~5% 늘어나는 가운데 EBITDA 마진 28.0~28.5%를 지키는지.
+3. 3Q 자사주 매입 규모와 분기말 현금 잔액, 그리고 FCF 대비 환원율이 정상화되는지.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>관망으로 하향할 조건</strong>:
+  - 3Q 순매출 성장률이 <span class="up">+8%</span> 미만이거나 FY 가이던스가 하향된다.
+  - 가동률이 73% 이하로 떨어진다(FTE 증가 대비 수요 둔화 신호).
+  - 대형 사용자 연구가 종료·축소되고 이를 대체할 프로젝트가 확인되지 않는다.
+  - Environmental &amp; Health 세그먼트의 청구 가능 시간이 다시 감소한다.
+- <strong>적극으로 상향할 조건</strong>:
+  - 대형 연구를 제외해도 순매출이 두 자릿수로 성장한다.
+  - 2027년 단가 인상 폭이 <span class="up">+4%</span> 이상이다.
+  - 사용자 연구 고객 다변화가 정량 지표로 확인된다.
+  - 주가가 자사주 평균 매입 단가($59.88) 근처로 조정되어 밸류에이션 부담이 완화된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000119312526082508/expo-20260102.htm">10-K — 2026-01-02_0001193125-26-082508</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000119312526340211/expo-20260703.htm">10-Q — 2026-07-03_0001193125-26-340211</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000119312526214572/expo-20260403.htm">10-Q — 2026-04-03_0001193125-26-214572</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000117184326005081/exh_992.htm">8-K — 2026-07-30_0001171843-26-005081__EX-99.2__exh_992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000117184326005081/exh_991.htm">8-K — 2026-07-30_0001171843-26-005081__EX-99.1__exh_991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000117184326005081/f8k_073026.htm">8-K — 2026-07-30_0001171843-26-005081</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/851520/000117184326004036/f8k_061026.htm">8-K — 2026-06-04_0001171843-26-004036</a></li>
+<li>Transcript — 2026-07-30 Exponent, Inc. (EXPO) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

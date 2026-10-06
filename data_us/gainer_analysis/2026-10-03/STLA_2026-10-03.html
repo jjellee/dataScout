@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STLA — Stellantis N.V. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>STLA — Stellantis N.V. Common Shares</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">STLA</span><span class="badge">+7.57%</span><span class="badge">거래량 2.35배</span><span class="badge">$13.59B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 <span class="up">+7.57%</span> 상승의 원인은 공시로 확인되지 않습니다. 최근 4일 내 SEC 공시가 없습니다. 20일 수익률 <span class="down">-19.9%</span>, 52주 고점 대비 <span class="down">-61.3%</span>인 상태에서 나온 반등이므로 펀더멘털 재평가보다는 기술적 반등으로 보는 편이 합리적입니다.</li>
+<li>2Q26 실적은 전년 대비 크게 개선됐습니다. 매출은 €43.5B로 <span class="up">+13.1%</span>, 조정영업이익(AOI)은 €773M로 +€560M, 산업 잉여현금흐름(Industrial FCF)은 +€1B입니다. 다만 개선 동력은 원가 절감과 일회성 비용의 비반복(전년 리콜·규제비용)입니다. 순가격 효과는 -€456M으로 오히려 악화됐습니다.</li>
+<li>TTM 잉여현금흐름은 -$13.42B입니다. 회사는 산업 FCF 흑자 전환 시점을 2027년으로 제시했습니다. 3Q는 회사 스스로 운전자본 음수와 실적 약세를 예고했습니다.</li>
+<li>최근 헤드라인에는 3Q 판매 정체, 배터리 공급 부족, 투자의견 하향이 이어지고 있습니다. 그러나 본문이 제공되지 않아 내용은 검증할 수 없습니다.</li>
+<li>턴어라운드 옵션은 있습니다. 시가총액 $13.6B는 분기 매출의 약 3분의 1 수준입니다. 그래도 3Q 출하·실적으로 하반기 궤적이 확인되기 전까지는 의미 있는 비중 확대 근거가 부족합니다.</li>
+</ul>
+<blockquote>
+<p>⚠ <strong>데이터 정합성 주의</strong>: 제공된 시장 지표 테이블과 공시 원문(6-K, € 기준)이 일치하지 않습니다. 본 리포트는 공시 원문을 우선합니다.
+- 매출 YoY: 지표 21.4% vs 원문 <span class="up">+13.1%</span> (43,482 / 38,448)
+- 영업이익률: 지표 2.3% vs 원문 1.6% (702 / 43,482)
+- 영업이익률 YoY 변화: 지표 <span class="up">+2.7%</span>p vs 원문 약 <span class="up">+7.8%</span>p (2Q25 <span class="down">-6.2%</span> → 1.6%)
+- 지표 테이블의 "$43.48B"는 원문상 €43,482M입니다. 통화 표기 오류이거나 환산 기준이 다른 것으로 보입니다.</p>
+</blockquote>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급 또는 섹터 동조 가능성이 큽니다.</strong></p>
+<ul>
+<li><strong>SEC 공시</strong>: 최근 4일 내 없습니다. 가장 최근 공시는 7/15(2Q 실적 발표일 공지)와 7/13(2Q 출하 발표)입니다.</li>
+<li><strong>뉴스 헤드라인</strong>: 두 갈래가 섞여 있습니다.</li>
+<li>부정적 흐름: "Battery Shortages And Downgrades Hit Outlook", "Q3 Sales Remain Flat Year Over Year". 최근 20일간 <span class="down">-19.9%</span> 하락의 배경으로 추정됩니다.</li>
+<li>긍정적 흐름: "Traders Bet On ADAS And Hybrids"(timothysykes.com), "RBC Capital pitches the case for Stellantis to break up"(Seeking Alpha).</li>
+<li>오늘 상승은 이 중 RBC의 분할(sum-of-the-parts) 논거와 ADAS·하이브리드 기대가 트리거됐을 가능성이 있습니다. 다만 기사 본문이 없어 시점과 내용을 확인할 수 없습니다. 회사가 분할을 검토한다는 공시나 발언은 제공 자료 어디에도 없습니다.</li>
+<li><strong>수급</strong>: 거래량은 20일 중앙값의 2.35배이고 거래대금은 $254M입니다. 단기 낙폭이 큰 상태라 숏커버나 저가 매수가 섞였을 수 있지만, 이는 추정입니다.</li>
+<li><strong>결론</strong>: 회사 펀더멘털 변화(공시·실적)에서 나온 상승은 아닙니다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 20-F 발췌는 표지와 서론에서 끊겨 사업 섹션 본문이 포함되지 않았습니다. 아래는 20-F 서두, 6-K, 실적콜을 조합한 내용입니다.</p>
+<p><strong>제품과 브랜드</strong>
+- 2021년 1월 16일 PSA와 FCA의 합병으로 출범한 글로벌 완성차 업체입니다.
+- 브랜드: Jeep, Ram, Dodge, Chrysler, Peugeot, Citroën, Opel/Vauxhall, Fiat, Alfa Romeo, Maserati, Lancia, DS, Abarth가 있습니다. 모빌리티·리스 사업으로 Free2move와 Leasys가 있습니다.
+- Leapmotor International: Stellantis 51%, Leapmotor 49% 지분의 연결 자회사로, 중국 외 지역에 Leapmotor 차량을 유통합니다.
+- 금융서비스: 2Q26 매출 €1,483M, 영업이익 €103M입니다.</p>
+<p><strong>지역별 수익 구조 (2Q26 AOI, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지역</th>
+<th>AOI</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>북미</td>
+<td>€284M (마진 1.6%)</td>
+<td>전년 대비 +€724M. 출하 <span class="up">+38%</span></td>
+</tr>
+<tr>
+<td>확대유럽</td>
+<td>-€94M</td>
+<td>적자 지속. 전년 대비 +€265M (리콜비용 €474M 비반복 포함)</td>
+</tr>
+<tr>
+<td>남미</td>
+<td>€402M</td>
+<td>전년 브라질 간접세 환급 €334M 비반복 제외 시 전년 수준</td>
+</tr>
+<tr>
+<td>중동·아프리카</td>
+<td>€329M</td>
+<td>산업 수요 <span class="down">-8%</span> 속에서도 점유율 +20bp</td>
+</tr>
+<tr>
+<td>아시아태평양</td>
+<td>€27M</td>
+<td>+35%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>지역 AOI 합계는 약 €948M이고, 그중 남미와 중동·아프리카가 약 €731M(77%)을 차지합니다(산출값). 매출 규모가 가장 큰 북미와 유럽이 아직 이익을 거의 내지 못하고, 신흥시장이 이익을 떠받치는 구조입니다.</li>
+<li>지역별 매출 구성은 공시상 확인 불가입니다.</li>
+<li>2026년 1월 1일부터 Maserati 보고 세그먼트가 폐지됐습니다(6-K).</li>
+</ul>
+<p><strong>경쟁 위치 (실적콜 언급)</strong>
+- 북미: 2Q 점유율 +40bp(미국 +50bp), 4개 분기 연속 판매 증가. Ram 1500은 7월 세그먼트 점유율 20%를 넘었습니다.
+- 남미: 브라질과 아르헨티나 모두 점유율 26% 이상으로 1위입니다.
+- 유럽 경상용차(Pro One): 점유율 28% 이상으로 1위입니다.
+- 중동·아프리카: 전체 2위, 경상용차 1위입니다.
+- 회사는 2021~2025년 단종 차종 때문에 북미·유럽 점유율이 하락했고, FaSTLAne 2030으로 시장 커버리지를 약 90%까지 회복하겠다고 밝혔습니다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<h3>4-1. 손익 (6-K 사업부문별 손익계산서, € 백만)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>증감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>43,482</td>
+<td>38,448</td>
+<td>+13.1%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>11.0%</td>
+<td>6.2%</td>
+<td>+4.8%p</td>
+</tr>
+<tr>
+<td>판관비</td>
+<td>2,483</td>
+<td>1,828</td>
+<td>+35.8%</td>
+</tr>
+<tr>
+<td>R&amp;D 비용</td>
+<td>1,308</td>
+<td>1,938</td>
+<td><strong>-32.5%</strong></td>
+</tr>
+<tr>
+<td>구조조정비용</td>
+<td>384</td>
+<td>399</td>
+<td>—</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>702</td>
+<td>(2,394)</td>
+<td>흑자전환</td>
+</tr>
+<tr>
+<td>순금융비용</td>
+<td>202</td>
+<td>63</td>
+<td>+221%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>293</td>
+<td>(1,869)</td>
+<td>흑자전환</td>
+</tr>
+<tr>
+<td>AOI</td>
+<td>773</td>
+<td>213</td>
+<td>+€560M</td>
+</tr>
+</tbody>
+</table></div>
+<p>상반기 누계는 매출 €81,614M(<span class="up">+9.9%</span>), 영업이익 €1,390M(전년 -€2,710M)입니다.</p>
+<h3>4-2. 성장의 질: 물량은 증가, 가격은 역풍, 이익은 원가에서</h3>
+<p>실적콜에서 공개된 AOI 증감 요인입니다.
+- 물량·믹스: +€376M. 물량은 늘었지만 믹스는 부정적이었습니다. 유럽의 저배출차(LEV) 비중 확대와 멕시코 생산 차종 비중 증가가 원인입니다.
+- <strong>순가격: -€456M.</strong> 주로 유럽의 가격 압박입니다.
+- <strong>산업원가: +€1.9B 이상.</strong> 세 가지가 섞여 있습니다.
+  - 제조 효율과 구매 절감(VCP)
+  - 전년 유럽 리콜 보증비용 비반복
+  - 북미 규제비용 감소
+- 판관비: -€317M(마케팅 확대).
+- 환율·기타: -€861M. 터키 리라 약세, 브라질 세액공제 비반복, 중고차 잔존가치 하락이 원인입니다.</p>
+<p><strong>해석</strong>
+- 매출 증가는 대부분 북미 물량(+12.2만 대)에서 나왔습니다. 그중 일부는 회사도 인정한 하계 셧다운 대비 선출하입니다.
+- 이익 개선 €560M은 원가 효과(€1.9B)가 가격 하락과 환율 손실을 상쇄한 결과입니다. 원가 효과 가운데 비반복 항목은 반복되지 않는 일회성 성격입니다. 비반복 효과의 정확한 규모는 공시상 확인 불가이지만, 유럽 리콜 비반복분은 €474M으로 언급됐습니다.
+- 손익계산서상 R&amp;D 비용이 <span class="down">-32.5%</span> 감소한 점도 마진 개선에 기여했습니다. 자본화 비율 변화 때문인지 실제 지출 축소인지는 공시상 확인 불가입니다. CFO는 2분기 CapEx·R&amp;D 집행 속도가 낮았다고 언급했습니다.
+- 결론적으로 마진 방향은 개선 중이지만 마진 수준은 여전히 낮습니다. 영업이익률은 1.6%, AOI 마진은 1.8%이고, 개선의 상당 부분은 지속성이 검증되지 않았습니다.</p>
+<h3>4-3. 현금흐름</h3>
+<ul>
+<li>TTM 잉여현금흐름: -$13.42B(지표 테이블).</li>
+<li>2Q 산업 FCF는 +€1B입니다. CFO는 동인으로 AOI 증가, 2분기 물량 증가에 따른 계절적 운전자본 유입, CapEx·R&amp;D 집행 지연을 들었습니다.</li>
+<li>상반기 CapEx·R&amp;D는 매출 대비 6.3%였습니다. 연간 가이던스가 6.5~7%이므로 하반기 지출은 상반기보다 €1B 이상 늘어날 것이라고 CFO가 언급했습니다.</li>
+<li>2025년 하반기에 인식한 충당금 관련 현금 유출이 올해 약 €2B 예정돼 있습니다. 상반기에 €0.9B를 지급했고 하반기에 약 €1.1B가 남았습니다.</li>
+<li>CFO는 3Q 운전자본이 하계 셧다운 영향으로 음수가 될 것이라고 확인했습니다.</li>
+<li>회사는 산업 FCF 흑자를 2027년에 달성할 것으로 기대한다고 밝혔습니다. 2026년 연간 FCF 가이던스 수치는 공시상 확인 불가입니다.</li>
+</ul>
+<h3>4-4. 재고와 재무 건전성</h3>
+<ul>
+<li>총재고는 140만 대로 전년 대비 <span class="up">+20%</span>입니다. 미국 딜러 재고는 6월 39만 대로 1월 대비 +7만 대였고, 회사는 7월 말 약 36.5만 대를 예상했습니다.</li>
+<li>순금융비용이 €63M에서 €202M으로 급증해 부채 부담이나 금리 비용이 늘고 있다는 신호입니다.</li>
+<li>순부채, 유동성, 신용등급은 제공 발췌 범위 밖이라 공시상 확인 불가입니다.</li>
+<li>보통주는 2,897,483,196주입니다(20-F, 2025년 말 기준). 시가총액 $13.59B와 정합합니다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>북미 신차·파워트레인 사이클</strong></td>
+<td>회사는 Ram 1500 HEMI V8, Ram 1500 TRX SRT, 리프레시 Grand Wagoneer·Pacifica, 신형 Cherokee 등을 출시했습니다. SRT 마진은 일반 트림의 2~3배라고 밝혔습니다. 조건은 쌓인 재고가 가격 인하 없이 소화되는 것입니다.</td>
+<td>3Q 북미 출하와 판매의 괴리, 미국 딜러 재고 36.5만 대 이하 유지 여부, 북미 순가격의 플러스 복귀</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>VCP(가치창출 프로그램) 원가 절감</strong></td>
+<td>회사는 2027년 €2.4B 절감액 전액이 AOI로 유입될 것이라고 밝혔습니다. 실적콜에서 전체 규모는 €6B로 언급됐는데, 발언이 중간에 잘려 대상 기간은 확인할 수 없습니다. CFO는 북미 마진 회복의 핵심이 공장 가동률이 아니라 재료비와 보증비라고 말했습니다.</td>
+<td>3Q·4Q 산업원가 효과 중 비반복을 제외한 순수 절감액, 보증비 추이</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>유럽 스마트카 플랫폼과 Leapmotor</strong></td>
+<td>스마트카 플랫폼 출하가 <span class="up">+51%</span>(+4.1만 대), Leapmotor 출하가 3.3만 대로 증가했습니다. 다만 CFO는 Leapmotor가 이익은 내지만 평균 이하 마진이라 믹스에 부정적이라고 인정했습니다.</td>
+<td>유럽 AOI 흑자 전환 시점, 유럽 순가격 하락폭 축소 여부</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>관세 완화</strong></td>
+<td>2026년 순관세비용 가이던스는 €1.0~1.2B로, 기존 €1.3B에서 낮아졌습니다. 회사는 Cherokee 생산을 Belvidere(미국)로 이전해 사실상 관세를 면제받겠다고 밝혔지만 시점은 공개를 거부했습니다.</td>
+<td>Belvidere 생산 일정 공시, USMCA 변화</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>FaSTLAne 2030 매출 목표</strong></td>
+<td>2028년 매출 목표 €175B. 2027년 매출은 2026년과 2028년 목표의 중간 수준으로 제시됐습니다. 연내 신차·리프레시 9종이 남아 있습니다.</td>
+<td>9종 출시의 일정 준수 여부, 2027년 가이던스</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- CEO는 "All key financial metrics are significantly improved"라고 했고, 연간 가이던스와 2027년 FCF 흑자 기대를 재확인했습니다. 톤은 자신감이 있었습니다.
+- 그 근거는 북미 생산효율 +870bp, 3개월 차 품질지표 개선(북미 38%, 유럽 24%), 4개 분기 연속 북미 판매 증가입니다.
+- 동시에 "Nothing can be fixed overnight"라며 기대치를 관리하는 화법을 병행했습니다.
+- CFO는 하반기 실적이 4Q에 쏠릴 것이라고 했습니다. 3Q는 하계 셧다운과 원자재 인플레이션 영향을 받는다고 명시해, 3Q 약세를 사전에 예고했습니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>재고</strong>: 딜러 재고 증가가 반복적으로 질문됐습니다. CEO는 7만 대 증가분 중 6.5만 대가 신차이고 하계 셧다운 대비분이라고 방어했습니다. 경영진은 7월 감소를 약속하는 방식으로 대응했지만, 이후 결과는 제공 자료로 확인할 수 없습니다.
+- <strong>Cherokee</strong>: Jefferies가 점유율 기여가 미미하다고 지적했습니다. CEO는 관세 노출 때문에 트림과 채널을 제한하고 있다고 인정했고, Belvidere 이전 시점은 이번 콜에서 공개할 수 없다며 답을 피했습니다.
+- <strong>북미 믹스</strong>: Goldman이 물량·믹스의 이익 전환율이 1Q 27%에서 2Q 8%로 급락하고, 북미 순가격이 1Q 플러스에서 2Q 마이너스로 돌아선 점을 질문했습니다. CFO는 멕시코 생산 차종의 믹스 문제로 설명했습니다. 가격 질문에는 Ram 연식 전환에 따른 정상적 현상이며 하반기 가격에 건설적이라고만 답해 구체성이 부족했습니다.
+- <strong>투자 집행</strong>: Goldman이 하반기 투자 €7.4B 내포 가능성을 제기했습니다. CFO는 오프라인에서 맞춰보자며 수치 확인을 미뤘고, 하반기 CapEx가 €1B 이상 증가한다고만 확인했습니다.
+- <strong>3Q 현금흐름</strong>: Deutsche가 3Q FCF가 €1B 이상 유출될 수 있는지 물었습니다. CFO는 운전자본 음수는 인정했지만 규모는 제시하지 않았습니다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 미국 딜러 재고 절대 수치: 6월 39만 대, 7월 말 예상 약 36.5만 대
+- 2027년 VCP €2.4B 전액이 AOI로 유입된다는 발언
+- 하반기 충당금 관련 잔여 현금 유출 약 €1.1B
+- Dongfeng과 중국에서 Peugeot·Jeep 모델 개발·생산 파트너십
+- Leapmotor가 이익은 내지만 마진이 평균 이하라는 인정</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>이익 개선의 지속성 리스크</strong>
+   - 2Q 원가 개선 €1.9B에는 전년 리콜비용 €474M 비반복과 북미 규제비용 감소가 포함돼 있습니다. 손익계산서상 R&amp;D 비용도 <span class="down">-32.5%</span> 줄었습니다.
+   - 이런 비반복·지연 효과가 사라지면 하반기 AOI 개선폭이 축소될 수 있습니다. 회사도 3Q가 셧다운과 원자재 영향을 받는다고 밝혔습니다.</li>
+<li><strong>가격 압박과 재고</strong>
+   - 순가격 -€456M이었고 북미 가격도 2Q에 마이너스로 돌아섰습니다.
+   - 총재고 <span class="up">+20%</span>, 미국 딜러 재고 39만 대가 판매로 소화되지 않으면 인센티브 확대와 가격 추가 하락이 이어질 수 있습니다.
+   - 헤드라인 "Q3 Sales Remain Flat YoY"가 사실이라면, 2Q의 출하 <span class="up">+10%</span>가 판매로 이어지지 못했다는 신호가 됩니다. 기사 본문은 미확인입니다.</li>
+<li><strong>현금 소진과 재무 부담</strong>
+   - TTM FCF -$13.42B, 하반기 CapEx 증가, 충당금 현금 유출 약 €1.1B 잔여, 3Q 운전자본 음수가 겹칩니다.
+   - 순금융비용도 3배 이상 늘었습니다. FCF 흑자 전환은 회사 기대 기준으로도 2027년입니다.</li>
+<li><strong>유럽 구조적 적자와 중국 경쟁</strong>
+   - 유럽 AOI는 -€94M으로, 리콜 비반복 효과를 감안하면 본업 개선은 제한적입니다.
+   - Leapmotor 확대는 믹스를 희석합니다. 경쟁 심화(저가 경쟁사 유입)는 애널리스트 질문에서 제기됐습니다.</li>
+<li><strong>지역·거시 리스크</strong>
+   - 이익의 77%가 남미와 중동·아프리카에서 나옵니다(지역 AOI 합계 기준). 그런데 이 지역들은 아르헨티나 출하 -2.5만 대, 걸프협력회의(GCC) 출하 약 <span class="down">-50%</span>, 터키 리라 약세 등 변동성이 큽니다.
+   - 관세비용은 2026년 순 €1.0~1.2B입니다.
+   - 헤드라인상 배터리 공급 부족도 리스크입니다. 회사 공시로는 미확인입니다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>관망 판단의 정량 근거</h3>
+<ul>
+<li><strong>(+) 개선 지표</strong></li>
+<li>AOI: 2Q25 €213M → 2Q26 €773M</li>
+<li>영업이익: -€2,394M → +€702M</li>
+<li>2Q 산업 FCF: +€1B</li>
+<li>북미 출하 <span class="up">+38%</span>, 점유율 +40bp</li>
+<li><strong>(+) 밸류에이션</strong>: 시가총액 $13.59B는 상반기 매출 €81.6B와 비교하면 매우 낮은 수준이고, 52주 고점 대비 <span class="down">-61.3%</span>입니다.</li>
+<li><strong>(−) 마진 수준</strong>: 영업이익률 1.6%, AOI 마진 1.8%에 그칩니다.</li>
+<li><strong>(−) 개선의 질</strong>: 순가격 -€456M, 환율·기타 -€861M으로, 개선이 원가와 비반복 항목에 의존합니다.</li>
+<li><strong>(−) 현금흐름</strong>: TTM FCF -$13.42B이고, 3Q 운전자본 음수와 하반기 CapEx 증가가 예고됐습니다.</li>
+<li><strong>(−) 촉매 부재</strong>: 오늘 상승의 공시 촉매가 없고, 최근 헤드라인(투자의견 하향, 배터리 부족, 3Q 판매 정체)은 부정적입니다.</li>
+<li>요약하면 바닥권 턴어라운드 옵션은 있지만, 3Q 결과 전에는 하방 리스크(재고·가격·현금)를 정량적으로 배제할 수 없습니다.</li>
+</ul>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>3Q 출하 발표(6-K)</strong>: 북미 출하와 판매의 괴리, 그리고 미국 딜러 재고가 회사가 제시한 36.5만 대 수준으로 내려왔는지 확인해야 합니다.</li>
+<li><strong>3Q 실적의 AOI 증감 요인</strong>: 순가격(특히 북미)이 플러스로 돌아섰는지, 산업원가 개선이 비반복 효과 없이도 유지되는지 확인해야 합니다.</li>
+<li><strong>3Q 산업 FCF 유출 규모와 연간 가이던스 유지 여부</strong>: CapEx·R&amp;D 비율 6.5~7%를 지키면서 2027년 FCF 흑자 기대를 재확인하는지 봐야 합니다. 배터리 부족 이슈에 대한 회사의 공식 언급도 함께 확인해야 합니다.</li>
+</ol>
+<h3>판단을 바꿀 조건</h3>
+<ul>
+<li><strong>보통으로 상향</strong></li>
+<li>3Q에 북미 순가격이 플러스로 전환되고 재고가 정상화되며, 3Q 산업 FCF 유출이 시장 우려(€1B 이상)보다 작을 때</li>
+<li>회사가 2026년 가이던스와 2027년 FCF 흑자 기대를 재확인할 때</li>
+<li>분할 등 구조 개편 논의가 회사 공시로 확인될 때. 현재는 RBC 의견일 뿐 회사 입장은 미확인입니다.</li>
+<li><strong>회피로 하향</strong></li>
+<li>3Q 판매 정체(헤드라인)가 실적으로 확인되고 재고가 다시 늘 때</li>
+<li>연간 가이던스가 하향되거나 2027년 FCF 흑자 전환 시점이 연기될 때</li>
+<li>배터리 공급 부족으로 생산 차질이 공시될 때</li>
+<li>유럽 AOI 적자가 확대될 때</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000021/stellantis-20251231.htm">20-F — 2025-12-31_0001605484-26-000021</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000057/a99107152026_stla.htm">8-K — 2026-07-15_0001605484-26-000057__EX-99.1__a99107152026_stla</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000057/a6k07152026_stla.htm">8-K — 2026-07-15_0001605484-26-000057</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000055/a99107132026_stla.htm">8-K — 2026-07-13_0001605484-26-000055__EX-99.1__a99107132026_stla</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000055/a6k07132026_stla.htm">8-K — 2026-07-13_0001605484-26-000055</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1605484/000160548426000066/stellantisnv20260630supple.htm">8-K — 2026-06-30_0001605484-26-000066__EX-99.1__stellantisnv20260630supple</a></li>
+<li>Transcript — 2026-07-30 Stellantis N.V. (STLA) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

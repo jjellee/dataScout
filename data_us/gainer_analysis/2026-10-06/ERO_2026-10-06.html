@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ERO — Ero Copper Corp. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ERO — Ero Copper Corp. Common Shares</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ERO</span><span class="badge">+6.04%</span><span class="badge">거래량 0.82배</span><span class="badge">$3.95B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 좋아지고 있습니다. 최근 분기 매출 $284.3M(YoY <span class="up">+73.9%</span>), 영업이익률 37.6%(YoY <span class="up">+8.8%</span>p), TTM FCF $171.6M입니다. 실적콜에서는 레버리지(순부채 배율)가 2.6배에서 0.8배로 내려왔다고 언급했습니다.</li>
+<li>회사는 올해가 설비투자(capex) 정점이라고 밝혔습니다. capex가 줄면 FCF가 늘어날 여지가 있습니다.</li>
+<li>다만 오늘 상승에는 확인된 촉매가 없습니다. 거래량도 20일 중앙값의 0.82배에 그쳐 '거래량 급증'이라는 전제와 맞지 않습니다.</li>
+<li>주가는 60일 <span class="up">+50.3%</span>, 52주 고점 대비 <span class="down">-6.2%</span> 위치입니다. 상당한 기대가 이미 가격에 들어가 있습니다.</li>
+<li>회사가 브라질에만 자산을 두고 있고, 연간보고서(40-F)의 MD&amp;A·리스크 원문이 제공되지 않아 검증 범위가 좁습니다. 지금은 일부만 편입하고, 11/2 3분기 실적으로 하반기 증산과 원가 하락을 확인한 뒤 비중을 늘리는 쪽을 권합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 안에 나온 SEC 공시가 없습니다. 가장 최근 6-K(2026-10-01)는 3분기 실적 발표 일정(11/2 장 마감 후, 컨퍼런스콜 11/3) 안내뿐입니다.</li>
+<li>뉴스 헤드라인은 시세 페이지이거나 밸류에이션 논평("Has The Rally Gone Too Far?" 등)이라 새 재료가 아닙니다.</li>
+<li>거래량 배수 0.82배는 기관의 신규 매수가 몰렸다는 신호로 보기 어렵습니다. 구리 가격 등 섹터 흐름에 동조했을 가능성이 있습니다. 다만 당일 구리 가격 데이터가 제공되지 않아 이 역시 추정입니다. Seeking Alpha 페이지 측면의 "구리, 사상 최고 종가 임박" 헤드라인은 날짜를 확인할 수 없어 근거로 쓰지 않았습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 이 회사는 연간보고서를 10-K 대신 40-F로 내는 캐나다 발행사입니다. 40-F 사업 섹션 원문이 제공되지 않아 6-K 보도자료와 첨부 계약서를 근거로 썼습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>자산</th>
+<th>위치</th>
+<th>성격</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caraíba Operations</td>
+<td>브라질 Bahia주</td>
+<td>구리 광산(지하)</td>
+<td>Pilar 수직갱도 건설 중</td>
+</tr>
+<tr>
+<td>Tucumã Operation</td>
+<td>브라질 Pará주</td>
+<td>구리 광산</td>
+<td>생산 확대(램프업) 중, 광미 여과 설비 증설</td>
+</tr>
+<tr>
+<td>Xavantina Operations</td>
+<td>브라질 Mato Grosso주</td>
+<td>금 광산</td>
+<td>RGLD Gold AG(Royal Gold 계열)에 금 스트리밍 계약 부담</td>
+</tr>
+<tr>
+<td>Furnas 구리·금 프로젝트</td>
+<td>브라질 Pará주 Carajás</td>
+<td>개발 단계</td>
+<td>Vale Base Metals와 earn-in 계약으로 지분 60% 확보 추진</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>제품:</strong> 구리 정광과 금입니다. 고객(정광 구매처, 제련소) 구성은 공시상 확인 불가입니다.</li>
+<li><strong>매출 구성(구리/금 비중):</strong> 공시상 확인 불가입니다. Q2 생산량은 구리 17,315톤, 금 2만 온스 이상입니다(실적콜).</li>
+<li><strong>금 스트리밍 부담(6-K Exhibit 99.1):</strong></li>
+<li>회사는 2025-03-28 RGLD Gold AG와 추가 스트림 계약을 맺고 무이자 선급금 $50M을 받았습니다.</li>
+<li>기존 스트림으로 93,000온스를 넘겨준 뒤부터는 금 생산의 15%를 추가로 넘깁니다. 누적 40,200온스가 될 때까지이며, 대가는 현물가의 40%입니다.</li>
+<li>따라서 Xavantina의 금값 상승 이익은 일부 제한됩니다. 기존 스트림의 조건은 원문이 제공되지 않아 확인 불가입니다.</li>
+<li><strong>경쟁 위치:</strong> 동종사 대비 원가 순위 같은 비교 자료는 제공되지 않아 확인 불가입니다. 회사는 Furnas를 "시장에서 가장 좋은 개발 프로젝트 중 하나"라고 주장했습니다(실적콜). 회사 측 주장입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 매출 $284.3M(YoY <span class="up">+73.9%</span>, QoQ <span class="up">+8.0%</span>)입니다. 가격·물량·믹스별 분해는 MD&amp;A 원문이 없어 확인 불가입니다.
+- 실적콜에서 확인되는 증가 요인은 세 가지입니다.
+  - 물량: Tucumã 처리량이 전분기 대비 27% 늘었고, Caraíba는 병목 해소 후 높은 처리량을 유지하고 있습니다.
+  - 일회성 성격의 금: Xavantina 총 금 생산이 전분기 대비 170% 늘었습니다. 이 중 11,860온스(약 58%)는 광산에서 새로 캔 금이 아니라 과거에 쌓아둔 금 정광에서 회수한 물량입니다(C1 $633/oz). 반복되지 않을 수 있는 이익입니다.
+  - 가격: 경영진은 "원자재 가격 순풍"을 직접 언급했습니다.
+- 결론적으로 성장은 물량·가격·일회성 회수가 섞여 있습니다. 하반기에도 이 수준이 이어질지는 별도로 확인해야 합니다.</p>
+<p><strong>마진</strong>
+- 매출총이익률 42.7%, 영업이익률 37.6%입니다.
+- 구리 C1 원가는 $2.42/lb이며, 회사는 하반기 동안 분기마다 내려갈 것이라고 밝혔습니다.
+- 광산에서 캔 금의 C1 원가는 $1,586/oz로 높습니다. 회사는 금 C1 가이던스를 $1,100~1,350/oz, 총유지원가(AISC)를 $2,200~2,700/oz로 조정했습니다.</p>
+<p><strong>현금흐름(실적콜)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2 영업현금흐름</td>
+<td>약 $138M (QoQ 약 <span class="up">+50%</span>)</td>
+</tr>
+<tr>
+<td>Q2 조정 EBITDA</td>
+<td>$144M</td>
+</tr>
+<tr>
+<td>상반기 영업현금흐름</td>
+<td>$231M (전년 동기 $156M)</td>
+</tr>
+<tr>
+<td>상반기 조정 EBITDA</td>
+<td>$269M (전년 동기 $146M)</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$171.6M (제공 지표)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>시가총액 대비 FCF 수익률은 약 4.3%입니다. 아직 capex가 많은 해의 수치입니다.</li>
+</ul>
+<p><strong>재무 건전성</strong>
+- 실적콜에서 18개월간 순부채를 약 $100M 줄였고, 순부채 배율이 0.8배라고 언급했습니다.
+- 2026년 리볼빙 신용한도(RCF) 상환액은 누적 $60M이며, 7월 상환 후 잔액은 $95M입니다.
+- 회사채 등 전체 차입 구조는 공시상 확인 불가입니다.
+- 은행 신용계약(BMO 주관) 3차 수정은 담보 범위(NX Gold 광산 정의)를 바꾼 기술적 수정입니다. 회사는 수정 시점에 채무불이행 사유가 없다고 진술했습니다(6-K Exhibit 99.2).</p>
+<p><strong>데이터 불일치 주의</strong>
+- Seeking Alpha 위젯에는 Q2 매출이 $398.54M(YoY <span class="up">+76.12%</span>)으로 나옵니다. 제공 지표 $284.3M과 다릅니다.
+- 같은 페이지의 TSX 종목(ERO:CA) 시가총액($4.98B)과 주가(50.93)도 함께 보면, 캐나다달러 표시일 가능성이 있습니다. 이는 추정입니다.
+- EPS $1.16(예상치를 $0.16 상회)도 통화 기준을 확인할 수 없습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Tucumã 생산 확대</strong></td>
+<td>6월 광미 여과 1단계 완료. 회사는 하반기에 모듈형 여과기 3기를 설치해 처리량을 높이겠다고 밝힘</td>
+<td>3분기 처리량·구리 생산의 전분기 대비 증가 여부, 여과기 시운전 완료</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Caraíba 처리량과 Pilar 수직갱도</strong></td>
+<td>회사는 2026년 연간 처리량 신기록을 낼 것이라고 밝힘. 갱도는 2027년 운영 전환, 2028년이 효과를 처음 온전히 보는 해라고 밝힘</td>
+<td>갱도 예산($80~90M) 집행률, 일정 지연 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>capex 정점 통과로 FCF 확대</strong></td>
+<td>회사는 "올해가 마지막 대규모 capex 해"라고 밝힘. 소규모 잔여 집행은 2027년으로 넘어감</td>
+<td>2027년 capex 가이던스(아마 연초 발표), 4분기 FCF</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Xavantina 금 정상화</strong></td>
+<td>회사는 하반기에 채굴량과 처리량이 크게 늘고 원가가 떨어질 것이라고 밝힘. 단, 연간 생산은 가이던스 하단으로 예상</td>
+<td>광산 채굴 금 생산량과 C1 원가, 과거 정광 회수분을 뺀 수치</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Furnas(60% earn-in)</strong></td>
+<td>연말까지 시추 90,000m 완료, 예비타당성조사(PFS) 진행 중. 계약에 확정 타당성조사(DFS) 검토, 최종 투자결정(FID), Vale 풋옵션 조항이 있음(6-K Exhibit 99.3 목차)</td>
+<td>PFS 발표 시점과 경제성, 회사가 부담할 개발비 규모. 계약 본문이 없어 세부 조건은 확인 불가</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>주주환원 전환</strong></td>
+<td>우선순위는 ① 레버리지 1배 미만(달성) ② RCF 상환 ③ 연말 이후 시장에 다시 안내</td>
+<td>남은 RCF $95M 상환 완료 시점, 환원 정책 발표 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 "2025년 초 주주에게 한 약속을 지키고 있다"는 표현을 반복했습니다.
+- 그 근거로 OneEro 전사 효율화 프로그램, 순부채 감축, 현금흐름 개선을 들었습니다. 수치를 동반하고 있어 말뿐인 자신감은 아닙니다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 구리는 생산·원가 가이던스를 모두 유지했습니다.
+- 금은 다소 물러섰습니다. 생산은 "범위 하단"으로 낮췄고, 원가 가이던스는 다시 제시했으며, capex는 $10M 늘렸습니다(송전선 추가). 회사는 송전선이 2년 안에 투자비를 회수한다고 주장했습니다.
+- 구리는 자신 있게, 금은 방어적으로 말하는 구도입니다.</p>
+<p><strong>Q&amp;A에서 반복된 주제</strong>
+- <strong>capex 잔여 예산과 정점 통과(Scotiabank):</strong> 남은 예산 금액을 정확히 묻자 경영진은 "연간 예산의 절반 정도"라고만 답했습니다. 금액은 특정하지 않았습니다.
+- <strong>순현금 전환 이후 자본배분(Bradesco):</strong>
+  - 연말 순현금 전환 전망은 애널리스트의 표현입니다. 회사가 확인한 것은 아닙니다.
+  - 주주환원 시점에 대해 경영진은 "RCF 상환 이후 연말쯤 다시 이야기하겠다"며 약속을 미뤘습니다.
+- <strong>M&amp;A:</strong> 경영진은 "기업개발팀이 미주 지역 기회를 검토하고 있다"면서도 "보유 포트폴리오 실행이 우선"이라고 답했습니다. 인수자 입장인지 피인수 대상인지에 대해서는 명확히 답하지 않았습니다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 현재 Pilar 광산 깊은 구간은 경사로로 내려가는 데 최대 1.5시간이 걸립니다. 브라질 지하광산은 6시간 교대라서, 깊은 고품위 구간의 실제 작업 가용 인력은 약 50%에 그칩니다.
+- 새 갱도는 전 인력의 출입을 1시간 안에 끝내도록 설계됐습니다. 회사는 이것이 생산성을 크게 끌어올릴 것이라고 밝혔습니다.
+- 상파울루에서 Capital Markets Day를 열 예정입니다. 날짜는 제공 자료로 확인 불가입니다.
+- 콜 도중 기술 문제로 회선이 끊겼다가 다시 연결됐습니다(종료 발언).</p>
+<h2>6. 리스크</h2>
+<p>※ 40-F 리스크 섹션 원문이 제공되지 않아, 제공된 6-K와 실적콜에서 확인되는 위험만 추렸습니다.</p>
+<ol>
+<li><strong>원자재 가격 민감도:</strong> 경영진 스스로 실적 개선의 일부를 "원자재 가격 순풍" 덕으로 돌렸습니다. 구리·금 가격이 꺾이면 마진 개선 폭(<span class="up">+8.8%</span>p)의 상당 부분이 되돌려질 수 있습니다. 가격 민감도 수치는 확인 불가입니다.</li>
+<li><strong>금 실적의 일회성:</strong> Q2 금의 58%가 과거 정광 회수분입니다. 광산에서 캔 금은 C1 $1,586/oz로 원가가 높고, 생산도 가이던스 하단입니다. 정광 재고가 바닥나면 금 부문 실적이 떨어질 수 있습니다. 추가 스트림(15%를 현물가 40%에 인도)도 금값 상승 이익을 제한합니다.</li>
+<li><strong>대형 프로젝트 실행:</strong> Pilar 갱도는 2027년 운영 전환, 2028년 효과 본격화로 일정이 깁니다. Furnas는 FID와 Vale 풋옵션 등 조건이 걸린 earn-in 구조이고, 회사(Ero Copper)가 지급보증을 서는 조항이 있습니다(Exhibit 99.3 목차). 해당 조항의 세부 내용은 확인 불가입니다.</li>
+<li><strong>지역 집중:</strong> 모든 운영 자산이 브라질에 있습니다. Furnas는 브라질 경쟁당국(CADE) 승인, 브라질 국책개발은행(BNDES) 관련 조항 등 현지 인허가와 이해관계자 변수를 안고 있습니다(Exhibit 99.3 목차).</li>
+<li><strong>기대 선반영과 수급:</strong> 60일 <span class="up">+50.3%</span>로 많이 올랐는데 오늘은 거래량이 평균에 못 미쳤습니다. 3분기 실적이 하반기 개선 기대에 못 미치면 주가가 크게 조정받을 수 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거('보통')</strong>
+- 긍정 요인:
+  - 매출 YoY <span class="up">+73.9%</span>, 영업이익률 37.6%(<span class="up">+8.8%</span>p)
+  - TTM FCF $171.6M(FCF 수익률 약 4.3%)
+  - 순부채 배율 0.8배, 남은 RCF $95M(실적콜)
+  - Seeking Alpha 표기 선행 PER 8.47배(제3자 수치, 통화와 기준 확인 불가)
+- 유보 요인:
+  - 거래량 0.82배로 오늘 상승의 근거가 약함
+  - 60일 <span class="up">+50.3%</span>로 단기간 급등
+  - 금 실적에 일회성 비중이 큼
+  - 매출 기준이 출처마다 다름
+  - 40-F 원문 미제공</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 40-F와 Q2 MD&amp;A 원문에서 세 가지를 확인합니다: 매출 기준(USD $284.3M인지 CAD $398.5M인지), 구리·금 매출 비중과 가격·물량 분해, 회사채 포함 총차입금.
+2. 11/2 3분기 실적에서 세 가지를 확인합니다: 구리 생산의 전분기 대비 증가와 C1 원가 하락(회사 가이던스 방향), Tucumã 여과기 시운전 완료, 정광 회수분을 뺀 금 원가.
+3. capex 집행률과 4분기 RCF 잔액 감소 추이로 "capex 정점 통과 → FCF 확대"가 숫자로 확인되는지 봅니다.</p>
+<p><strong>판단을 뒤집을 조건(관망 전환)</strong>
+- 3분기 구리 생산이 전분기 대비 정체 또는 감소하거나, 구리 C1 가이던스를 올리는 경우
+- Pilar 갱도 예산 초과나 2027년 운영 전환 지연을 공식화하는 경우
+- 금 생산 가이던스를 하단 아래로 낮추거나, 정광 회수가 끝나며 금 부문 원가가 급등하는 경우
+- RCF 상환이 멈추거나, Furnas 개발 자금 때문에 증자 또는 신규 차입을 하는 경우
+- 구리 가격 급락 등으로 실적콜의 "가격 순풍" 전제가 깨지는 경우</p>
+<p><strong>적극 전환 조건</strong>
+- 3분기에 구리 증산과 원가 하락이 함께 확인되고, RCF 상환을 마친 뒤 주주환원 정책이 발표되면 적극 비중으로 올리는 것을 검토합니다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1853860/000117184326001987/exh_993.htm">8-K — 2027-03-27_0001171843-26-001987__EX-99.3__exh_993</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1853860/000117184326001987/exh_992.htm">8-K — 2027-03-27_0001171843-26-001987__EX-99.2__exh_992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1853860/000117184326001987/exh_991.htm">8-K — 2027-03-27_0001171843-26-001987__EX-99.1__exh_991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1853860/000117184326001987/f6k_032726.htm">8-K — 2027-03-27_0001171843-26-001987</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1853860/000117184326006339/exh_991.htm">8-K — 2026-10-01_0001171843-26-006339__EX-99.1__exh_991</a></li>
+<li>Transcript — 2026-08-06 Ero Copper Corp. (ERO:CA) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-08-10 Ero Copper Corp. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MU — Micron Technology Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MU — Micron Technology Inc. Common Stock</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">MU</span><span class="badge">+3.03%</span><span class="badge">거래량 1.91배</span><span class="badge">$1.24T</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>실적은 메모리 업사이클 중에서도 이례적인 수준임. 2026-09-30 8-K에 따르면 FY26 4분기 매출은 $54.23B로 전분기($41.46B)와 전년동기($11.32B)를 크게 넘었고, 연간 매출은 $133.19B, GAAP 순이익은 $84.97B임. 시가총액 $1.24T를 FY26 GAAP 순이익으로 나누면 약 14.6배임(산출치).</li>
+<li>실적 가시성도 높음. 10-Q에 따르면 전략적 고객계약(SCA)은 take-or-pay 구조이고 하한가·상한가 밴드가 있음. 실적콜에서는 FY27 출하량의 75% 이상이 이미 계약됐다고 언급함.</li>
+<li>그런데도 '적극'으로 올리지 않는 이유는 세 가지임. ① 이익률이 업계 사상 최고 수준(3분기 매출총이익률 84.6%)이어서 이익이 꺾이는 시점이 밸류에이션을 좌우하는 국면임. ② 최대 계약들의 상한가가 2026년 2분기(달력 기준) 시장가 수준이라 추가 가격 상승의 일부를 회사가 가져가지 못함. ③ 제공 자료에서 FY27 1분기 매출·이익률 가이던스 수치를 확인할 수 없음.</li>
+<li>실적 발표 후 주가 하락 뉴스가 있었고, 60일 수익률이 <span class="up">+8.4%</span>에 그쳐 실적 개선 폭보다 훨씬 작음. 시장이 이미 "정점 이후"를 할인하고 있는 것으로 보임(해석).</li>
+<li>결론: 비중은 벤치마크 수준 또는 소폭 초과로 담을 수 있음. 공격적 초과 비중은 7절 체크포인트를 확인한 뒤에 판단할 것.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>유력 촉매(뉴스 헤드라인 기준): Ford와의 메모리 공급 계약.</strong> Stocktwits 헤드라인 "MU, F Stocks Climb After Micron And Ford Sign Major Memory Pact"가 근거임. 다만 제공된 SEC 공시 중 이 계약을 다룬 문서는 없음. 계약 규모, 기간, 가격 구조는 <strong>공시상 확인 불가</strong>임.</li>
+<li>실적콜에서 회사는 "이번 분기 10개 고객과 신규 SCA를 체결했고 SCA가 모든 사업부로 확대됐다"고 언급함. Ford 계약이 이 흐름(자동차 등 데이터센터 밖으로의 SCA 확산)의 일부일 수는 있으나, 이는 추정임.</li>
+<li><strong>실적 발표 후 되돌림 반등</strong>: 9/30 실적 발표 후 "Micron stock dips after earnings" 헤드라인이 있었음. 오늘 상승(<span class="up">+3.03%</span>, 거래량 20일 중앙값의 1.91배)에는 발표 직후 하락분을 되돌리는 수급도 섞인 것으로 보임(추정).</li>
+<li>오늘 날짜 전후의 SEC 공시는 9/30 8-K(4분기 실적) 하나뿐임. 오늘 자체를 촉매로 하는 신규 공시는 없음.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품</strong> (10-Q MD&amp;A 기준):</li>
+<li>DRAM: HBM 포함. 데이터센터, PC, 그래픽, 모바일, 자동차, 산업용</li>
+<li>NAND: SSD, 모바일용 managed NAND, 저밀도 NAND</li>
+<li>NOR: 자동차·산업용 코드 저장</li>
+<li>판매 형태는 부품, 모듈, SSD, 멀티칩 패키지, 웨이퍼임.</li>
+<li><strong>수익 원천</strong>: MD&amp;A는 AI 데이터센터 수요 증가 속도가 회사와 업계의 공급 증가 속도를 넘어섰다고 밝힘. 이 때문에 공급 배분을 결정해야 하는 상황이며, 가격 상승이 포트폴리오 전반의 수익성을 끌어올렸음.</li>
+<li><strong>고객군</strong>: 하이퍼스케일러와 AI 가속기 업체가 핵심임. 실적콜과 Six Five 대담에서 NVIDIA와의 협업이 언급됨(HBM4E 공동설계, 데이터센터용 LPDRAM). 대담에서 회사는 데이터센터용 LPDRAM에서 "장기간 단독 공급"했다고 밝힘. 고객별 매출 비중은 <strong>공시상 확인 불가</strong>임.</li>
+<li><strong>매출 구성</strong>: 제공 발췌에 사업부별·제품별(DRAM/NAND) 매출 분해표는 없음 → <strong>공시상 확인 불가</strong>.</li>
+<li><strong>경쟁 위치</strong>:</li>
+<li>10-Q는 "치열한 경쟁"을 명시함.</li>
+<li>실적콜에서 회사는 HBM 점유율이 전체 DRAM 점유율과 비슷하다고 언급함.</li>
+<li>중국 경쟁사보다 기술이 최소 2개 노드 앞서 있다고 언급함.</li>
+<li>2026년 NAND 비트 출하는 업계 평균보다 낮았다고 인정함.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이</strong> (단위 $B; 10-Q, 8-K, 지표 표)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>FY25 2Q</th>
+<th>FY26 1Q</th>
+<th>FY26 2Q</th>
+<th>FY26 3Q</th>
+<th>FY26 4Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>8.05</td>
+<td>13.64</td>
+<td>23.86</td>
+<td>41.46</td>
+<td>54.23</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>37%</td>
+<td>56%</td>
+<td>74%</td>
+<td>84.6%</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>22%</td>
+<td>45%</td>
+<td>68%</td>
+<td>80.4%</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>1.58</td>
+<td>5.24</td>
+<td>13.79</td>
+<td>공시상 확인 불가</td>
+<td>37.70 (GAAP)</td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>25.39</td>
+<td>43.97</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>참고: 제공된 지표 표(최근 분기 매출 $41.46B, YoY <span class="up">+345.7%</span>, 영업이익률 80.4%)는 <strong>3분기 기준</strong>이며 4분기 실적이 반영되지 않았음.</p>
+</blockquote>
+<ul>
+<li><strong>성장의 질 (가격·물량·믹스)</strong>:</li>
+<li>성장은 가격 주도임. MD&amp;A는 가격과 마진의 "상당한 개선"을 원인으로 듦.</li>
+<li>실적콜에서 모바일·클라이언트는 비트 출하가 전분기보다 줄었지만, 가격 상승과 프리미엄 믹스로 매출은 늘었다고 언급함.</li>
+<li>FY27 1분기 가이던스는 "한 자릿수 비트 성장"임. 물량이 크게 늘기 어렵다는 뜻이므로, 앞으로의 성장도 가격과 믹스(HBM 비중, 2027년 HBM 가격 재설정)에 달려 있음.</li>
+<li><strong>4분기 성장률 해석 시 주의</strong>: 10-Q에 따르면 FY26 4분기는 14주(3분기는 13주)이고 FY26 전체는 53주임. 전분기 대비 <span class="up">+30.8%</span>(산출치)에는 1주 추가 효과가 포함돼 있음. 주당 기준으로 환산하면 약 <span class="up">+21%</span>임(산출, 추정).</li>
+<li><strong>마진 방향</strong>:</li>
+<li>매출총이익률은 37% → 56% → 74% → 84.6%로 4개 분기 연속 상승함.</li>
+<li>회사는 가격 밴드가 있는 SCA의 경우 하한가에서도 "과거 어느 사이클의 분기 피크 마진보다 훨씬 높은" 매출총이익률이 나올 것으로 기대한다고 밝힘.</li>
+<li>실적콜에서는 FY27 마진이 1분기 대비 확대될 것이라고 언급함.</li>
+<li>반면 비용은 늘어남. FY27 연구개발비는 전년 대비 $1B 넘게 증가할 예정이고, 1분기 가이던스에 DRAM·NAND 원가 "두 자릿수" 증가가 반영됨. 원문이 "double digit for cost"라서 비트당 원가인지 총원가인지는 불명확함.</li>
+<li><strong>현금흐름</strong>:</li>
+<li>FY26 영업현금흐름은 $89.68B로 전년($17.53B)의 약 5.1배임.</li>
+<li>4분기 단독 영업현금흐름은 $43.97B임.</li>
+<li>지표상 TTM 잉여현금흐름 $26.17B는 4분기 반영 전 수치로 보임.</li>
+<li>FY26 설비투자 총액은 <strong>공시상 확인 불가</strong>임.</li>
+<li><strong>재무 건전성</strong>:</li>
+<li>FY26 2분기 순이자손익이 +$123M으로 흑자 전환함. 10-K 용어표에 따르면 2024~2027년 만기 term loan과 노트를 조기 상환했음.</li>
+<li>순현금 규모와 총차입금은 <strong>공시상 확인 불가</strong>이나, 현금 창출력으로 볼 때 재무 리스크는 낮음(해석).</li>
+<li><strong>밸류에이션</strong> (산출치, 추정 포함):</li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th>계산</th>
+<th>배수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY26 GAAP EPS $74.33</td>
+<td>$1,097.39 ÷ $74.33</td>
+<td>약 14.8배</td>
+</tr>
+<tr>
+<td>4분기 EPS $32.87을 13주 기준으로 환산 후 연율화</td>
+<td>–</td>
+<td>약 9배</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCA를 통한 사업모델 전환</td>
+<td>10-Q: take-or-pay 구조이고 다년 물량을 구속력 있게 약정. 실적콜: 계약이 2030년 이후까지 이어지고, SCA 매출의 약 3/4은 하한·상한 밴드 적용</td>
+<td>고객이 계약을 실제로 이행하고, 가격 밴드가 시장가와 크게 벌어지지 않을 것</td>
+<td>FY27 1분기 10-Q에서 SCA 관련 잔여 이행의무와 계약 매출 공시가 나오는지, 신규 계약 수</td>
+</tr>
+<tr>
+<td>HBM 확대와 가격 재설정</td>
+<td>실적콜: HBM이 일반 DRAM보다 빠르게 성장하고 2027년에 큰 폭의 가격 재설정 예정. NVIDIA와 HBM4E(NVHBM) 공동설계</td>
+<td>HBM4E 퀄 통과와 램프 일정 준수. 싱가포르 HBM 공장 2027년 램프</td>
+<td>HBM 매출 비중이나 성장률 언급, HBM4E 퀄 진척</td>
+</tr>
+<tr>
+<td>2028년까지 이어지는 공급 부족</td>
+<td>실적콜: 2028년은 2027년보다 더 타이트. FY27 출하량 75% 이상 계약 완료. 대담: 의미 있는 공급 증가는 2028년부터, 그것도 초기 수준</td>
+<td>업계 그린필드 증설 속도가 회사 예상보다 늦을 것</td>
+<td>경쟁사 설비투자 발표, DRAM 계약가 추이(외부 자료)</td>
+</tr>
+<tr>
+<td>고객 사양 하향(de-spec)에서 생기는 잠재 수요</td>
+<td>실적콜: 고객들이 메모리 부족 때문에 AI 랙 사양을 낮췄고, 공급이 늘면 다시 사양을 올릴 것이라고 언급</td>
+<td>공급 과잉 국면에서도 탑재량이 늘어 가격 하락을 흡수할 것</td>
+<td>서버당 메모리 탑재량 관련 회사 코멘트</td>
+</tr>
+<tr>
+<td>데이터센터 밖으로의 확장 (자동차·로보틱스)</td>
+<td>대담: 로보틱스와 피지컬 AI가 다음 성장 동력. 뉴스: Ford 계약</td>
+<td>자동차·엣지 SCA가 늘어날 것</td>
+<td>Ford 계약 관련 공시나 IR 언급 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- 매우 자신감 있음. 근거로 세 가지를 듦: FY27 출하량 75% 이상 계약, SCA 연장 협상 완료, 고객과의 공급 배분 논의가 이미 2028년분으로 넘어감.
+- 2028년 시황을 "올해와 2027년보다 타이트하다"고 처음 공개적으로 말함. 애널리스트(Melius)도 "New commentary"라고 짚었음. 가이던스의 시계가 분기 단위에서 다년 단위로 길어진 것이 화법상 가장 큰 변화임.
+- CFO는 통화 말미에 "질문이 기술과 장기 펀더멘털에 집중돼 기쁘다"고 말함. 단기 숫자에 대한 공격적 질문이 적었다는 뜻으로 읽힘.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- 2027~2028년 공급(Morgan Stanley, Susquehanna):
+  - NAND 비트 성장을 업계 평균 25% 수준으로 따라갈 수 있느냐는 질문에, 회사는 "그렇게 먼 시점은 코멘트하지 않는다"며 답을 피함.
+  - 2026년 NAND 출하가 업계보다 부진했던 이유로는 싱가포르 클린룸을 R&amp;D와 HBM 파일럿에 돌린 점을 들었음.
+- DRAM이 웨이퍼 단계에서 범용성이 높아 원가 관리에 유리하냐는 질문(Susquehanna)에 CTO는 이를 반박함. 노드 안에서 제품별 공정 차이가 "역사상 가장 크다"고 했고, 같은 라인에서 제품 믹스를 바꿀 수 있지만 원가 절감 효과는 아니라고 선을 그었음.
+- 경쟁 공급이 예상보다 많아지면 어떻게 되느냐는 시나리오 질문에는 잠재 수요가 흡수할 것이라는 논리로 방어함. 다만 정량 근거는 제시하지 않았음.</p>
+<p><strong>콜에서만 나온 정보</strong> (공시 미기재)
+- 이번 분기 신규 SCA 10건, SCA가 모든 사업부로 확대, SCA 매출의 약 3/4에 하한·상한 밴드 적용
+- FY27 중국 매출 비중은 한 자릿수
+- FY27 1분기 가이던스: 한 자릿수 비트 성장, 원가 두 자릿수 증가
+- FY27 연구개발비 전년 대비 $1B 초과 증가
+- 신규 클린룸은 2028년 하반기(달력 기준) 가동. 장비 업체들과 장기 공급계약 확보
+- HBM 가격을 2027년에 재설정해 일반 DRAM과의 수익성 격차를 줄일 계획</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>제공 자료에서 10-K 리스크 섹션(Item 1A) 본문은 목차까지만 포함돼 있어 원문을 인용할 수 없음. 아래는 10-Q MD&amp;A와 실적콜에 근거함.</p>
+</blockquote>
+<ol>
+<li><strong>SCA 상한가가 이익 상승을 제한함</strong>: 10-Q에 따르면 최대 계약들의 상한가는 2026년 2분기(달력 기준) 시장가 수준임. 현물·계약가가 더 오르면 회사 몫이 제한되고, 계약 비중이 75%를 넘는 만큼 이익 레버리지가 과거 사이클보다 약해짐. 반대로 하한가가 있어 하락 방어력은 커짐. 결과적으로 이익 분포가 좁아지는 구조임.</li>
+<li><strong>2028년 이후 공급 대응</strong>: 대담에서 회사는 미국 $250B 투자와 아이다호·뉴욕·대만·일본·싱가포르 신규 팹을 언급했고, 업계 전체가 그린필드 증설 중임. 실적콜에 따르면 회사의 신규 클린룸도 2028년 하반기에 가동됨. 업계 공급이 한꺼번에 늘어나는 시점이 SCA로 보호되지 않는 약 1/4 매출과 신규 계약 가격에 부담이 될 수 있음.</li>
+<li><strong>수요 파괴와 고객 반발</strong>: MD&amp;A는 공급 배분이 "특정 고객과 최종시장에 영향을 줄 수 있다"고 명시함. 실적콜에서도 모바일·클라이언트 비트 출하 감소와 AI 랙 사양 하향이 확인됨. 가격이 계속 오르면 PC·모바일 수요가 영구적으로 위축될 수 있음.</li>
+<li><strong>비용 증가와 마진 정점</strong>: 1분기 원가 두 자릿수 증가, 연구개발비 $1B 초과 증가, 공사 설비투자 가속이 예정돼 있음. 매출총이익률 84.6%에서 더 오를 여지는 제한적임(해석). 뉴스 헤드라인 "It May Get Worse, Not Better"와 "stark memory chip warning"은 본문이 제공되지 않아 내용은 확인 불가임.</li>
+<li><strong>지정학</strong>: 회사는 중국 매출 비중을 한 자릿수로 줄였다고 하지만, 대만·싱가포르·일본에 생산이 집중돼 있음. 10-K 용어표에 중국 CAC(사이버공간관리국)가 등장해 관련 규제 이슈가 있음을 시사하나, 구체적 내용은 공시상 확인 불가임.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- FY26 매출 $133.19B(전년 대비 <span class="up">+256%</span>, 산출), GAAP 순이익률 63.8%(산출), 영업현금흐름 $89.68B
+- 4분기 매출 $54.23B, 영업현금흐름 $43.97B. 14주 효과를 감안해도 분기 이익이 계속 늘고 있음
+- 시가총액 대비 FY26 순이익 약 14.6배, 4분기 연율화 기준 약 9배(추정). 업사이클 정점 우려를 감안하면 낮은 배수는 아니지만, SCA 하한가가 이익 하락 폭을 줄여준다면 재평가 여지가 있음
+- 주가는 52주 고점 대비 <span class="down">-9.6%</span>, 60일 수익률 <span class="up">+8.4%</span>. 실적이 개선된 폭에 비해 주가는 덜 올랐음</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. FY27 1분기 10-Q와 가이던스 원문에서 매출·매출총이익률 가이던스 수치, 그리고 SCA 계약 매출이나 잔여 이행의무 공시 여부를 확인할 것
+2. Ford 계약의 실체: 8-K나 IR 자료로 규모와 가격 구조가 확인되는지 볼 것. 확인되면 자동차향 SCA 확산의 근거가 됨
+3. 4분기 사업부별 매출총이익률과 설비투자 규모: 이번 발췌에 없음. 잉여현금흐름 전환율과 HBM 및 일반 DRAM 마진 격차를 확인할 것</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>관망으로 낮출 조건</strong>:
+  - FY27 1분기 가이던스나 실적에서 매출총이익률이 전분기보다 하락함
+  - 원가 증가가 가격 상승을 앞지른다는 신호가 나옴
+  - SCA 고객이 물량 조정이나 재협상을 요구한다는 공시·언급이 나옴
+  - 경쟁사가 증설 일정을 앞당겨 2028년 이전에 공급이 늘어날 신호가 나옴
+  - 75%였던 FY27 계약 비율이 떨어짐
+- <strong>적극으로 올릴 조건</strong>:
+  - 공시상 SCA 계약 매출 규모와 하한가 수준이 정량적으로 확인됨
+  - FY27 상반기에 마진 확대가 실제로 나타남
+  - 2028년분 계약 비율이 의미 있게 올라감</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm">10-K — 2025-08-28_0000723125-25-000028</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/mu-20260528.htm">10-Q — 2026-05-28_0000723125-26-000015</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/mu-20260226.htm">10-Q — 2026-02-26_0000723125-26-000006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000018/a2026q4ex991-pressrelease.htm">8-K — 2026-09-30_0000723125-26-000018__EX-99.1__a2026q4ex991-pressrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000018/mu-20260930.htm">8-K — 2026-09-30_0000723125-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000110465926101067/tm2624017d1_ex99-1.htm">8-K — 2026-08-24_0001104659-26-101067__EX-99.1__tm2624017d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000110465926101067/tm2624017d1_8k.htm">8-K — 2026-08-24_0001104659-26-101067</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000013/a2026q3ex991-pressrelease.htm">8-K — 2026-06-24_0000723125-26-000013__EX-99.1__a2026q3ex991-pressrelease</a></li>
+<li>Transcript — 2026-09-30 Q4 2026 Post Call Transcript</li>
+<li>Transcript — 2026-08-27 The Six Five Summit: AI Unleashed 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

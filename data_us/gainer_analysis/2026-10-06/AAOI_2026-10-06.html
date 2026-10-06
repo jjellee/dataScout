@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAOI — Applied Optoelectronics Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AAOI — Applied Optoelectronics Inc. Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">AAOI</span><span class="badge">+7.71%</span><span class="badge">거래량 1.54배</span><span class="badge">$9.81B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>수요는 강하다.</strong> 2Q26 매출은 $191.9M으로 YoY <span class="up">+86.4%</span>, QoQ <span class="up">+27.0%</span>이며 5분기 연속 사상 최대다. 회사는 2026년 매출을 약 $1.1B으로 제시하며, 매출이 수요가 아니라 생산능력에 막혀 있다고 밝힘.</li>
+<li><strong>현금은 크게 빠져나가고 있다.</strong> 영업이익률은 <span class="down">-12.4%</span>, TTM 잉여현금흐름은 -$601.3M이다. 증설 자금은 ATM 유상증자 $538.8M에 기대고 있어 주주 희석이 이미 진행 중이다(실적콜 기준).</li>
+<li><strong>올해 가이던스는 4분기에 몰려 있다.</strong> 연간 $1.1B을 맞추려면 4Q 매출이 약 $500M 안팎이어야 한다(1Q·3Q 수치에서 역산). 이는 2Q의 약 2.6배다. 그런데 DSP·TIA 등 핵심 부품 부족과 3Q의 100G 매출 차질이 이미 콜에서 언급됐다.</li>
+<li><strong>이익률 눈높이는 낮아졌다.</strong> 연말 non-GAAP 매출총이익률에 대해 애널리스트가 "mid-30s"를 물었고, CEO는 "32~33%"로 답했다.</li>
+<li><strong>결론: 11월 5일 3Q 실적 전까지는 관망이 맞다.</strong> 그 전에 확인할 것은 3Q 가이던스 달성, 1.6T 출하 시작, 4Q 가이던스가 $500M 수준으로 유지되는지다. 비중 결정은 이 세 가지를 본 뒤에 한다. 10/5 Form 144 제출도 단기 수급에 부정적이다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 크다.</strong></p>
+<ul>
+<li><strong>공시:</strong> 당일 전후 SEC 공시는 2026-10-05 Form 144(제한주식 매도 예정 통지) 1건뿐이다. 제출자와 수량은 제공 자료로 확인 불가하다. 방향으로는 오히려 매도 물량 신호다.</li>
+<li><strong>뉴스:</strong> 헤드라인 중 "Why Is AAOI Stock Surging 10% Premarket?"(Stocktwits)이 장전 급등을 다루지만, 본문이 없어 원인은 공시상 확인 불가하다. 나머지 헤드라인은 시세·포럼성 페이지다.</li>
+<li><strong>실적:</strong> 직전 실적은 8/6 발표된 2Q26이고, 다음은 11/5로 예정돼 있다. 오늘은 실적 이벤트 구간이 아니다.</li>
+<li><strong>수급 정황:</strong></li>
+<li>거래량은 20일 중앙값의 1.54배로 크게 늘지 않았다. 거래대금 $1.28B은 시총 $9.81B의 약 13% 수준이다.</li>
+<li>20일 수익률은 <span class="up">+15.2%</span>, 60일은 <span class="up">+1.4%</span>, 52주 고점 대비 <span class="down">-48.2%</span>다. 고점에서 크게 조정받은 뒤 단기 반등이 이어지는 흐름으로 보인다(추정).</li>
+<li>펀더멘털 신규 정보에 따른 재평가라고 볼 근거는 제공 자료에 없다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품과 통합 수준</strong>
+- 10-K 기준으로 회사는 수직계열화된 광통신 제품 업체다. 레이저칩부터 부품, 서브어셈블리, 모듈, 완제 장비까지 만든다.
+- 목표 시장은 4개다: 인터넷/AI 데이터센터, CATV, 통신(telecom), FTTH.
+- 레이저칩은 전량 Sugar Land(텍사스)에서 MBE와 MOCVD 공정으로 직접 생산한다.
+- 회사는 두 공정을 함께 쓰는 노하우가 업계에서 독보적이라고 밝힘. 고객이 미국 내 생산능력을 가진 공급사를 선호한다는 점도 경쟁우위로 주장함.</p>
+<p><strong>생산 거점</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>거점</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sugar Land, TX</td>
+<td>레이저칩, 데이터센터 트랜시버, 서브어셈블리</td>
+</tr>
+<tr>
+<td>Taipei, 대만</td>
+<td>버터플라이 레이저, 데이터센터·통신·FTTH 트랜시버, CATV 옥외장비</td>
+</tr>
+<tr>
+<td>Ningbo, 중국</td>
+<td>일부 조립(CATV 헤드엔드, 옥외장비, 데이터센터 트랜시버)</td>
+</tr>
+<tr>
+<td>Duluth, GA</td>
+<td>R&amp;D</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>9/10 8-K(Exhibit 10.1)에 따르면 Ningbo 자회사로 보이는 GLOBAL Technology Inc.가 Ningbo의 공장 건물 전체를 장기 임차했다. 목적은 리노베이션과 장기 생산이다.</li>
+<li>즉 미국 증설과 함께 중국 생산공간도 확대 중이다. 임대 규모와 금액은 발췌본상 확인 불가하다.</li>
+</ul>
+<p><strong>2Q26 매출 구성 (실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>매출</th>
+<th>비중</th>
+<th>YoY</th>
+<th>QoQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터센터</td>
+<td>$107.7M</td>
+<td>약 56%</td>
+<td>+140.4%</td>
+<td>+32.3%</td>
+</tr>
+<tr>
+<td>└ 400G</td>
+<td>$48.4M</td>
+<td>DC 내 45%</td>
+<td>4배 이상</td>
+<td>+27.4%</td>
+</tr>
+<tr>
+<td>└ 800G</td>
+<td>$12.8M</td>
+<td>DC 내 11.9%</td>
+<td>10배 이상</td>
+<td>2배 이상</td>
+</tr>
+<tr>
+<td>└ 그 외(100G 등, 역산)</td>
+<td>약 $46.5M</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>CATV</td>
+<td>$80.6M (사상 최대)</td>
+<td>약 42%</td>
+<td>+43.8%</td>
+<td>+20.6%</td>
+</tr>
+<tr>
+<td>FTTH·통신·기타</td>
+<td>—</td>
+<td>2%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객 구조</strong>
+- 상위 10개 고객이 매출의 99%다.
+- 10% 이상 고객이 3곳이다.
+- 사실상 소수 하이퍼스케일러와 CATV 사업자(MSO)에 매출이 집중된 구조다.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 CEO는 한 대형 하이퍼스케일 고객의 1.6T 트랜시버 4번째 공급사로 인증을 앞두고 있다고 언급함.
+- CATV에서는 Mediacom의 DOCSIS 4.0 업그레이드 주력 벤더로 선정됨.
+- CPO 레이저 성능은 경쟁사로 Lumentum·Coherent만 거론하며 "AOI, Lumentum, Coherent" 수준이라고 주장함. 이는 회사 측 주장이다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 (물량·믹스)</strong>
+- <strong>물량:</strong> 성장은 주로 물량 증가에서 나온다. 생산능력이 1Q 말 800G·1.6T 월 약 10만 개에서 현재 전체 월 20만 개에 근접한 수준으로 늘었다(실적콜).
+- <strong>믹스:</strong> 400G에서 800G로 넘어가고 있다. 3Q 800G 매출은 전분기 대비 약 5배로 회사가 제시함. 산술상 약 $60M대다.
+- <strong>단가:</strong> 제품별 ASP는 공시상 확인 불가하다.
+- <strong>CATV:</strong> CATV가 데이터센터 사이클을 일부 상쇄하는 두 번째 축으로 작동하고 있다.</p>
+<p><strong>마진 방향성</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-GAAP GPM</td>
+<td>30.4%</td>
+<td>29.2%</td>
+<td>29.8%</td>
+</tr>
+<tr>
+<td>GAAP GPM</td>
+<td>—</td>
+<td>—</td>
+<td>27.7%</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>약 <span class="down">-14.2%</span> (역산)</td>
+<td>—</td>
+<td>-12.4%</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업손실</td>
+<td>$10.8M</td>
+<td>—</td>
+<td>$10.3M</td>
+</tr>
+<tr>
+<td>Non-GAAP 순이익</td>
+<td>—</td>
+<td>—</td>
+<td>$5.5M (EPS $0.06)</td>
+</tr>
+<tr>
+<td>GAAP 순손실</td>
+<td>$9.1M</td>
+<td>—</td>
+<td>$22.8M (EPS -$0.28)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출이 86% 늘었지만 GPM은 1년 전보다 낮다. 램프 초기 비용과 공급사 비용 부담 때문으로 보인다.</li>
+<li>Non-GAAP 영업비용은 $67.6M으로 YoY <span class="up">+61%</span>다(2Q25 $42.1M). 매출 대비 비율은 41%에서 35%로 개선됐지만, 영업 레버리지는 아직 손익분기 아래에 있다.</li>
+<li>Non-GAAP 흑자 전환은 영업외 항목에 힘입은 것으로 보인다(추정). 회사가 non-GAAP 영업손실 $10.3M과 순이익 $5.5M을 함께 제시했기 때문이다.</li>
+<li>회사가 밝힌 3Q 가이던스: GPM 29~30.5%, non-GAAP 순이익 $10.1~24M.</li>
+<li>연말 GPM은 CEO가 32~33%로 언급함. 핵심 공급사에 내는 "expertise fee"를 이유로 들었다.</li>
+<li>이익률 개선의 핵심 변수는 고마진인 1.6T 비중이다.</li>
+</ul>
+<p><strong>현금흐름과 투자</strong>
+- TTM 잉여현금흐름은 -$601.3M으로, 연간 예상 매출의 절반을 넘는 규모다.
+- 실적콜 요약에 따르면 2Q 설비투자(capital investments)는 $565.5M이다. 자동 생성 요약 수치이므로 10-Q 현금흐름표로 대조가 필요하다.
+- 회사는 하반기 설비투자 강도가 더 커지고, 자금은 현금·영업현금·유상증자·차입으로 충당한다고 밝힘.
+- 재고는 $206.2M에서 $278.8M으로 분기에 $72.6M 늘었다. 원재료 확보 목적이라고 설명함.</p>
+<p><strong>재무 건전성</strong>
+- 현금·투자자산은 $508.8M이다.
+- 전환사채를 뺀 차입금은 $92.8M이다. 전환사채 잔액은 제공 자료상 확인 불가하다.
+- <strong>희석:</strong>
+  - 10-K 기준 발행주식은 7,520만 주였다(2026-02-24).
+  - 오늘 시총 $9.81B를 종가 $115.59로 나누면 약 8,490만 주로 추정된다. 연초 대비 약 13% 희석이다(추정치).
+  - 증설이 계속되는 동안 추가 ATM 가능성이 크다.</p>
+<p><strong>밸류에이션 (산술)</strong>
+- 시총 대비 2026년 회사 가이던스 매출 $1.1B은 약 8.9배다.
+- 4Q 목표치($500M)를 연환산하면 약 4.9배다.
+- 영업이익은 적자이므로 이익 기반 밸류에이션은 산출 불가하다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>800G 램프</strong>: 3Q 매출 약 5배 성장</td>
+<td>자동화 라인 가동률, DSP·TIA 확보</td>
+<td>3Q 800G 매출 $55~65M 수준 달성 여부, DC 내 비중</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>1.6T 진입</strong>: 수주잔고 $200M 초과, 4Q 매출 $70~80M, 1Q27 2배 이상</td>
+<td>하이퍼스케일러 최종 인증(콜 당시 "2~3주 내"), 부품 공급</td>
+<td>인증 완료와 3Q 첫 출하 확인, 해당 고객의 10% 고객 복귀 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>생산능력 확대</strong>: 월 20만 개 → 2026말 65만 개 초과 → 2027말 93만 개 초과(절반 이상 텍사스)</td>
+<td>21만 sq ft 신공장 3Q 말 초기 생산, Pearland·Houston 2027 초 가동</td>
+<td>3Q 콜에서 신공장 생산 개시 확인, 분기말 생산능력 숫자</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>CATV DOCSIS 4.0</strong> (Mediacom 주력 벤더)</td>
+<td>MSO 업그레이드 투자 지속</td>
+<td>CATV 매출이 $80M대를 유지하는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>CPO 레이저·ELSFP(외부 레이저 광원)·EOSAP</strong>: 레이저 GPM 55~65%, EOSAP 50% 이상, 대량생산은 2027년 3Q 말</td>
+<td>팹 생산능력 약 300% 확대, 제2팹(현 시설의 4배) 건설</td>
+<td>2027년 이후 이야기라 단기 검증은 불가. 팹 장비 반입과 고객 인증 공시를 확인</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>미국 내 생산</strong>을 고객 선호 요인으로 내세움</td>
+<td>관세·규제 환경 유지</td>
+<td>신규 고객 수주 공시(8-K)</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- 톤은 매우 공격적이다. 반복된 메시지는 "수요가 아니라 생산능력이 제약"이다.
+- CEO는 고객 피드백 기준 2027년 말 월 50만 개 초과, 월 $300~350M 규모 수요를 언급함. 2027년 말 생산능력 93만 개와 연결해 장기 매출 상단을 암시했다.
+- 연간 $1.1B은 유지했지만 내부 분기 배분은 바뀌었다:
+  - 애널리스트(Rosenblatt)가 "4Q로 밀림(pushout)"을 직접 지적했다.
+  - CEO는 3Q에 100G 매출 $20~25M이 사라질 것이라고 인정함. 고객사 스위치의 메모리 부족 때문이다.
+  - 4Q 매출은 "$500M 초과"로 제시했다.
+  - CEO는 3Q→4Q 성장을 "약 60%"로 말했다. 하지만 3Q 가이던스 중간값 $272.5M에서 $500M까지는 약 <span class="up">+83%</span>다. 콜 발언 안에서 숫자가 맞지 않는다.
+- 1.6T 화법도 신중해졌다. "고객은 4Q에 전부를 원하지만, 우리가 약속할 수 있는 것은 $70~80M"이고, 이유를 생산능력이 아닌 소재 제약이라고 했다. CFO는 "과잉 약속을 하지 않겠다"고 반복함.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>생산능력 램프 지연:</strong> 3개월 전 예상과 무엇이 달라졌는지 묻자 구체적 공정 이슈 대신 DSP·TIA 공급 부족으로 답했다. 내부 수율·실행 이슈인지 외부 부품 이슈인지 분리가 되지 않는다.
+- <strong>연말 GPM:</strong> "mid-30s"를 묻자 32~33%로 낮춰 답했다. 이유로 든 "핵심 공급사 expertise fee"는 규모와 지속 기간 설명이 없다.
+- <strong>1.6T의 다른 고객:</strong> "폭넓은 관심"이 있다고만 했다. 생산능력이 확보될 때까지 수주를 조절한다며 추가 고객 확보 여부는 구체화하지 않았다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 1.6T 수주잔고 $200M 초과. 2027년 2Q까지 소화가 목표다.
+- 하이퍼스케일러 1.6T 공급사 순위가 "4번째"이고, 공급사들도 AOI를 4순위로 둔다는 발언이 있다. 물량 배분 리스크로 읽힌다.
+- CPO 관련 고객은 약 5곳이며, 일부 고객은 CPO 레이저·ELSFP 인증을 완료했다고 언급함.
+- 레이저 원재료(웨이퍼 등) 확보를 위해 공급사 2~3곳과 합작법인까지 검토 중이다. 2027년 말까지 재고·공급은 확보했다고 언급함.
+- 중국 업체의 350mW CPO 레이저 추격에는 최소 2~3년이 걸린다고 CEO가 주장함.
+- IEEPA 관세 환급 $5.7M을 받았고, 2Q 직접 관세 영향은 $1.9M이다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>극단적 고객 집중</strong>
+   - 상위 10개 고객이 매출의 99%이고, 10% 이상 고객이 3곳이다.
+   - 10-K의 예측 관련 주의 문구에서도 "소수 고객에 대한 의존"과 "고객 주문 규모 축소"를 명시했다.
+   - 하이퍼스케일러 한 곳의 발주 조정이나 공급사 순위 변경이 분기 실적을 직접 흔드는 구조다.</p>
+</li>
+<li>
+<p><strong>증설 자금 조달과 희석</strong>
+   - TTM 잉여현금흐름은 -$601.3M이고, 하반기 설비투자 강도는 더 커진다(회사 언급).
+   - 현금 $508.8M로는 2027년 텍사스 증설과 제2팹 비용을 감당하기에 부족할 가능성이 크다(추정). 추가 ATM 증자나 차입이 필요할 것으로 보인다.
+   - 10-K 예측 관련 주의 문구에도 "충분한 유동성 유지 능력"이 위험요소로 들어 있다.</p>
+</li>
+<li>
+<p><strong>부품 공급망 병목과 4Q 집중 리스크</strong>
+   - DSP·TIA가 800G와 1.6T 출하를 결정한다.
+   - 3Q에는 고객 측 메모리 부족이 100G 매출 $20~25M 차질로 이미 현실화됐다.
+   - 연간 가이던스 달성이 4Q 하나에 달려 있다.</p>
+</li>
+<li>
+<p><strong>지정학과 관세</strong>
+   - 중국 Ningbo 생산이 있고 9/10 8-K에 따르면 확대 중이다. 대만 생산 비중도 크다.
+   - 10-Q는 관세·수출통제와 관세 환급 시점·규모 불확실성을 명시했다.
+   - 중국 조립품의 원산지 판정이 항상 중국이 되는 것은 아니라고 회사가 밝혔다. 그만큼 관세 분류 리스크가 존재한다.</p>
+</li>
+<li>
+<p><strong>이익률 실현 지연</strong>
+   - 매출이 2배 가까이 늘었는데도 GAAP 영업이익률은 <span class="down">-12.4%</span>다.
+   - 증설 감가상각과 신공장 초기 비효율, 공급사 수수료가 이익률 개선을 늦출 수 있다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 (관망)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY <span class="up">+86.4%</span>, QoQ <span class="up">+27.0%</span></td>
+<td>GAAP 영업이익률 <span class="down">-12.4%</span></td>
+</tr>
+<tr>
+<td>3Q 가이던스 중간값 YoY <span class="up">+130%</span></td>
+<td>TTM 잉여현금흐름 -$601.3M</td>
+</tr>
+<tr>
+<td>1.6T 수주잔고 $200M 초과</td>
+<td>연초 대비 발행주식 약 13% 증가(추정)</td>
+</tr>
+<tr>
+<td>생산능력 계획: 월 20만 개 → 65만 개 → 93만 개</td>
+<td>연간 $1.1B 달성에 4Q $500M 안팎 필요(2Q의 약 2.6배)</td>
+</tr>
+<tr>
+<td>CATV 사상 최대, DOCSIS 4.0 수주</td>
+<td>연말 GPM 32~33%로 질문자의 mid-30s 눈높이보다 낮음</td>
+</tr>
+<tr>
+<td>순현금 상태(전환사채 제외 기준)</td>
+<td>시총/2026 가이던스 매출 약 8.9배, 52주 고점 대비 <span class="down">-48.2%</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q 실적(11/5 예정):</strong>
+   - 매출이 가이던스 $255~290M 안에 드는가. 특히 중간값 $272.5M 이상인가.
+   - 800G 매출이 약 5배 성장했는가.
+   - 1.6T 최종 인증과 첫 출하가 확인되는가.
+2. <strong>4Q 가이던스:</strong> $500M 수준을 유지하는가. 그리고 1.6T 매출 $70~80M을 확정 가이던스로 제시하는가.
+3. <strong>자금 조달 경로:</strong>
+   - 3Q 10-Q의 현금흐름표에서 분기 설비투자와 ATM 잔여 한도를 확인한다.
+   - 전환사채 잔액을 확인한다.
+   - 10/5 Form 144의 제출자가 내부자(경영진 등)인지, 매도 규모가 얼마인지 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통 이상으로 상향:</strong>
+  - 3Q 매출이 가이던스 상단에 근접하고 4Q $500M 가이던스가 유지된다.
+  - 1.6T 출하가 시작된다.
+  - non-GAAP GPM이 30%를 넘는 흐름이 확인된다.
+  - 여기에 추가 희석 없이 증설 자금 경로(차입 등)가 제시되면 적극까지 검토한다.
+- <strong>회피로 하향:</strong>
+  - 3Q 매출이 가이던스 하단 $255M에 못 미치거나, 연간 $1.1B 가이던스를 낮춘다.
+  - 1.6T 인증이 지연되거나 하이퍼스케일러 공급사 순위가 밀린다.
+  - 주요 고객이 10% 고객에서 빠진다.
+  - 실적 발표 전후로 대규모 ATM 추가 실행이나 내부자 매도가 연속된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000143774926005875/aaoi20251231_10k.htm">10-K — 2025-12-31_0001437749-26-005875</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000143774926026278/aaoi20260630_10q.htm">10-Q — 2026-06-30_0001437749-26-026278</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000143774926015620/aaoi20260331_10q.htm">10-Q — 2026-03-31_0001437749-26-015620</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000168316826007160/aaoi_ex1001.htm">8-K — 2026-09-10_0001683168-26-007160__EX-10.1__aaoi_ex1001</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000168316826007160/aaoi_8k.htm">8-K — 2026-09-10_0001683168-26-007160</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000168316826007057/aaoi_ex1001.htm">8-K — 2026-09-04_0001683168-26-007057__EX-10.1__aaoi_ex1001</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000168316826007057/aaoi_8k.htm">8-K — 2026-09-04_0001683168-26-007057</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1158114/000168316826006862/aaoi_ex1002.htm">8-K — 2026-08-31_0001683168-26-006862__EX-10.1__aaoi_ex1002</a></li>
+<li>Transcript — 2026-08-06 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

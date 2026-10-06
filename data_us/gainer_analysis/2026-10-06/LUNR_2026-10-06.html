@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUNR — Intuitive Machines Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LUNR — Intuitive Machines Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">LUNR</span><span class="badge">+4.70%</span><span class="badge">거래량 1.17배</span><span class="badge">$3.37B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>좋은 점:</strong> 수주는 분명히 늘었다. Q2 백로그는 $1.8B로 2025년 말 대비 $1.5B 증가했고, 분기 매출은 $206M으로 전년 대비 4배를 넘었다. 국가안보 매출 비중도 3%에서 30%로 커졌다(8-K). 기초체력이 개선되고 있다는 근거는 공시로 확인된다.</li>
+<li><strong>걸리는 점 ① 이익과 현금:</strong> GAAP 영업손실은 Q1 $39.2M에서 Q2 $47M으로 늘었다. Adj. EBITDA도 Q1 +$2.7M에서 Q2 –$14M으로 돌아섰다. 상반기 FCF는 약 –$149M(Q1 –$64.6M, Q2 약 –$84M)이다. 회사의 "연간 Adj. EBITDA 흑자" 가이던스를 맞추려면 하반기에만 +$11M 이상이 필요하다.</li>
+<li><strong>걸리는 점 ② 가이던스 산술:</strong> 실적콜에서 제시한 백로그 전환율(Q2 백로그의 25~30%가 2026년 내 매출화)을 적용해 계산하면 연간 매출은 약 $843~933M이다. 가이던스 하단 $900M에 못 미칠 수 있다(산식은 4장).</li>
+<li><strong>걸리는 점 ③ 오늘 주가:</strong> 오늘 상승에는 공시 촉매가 없다. 거래량도 20일 중앙값 대비 1.17배에 그쳐 "급증"이라 부르기 어렵다. 이 움직임만으로 비중을 늘릴 근거는 약하다.</li>
+<li><strong>결정 시점:</strong> Q3 실적에서 매출 런레이트 $225M 이상, Adj. EBITDA 흑자, FCF 적자 축소가 확인될 때까지 기다린다. 확인되면 '보통'으로 올린다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 내 공시가 없다.</li>
+<li><strong>NASA 영상 계약 뉴스:</strong> "LUNR Stock Jumps On Winning NASA Lunar Imaging Contracts Worth $20M" 헤드라인이 있다. 그런데 이 계약(LROC·ShadowCam 두 건의 prime 수주)은 이미 8/13 Q2 실적 8-K에 들어 있던 내용이다. 신규 정보로 보기 어렵다. $20M이라는 계약 규모는 제공된 SEC 원문에 없어 공시상 확인 불가이고, 헤드라인의 게재 날짜도 확인 불가다.</li>
+<li><strong>섹터 동조:</strong> "ASTS, LUNR, PL Rise Overnight: Musk-Backed Starship Thesis" 헤드라인으로 보아, 우주 섹터 전반이 저비용 발사 기대감으로 함께 오른 것으로 <strong>추정</strong>한다.</li>
+<li><strong>반대 방향 헤드라인:</strong> "Shares Down 2.9%" 기사도 함께 있어 뉴스 흐름이 한 방향이 아니다.</li>
+<li><strong>거래 지표:</strong> 거래량 배수 1.17배, 거래대금 $128.9M이다. 기관 매수가 집중됐다고 볼 근거는 부족하다. 20일 –3.5%, 60일 –11.5%, 52주 고점 대비 –67.8%의 하락 추세 안에서 나온 단기 반등으로 해석한다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>회사는 스스로를 "Build, Connect, Operate"를 한 번에 제공하는 "next-generation space prime"으로 규정한다(8-K).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>축</th>
+<th>내용</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build</td>
+<td>위성 제조(Lanteris 인수로 GEO 상업 통신위성, SDA Tranche 버스 등), 달 착륙선(Nova-C, Nova-D)</td>
+<td>8-K, 실적콜</td>
+</tr>
+<tr>
+<td>Connect</td>
+<td>NASA NSNS(Near Space Network Services) 계약에 따른 달 데이터 중계 위성망(Altus-1~5), Goonhilly·COMSAT 지상국</td>
+<td>8-K(8/3), 실적콜</td>
+</tr>
+<tr>
+<td>Operate</td>
+<td>KinetX 인수로 확보한 임무 운영·궤도 역학·심우주 항법, 달 영상 데이터 처리·분석(LROC, ShadowCam)</td>
+<td>8-K, 실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>매출 구성(실적콜 기준)</strong>
+- Q1 매출: 상업 35% / 민간(NASA 등) 38% / 국가안보 27%
+- Q2 백로그: 민간 37% / 상업 49% / 국가안보 14%
+- Q2 수주: 민간 20% / 상업 50% / 국가안보 30%
+- Q2 매출의 주된 원천은 위성 제조, CLPS, OMES, NSNS다(8-K).</p>
+<p><strong>고객 집중도</strong>
+- 10-K가 '고객 집중도'를 위험요인으로 명시한다.
+- 제공된 발췌에는 고객별 매출 비중이 없어 공시상 확인 불가다.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 회사는 CLPS 6건을 수주해 2030년까지 달 수송 일정을 확보했다고 언급했다.
+- LTV(달 탐사 차량) 입찰은 3개 업체가 경쟁 중이라고 언급했다.
+- Golden Dome(AMDT3) 사업에서는 L3Harris의 <strong>하청(버스 공급)</strong> 이라고 직접 밝혔다. 국가안보 성장분 일부는 prime이 아닌 subcontractor 지위에서 나온다는 뜻이다.</p>
+<p><strong>지배구조</strong>
+- 2026/3/11 기준 Class A 159.4M주, Class C 57.4M주다(10-K).
+- Class C가 전체의 약 26%를 차지한다. Class C의 전환 조건과 보유자는 발췌상 확인 불가다.
+- 회사는 SRC(소규모 보고기업)이면서 EGC(신생 성장기업)다. 그래서 내부통제에 대한 외부감사인 인증(404(b))이 면제된다(10-K 표지).</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이(8-K·실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q1 2026</th>
+<th>Q2 2026</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$186.7M</td>
+<td>$206M</td>
+<td>제공 지표는 $203.4M으로 집계 기준 차이가 있음</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>$30.1M (16.1%)</td>
+<td>$36M (17.5%)</td>
+<td>전년 Q2 –$12M</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>$50.7M (일회성 인수비용 $20M 포함)</td>
+<td>$60M (SBC $11M, 인수비용 $8M 포함)</td>
+<td></td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>–$39.2M</td>
+<td>–$47M</td>
+<td>Q2에는 IM-4 원가추정 조정(EAC) $14.7M 포함</td>
+</tr>
+<tr>
+<td>Adj. EBITDA</td>
+<td>+$2.7M</td>
+<td>–$14M</td>
+<td></td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>–$64.6M</td>
+<td>약 –$84M (영업CF –$60M, CapEx –$24M)</td>
+<td></td>
+</tr>
+<tr>
+<td>기말 현금</td>
+<td>$232M</td>
+<td>$367M</td>
+<td>Q2 ATM 순조달 $235M 포함</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 매출 성장은 대부분 <strong>인수(Lanteris)와 수주 확대</strong>에서 나온 것으로 보인다. 다만 단가·물량·믹스로 나눈 분석은 10-Q MD&amp;A 본문이 발췌되지 않아 공시상 확인 불가다.
+- 유기적 성장률도 확인 불가다.
+- QoQ 성장률은 <span class="up">+10%</span>대로, 하반기 가이던스가 요구하는 가속에는 아직 못 미친다(아래 '가이던스 산술').</p>
+<p><strong>마진 방향</strong>
+- 매출총이익률은 16~17%대로 개선 중이다. 위성 사업 기여 덕분이라고 회사는 밝혔다.
+- 그런데 <strong>인수비용을 빼고 다시 계산하면 영업손실이 오히려 커졌다.</strong>
+  - Q1 –$19.2M (–$39.2M에서 $20M 차감)
+  - Q2 –$39M (–$47M에서 $8M 차감)
+  - Q2에서 EAC $14.7M까지 빼도 약 –$24M으로 Q1보다 나쁘다.
+- 반복성 SG&amp;A도 크게 늘었다. 일회성 비용과 SBC를 단순 차감하면 Q1 약 $24M에서 Q2 약 $41M이다. SBC가 전액 SG&amp;A에 잡혔다는 가정의 추정치다. 인수 법인이 분기 전체로 반영된 효과인지는 확인 불가다.
+- EAC 조정은 고정가 CLPS 미션에서 원가가 초과될 수 있다는 신호다. 실적콜에서 회사는 "IM-3에서 IM-4로 인력을 옮기며 생긴 조정"이라고 설명했다.</p>
+<p><strong>가이던스 산술(본 리포트 계산)</strong>
+- 상반기 매출: $186.7M + $206M = $392.7M
+- 하반기 백로그 전환: $1.8B × 25~30% = $450~540M
+- 연간 합계: <strong>약 $843~933M.</strong> 회사 가이던스는 $900M~1B다.
+- 하단을 맞추려면 백로그 전환이 상단(30%) 근처로 나오거나, 같은 해에 수주해서 바로 매출로 잡히는 물량이 더해져야 한다.
+- 하반기 분기 평균으로 환산하면 $225~270M이다.
+- Q1 실적콜에서는 "백로그(당시 $1.1B)의 60~65%가 2026년 내 매출화"라고 언급했다. Q2에서 전환 비율이 낮아진 것은 신규 수주가 장기 계약 위주라는 뜻으로 해석된다(추정).</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 –$187.8M이다. 2026년 상반기에만 약 –$149M을 썼다.
+- 실적콜에서 회사는 "CapEx는 NSNS 위성과 지상국 구축 때문에 당분간 높은 수준을 유지한다"고 언급했다.
+- 지분 조달 내역은 다음과 같다(실적콜).
+  - Q1: $175M 조달
+  - Q2: ATM으로 총 $291M 조달, 평균 단가(VWAP) $26.81
+- 현재 주가 $14.71 대비 높은 가격에 조달한 점은 긍정적이다. 그러나 비슷한 규모를 다시 조달하면 지금 가격에서는 희석이 거의 두 배가 된다.
+- 시가총액 $3.37B를 주가로 나누면 약 229M주다. 10-K 시점 약 217M주에서 ATM 등으로 <strong>약 5% 늘어난 것으로 추정</strong>한다.
+- Goonhilly·COMSAT 인수대금과 차입금 잔액은 공시상 확인 불가다. 이 인수는 8월에 끝나 Q2 말 현금에는 반영되지 않았다.
+- 회사는 "현재 유동성이 운영과 성장 투자에 충분하다"고 밝혔다.</p>
+<p><strong>밸류에이션(참고)</strong>
+- 시가총액 $3.37B를 2026년 매출 가이던스 $900M~1B로 나누면 약 3.4~3.7배다.
+- 순현금 반영 EV는 차입금을 확인할 수 없어 산출하지 않았다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>상업 GEO 위성 제조</strong>: 3기 $600M+ 계약(8-K)</td>
+<td>Lanteris 생산능력과 마진 유지, 일정 지연 없음</td>
+<td>매출총이익률 17% 이상 유지, 상업 매출 비중</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>국가안보</strong>: SDA Tranche 1 위성 16기 인도, Tranche 2·3 진행, AMDT3 위성 18기(7월), Andromeda IDIQ(상한 $6.24B)</td>
+<td>IDIQ는 상한일 뿐 백로그가 아님. 개별 과제(task order)를 수주해야 함. Golden Dome은 하청 지위</td>
+<td>국가안보 매출 비중 30% 유지 여부, Andromeda 과제 수주 공시</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>CLPS·달 착륙선</strong>: 5·6번째 CLPS 수주, IM-3·IM-4, Nova-D</td>
+<td>착륙 성공, 고정가 계약 원가 통제(EAC 추가 발생 여부)</td>
+<td>IM-3 발사·착륙 결과, 추가 EAC 조정 유무</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>NSNS 달 데이터 중계망</strong>: Altus-1은 2027년, Altus-2~5는 2028년 배치(실적콜). 회사는 NSNS 계약을 10년 $4.8B로 소개</td>
+<td>대규모 CapEx 선투입 후 반복 서비스 매출로 전환</td>
+<td>분기 CapEx 규모, NSNS 관련 매출 인식</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>지상국·데이터 서비스</strong>: Goonhilly·COMSAT, 우주군 TT&amp;C(위성 추적·제어) 기회</td>
+<td>실적콜 기준 Goonhilly 연매출은 약 $14M으로 규모가 작음. 통합 효과가 관건</td>
+<td>인수 후 첫 분기 매출 기여와 통합 비용</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>회사는 "주소 가능 시장(TAM)이 $20B에서 $150B 이상으로 커졌다"고 밝혔다. 회사 주장이며 검증 근거는 제공되지 않았다.</li>
+<li>실적콜에서 회사는 하반기에 NASA와 국가안보의 다년 계약으로 백로그가 더 늘어날 것이라고 언급했다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- CEO는 Q1·Q2 모두 "record"를 반복하며 자신감 있는 화법을 썼다. 가이던스(매출 $900M~1B, Adj. EBITDA 흑자)를 "reaffirm and remain confident"라는 표현으로 유지했다.
+- 다만 Q2 Adj. EBITDA가 적자로 돌아섰는데도 연간 흑자 유지를 말하면서 하반기 분기별 경로는 제시하지 않았다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- Q1 콜: 백로그의 60~65%가 2026년 내 전환된다고 언급했다.
+- Q2 콜: 25~30%(2026), 35~40%(2027), 나머지는 그 이후로 바뀌었다.
+- 백로그는 커졌지만 단기 매출 가시성은 오히려 희석됐다.</p>
+<p><strong>FCF 질의에 대한 답변(Craig-Hallum)</strong>
+- 흑자 전환 시점을 묻자 CFO는 "FCF는 아직 가이던스를 내지 않았다. 당면 초점은 EBITDA 흑자이고, 그다음이 FCF 흑자"라고 답했다.
+- <strong>FCF 흑자 시점에 대한 약속은 피한 것</strong>이다.</p>
+<p><strong>IM-4</strong>
+- 회사는 "2027년 말로 여전히 정상 진행 중(on track)"이라고 말했다. 하지만 같은 분기에 $14.7M의 EAC 조정이 발생했다.
+- 질문자도 "IM-3 일정이 계속 바뀌어 왔다"고 지적했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- Golden Dome(AMDT3)에서 회사 지위는 <strong>L3Harris의 하청(버스 공급)</strong> 이다.
+- Nova-D(달 표면까지 500kg 탑재)는 "계약으로 사실상 전액 자금이 확보됐다"고 했다. 1톤 이상(엔진 3개 구성)이나 2~5톤급 착륙선에는 자체 CapEx와 사내 R&amp;D 투자가 필요할 수 있다고 언급했다.
+- Goonhilly의 연매출은 약 $14M이다.
+- 지상국 기반 우주군 TT&amp;C 사업을 두고 미국·영국 고객과 논의 중이라고 했다.
+- 콜 요약본은 Q2 수주를 $1.2B로 적었다. 반면 8-K는 Q2 $920M과 Q3 분기 중 누적 $300M으로 나눠 적었다. <strong>8-K 수치를 기준으로 한다.</strong></p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>고정가 계약의 원가 초과:</strong> Q2에 IM-4 EAC 조정 $14.7M이 발생했다. 10-K는 발사 지연, 착륙선의 임무 단계 미달성, 발사 비용 급증을 핵심 위험으로 명시한다. 착륙 미션을 연속 수행하는 동안 추가 조정과 일정 지연 가능성이 남아 있다.</li>
+<li><strong>현금 소진과 희석:</strong> TTM FCF는 –$187.8M이고, 회사는 CapEx가 높은 수준을 유지할 것이라고 밝혔다. 올해 이미 두 번 대규모로 지분을 조달했다. 현재 주가는 ATM 평균 단가의 약 55% 수준이어서, 추가 조달 시 희석 부담이 커진다.</li>
+<li><strong>인수 통합:</strong> Lanteris, KinetX, Goonhilly, COMSAT까지 18개월 사이 연속으로 인수했다. 10-K는 인수 통합 위험을 명시한다. 반복성 SG&amp;A도 급증한 것으로 추정된다(4장).</li>
+<li><strong>정부 예산 의존과 발주 시기:</strong> 10-K는 정부 셧다운과 예산 차질을 위험요인으로 명시한다. 실적콜에서도 매출 전환 시점이 계약 확정(definitization)과 마일스톤 달성에 달려 있다고 언급했다. 하반기 가이던스 달성 여부가 여기에 걸려 있다.</li>
+<li><strong>백로그와 IDIQ 상한의 혼동 위험:</strong> Andromeda($6.24B)는 IDIQ 상한이고, NSNS($4.8B)는 계약 총액이다. 둘 다 실제 매출을 보장하지 않는다. 국가안보 성장분 일부는 하청 지위에서 나온다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>
+- 연간 Adj. EBITDA 흑자를 맞추려면 하반기에 +$11.3M 이상이 필요하다. Q2는 –$14M이었다.
+- 백로그 전환율로 계산한 연간 매출은 약 $843~933M으로, 가이던스 하단 $900M을 밑돌 수 있다.
+- 상반기 FCF는 약 –$149M이고 Q2 말 현금은 $367M이다. 인수대금 지출은 아직 반영되지 않았다.
+- 오늘 거래량 배수는 1.17배로 수급 확인이 약하다. 60일 수익률 –11.5%로 하락 추세가 이어지고 있다.
+- 시가총액은 매출 가이던스의 약 3.4~3.7배다. 고점 대비 –68%로 밸류에이션 부담은 상당히 줄었다. 반대로 이익과 현금흐름이 바뀌는 시점은 아직 확인되지 않았다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 매출 $225M 이상, Adj. EBITDA 흑자:</strong> 하반기 가이던스 경로를 실제 숫자로 확인한다.
+2. <strong>FCF 적자 축소와 추가 조달 여부:</strong> 분기 FCF가 Q2의 –$84M보다 개선되는지 본다. 또 ATM이나 신규 증자 공시가 나오는지 본다.
+3. <strong>원가 통제:</strong> IM-3 결과, 추가 EAC 조정 유무, Goonhilly·COMSAT 인수대금과 통합 비용 공시를 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올리는 조건:</strong> Q3에서 Adj. EBITDA 흑자, 매출 $225M 이상, FCF 적자 축소가 확인되고, 연간 가이던스가 유지 또는 상향된다. 여기에 국가안보 prime 계약 수주(Andromeda 과제 등)가 공시되면 추가 가점이다.
+- <strong>'회피'로 내리는 조건:</strong>
+  - 연간 매출 가이던스 하향, 또는 EBITDA 흑자 가이던스 철회
+  - EAC 조정 반복, 또는 IM-3 실패·대규모 지연
+  - 현 주가 수준에서 대규모 지분 조달
+  - 백로그 순감소(수주보다 매출 전환이 빠른 상황)</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026019865/lunr-20251231.htm">10-K — 2025-12-31_0001628280-26-019865</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026056821/lunr-20260630.htm">10-Q — 2026-06-30_0001628280-26-056821</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026035236/lunr-20260331.htm">10-Q — 2026-03-31_0001628280-26-035236</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026056476/lunr-20260630xexx991.htm">8-K — 2026-08-13_0001628280-26-056476__EX-99.1__lunr-20260630xexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026056476/lunr-20260813.htm">8-K — 2026-08-13_0001628280-26-056476</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000119312526330778/d323986dex991.htm">8-K — 2026-08-03_0001193125-26-330778__EX-99.1__d323986dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000119312526330778/d323986d8k.htm">8-K — 2026-08-03_0001193125-26-330778</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1844452/000162828026041526/lunr-20260608.htm">8-K — 2026-06-08_0001628280-26-041526</a></li>
+<li>Transcript — 2026-08-13 Q2 2026 Transcript</li>
+<li>Transcript — 2026-05-14 Q1 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SITM — SiTime Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SITM — SiTime Corporation Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SITM</span><span class="badge">+4.50%</span><span class="badge">거래량 1.0배</span><span class="badge">$21.33B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 매우 강하다. 2Q26 매출은 $157.4M로 전년 대비 <span class="up">+127%</span>였다. Non-GAAP 매출총이익률은 67.1%로 <span class="up">+8.9%</span>p 올랐고, Non-GAAP 영업이익률은 34%로 1년 전 10%에서 크게 개선됐다. 회사는 3Q26 매출 가이던스를 $285~295M로 밝혔고, 이 중 Renesas에서 인수한 타이밍 사업(TPD)을 뺀 기존 사업만 $200~210M(전 분기 대비 <span class="up">+30%</span>)이라고 밝혔다.</li>
+<li>밸류에이션 부담이 크다. 시가총액 $21.33B는 3Q 가이던스 중간값($290M)을 단순 연환산한 매출 약 $1.16B의 약 18배다. TTM 잉여현금흐름 $83.6M 기준 FCF 수익률은 약 0.4%에 그친다.</li>
+<li>오늘 상승의 확인된 촉매가 없다. 거래량 배수가 1.0배라 '거래량 급증'이라는 전제와도 맞지 않는다. 10/2에 Form 144(내부자 매도 예정 신고)가 제출된 점도 부담이다.</li>
+<li>TPD는 7/1에 인수가 끝났지만, 회사는 생산·테스트를 향후 몇 분기 동안 Renesas의 전환 서비스 계약(TSA)에 의존한다고 밝혔다. 실적콜에서는 공급 제약도 언급됐다. 따라서 3Q 실적으로 통합 실행을 확인하기 전까지는 한 번에 크게 싣기보다 나눠서 담는 것이 적절하다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 있다.</strong></p>
+<ul>
+<li>당일 전후 SEC 공시는 10/2 Form 144 한 건뿐이다. Form 144는 내부자의 매도 예정 신고라 상승 촉매가 아니고 오히려 수급상 부정 요인이다. 신고인과 수량은 제공된 자료로는 공시상 확인 불가다.</li>
+<li>뉴스 헤드라인 중 "How Index Inclusion Will Impact SiTime Stock Investors"(Simply Wall St)가 지수 편입 이슈를 시사한다. 다만 어느 지수에 언제 편입되는지는 제공 자료로 확인할 수 없다. 편입이 사실이라면 패시브 자금 유입 기대가 원인일 수 있으나, 이는 추정이다.</li>
+<li>오늘 거래량 배수는 1.0배다. 실적 같은 펀더멘털 이벤트로 볼 만한 거래량 급증은 없었다. 20일 수익률 <span class="up">+16.0%</span>의 흐름이 이어진 것이고, 52주 고점 대비 <span class="down">-21.3%</span> 구간에서 일어난 기술적 반등이나 반도체 섹터 동조로 보는 편이 합리적이다.</li>
+<li>새 실적 이벤트도 없다. 직전 실적 발표는 8/5(2Q26)였다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- 10-Q에 따르면 회사는 'Precision Timing'을 주력으로 한다. 제품은 MEMS 기반 오실레이터, 클럭 IC, 공진기(resonator), 동기화 소프트웨어다. 회사는 레거시 쿼츠 기반 기술로는 구현할 수 없는 고성능·고신뢰 타이밍 시장을 직접 만들었다고 주장한다.
+- 7/1 Renesas 타이밍 사업(TPD)을 인수하면서 클럭 제품 550개 이상이 추가됐다(2Q 실적 보도자료). 대표 제품군은 FemtoClock과 VersaClock이다. 실적콜에서는 버퍼 제품만 TPD 매출의 $100M 이상이라고 언급됐다.</p>
+<p><strong>고객군과 응용처</strong>
+- 회사 제품은 400개 이상의 응용처에 설계 채택돼 있다. AI 시스템, 데이터센터, 통신, 자동차, 산업, 항공·방산, 모바일, IoT, 소비자 기기에 걸쳐 있다.
+- TPD는 고객 약 10,000곳, 매출총이익률 약 70%, 매출의 약 70%가 CED(통신·엔터프라이즈·데이터센터)인 사업이라고 실적콜에서 언급됐다.</p>
+<p><strong>매출 구성 (2Q26, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>매출</th>
+<th>YoY</th>
+<th>QoQ</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CED (통신·엔터프라이즈·데이터센터)</td>
+<td>$101.2M</td>
+<td>+181%</td>
+<td>+34%</td>
+<td>64%</td>
+</tr>
+<tr>
+<td>MIC (모바일·IoT·소비자)</td>
+<td>$31.4M</td>
+<td>+85%</td>
+<td>+89%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>AIA (자동차·산업·항공방산)</td>
+<td>$24.8M</td>
+<td>+51%</td>
+<td>+18%</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>(MIC 중) 대형 소비자 고객 1곳</td>
+<td>$22.8M</td>
+<td>공시상 확인 불가</td>
+<td>공시상 확인 불가</td>
+<td>전사의 약 14.5%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치</strong>
+- 회사는 전체 타이밍 시장을 약 $11B로 추정하며, 그중 고부가 영역에 집중해 왔다고 밝혔다(10-Q).
+- 실적콜에서 CEO는 오실레이터, 공진기, 클럭을 모두 공급하는 회사는 자사뿐이라고 주장했다. 다만 경쟁사 대비 점유율 수치는 공시상 확인 불가다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 2Q 매출은 전년 동기 $69.5M에서 $157.4M로 늘었다. 모든 사업부가 <span class="up">+50%</span> 이상 성장했고, 실적콜에서는 모든 지역도 <span class="up">+50%</span> 이상이라고 언급됐다.
+- 회사는 수주잔고 대비 출하 비율(book-to-bill), 주문 규모, 평균판매단가(ASP)가 모두 고부가 믹스 덕분에 올랐다고 밝혔다. 단 ASP와 물량을 나눈 수치는 공시상 확인 불가다.
+- 실적콜에서 유통 채널 재고가 타이트한 목표 수준을 유지했다고 언급됐다. 실수요가 출하를 끌어가고 있다는 신호다.
+- 3Q 기존 사업 가이던스(QoQ <span class="up">+30%</span>)는 2Q(<span class="up">+39%</span> QoQ)에 이어 단계적인 성장 가속을 의미한다.</p>
+<p><strong>마진 방향성</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>GAAP</th>
+<th>Non-GAAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출총이익</td>
+<td>$99.1M (63.0%)</td>
+<td>$105.6M (67.1%)</td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>$90.9M</td>
+<td>$52.1M</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>$8.2M (약 5.2%)</td>
+<td>$53.5M (34%)</td>
+</tr>
+<tr>
+<td>순이익 / 희석 EPS</td>
+<td>$18.2M / $0.66</td>
+<td>$65.6M / $2.34</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>GAAP과 Non-GAAP 영업비용 차이가 $38.8M로 크다. 차이 항목은 주식보상비용, 인수 무형자산 상각, 인수 관련 비용 등이다. 인수가 끝나면서 무형자산 상각이 늘어날 것이라 GAAP 이익률 개선은 더딜 가능성이 있다(추정).</li>
+<li>제공된 지표표의 영업이익률 10.6%는 GAAP 기준으로 계산한 약 5.2%, Non-GAAP 34%와 모두 맞지 않는다. 산출 기준을 확인해야 한다.</li>
+<li>2Q 기타수익 $12.2M은 전환사채 조달 자금에서 나온 이자 수익이다. 회사는 이 수준이 반복되지 않는다고 밝혔다. 2Q 순이익과 EPS는 일회성으로 부풀려진 측면이 있다.</li>
+<li>회사는 매출총이익률이 65%를 웃돌고 향후 분기에 67~68% 수준을 유지할 것이라고 밝혔다. 근거로는 생산 고정비 흡수와 TPD 믹스를 들었고, 하반기 소비자 비중 확대(마진 하락 요인)를 이것들이 상쇄한다고 설명했다.</li>
+</ul>
+<p><strong>현금흐름</strong>
+- 2Q 영업현금흐름은 $40.0M(전년 $15.3M), 설비투자는 $12.9M, FCF는 $27.1M였다. TTM FCF는 $83.6M다.
+- 매출채권 회수기간(DSO)은 44일에서 51일로 늘었다. 회사는 출하 시점 때문이라고 설명했다. 재고는 3Q 수요 대응 목적으로 $103.9M까지 늘었다.
+- 이익 성장에 비해 FCF 전환율은 아직 낮다.</p>
+<p><strong>재무 건전성</strong>
+- 6/30 기준 현금과 단기투자는 $1,921M였다. 다만 이 금액에는 7/1 인수 대금으로 쓰인 전환사채 순조달액이 포함돼 있다. 인수가 끝난 뒤의 실제 현금 잔액과 인수 대금 총액은 공시상 확인 불가다.
+- 5월에 무이표 전환사채 $1.35B(2031년 만기)를 발행했다. 이자 부담은 없지만 잠재적인 주식 희석 요인이다.
+- 10-K 기준 2026/2/5 발행주식수는 26,299,915주다. 그런데 현재 시가총액($21.33B)을 종가로 나누면 약 3,007만 주가 나온다. 차이가 생긴 이유(인수 대가의 주식 지급 여부, 희석주식 반영 여부 등)는 공시상 확인 불가다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>회사가 제시한 성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>AI 데이터센터 광모듈(800G→1.6T)</strong>: 회사는 2027년 1.6T 관련 매출이 <span class="up">+100%</span> 성장하고, 800G와 1.6T를 합친 2027년 공략가능시장(SAM)이 $450M이라고 밝힘</td>
+<td>1.6T 전환 속도, 고점유율 유지</td>
+<td>3Q CED 매출 YoY 세 자릿수 성장 유지 여부(회사는 "더블 이상"이라고 밝힘)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>하이퍼스케일러의 동기화 수요 확대</strong>: Elite Super TCXO로 랙당 수백 달러의 탑재 금액이 생긴다고 언급</td>
+<td>연산·네트워크 노드 전반으로 동기화 확산</td>
+<td>CED 내 고가 제품 비중, 매출총이익률 67~68% 유지 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>하이퍼스케일러 외 AI 수요(네오클라우드, 소버린, 엔터프라이즈)</strong></td>
+<td>신규 OEM·ODM 고객의 반복 주문</td>
+<td>고객 다변화 관련 발언, 대형 고객 집중도</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>대형 소비자 고객의 설계 채택 확산(MIC)</strong>: 회사는 2H26부터 2027년까지 대폭 성장한다고 밝힘</td>
+<td>고객사 플랫폼 전반으로 채택 확산</td>
+<td>3Q MIC YoY 성장 가속 여부, 대형 고객 매출 규모</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>TPD 인수</strong>: 회사는 인수 후 12개월 매출 $300M(2025년 대비 <span class="up">+40%</span>)을 제시했고, 그보다 높은 성장 가능성도 언급함. 3Q는 약 $85M으로 가이던스</td>
+<td>TSA 기간 중 공급 제약 해소, 고객·수주잔고 이전</td>
+<td>3Q TPD 매출 $85M 달성 여부, 공급 제약 관련 코멘트</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>장기 옵션</strong>: 자율주행 SAM $400M, 방산 위치·항법·시간(Assured PNT) SAM $400M, MIC 파이프라인 $1.2B 이상, 칩렛 통합으로 2030년까지 SAM +$2.5B</td>
+<td>신규 시장의 설계 채택이 매출로 전환</td>
+<td>단기 매출 기여는 미미할 것(추정). AIA 성장률 <span class="up">+50%</span> 안팎 유지 여부로 간접 확인</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤</strong>
+- 매우 공격적이고 자신감이 높다. CEO는 "seminal time", "inflection point"라는 표현을 썼다.
+- 자신감의 근거로 세 가지를 들었다. 고객이 12~18개월 앞서 주문하고 있다는 점, 2027년 가시성이 계속 개선되고 있다는 점, 2027년에 둔화 신호가 없다는 점이다.
+- 실적콜에서 CEO는 장기 성장률을 "연 30%, 혹은 그보다 약간 높게, 5~8년"이라고 언급했다. 기존의 '30% 안팎' 화법에서 상향 쪽으로 기운 표현이다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문</strong>
+1. <strong>사업부별 성장 속도와 TPD 성장성.</strong> CFO는 기존 CED가 가장 빠를 것이라고 답했다. TPD는 아직 통합 초기이고, 향후 몇 분기 동안 Renesas의 생산·테스트에 의존하며, 공급망 제약이 있다고 인정했다. TPD의 상방은 공급 개선이 전제라는 점에서 방어적인 답변이다.
+2. <strong>2027년 성장률.</strong> 구체적인 수치 가이던스는 내놓지 않았다. "상당한 성장"이라는 정성적 표현과 장기 30% 프레임으로 대신했다.
+3. <strong>매출총이익률.</strong> 67~68%를 유지한다는 답변이었다. 소비자 비중 확대라는 하방 요인을 회사 스스로 인정했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- <strong>Bosch 계약 만료.</strong> 내년 3월 만료로, UBS 애널리스트가 질문했다. CEO는 문제없이 곧 갱신될 것이라고 답했다. 다만 계약 내용과 조건은 공시 발췌상 확인 불가다. 답변 맥락("클럭은 MEMS 공진기를 쓰지 않는다")을 보면 MEMS 생산 관련 계약으로 추정된다.
+- TPD의 매출총이익률 약 70%, CED 비중 약 70%, 고객 약 10,000곳, 버퍼 매출 $100M 이상.
+- TPD는 당분간 독립 조직으로 운영되며 시니어 임원에게 보고한다. 조직 통합은 몇 분기 뒤로 예정돼 있다.
+- 3Q에 기존 사업 CED가 YoY 세 자릿수 성장을 할 것이라는 언급.</p>
+<h2>6. 리스크</h2>
+<p>※ 제공된 10-K 발췌는 목차와 미래예측 진술 주의문구까지만 포함돼 있고, Item 1A 위험요인 본문은 없다. 아래 리스크는 10-Q의 MD&amp;A, 실적 보도자료, 실적콜에서 도출했다.</p>
+<ol>
+<li><strong>TPD 통합 실행 리스크.</strong> 회사는 대규모 사업 분리 인수(carve-out)가 복잡하다고 인정했다. 생산·테스트를 향후 몇 분기 동안 Renesas의 TSA에 의존한다. 실적콜에서는 고객 쪽 공급 제약이 크다고 언급됐다. 3Q 가이던스에서 TPD($85M)가 차지하는 비중이 약 29%이므로 공급 차질은 곧바로 가이던스 미달로 이어진다.</li>
+<li><strong>고객 집중과 믹스 리스크.</strong> 대형 소비자 고객 1곳의 매출이 $22.8M로 전사의 약 14.5%다. 10-Q의 미래예측 진술에도 '소수 고객 의존'이 명시돼 있다. 하반기에는 이 고객의 비중이 더 커질 예정인데, 이는 마진 하락 요인이자 단일 고객의 제품 사이클에 노출되는 리스크다.</li>
+<li><strong>AI 설비투자 사이클과 선주문 리스크.</strong> CED가 매출의 64%를 차지한다. 고객이 12~18개월 앞서 주문하고 있다는 점은 가시성을 높여 주지만, 공급 부족 국면에서는 중복 주문과 재고 축적이 생길 수 있다. DSO 상승(44일→51일)과 재고 증가($103.9M)를 함께 지켜봐야 한다(추정).</li>
+<li><strong>핵심 공급사 계약 갱신 리스크.</strong> Bosch 계약이 내년 3월 만료된다. 회사는 문제가 없다고 밝혔지만, 아직 갱신이 공시된 것은 아니다.</li>
+<li><strong>희석과 이익의 질.</strong> $1.35B 전환사채의 잠재 희석이 있다. 발행주식수 추정치도 10-K 시점 대비 불일치가 확인된다. GAAP과 Non-GAAP 이익 격차가 크고, 2Q에는 반복되지 않는 이자 수익이 포함됐다. Form 144 제출(내부자 매도 예정)도 같은 맥락의 부담이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- (+) 매출 YoY <span class="up">+126.5%</span>, QoQ <span class="up">+38.6%</span>. 3Q 가이던스 중간값 $290M는 2Q 대비 <span class="up">+84%</span>이고, 기존 사업만 보면 <span class="up">+30%</span>다.
+- (+) Non-GAAP 매출총이익률 67.1%, Non-GAAP 영업이익률 34%(전년 10%). 회사는 매출총이익률 67~68%가 유지될 것이라고 밝혔다.
+- (+) 주가는 52주 고점 대비 <span class="down">-21.3%</span>로, 고점에서 한 차례 조정을 거친 구간이다.
+- (−) 시가총액은 3Q 가이던스 연환산 매출의 약 18배, TTM FCF 수익률은 약 0.4%다. 2Q Non-GAAP EPS를 단순 연환산($9.36)하면 PER은 약 76배이고, 반복되지 않는 이자 수익을 빼면 더 높아진다.
+- (−) 확인된 당일 촉매가 없고 거래량 배수는 1.0배다. 내부자 Form 144도 제출됐다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>지수 편입 여부와 일정.</strong> 헤드라인만 있고 공식 확인이 없다. 편입이 사실이라면 편입일 전후의 패시브 수급과 이후 되돌림을 고려해 진입 시점을 정해야 한다.
+2. <strong>Form 144 신고인과 수량.</strong> 경영진 핵심 인사의 대규모 매도인지, 사전 계획 매도(10b5-1)인지 확인해야 한다.
+3. <strong>인수 이후의 자본 구조.</strong> 인수 대금 총액, 인수 후 순현금 잔액, 희석주식수(시가총액에 내재된 약 3,007만 주와 10-K의 2,630만 주 차이)를 3Q 10-Q 또는 인수 완료 공시(8-K)로 확인해야 한다.</p>
+<p><strong>판단을 '관망'으로 바꿀 조건</strong>
+- 3Q 매출이 가이던스 하단 $285M에 못 미치는 경우. 특히 TPD가 $85M에 크게 못 미치거나, 회사가 TSA 공급 제약이 길어진다고 밝히는 경우.
+- 기존 사업 CED가 3Q에 YoY 세 자릿수 성장을 달성하지 못하거나, 4Q 가이던스에서 QoQ 성장이 크게 둔화되는 경우.
+- Non-GAAP 매출총이익률이 회사가 제시한 65% 아래로 떨어지는 경우.
+- DSO와 재고가 계속 늘면서 영업현금흐름이 이익 성장을 따라가지 못하는 경우. 이는 채널 재고 축적이나 선주문 거품의 신호로 본다.
+- Bosch 계약 갱신이 지연되거나 조건이 불리하게 바뀌었다고 공시되는 경우.</p>
+<p>반대로 3Q에서 TPD가 계획대로 매출에 기여하고, 기존 사업이 가이던스 상단을 넘고, 매출총이익률 67% 이상이 확인되면 '적극'으로 상향을 검토할 수 있다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000012/sitm-20251231.htm">10-K — 2025-12-31_0001451809-26-000012</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000060/sitm-20260630.htm">10-Q — 2026-06-30_0001451809-26-000060</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000041/sitm-20260331.htm">10-Q — 2026-03-31_0001451809-26-000041</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000059/sitm-q226x8kxexx991.htm">8-K — 2026-08-05_0001451809-26-000059__EX-99.1__sitm-q226x8kxexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000059/sitm-20260805.htm">8-K — 2026-08-05_0001451809-26-000059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000119312526291561/d71116dex991.htm">8-K — 2026-06-30_0001193125-26-291561__EX-99.1__d71116dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000119312526291561/d71116dex101.htm">8-K — 2026-06-30_0001193125-26-291561__EX-10.1__d71116dex101</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000119312526291561/d71116d8k.htm">8-K — 2026-06-30_0001193125-26-291561</a></li>
+<li>Transcript — 2026-08-05 SiTime Corporation (SITM) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

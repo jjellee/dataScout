@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRM — Salesforce Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CRM — Salesforce Inc. Common Stock</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CRM</span><span class="badge">+3.10%</span><span class="badge">거래량 0.84배</span><span class="badge">$194.80B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 비중을 실을 만하다. cRPO $33.5B(<span class="up">+14%</span> YoY)가 매출 성장률(<span class="up">+11%</span>)보다 빠르게 늘고 있고, TTM FCF $15.15B는 시가총액 대비 약 7.8%다. 여기에 회사 설명상 유통주식 14% 이상을 사들이는 $25B ASR(가속 자사주매입)이 진행 중이다.</li>
+<li>다만 오늘 상승은 매수 신호로 보기 어렵다. 거래량이 20일 중앙값의 0.84배로 "거래량 급증"이 아니었고, 확인된 공시 촉매도 없다. 20일 <span class="down">-11.2%</span> 조정 뒤의 기술적 반등일 가능성을 배제할 수 없다.</li>
+<li>성장의 질에도 단서가 붙는다. 매출 YoY에는 Informatica(2025년 11월 인수) 효과와 환율 효과(<span class="up">+1%</span>, 상반기 기준)가 섞여 있고, 유기적 성장률은 공시상 확인할 수 없다. GAAP 영업이익률은 전년 대비 <span class="down">-1.4%</span>p다.</li>
+<li>상반기 EPS $6.67 가운데 $2.87은 전략투자 평가이익, $0.57은 ASR 효과다. 둘을 빼면 영업 기반 EPS는 전년보다 오히려 낮다(4절 참조).</li>
+<li>결론: 벤치마크 수준의 비중을 유지하고 분할 매수로 접근한다. 적극 확대는 3분기(10월 말 종료) 실적에서 유기적 재가속을 확인한 뒤 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>SEC 공시: 최근 4일 내 공시가 없다.</li>
+<li>뉴스: "Adds Fresh AI Deals"와 "Why Salesforce Stock Is Up Today" 헤드라인은 있으나 본문이 제공되지 않아 구체 촉매를 특정할 수 없다. 신규 AI 계약 보도가 있었던 것으로 보이지만, 규모와 상대방은 확인할 수 없다.</li>
+<li>섹터: "software stocks were the story of Q3 2026" 헤드라인은 소프트웨어 섹터 전반의 흐름과 연동됐을 가능성을 시사한다. 이는 추정이다.</li>
+<li>수급 정황:</li>
+<li>20일 수익률 <span class="down">-11.2%</span>, 52주 고점 대비 <span class="down">-11.1%</span>로, 단순 역산하면 약 20거래일 전 주가가 52주 고점 부근이었다.</li>
+<li>그 사이 9/16 Investor Day가 있었으나, 8-K 원문은 표지와 면책 문구까지만 제공돼 당일 발표 내용(FY2028 가이던스 등)은 공시상 확인할 수 없다.</li>
+<li>오늘 <span class="up">+3.1%</span>는 거래량 0.84배의 저거래량 반등이므로 신규 매수세 유입의 증거로 보기는 약하다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품</strong>: 10-K상 Agentforce 360 Platform 위에 Sales, Service, Marketing, Commerce, Slack(협업), Data 360(데이터 관리), MuleSoft·Informatica(통합), Tableau(분석), IT Service, 산업별 버티컬을 통합해 판매한다. Agentforce는 이 플랫폼의 AI 에이전트 계층으로, 고객이 자율 AI 에이전트("digital labor")를 배치하게 해 준다.</li>
+<li><strong>수익 모델</strong>: 주로 구독 방식이다.</li>
+<li>2분기 구독·지원 매출은 $10.82B(<span class="up">+12%</span>)로 총매출의 약 95%다(실적콜 요약 기준).</li>
+<li>실적콜에서 매출의 95% 이상이 아직 ratable(기간 안분 인식)이며, 소비형 매출이 의미 있는 비중이 되려면 3~5년이 걸린다고 언급했다.</li>
+<li>가격 체계는 좌석 기반, Flex Credits(소비형), 성과 기반(Fin) 세 갈래로 실험 중이다.</li>
+<li>계약 구조는 기존 연간 약정, AELA(무제한 이용 계약), 하이퍼스케일러식 총액 약정인 Salesforce Commit이 공존한다.</li>
+<li><strong>고객군</strong>: 10-Q상 엔터프라이즈·해외·버티컬 고객 확대가 핵심 성장 레버이며, 이들 고객이 매출 기여가 크고 이탈률이 낮다고 회사는 밝혔다. 세부 고객 구성과 지역별 매출 비중은 발췌본에 없어 공시상 확인할 수 없다.</li>
+<li><strong>사업 단위</strong>: 단일 사업부(one segment)다.</li>
+<li><strong>M&amp;A</strong>: Regrello(2025년 10월), Informatica(2025년 11월), Qualified(2026년 4월)를 인수했다. 실적콜에서는 Contentful과 Fin 인수 종결이 예정돼 있다고 언급했다.</li>
+<li><strong>경쟁 위치</strong>: 회사는 자신을 "CRM 글로벌 리더"라고 밝힌다. 시장점유율 수치는 공시상 확인할 수 없다.</li>
+<li>Anthropic과의 관계는 두 가지다. 지분투자(벤처)와 상업적 파트너십(Claudeforce)이며, 경영진은 두 관계가 서로 분리돼 있다고 강조했다.</li>
+<li>실적콜에서 Benioff는 "Slack 가치 + Anthropic 지분 가치가 시가총액의 절반 수준"이라고 발언했다. 이는 회사 측 주장이며 검증할 수 없다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 요약</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q FY27 (4월)</th>
+<th>2Q FY27 (7월)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$11.1B (<span class="up">+13%</span>)</td>
+<td>$11.35B (+10.8~11%)</td>
+<td>QoQ <span class="up">+1.9%</span></td>
+</tr>
+<tr>
+<td>환율 효과</td>
+<td>+약 2%p</td>
+<td>상반기 누적 +약 1%p</td>
+<td>2Q 단독은 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>GAAP 영업이익</td>
+<td>$2.3B (약 21%)</td>
+<td>약 $2.4B (상반기 $4.7B − 1Q $2.3B, 역산)</td>
+<td>전년 2Q도 약 $2.4B(역산)</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>약 21%</td>
+<td>실적콜 20.5% / 제공 지표 21.4%</td>
+<td>출처 간 차이, YoY <span class="down">-1.4%</span>p</td>
+</tr>
+<tr>
+<td>cRPO</td>
+<td>$33.6B (<span class="up">+14%</span>, 환율 <span class="up">+1%</span>p)</td>
+<td>$33.5B (<span class="up">+14%</span>, 환율 영향 미미)</td>
+<td>고정환율 기준 13% → 14%로 가속</td>
+</tr>
+<tr>
+<td>총 RPO</td>
+<td>$67.9B (<span class="up">+11%</span>)</td>
+<td>$66.3B (<span class="up">+11%</span>)</td>
+<td></td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>$6.7B (<span class="up">+3%</span>)</td>
+<td>약 $1.3B (상반기 $8.0B에서 역산)</td>
+<td>2Q FCF $1.1B (<span class="up">+81%</span>, 실적콜)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 헤드라인 성장률을 낮춰 보는 요인:
+  - 매출 <span class="up">+11%</span>에는 Informatica 인수 효과(전년 동기 미포함)가 들어 있다.
+  - 상반기에는 환율 효과 <span class="up">+1%</span>p가 더해졌다.
+  - 유기적·고정환율 성장률은 공시상 확인할 수 없으나, 헤드라인보다 낮을 것으로 추정한다.
+- 긍정적 신호:
+  - 고정환율 기준 cRPO 성장이 1분기 13%에서 2분기 14%로 개선됐다. 선행지표가 가속 중이라는 점은 긍정적이다.
+  - 실적콜에서 net new AOV(신규 연간계약가치) 성장률이 4년래 최고이고, 이탈률은 역대 최저 수준이라고 언급했다.
+- 단가·물량·믹스:
+  - 실적콜에서 Sales·Service·Slack 좌석 수가 YoY 증가했다고 언급했다. 물량 측면에서 "AI가 좌석을 잠식한다"는 우려를 반박하는 내용이다.
+  - 실적콜에서 지식근로자 중 프리미엄 에디션 전환 비율이 5%에 불과하다고 언급했다. 단가 측면의 상향 여지를 회사가 강조한 것이다.
+  - 실적콜 요약상 라이선스 매출, 통합·분석 부문의 변동성이 언급돼 믹스 측면의 약점이 있다.</p>
+<p><strong>마진</strong>
+- 2분기 GAAP 영업이익은 역산 기준 전년과 거의 같은데 매출은 11% 늘었다. 영업 레버리지가 작동하지 않은 분기다.
+- 10-Q에서 회사는 "매출 대비 영업비용 비율이 계속 개선될 것으로 기대"한다고 밝혔다. 그러나 FY27 GAAP 영업이익률 가이던스는 약 20.1%다.
+  - 상반기 실적(약 20.9%)을 고려해 단순 역산하면 하반기 GAAP 영업이익률은 약 19%대 중반이다.
+  - 인수 관련 비용 등이 원인으로 추정되지만, 세부 내역은 확인할 수 없다.
+- Non-GAAP 영업이익률 가이던스는 약 34.3%로 유지됐다(실적콜 요약 기준).
+- 매출총이익률 76.7%의 YoY 비교치는 공시상 확인할 수 없다. 실적콜에서 회사는 AI 믹스 확대에도 매출총이익률이 중립 또는 개선될 것이라고 밝혔다.</p>
+<p><strong>EPS 분해 (상반기, 단순 산술)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>FY27 상반기</th>
+<th>FY26 상반기</th>
+<th>증감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>보고 기준 희석 EPS</td>
+<td>$6.67</td>
+<td>$3.55</td>
+<td>+88%</td>
+</tr>
+<tr>
+<td>전략투자 손익 제외</td>
+<td>$3.80</td>
+<td>$3.60</td>
+<td>+5.6%</td>
+</tr>
+<tr>
+<td>전략투자 손익·ASR 효과($0.57) 제외</td>
+<td>$3.23</td>
+<td>$3.60</td>
+<td>-10%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>보고 EPS의 급증은 대부분 비영업 요인에서 나왔다.</li>
+<li>ASR 자금 조달 방식과 이자비용은 발췌본에서 확인되지 않아, 마지막 행은 참고용이다.</li>
+</ul>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF $15.15B, 시가총액 $194.8B 기준으로 FCF 수익률은 약 7.8%(P/FCF 약 12.9배)다. 대형 소프트웨어주로는 낮은 배수다.
+  - 주식보상비용(SBC) 규모는 공시상 확인할 수 없어, SBC를 차감한 FCF는 계산하지 못한다.
+- 현금·유가증권은 $11.8B(4월)에서 $11.4B(7월)로 줄었다. 총차입금, 순현금 여부, $25B ASR의 자금원은 공시상 확인할 수 없다. 레버리지 판단은 보류한다.
+- 주주환원:
+  - ASR로 약 1.03억 주를 매입했다. 2026년 2월 기준 발행주식은 약 9.23억 주였다.
+  - 실적콜에서 평균 매입단가가 $176이라고 언급했다. 현재가는 이보다 약 34% 높다.
+  - 배당 지급액은 $801M에서 $729M로 감소했다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 유기적 매출 재가속(하반기)</td>
+<td>실적콜에서 "Q3는 산수(math), Q4도 거의 산수"라고 언급했다. 3분기 매출 가이던스는 $11.42~11.50B(고정환율 +11~12%).</td>
+<td>3분기 매출의 인수 기여를 뺀 유기적 성장률이 상반기보다 높아지는지, 회사가 유기적 성장률을 별도로 공시하는지</td>
+</tr>
+<tr>
+<td>② Agentforce·AI 수익화</td>
+<td>ARR $1.5B, AWU(에이전트 작업단위) 32억 건(<span class="up">+97%</span> QoQ), 부킹의 50%가 크레딧 재충전이라는 것은 회사 발표다. 소비형 전환이 마진 희석 없이 이뤄져야 한다.</td>
+<td>Agentforce ARR의 QoQ 증가폭, 재충전 비율 유지 여부, 매출총이익률 유지</td>
+</tr>
+<tr>
+<td>③ Slack·Slackbot</td>
+<td>실적콜에서 인수 이후 최고 수준의 net new AOV 성장, Slackbot 사용자 <span class="up">+150%</span> QoQ를 언급했다.</td>
+<td>Slack 관련 매출이나 AOV 수치가 공시 문서에 나오는지</td>
+</tr>
+<tr>
+<td>④ Claudeforce(Anthropic 제휴)</td>
+<td>Dreamforce에서 GA(정식 출시) 예정이며, 회사는 프리미엄 에디션 중심으로 판매하겠다고 밝혔다.</td>
+<td>출시 후 가격 체계와 첫 분기 채택 지표, Agentforce One 에디션 전환율</td>
+</tr>
+<tr>
+<td>⑤ 영업 용량 확대</td>
+<td>연말까지 AE(영업 담당자) 15,000명에서 1,200명 추가 채용 계획을 밝혔다.</td>
+<td>영업·마케팅 비용 비율과 AE 생산성. 채용이 마진을 훼손하는지</td>
+</tr>
+<tr>
+<td>⑥ M&amp;A (Informatica, Contentful, Fin)</td>
+<td>Contentful과 Fin이 FY27 매출에 $200M 기여할 것으로 회사가 예상했다. 통합 성과가 관건이다.</td>
+<td>통합·분석 부문 변동성 축소 여부, 인수 관련 GAAP 비용 규모</td>
+</tr>
+<tr>
+<td>⑦ FY2030 프레임워크</td>
+<td>매출 $63B(연평균 11%), "Rule of 50"을 목표로 제시했다(Deutsche Bank 컨퍼런스 요약 기준).</td>
+<td>9/16 Investor Day에서 FY28 가이던스 수치를 확인할 것. 제공 자료로는 확인할 수 없다.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 전반적으로 공세적이고 자신감이 높다. Benioff는 첫 발언부터 시장의 "SaaSpocalypse(SaaS 종말론)" 우려를 정면 반박했다. 근거로 net new AOV 4년래 최고와 좌석 수 증가를 들었다.
+- Miguel Milano(사장 겸 COO)는 "Q3 is math. Q4 is nearly math"라고 했다. 하반기 재가속을 사실상 확정된 것처럼 표현한 것으로, 가이던스 화법이 이전보다 단정적으로 바뀌었다.
+- Deputy CFO Mike Spencer는 2분기 부킹이 "내부 기대를 크게 상회"했다고 밝히며, 이를 FY28로 이어질 모멘텀의 근거로 제시했다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- Guggenheim의 John DiFucci는 "시장은 그런 걸 보지 않고 펀더멘털이 망가질까 두려워했다"고 질의했다. 이에 Benioff는 Slack과 Anthropic 지분 가치를 근거로 저평가를 주장하고 자사주매입을 정당화했다. 정량 근거 없이 밸류에이션을 주장한 대목으로, 방어적 성격이 짙다.
+- 가이던스 상향 $300M 중 $200M이 Contentful·Fin 인수 기여다. Spencer는 "유기적과 비유기적을 의도적으로 구분했다"고 했으나, 제공된 발췌에서 유기적 상향폭을 정확히 제시한 부분은 확인되지 않는다.
+- 가격 체계에 대해 Spencer는 "불안이 가득한(anxiety-filled) 구조"라고 이례적으로 솔직하게 인정했다. 성과 기반 가격은 측정 객관성 문제로 대규모 확장이 어렵다는 점도 인정했다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- Agentforce ARR $1.5B
+- AWU 32억 건
+- 부킹의 50%가 크레딧 재충전
+- 미 육군과의 수십억 달러 규모 계약 확장
+- ASR 평균 매입단가 $176, 유통주식 14% 이상 매입 목표
+- AE 15,000명 및 1,200명 추가 채용 계획
+- 매출의 95% 이상이 ratable
+- FY27 가이던스에 반영된 환율 역풍 $100M
+- 리더십 교체: Alexa Vignone의 CRO 승진, Microsoft 출신 Rohan Kumar 영입(Deutsche Bank 컨퍼런스)</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K Item 1A(리스크 요인) 원문은 발췌본에 포함되지 않았다. 아래는 MD&amp;A, 8-K 면책 문구, 실적콜에 근거한 것이다.</p>
+<ol>
+<li><strong>유기적 성장 불투명성과 M&amp;A 의존</strong>
+   - Informatica, Qualified, Contentful, Fin으로 이어지는 인수가 헤드라인 성장을 떠받치고 있다.
+   - 하반기 재가속이 인수 효과 위주로 나타나면, 시장이 기대하는 유기적 재가속 논리가 약해진다.</li>
+<li><strong>GAAP 수익성 정체</strong>
+   - 2분기 GAAP 영업이익은 전년과 거의 같고 영업이익률은 <span class="down">-1.4%</span>p다.
+   - 연간 GAAP 마진 가이던스(약 20.1%)는 하반기 마진 하락을 의미한다. 10-Q에서 밝힌 "영업비용 비율 개선" 기대와 상충한다.</li>
+<li><strong>가격 모델 전환 리스크</strong>
+   - 좌석 기반에서 소비형·성과 기반으로 옮겨 가는 과정에서 매출 인식 시점과 예측 가능성이 흔들릴 수 있다. 경영진 스스로 "anxiety-filled"라고 표현했다.
+   - 8-K 면책 문구도 AI 기술 통합의 불확실성과 규제 변화를 명시하고 있다.</li>
+<li><strong>비영업 이익과 자본배분 의존</strong>
+   - 상반기 EPS의 약 43%($2.87)가 전략투자 평가이익이다. Anthropic 등 투자자산의 가치가 변하면 EPS 변동성이 커진다.
+   - $25B ASR의 자금 조달 구조와 부채 수준은 확인되지 않는다.</li>
+<li><strong>환율·계절성과 경영진 교체</strong>
+   - MD&amp;A는 환율 변동과 4분기 집중 계절성이 예측 가능성을 떨어뜨린다고 명시한다.
+   - CRO와 제품 리더십이 동시에 바뀌어 실행 리스크가 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong>
+- 가치: FCF 수익률 약 7.8%(TTM FCF $15.15B ÷ 시총 $194.8B). FY27 매출 가이던스 중간값 약 $46.25B 기준 P/S는 약 4.2배다.
+- 선행지표: 고정환율 기준 cRPO 성장이 13%에서 14%로 가속했고, 총 RPO는 $66.3B(<span class="up">+11%</span>)다.
+- 주주환원: ASR로 약 1.03억 주를 매입해 발행주식 약 9.23억 주의 11%를 이미 줄였다. 회사가 밝힌 목표는 14% 이상이다.
+- '적극'으로 올리지 않는 이유:
+  - 오늘 상승의 거래량이 0.84배에 그쳤다.
+  - GAAP 영업이익이 YoY 정체다.
+  - 전략투자 이익과 ASR 효과를 뺀 EPS는 감소했다.
+  - 60일 <span class="up">+44%</span> 급등 이후의 조정 국면이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 9/16 Investor Day의 FY2028 가이던스 수치와 직후 20일간 <span class="down">-11%</span> 하락의 원인. 제공 자료로는 둘 다 확인할 수 없어 원문 확보가 필요하다.
+2. $25B ASR의 자금 조달 방식, 총차입금, 순부채 규모. 다음 10-Q의 재무상태표와 유동성 섹션에서 확인한다.
+3. 오늘 "Fresh AI Deals" 보도의 실체. 계약 상대방과 규모, 8-K 공시 여부를 확인한다.</p>
+<p><strong>판단을 '관망'으로 바꿀 조건</strong>
+- 3분기 매출이 가이던스 하단($11.42B)에 미달하거나, 인수 기여를 뺀 유기적 성장률이 상반기보다 낮게 나오는 경우. 이는 재가속 논리가 깨진다는 뜻이다.
+- 3분기 고정환율 cRPO 성장률이 가이던스(약 14%)를 밑돌아 13% 이하로 되돌아가는 경우.
+- 매출총이익률이 76%대에서 의미 있게 하락하는 경우. AI·소비형 믹스 확대에 따른 원가 부담이 드러났다는 신호다.
+- ASR 자금 조달이 대규모 차입으로 확인되고, 이자비용 증가로 GAAP EPS의 질이 더 나빠지는 경우.</p>
+<p><strong>'적극'으로 올릴 조건</strong>
+- 3분기에 유기적 매출 성장이 가속하고, GAAP 영업이익 YoY 증가가 동시에 확인되는 경우.
+- Agentforce ARR이 QoQ로 의미 있게 늘어나는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm">10-K — 2026-01-31_0001108524-26-000060</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000190/crm-20260731.htm">10-Q — 2026-07-31_0001108524-26-000190</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000127/crm-20260430.htm">10-Q — 2026-04-30_0001108524-26-000127</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000210/investorday2026.htm">8-K — 2026-09-16_0001108524-26-000210__EX-99.1__investorday2026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000210/crm-20260916.htm">8-K — 2026-09-16_0001108524-26-000210</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000197/crm-20260902.htm">8-K — 2026-09-02_0001108524-26-000197</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000187/crm-q2fy27xexhibit991.htm">8-K — 2026-08-26_0001108524-26-000187__EX-99.1__crm-q2fy27xexhibit991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1108524/000110852426000187/crm-20260826.htm">8-K — 2026-08-26_0001108524-26-000187</a></li>
+<li>Transcript — 2026-08-27 Deutsche Bank 2026 Technology Conference Transcript</li>
+<li>Transcript — 2026-08-26 Q2 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

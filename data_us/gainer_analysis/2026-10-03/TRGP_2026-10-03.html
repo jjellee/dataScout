@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRGP — Targa Resources Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TRGP — Targa Resources Inc. Common Stock</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">TRGP</span><span class="badge">+3.33%</span><span class="badge">거래량 1.39배</span><span class="badge">$59.89B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 좋다. 2Q26 조정 EBITDA는 $1,603M으로 전년 대비 <span class="up">+38%</span>, 전분기 대비 <span class="up">+14%</span>다. Permian 처리량(inlet)은 7.2 Bcf/d로 사상 최대다. 회사는 연간 가이던스를 $5.7~5.9B 범위의 "상단 쪽"으로 높였다고 밝혔다. 배당은 전년 대비 <span class="up">+25%</span>이고 자사주 매입도 이어가고 있다.</li>
+<li>다만 오늘 상승(<span class="up">+3.33%</span>)은 공시나 뉴스로 확인되는 촉매가 없다. 거래량도 1.39배로 "급증"이라고 보기 어렵다. 추격해서 비중을 늘릴 근거는 약하다.</li>
+<li>2Q의 실적 서프라이즈 중 상당 부분은 일회성 성격이 있는 마케팅 마진에서 나왔다. 실적콜에서 회사는 상반기 마케팅 초과 성과가 약 $250M이라고 했다. 경영진도 3Q는 2Q보다 역풍이 될 것이라고 언급했다.</li>
+<li>TTM FCF($740.9M)는 연환산 배당(약 $1.07B, $268M×4)에도 못 미친다. 2026 성장 투자 약 $4.5B가 계속 진행 중이어서 부채 의존도가 높은 국면이다.</li>
+<li>따라서 핵심 보유 비중은 정당화되지만, 적극적으로 늘리는 판단은 3Q 실적에서 마케팅을 제외한 기초 이익 체력을 확인한 뒤로 미룬다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조일 가능성이 있다.</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다. 가장 최근 8-K는 2026-08-19(CFO 교체)와 2026-08-06(2Q 실적)으로, 오늘 주가와는 시차가 크다.</li>
+<li><strong>뉴스:</strong> 오늘 헤드라인은 대부분 결과를 설명하는 기사다. "Shares Surge 3.3%"(GuruFocus), "outperforms competitors on strong trading day"(MarketWatch) 같은 식이다. 이유를 제시하는 기사는 없다. Simply Wall St의 "Permian Scale… Long Dated Contracts"는 분석 칼럼이고 새로운 사건이 아니다.</li>
+<li><strong>참고:</strong> transcript 페이지 사이드바에 "엑슨과 20년 미드스트림 계약 체결, Permian 가스 처리시설 3곳 신설"과 "사상 최고치 경신" 헤드라인이 보인다. 그러나 날짜를 확인할 수 없고, 제공된 SEC 공시에도 해당 계약 8-K가 없다. 오늘의 촉매로 볼 근거는 없다. 계약 규모와 조건은 공시상 확인 불가다.</li>
+<li><strong>가격 맥락:</strong> 20일 수익률 <span class="down">-4.0%</span>, 52주 고점 대비 <span class="down">-7.6%</span>이므로 단기 조정 뒤의 반등으로 해석할 수 있다. 이는 추정이다.</li>
+<li><strong>섹터 분류:</strong> 제공 지표의 섹터 분류는 "Utilities / Natural Gas Distribution"이다. 하지만 10-K상 실제 사업은 미드스트림(가스 수집·처리, NGL 수송·분리, LPG 수출)이다. 유틸리티 섹터와 동조했는지, 에너지 섹터와 동조했는지는 별도로 확인해야 한다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 기준으로 사업은 2개 사업부로 나뉜다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>내용</th>
+<th>주요 지역·자산</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gathering &amp; Processing (G&amp;P)</strong></td>
+<td>생산정에서 나온 천연가스를 수집·압축·처리해 NGL을 추출하고 상업용 가스로 만든다. 원유 수집과 터미널 업무도 한다.</td>
+<td>Permian(Midland·Central·Delaware), Eagle Ford, Barnett, Oklahoma(SCOOP/STACK), Bakken, Louisiana Gulf Coast</td>
+</tr>
+<tr>
+<td><strong>Logistics &amp; Transportation (L&amp;T, Downstream)</strong></td>
+<td>혼합 NGL을 운송·분리(fractionation)·저장·터미널 처리하고 마케팅한다. LPG 수출업자에 서비스를 제공하고 일부 가스 마케팅도 한다.</td>
+<td>Permian·남부 Oklahoma·북부 Texas를 Mont Belvieu에 연결하는 NGL 파이프라인. 시설은 Mont Belvieu·Galena Park(TX), Lake Charles(LA)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>수익 구조:</strong> Permian에서 생산된 가스를 처리하고, 거기서 나온 NGL을 자체 파이프라인으로 Mont Belvieu까지 옮겨 분리한 뒤 LPG로 수출한다. 이 통합 체인(wellhead-to-water)의 각 단계에서 수수료와 마진을 받는다. G&amp;P 물량이 늘면 L&amp;T 물량도 함께 늘어나는 구조다.</li>
+<li><strong>고객:</strong> 생산자(producer)와 LPG 수출업자다. 실적콜에서는 "Permian 전역에 수백만 에이커가 dedicated(전속 계약)되어 있다"고 언급했다. 고객 집중도는 공시상 확인 불가다.</li>
+<li><strong>매출 구성:</strong> 사업부별 매출과 이익 비중은 공시상 확인 불가다(발췌에 미포함).</li>
+<li><strong>커머디티 노출:</strong> 계약에 fee floor(최소 수수료) 구조가 있다. 실적콜에서 3Q에는 포트폴리오 전체로 보아 "fee floor 수준을 밑돌 것"이라고 언급했다. 상품가격이 오르면 floor를 넘는 부분에서 이익이 늘어나는 구조로 보인다. 여기에 별도로 가스 마케팅(지역 간 가격차 차익) 노출이 있다.</li>
+<li><strong>경쟁 위치:</strong> 회사는 "북미 최대 독립 인프라 기업 중 하나"(10-K)라고 밝혔다. 실적콜에서는 "Permian 최대 G&amp;P 거점"이라고 언급했다. 시장점유율 수치는 공시상 확인 불가다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익 (2Q26, 8-K EX-99.1 및 제공 지표)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$4.44B</td>
+<td>-</td>
+<td>YoY <span class="up">+4.2%</span>, QoQ <span class="up">+8.4%</span></td>
+</tr>
+<tr>
+<td>순이익(지배주주)</td>
+<td>$765M</td>
+<td>$629M</td>
+<td>+21.6%</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$1,603M</td>
+<td>$1,163M</td>
+<td>+38% (QoQ <span class="up">+14%</span>)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>27.8%</td>
+<td>-</td>
+<td>YoY <span class="up">+3.5%</span>p</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>37.9%</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 매출은 <span class="up">+4.2%</span>인데 EBITDA는 <span class="up">+38%</span>다. 매출에는 상품가격이 그대로 반영되는 부분이 커서, 매출보다 물량과 마진이 더 중요한 지표다.
+- <strong>물량:</strong> Permian 처리량은 전년 대비 +900 MMcf/d(<span class="up">+14%</span>), 전분기 대비 +450 MMcf/d(<span class="up">+7%</span>)다. NGL 수송, 분리, LPG 수출 물량도 모두 사상 최대다. 물량이 늘어난 것은 구조적이고 반복 가능한 요인이다.
+- <strong>가격과 믹스:</strong> 2Q에는 마케팅 마진이 크게 늘었다. Waha 가스 가격이 마이너스였고 가스 반출 용량이 부족해 지역 간 차익 기회가 생겼기 때문이다. LPG 수출에서도 마케팅 이익이 컸다. 반면 G&amp;P에서는 가스 가격 하락이 일부 상쇄 요인으로 작용했다.
+- <strong>역산 추정:</strong>
+  - 1Q 조정 EBITDA는 약 $1.41B다($1,603M ÷ 1.14).
+  - 상반기 합계는 약 $3.0B다.
+  - 가이던스 상단 $5.9B를 가정하면 하반기에는 약 $2.9B, 분기당 약 $1.44B가 남는다. 회사 가이던스 자체가 2Q 수준($1.6B)이 이어지지 않는다는 뜻을 담고 있다.</p>
+<p><strong>현금흐름과 주주환원</strong>
+- TTM FCF는 $740.9M이다.
+- 2026 순성장 CAPEX는 약 $4.5B, 유지 CAPEX는 약 $250M이다(회사 추정).
+- 배당:
+  - 분기 $1.25, 연환산 $5.00로 전년 대비 <span class="up">+25%</span>다.
+  - 1회 지급액은 약 $268M이다.
+  - 현재가 기준 배당수익률은 약 1.79%다(계산값).
+- 2Q 자사주 매입은 308,102주, 평균 $259.93, 총 $80M이다. 잔여 승인 한도는 $1,239M다.
+- <strong>해석:</strong> FCF가 배당조차 다 감당하지 못하는 상태에서 자사주 매입까지 하고 있다. 성장 CAPEX가 정점인 동안 주주환원은 사실상 부채로 조달하는 구조다.</p>
+<p><strong>재무 건전성 (2026-06-30)</strong>
+- 총부채는 $19,578M다. 선순위 무담보채 $17,900M, CP $600M, 매출채권 유동화 $451M, 금융리스 $794M로 구성된다.
+- 유동성은 약 $3.2B다. 리볼버 $2.9B, 유동화 여력 $149M, 현금 $132M다.
+- 7월에 매출채권 유동화 한도를 최대 $800M로 늘리고 만기를 2027-07-30으로 연장했다.
+- <strong>레버리지:</strong> 부채를 2026 가이던스 상단 EBITDA로 나누면 약 3.3배다(단순 계산). 회사가 공식 발표한 레버리지 지표는 발췌상 확인 불가다.
+- <strong>밸류에이션:</strong> EV는 약 $79.3B(시가총액 + 순부채 단순 합산)다. 2026 가이던스 기준 EV/EBITDA는 약 13.4~13.9배다(계산값). 동종사와의 비교 수치는 제공되지 않았다.
+- 10-Q MD&amp;A 본문은 발췌에 목차만 있어 세부 항목은 공시상 확인 불가다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① Permian 처리 용량 확장 (G&amp;P)</strong>
+- 신규 플랜트는 각 275 MMcf/d다.
+- 2025년 가동: Bull Moose, Pembrook II, Bull Moose II.
+- 2026년 2Q 말 East Driver가 가동했다. 당초 계획은 3Q26으로, 예정보다 빨랐다.
+- 건설 중:
+  - Copperhead (1Q27 예정)
+  - Yeti (3Q27 예정)
+  - Yeti II (4Q27 예정)
+  - Roadrunner III, Copperhead II
+- 실적콜에서 다음 Midland 플랜트의 시점을 검토 중이라고 언급했다.
+- <strong>실현 조건:</strong> 생산자의 시추 활동이 유지되어야 하고, 가스 반출 용량이 확보되어야 한다.
+- <strong>검증 포인트:</strong>
+  - 3Q Permian inlet이 7.2 Bcf/d를 넘는지 본다. 7월에 가격 때문에 닫혔던 물량(shut-in)이 복귀한 효과가 반영되어야 한다.
+  - 10-K에서 1Q26·2Q26 가동 예정이던 Falcon II와 East Pembrook의 가동 여부가 2Q 보도자료에 명시되지 않았다. 확인이 필요하다.</p>
+<p><strong>② 다운스트림 통합 확장 (L&amp;T)</strong>
+- 2Q에 Train 11 분리설비와 Delaware Express 증설이 가동했다.
+- 건설 중:
+  - Train 12·13 분리설비
+  - Speedway NGL 파이프라인
+  - GPMT LPG 수출 증설
+  - Bull Run, Buffalo Run, Forza 잔여가스(residue gas) 파이프라인
+- 회사는 이 프로젝트들이 "on track"이라고 밝혔다.
+- <strong>검증 포인트:</strong> 분리와 LPG 수출 물량이 사상 최대를 이어가는지 본다. Train 11 가동률 개선이 L&amp;T 조정 영업마진에 반영되는지도 확인한다.</p>
+<p><strong>③ 가스 반출 용량과 지분 투자</strong>
+- 실적콜에서 Blackcomb·Traverse 프로젝트 지분 17.5%를 언급했다. 가동되고 물량이 늘면 지분법 이익이 생긴다고 했다.
+- Hugh Brinson Phase 1과 GCX 증설은 이미 가동했다.
+- <strong>검증 포인트:</strong> 지분법 이익 추이와 Waha 가격차(basis) 축소 정도를 본다.</p>
+<p><strong>④ 수요 측 장기 촉매 (회사 주장)</strong>
+- 회사는 LNG 수출 확대, 발전용 가스 수요, 데이터센터 전력 수요를 수혜 요인으로 제시했다.
+- 실적콜에서 Permian 내 behind-the-meter 발전 프로젝트에 가스를 공급하는 방안을 논의 중이라고 언급했다.
+- <strong>검증 포인트:</strong> 구체적인 계약 공시가 나오는지 본다. 현재는 "논의 중" 단계다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법</strong>
+- 1Q콜(5월): 혹한과 가격 때문인 생산 중단(shut-in)이 "예상보다 많았음에도 물량 전망은 on track"이라고 했다. 방어적이지만 자신감 있는 톤이었다.
+- 2Q콜(8월): "가이던스 상단 쪽"으로 높였다. 2026 EBITDA 증가폭이 2025 대비 "$1B에 근접할 수 있다"는 정량 화법도 새로 썼다. 이를 역산하면 2025 조정 EBITDA는 약 $4.9B다.
+- 물량 전망에 대해서는 "2월 예상보다 높게 tracking 중"이라고 표현을 올렸다. 다만 연간 물량 수치 가이던스는 발췌상 확인 불가다.</p>
+<p><strong>경영진이 스스로 밝힌 하방 요인 (중요)</strong>
+- Kneale 사장은 3Q 마케팅 마진이 2Q 대비 "headwind"가 될 것이라고 명시했다. Waha 가스뿐 아니라 LPG 수출 마케팅 이익도 2Q에 이례적으로 강했다고 설명했다.
+- fee floor는 3Q에도 "aggregate 기준 floor 아래"에 머물 것이라고 했다. 즉 가스 가격 반등이 fee 수입 개선으로 곧바로 이어지지 않는다.
+- 이것은 Q&amp;A에서 나온 답변이다. 보도자료에는 "higher marketing margin"만 언급되어 있어 이 하방 요인이 잘 드러나지 않는다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- 마케팅 이익의 지속성에 대해 여러 애널리스트가 질문했다. 회사는 정량적인 기초 이익(base earnings) 수치를 내놓지 않았다. "시장 기회에 따라 달라진다"는 원칙론으로 답했다.
+- fee floor가 발동되는 상품가격 수준은 공개하지 않는다는 기존 입장을 유지했다. 질문자(TD Cowen)도 회사가 이 질문을 피해 왔다고 짚었다.
+- 공급망: 플랜트 리드타임은 18~24개월이고 이 중 건설이 10~12개월이다. 압축기 리드타임이 길어졌지만 "실행에 영향은 없다"고 방어했다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 2Q 중 하루 200~400 MMcf/d가 가격 때문에 닫혀 있었다. 이 물량은 7월에 "대부분 복귀"했고 3Q에 일부 추가 순풍이 될 것이라고 했다.
+- 상반기 마케팅 초과 성과는 약 $250M다.
+- 1Q에 LPG 수출 설비 일부에서 계획 외 정지가 있었다.
+- 2Q콜 참석자 가운데 CFO Byers와 L&amp;T 사장 Branstetter는 이후 8-K(8/19)로 역할이 바뀌었다.</p>
+<h2>6. 리스크</h2>
+<p>10-K Item 1A 본문은 발췌에 포함되지 않았다. 아래는 10-K 전망 관련 주의 문구, 8-K, MD&amp;A 성격의 보도자료, transcript를 근거로 정리했다.</p>
+<ol>
+<li>
+<p><strong>마케팅 이익의 정상화 (정상 이익 수준 판단의 문제)</strong>
+   - 2Q 서프라이즈는 Waha 마이너스 가격과 반출 용량 부족이라는 일시적 환경에서 나왔다.
+   - 반출 용량이 늘어 가격차가 줄면 이 이익은 자연스럽게 줄어든다. 회사도 3Q에 이것이 역풍이라고 인정했다.
+   - 시장이 2Q 실적을 그대로 연환산하고 있다면 하향 조정 위험이 있다.</p>
+</li>
+<li>
+<p><strong>생산자 활동과 상품가격</strong>
+   - 10-K는 "자산 주변 시추 수준"과 "하방 가격 변동성"을 첫 번째 위험으로 꼽았다.
+   - 2Q에는 가격 때문에 실제로 200~400 MMcf/d의 생산 중단이 있었다. 처리량이 생산자의 경제성에 직접 연동된다는 사실이 확인된 셈이다.
+   - fee floor 아래 구간에서는 가격이 올라도 이익 개선이 제한된다.</p>
+</li>
+<li>
+<p><strong>대규모 CAPEX와 레버리지</strong>
+   - 성장 CAPEX는 약 $4.5B인데 TTM FCF는 $740.9M이다. 배당 증액과 자사주 매입까지 겹쳐 순부채가 늘어나는 구조다.
+   - 부채는 $19.6B이고 CP와 유동화 같은 단기 조달이 약 $1.05B다. 금리와 자본시장 접근성 위험은 10-K에서도 명시되어 있다.</p>
+</li>
+<li>
+<p><strong>프로젝트 실행과 일정</strong>
+   - 2027년까지 플랜트 5개, 분리설비 2기, 파이프라인 여러 건이 동시에 진행 중이다.
+   - 압축기 리드타임이 늘어난 점은 실적콜에서도 인정했다.
+   - 지연되면 물량이 늘어도 처리할 용량이 없어 기회를 놓치게 된다.</p>
+</li>
+<li>
+<p><strong>경영진 교체</strong>
+   - 9/1부로 CFO Byers가 은퇴하고 Branstetter가 CFO가 됐다. L&amp;T 사장은 외부 인사(Enterprise 출신 Secrest)가 맡았다.
+   - 대규모 투자가 집중되는 시기에 CFO와 L&amp;T 사업 책임자가 동시에 바뀌었다. 조직 연속성은 대체로 유지되지만 자본배분 기조가 달라지는지 지켜볼 필요가 있다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ("보통")</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정·중립</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>조정 EBITDA YoY <span class="up">+38%</span>, 영업이익률 <span class="up">+3.5%</span>p</td>
+<td>2Q EBITDA에 마케팅 일회성 요인이 상당 부분 포함됨(상반기 약 $250M 초과)</td>
+</tr>
+<tr>
+<td>Permian 처리량 YoY <span class="up">+14%</span>, 다운스트림 물량 사상 최대</td>
+<td>가이던스를 역산하면 하반기 분기 EBITDA 약 $1.44B로 2Q보다 약 10% 낮음</td>
+</tr>
+<tr>
+<td>배당 YoY <span class="up">+25%</span>, 자사주 매입 잔여 한도 $1,239M</td>
+<td>TTM FCF $740.9M &lt; 연환산 배당 약 $1.07B</td>
+</tr>
+<tr>
+<td>유동성 약 $3.2B, 2027년까지 프로젝트 파이프라인이 짜여 있음</td>
+<td>부채 / 2026E EBITDA 약 3.3배, EV/EBITDA 약 13.4~13.9배(계산값, 동종사 비교 불가)</td>
+</tr>
+<tr>
+<td>52주 고점 대비 <span class="down">-7.6%</span>로 조정된 가격대</td>
+<td>오늘 상승의 촉매가 없고 거래량 1.39배로 유의미하지 않음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q 실적에서 마케팅을 제외한 이익:</strong> 마케팅이 평상 수준으로 돌아왔을 때 조정 EBITDA가 분기 $1.4B 이상을 유지하는지 본다. 이는 연간 가이던스 상단과 맞는 수준이다.
+2. <strong>엑슨 20년 계약의 실체:</strong> 해당 헤드라인이 사실이라면 8-K나 IR 자료에서 계약 조건을 확인해야 한다. 볼 항목은 물량, 신규 플랜트 3곳의 CAPEX와 일정, 2027년 이후 CAPEX 가이던스 변화다. 현재 제공 자료로는 확인할 수 없다.
+3. <strong>자금 조달 구조:</strong> 3Q 말 순부채, CP와 유동화 사용액, 신규 채권 발행 여부를 본다. 새 CFO 체제에서 레버리지 목표와 주주환원 정책이 유지되는지도 확인한다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 3Q 조정 EBITDA가 $1.35B를 밑돌아, 연간 가이던스 상단 달성이 어려워지는 경우
+- Permian inlet이 전분기 대비 정체되거나 줄어드는 경우. 7월에 생산 중단 물량이 복귀했는데도 물량이 늘지 않는다면 생산자 활동이 둔화했다는 신호다.
+- 핵심 프로젝트(Copperhead, Train 12·13, Speedway) 지연이 공시되거나 2026 성장 CAPEX가 $4.5B를 크게 넘도록 상향되는 경우
+- 자사주 매입이 중단되거나 배당 증가율이 둔화하는 경우. 이는 레버리지 관리 쪽으로 기조가 바뀌었다는 신호다.</p>
+<p><strong>상향 조건 (적극)</strong>
+- 마케팅이 정상화된 상태에서도 분기 EBITDA가 $1.45B 이상 나오는 경우
+- 2027 가이던스에서 성장 CAPEX가 줄고 FCF가 배당을 넘어서는 전환 시점이 제시되는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526059296/trgp-20251231.htm">10-K — 2025-12-31_0001193125-26-059296</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526337729/trgp-20260630.htm">10-Q — 2026-06-30_0001193125-26-337729</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526211698/trgp-20260331.htm">10-Q — 2026-03-31_0001193125-26-211698</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526364099/d135085d8k.htm">8-K — 2026-08-19_0001193125-26-364099</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526336525/trgp-ex99_1.htm">8-K — 2026-08-06_0001193125-26-336525__EX-99.1__trgp-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526336525/trgp-20260806.htm">8-K — 2026-08-06_0001193125-26-336525</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526306591/d125510d8k.htm">8-K — 2026-07-16_0001193125-26-306591</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1389170/000119312526296255/d116740dex101.htm">8-K — 2026-07-01_0001193125-26-296255__EX-10.1__d116740dex101</a></li>
+<li>Transcript — 2026-08-06 Targa Resources Corp. (TRGP) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-07 Targa Resources Corp. (TRGP) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

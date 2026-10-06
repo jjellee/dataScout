@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVGO — Broadcom Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AVGO — Broadcom Inc. Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">AVGO</span><span class="badge">+3.35%</span><span class="badge">거래량 1.02배</span><span class="badge">$1.70T</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적은 최상급입니다.</strong> FY26 3분기(2026-08-02 종료) 매출은 $29.6B로 전년 대비 <span class="up">+86%</span>입니다. 이 중 AI 반도체 매출이 $16.7B(<span class="up">+221%</span> YoY, <span class="up">+54%</span> QoQ)입니다. Non-GAAP 영업이익률은 67.9%, 분기 FCF는 $13.7B(매출의 46%)로 성장과 수익성이 함께 확인됩니다. 회사는 4분기 매출을 $34.8B(<span class="up">+93%</span>)로 제시했습니다.</li>
+<li><strong>오늘 상승(<span class="up">+3.35%</span>)에는 확인된 촉매가 없습니다.</strong> 최근 4일 내 공시가 없고, 거래량 배수도 1.02배로 사실상 평소 수준입니다. 이번 움직임을 수급 신호로 보기 어렵습니다.</li>
+<li><strong>주가는 실적과 반대로 움직였습니다.</strong> 실적 발표 이후 60일 수익률은 <span class="down">-9.4%</span>, 52주 고점 대비 <span class="down">-26.3%</span>입니다. 실적콜에서 드러난 AI 고객 대상 금융 지원 구조(XPV Platform: Apollo·Blackstone와 만든 AI 고객 대상 금융 구조로 Broadcom이 제한적 보증 제공)와 고객사(Anthropic·OpenAI)의 신용 불확실성이 할인 요인으로 보입니다. 이는 추정입니다.</li>
+<li><strong>결론:</strong> 펀더멘털만 보면 '적극'도 가능합니다. 다만 장부에 잡히지 않는 보증의 규모, 6개 고객 집중도, 하락 추세 중인 주가를 고려해 벤치마크 수준 비중에서 시작하고, 아래 체크포인트를 확인하며 늘리는 접근을 권합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 공시가 없습니다. 가장 최근 실적 공시는 2026-09-02 8-K(3분기 실적)로 약 한 달 전입니다.</li>
+<li><strong>뉴스:</strong> 헤드라인 5건 모두 개인투자자 대상 매체(Motley Fool, Barchart, Trefis, MarketBeat, Seeking Alpha)의 의견성 기사입니다. 제목 외 내용이 제공되지 않아 오늘 주가와의 인과는 확인할 수 없습니다. 이 중 "Broadcom Has A New Problem: Anthropic"은 부정적 논조로 보이지만 본문은 확인할 수 없습니다.</li>
+<li><strong>수급:</strong> 거래량 배수가 1.02배라 스크린 전제인 '거래량 급증'과 맞지 않습니다. 거래대금 $8.75B는 시가총액 $1.70T 대비 약 0.5%로 평소 수준입니다.</li>
+<li><strong>해석(추정):</strong> 60일 <span class="down">-9.4%</span> 조정 뒤의 기술적 반등이거나 반도체 섹터 동조로 보입니다. 오늘 움직임 자체에 비중 판단의 무게를 두지 않습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>참고: 제공된 10-K 발췌는 표지와 목차만 담고 있고 사업 섹션 본문은 잘려 있습니다. 10-Q MD&amp;A도 목차 한 줄뿐입니다. 아래 내용은 2026-09-02 8-K(EX-99.1), 2026-07-06 8-K, 3분기 실적콜을 근거로 합니다. 10-K상의 제품별 상세 분류와 고객별 매출 비중은 공시상 확인 불가입니다.</p>
+</blockquote>
+<p><strong>두 개 사업부 (3분기 기준, 8-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>Q3 FY26 매출</th>
+<th>비중</th>
+<th>YoY</th>
+<th>수익성 (실적콜, non-GAAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Semiconductor Solutions</td>
+<td>$20.8B</td>
+<td>70%</td>
+<td>+127%</td>
+<td>매출총이익률 76%, 영업이익률 61%</td>
+</tr>
+<tr>
+<td>Infrastructure Software</td>
+<td>$8.75B</td>
+<td>30%</td>
+<td>+29%</td>
+<td>매출총이익률 94%, 영업이익률 84%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>반도체 사업부 내부 구성 (실적콜 기준, 일부는 역산)</strong>
+- <strong>AI 반도체 $16.7B (전사 매출의 56%):</strong>
+  - 고객 맞춤형 AI 가속기(XPU)가 AI 매출의 73%입니다. 역산하면 약 $12.2B입니다.
+  - 나머지 약 $4.5B는 AI 네트워킹(Tomahawk 6 등)입니다(역산).
+- <strong>비AI 반도체 $4.2B (<span class="up">+5%</span> YoY):</strong> 사실상 정체 상태입니다.</p>
+<p><strong>AI 고객군 (실적콜)</strong>
+- 회사는 "6개 XPU 고객"이라고 밝혔습니다. 콜에서 이름이 나온 고객은 Google(TPU v7 Ironwood, v8i), Anthropic(Ironwood), OpenAI(첫 자체 가속기 'Jalapeño'), Meta(MTIA, 4분기 양산 출하 예정)입니다.
+- 2026-07-06 8-K에 따르면 Apple과 2031년까지 여러 세대 제품에 들어갈 맞춤형 ASIC을 개발·공급하는 다년 계약을 체결했습니다.</p>
+<p><strong>소프트웨어 사업</strong>
+- 실적콜에서 VMware 기반 'VMware Private AI Cloud'를 발표했습니다. ARR 성장률은 15%라고 언급했습니다.</p>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 경영진은 TPU v8i가 "Vera Rubin GPU와 대등하거나 상회"하고, Jalapeño가 "추론에서 Grace Blackwell GPU를 능가"한다고 주장했습니다. 회사 주장이며 제3자 검증은 없습니다.
+- 경영진은 "MediaTek 버전 v8t보다 먼저 v8i를 출하 중"이라고 언급했습니다. 이는 Google이 TPU를 Broadcom과 MediaTek 두 곳에 나눠 맡기고 있다는 뜻입니다. 경쟁 우위를 강조한 발언이지만, 동시에 Google 물량의 점유율이 나뉠 수 있다는 신호이기도 합니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- <strong>QoQ 기준:</strong> 매출이 <span class="up">+33.4%</span> 늘었습니다. 2분기 매출을 역산하면 약 $22.2B이고, 2분기 AI 매출은 약 $10.8B로 추정됩니다. 증가분 약 $7.4B 중 약 $5.9B가 AI에서 나왔습니다. 성장은 거의 전적으로 AI에서 나오고 있습니다.
+- <strong>물량 vs 단가:</strong> 실적콜에서 XPU 출하가 3.5배 이상, AI 네트워킹이 2.5배 이상 늘었다고 언급했습니다. 대부분 물량 효과입니다.
+  - 단가에 대해 Hock Tan은 세대가 바뀔수록 칩당 판매단가(ASP)는 오르지만 칩당 전력도 늘어, 1GW당 Broadcom 콘텐츠는 "$20~30B로 안정적"이라고 설명했습니다.
+  - 따라서 앞으로의 성장은 칩 단가보다 배치되는 GW 수에 달려 있습니다.
+- <strong>믹스:</strong> 매출 비중은 AI(56%)가 소프트웨어(30%)와 비AI(약 14%)를 이미 넘어섰습니다. 4분기 가이던스 기준 AI 비중은 약 62%로 추정됩니다.</p>
+<p><strong>마진 방향성: 매출총이익률은 하락, 영업이익률은 유지</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q3 FY25</th>
+<th>Q2 FY26</th>
+<th>Q3 FY26</th>
+<th>Q4 FY26 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출총이익률 (non-GAAP, 실적콜)</td>
+<td>공시상 확인 불가</td>
+<td>약 77.1% (역산)</td>
+<td>75% (QoQ -210bp)</td>
+<td>73% (전년 78%)</td>
+</tr>
+<tr>
+<td>매출총이익률 (GAAP, 지표)</td>
+<td>—</td>
+<td>—</td>
+<td>69.1%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>영업이익률 (non-GAAP)</td>
+<td>65.5%</td>
+<td>—</td>
+<td>67.9%</td>
+<td>66%</td>
+</tr>
+<tr>
+<td>영업이익률 (GAAP, 8-K 역산)</td>
+<td>36.9%</td>
+<td>—</td>
+<td>53.9%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>스크린 지표의 GAAP 영업이익률은 54.3%로, 8-K 수치로 역산한 53.9%와 약간 다릅니다. 계산 기준 차이로 보입니다.</li>
+<li>실적콜 기준, 마진이 낮은 XPU 비중이 커지면서 매출총이익률은 분기마다 내려가고 있습니다. 영업레버리지가 이를 상쇄해 영업이익률은 60%대 후반을 유지하는 구조입니다.</li>
+<li>4분기에는 non-GAAP 영업이익률이 67.9%에서 66%로 소폭 낮아질 것으로 회사가 제시했습니다. AI 비중이 계속 커지면 영업이익률이 완만하게 낮아지는 경로를 기본으로 가정해야 합니다.</li>
+<li>GAAP과 non-GAAP 영업이익 차이는 분기 약 $4.1B입니다. 세부 항목(무형자산 상각, 주식보상 등)은 제공 발췌에서 공시상 확인 불가입니다.</li>
+</ul>
+<p><strong>현금흐름</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>금액</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 영업현금흐름</td>
+<td>$14.2B</td>
+<td>YoY <span class="up">+98%</span></td>
+</tr>
+<tr>
+<td>Q3 Capex</td>
+<td>$0.53B</td>
+<td></td>
+</tr>
+<tr>
+<td>Q3 FCF</td>
+<td>$13.7B</td>
+<td>YoY <span class="up">+95%</span>, 매출 대비 46%</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$39.4B</td>
+<td></td>
+</tr>
+<tr>
+<td>Q4 Capex</td>
+<td>$1.4B</td>
+<td>회사 가이던스 (실적콜)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>4분기 Capex 증가의 용도는 기판 공장(싱가포르), EML·CW·VCSEL 레이저, 인화인듐 공장 증설입니다(실적콜). 증설 규모를 감안해도 FCF 창출력은 압도적입니다.</li>
+<li>3분기 재고는 $4.5B입니다(실적콜). 전분기 비교치는 공시상 확인 불가입니다.</li>
+</ul>
+<p><strong>재무 건전성</strong>
+- <strong>현금:</strong> $24.0B로 전분기 $19.6B에서 늘었습니다(8-K).
+- <strong>부채 상환:</strong> 3분기에 장기부채 $5.6B를 상환했고, 분기 종료 후 $1.5B를 추가 상환했습니다. 고정금리 부채의 가중평균 쿠폰은 4%, 평균 잔존만기는 7.4년입니다(실적콜).
+- <strong>총부채 잔액과 순부채:</strong> 제공 발췌에서 공시상 확인 불가입니다.
+- <strong>배당:</strong> 분기 $0.65로 연환산 $2.60, 배당수익률 약 0.7%입니다. 3분기 배당 지급액은 $3.1B입니다.
+- <strong>장부 밖 위험:</strong> XPV Platform 관련 잔존가치 보증은 장부에 잡히지 않는 우발채무 성격입니다. 규모는 공시상 확인 불가입니다(6장 참조).</p>
+<p><strong>밸류에이션 (제공 지표로 단순 계산, 추정)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th>산출 방식</th>
+<th>배수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TTM FCF</td>
+<td>시총 $1.70T ÷ $39.4B</td>
+<td>약 43배 (FCF 수익률 2.3%)</td>
+</tr>
+<tr>
+<td>3분기 non-GAAP EPS 연환산</td>
+<td>$3.32 × 4 = $13.28</td>
+<td>P/E 약 26.7배</td>
+</tr>
+<tr>
+<td>4분기 가이던스 대입 (추정)</td>
+<td>아래 참조</td>
+<td>P/E 약 23배</td>
+</tr>
+<tr>
+<td>FY27 시나리오 (회사 주장 대입, 추정)</td>
+<td>아래 참조</td>
+<td>P/E 약 20배</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>4분기 가이던스 대입:</strong> 영업이익 약 $23.0B에 3분기의 순이익/영업이익 비율(81.5%)을 적용하고, 희석주식수를 약 4.93B주로 가정하면 EPS 약 $3.80입니다. 연환산하면 P/E 약 23배입니다.</li>
+<li><strong>FY27 시나리오:</strong> FY27 AI 매출 $115B에 비AI 반도체와 소프트웨어를 4분기 가이던스 수준(분기 $13.0B)으로 연환산해 더하면 매출 약 $167B입니다. 영업이익률을 62~66%로 가정하면 EPS 약 $17~18, P/E 약 20배입니다. 회사의 AI 매출 전망이 그대로 실현된다는 전제가 필요합니다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 맞춤형 AI 가속기(XPU) 6개 고객의 동시 확대</strong>
+- 회사는 FY26 AI 매출을 $58B(<span class="up">+186%</span>)로 기존 가이던스 $56B에서 올렸다고 밝혔습니다.
+  - 실적콜 원문에는 "$56 million"으로 표기돼 있으나 맥락상 billion의 오기로 보입니다.
+- 실적콜 요약에 따르면 회사는 FY27 AI 매출 $115B, FY28 $230B를 제시했습니다. Mizuho 애널리스트도 "FY2027·FY2028 AI 매출 가시성"을 언급해 이 수치를 뒷받침합니다.
+- <strong>실현 조건:</strong> 1GW당 $20~30B 콘텐츠를 적용하면, FY27 $115B는 연간 약 4~6GW분 납품을 뜻합니다(역산). 이 수준의 데이터센터 전력·부지 확보가 전제입니다.
+- <strong>검증 포인트(FY26 4분기):</strong>
+  - AI 매출 $21.7B를 달성하는지 봐야 합니다.
+  - Meta MTIA의 양산 출하가 실제로 시작됐는지 확인해야 합니다.
+  - 12월 실적에서 FY27 $115B를 유지하는지, 상향하는지 봐야 합니다.</p>
+<p><strong>② AI 네트워킹</strong>
+- 회사는 4분기 AI 네트워킹 매출이 XPU와 함께 전년 대비 3배가 될 것이라고 밝혔습니다. Tomahawk 6와 Ultra 스위치 채택을 근거로 들었습니다.
+- <strong>검증 포인트:</strong> AI 매출 중 네트워킹 비중이 27% 안팎을 유지하는지 봐야 합니다. 이 비중이 내려가면 성장이 XPU에만 쏠리고, XPU가 마진이 더 낮아 마진 희석이 커집니다.</p>
+<p><strong>③ 공급 역량 내재화 (기판·레이저)</strong>
+- 실적콜에 따르면 싱가포르에서 파트너와 함께 기판 공장을 짓고 있고 "곧 양산"한다고 합니다. EML·CW·VCSEL 레이저 생산능력은 전년 대비 3배 이상으로 늘리고 있습니다.
+- <strong>검증 포인트:</strong> 4분기 Capex가 $1.4B로 집행되는지, 그리고 기판 공장 가동이 실제 출하 확대로 이어지는지 봐야 합니다.</p>
+<p><strong>④ Apple 맞춤형 ASIC 장기 계약 (2026-07-06 8-K)</strong>
+- 2031년까지의 다년 계약이라 비AI 반도체 매출의 하방을 받쳐줍니다. 계약 금액은 공시상 확인 불가입니다.
+- <strong>검증 포인트:</strong> 비AI 반도체 매출이 4분기 $4.3B 가이던스를 넘어 성장 전환하는지 봐야 합니다.</p>
+<p><strong>⑤ 소프트웨어 (VMware Private AI Cloud)</strong>
+- 3분기 매출은 <span class="up">+29%</span>지만 ARR 성장은 15%에 그쳤습니다. 4분기 가이던스는 <span class="up">+25%</span>로 성장이 둔화되고 있습니다.
+- <strong>검증 포인트:</strong> 매출 성장률이 ARR 성장률 쪽으로 수렴하는지(VMware 전환 효과 소진 여부) 봐야 합니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- Hock Tan은 "Q3 demand was simply hot and we're just getting started"라고 말하며 매우 공격적인 톤을 보였습니다.
+- 자신감의 근거로 다음을 들었습니다.
+  - 3분기 실적이 가이던스를 상회했습니다(매출총이익률도 가이던스 상회).
+  - FY26 AI 가이던스를 상향했습니다.
+  - 2개 회계연도 앞(FY27·FY28)까지 AI 매출을 제시했습니다.
+  - 장기 전망을 숫자로 못 박는 방식은 이전보다 공격적인 가이던스 화법입니다.
+- CFO는 4분기 영업이익률을 "전년과 같은 66%로 유지"한다고 했습니다. 매출총이익률 하락을 숨기지 않고 영업이익률을 방어 기준으로 삼는 화법입니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>XPV Platform과 고객 금융:</strong>
+  - Broadcom은 Apollo·Blackstone와 XPV Platform을 만들었고, Anthropic 대상 $35B 트랜치를 성사시켰습니다. 실적콜 요약에 따르면 Broadcom은 제한적 보증을 제공합니다.
+  - TD Cowen 질문에 Hock Tan은 다음과 같이 답했습니다.
+    - "Anthropic은 IPO로 가고 있고 그에 따라 신용이 달라질 것"
+    - "OpenAI는 명확성이 덜하다"
+  - CFO는 "사안별(case by case)로 판단하고, 프레임워크 안에서만 지원한다"고 답했습니다.
+  - 보증 총액, 보증 한도, 손실 시나리오에 대한 정량 답변은 발췌상 없습니다. 이것이 가장 큰 방어 지점입니다.
+- <strong>공급 제약 (Goldman):</strong> Hock Tan은 부지·전력·건물(shell)이 "배치 시점을 결정한다"고 인정했습니다. 선단 공정 실리콘, 기판, HBM, 서버용 시스템 메모리까지 병목이 "시점마다 달라진다"고 했습니다. 매출 인식 시점이 고객의 데이터센터 준비 상황에 좌우된다는 점을 사실상 인정한 셈입니다.
+- <strong>1GW당 콘텐츠 (Mizuho):</strong> 1GW당 $20~30B 수준이 유지될 것이라고 밝혔습니다. 성장은 칩 단가가 아니라 GW 수에 달렸다는 뜻입니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고객별 제품</td>
+<td>Google: TPU v7·v8i / Anthropic: Ironwood / OpenAI: Jalapeño / Meta: MTIA</td>
+</tr>
+<tr>
+<td>AI 매출 구성</td>
+<td>XPU 비중 73%, 출하 3.5배 이상</td>
+</tr>
+<tr>
+<td>장기 AI 매출 전망</td>
+<td>FY27 $115B, FY28 $230B</td>
+</tr>
+<tr>
+<td>금융 구조</td>
+<td>XPV Platform과 Anthropic $35B 트랜치</td>
+</tr>
+<tr>
+<td>MediaTek 관련</td>
+<td>MediaTek의 v8t 존재</td>
+</tr>
+<tr>
+<td>1GW당 콘텐츠</td>
+<td>$20~30B</td>
+</tr>
+<tr>
+<td>레이저 생산능력</td>
+<td>전년 대비 3배 이상</td>
+</tr>
+<tr>
+<td>부채 조건</td>
+<td>고정금리 부채 쿠폰 4%, 평균 잔존만기 7.4년</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>참고: 같은 날 함께 제공된 Six Five Summit 발언(양자내성암호)은 Broadcom 엔지니어의 일반적인 보안 논의입니다. 실적·비중 판단과 관련성이 낮아 근거로 쓰지 않았습니다.</p>
+</blockquote>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>참고: 10-K 리스크 섹션 본문은 제공 발췌에 없습니다. 아래는 8-K, 실적콜, 지표에서 확인된 리스크만 정리했습니다.</p>
+</blockquote>
+<ol>
+<li><strong>XPV 보증에 따른 장부 밖 신용 리스크:</strong> Broadcom은 AI 랩 고객(특히 Anthropic)의 인프라 금융에 잔존가치 보증 등 제한적 보증을 제공합니다(실적콜). 고객 신용이 나빠지거나 AI 자산 가치가 떨어지면 장부에 없던 손실로 바뀔 수 있습니다. 보증 규모는 공시상 확인 불가입니다. 매출 일부가 사실상 판매자 금융(vendor financing)으로 지탱되는지가 핵심 쟁점입니다.</li>
+<li><strong>극단적인 고객 집중:</strong> AI 매출이 전사의 56%(4분기 약 62% 추정)이고 6개 고객에 집중돼 있습니다. 고객 중 OpenAI·Anthropic은 아직 자금 조달에 의존하는 비상장사입니다. 한 고객이 일정을 늦추거나 내재화하면 실적 변동성이 큽니다.</li>
+<li><strong>세컨드 소싱과 점유율:</strong> 실적콜에서 MediaTek의 TPU v8t가 확인됐습니다. Google이 공급처를 나누고 있다는 뜻입니다. 다음 세대에서 점유율 배분이 바뀌면 최대 고객 매출이 줄 수 있습니다.</li>
+<li><strong>배치 병목에 따른 매출 시점 리스크:</strong> 부지·전력·기판·HBM 등 Broadcom이 통제할 수 없는 병목이 출하 시점을 정합니다(실적콜). 분기별 가이던스 미달이나 다음 분기로의 이연 가능성이 있습니다.</li>
+<li><strong>마진 희석:</strong> non-GAAP 매출총이익률이 전년 78%에서 4분기 가이던스 73%로 내려갑니다. FY27~28에 AI 비중이 70% 이상으로 커지면 영업이익률 66%를 유지할 수 있을지 불확실합니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'의 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>판단 요소</th>
+<th>내용</th>
+<th>방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>성장</td>
+<td>매출 <span class="up">+86%</span> YoY / <span class="up">+33%</span> QoQ, 4분기 가이던스 <span class="up">+93%</span>로 가속</td>
+<td>(+)</td>
+</tr>
+<tr>
+<td>수익성</td>
+<td>non-GAAP 영업이익률 67.9%, GAAP 영업이익률 YoY <span class="up">+16.2%</span>p</td>
+<td>(+)</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>TTM FCF $39.4B, 분기 FCF 마진 46%, 부채 상환 진행</td>
+<td>(+)</td>
+</tr>
+<tr>
+<td>밸류에이션</td>
+<td>연환산 non-GAAP P/E 약 27배, FY27 회사 전망 대입 시 약 20배(추정)</td>
+<td>중립~(+)</td>
+</tr>
+<tr>
+<td>주가 추세</td>
+<td>고점 대비 <span class="down">-26.3%</span>, 60일 <span class="down">-9.4%</span>, 실적 호조에도 하락</td>
+<td>(−)</td>
+</tr>
+<tr>
+<td>오늘 수급</td>
+<td>거래량 1.02배로 확인 신호 없음</td>
+<td>중립</td>
+</tr>
+<tr>
+<td>정보 비대칭</td>
+<td>XPV 보증 규모와 고객 신용 정보 공시상 확인 불가</td>
+<td>(−)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>정리하면, 실적과 밸류에이션 매력은 '적극' 수준입니다.</li>
+<li>그러나 시장이 할인하는 요인(고객 금융과 신용)이 정량적으로 공개되지 않았습니다. 따라서 벤치마크 비중에서 시작해 단계적으로 늘리는 '보통'으로 판단합니다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3분기 10-Q의 우발채무·보증·약정 주석 (2026-08-02 기준, 이번 발췌에는 본문 누락):</strong> XPV 관련 보증 총액과 최대 손실 노출을 확인해야 합니다. 시가총액이나 FCF 대비 미미하면 비중 확대 근거가 됩니다.
+2. <strong>"Broadcom Has A New Problem: Anthropic" 기사 내용:</strong> Anthropic 관련 새로운 사실(주문 조정, 신용, 내재화 등)이 있는지 1차 출처로 확인해야 합니다.
+3. <strong>10-Q의 고객 집중도와 매출채권 공시:</strong> 10% 이상 고객의 매출 비중과 매출채권 회수기간(DSO) 추이를 확인해야 합니다. 판매자 금융 성격의 매출이 늘고 있는지 보기 위함입니다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>'관망'으로 하향할 조건:</strong>
+  - 4분기(12월 9일 발표 예정) AI 매출이 $21.7B에 못 미치거나, FY27 AI 전망 $115B를 낮추는 경우
+  - XPV 보증 노출이 연간 FCF의 상당 부분에 이르거나, 보증 대상 고객의 자금 조달·IPO가 지연되는 경우
+  - non-GAAP 영업이익률 가이던스가 64% 아래로 내려가는 경우(마진 희석 가속)
+  - Google TPU 차기 세대에서 MediaTek 점유율이 확대되거나, 6개 고객 중 한 곳의 이탈이 확인되는 경우
+- <strong>'적극'으로 상향할 조건:</strong>
+  - 보증 규모가 제한적이라는 공시가 확인되는 경우
+  - 4분기 가이던스를 상회하고 FY27 전망을 유지 또는 상향하는 경우
+  - 거래량을 동반해 주가 추세가 돌아서는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm">10-K — 2025-11-02_0001730168-25-000121</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm">10-Q — 2026-08-02_0001730168-26-000080</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/avgo-20260503.htm">10-Q — 2026-05-03_0001730168-26-000054</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000076/avgo-08022026x8kxex99.htm">8-K — 2026-09-02_0001730168-26-000076__EX-99.1__avgo-08022026x8kxex99</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016826000076/avgo-20260902.htm">8-K — 2026-09-02_0001730168-26-000076</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526295589/d84378d8k.htm">8-K — 2026-07-06_0001193125-26-295589</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526275077/d149683dex992.htm">8-K — 2026-06-17_0001193125-26-275077__EX-99.2__d149683dex992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526275077/d149683dex991.htm">8-K — 2026-06-17_0001193125-26-275077__EX-99.1__d149683dex991</a></li>
+<li>Transcript — 2026-09-02 Q3 2026 Transcript</li>
+<li>Transcript — 2026-08-27 The Six Five Summit: AI Unleashed 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

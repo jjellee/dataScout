@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BULL — Webull Corporation Class A Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BULL — Webull Corporation Class A Ordinary Shares</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">BULL</span><span class="badge">+4.41%</span><span class="badge">거래량 1.03배</span><span class="badge">$3.97B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>실적은 좋다.</strong> Q2 2026 매출은 $198.8M로 전년보다 51% 늘었다. 매출총이익률 77.7%, GAAP 영업이익률 22.9%(전년 대비 <span class="up">+25.7%</span>p)로 수익성이 크게 좋아졌다.</li>
+<li><strong>실적이 정점 분기일 수 있다.</strong> 매출의 약 74%가 거래 관련 매출이다. 그리고 Q2에는 PDT Rule 폐지(6/4 시행)라는 일회성 성격의 제도 변화가 겹쳤다. Q3에도 이 거래량이 유지되는지 아직 확인할 수 없다(7~9월 월간 지표는 제공 자료에 없음).</li>
+<li><strong>오늘 상승은 촉매가 아니라 기술적 반등에 가깝다.</strong> 거래량 배수가 1.03배로 거래량 급증이 없었다. 20일 수익률 <span class="down">-24.4%</span> 뒤의 반등으로 보는 것이 맞고, 확인된 호재 공시나 뉴스도 없다.</li>
+<li><strong>공급 부담이 남아 있다.</strong> 임원의 Form 144 매도 예정 신고(10/5, 약 $793K), Resale 등록 물량, 행사가 $11.50 워런트, ESPP 500만 주 신규 예약이 있다.</li>
+<li>결론적으로 펀더멘털은 '보통' 이상이다. 다만 의미 있는 비중을 실으려면 Q3 거래 지표로 PDT 효과가 이어지는지 먼저 확인해야 한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급 요인이나 섹터 동조 가능성이 있다.</strong></p>
+<ul>
+<li>당일 전후 공시는 Form 144(2026-10-05) 1건뿐이다. 뉴스에 따르면 Goldman Sachs를 브로커로 한 임원의 약 $793K 매도 예정이다. 주가에는 중립에서 약간 부정적인 정보다.</li>
+<li>10/1 6-K(임시주총 소집)는 정관 전면 개정(Sixth Amended M&amp;AA)과 2026 ESPP(Class A 500만 주 예약) 승인 안건이다. 주가를 올릴 내용으로 보기 어렵다.</li>
+<li>뉴스 헤드라인 중 Panmure Liberum, SPXL, SFL 관련 기사는 'Bull'이라는 단어 때문에 걸린 무관한 기사다.</li>
+<li>정량적으로 보면 <span class="up">+4.41%</span>가 거래량 배수 1.03배, 거래대금 $88.1M로 평상시 거래량 수준에서 나왔다. 20일 <span class="down">-24.4%</span>, 52주 고점 대비 <span class="down">-46.5%</span>인 상황을 감안하면 과매도 이후 기술적 반등일 가능성이 높다(추정).</li>
+<li>참고로 스크린 전제였던 '거래량 급증'은 오늘 지표로는 성립하지 않는다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 20-F 발췌에는 Item 4(사업) 본문이 없고 용어 정의와 표지까지만 있다. 사업 세부 내용은 실적콜과 일부 정의 조항에 근거해 작성했다.</p>
+</blockquote>
+<p><strong>법인과 지배구조 (20-F)</strong>
+- Cayman Islands 법인이고 본사는 플로리다 St. Petersburg에 있다. 2025-04-10 SPAC(SK Growth Opportunities, SKGR)과 합병해 Nasdaq에 상장했다.
+- 이중 의결권 구조다. 2025년 말 기준 Class A는 440,715,769주(1주 1표), Class B는 83,859,005주(1주 20표)다.
+- Foreign private issuer이자 Emerging growth company, Non-accelerated filer다. 외부감사인의 내부통제 감사의견(SOX 404(b))은 받지 않았다.</p>
+<p><strong>제품과 서비스</strong>
+- 리테일 중심 온라인 증권사다. 주식, ETF, 옵션, 선물, 디지털자산 거래와 마진 대출을 제공한다(20-F의 'customer assets' 정의 기준).
+- 실적콜에서 밝힌 신규 사업: 예측시장, 크립토, AI 도구(Vega, MCP Server), 기관/B2B(B2B2C) 인프라, Monark Markets 제휴를 통한 비상장 후기 단계 기업 투자 접근.</p>
+<p><strong>매출 구성 (Q2 2026, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>금액</th>
+<th>YoY</th>
+<th>비중(계산)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>거래 관련 매출</td>
+<td>$147.7M</td>
+<td>+66%</td>
+<td>약 74%</td>
+</tr>
+<tr>
+<td>이자 관련 매출</td>
+<td>$42.8M</td>
+<td>+18%</td>
+<td>약 22%</td>
+</tr>
+<tr>
+<td>기타(차감 계산)</td>
+<td>약 $8.3M</td>
+<td>공시상 확인 불가</td>
+<td>약 4%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>거래 관련 매출 중 크립토는 $2.25M(전체의 약 1%)이다. 예측시장은 실적콜에서 "분기 $5~6M"이라고 언급됐다.</li>
+</ul>
+<p><strong>고객층</strong>
+- 실적콜에서 평균 고객 연령이 34세이고 신규 고객은 이보다 훨씬 젊다고 언급했다.
+- 소액 액티브 트레이더가 핵심 고객이다. 평균 계좌 규모는 $5,500 이상으로 전년 대비 2배 늘었다.
+- 해외 funded account는 81만 개다. 운영 시장은 15개이고, 기관 AUM은 $1.4B 이상(전체의 약 5%)이다.</p>
+<p><strong>경쟁 위치</strong>
+- 경영진은 실적콜에서 전통 대형사는 자산 이전과 자산관리를 노리지만 Webull은 소액 액티브 트레이더가 핵심이라고 구분했다.
+- 다만 PDT 폐지의 선점 효과에 대해 스스로 "lifts all tides"라고 말했다. 경쟁 우위가 구조적이라고 보기는 어렵다.
+- 시장점유율 수치는 제공 자료로 확인할 수 없다(Q1 콜에서 "4월 market share 사상 최고"라고만 언급).</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질: 물량 주도, 단가는 대체로 유지</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>Q1 2026</th>
+<th>Q2 2026</th>
+<th>QoQ(계산)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$159.9M</td>
+<td>$198.8M</td>
+<td>+24.3%</td>
+</tr>
+<tr>
+<td>거래 관련 매출</td>
+<td>$110.9M</td>
+<td>$147.7M</td>
+<td>+33%</td>
+</tr>
+<tr>
+<td>DARTs</td>
+<td>1.31M</td>
+<td>1.64M (YoY <span class="up">+62%</span>)</td>
+<td>약 <span class="up">+25%</span></td>
+</tr>
+<tr>
+<td>옵션 계약 수</td>
+<td>159M</td>
+<td>213M (YoY <span class="up">+68%</span>)</td>
+<td>+34%</td>
+</tr>
+<tr>
+<td>주식 notional</td>
+<td>$261B</td>
+<td>$279B (YoY <span class="up">+73%</span>)</td>
+<td>약 <span class="up">+7%</span></td>
+</tr>
+<tr>
+<td>고객 자산</td>
+<td>$24.0B</td>
+<td>$28.5B (YoY <span class="up">+79%</span>)</td>
+<td>약 <span class="up">+19%</span></td>
+</tr>
+<tr>
+<td>이자 관련 매출</td>
+<td>$40.1M</td>
+<td>$42.8M (YoY <span class="up">+18%</span>)</td>
+<td>약 <span class="up">+7%</span></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>거래 매출 증가율(YoY <span class="up">+66%</span>)이 DARTs 증가율(<span class="up">+62%</span>)과 비슷하다. 성장은 거래 단가보다 거래량에서 나왔다.</li>
+<li>QoQ로 보면 옵션(<span class="up">+34%</span>)이 주식 notional(<span class="up">+7%</span>)보다 훨씬 많이 늘었다. PDT 폐지 효과가 옵션에 집중됐고, 옵션 비중이 커지는 믹스 변화가 거래 매출 증가를 이끌었다(추정).</li>
+<li>이자 매출 증가율(YoY <span class="up">+18%</span>)은 고객 자산 증가율(<span class="up">+79%</span>)보다 크게 낮다. 자산 대비 이자 수익률이 떨어지고 있다는 뜻이다. Q1 실적콜에서 업계 전반의 fully paid 주식대여 수익 감소를 원인으로 언급했다.</li>
+<li>계좌 수 증가는 느리다. funded account는 5.11M으로 YoY <span class="up">+8%</span>(Q1 기준)에 그친다. 고객 자산 증가의 대부분은 계좌당 자산 증가에서 나왔고, 그중 증시 상승 효과가 얼마인지는 공시상 확인할 수 없다.</li>
+</ul>
+<p><strong>마진 방향</strong>
+- GAAP 기준으로 매출총이익률은 77.7%, 영업이익률은 22.9%다(영업이익 약 $45.5M, 계산값). 전년 대비 <span class="up">+25.7%</span>p이므로 전년 동기 GAAP 영업이익률은 약 <span class="down">-2.8%</span>였다(계산).
+- Non-GAAP 기준으로 조정 영업이익은 $62.6M(31.5%, YoY <span class="up">+169%</span>), 조정 순이익은 $43.2M(21.7%)이다. 조정 영업비용은 $136.2M으로 YoY <span class="up">+26%</span>, QoQ <span class="down">-6%</span>다.
+- 조정 영업이익률(31.5%)과 GAAP 영업이익률(22.9%)의 차이는 약 8.6%p다. 회사 정의상 주식보상비용과 일회성 항목이 빠진 차이이며, 항목별 금액은 공시상 확인할 수 없다.
+- 마진 변동성이 크다. Q1 조정 영업이익률은 9.3%였다. 마케팅과 브랜딩 비용 증가로 조정 영업비용이 YoY <span class="up">+64%</span> 늘었기 때문이다. 마진은 마케팅 집행 시기에 크게 좌우된다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM 잉여현금흐름, GAAP 순이익, 현금, 차입, 순자본(net capital)은 모두 공시상 확인할 수 없다(제공된 20-F 발췌에 재무제표가 없음).
+- 자본 관련 사항:
+  - 2025-07-01 YA II PN과 맺은 standby equity purchase agreement(SEPA)는 2026-04-06 해지됐다(20-F). 지분 희석 통로 하나가 사라졌다.
+  - Q1에 $100M 자사주 매입 프로그램을 발표했다(실적콜). 실제 매입 실적은 공시상 확인할 수 없다.</p>
+<p><strong>밸류에이션 (계산값, 참고용)</strong>
+- 시가총액 $3.97B를 Q2 매출 연환산치(약 $795M)로 나누면 약 5.0배다.
+- Q2 조정 순이익 연환산치(약 $173M) 대비로는 약 23배다.
+- 정점일 수 있는 분기를 연환산했고 Non-GAAP 기준이라 과소평가된 배수일 수 있다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>PDT 폐지 효과 지속</strong>: 회사는 거래량이 PDT 폐지 이전 수준으로 돌아가지 않을 것이라고 밝힘</td>
+<td>소액 계좌의 일중 매매 습관이 굳어지고 시장 변동성이 유지될 것</td>
+<td>Q3 DARTs 1.64M 유지 여부, 옵션 계약 수 213M 대비 증감, 7~9월 월간 지표</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>자체 청산(self-clearing)</strong>: 회사는 Q4 가동 예정이며 거래 비용을 크게 줄일 것이라고 밝힘</td>
+<td>DTCC(주식 결제)와 OCC(옵션 결제) 온보딩 완료</td>
+<td>Q3 실적콜에서 가동 일정 재확인, Q4 이후 청산 비용과 매출총이익률 변화</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>해외 및 APAC 확장</strong>: 15개 시장 진출, 스페인·아르헨티나·콜롬비아 신규 출시, 태국 Pi Securities 인수</td>
+<td>인수 마무리, 현지 무수수료 모델의 수익화</td>
+<td>해외 funded account(81만), APAC 자산(&gt;$5B) 증가, Pi Securities 인수 종결 공시(실적콜 기준 8월 말 종결 예정, 종결 여부는 공시상 확인 불가)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>기관/B2B</strong>: Q1 기관 주문 비중 9.5%, 기관 AUM $1.4B 이상</td>
+<td>self-clearing을 바탕으로 가격 경쟁력 확보</td>
+<td>기관 비중과 AUM 추이</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>크립토와 예측시장</strong>: 회사는 크립토 매출 비중을 약 2%에서 20% 가까이로 키울 기회가 있다고 밝힘</td>
+<td>coin in/out과 staking 출시(3월 예정에서 Q2로 연기)</td>
+<td>두 제품 출시 여부, 크립토 매출이 Q2 $2.25M에서 증가하는지, 예측시장 매출 별도 공개 여부</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>마케팅 정상화로 레버리지</strong>: 회사는 매출 대비 마케팅 비중이 낮아질 것이라고 밝힘</td>
+<td>신규 고객 획득 비용 통제</td>
+<td>조정 영업비용과 마진이 Q1(9.3%)과 Q2(31.5%) 중 어느 쪽에 가까운지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법의 변화</strong>
+- Q1 콜에서는 PDT 폐지로 시간이 지나면 거래량이 약 20% 늘 수 있다고 조심스럽게 말했다.
+- Q2 실제 결과는 이 예상을 넘었다. 옵션 <span class="up">+34%</span> QoQ, DARTs 약 <span class="up">+25%</span> QoQ다. 이후 화법은 "pre-PDT 수준으로 돌아가지 않을 것"이라는 단정형으로 바뀌었다. 근거는 한 분기(정확히는 약 4주) 데이터뿐이다.
+- Q1 콜은 "AI agent가 새로운 인터페이스"라는 거시 서사로 시작했다. Q2 콜은 PDT 실행력을 강조하는 쪽으로 무게가 옮겨갔다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문</strong>
+- PDT 효과의 지속성과 고객 저변(Siebert)
+- 크립토와 예측시장 매출 규모(Northland, Q1과 Q2 연속)
+- self-clearing 효과(Compass Point)
+- 유럽과 해외 전략</p>
+<p><strong>답변을 피하거나 방어한 지점</strong>
+- 예측시장 매출: 정식 공개를 하지 않았다. "구체적 숫자를 내기 조심스럽다"고 하면서 "$5~6M 정도"라고 구두로만 언급했다.
+- 크립토 매출: 수치가 엇갈린다. 요약은 $2.25M이고, 애널리스트는 "$2.5M 근처"라고 했다. 공식 수치는 IR 자료로 확인해야 한다.
+- 크립토 신제품: 3월 출시 예정이던 coin in/out과 staking이 MCP Server 개발에 인력을 돌리면서 연기됐다(Q1 콜). Q2 콜 발췌에서는 출시 여부가 확인되지 않는다.
+- 선점 효과: "PDT 관련 기사의 약 90%에 Webull이 언급"됐다고 하면서도 "마케팅팀이 과장했을 수 있다"고 덧붙였다. 결국 "lifts all tides"라고 인정해 독점적 우위라는 주장은 약했다.
+- 유럽 사업: "아직 인력이 충분하지 않다"고 직접 인정했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 평균 고객 연령 34세
+- 올해 신규 계좌의 약 20%가 첫 거래로 크립토를 선택
+- 동종사의 크립토 매출 비중이 15~25%라는 경영진 인식
+- Q2 분기 리텐션 97.3% (Q1 98.4%에서 하락했고, 콜에서 하락 원인 설명은 발췌에 없음)
+- self-clearing 가동은 Q4 목표, 월간 운영지표는 매월 말 후 약 2주 뒤 공개</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>거래량 의존과 정점 분기 리스크</strong>
+   - 매출의 약 74%가 거래 관련이고, 그중 옵션이 가장 빠르게 늘었다.
+   - Q2는 PDT 폐지 직후라 이연 수요가 몰렸을 가능성이 있다(추정). 시장 변동성이 줄거나 소액 계좌의 열기가 식으면 매출과 마진이 함께 꺾일 수 있다. 영업 레버리지가 반대 방향으로도 작동한다.
+   - 20일 <span class="down">-24.4%</span> 하락의 원인은 공시상 확인할 수 없다. 월간 지표 둔화와 관련 있는지 확인이 필요하다.</li>
+<li><strong>이자 매출의 구조적 둔화</strong>
+   - 고객 자산이 <span class="up">+79%</span> 늘 때 이자 매출은 <span class="up">+18%</span>에 그쳤다.
+   - 주식대여 수익 감소(Q1 콜)와 금리 변동에 따라 매출의 약 22%를 차지하는 부문이 정체할 수 있다.</li>
+<li><strong>물량 부담과 지배구조</strong>
+   - 2025-09-11 효력이 발생한 Resale 등록 물량은 최대 147,445,012주다(20-F).
+   - 행사가 $11.50 워런트가 17,271,990주 있다. 현재 주가보다 행사가가 높아 당장 희석 압력은 아니다.
+   - ESPP로 500만 주가 신규 예약된다. 임원의 Form 144 매도도 있다.
+   - Class B는 1주 20표라 소수주주의 영향력이 제한적이다. 정관 개정(Proposal 1)의 '주요 개정사항'은 발췌에 없어 공시상 확인할 수 없다.</li>
+<li><strong>공시와 통제 수준</strong>
+   - EGC이자 Non-accelerated filer라서 SOX 404(b) 외부감사인 의견이 없다.
+   - Foreign private issuer라 분기 보고가 6-K 자율 공시에 의존한다. 미국 국내 기업 대비 정보 접근성이 낮다.</li>
+<li><strong>마케팅 의존적인 수익성</strong>
+   - Q1 조정 영업비용이 YoY <span class="up">+64%</span> 늘면서 조정 영업이익률이 9.3%까지 떨어졌다.
+   - 분기 리텐션이 98.4%에서 97.3%로 내렸다. 고객 획득과 유지에 다시 비용을 써야 하면 마진 변동성이 다시 커질 수 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 긍정 요인:
+  - 매출 YoY <span class="up">+51%</span>, QoQ <span class="up">+24.3%</span>
+  - GAAP 영업이익률 22.9%로 전년 대비 <span class="up">+25.7%</span>p 흑자 전환
+  - 매출총이익률 77.7%
+  - 고객 자산 YoY <span class="up">+79%</span>
+  - 시가총액이 Q2 연환산 매출의 약 5배(계산)
+- 관망을 택한 이유:
+  - 거래 매출 비중 약 74%로 경기와 시장 분위기에 민감하다.
+  - 이자 매출 증가율(<span class="up">+18%</span>)이 자산 증가율(<span class="up">+79%</span>)보다 크게 낮다.
+  - FCF와 GAAP 순이익은 확인할 수 없다.
+  - 오늘 거래량 배수가 1.03배로 수급 확인이 안 된다. 20일 <span class="down">-24.4%</span>, 52주 고점 대비 <span class="down">-46.5%</span>로 추세도 꺾여 있다.
+  - 임원 매도 신고가 있다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>7~9월 월간 운영지표</strong>: DARTs, 옵션 계약 수, 주식 notional, 고객 자산이 6월 이후 유지되거나 늘었는지 확인한다. 회사는 매월 말 후 약 2주 뒤 공개한다고 했으므로 9월 지표는 10월 중순에 나와야 한다.
+2. <strong>Q3 실적의 마진</strong>: GAAP 영업이익률이 20%대를 지키는지, 조정 영업비용이 Q2 $136.2M에서 다시 늘지 않는지 본다. 리텐션도 97% 이상을 유지하는지 확인한다.
+3. <strong>물량과 지배구조 공시</strong>: 10/30 주총의 정관 개정 세부 내용, 자사주 매입($100M) 실제 집행 규모, 추가 Form 144와 대주주 매도 여부를 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통'으로 올리는 경우</strong>: 다음이 함께 확인될 때.
+  - Q3 DARTs와 옵션 거래량이 Q2 수준 이상으로 유지된다(PDT 효과가 구조적임이 확인됨).
+  - GAAP 영업이익률 20% 이상이 유지된다.
+  - self-clearing Q4 가동 일정이 재확인된다.
+  - 자사주 매입 집행이 확인되어 공급 부담이 상쇄된다.
+- <strong>'회피'로 내리는 경우</strong>: 다음 중 하나라도 해당될 때.
+  - 월간 지표에서 거래량이 PDT 폐지 이전 추세로 되돌아간다.
+  - Q3 매출이 QoQ로 감소하고 마케팅비가 다시 늘어 마진이 한 자릿수로 회귀한다.
+  - 내부자나 Resale 물량의 대규모 매도가 이어진다.
+  - 정관 개정에 소수주주에게 불리한 조항이 있는 것으로 확인된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026041653/ea0283691-20f_webull.htm">20-F — 2025-12-31_0001213900-26-041653</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026105820/ea030687601ex99-2.htm">8-K — 2026-10-01_0001213900-26-105820__EX-99.2__ea030687601ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026105820/ea030687601ex99-1.htm">8-K — 2026-10-01_0001213900-26-105820__EX-99.1__ea030687601ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026105820/ea0306876-01.htm">8-K — 2026-10-01_0001213900-26-105820</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026091702/ea030257601ex99-2.htm">8-K — 2026-08-19_0001213900-26-091702__EX-99.2__ea030257601ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1866364/000121390026091702/ea030257601ex99-1.htm">8-K — 2026-08-19_0001213900-26-091702__EX-99.1__ea030257601ex99-1</a></li>
+<li>Transcript — 2026-08-19 Q2 2026 Transcript</li>
+<li>Transcript — 2026-05-21 Q1 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

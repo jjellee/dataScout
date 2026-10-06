@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RXO — RXO Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>RXO — RXO Inc. Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">RXO</span><span class="badge">+9.46%</span><span class="badge">거래량 2.06배</span><span class="badge">$3.86B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 상승은 실적 개선이 아니라 C.H. Robinson(CHRW)의 인수 발표 때문이다. 인수 대가는 주식과 현금을 섞은 방식이고, 내재가치는 $5.8B다(2026-10-04 8-K, Ex.99.1). 따라서 주가는 이제 RXO 펀더멘털이 아니라 거래조건, CHRW 주가, 거래 완료 확률로 움직인다.</li>
+<li>주당 교환비율, 주당 현금액, 해지수수료는 받은 발췌문에 없어 <strong>공시상 확인 불가</strong>다. 차익거래 스프레드를 계산할 수 없으므로 기대수익과 손실의 비대칭을 정량화할 수 없다.</li>
+<li>거래가 깨지면 독자 펀더멘털로 돌아간다. 영업이익률 0.7%, TTM FCF -$76.0M으로 비중을 받쳐줄 이익과 현금흐름이 약하다.</li>
+<li>결론적으로 펀더멘털을 보고 의미있는 롱 비중을 싣는 것은 부적합하다. 합병차익거래 관점의 소규모 포지션만 조건부로 검토할 수 있다. 판단은 S-4/위임장 공시로 조건을 확인한 뒤로 미룬다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: M&amp;A 발표(공시로 확인됨)</strong></p>
+<ul>
+<li>2026-10-04에 Agreement and Plan of Merger가 체결됐고, 10-05에 공동 보도자료(8-K Ex.99.1, Ex.2.1)가 나왔다. CHRW가 RXO를 주식과 현금으로 인수하며, 내재가치는 $5.8B이고 합산 기업가치는 $25B를 넘는다고 회사들은 밝혔다.</li>
+<li>구조는 2단계 합병이다. Rover Merger Sub가 RXO에 흡수되고, 이어 RXO가 Viking Logistics LLC에 흡수된다. 목차에 Section 3.2 "Proration"이 있어 현금과 주식 선택에 안분이 적용되는 구조로 보인다. 다만 구체적 비율은 발췌문에 없다.</li>
+<li>최대주주 Orbis Investments는 이 거래를 "fully support"한다고 밝혔다. Voting and Support Agreement(Ex.10.1)를 맺고 찬성 의결을 약정했으며, 지분율은 Exhibit A에 있으나 발췌문에서 확인할 수 없다. 10-05에 SCHEDULE 13D가 제출됐지만 신고자와 내용은 발췌문에 없다.</li>
+<li>425 공시(FAQ, 설명회 transcript, SNS 자료 등)가 다수 나온 것은 거래 홍보용 자료가 배포됐다는 뜻이다.</li>
+<li>등락률(<span class="up">+9.46%</span>)이 크지 않은 점에 주목해야 한다. 뉴스 헤드라인(Barron's)에 따르면 인수자 CHRW가 당일 S&amp;P 500에서 가장 크게 떨어진 종목이었다. 주식 대가 비중 때문에 RXO의 상승폭이 눌렸을 가능성이 있다(추정). 또 20일 수익률이 38.7%여서 발표 전에 이미 주가가 올라 있었다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 사업 섹션 기준이다.</p>
+<ul>
+<li><strong>핵심 사업은 트럭 브로커리지(최대 부문)다.</strong> 화주의 화물을 독립 운송사에 배정하는 asset-light 중개 모델이다. 가격은 계약(contract)이나 스팟(spot) 기준으로 정한다. 수익의 원천은 화주에게 받는 운임과 운송사에 지급하는 운임의 차이다. 매출총이익률 12.6%가 이 스프레드 구조를 보여준다.</li>
+<li><strong>보완 사업 1: Managed transportation.</strong> 운송을 아웃소싱하는 화주에게 load planning, 조달, 성과 모니터링, 엔지니어링·데이터 분석, control tower를 제공한다. managed expedite(긴급운송) 서비스도 포함된다. 회사는 이 사업이 브로커리지·라스트마일 교차판매를 통해 매출 시너지를 낸다고 밝혔다.</li>
+<li><strong>보완 사업 2: Last mile.</strong> 두 보완 사업 모두 같은 디지털 브로커리지 기술을 쓴다.</li>
+<li><strong>경쟁 우위(회사 주장):</strong> 운송사 관계를 통한 대규모 트럭 capacity 접근, 독자 기술과 가격결정 기술, 경영진 역량이다. 회사는 디지털 플랫폼이 "major differentiator"라고 밝혔다.</li>
+<li><strong>매출 구성(부문별 비중), 고객 집중도, 시장점유율은 공시상 확인 불가</strong>다. 발췌문에 수치가 없다.</li>
+<li>인수 보도자료는 RXO의 강점을 "North American brokerage, expedited and last mile"로 규정했다. 인수자가 보는 가치가 북미 트럭 브로커리지 물량과 데이터에 있다는 뜻이다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장 (최근 분기 매출 $1.77B, YoY <span class="up">+25.0%</span>, QoQ <span class="up">+24.5%</span>)</strong>
+- 고성장 숫자지만 성장의 질은 판단할 수 없다. 단가(운임), 물량(load), 믹스, 인수 효과 중 무엇이 기여했는지 MD&amp;A 본문이 발췌되지 않아 <strong>공시상 확인 불가</strong>다.
+- QoQ 증가율 24.5%는 브로커리지 사업의 정상적인 분기 변동치고는 크다. 스팟 운임 급등, 계약 구조 변화, 일회성 요인일 수 있으나 추정일 뿐이며 검증할 근거가 없다.</p>
+<p><strong>마진</strong>
+- 매출총이익률은 12.6%, 영업이익률은 0.7%이고 영업이익률은 전년 대비 거의 변화가 없다(<span class="down">-0.0%</span>p).
+- 매출이 25% 늘었는데 영업이익률이 그대로라는 것은 영업레버리지가 작동하지 않았다는 뜻이다. 브로커리지는 운임이 오를 때 운송사 매입비용도 함께 올라 스프레드가 눌리는 구조라 이와 맞는 그림이다(구조적 해석이며 추정).
+- CHRW가 $300M 비용 시너지를 제시한 것도 RXO의 비용 구조가 비효율적이라는 인수자의 판단으로 읽힌다(해석).</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 -$76.0M이다. 10-K는 "트럭 브로커리지는 robust free cash flow conversion의 역사가 있다"고 썼지만 현재 수치와 맞지 않는다.
+- 운임과 매출이 늘 때 매출채권이 먼저 커지는 운전자본 역흐름일 수 있다(추정). 원인 분해는 공시상 확인 불가다.</p>
+<p><strong>재무 건전성</strong>
+- 순부채, 현금, 차입 만기는 <strong>공시상 확인 불가</strong>다.
+- 단서는 두 가지다. 합병계약에 Section 7.15 "Treatment of Company Indebtedness"가 있어 RXO 부채의 처리(상환 또는 승계)가 계약 조건에 들어 있다. 또 2024-08-13 발행 Warrants(Section 3.4)가 있어 희석 요소가 존재한다.
+- 발행주식은 164,193,961주(2026-02-05 기준)다. 시가총액 $3.86B를 종가로 나눈 값과 대체로 일치한다.</p>
+<h2>5. 성장 드라이버</h2>
+<p>상장 유지를 전제로 한 독자 성장 스토리는 사실상 거래 완료 여부에 종속됐다. 거래 관련 드라이버와 거래 무산 시의 독자 드라이버를 나눠 쓴다.</p>
+<p><strong>A. 거래 관련 드라이버 (RXO 주주가 CHRW 주식으로 받는 부분)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>비용 시너지</td>
+<td>CHRW는 거래 완료 후 2년 내 약 $300M의 순 run-rate 비용 시너지를 기대한다고 밝힘(Lean AI 운영모델, cost-to-serve, shared services, 제3자 지출 최적화)</td>
+<td>통합 실행, 인력·시스템 통합</td>
+<td>S-4에 실릴 시너지 산정 근거, CHRW 분기 실적에서 자체 생산성 지표 추이</td>
+</tr>
+<tr>
+<td>EPS 증가</td>
+<td>CHRW는 완료 후 9개월 내 조정 EPS가 늘고, 2028년에는 mid-teens 증가 효과가 있다고 밝힘</td>
+<td>시너지 달성, 금리와 조달비용</td>
+<td>S-4의 pro forma 재무제표</td>
+</tr>
+<tr>
+<td>디레버리징</td>
+<td>CHRW는 2028년 말까지 순부채/LTM 조정 EBITDA를 1.75~2.25x로 낮추겠다고 밝힘</td>
+<td>결합 현금흐름 창출</td>
+<td>인수금융 규모와 조건(Section 7.14 Financing) 공시</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>B. 독자 드라이버 (거래 무산 시, 10-K 기준)</strong>
+- 디지털 브로커리지와 가격결정 기술로 이익을 내며 성장할 수 있다고 회사는 밝혔다. 검증 포인트는 매출 성장과 함께 영업이익률이 0.7%에서 의미있게 개선되는지다.
+- Managed transportation에서 브로커리지·라스트마일로의 교차판매도 회사가 내세운 축이다. 부문별 매출과 이익 공시로 확인해야 한다.
+- FCF 전환 회복도 필요하다. TTM FCF가 다시 양전환하는지가 검증 포인트다.</p>
+<h2>6. 리스크</h2>
+<p>제공된 발췌문에는 10-K 리스크 섹션 본문이 없다. 아래는 합병계약 구조와 지표에서 실제로 확인되는 리스크로 한정했다.</p>
+<ol>
+<li><strong>거래 무산 리스크.</strong> 합병은 Article VIII 조건(규제 승인, 주주 승인, S-4 효력 발생 등)을 충족해야 완료된다. 미국 브로커리지 1위권 사업자(CHRW)와 대형 브로커(RXO)의 결합이므로 반독점 심사 기간과 결과가 불확실하다(추정). 무산되면 주가는 발표 전 수준인 약 $21.4(종가/1.0946로 역산)나 그 아래로 돌아갈 수 있다. 해지수수료 규모는 공시상 확인 불가다.</li>
+<li><strong>인수자 주가 연동 리스크.</strong> 대가 일부가 CHRW 주식이고, 발표 당일 CHRW 주가가 급락했다(뉴스 헤드라인). 교환비율이 고정이면 CHRW 주가가 더 떨어질 때 RXO 수령가치도 줄어든다. 교환비율 고정 여부와 collar 존재 여부는 공시상 확인 불가다.</li>
+<li><strong>안분(Proration)에 따른 대가 불확실성.</strong> Section 3.2에 따라 현금을 선택해도 전액 현금으로 받지 못할 수 있다. 투자자가 실제로 받는 현금과 주식의 비율이 원하는 것과 다를 수 있다.</li>
+<li><strong>독자 펀더멘털 취약성.</strong> 영업이익률 0.7%, TTM FCF -$76.0M이다. 거래가 무산되면 매출 <span class="up">+25%</span> 성장에도 이익과 현금으로 이어지지 않는 구조가 그대로 드러난다.</li>
+<li><strong>합병 기간 중 영업 제약.</strong> Section 6.1(Conduct of Business Pending the Closing)과 Section 6.3(No Solicitation)에 따라 거래 완료 전까지 RXO의 자본배분과 사업 결정이 제한되고, 더 높은 경쟁 제안을 끌어오는 것도 제약된다. 최대주주 Orbis의 찬성 약정까지 있어 경쟁 입찰로 가격이 오를 가능성은 낮다(추정).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 촉매는 공시로 확인된 M&amp;A다. 앞으로의 수익은 "거래조건 대비 할인폭" 하나로 수렴하지만, 주당 대가가 공시상 확인 불가라 스프레드를 계산할 수 없다.
+- 참고 계산(가정)으로, $5.8B를 전액 주식가치로 보고 164.2M주로 나누면 주당 약 $35이다. 이 경우 종가 $23.38과의 괴리가 지나치게 크다. 따라서 $5.8B에는 부채 승계나 Warrants가 포함됐거나, 발표 이후 CHRW 주가 하락이 반영됐을 가능성이 높다(추정). 이 수치를 투자 근거로 쓰면 안 된다.
+- 독자 펀더멘털(영업이익률 0.7%, FCF -$76.0M)은 거래가 깨질 때 하방을 막아줄 근거가 되지 못한다.
+- 20일 수익률 <span class="up">+38.7%</span>는 발표 전에 이미 주가가 많이 올랐다는 뜻이다. 남은 업사이드가 좁을 가능성이 있다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 주당 대가 조건(현금 금액, 교환비율, collar 여부, 안분 한도)과 현재 스프레드. Ex.2.1 Section 3.1~3.2 원문이나 S-4로 확인한다.
+2. 해지수수료(양방향)와 reverse termination fee, outside date(종료 기한), 규제 승인 요건. Article IX와 Section 7.2로 확인한다.
+3. CHRW의 인수금융 확정 여부와 신용 영향(Section 5.12, 7.14). 아울러 10-05 SCHEDULE 13D의 신고자와 의결 약정 지분율도 확인한다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <em>보통으로 상향:</em> 스프레드가 연환산 기준으로 의미있게 벌어지고, 반독점 리스크가 제한적이라는 근거(규제 절차 진행, 대가 구조상 하방 보호)가 공시로 확인되는 경우. 이때도 성격은 차익거래 비중이지 펀더멘털 비중이 아니다.
+- <em>회피로 하향:</em> 규제 당국의 Second Request나 소송 등 심사가 길어지거나, CHRW 주가가 계속 떨어져 수령가치가 발표 전 RXO 주가 수준에 가까워지는 경우. 또는 다음 10-Q에서 FCF 적자가 커지고 마진이 악화되는 것이 확인돼 거래 무산 시 하방이 깊어지는 경우.
+- <em>재평가 필요:</em> 경쟁 제안이 나오는 경우. Orbis의 찬성 약정과 No Solicitation 조항이 있어 가능성은 낮다고 판단한다(추정).</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000192956126000013/rxo-20251231.htm">10-K — 2025-12-31_0001929561-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000192956126000036/rxo-20260630.htm">10-Q — 2026-06-30_0001929561-26-000036</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000192956126000026/rxo-20260331.htm">10-Q — 2026-03-31_0001929561-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000114036126038548/ef20083265_ex99-1.htm">8-K — 2026-10-04_0001140361-26-038548__EX-99.1__ef20083265_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000114036126038548/ef20083265_ex2-1.htm">8-K — 2026-10-04_0001140361-26-038548__EX-2.1__ef20083265_ex2-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000114036126038548/ef20083265_ex10-1.htm">8-K — 2026-10-04_0001140361-26-038548__EX-10.1__ef20083265_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000114036126038548/ef20083265_8k.htm">8-K — 2026-10-04_0001140361-26-038548</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1929561/000192956126000041/rxo2026q3brokeragepressrel.htm">8-K — 2026-09-09_0001929561-26-000041__EX-99.1__rxo2026q3brokeragepressrel</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

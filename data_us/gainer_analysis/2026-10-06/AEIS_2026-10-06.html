@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AEIS — Advanced Energy Industries Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AEIS — Advanced Energy Industries Inc. Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">AEIS</span><span class="badge">+3.46%</span><span class="badge">거래량 0.99배</span><span class="badge">$12.19B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>펀더멘털은 강함.</strong> 2Q26 매출은 $574M로 YoY <span class="up">+30%</span>이며 가이던스 상단을 넘었다. Non-GAAP 매출총이익률은 41.9%, 영업현금흐름은 사상 최대인 $86M이다. 3Q26 매출 가이던스 $640M±20M은 전분기 대비 약 <span class="up">+11.5%</span>다(8-K).</li>
+<li><strong>멀티플은 이미 높음.</strong> 3Q 가이던스 중간값 non-GAAP EPS $3.00을 단순 연환산하면 약 $12이고, 종가 $304.28 기준 약 25배다(단순 계산, 추정치). 반면 제공된 TTM FCF는 $68.3M로 시총 $12.19B 대비 FCF 수익률이 약 0.6%에 그친다.</li>
+<li><strong>오늘 상승의 근거가 약함.</strong> 상승률은 <span class="up">+3.46%</span>지만 거래량은 20일 중앙값 대비 0.99배로 늘지 않았다. 확인되는 당일 공시는 Form 144(내부자 매도 예정 신고) 1건뿐이고, 이는 호재가 아니다.</li>
+<li><strong>실행 방식.</strong> 성장 궤적과 마진 개선은 공시로 확인되므로 편입 자체는 타당하다. 다만 3Q 실적이 가이던스를 충족하는지, 그리고 FCF 전환이 개선되는지 확인될 때까지는 분할로 담는 '보통' 비중이 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 있다.</strong></p>
+<ul>
+<li><strong>공시:</strong> 2026-10-05 Form 144가 유일하다. 이는 내부자의 주식 매도 예정을 신고하는 서류라서 상승 촉매가 될 수 없다. 신고인과 수량은 제공된 자료로 확인할 수 없다(공시상 확인 불가).</li>
+<li><strong>뉴스:</strong> 제공된 헤드라인은 시세 페이지, 섹터 비교, 종목 추천 목록 등 일반적인 콘텐츠뿐이고 회사 고유의 이벤트는 없다.</li>
+<li><strong>실적:</strong> 최근 실적 발표는 2026-08-03이므로 당일 촉매가 아니다.</li>
+<li><strong>거래량:</strong> 배수가 0.99배라서 '거래량 급증'이라는 스크린 전제는 지표상 확인되지 않는다. 20일 수익률은 <span class="up">+5.8%</span>, 60일은 <span class="down">-3.5%</span>, 52주 고점 대비 <span class="down">-21.8%</span>다. 8월 beat-and-raise 이후에도 주가가 고점을 되찾지 못한 상태에서 나온 기술적 반등이나 반도체 장비 섹터 동조로 보는 것이 합리적이다(추정).</li>
+<li><strong>데이터 정합성 주의:</strong> 시장 지표표의 '최근 분기 매출 $511.0M'은 1Q26 수치다. 2Q26 실제 매출은 $574M이다(8-K). 표의 매출총이익률 39.3%와 영업이익률 13.9%도 1Q26(GAAP) 기준으로 보인다. 스크린 데이터가 한 분기 늦은 것으로 판단된다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지, 목차, 미래예측 진술 부분까지만 포함되어 있다. Item 1 사업 본문은 잘려 있어서 매출 구성 비율과 고객 집중도 수치는 <strong>공시상 확인 불가</strong>다. 아래 내용은 8-K 회사 소개와 실적콜을 바탕으로 정리했다.</p>
+<ul>
+<li><strong>제품:</strong> 정밀 전력 변환, 계측, 제어 솔루션이다.</li>
+<li><strong>반도체:</strong> 플라즈마 전원(eVerest, eVoS, NavX)과 시스템 전원(test, ALD, thermal sensing).</li>
+<li><strong>데이터센터:</strong> 랙 전원 제품. 800V 데이터센터용 모듈형 제품은 샘플 단계다.</li>
+<li><strong>산업·의료:</strong> 전기수술용 pulse power, 이미징, 생명과학, 테스트·계측, 자동화·로봇, 항공·방산.</li>
+<li><strong>통신·네트워킹:</strong> 랙 전원 기술을 AI 관련 용도로 재활용하는 방향.</li>
+<li><strong>고객군:</strong></li>
+<li>반도체 장비와 데이터센터는 소수의 대형 고객 구조다. 실적콜에서 CEO는 "very large customers, there's just a few of them"이라고 언급했다.</li>
+<li>데이터센터는 상위 하이퍼스케일러가 중심이며, 회사는 '2차 웨이브' 고객(상위 하이퍼스케일러 외)을 개척 중이라고 밝혔다.</li>
+<li>산업·의료는 매출의 약 절반이 유통 채널을 거친다(실적콜).</li>
+<li><strong>매출 구성:</strong> 부문별 매출 비중은 공시상 확인 불가다. 확인되는 사실은 아래와 같다.</li>
+<li>2Q26에 반도체 매출이 사상 최대를 기록했고 YoY <span class="up">+33%</span>다(8-K).</li>
+<li>반도체 매출은 전분기 대비 27% 이상 늘었다(실적콜).</li>
+<li><strong>경쟁 위치:</strong> 회사는 "기술 리더 + 대량 양산 역량"을 내세웠다(실적콜). 800V 시장에서는 경쟁사의 통합형 sidecar와 경쟁하는데, 회사는 모듈형 mix-and-match 방식으로 대응한다고 밝혔다. 경쟁사 실명과 점유율은 공시상 확인 불가다.</li>
+<li><strong>수익성 구조:</strong> 회사는 반도체 부문 마진이 전사 평균보다 높고, 데이터센터는 개선되어 전사 평균에 근접했다고 밝혔다(실적콜).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이 (8-K 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>3Q26 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$442M</td>
+<td>$511M</td>
+<td>$574M</td>
+<td>$640M ± $20M</td>
+</tr>
+<tr>
+<td>YoY / QoQ</td>
+<td>–</td>
+<td>+26.3% / <span class="up">+4.4%</span></td>
+<td>+30% / <span class="up">+12.3%</span></td>
+<td>QoQ 약 <span class="up">+11.5%</span> (YoY는 공시상 확인 불가)</td>
+</tr>
+<tr>
+<td>GAAP EPS(계속영업)</td>
+<td>$0.67</td>
+<td>$1.59</td>
+<td>$1.29</td>
+<td>$2.38 ± $0.25</td>
+</tr>
+<tr>
+<td>Non-GAAP EPS</td>
+<td>$1.50</td>
+<td>$2.09</td>
+<td>$2.74</td>
+<td>$3.00 ± $0.25</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>공시상 확인 불가</td>
+<td>39.3% (지표표, GAAP 추정)</td>
+<td>GAAP 41.1% / Non-GAAP 41.9%</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질: 물량, 가격, 믹스</strong>
+- <strong>물량:</strong> 성장의 주축이다. 실적콜에서 회사는 "모든 시장에서 수요 강화"를 언급했고, 공장 실행력 덕분에 분기 내 업사이드를 확보했다고 밝혔다. 하반기 반도체 성장분도 "대부분 기존 제품"에서 나온다고 언급했다.
+- <strong>가격:</strong> 성숙 제품군에서 가격 인상을 단행했다. 다만 실적콜에서 그 목적은 "주로 원가 상승 상쇄"라고 언급했으므로, 순수한 가격 결정력의 증거로 보기는 어렵다.
+- <strong>믹스:</strong> 신제품(eVerest/eVoS 등)은 기존 제품보다 가격과 마진이 모두 높다고 회사는 밝혔다(BofA 컨퍼런스). 다만 2026년 매출 기여는 아직 크지 않고, 본격 기여는 2027년부터라는 것이 회사 입장이다.</p>
+<p><strong>마진 방향성</strong>
+- GAAP 매출총이익률은 1Q 39.3%에서 2Q 41.1%로 올랐다.
+- 6월 BofA 컨퍼런스에서 CFO는 "연말 exit 약 41%"를 제시했는데, 2Q non-GAAP 41.9%로 이미 넘었다.
+- 회사가 밝힌 개선 경로는 다음과 같다.
+  - 중장기 목표 43%+.
+  - 신제품 믹스로 +200~300bp.
+  - 현재 매출 규모에서는 분기 매출 $50M 증가당 약 +40bp.
+- 영업 레버리지에 대해 회사는 다음과 같이 밝혔다.
+  - FY26 OpEx 약 $460M.
+  - OpEx는 매출 성장률의 절반 속도로 증가.
+  - 매출 증가분의 35~45%가 영업이익으로 전환.
+- 실측 확인: 2Q의 QoQ 매출 증가분은 $63M, non-GAAP 순이익 증가분은 $29M이다(8-K). 레버리지가 실제로 작동하고 있다.</p>
+<p><strong>GAAP와 Non-GAAP의 괴리</strong>
+- 2Q GAAP 순이익에는 2028년 만기 전환사채 부분 전환에 따른 유도비용 $31.8M(주당 $0.75)이 포함되어 있다. 이는 일회성 항목이다.
+- 3Q 가이던스에서도 GAAP $2.38과 non-GAAP $3.00 사이에 $0.62 차이가 난다. 주식보상비와 무형자산 상각 등이 계속 반영된다는 의미다.</p>
+<p><strong>현금흐름</strong>
+- 2Q 영업현금흐름은 사상 최대인 $86M이고, 배당으로 $4.1M를 지급했다(8-K).
+- 다만 제공된 TTM FCF는 $68.3M에 불과하다.
+- 원인으로 추정되는 요인은 두 가지다. 태국 공장 등 CapEx, 그리고 실적콜과 BofA 컨퍼런스에서 언급된 '부품 재고 선확보'다(추정). 2Q CapEx 금액은 공시상 확인 불가다.
+- 순이익 대비 FCF 전환율이 낮다는 점이 현재 밸류에이션의 약점이다.</p>
+<p><strong>재무 건전성과 자본 구조</strong>
+- <strong>2028 CB 상환:</strong> 잔여 $136.7M를 2026-09-23에 상환했다(8-K, 6/12).
+  - 전환가는 약 $137.46으로 현 주가보다 크게 낮아 대부분 전환되었을 것으로 보인다.
+  - 결제 방식은 원금은 현금, 초과분은 주식이다.
+  - 관찰기간(6/26~9/21) 평균가를 약 $300으로 가정하면 신주는 약 50만 주 수준으로 추정된다(추정치이며, note hedge 상쇄 여부는 공시상 확인 불가).
+- <strong>주식수:</strong> 10-K상 발행주식은 3,775만 주(2026-02-04)다. 시총 $12.19B를 종가로 나누면 약 4,000만 주가 나온다. 희석이 진행된 것으로 보인다(단순 계산).
+- <strong>신규 CB:</strong> CFO는 6월 BofA 컨퍼런스에서 신규 CB를 "기존 CB 리파이낸싱, 더 나은 조건"이라고 밝혔다. 발행 규모와 조건은 제공 자료에 없다(공시상 확인 불가).
+- <strong>기타:</strong> 순현금/순부채, 연금 부채 규모는 제공된 10-Q MD&amp;A가 잘려 있어 공시상 확인 불가다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>반도체 장비 사이클과 식각·증착 강도 상승.</strong> 회사는 하반기 반도체 매출이 YoY 약 <span class="up">+50%</span>라고 밝힘. 강세가 2028년까지 이어진다는 고객 전언도 소개함(BofA)</td>
+<td>WFE 투자 지속, 1Q에 급증한 수주가 매출로 전환</td>
+<td>3Q 반도체 매출 성장률, 수주·백로그 코멘트, 2027 가시성 유지 여부</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>신제품(eVerest, eVoS, NavX) 점유율 확대.</strong> 회사는 고객사 팹에서 수율·처리량 검증을 마쳤다고 밝힘</td>
+<td>선단 로직·메모리 공정에 채택, 2027년 매출 본격화</td>
+<td>신제품 매출 비중이나 램프 코멘트, 매출총이익률 42%+ 진입</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>데이터센터.</strong> 회사는 FY26 성장률 최소 <span class="up">+50%</span>, 2차 웨이브 고객이 2027년 이후 성장을 가속한다고 밝힘</td>
+<td>하이퍼스케일러 발주 유지, 메모리·로직 수급이 병목이 되지 않음</td>
+<td>4Q 가이던스상 데이터센터 기여, 2차 웨이브 고객 수주 공개 여부</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>800V 데이터센터 전원.</strong> 회사는 2028년 대량 양산을 예상한다고 밝힘</td>
+<td>고객 로드맵 준수, sidecar 대비 모듈형이 채택됨</td>
+<td>디자인윈 발표나 고객 수 업데이트(단기 실적 영향은 없음)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>산업·의료 회복.</strong> 회사는 유통 재고 6분기 연속 감소, 연체 백로그를 하반기에 해소한다고 밝힘</td>
+<td>유통 재판매·주문 개선 지속</td>
+<td>산업·의료 매출의 분기 연속 증가, 연체 백로그 해소 확인</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>생산능력.</strong> 태국 공장 첫 생산 매출이 4Q에 예정되어 있고, 완공 시 매출 창출 능력은 약 $5B라고 회사는 밝힘</td>
+<td>주요 고객 인증 통과, 초기 고정비 흡수</td>
+<td>4Q 태국 매출 개시 여부, 가동 초기 마진 희석 폭</td>
+</tr>
+</tbody>
+</table></div>
+<p>종합 가이던스: 회사는 FY26 매출 성장률을 low-to-mid 30%대로 상향했고, 실적콜에서 2027년 "최소 20% 성장, 전 시장 성장"을 언급했다. 단, 실적콜 서두에서 당해연도 이후 목표치는 "가이던스로 해석하지 말라"고 명시했다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- 톤은 매우 강세다.
+  - CEO는 "Demand strengthened in all of our target markets"라고 했다.
+  - 3Q와 4Q 모두 사상 최대 매출을 예상한다고 언급했다.
+  - BofA 컨퍼런스에서는 "we don't see any weakness"라고 단언했다.
+- 자신감의 근거는 세 가지로 제시되었다.
+  - 1Q 반도체 수주 급증과 2027년까지 이어지는 백로그.
+  - 데이터센터 고객이 최소 12개월 가시성을 제공함.
+  - 생산능력과 부품 재고를 선제적으로 확보함.
+- <strong>가이던스 화법의 변화:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>6월 BofA 컨퍼런스</th>
+<th>8월 실적콜</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>하반기 반도체 YoY</td>
+<td>+30% 이상</td>
+<td>약 <span class="up">+50%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>연말 exit 약 41%</td>
+<td>"43%를 넘지 못할 이유가 없다"</td>
+</tr>
+<tr>
+<td>2027년</td>
+<td>언급 수준</td>
+<td>최소 <span class="up">+20%</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>두 달 사이에 숫자가 일제히 상향되었다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>매출총이익률 추가 개선 여지:</strong> 질문이 여러 번 나왔다.
+  - CFO는 "물량 효과와 공장 통합 효과는 상당 부분 이미 실현되었다"고 인정했다.
+  - 남은 동력으로는 믹스와 제조 효율을 들었다.
+  - 레버리지 민감도가 분기 매출 $50M당 100bp에서 40bp로 줄었다는 점도 스스로 밝혔다.
+  - 해석: 마진 개선 속도가 둔화될 수 있다는 신호로 읽어야 한다.
+- <strong>신제품과 기존 제품의 기여도:</strong> 하반기 반도체 성장의 원천을 묻는 질문에 CEO는 "대부분 기존 제품"이라고 답했다. 이 답은 사이클 의존도가 높다는 점을 자인한 것이다. 신제품 효과는 2027년으로 미뤄졌다.
+- <strong>800V 경쟁:</strong> 통합형 sidecar와 비교해 왜 AE를 택하느냐는 질문에 CEO는 "기술 리더 + 양산 역량"이라는 정성적 답변만 했다. 구체적인 고객 수, 디자인윈, 가격 경쟁력 근거는 제시하지 않았다.
+- <strong>산업·의료 가시성:</strong> CEO는 "반도체나 데이터센터만큼의 가시성은 없다"며 추세에 기댄 판단이라고 인정했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 반도체 매출 QoQ <span class="up">+27%</span> 이상.
+- 태국 공장 첫 매출 시점이 4Q로 한 분기 앞당겨짐(BofA에서 언급, 8월 콜에서 재확인).
+- 생산능력 약 $5B.
+- 800V 양산 시점 2028년.
+- 성숙 제품군 가격 인상.
+- 웹사이트 문의에서 시작된 디자인윈이 1H26에 YoY <span class="up">+40%</span>.
+- 데이터센터 수요가 메모리 모듈과 로직 실리콘 수급에 따라 분기별로 흔들림(BofA).
+- 증분 매출의 35~45%가 영업이익으로 전환(BofA).</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>반도체 사이클과 고객 집중.</strong> 10-K는 업황 변동성·경기순환성과 고객 집중을 리스크로 명시한다. 하반기 반도체 성장이 "대부분 기존 제품"에서 나온다는 점에서, 현재 실적은 점유율 확대보다 WFE 사이클의 힘이 크다. 사이클이 정점을 지나면 실적이 곧바로 영향을 받는 구조다. 52주 고점 대비 <span class="down">-21.8%</span>라는 주가 흐름은 시장이 이 정점 우려를 일부 반영하는 것일 수 있다(추정).</li>
+<li><strong>생산능력 확장의 실행 리스크.</strong> 10-K에는 생산능력 확장과 핵심 부품 확보 리스크, 제조 거점 최적화와 이전 리스크가 명시되어 있다. 태국 공장 인증이 지연되거나 초기 수율 문제가 생기면 4Q 이후 매출과 마진이 동시에 훼손될 수 있다.</li>
+<li><strong>데이터센터 수요의 변동성.</strong> BofA 컨퍼런스에서 경영진은 고객의 메모리·로직 확보 상황에 따라 분기 진입 시점마다 제품 믹스가 불확실하다고 직접 언급했다. 10-K의 '수요 예측' 리스크와 같은 맥락이다.</li>
+<li><strong>현금 전환과 희석.</strong> TTM FCF는 $68.3M이다. 재고 선확보와 CapEx 때문에 이익 대비 현금 전환이 약하다. 10-K는 CB, 헤지, 워런트로 인한 희석 위험을 명시하고 있고, 실제로 2028 CB 전환과 신규 CB 발행이 진행되었다. 여기에 Form 144가 제출되어 내부자 매도 가능성도 있다.</li>
+<li><strong>관세·수출통제와 원가 상승.</strong> 10-K는 관세와 수출 규제를 리스크로 명시한다. 회사가 가격 인상의 목적을 "원가 상승 상쇄"라고 밝힌 만큼 원가 압력은 실재한다. 가격 전가가 막히면 매출총이익률 개선 경로가 지연될 수 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통' 판단의 정량 근거</strong>
+- <strong>긍정 요인</strong>
+  - 매출이 2Q25 $442M에서 1Q26 $511M, 2Q26 $574M로 늘었고, 3Q 가이던스는 $640M다. 4개 분기 연속 가속 구간이다.
+  - Non-GAAP EPS는 $1.50에서 $2.74로 YoY <span class="up">+83%</span> 늘었다.
+  - GAAP 매출총이익률은 1Q 39.3%에서 2Q 41.1%로 분기 만에 1.8%p 개선되었다.
+  - 영업이익률은 YoY <span class="up">+6.0%</span>p 개선되었다(지표표).
+- <strong>제약 요인</strong>
+  - 주가는 연환산 non-GAAP EPS의 약 25배다(단순 계산).
+  - TTM FCF 수익률은 약 0.6%다.
+  - 당일 거래량이 늘지 않았고 확인된 촉매도 없다.
+  - Form 144가 제출되었다.
+  - 이익의 상당 부분이 반도체 사이클(기존 제품)에서 나온다.
+- 결론: 펀더멘털 모멘텀은 '적극'에 가깝지만, 밸류에이션과 현금 전환, 사이클 위치를 고려해 '보통'으로 분할 편입하는 것이 적절하다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Form 144 상세:</strong> 신고인이 누구인지(CEO, CFO 여부), 매도 예정 수량, 10b5-1 플랜 여부를 확인한다.
+2. <strong>3Q26 실적(발표일은 공시상 확인 불가):</strong> 매출이 가이던스 중간값 $640M 이상인지, non-GAAP 매출총이익률이 42% 이상인지 본다. 4Q 가이던스가 회사 주장대로 사상 최대 매출을 시사하는지도 확인한다.
+3. <strong>3Q 10-Q의 자본 구조와 현금흐름:</strong> CB 상환 후 희석 주식수, 신규 CB 조건, CapEx와 재고 증가 규모를 확인한다. FCF 전환율이 개선되는 추세인지가 핵심이다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 3Q 매출이 가이던스 하단 $620M에 못 미치거나, 4Q 가이던스가 전분기 대비 감소를 시사하는 경우.
+- 매출총이익률이 다시 40%를 밑도는 경우. 믹스 개선 논리가 훼손된 것으로 본다.
+- 반도체 수주·백로그 코멘트가 약해지거나 데이터센터 고객의 발주 연기가 언급되는 경우. "2027년 최소 <span class="up">+20%</span>"가 철회되는 경우도 포함한다.
+- 태국 공장 첫 매출이 2027년 이후로 지연되는 경우.
+- 내부자 매도가 경영진 복수로 이어지거나, FCF 전환이 계속 개선되지 않는 경우.</p>
+<p><strong>참고 (분석 범위 한계):</strong> 제공된 10-K는 사업, 리스크, MD&amp;A 본문이 잘려 있고, 10-Q 두 건(3/31, 6/30)도 목차만 들어 있다. 그래서 부문별 매출 비중, 고객 집중도 수치, CapEx, 순현금 규모를 확인하지 못했다. 시장 지표표의 분기 수치는 한 분기 늦은 1Q26 기준이라 이 리포트는 2Q26 수치(8-K)를 우선 사용했다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000110465926014731/aeis-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-014731</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000092700326000032/aeis-20260630x10q.htm">10-Q — 2026-06-30_0000927003-26-000032</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000092700326000014/aeis-20260331x10q.htm">10-Q — 2026-03-31_0000927003-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000092700326000030/aeis-20260803xex99d1.htm">8-K — 2026-08-03_0000927003-26-000030__EX-99.1__aeis-20260803xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000092700326000030/aeis-20260803x8k.htm">8-K — 2026-08-03_0000927003-26-000030</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000110465926073207/aeis-20260612xex99d1.htm">8-K — 2026-06-12_0001104659-26-073207__EX-99.1__aeis-20260612xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000110465926073207/aeis-20260612x8k.htm">8-K — 2026-06-12_0001104659-26-073207</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/927003/000110465926063191/tm2612734d5_ex10-1.htm">8-K — 2026-05-13_0001104659-26-063191__EX-10.1__tm2612734d5_ex10-1</a></li>
+<li>Transcript — 2026-08-03 Advanced Energy Industries, Inc. (AEIS) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-03 Advanced Energy Industries, Inc. (AEIS) Presents at Bank of America 2026 Global Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

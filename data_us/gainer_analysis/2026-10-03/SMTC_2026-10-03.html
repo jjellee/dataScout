@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMTC — Semtech Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SMTC — Semtech Corporation Common Stock</h1>
+<div class="sub">2026-10-03 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SMTC</span><span class="badge">+4.62%</span><span class="badge">거래량 1.13배</span><span class="badge">$17.41B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 빠르게 좋아지고 있다. FY27 2분기(2026년 7월 26일 종료) 매출은 $341.9M으로 전년 대비 <span class="up">+33%</span>, 전분기 대비 <span class="up">+17%</span>였다. 회사가 낸 3분기 가이던스는 매출 $410M±5M(전년 대비 <span class="up">+54%</span>)과 Adj. 영업이익률 31.0%다. 데이터센터 매출은 전년 대비 <span class="up">+91%</span>, LoRa 매출은 전년 대비 <span class="up">+58%</span>다.</li>
+<li>실적콜에서 경영진은 "남은 회계연도의 목표 매출은 이미 수주로 다 찼고, 다음 회계연도도 70% 이상 확보했다"고 말했다. 1분기 콜에서는 가시성이 FY28 상반기까지라고 했는데, 이번에 더 길어졌다.</li>
+<li>다만 주가가 이미 이를 많이 반영했다. 주가는 20일 동안 <span class="up">+43.9%</span> 올랐고 52주 고점에서 <span class="down">-4.3%</span> 떨어진 수준이다. 3분기 가이던스 Adj. EPS를 연율화한 $4.20 기준으로 PER은 약 44배다. TTM 잉여현금흐름(FCF) 기준으로는 시가총액이 약 95배다(이 배수들은 직접 계산한 값).</li>
+<li>10월 15일 Analyst Day에서 장기 재무목표가 발표된다. 그 전에 한꺼번에 큰 비중을 싣기보다는, 기본 비중을 깔고 이벤트를 확인한 뒤 늘리는 방식이 맞다고 본다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매가 약함. 공시 촉매는 없고, 수급·섹터 동조와 이벤트 기대가 원인일 가능성이 큼.</strong></p>
+<ul>
+<li><strong>당일 공시:</strong> 10월 1일과 2일에 Form 144(내부자 매도 예정 신고)만 있고, 회사 8-K는 없다. 뉴스 헤드라인에 따르면 CEO Hong Hou가 2,000주씩 세 번 매도했고 2,000주를 추가로 팔겠다고 신고했다. 2,000주는 종가 기준 약 $0.37M으로 규모가 작다. 상승 요인이 아니다.</li>
+<li><strong>뉴스:</strong> "Oppenheimer 목표가 상향" 헤드라인이 있다. 다만 목표가 숫자와 날짜가 제공되지 않아 당일 촉매인지는 확인할 수 없다.</li>
+<li><strong>거래량:</strong> 20일 중앙값 대비 1.13배로, 사실상 급증이 아니다. 거래대금 $631.5M은 유동성 측면에서 기관이 매매하기에 충분하다.</li>
+<li><strong>추정:</strong> 10월 15일 San Jose 투자자 행사를 앞둔 선취매일 수 있다. 회사는 이 행사에서 장기 재무목표와 multi-year model을 제시하겠다고 밝혔다. 다음 둘 다 가능성 수준이다.</li>
+<li>2분기 실적발표(8월 25일) 이후 이어진 모멘텀의 연장</li>
+<li>AI 광통신 섹터 전반의 동조</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 목차에서 끊겨 있어, 사업 섹션의 세부 내용(고객 집중도, 경쟁사 명시 등)은 <strong>공시상 확인 불가</strong>다. 아래는 8-K 보도자료와 실적콜에서 나온 부문 수치를 기준으로 정리했다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문 (Q2 FY27)</th>
+<th>매출</th>
+<th>QoQ</th>
+<th>YoY</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infrastructure</td>
+<td>$124M</td>
+<td>+25%</td>
+<td>+69%</td>
+<td>데이터센터 매출이 $100M로 대부분을 차지</td>
+</tr>
+<tr>
+<td>└ 데이터센터</td>
+<td>$100M</td>
+<td>+39%</td>
+<td>+91%</td>
+<td>800G·1.6T 제품. CopperEdge(구리 기반 연결)·FiberEdge(광 연결) 제품군과 광부품(photonics)</td>
+</tr>
+<tr>
+<td>High-end Consumer</td>
+<td>$39M</td>
+<td>+2%</td>
+<td>-5%</td>
+<td>TVS(회로 보호 소자) 등</td>
+</tr>
+<tr>
+<td>Industrial</td>
+<td>$179M</td>
+<td>+16%</td>
+<td>+25%</td>
+<td>LoRa와 IoT 시스템 포함</td>
+</tr>
+<tr>
+<td>└ LoRa</td>
+<td>$58M</td>
+<td>+31%</td>
+<td>+58%</td>
+<td>LoRaWAN이 주력이고 LoRa Plus 비중 20~25%</td>
+</tr>
+<tr>
+<td>└ IoT 시스템·연결</td>
+<td>$98M</td>
+<td>+11%</td>
+<td>+11%</td>
+<td>매각 대상인 셀룰러 모듈 포함</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>제품:</strong> 회사는 스스로를 "AI 데이터센터 네트워킹과 IoT용 고성능 반도체" 기업이라고 소개한다.</li>
+<li>데이터센터 제품은 광트랜시버용 TIA(광신호 증폭 칩)·드라이버, LPO/LRO(전력 소모를 줄인 선형 광모듈), ACC(능동 구리 케이블), 레이저 gain chip이다.</li>
+<li>gain chip은 HieFo 인수(2026년 3월 완료)로 들어온 제품이다.</li>
+<li><strong>포트폴리오 재편:</strong> 2026년 8월 13일 셀룰러 모듈 사업을 Compal Electronics에 현금 $62M에 매각하기로 확정 계약을 맺었다. 종결 예정은 FY27 4분기이며 규제 승인 등이 조건이다.</li>
+<li>회사는 매각 뒤 핵심을 "데이터센터와 LoRa 연결"로 좁히겠다고 밝혔다.</li>
+<li>셀룰러 모듈의 단독 매출 규모는 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>고객:</strong> 실적콜에서 ACC는 "선도 하이퍼스케일러 한 곳"에서 시작됐다고 언급했다. 고객별 매출 비중은 <strong>공시상 확인 불가</strong>다. Amazon이 10% 이상 고객인지 묻는 질문에는 직접 답하지 않았다.</li>
+<li><strong>경쟁 위치:</strong> 회사는 성능, 공급 가능성, 서비스 덕분에 점유율을 늘리고 있다고 주장한다(실적콜). 경쟁사와의 정량 비교 자료는 없다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익 추이 (8-K EX-99.1)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 FY26</th>
+<th>Q1 FY27</th>
+<th>Q2 FY27</th>
+<th>Q3 FY27 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$257.6M</td>
+<td>$291.0M</td>
+<td>$341.9M</td>
+<td>$410M ±5</td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>52.1%</td>
+<td>52.0%</td>
+<td>53.8%</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Adj. 매출총이익률</td>
+<td>53.2%</td>
+<td>53.0%</td>
+<td>54.5%</td>
+<td>58.3% (셀룰러 제외 63.9%)</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>(6.3%)</td>
+<td>8.9%</td>
+<td>16.3%</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Adj. 영업이익률</td>
+<td>18.8%</td>
+<td>20.4%</td>
+<td>24.4%</td>
+<td>31.0%</td>
+</tr>
+<tr>
+<td>Adj. EPS</td>
+<td>$0.41</td>
+<td>$0.51</td>
+<td>$0.71</td>
+<td>$1.05 ±0.03</td>
+</tr>
+<tr>
+<td>GAAP 순이익</td>
+<td>$(27.1)M</td>
+<td>$26.6M</td>
+<td><strong>$160.1M</strong></td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>가이던스 대비 초과 달성:</strong> 1분기 콜에서 제시한 2분기 가이던스(매출 $328M, Adj. EPS $0.61, Adj. GPM 54%)를 매출 +$14M, EPS +$0.10 웃돌았다. 데이터센터도 가이던스 <span class="up">+35%</span> QoQ에 대해 실적 <span class="up">+39%</span>였다.
+- <strong>믹스 효과:</strong> 마진 개선은 고마진 반도체 비중이 늘어난 덕분이다.
+  - 셀룰러를 제외한 Adj. GPM은 2분기 59.7%, 3분기 가이던스 63.9%다.
+  - 1분기 반도체 제품 GPM은 60.7%였다.
+- <strong>가격:</strong> 실적콜에서 "광 제품의 가격 하락이 제한적"이라고 언급했다.
+- <strong>물량과 가격의 분해:</strong> 공시상 확인 불가다.
+- <strong>영업 레버리지:</strong>
+  - 2분기 Adj. 영업비용은 $102.8M으로 전년 대비 <span class="up">+16%</span>였다. 매출 증가율 <span class="up">+33%</span>보다 낮다.
+  - 3분기 가이던스는 매출 +$68M, Adj. 영업이익 +$43M이다. 증분 영업이익률이 약 64%라는 뜻이다(계산값).</p>
+<p><strong>주의할 점</strong>
+- <strong>GAAP 순이익 $160.1M:</strong> GAAP 영업이익 $55.8M의 약 3배다. 영업 외 일회성 항목(세무 등)이 있었던 것으로 보이지만 원인은 <strong>공시상 확인 불가</strong>하다. 10-Q 본문에서 확인해야 한다. GAAP EPS $1.59를 이익 체력으로 보면 안 된다.
+- <strong>GAAP과 Non-GAAP 영업비용 차이:</strong> 분기당 약 $25M(GAAP $128.0M 대 Adj. $102.8M)이다. 주식보상, 인수 무형자산 상각, 구조조정 비용 등이 원인이며, 지속적인 비용으로 봐야 한다.
+- <strong>제공 지표의 혼재:</strong> 지표표의 "영업이익률 YoY <span class="up">+5.6%</span>p"는 Adj. 기준 변화(18.8%→24.4%)다. GAAP 기준으로는 <span class="down">-6.3%</span>에서 16.3%로 <span class="up">+22.6%</span>p다. 지표표는 GAAP 이익률과 Adj. 변화폭을 섞어 쓰고 있다.</p>
+<p><strong>현금흐름과 재무 건전성 (실적콜)</strong>
+- 2분기 영업현금흐름은 $69M(QoQ <span class="up">+90%</span>), FCF는 $61M(QoQ <span class="up">+119%</span>)였다. CapEx는 매출의 2%이고, 회사는 앞으로도 5% 미만을 유지하겠다고 밝혔다.
+- 현금 $204M, 원금 기준 부채 $503M, 순레버리지 1.1배다. 순이자는 이미 수익 쪽으로 돌아섰다(Adj. 기준 순이자수익 $0.2M).
+- 셀룰러 매각 대금 $62M이 들어오면 순부채가 더 줄어든다.
+- <strong>희석 가능성:</strong> 3분기 Non-GAAP 희석 주식수는 99.0M주다. 2026년 3월 20일 기준 발행주식은 92.95M주다. 약 6% 차이의 원인(전환사채 등)은 <strong>공시상 확인 불가</strong>다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 데이터센터 800G에서 1.6T로 전환</td>
+<td>회사는 3분기 데이터센터 매출이 QoQ <span class="up">+45%</span>, YoY <span class="up">+160%</span> 늘 것이라고 밝힘. 1.6T 비중이 3분기에 50%를 넘는다고 언급(콜)</td>
+<td>하이퍼스케일러 투자 지속, 1.6T 전환 속도</td>
+<td>3분기 데이터센터 매출이 약 $145M(<span class="up">+45%</span>)에 도달하는지</td>
+</tr>
+<tr>
+<td>② LPO/LRO와 ACC 채택 확대</td>
+<td>회사는 1~2년 안에 선형 광모듈이 전체 트랜시버의 약 25%를 차지할 것이라고 밝힘(1분기 콜). ACC는 선도 하이퍼스케일러 한 곳에서 다른 고객으로 확대 중이라고 언급</td>
+<td>2번째 하이퍼스케일러 확보, 상호운용성</td>
+<td>Analyst Day와 3분기 콜에서 신규 고객 공개 여부</td>
+</tr>
+<tr>
+<td>③ 광부품 capacity 확대 (gain chip)</td>
+<td>수요가 공급을 약 3배 웃돈다고 언급. 연말까지 capacity 3~4배, 다음 해 말까지 다시 3~4배로 늘리겠다고 밝힘(1분기 콜)</td>
+<td>클린룸과 장비 증설을 일정대로 진행</td>
+<td>capacity 증설 진척, CapEx가 매출의 5% 안에 머무는지</td>
+</tr>
+<tr>
+<td>④ LoRa 회복과 신규 수직시장</td>
+<td>LoRa 매출은 YoY <span class="up">+58%</span>. LoRa Plus 비중 20~25%, Amazon Sidewalk는 올해 high single digit 수준이라고 언급</td>
+<td>신규 응용분야(보안, 스마트빌딩), 대량 소비자 시장 진입</td>
+<td>LoRa 매출이 $60M 이상을 유지하는지, Sidewalk 비중</td>
+</tr>
+<tr>
+<td>⑤ 포트폴리오 재편에 따른 마진 개선</td>
+<td>회사는 셀룰러 매각으로 매출총이익률이 구조적으로 500bp 이상 개선된다고 밝힘</td>
+<td>4분기 거래 종결</td>
+<td>규제 승인, 종결 공시(8-K), 4분기 셀룰러 제외 GPM 약 64% 수준</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법의 변화</strong>
+- CEO는 "역사상 가장 큰 인프라 구축의 중심에 있다"고 말할 만큼 자신감이 매우 강하다.
+- 가시성에 대한 표현이 분기마다 길어졌다.
+  - 1분기 콜: 하반기에서 FY28 상반기까지
+  - 2분기 콜: 남은 FY27 목표는 모두 수주, FY28은 70% 이상 확보
+- CFO는 "강한 확신(conviction)을 갖고 3분기에 들어선다"고 했다.
+- 가이던스 범위도 좁다. 매출이 ±$5M(±1.2%)로, 수주잔고에 자신이 있다는 신호다.</p>
+<p><strong>반복된 질문과 회피·방어 지점</strong>
+- <strong>수주잔고와 FY28 성장 폭:</strong> 애널리스트들(B. Riley, Benchmark)이 반복해서 물었다.
+  - FY28 성장률 수치는 제시하지 않고 10월 15일 행사로 미뤘다.
+  - capacity를 더 확보할 경우의 상승여력을 묻자 "50%에서 100% 사이에 여지가 있다"고 답했는데, 무엇의 50~100%인지 모호하다.
+- <strong>ACC 고객 확산:</strong> 상호운용성 관련 활동이 "많지 않다"고 인정했고, "여러 곳과 진행 중"이라는 수준에 그쳤다. 단일 고객 의존이 아직 해소되지 않았다.
+- <strong>Amazon 고객 비중과 LoRa의 중국 비중:</strong> 질문에 직접 답하지 않았다(Sidewalk는 아직 미미하다는 답만 함).
+- <strong>나머지 IoT 사업(라우터·게이트웨이·IoT 플랫폼):</strong> "현재 포트폴리오가 마음에 든다. 하지만 계속 평가하겠다"고 해서 추가 매각 가능성을 열어뒀다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 1.6T 비중 50% 초과
+- LoRa Plus 비중 20~25%
+- gain chip 수요가 공급의 3배
+- FY28 수주 70% 이상
+- 광 제품 가격 하락 제한적
+- FY28 capacity 제약 가능성 인정
+- 선형 광모듈 비중 약 25% 전망</p>
+<h2>6. 리스크</h2>
+<p>10-K의 리스크 항목 본문은 발췌에서 빠져 있어 그 조항들은 <strong>공시상 확인 불가</strong>다. 아래는 MD&amp;A, 8-K, 실적콜에서 확인된 구체적 리스크다.</p>
+<ol>
+<li><strong>공급 제약이 성장의 상한이 될 위험:</strong> 회사 스스로 FY28 capacity 제약을 예상한다고 밝혔다. 수요가 있어도 증설이 늦으면 가이던스를 맞추지 못하거나 점유율을 잃을 수 있다.</li>
+<li><strong>고객 집중:</strong> ACC는 하이퍼스케일러 한 곳에서 출발했고 확산 근거는 아직 정성적이다. 데이터센터 매출이 전체의 약 29%이고 3분기에는 더 커진다. 특정 하이퍼스케일러가 투자를 늦추면 영향이 크다. 고객별 비중은 공시상 확인 불가다.</li>
+<li><strong>밸류에이션과 이벤트 리스크:</strong> 20일 수익률 <span class="up">+43.9%</span>로 52주 고점 부근이다. 10월 15일 장기목표가 시장 기대에 못 미치면 사건 이후 하락(sell-the-news) 가능성이 있다.</li>
+<li><strong>이익의 질:</strong>
+   - GAAP 순이익에 정체가 확인되지 않은 일회성 요인이 섞여 있다.
+   - GAAP과 Non-GAAP 영업이익 차이가 분기당 약 $28M이다.
+   - 희석 주식수(99.0M)가 발행주식(약 93M)보다 많다.</li>
+<li><strong>매각 거래 종결 리스크:</strong> 셀룰러 매각은 규제 승인이 조건이다. 거래가 무산되면 GPM 500bp 이상 개선 논리가 늦어진다.
+   - 참고: CEO의 연속 매도(2,000주 단위)는 규모가 작지만, 매도가 이어지는 점은 모니터링할 대상이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>긍정:</strong>
+  - 매출 성장이 빨라지고 있다(YoY <span class="up">+16%</span>, <span class="up">+33%</span>, 가이던스 <span class="up">+54%</span>).
+  - Adj. 영업이익률이 20.4%에서 24.4%, 가이던스 31.0%로 오른다.
+  - 2분기에 가이던스를 넘었다(매출 <span class="up">+4%</span>, EPS <span class="up">+16%</span>).
+  - FCF가 분기 $61M이고 순레버리지는 1.1배다.
+- <strong>부담 (직접 계산한 값):</strong>
+  - 가이던스 연율화 Adj. EPS $4.20 기준 PER 약 44배
+  - 3분기 Adj. EBITDA 연율화 기준 EV/EBITDA 약 33배
+  - TTM FCF 수익률 약 1.1%
+- <strong>판단:</strong> 성장 가속은 의심할 여지가 적다. 하지만 지금 주가는 FY28 성장까지 상당 부분 선반영하고 있다. 그래서 "적극"이 아니라 "보통"으로 판단했다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10월 15일 Analyst Day:</strong> 장기 매출·마진 목표, 데이터센터 TAM과 점유율, ACC 2번째 고객의 실명이나 정량 근거가 나오는지.
+2. <strong>2분기 10-Q 본문:</strong> GAAP 순이익 $160.1M의 일회성 요인, 10% 이상 고객 공시, 부채 구성(전환사채 여부)과 희석 주식수의 근거.
+3. <strong>셀룰러 매각 진척:</strong> 규제 승인 진행 상황과 매각 대상 사업의 매출 규모. 매각 뒤 매출 기반이 얼마나 줄어드는지 봐야 한다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 바꾸는 신호)</strong>
+- 3분기 매출이 가이던스 하단 $405M에 못 미치거나, 데이터센터 성장률이 <span class="up">+45%</span> QoQ 가이던스를 크게 밑도는 경우
+- 3분기 셀룰러 제외 Adj. GPM이 약 63%를 밑도는 경우. 믹스 개선 논리가 훼손된다.
+- 경영진의 FY28 수주 확보율이 70%보다 낮아지거나, capacity 제약 때문에 가이던스를 낮추는 경우
+- Analyst Day 장기목표가 현재 3분기 가이던스(Adj. 영업이익률 31%)보다 보수적이어서 성장 정점 신호로 해석될 경우
+- 셀룰러 매각이 무산되거나 지연되는 경우, 또는 경영진 내부자 매도가 소규모 단위를 넘어 커지는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000005/smtc-20260125.htm">10-K — 2026-01-25_0000088941-26-000005</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000034/smtc-20260726.htm">10-Q — 2026-07-26_0000088941-26-000034</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000013/smtc-20260426.htm">10-Q — 2026-04-26_0000088941-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000028/smtc-07262026x8k991.htm">8-K — 2026-08-25_0000088941-26-000028__EX-99.1__smtc-07262026x8k991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000028/smtc-20260825.htm">8-K — 2026-08-25_0000088941-26-000028</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000119312526347716/d123711dex991.htm">8-K — 2026-08-13_0001193125-26-347716__EX-99.1__d123711dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000119312526347716/d123711d8k.htm">8-K — 2026-08-13_0001193125-26-347716</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/88941/000008894126000022/exhibit101creditagreement.htm">8-K — 2026-07-06_0000088941-26-000022__EX-10.1__exhibit101creditagreement</a></li>
+<li>Transcript — 2026-08-25 Q2 2027 Transcript</li>
+<li>Transcript — 2026-05-26 Q1 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

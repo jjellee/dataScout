@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIEN — Ciena Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CIEN — Ciena Corporation Common Stock</h1>
+<div class="sub">2026-10-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CIEN</span><span class="badge">+3.22%</span><span class="badge">거래량 1.0배</span><span class="badge">$55.50B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 매우 강합니다. FQ3(2026년 8월 1일 종료) 매출은 $1,671.1M으로 전년 대비 37.0% 늘었습니다. 조정 영업이익률은 22.5%로 사상 최고였고, 수주잔고는 $8.5B입니다. 회사는 FY27 매출이 최소 30% 성장한 $8.3–8.4B가 될 것이라고 밝혔습니다. 성장 속도와 가시성 모두 상위권입니다.</li>
+<li>오늘 상승에는 확인된 촉매가 없습니다. 거래량도 20일 중앙값의 1.0배에 그쳐 스크리닝 전제인 '거래량 급증'과 맞지 않습니다. 이번 움직임은 20일 <span class="up">+21.4%</span> 반등의 연장선으로 봐야 합니다.</li>
+<li>밸류에이션 부담이 큽니다. 시가총액 $55.5B는 FY27 매출 가이던스 중간값 기준 약 6.7배입니다. TTM FCF 기준으로는 약 68배(FCF 수익률 약 1.5%)입니다. 이 가격은 가이던스를 달성하는 수준을 넘어 초과 달성까지 일부 반영하고 있습니다.</li>
+<li>상위 2개 고객이 매출의 41.7%를 차지합니다. 하이퍼스케일러 투자 사이클에 노출도가 높습니다.</li>
+<li>정리하면 사업의 질은 '적극' 수준입니다. 다만 매수 근거가 되는 촉매가 없고 밸류에이션과 고객 집중도 부담이 있어 이 셋을 감안해 '보통'으로 판단합니다. 52주 고점 대비 <span class="down">-37.6%</span> 조정을 활용해 분할 편입하고, FQ4 수주잔고와 FY27 가이던스 재확인 뒤 비중을 늘리는 방식을 권합니다.</li>
+</ul>
+<blockquote>
+<p>참고: 제공 지표의 섹터는 'Utilities'로 분류돼 있습니다. 10-K상 회사는 "network technology company"이므로 IT 하드웨어·통신장비로 다뤄야 합니다. 분류 오류로 판단합니다.</p>
+</blockquote>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급 또는 섹터 동조 가능성이 높습니다.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없습니다. 가장 최근 실적 8-K는 2026-09-03 공시로 한 달 전입니다.</li>
+<li>뉴스 헤드라인은 실적 이후 내러티브 정리 기사(Simply Wall St, Seeking Alpha의 "Mega Boom")와 옵션 시세 페이지뿐입니다. 신규 사실을 담은 헤드라인은 없습니다.</li>
+<li>거래량 배수가 1.0배이고 거래대금은 $988.3M입니다. 새로운 정보가 가격에 반영된 흔적으로 보기 어렵습니다.</li>
+<li>가격 흐름을 지표에서 역산하면 다음과 같습니다(단순 계산).</li>
+<li>60일 전 약 $463</li>
+<li>20일 전 약 $322</li>
+<li>현재 $391.34</li>
+<li>52주 고점 약 $627</li>
+<li>즉 실적 발표 전후로 크게 밀렸다가 반등하는 구간입니다. 실적 이후 하락의 원인은 제공 자료로 확인할 수 없습니다. 기대치 대비 반응이나 밸류에이션 재조정일 가능성은 추정입니다.</li>
+<li>결론적으로 오늘 <span class="up">+3.22%</span>는 개별 이벤트가 아니라 AI 광통신 섹터 수급이나 기술적 반등의 일부로 보는 것이 타당합니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>정체성(10-K):</strong> 하드웨어, 소프트웨어, 서비스를 클라우드 사업자, 통신사, 기타 네트워크 운영자에게 공급합니다. 클라우드, 영상, 데이터, AI 트래픽을 처리하는 네트워크의 용량, 서비스 제공, 자동화를 담당합니다.</p>
+<p><strong>FQ3 FY26 부문별 매출 (8-K 보도자료)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>FQ3 FY26</th>
+<th>비중</th>
+<th>FQ3 FY25</th>
+<th>YoY (단순 계산)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optical Networking</td>
+<td>$1,191.3M</td>
+<td>71.3%</td>
+<td>$815.5M</td>
+<td>+46.1%</td>
+</tr>
+<tr>
+<td>Routing &amp; Switching</td>
+<td>$164.4M</td>
+<td>9.8%</td>
+<td>$125.9M</td>
+<td>+30.6%</td>
+</tr>
+<tr>
+<td><strong>Networking Platforms 합계</strong></td>
+<td><strong>$1,355.7M</strong></td>
+<td><strong>81.1%</strong></td>
+<td>$941.4M</td>
+<td>+44.0%</td>
+</tr>
+<tr>
+<td>Platform Software &amp; Services</td>
+<td>$98.6M</td>
+<td>5.9%</td>
+<td>$90.0M</td>
+<td>+9.6%</td>
+</tr>
+<tr>
+<td>Blue Planet Automation</td>
+<td>$23.2M</td>
+<td>1.4%</td>
+<td>$27.8M</td>
+<td><strong>-16.5%</strong></td>
+</tr>
+<tr>
+<td>Maintenance, Support &amp; Learning</td>
+<td>$89.8M</td>
+<td>5.4%</td>
+<td>공시 발췌 잘림</td>
+<td>확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>돈이 나오는 곳:</strong> 매출의 71%가 Optical(광 시스템, WaveLogic 모뎀, 플러거블 등 인터커넥트)에서 나옵니다. 성장도 사실상 여기에 집중돼 있습니다. 소프트웨어와 Blue Planet은 비중이 작고 Blue Planet은 역성장 중입니다. 따라서 '소프트웨어 반복 매출' 스토리는 약합니다.</li>
+<li><strong>제품 구성(Q2 실적콜):</strong> 회사는 포트폴리오를 세 갈래로 설명했습니다.</li>
+<li>Systems: 광 시스템, 라우팅·스위칭</li>
+<li>Interconnects: WaveLogic 모뎀, 플러거블, 코패키지드 옵틱스(CPO), 부품</li>
+<li>Software &amp; Services</li>
+<li><strong>고객군:</strong> 직접 거래 클라우드 사업자(하이퍼스케일러), 네오클라우드(neo-scaler), 통신사입니다. FQ3에 10% 이상 고객 2곳이 합계 41.7%를 차지했습니다.</li>
+<li><strong>경쟁 위치(회사 주장):</strong></li>
+<li>회사는 자신을 "유일한 대규모 순수 광 시스템 업체"라고 밝혔습니다.</li>
+<li>실적콜에서 RLS(라인시스템) 시장점유율이 약 70%라고 언급했습니다.</li>
+<li>제3자 검증은 제공 자료에 없습니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익 (8-K, FQ3 FY26 vs FQ3 FY25)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>GAAP</th>
+<th>YoY</th>
+<th>Non-GAAP</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$1,671.1M</td>
+<td>+37.0%</td>
+<td>동일</td>
+<td>+37.0%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>45.4%</td>
+<td>+4.1%p</td>
+<td>46.4%</td>
+<td>+4.5%p</td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>$458.1M</td>
+<td>+6.6%</td>
+<td>$400.0M</td>
+<td>+5.2%</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>18.0%</td>
+<td>+11.9%p</td>
+<td>22.5%</td>
+<td>+11.8%p</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>$349.9M</td>
+<td>+220.4%</td>
+<td>$411.1M</td>
+<td>+160.2%</td>
+</tr>
+<tr>
+<td>희석 EPS</td>
+<td>$1.83 (전년 $0.35)</td>
+<td></td>
+<td>$2.11 (전년 $0.67)</td>
+<td>+215%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>물량 주도 성장입니다.</strong> 실적콜에서 회사는 공급 제약이 매출 성장의 1차 제약 요인이라고 언급했습니다. 수요가 아니라 출하 능력이 매출을 결정한다는 뜻입니다.
+  - 인터커넥트 매출은 전년 대비 2배 이상 늘었습니다.
+  - 직접 클라우드 매출은 <span class="up">+80%</span> 이상입니다.
+  - 데이터센터 내부·주변 매출은 연초 누계로 4배입니다.
+  - 이 세 수치는 실적콜 언급이며, 단가와 물량의 분해는 공시상 확인 불가합니다.
+- <strong>믹스는 양면적입니다.</strong>
+  - 마진이 높은 Hyper-Rail은 아직 본격 매출 전입니다.
+  - 회사는 현 RLS(단일 레일) 마진이 회사 평균과 비슷하며 Hyper-Rail은 평균을 웃돌 것이라고 밝혔습니다.
+  - 마진 개선은 2027년 이후 믹스 전환에 달려 있습니다.
+- <strong>운영 레버리지가 핵심입니다.</strong> 매출이 <span class="up">+37%</span>일 때 조정 영업비용은 <span class="up">+5.2%</span>에 그쳤습니다. 영업이익률 <span class="up">+11.8%</span>p의 대부분은 이 레버리지에서 나왔습니다.</p>
+<p><strong>마진 방향성: 단기 정체, 중기 개선</strong>
+- FQ3 조정 매출총이익률 46.4%에는 일회성 관세 환급 효과 약 70bp가 포함돼 있습니다(실적콜). 이를 빼면 약 45.7%입니다.
+- 회사는 FQ4 가이던스를 조정 매출총이익률 45% ±50bp, 조정 영업이익률 20% ±50bp로 제시했습니다. 즉 FQ3 대비 마진이 일시적으로 하락합니다.
+- 회사는 FY26 연간 영업이익률이 20–21%로 처음 20%를 넘고, FY27 매출총이익률 45–46%, 영업이익률 25–27%를 예상한다고 밝혔습니다.
+- 정리하면 매출총이익률은 횡보하고, 영업이익률은 레버리지로 계속 확대되는 구조입니다.</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 $814.4M입니다.
+- FQ3 FCF는 $116M에 그쳤습니다(실적콜). 조정 EBITDA $411.1M 대비 전환율이 약 28%로 낮습니다. 회사는 재고 투자 증가를 이유로 들었습니다.
+- 재고회전율 3.5회, DSO 76일입니다.
+- Capex는 연간 $250–275M 범위의 상단을 예상한다고 회사가 밝혔습니다.
+- 공급 계약(LTA) 확보와 재고 선확보가 이어지는 동안 FCF 전환율은 낮게 유지될 가능성이 큽니다(추정).</p>
+<p><strong>재무 건전성</strong>
+- 분기 말 현금 및 등가물은 $2.8B입니다(실적콜).
+- 6월에 전환사채를 발행해 고금리 부채를 상환했다고 실적콜에서 언급했습니다. 발행 규모, 전환가, 총차입금은 <strong>공시상 확인 불가</strong>합니다. 따라서 순현금·순차입 여부와 희석 규모는 판단할 수 없습니다.
+- 자사주: FQ3에 약 0.36M주를 $171.7M에 매입했습니다. 평균 단가는 약 $482(단순 계산)로 현재가보다 약 23% 높습니다. $1B 프로그램 안에서 진행 중입니다.</p>
+<p><strong>밸류에이션 (단순 계산, 확정 수치 아님)</strong>
+- 시가총액 / FY27 매출 가이던스($8.3–8.4B): 약 6.6–6.7배
+- 시가총액 / FY27 조정 영업이익(가이던스 매출 × 25–27%, 약 $2.08–2.27B): 약 24–27배
+- 시가총액 / TTM FCF: 약 68배</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>검증 포인트 (다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Scale-across / DCI</strong>: 데이터센터 간 연결. 회사는 현재 거의 미국 내이고 초기 단계라고 언급</td>
+<td>하이퍼스케일러 Capex 유지, 학습에서 추론 트래픽으로의 확산</td>
+<td>FQ4 직접 클라우드 매출 성장률, 신규 하이퍼스케일러 수주 공시</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>RLS Hyper-Rail</strong>: 멀티레일 라인시스템. Q2에 업계 첫 멀티레일 수주. 2026년 말 표준화, 2027년 의미 있는 매출</td>
+<td>표준화 일정 준수, 복수 하이퍼스케일러 채택, 고마진 유지</td>
+<td>표준화 완료 여부, 추가 고객 수, 매출총이익률 기여 언급</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>WaveLogic 6 Extreme 및 인터커넥트</strong>: 인터커넥트 매출 2배 이상, 대형 하이퍼스케일러 플랫폼 탑재 수주</td>
+<td>부품 공급 확대, 데이터센터 내부 coherent 진입(회사는 3.2T를 진입 시점으로 제시)</td>
+<td>인터커넥트 매출 성장 지속, 3.2T coherent-lite 제품 일정</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>통신사 재투자</strong>: Q2 통신사 매출 <span class="up">+28%</span>, MOFN, 해외(인도·중동·아시아)</td>
+<td>통신사 Capex 사이클 지속</td>
+<td>통신사 매출 YoY, 해외 비중</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>공급 확대</strong>: 2029년까지 핵심 광부품 LTA, 생산능력 증설</td>
+<td>업계 전반의 부품 증설과 수율</td>
+<td>분기 매출 QoQ 증가폭(FQ4 가이던스 <span class="up">+4.7%</span>), 수주잔고 소진 속도</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>TAM 확대</strong>: 회사는 $25B에서 2029년 $50B로 2배를 예상</td>
+<td>제3자 데이터로 검증 필요</td>
+<td>경쟁사 실적과 비교</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수주잔고 (실적콜)</strong>
+- $8.5B로 분기 중 $800M 증가했습니다. 회사는 FY26 말 $10B 초과를 예상한다고 밝혔습니다.
+- Q2 기준 $7.7B 중 하드웨어가 약 $6.4B이며, 그 약 80%가 12개월 안에 인도될 것이라고 언급했습니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 자신감의 근거</strong>
+- 톤은 매우 공격적입니다. "extraordinary demand environment that continues to accelerate", "very early stages of a multiyear, highly durable" 같은 표현을 썼습니다.
+- 자신감의 근거로 세 가지를 제시했습니다.
+  - (1) FQ4가 시작된 지 한 달 만에 수주가 FQ3 분기 전체에 근접
+  - (2) FY26 말 수주잔고 $10B 초과 예상
+  - (3) 2029년까지 공급 LTA 확보</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 회사는 FY27 초기 가이던스를 이례적으로 이른 시점에 냈고, 이를 <strong>'floor(하한)'</strong>라고 규정했습니다.
+- CFO는 1년 전 FY26 성장률을 17%로 제시했지만 실제로는 35%가 나왔다고 언급했습니다. 동시에 "30%가 60%가 된다는 뜻은 아니다"라며 공급 환경이 다르다고 선을 그었습니다.
+- 보수적 가이던스 후 초과 달성이라는 패턴을 의도적으로 부각한 화법입니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>수주잔고의 질(가수요·중복 주문 여부):</strong> Q2와 Q3 모두 나온 질문입니다.
+  - 회사는 장비가 창고가 아니라 실제로 설치되고 있다고 답했습니다.
+  - 고객이 인도 시점을 앞당기길 원하며, 수주잔고 증가는 선주문이 아니라 리드타임 때문이라고 했습니다.
+  - Scott McFeely는 COVID 당시 신호였던 재고 축적, 인도 연기, 취소가 전혀 없다고 언급했습니다.
+  - 다만 이는 경영진 주장이며 고객 측 데이터로는 확인할 수 없습니다.
+- <strong>공급 제약 완화 시 상단:</strong> 회사는 공급만 되면 수주잔고를 더 빨리 소진할 수 있다는 원론적 답변만 했습니다. 정량 수치는 없습니다.
+- <strong>Hyper-Rail 마진:</strong> "step function", "accretive"라는 정성 표현만 썼고 수치는 내놓지 않았습니다.</p>
+<p><strong>답변 회피 지점</strong>
+- OCS(광회선 스위치) 진출 여부: "제품 계획은 언급하지 않겠다"
+- Nubis(ACC 리드라이버) 규모: 2026년에는 의미 없다고만 했고, 2027–28년 규모는 밝히지 않았습니다.
+- Google의 2.4T coherent-lite 딜 참여 여부: 직접 답하지 않고 3.2T가 일반 시장의 진입 시점이라고만 했습니다. 해당 세대에서 탈락했을 가능성도 배제할 수 없습니다(추정).</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 관세 환급 일회성 효과 70bp
+- 캐나다 관세 체계 변경 시 분기 약 $10M 마진 영향
+- RLS 점유율 약 70%
+- FQ4 첫 달 수주 규모
+- 데이터센터 내부·주변 매출 4배, 인터커넥트 2배
+- FY27 매출총이익률 45–46%, 영업이익률 25–27%
+- 6월 전환사채 발행</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>고객 집중도:</strong> 상위 2개 고객이 41.7%입니다(8-K). 하이퍼스케일러 1곳의 Capex 조정이나 인소싱만으로도 성장률이 급변할 수 있습니다. 실적콜에서 scale-across가 "몇몇 하이퍼스케일러"의 초기 연결이라고 언급된 점도 집중도를 보여줍니다.</li>
+<li><strong>공급망과 원가:</strong> 8-K는 공급 제약과 리드타임, 비용 상승을 주요 위험으로 명시했습니다. 매출이 공급에 묶여 있어 부품 수급 차질이 곧 매출 미달로 이어집니다. LTA는 물량을 확보해 주지만 단가 부담을 키울 수 있습니다(추정). 재고 증가로 FCF 전환율이 약 28%까지 낮아진 점도 이 리스크의 비용입니다.</li>
+<li><strong>관세와 무역 규제:</strong> 8-K는 관세와 무역협정 변경을 위험으로 명시했습니다. 실적콜에서는 캐나다 관세 체계 변경 시 분기 약 $10M 영향을 언급했습니다. FQ3 마진에 일회성 환급 70bp가 포함된 점까지 고려하면 기초 마진 개선 폭은 헤드라인보다 작습니다.</li>
+<li><strong>기술 전환과 경쟁:</strong> 8-K는 경쟁사의 신기술 도입을 위험으로 명시했습니다. 데이터센터 내부 coherent, OCS, CPO에서 차세대 표준 선점 여부가 중장기 점유율을 좌우합니다. 콜에서 회사가 2.4T 관련 답변을 피한 점은 확인이 필요한 부분입니다.</li>
+<li><strong>사이클과 수주잔고 소진 리스크:</strong> Q2 Q&amp;A에서 애널리스트가 직접 COVID 이후 수주잔고 급감 전례를 거론했습니다. 회사는 이번은 다르다고 주장하지만, AI Capex가 둔화하면 수주잔고는 결국 줄고 높은 밸류에이션이 함께 조정될 수 있습니다. 52주 고점 대비 <span class="down">-37.6%</span>는 시장이 이 위험을 이미 가격에 반영하기 시작했다는 신호일 수 있습니다(추정).</li>
+</ol>
+<p>※ 제공된 10-K 리스크 섹션 본문은 발췌에서 잘려 있습니다. 위 리스크는 8-K의 위험 요소 목록과 실적콜 내용을 근거로 했습니다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정 (비중 확대 근거)</th>
+<th>부정 (비중 제한 근거)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY <span class="up">+37%</span>, FY26 가이던스 $6.42B(<span class="up">+35%</span>)</td>
+<td>시가총액 / FY27 매출 약 6.7배, 시가총액 / TTM FCF 약 68배</td>
+</tr>
+<tr>
+<td>조정 영업이익률 10.7%에서 22.5%로 상승, FY27 25–27% 가이던스</td>
+<td>FQ4 매출총이익률 가이던스 45%로 FQ3(46.4%) 대비 하락, 일회성 70bp 포함</td>
+</tr>
+<tr>
+<td>수주잔고 $8.5B, FY 말 $10B 초과 예상(매출 약 1.5년치)</td>
+<td>상위 2개 고객 41.7%</td>
+</tr>
+<tr>
+<td>FY27 가이던스는 '하한'이며 전년에는 17% 제시 후 35% 달성</td>
+<td>FQ3 FCF $116M, EBITDA 대비 전환율 약 28%</td>
+</tr>
+<tr>
+<td>52주 고점 대비 <span class="down">-37.6%</span>로 가격 부담 일부 해소</td>
+<td>오늘 거래량 1.0배, 촉매 없음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>전환사채 조건과 순차입 상태:</strong> 6월 발행 전환사채의 규모와 전환가, 총차입금을 FQ3 10-Q에서 확인해야 합니다. 희석 리스크와 EV 산출에 필요합니다.
+2. <strong>FQ3 10-Q MD&amp;A의 수주잔고 정의와 인도 일정:</strong> RPO 또는 수주잔고 중 12개월 내 인식분 비율과, 취소 가능 조항이 있는지 확인해야 합니다.
+3. <strong>실적 발표 후 주가 하락 원인:</strong> 60일 <span class="down">-15.4%</span> 동안 어떤 요인이 반영됐는지 확인해야 합니다. 경쟁사 실적, 하이퍼스케일러 Capex 코멘트, 수급 등이 후보입니다. 제공 자료로는 확인할 수 없어 별도 검증이 필요합니다.</p>
+<p><strong>'적극'으로 올릴 조건</strong>
+- FQ4 매출이 $1.75B 이상이고 수주잔고 $10B 초과를 확인
+- 기초 매출총이익률이 일회성 효과를 빼고도 45%대 중반 이상 유지
+- FY27 가이던스가 상향되거나 Hyper-Rail 표준화가 일정대로 완료되고 추가 하이퍼스케일러 수주 발표</p>
+<p><strong>'관망'으로 낮출 조건</strong>
+- 수주잔고 증가가 둔화되거나 감소. 회사가 FQ4 수주잔고 증가 속도가 더 빨라진다고 했으므로 이 기준에 못 미치면 신호입니다.
+- 상위 고객 비중이 더 높아지는데 신규 하이퍼스케일러나 네오스케일러 확산 증거가 없음
+- 조정 매출총이익률이 44.5% 미만(FQ4 가이던스 하단 이탈)이거나 FY27 영업이익률 가이던스 하향
+- 주문 연기·취소, 고객 재고 축적 등 경영진이 "전혀 없다"고 한 신호가 하나라도 공시나 콜에서 확인될 때
+- Hyper-Rail 표준화가 2027년으로 넘어가거나, 데이터센터 내부 coherent 세대(2.4T 또는 3.2T)에서 탈락이 확인될 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm">10-K — 2025-11-01_0001628280-25-056698</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828026060361/cien-20260801.htm">10-Q — 2026-08-01_0001628280-26-060361</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828026040767/cien-20260502.htm">10-Q — 2026-05-02_0001628280-26-040767</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/ex9922026q3earningsprese.htm">8-K — 2026-09-03_0001628280-26-060245__EX-99.2__ex9922026q3earningsprese</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/ex9912026q3earningspressre.htm">8-K — 2026-09-03_0001628280-26-060245__EX-99.1__ex9912026q3earningspressre</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000162828026060245/cien-20260903.htm">8-K — 2026-09-03_0001628280-26-060245</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000119312526267607/d118604dex991.htm">8-K — 2026-06-08_0001193125-26-267607__EX-99.1__d118604dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/936395/000119312526267607/d118604dex101.htm">8-K — 2026-06-08_0001193125-26-267607__EX-10.1__d118604dex101</a></li>
+<li>Transcript — 2026-09-03 Q3 2026 Transcript</li>
+<li>Transcript — 2026-06-04 Ciena Corporation (CIEN) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
