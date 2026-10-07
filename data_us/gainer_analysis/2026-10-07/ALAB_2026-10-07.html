@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALAB — Astera Labs Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ALAB — Astera Labs Inc. Common Stock</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ALAB</span><span class="badge">+3.43%</span><span class="badge">거래량 0.93배</span><span class="badge">$62.86B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털은 최상위권입니다. Q2 매출은 $392.4M으로 YoY <span class="up">+104%</span>, QoQ <span class="up">+27%</span>였습니다. 회사는 Q3 매출 가이던스를 $540~560M(중간값 기준 QoQ <span class="up">+40%</span>)으로 제시했습니다. GAAP 영업이익률은 22.7%로 1년 전보다 2.0%p 올랐습니다.</li>
+<li>다만 오늘 움직임은 스크린 전제와 맞지 않습니다. 거래량 배수가 0.93배로 20일 중앙값보다 낮고, 최근 4일 내 공시도 없습니다. 오늘을 진입 시그널로 볼 근거는 약합니다.</li>
+<li>밸류에이션 부담이 큽니다. 시가총액 $62.86B는 TTM FCF $276.7M의 약 227배(FCF 수익률 약 0.44%)입니다. Q3 가이던스 중간값을 연율화한 non-GAAP EPS(약 $4.74) 기준으로도 PER은 약 76배입니다(필자 산출).</li>
+<li>매출총이익률은 내려가는 중입니다. GAAP 기준 Q1 76.3%, Q2 73.3%였고, Q3 non-GAAP 가이던스는 약 72%입니다. 성장이 마진을 희생한 믹스에서 나오고 있다는 뜻입니다.</li>
+<li>결론은 기본 비중으로 분할 진입하고, 비중 확대는 Q3 실적(Scorpio X 램프 확인) 이후로 미루는 것입니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급 또는 섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시</strong>: 최근 4일 내 SEC 공시가 없습니다. 가장 최근 실적 관련 공시는 2026-08-04 8-K(Q2 실적)입니다.</li>
+<li><strong>뉴스</strong>: 헤드라인은 "YTD 118% 상승 후 매수/매도/보유", "프리미엄 밸류에이션이 모멘텀을 시험" 같은 해설성 기사와 주가 등락 기사뿐입니다. 신규 수주나 가이던스 변경 같은 펀더멘털 뉴스는 확인되지 않습니다. "Why Is Astera Labs Stock Surging on Tuesday?"(Benzinga) 기사는 본문이 제공되지 않아 원인을 특정할 수 없습니다.</li>
+<li><strong>수급</strong>: 거래량 배수 0.93배, 거래대금 $1.18B로 거래량 급증은 없었습니다. 20일 수익률 <span class="up">+34.9%</span>에 비해 60일 수익률은 <span class="up">+7.7%</span>이고, 52주 고점 대비로는 <span class="down">-25.0%</span>입니다. 고점에서 조정받은 뒤 이어지는 반등 추세의 연장선으로 보는 것이 합리적입니다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong> (10-Q MD&amp;A 기준: 4개 제품군, IC·보드·모듈 형태)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>제품군</th>
+<th>내용</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aries</td>
+<td>PCIe/CXL Smart DSP Retimer, Smart Cable Module</td>
+<td>Q2 최대 매출 제품군, 분기 사상 최대 매출(실적콜)</td>
+</tr>
+<tr>
+<td>Scorpio</td>
+<td>Smart Fabric Switch. P-Series는 scale-out, X-Series는 scale-up용</td>
+<td>2025년 매출의 약 15%(Evercore 컨퍼런스에서 CFO 언급). Q3 최대 제품군 등극 전망(회사 주장)</td>
+</tr>
+<tr>
+<td>Taurus</td>
+<td>Ethernet Smart Cable Module</td>
+<td>400G 위주, 800G(100G/lane) 사전 양산 진행 중</td>
+</tr>
+<tr>
+<td>Leo</td>
+<td>CXL Memory Connectivity Controller</td>
+<td>미국 하이퍼스케일러 신규 디자인윈 확보, 본격 양산은 2027년(회사 주장)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>소프트웨어</strong>: COSMOS가 칩에 내장되어 구성·모니터링·진단 기능을 제공합니다. 실적콜에서는 Scorpio 320-lane 칩이 in-network compute와 Hypercast 기능을 지원해 고객 전환비용(stickiness)을 높인다고 언급했습니다.</li>
+<li><strong>고객군</strong>: 하이퍼스케일러와 시스템 OEM입니다. 상용 GPU 플랫폼과 자체 AI 가속기 플랫폼에 모두 채택되어 있습니다. 10-K는 "제한된 수의 최종고객이 매출을 견인"한다고 밝히고 있습니다. <strong>고객별 매출 비중은 공시 발췌상 확인 불가입니다.</strong></li>
+<li><strong>매출 구성</strong>: 제품군별 매출 금액은 공시상 확인 불가입니다. 실적콜에서는 PCIe 6.0 제품이 Q2 매출의 50% 이상(Q1 약 1/3)이라고 언급했습니다.</li>
+<li><strong>경쟁 위치</strong>: 회사는 PCIe·Ethernet·CXL 분야에서 "first-to-market" 제품을 상용화했다고 밝혔습니다. 경쟁사별 점유율 데이터는 공시상 확인 불가입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이</strong> (GAAP, 10-Q·8-K 기준)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'25</th>
+<th>Q1'26</th>
+<th>Q2'26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$191.9M</td>
+<td>$308.4M</td>
+<td>$392.4M</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>75.8%</td>
+<td>76.3%</td>
+<td>73.3%</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>$39.8M</td>
+<td>$61.8M</td>
+<td>$89.2M</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>20.7%</td>
+<td>20.0%</td>
+<td>22.7%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$51.2M</td>
+<td>$80.3M</td>
+<td>$153.1M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- MD&amp;A는 매출 증가 요인을 두 가지로 설명합니다. Aries·Scorpio·Taurus 수요 증가에 따른 출하량 증가, 그리고 하드웨어 모듈과 Scorpio 비중 확대에 따른 평균판매단가(ASP) 상승입니다. 물량과 단가가 동시에 오른 구조입니다.
+- 같은 믹스 변화가 매출총이익률에는 부담입니다. Q1에는 "favorable product mix"로 마진이 136bp 개선됐지만, Q2에는 YoY 250bp 하락했습니다. <strong>Q2 마진 하락 사유를 설명하는 원문은 발췌가 잘려 확인 불가입니다.</strong> 모듈처럼 부품 원가 비중이 높은 제품이 늘어난 영향으로 추정합니다.
+- Q3 non-GAAP 매출총이익률 가이던스는 약 72%로, Q2 non-GAAP 73.7%보다 낮습니다.</p>
+<p><strong>영업 레버리지</strong>
+- 영업비용은 매출총이익에서 영업이익을 빼서 산출했습니다(필자 산출). Q1은 약 $173M(매출 대비 56%), Q2는 약 $198M(51%)입니다.
+- Q1 R&amp;D는 $125.6M으로 매출의 41%였습니다.
+- 회사는 Q3 non-GAAP 영업이익률을 약 43%로 제시했습니다(Q2 39.1% 대비 +400bp).</p>
+<p><strong>GAAP과 non-GAAP 괴리</strong>
+- Q2 영업이익률은 GAAP 22.7%, non-GAAP 39.1%로 16.4%p 차이가 납니다. 금액으로는 약 $64M입니다(필자 산출). 주식보상비용 등으로 추정되지만, 조정 항목 내역은 공시상 확인 불가입니다.
+- Q2 GAAP 순이익($153.1M)이 영업이익($89.2M)보다 약 $64M 많습니다. 영업외 이익이나 세금 효과로 보이지만, <strong>구체 내역은 공시 발췌상 확인 불가입니다.</strong> 따라서 이익의 질은 순이익이 아니라 영업이익 기준으로 평가해야 합니다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 $276.7M입니다. 상반기 GAAP 순이익만 $233.4M인 점을 고려하면 FCF 전환이 이익 성장을 다 따라가지 못하는 것으로 보입니다. 양산 램프에 따른 재고·매출채권 증가 가능성이 있으나(추정), 운전자본 내역은 공시상 확인 불가입니다.
+- 현금·현금성자산·유가증권은 $1.25B입니다(실적콜). 차입금 규모는 공시 발췌상 확인 불가이며, 유동성 리스크는 낮다고 판단합니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Scorpio X-Series(320-lane) 양산 램프.</strong> Q3 최대 제품군 등극, 당초 예상보다 1분기 빠름</td>
+<td>주요 고객의 플랫폼 전환이 일정대로 진행되어야 함</td>
+<td>Q3 매출이 $540~560M 범위에 드는지, Scorpio가 실제로 최대 제품군이 되었는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Scorpio X 고객 다변화.</strong> 10곳 이상과 협의 중, 연말~내년 초 추가 고객 양산</td>
+<td>퀄 통과와 neo-cloud·엔터프라이즈 수요</td>
+<td>양산 고객 수에 대한 언급, 10-Q 고객 집중도 변화</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Aries의 PCIe 6.0 전환.</strong> scale-up과 scale-out 모두</td>
+<td>차세대 GPU·XPU 플랫폼 출하</td>
+<td>PCIe 6.0 매출 비중(Q2 50% 이상)이 더 오르는지, Aries 성장 지속 여부</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Taurus 800G</strong></td>
+<td>100G/lane 모듈의 양산 전환</td>
+<td>800G 매출 기여 시작 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>2027년 신규 축.</strong> Leo CXL, 광 인터커넥트(aiXscale 인수), 커스텀 실리콘</td>
+<td>디자인윈이 양산 매출로 전환</td>
+<td>2027년 매출 기여에 대한 정량 언급(현재는 "multi-billion opportunity"라는 정성 표현뿐)</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- 매우 자신감 있는 톤입니다. CEO는 "momentum to accelerate in Q3"라고 했고, Scorpio가 최대 제품군이 되는 시점이 "one quarter ahead"라고 강조했습니다.
+- 가이던스 화법은 QoQ <span class="up">+40%</span>라는 숫자를 직접 제시하는 공격적인 방식입니다. 자신감의 근거로는 Q2 non-GAAP 매출총이익률이 가이던스를 웃돈 점, Scorpio X가 이미 여러 고객에게 출하되고 있다는 점을 들었습니다.
+- 다만 2027년 이후 TAM은 "trillion-dollar", "tens of billions"처럼 외부 전망을 인용한 정성 표현에 머뭅니다.</p>
+<p><strong>Q&amp;A에서 반복된 쟁점과 방어 지점</strong>
+- <strong>고객 집중도 질문(Raymond James)</strong>: CFO는 고객 집중도 수치를 내놓지 않았습니다. 대신 제품 포트폴리오가 다변화되고 있다는 답으로 우회했습니다. 이는 답변 회피 지점입니다.
+- <strong>Scorpio X 램프가 주요 고객의 제품 전환에 의존한다는 지적(BNP Paribas)</strong>: 회사는 협의 고객이 10곳 이상이라는 점으로 방어했습니다. COO는 "주요 하이퍼스케일러 안에서도 여러 플랫폼에 디자인인되어 있다"고 강조했습니다. 단일 고객 의존 우려를 의식한 발언으로 읽힙니다.
+- <strong>XPU 기능 영역으로의 확장 질문(Roth)</strong>: 회사는 in-network compute로 경계를 넘어서고 있다고 답했습니다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- Q2 non-GAAP 매출총이익률 73.7%, 영업이익률 39.1%, EPS $0.80
+- Q3 EPS 가이던스 $1.16~1.21
+- PCIe 6.0 매출 비중 50% 이상
+- Scorpio가 2025년 매출의 약 15% (6월 Evercore 컨퍼런스)
+- non-GAAP 세율 12%
+- aiXscale 인수 (인수 금액·조건은 확인 불가)</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>고객 집중과 단일 플랫폼 의존</strong>
+   - 10-K는 "제한된 수의 최종고객"이 매출을 견인한다고 명시합니다.
+   - Q3 가속의 핵심인 Scorpio X 램프는 애널리스트 질문에서 드러났듯 주요 고객의 제품 전환에 연동되어 있습니다. 해당 고객의 일정이 지연되거나 설계가 바뀌면 가이던스 리스크로 바로 이어집니다.</li>
+<li><strong>믹스에 따른 매출총이익률 하락</strong>
+   - GAAP 매출총이익률은 76.3%에서 73.3%로 내려갔고, Q3 non-GAAP 가이던스는 약 72%입니다.
+   - 10-K에 따르면 제품 가격은 시간이 지나면서 하락하는 경향이 있습니다.
+   - 모듈과 스위치 비중이 커질수록 마진 하방 압력이 이어질 수 있습니다.</li>
+<li><strong>밸류에이션과 기대치 리스크</strong>
+   - 시가총액은 FCF의 약 227배입니다.
+   - Q3 가이던스가 QoQ <span class="up">+40%</span>로 매우 높아서, 가이던스를 맞추는 수준(in-line)이어도 주가가 조정받을 수 있는 구조입니다(추정).
+   - 52주 고점 대비 <span class="down">-25%</span> 구간이 이미 한 차례 나타났습니다.</li>
+<li><strong>공급망과 퀄 지연</strong>
+   - 회사는 소수의 외부 제조·공급망 파트너에 의존합니다(10-K).
+   - 고객 퀄 지연 리스크도 명시되어 있습니다. 320-lane 같은 신제품을 단기간에 대량 양산하는 시기에는 이 리스크가 커집니다.</li>
+<li><strong>중국 관련 수출통제</strong>
+   - 10-K에 중국과 중국 고객 관련 무역제한 리스크가 명시되어 있습니다.
+   - 중국 매출 비중은 공시상 확인 불가입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<p>긍정 요인:
+- 매출 성장: YoY <span class="up">+104%</span>, QoQ <span class="up">+27%</span>. Q3 가이던스 중간값 $550M은 QoQ <span class="up">+40%</span>입니다.
+- 마진: GAAP 영업이익률이 YoY <span class="up">+2.0%</span>p 개선됐고, Q3 non-GAAP 영업이익률 가이던스는 약 43%입니다.
+- 재무: 순현금성 자산 $1.25B, TTM FCF는 흑자($276.7M)입니다.</p>
+<p>부담 요인:
+- 밸류에이션: P/FCF 약 227배, 연율화 non-GAAP PER 약 76배(필자 산출)입니다.
+- 마진: 매출총이익률이 2분기 연속 하락하는 방향입니다.
+- 수급: 오늘 거래량 배수가 0.93배로 매수 강도가 확인되지 않습니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Q3 실적 발표일과 컨센서스 수준. 둘 다 제공 자료에 없어 확인이 필요합니다. 실적 직전 진입은 결과에 따라 주가가 크게 갈리는 이벤트 리스크를 안게 됩니다.
+2. 최근 10-Q 원문에서 고객별 매출 비중, 그리고 Q2 순이익과 영업이익의 괴리 원인(영업외 이익·세금 효과 내역).
+3. Q2 매출총이익률 하락 사유 원문과 운전자본(재고·매출채권) 변동. FCF 전환율이 낮은 이유를 확인해야 합니다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- Q3 매출이 $540M을 밑돌거나, Scorpio가 최대 제품군이 되는 시점이 뒤로 밀리는 경우
+- Q4 가이던스의 QoQ 성장이 크게 꺾이는 경우. Q3가 주요 고객 전환에 따른 일회성 성격이었다는 신호로 볼 수 있습니다.
+- non-GAAP 매출총이익률이 70% 아래로 내려가거나, 영업이익률 확대(43%)가 확인되지 않는 경우
+- 10-Q에서 단일 고객 비중이 의미 있게 올라가는 경우</p>
+<p><strong>상향 조건 (적극)</strong>
+- Q3 가이던스 상단을 넘는 매출 달성
+- Scorpio X 추가 고객의 양산 진입 확인
+- FCF 전환율 개선</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm">10-K — 2025-12-31_0001736297-26-000010</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm">10-Q — 2026-06-30_0001736297-26-000035</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000020/alab-20260331.htm">10-Q — 2026-03-31_0001736297-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm">8-K — 2026-08-04_0001736297-26-000033__EX-99.1__q226exhibit991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/alab-20260804.htm">8-K — 2026-08-04_0001736297-26-000033</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1736297/000173629726000027/alab-20260604.htm">8-K — 2026-06-04_0001736297-26-000027</a></li>
+<li>Transcript — 2026-08-04 Q2 2026 Transcript</li>
+<li>Transcript — 2026-06-04 Astera Labs, Inc. (ALAB) Presents at 2026 Evercore Global TMT Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

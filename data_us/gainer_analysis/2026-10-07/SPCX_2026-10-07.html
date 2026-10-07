@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPCX — Space Exploration Technologies Corp. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SPCX — Space Exploration Technologies Corp. Class A Common Stock</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SPCX</span><span class="badge">+7.63%</span><span class="badge">거래량 1.67배</span><span class="badge">$2.32T</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>공시상 펀더멘털은 확실히 꺾여 올라가고 있습니다. 2Q26 매출은 $7.81B로 YoY <span class="up">+92%</span>, QoQ <span class="up">+66.5%</span>입니다. Adj. EBITDA는 $3.54B로 YoY <span class="up">+191%</span>이며, AI 세그먼트 Adj. EBITDA가 1Q −$609M에서 2Q +$1,146M로 흑자 전환했습니다.</li>
+<li>다만 영업이익률은 −1.8%, TTM FCF는 −$32.5B입니다. 2Q 설비투자(Capex) $18.4B는 분기 매출의 약 2.35배입니다. 이익과 현금흐름은 아직 증명되지 않았습니다.</li>
+<li>시가총액 $2.32T는 2Q 매출을 연율화한 값($31.3B)의 약 74배입니다(단순 계산). 지금 가격은 회사가 제시한 "2026년 12월 ARR $100B" 달성을 상당 부분 전제하고 있습니다.</li>
+<li>오늘 상승은 신규 공시가 아니라 셀사이드(Morgan Stanley·Goldman) 의견에 따른 것입니다. 약 한 달 안에 나올 3Q 실적이 가이던스를 확인하는 첫 시험대입니다.</li>
+<li>결론: 분할 진입으로 기본 비중은 둡니다. 3Q에서 AI 매출 램프와 Adj. EBITDA 흑자 유지가 확인되기 전까지 '의미 있는 비중'으로 키우는 것은 보류합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>촉매: 셀사이드 리서치(뉴스 기반).</strong> 최근 4일 내 SEC 공시는 없습니다. 헤드라인은 "Morgan Stanley bullish call로 6월 이후 최고 종가", "Goldman Sachs 목표가 상향"입니다. 두 증권사의 목표가와 논리는 제공 자료에 없어 공시상 확인 불가입니다.</li>
+<li><strong>수급 성격:</strong> 거래량 배수는 1.67배로 급증이라기보다 완만한 증가입니다. 20일 <span class="up">+12.0%</span>, 60일 <span class="up">+23.6%</span>의 상승 추세가 이어지는 가운데 나온 상승입니다. 52주 고점보다는 여전히 −19.1% 아래입니다.</li>
+<li><strong>가격 기준점(계산):</strong> IPO 공모가 $135 대비 <span class="up">+26.7%</span>입니다. Cursor 인수 때 쓰인 7일 VWAP(약 $154.1 = $60.0B ÷ 389,289,254주)보다 약 <span class="up">+11%</span> 높습니다.</li>
+<li><strong>판단:</strong> 펀더멘털 이벤트가 아니라 리레이팅 기대가 반영된 움직임입니다. 3Q 실적 전에 선반영됐을 가능성이 있습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>2026년 6월 IPO 기업이라 10-K는 아직 없습니다. 10-Q MD&amp;A 개요, 2Q 실적 발표 8-K(EX-99.1), 실적콜을 근거로 작성했습니다. 투자설명서(424(b)(4)) 원문은 제공되지 않았습니다.</p>
+</blockquote>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>판매 대상</th>
+<th>2Q26 매출</th>
+<th>매출 비중(계산)</th>
+<th>영업손익</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Space</td>
+<td>재사용 발사체(Falcon/Starship) 발사 서비스, 개발 계약</td>
+<td>$962M</td>
+<td>12.3%</td>
+<td>−$542M</td>
+</tr>
+<tr>
+<td>Connectivity</td>
+<td>Starlink 브로드밴드·모바일(소비자, 기업·정부, Starshield)</td>
+<td>$4,291M</td>
+<td>54.9%</td>
+<td>+$1,656M</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>Grok 모델, 소비자·기업 AI 솔루션, X 플랫폼, AI 컴퓨트 인프라(클라우드 서비스)</td>
+<td>$2,561M</td>
+<td>32.8%</td>
+<td>−$1,257M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>수익원:</strong> 영업이익을 내는 세그먼트는 사실상 Connectivity 하나입니다. Space와 AI는 GAAP 기준 적자이며, AI는 Adj. EBITDA 기준으로만 흑자입니다.</li>
+<li><strong>믹스 변화(계산):</strong> 1년 전(2Q25)에는 Connectivity 63.6%, AI 18.1%, Space 18.3%였습니다. 1년 만에 AI 비중이 약 2배가 됐습니다.</li>
+<li><strong>수직계열화:</strong> Space 세그먼트의 발사 역량 상당 부분은 내부 Starlink 배치에 쓰이고, 이 부분은 세그먼트 간 매출로 인식하지 않습니다(10-Q). 2Q 발사 38회 중 고객 발사는 10회입니다.</li>
+<li><strong>고객군:</strong></li>
+<li>공시: Starlink 가입자 1,200만 명, 167개 시장. 2Q 미국 정부 다년 계약(Starshield) $6B 이상 수주. 클라우드 서비스 계약 $14.1B 체결.</li>
+<li>실적콜에서 언급: Google·Anthropic(AI 컴퓨트), American Airlines·Southwest·Virgin Atlantic·Iberia·Aer Lingus(항공), SoftBank·NTT Docomo·Spark NZ(모바일), Space Force.</li>
+<li><strong>경쟁 위치:</strong></li>
+<li>공시: 2026년 상반기 78회 발사, 궤도 투입 질량 1,041톤. Starlink 위성 약 10,200기 운용.</li>
+<li>실적콜에서 Musk는 Falcon이 "전 세계 궤도 투입 질량의 80~90%"를 담당한다고 언급했습니다. 이는 회사 측 주장으로 공시상 확인 불가입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>(1) 성장의 질 — 세그먼트별 분해</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>$M</th>
+<th>2Q26</th>
+<th>1Q26</th>
+<th>2Q25</th>
+<th>YoY</th>
+<th>QoQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Space 매출</td>
+<td>962</td>
+<td>619</td>
+<td>746</td>
+<td>+29%</td>
+<td>+55%</td>
+</tr>
+<tr>
+<td>Connectivity 매출</td>
+<td>4,291</td>
+<td>3,257</td>
+<td>2,588</td>
+<td>+66%</td>
+<td>+32%</td>
+</tr>
+<tr>
+<td>AI 매출</td>
+<td>2,561</td>
+<td>818</td>
+<td>737</td>
+<td>+247%</td>
+<td>+213%</td>
+</tr>
+<tr>
+<td><strong>총매출</strong></td>
+<td><strong>7,814</strong></td>
+<td><strong>4,694</strong></td>
+<td><strong>4,071</strong></td>
+<td><strong>+92%</strong></td>
+<td><strong>+66%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Space(물량 감소, 단가 상승):</strong></li>
+<li>물량: 총 발사 38회로 YoY 46회에서 줄었고, 궤도 투입 질량은 485톤으로 652톤에서 −26% 감소했습니다.</li>
+<li>그런데도 매출은 <span class="up">+29%</span>입니다. 고객 발사 1회당 발사 서비스 매출은 약 $64.8M로 2Q25 $54.4M보다 높습니다(계산: 발사 서비스 매출 ÷ 고객 발사 수).</li>
+<li>회사는 "대형 고객 발사 증가와 유리한 고객 믹스"를 원인으로 밝혔습니다. 물량 성장이 아니라 믹스 효과이므로 분기별 변동성이 큽니다.</li>
+<li><strong>Connectivity(가입자 견인, ARPU 정체):</strong></li>
+<li>가입자는 6.0M에서 12.0M로 2배가 됐지만 세그먼트 매출은 <span class="up">+66%</span>에 그쳤습니다.</li>
+<li>같은 기간 기업·정부 매출은 <span class="up">+108%</span>였습니다(실적콜 요약).</li>
+<li>따라서 소비자 매출은 가입자 증가율을 밑돌았을 가능성이 높고, YoY ARPU 하락을 시사합니다(추정). ARPU YoY 수치는 발췌가 잘려 공시상 확인 불가입니다.</li>
+<li>실적콜에서는 ARPU가 QoQ $66로 유지됐다고 언급했습니다.</li>
+<li><strong>AI(급증했지만 원인이 불명확):</strong></li>
+<li>매출이 QoQ +$1.74B 늘었습니다.</li>
+<li>CFO는 "새 AI 컴퓨트 계약이 마진 확장을 주도"했다고 밝혔습니다.</li>
+<li>반면 실적콜에서 CFO는 Google·Anthropic 계약은 "3분기 후반 또는 10월부터 램프"한다고 언급했습니다.</li>
+<li>즉 2Q 급증을 이끈 구체적 계약 구성은 제공 자료로 확인 불가입니다. 다음 분기 핵심 검증 대상입니다.</li>
+</ul>
+<p><strong>(2) 마진 방향성</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>2Q26</th>
+<th>1Q26</th>
+<th>2Q25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영업이익률(계산)</td>
+<td>−1.8%</td>
+<td>−41.4%</td>
+<td>−23.8%</td>
+</tr>
+<tr>
+<td>Adj. EBITDA 마진(계산)</td>
+<td>45.3%</td>
+<td>24.0%</td>
+<td>29.8%</td>
+</tr>
+<tr>
+<td>Connectivity 영업이익률(계산)</td>
+<td>38.6%</td>
+<td>36.5%</td>
+<td>35.7%</td>
+</tr>
+<tr>
+<td>매출총이익률(제공 지표)</td>
+<td>55.3%</td>
+<td>확인 불가</td>
+<td>확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>방향은 명확히 개선 중이며, Connectivity가 YoY 약 <span class="up">+2.9%</span>p 확장했습니다.</li>
+<li><strong>AI 세그먼트의 GAAP–EBITDA 괴리:</strong> 영업손실 −$1,257M와 Adj. EBITDA +$1,146M의 차이 약 $2.4B는 감가상각·주식보상 등 가산항목입니다(계산).</li>
+<li>AI Capex가 분기 $15.8B 수준이므로 향후 감가상각은 구조적으로 늘어납니다. EBITDA 흑자가 GAAP 흑자로 이어지려면 매출이 감가상각 증가 속도를 앞질러야 합니다.</li>
+<li>Space는 R&amp;D가 $1,076M로 YoY <span class="up">+55%</span>이며 Starship 투자로 적자가 확대되고 있습니다(Adj. EBITDA −$205M).</li>
+</ul>
+<p><strong>(3) 현금흐름</strong>
+- 2Q Capex는 $18.4B로 YoY 6.5배입니다. 이 중 AI가 $15.8B로 86%를 차지합니다. 상반기 누적 Capex는 $28.5B입니다.
+- TTM FCF는 −$32.5B(제공 지표)입니다. 분기 FCF와 영업현금흐름 원문은 확인 불가입니다.
+- 실적콜에서 Musk는 컴퓨트를 2026년 말 2GW 이상, 2027년 말 "5GW보다는 10GW에 가깝게" 늘리겠다고 언급했습니다. Capex는 앞으로도 줄기보다 늘어날 가능성이 높습니다(추정).</p>
+<p><strong>(4) 재무 건전성</strong>
+- 2Q 말 현금·현금성자산·유가증권은 $100B입니다(회사 발표).
+- 조달 내역:
+  - IPO 순조달 $85.7B
+  - 무담보 선순위채 $25B 발행(2031~2056년 만기, 쿠폰 5.35~6.65%)
+  - 브리지론 상환에 사용. 상환액 $20B는 실적콜 요약 기준입니다.
+- 신규 채권의 연 이자비용은 약 $1.46B입니다(계산). 기타 차입금 잔액은 공시상 확인 불가입니다.
+- 수주잔고(backlog)는 $47.5B입니다.
+- 단순 추정: 분기 Capex $18B대에서 Adj. EBITDA $3.5B를 빼면 분기 순소진은 약 $15B입니다. 현 현금으로 6~7분기를 버틸 수 있습니다(운전자본·이자·세금 미반영 추정치). Capex 확대 계획을 감안하면 2027년 중 추가 조달 가능성이 있습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI 클라우드 서비스(컴퓨트 임대)</strong></td>
+<td>회사는 $14.1B 계약 체결을 밝혔습니다. 실적콜에서 7월 추가 계약 체결, Google·Anthropic 램프(3Q 후반~10월), 컴퓨트의 약 10%만 Grok 학습에 쓰고 나머지는 추론·임대에 쓴다고 언급했습니다. 실현 조건은 GPU(NVIDIA 독점)·메모리 공급과 데이터센터 가동 시점입니다.</td>
+<td>AI 매출 QoQ 증가 지속, AI Adj. EBITDA 흑자 유지, 클라우드 계약 잔고 증가, 연말 2GW 진척</td>
+</tr>
+<tr>
+<td><strong>Starlink V3 / 기업·정부</strong></td>
+<td>실적콜에서 V3 성능이 V2의 약 10배, 발사 수도 10배이며, "의미 있는 품질 개선에는 약 1,000기, 대략 2027년 2분기"가 필요하다고 언급했습니다. 기업·정부 매출은 YoY <span class="up">+108%</span>입니다.</td>
+<td>분기 순증 가입자(2Q 1.7M), ARPU($66) 유지, Starship 통한 V3 운용 배치 시작 여부, Connectivity 이익률</td>
+</tr>
+<tr>
+<td><strong>Starship</strong></td>
+<td>회사는 궤도 투입 비용을 과거 평균 대비 99% 이상 낮출 것이라고 밝혔습니다. 실적콜에서 "1년 내 하루 1회 이상 비행"(요약), "열차폐 문제는 해결됐다고 판단"을 언급했습니다. V3, Mobile V2, Starmind 위성이 모두 여기에 달려 있습니다.</td>
+<td>Flight 14 결과(V3 위성 운용 궤도 배치, 함체 캐치 시도), Space R&amp;D 추이</td>
+</tr>
+<tr>
+<td><strong>Starlink Mobile(EchoStar 65MHz)</strong></td>
+<td>FCC가 스펙트럼 이전을 승인했습니다. 실적콜에서 Mobile V2 위성은 2027년 발사, 서비스는 2027년 말 개시 예정이며 지상망도 구축한다고 언급했습니다.</td>
+<td>지상망 Capex 규모 공개 여부(콜에서 답변 거부), 통신사 파트너 확대</td>
+</tr>
+<tr>
+<td><strong>Cursor 인수(8/14 완료)</strong></td>
+<td>주식 $60.0B로 인수했습니다. 회사는 "AI 엔터프라이즈 기회 가속"을 밝혔습니다.</td>
+<td>3Q부터 연결되는 매출 기여, 영업권, 주식보상 증가폭</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>가이던스 산수(계산):</strong> "2026년 12월 ARR $100B"는 월 매출 약 $8.3B, 분기로 약 $25B에 해당합니다. 2Q 월평균 매출 약 $2.6B의 약 3.2배가 6개월 안에 필요합니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<blockquote>
+<p>transcript는 중간이 생략된 발췌본입니다. 생략 구간의 발언은 확인 불가입니다.</p>
+</blockquote>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- 톤은 극도로 자신감 있고 단정적입니다.
+- 실적콜에서 Musk는 "$100B ARR은 물음표가 아니며, 사실상 아무것도 하지 않아도 달성"하고 "더 높을 것"이라고 언급했습니다. 내부 매출 $1T 목표 시점도 2030년으로 1년 앞당겼습니다(요약).
+- 자신감의 근거로는 다음을 들었습니다:
+  - 이미 체결된 클라우드 계약(Google·Anthropic, 7월 추가분)
+  - V3 위성의 "대역폭 100배" 논리: 위성 성능 10배 × 위성 수 10배이며, "bit당 수익화가 1/10로 떨어져도 Starlink 매출은 10배"라는 주장
+- 다만 이 논리는 정량 공시가 아니라 경영진의 산술적 주장입니다. 컴퓨트 수익성에 대해서도 Musk는 Rubin 와트당 수익화 "$30~50"을 "그냥 추측"이라고 스스로 밝혔습니다.</p>
+<p><strong>반복된 질문과 회피·방어 지점</strong>
+- <strong>ARR $100B의 구성(Deutsche Bank):</strong> CFO는 세 세그먼트 모두가 기여하고 클라우드 서비스가 최대라고만 답했습니다. 세그먼트별 수치는 제시하지 않고 "IPO 전에 공유한 구성과 비슷"하다고 답했습니다.
+- <strong>Mobile 지상망 Capex(Evercore):</strong> Shotwell은 "Capex에 대해 지금은 말하지 않겠다"고 명시적으로 답변을 거부했습니다. Starlink 단말에 펨토셀을 붙이는 저비용 방식만 시사했습니다.
+- <strong>컴퓨트 임대 대 내부 사용(UBS):</strong> Musk는 학습용 약 10%라는 수치를 제시했습니다. 재무 모델링에 쓸 수 있는 몇 안 되는 정량 답변입니다.
+- <strong>Cursor 통합 로드맵:</strong> 규제 절차를 이유로 답변을 미뤘습니다. 콜 시점은 미종결이었고, 8/14 종결은 8-K로 확인됩니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- AI 하드웨어를 NVIDIA(Vera Rubin)로 독점하기로 결정
+- Grok 4.6(다음 주), 4.7(3~4주 후), Grok 5(연내, SpaceX 전체 데이터로 학습) 일정
+- 컴퓨트 2026년 말 2GW 이상, 2027년 말 5~10GW
+- Starmind AI 위성(Vera Rubin NVL72 최적화형) 2027년 발사 개시, 지상에도 같은 설계 배치
+- Starlink 2Q 순증 1.7M(1Q 1.4M), ARPU $66, 브로드밴드 위성 9,600기·하향 용량 약 800Tbps
+- Artemis III(2027) 도킹, 2028년 유인 달 착륙 목표
+- 메모리가 컴퓨트의 병목이라는 언급: 공급은 연 <span class="up">+20%</span>, 수요는 연 <span class="up">+200%</span> 이상이므로 가격은 상승한다는 논리</p>
+<p><strong>콜 발언과 공시 수치의 불일치(주의)</strong>
+- Shotwell은 "현재 Falcon 발사 빈도가 사상 최고"라고 언급했습니다. 그러나 공시상 2Q Falcon 발사는 37회로 YoY 45회보다 적고, 상반기도 77회로 81회보다 적습니다. 3Q의 현재 빈도를 말한 것일 수는 있으나 공시로는 확인 불가입니다.
+- Musk는 Falcon 연간 궤도 투입을 "약 2,500톤"이라고 했습니다. 상반기 실적 1,041톤을 단순 연율화하면 약 2,080톤입니다(계산).
+- 서비스 시장 수도 Musk는 "170개"라고 했지만 공시는 167개입니다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K와 투자설명서의 Risk Factors 원문은 제공되지 않았습니다. 아래는 MD&amp;A, 8-K, 실적콜에서 확인되는 구체적 위험입니다.</p>
+</blockquote>
+<ol>
+<li><strong>자본집약도와 추가 조달·희석 위험</strong>
+   - 분기 Capex $18.4B, TTM FCF −$32.5B입니다.
+   - 2027년 말 5~10GW 계획(실적콜)을 감안하면 현금 $100B가 약 2년 안에 바닥날 수 있습니다(추정).
+   - IPO와 채권 발행 직후인데도 추가 채권·주식 발행 가능성이 남아 있습니다.</li>
+<li><strong>AI 매출의 지속성과 집중도</strong>
+   - 2Q AI 매출 3배 증가의 구체적 원인이 제공 자료로 확인되지 않습니다.
+   - 확인된 대형 고객(Google·Anthropic, 실적콜)은 동시에 Grok의 경쟁사입니다.
+   - 공급 측면에서는 NVIDIA 단일 벤더를 택했고, 메모리 병목도 경영진 스스로 언급했습니다. 계약 갱신이나 가격 조건이 바뀌면 AI Adj. EBITDA 흑자가 쉽게 뒤집힐 수 있는 구조입니다.</li>
+<li><strong>감가상각 부담에 따른 GAAP 흑자 지연</strong>
+   - AI 세그먼트의 EBITDA와 영업손익 차이가 이미 분기 $2.4B입니다.
+   - $15.8B 수준의 분기 Capex가 자산화되면 감가상각은 계단식으로 늘어납니다. 이익 지표로 EBITDA에 계속 의존해야 하는 기간이 길어질 수 있습니다.</li>
+<li><strong>Starship 실행 리스크의 전사적 전이</strong>
+   - Space 세그먼트는 R&amp;D 확대로 적자가 커지고 있습니다(상반기 영업손실 −$1,204M, YoY 약 2.7배).
+   - V3 Starlink, Mobile V2, Starmind 위성은 모두 Starship 운용화에 달려 있습니다. 비행이 실패하거나 일정이 밀리면 Connectivity와 AI 성장 일정까지 동시에 늦어집니다.</li>
+<li><strong>주식 기반 M&amp;A에 따른 희석</strong>
+   - Cursor 인수로 보통주 약 3.91억 주가 발행됐고, RSU 약 2,910만 주와 스톡옵션 약 4,440만 주가 승계됐습니다(8-K).
+   - 시가총액을 주가로 나눈 주식 수(약 135.6억 주, 계산) 대비 보통주 발행분은 약 2.9%입니다.
+   - 주식을 대가로 한 대형 인수를 이미 한 번 했다는 점이 향후에도 반복될 수 있는 위험입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong>
+- <strong>긍정:</strong>
+  - 매출 YoY <span class="up">+92%</span>, Adj. EBITDA YoY <span class="up">+191%</span>
+  - 영업이익률 −23.8%에서 −1.8%로 개선(YoY)
+  - Connectivity 영업이익률 38.6%로 확장
+  - AI Adj. EBITDA 흑자 전환
+  - 현금 $100B, 수주잔고 $47.5B, 클라우드 계약 $14.1B, 정부 계약 $6B 이상
+- <strong>부정:</strong>
+  - TTM FCF −$32.5B, Capex가 매출의 235%
+  - 시가총액은 연율화 매출의 약 74배, 연율화 Adj. EBITDA의 약 164배(계산)
+  - 가이던스($100B ARR, 매출 $1T)는 공시가 아니라 실적콜 발언에 근거
+- <strong>종합:</strong> 성장의 방향은 공시로 확인되지만, 밸류에이션이 가이던스 달성을 거의 전제합니다. 오늘 상승도 펀더멘털이 아니라 셀사이드 의견에 따른 것이어서 '적극'은 과합니다. 반대로 EBITDA 변곡과 재무 여력이 공시로 확인되므로 '관망'까지 낮출 근거도 부족합니다. 분할 진입하고 3Q 확인 뒤 증액하는 구조가 맞습니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q AI 세그먼트:</strong>
+   - Google·Anthropic 램프 반영으로 AI 매출이 2Q $2.56B에서 계속 늘어나는지 봅니다.
+   - AI Adj. EBITDA 흑자가 유지되는지 봅니다.
+   - 2Q 급증의 계약 구성이 일회성인지 반복 매출인지 확인합니다.
+   - ARR $100B 경로상 4Q 분기 매출 약 $25B에 근접하는 궤적인지 봅니다.
+2. <strong>현금 소진 속도와 조달 계획:</strong>
+   - 3Q 말 현금이 $100B에서 얼마나 줄었는지(분기 순소진 $15B 내외인지 그 이상인지) 확인합니다.
+   - Capex 가이던스나 추가 채권·주식 발행 신호가 있는지 봅니다.
+3. <strong>Cursor 연결과 Starship Flight 14:</strong>
+   - 8/14부터 연결된 Cursor의 매출 기여, 주식보상 증가, 희석 후 주식 수를 확인합니다.
+   - Flight 14에서 V3 위성이 운용 궤도에 배치되는지 확인합니다.</p>
+<p><strong>판단을 뒤집을 조건(→ 관망·회피)</strong>
+- 3Q AI 매출이 QoQ 정체 또는 감소하거나, AI Adj. EBITDA가 다시 적자로 돌아서는 경우
+- 경영진이 ARR $100B나 2030년 매출 $1T 일정을 후퇴시키거나 표현을 완화하는 경우
+- 현금이 분기 $20B 이상 줄면서 추가 주식 발행이나 대형 주식 기반 M&amp;A가 다시 나오는 경우
+- Starship 비행이 실패해 V3 배치(약 1,000기, 2027년 2분기 목표)가 지연되는 경우
+- Connectivity 순증 가입자 둔화와 ARPU 하락이 함께 나타나 유일한 이익원이 약해지는 경우</p>
+<p><strong>상향 조건(→ 적극)</strong>
+- 3Q 분기 매출이 $12B 이상으로 ARR 경로가 확인되는 경우(참고 기준, 추정치)
+- AI의 GAAP 영업손실이 축소되는 경우
+- 분기 순소진이 줄어 추가 조달 없이 2027년 Capex를 감당할 수 있음이 확인되는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm">10-Q — 2026-06-30_0001628280-26-052535</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm">8-K — 2026-08-14_0001628280-26-056945</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm">8-K — 2026-08-04_0001628280-26-052515__EX-99.1__earningsreleaseq22608042</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/spcx-20260804.htm">8-K — 2026-08-04_0001628280-26-052515</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026045763/spcx-closing8xkjune2026.htm">8-K — 2026-06-26_0001628280-26-045763</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026044955/exhibit991-pricing8xk.htm">8-K — 2026-06-23_0001628280-26-044955__EX-99.1__exhibit991-pricing8xk</a></li>
+<li>Transcript — 2026-08-04 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

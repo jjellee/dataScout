@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLO — DLocal Limited Class A Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>DLO — DLocal Limited Class A Common Shares</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">DLO</span><span class="badge">+5.64%</span><span class="badge">거래량 1.8배</span><span class="badge">$4.28B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>2Q26 TPV는 US$17.7B로 전년 대비 <span class="up">+92%</span> 늘었다. 매출은 <span class="up">+56%</span>, 순이익은 <span class="up">+28%</span>, Adj. FCF는 <span class="up">+41%</span>다. 물량이 빠르게 늘고 현금도 잘 만든다는 점은 공시로 확인된다.</li>
+<li>다만 거래 1건에서 남기는 이익률(유닛 이코노믹스)은 계속 낮아지고 있다. 매출총이익(GP)/TPV는 1.07%에서 0.72%로, 매출총이익률은 38.6%에서 31.8%로 떨어졌다. 그래서 거래액이 <span class="up">+92%</span> 늘어도 GP는 <span class="up">+29%</span>, 영업이익은 <span class="up">+15%</span>만 늘었다.</li>
+<li>상반기 영업이익 성장률은 <span class="up">+15.1%</span>다. 연간 가이던스(+27.5~32.5%)를 맞추려면 하반기에 영업이익이 크게 가속해야 한다. 그런데 회사 GP 가이던스대로라면 하반기 GP 성장은 오히려 둔화된다. 결국 비용 레버리지가 실제로 나타나는지가 핵심 변수다.</li>
+<li>오늘 상승에는 확인된 촉매가 없다. 시총 대비 TTM FCF는 약 9.1%다. 실적콜/컨퍼런스에서 언급된 US$300M 자사주 매입(시총의 약 7%)이 밸류에이션 하단을 받쳐 준다.</li>
+<li><strong>분할 진입으로 기본 비중만 싣고, 3Q26에 영업이익/GP 비율이 개선되는지 확인한 뒤 늘리는 접근을 권한다.</strong></li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 가장 최근 실적 발표(2Q26)는 2026-08-13로, 약 8주 전이다.</li>
+<li>뉴스 헤드라인은 세 가지다. GuruFocus의 "GF Value 기준 저평가" 밸류에이션 기사, MarketBeat의 갭상승 사실 보도, TipRanks의 "랠리 냉각" 기사다. 셋 다 결과를 설명하는 기사이고, 새로운 펀더멘털 정보는 없다.</li>
+<li>거래량 배수는 1.8배로, 급증이라기보다 완만한 수준이다. 20일 수익률 <span class="down">-2.8%</span>, 60일 <span class="down">-2.6%</span>, 52주 고점 대비 <span class="down">-8.3%</span>를 보면 박스권 안에서 반등한 성격으로 보인다.</li>
+<li>참고로 Seeking Alpha 페이지 기준 공매도 잔량은 9.33%다. 숏커버링이 일부 섞였을 가능성은 있지만 확인할 근거는 없다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 20-F 발췌는 표지와 목차뿐이어서 사업(Item 4)과 리스크(Item 3.D) 본문은 확인할 수 없다. 이 절은 2Q26 보도자료(6-K)와 경영진 발언을 근거로 작성했다.</p>
+<ul>
+<li><strong>정체성</strong>: 보도자료는 회사를 "글로벌 가맹점을 신흥시장과 연결하는 크로스보더 금융 인프라 플랫폼"으로 소개한다. 본사는 우루과이 몬테비데오, 법인 소재지는 케이맨이다. IFRS로 회계 처리하고 20-F를 제출하는 외국 발행사다.</li>
+<li><strong>제품</strong></li>
+<li>핵심은 pay-in(가맹점 대신 현지 결제를 받아주는 서비스)과 payout(현지로 지급을 대행하는 서비스)이다.</li>
+<li>J.P. Morgan 컨퍼런스(2026-05)에서 CEO는 "단일 연동으로 60개 이상 신흥시장과 수천 개 결제수단을 쓸 수 있다"고 말했다.</li>
+<li>같은 자리에서 신규 제품으로 BNPL, 대체결제수단(APM) 플랫폼, Merchant of Record, 옴니채널(오프라인 결제)을 언급했다. CEO는 회사를 "mono product"에서 벗어나는 단계로 설명했다.</li>
+<li><strong>고객군</strong></li>
+<li>CEO는 고객으로 Google, Netflix, Spotify, Amazon, Shein, DiDi 등을 거론했다.</li>
+<li>보도자료에 나오는 업종은 전자상거래, 승차공유, 여행, 온디맨드 배달이다.</li>
+<li>멕시코에는 "Tier 0" 대형 가맹점이 있다고 공시했다.</li>
+<li><strong>매출 구성</strong>: 국가별·제품별 매출 금액은 공시상 확인할 수 없다. 보도자료에서 GP 변동 요인으로 언급된 지역은 브라질, 아르헨티나, 멕시코, 아프리카·아시아(모잠비크, 베트남, 나이지리아)다.</li>
+<li><strong>경쟁 위치</strong></li>
+<li>CEO는 중남미에서 "consolidated leader", 아프리카에서 "strong position"이라고 밝혔다. 동남아는 "final frontier"로 표현했다. 모두 회사 주장이다.</li>
+<li>진입장벽으로는 10년 넘게 쌓은 라이선스, 규제 대응 역량, 현지 결제망 연동을 내세운다.</li>
+<li><strong>수익 구조의 변화</strong>: 보도자료는 GP/TPV 하락 원인을 "local-to-local 비중 상승, 대형 가맹점 확대"로 설명한다. 마진이 상대적으로 높은 크로스보더·FX 스프레드 비중이 줄어드는 방향이다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<h3>손익 요약 (US$ 천, 6-K Exhibit 99.2)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>YoY</th>
+<th>1Q26(역산)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>399,664</td>
+<td>256,458</td>
+<td>+55.8%</td>
+<td>335,862</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>127,150</td>
+<td>98,885</td>
+<td>+28.6%</td>
+<td>118,684</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>31.8%</td>
+<td>38.6%</td>
+<td>-6.8%p</td>
+<td>35.3%</td>
+</tr>
+<tr>
+<td>영업비용 합계</td>
+<td>62,989</td>
+<td>43,120</td>
+<td>+46.1%</td>
+<td>65,912</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>64,161</td>
+<td>55,765</td>
+<td>+15.1%</td>
+<td>52,772</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>16.1%</td>
+<td>21.7%</td>
+<td>-5.7%p</td>
+<td>15.7%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>54,775</td>
+<td>42,808</td>
+<td>+28.0%</td>
+<td>41,936</td>
+</tr>
+<tr>
+<td>희석 EPS</td>
+<td>$0.18</td>
+<td>$0.14</td>
+<td>—</td>
+<td>$0.14</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>1Q26 수치는 상반기 누계에서 2Q26을 빼서 구했다.</li>
+<li>영업이익률은 공시 손익계산서로 직접 계산하면 16.1%다. 제공 지표의 16.4%(YoY <span class="down">-5.9%</span>p)와 약간 다르다. 지표 산출 기준은 확인할 수 없다.</li>
+</ul>
+<h3>성장의 질 (단가·물량·믹스)</h3>
+<ul>
+<li><strong>물량</strong>: TPV는 US$17.7B로 YoY <span class="up">+92%</span>, QoQ <span class="up">+26%</span>다. 고정환율 기준으로는 <span class="up">+80%</span>다. 수요 측면은 매우 강하다.</li>
+<li><strong>단가</strong></li>
+<li>매출/TPV(단순 계산)는 2Q25 약 2.79%, 1Q26 약 2.38%, 2Q26 약 2.26%로 내려왔다.</li>
+<li>GP/TPV는 같은 기간 1.07%, 0.84%, 0.72%로 공시됐다. 1년 사이 약 35bp 떨어졌다.</li>
+<li><strong>믹스와 마진 압박 요인</strong> (보도자료 기준)</li>
+<li>멕시코: Tier 0 가맹점이 더 높은 볼륨 구간에 들어가 수수료율이 낮아졌다(볼륨 할인). 원가 압박도 함께 있었다.</li>
+<li>아프리카·아시아: FX 스프레드가 큰 모잠비크·베트남의 기여가 줄었다. 나이지리아에서는 일회성 원가가 늘었다.</li>
+<li>상쇄 요인: 브라질은 승차공유·여행 램프업, 아르헨티나는 업종 전반 성장과 선지급(advancement) 비용 하락이 있었다.</li>
+<li><strong>해석</strong>: 물량이 단가 하락을 압도해 GP 절대액은 사상 최대다. 하지만 TPV 성장 <span class="up">+92%</span>가 GP 성장 <span class="up">+29%</span>로 바뀌는 비율은 약 1/3에 그친다. 대형 가맹점에 대한 교섭력 문제가 구조적인지, 믹스에 따른 일시적 현상인지는 아직 판단할 근거가 부족하다.</li>
+</ul>
+<h3>비용과 영업 레버리지</h3>
+<ul>
+<li>영업비용은 YoY <span class="up">+46%</span>다. 항목별로 보면 기술개발 <span class="up">+80%</span>(13.3M), 판매마케팅 <span class="up">+104%</span>(9.9M), 일반관리 <span class="up">+35%</span>(36.5M)다.</li>
+<li>회사는 증가 이유를 "2H25 투자 연간화, 연봉 인상, 소수 시니어 채용, 월드컵 캠페인 등 상반기 집중 마케팅"으로 밝혔다.</li>
+<li>영업이익/GP 비율은 2Q25 56%에서 1Q26 44%로 떨어졌다가 2Q26 50%로 회복했다. 1Q26에는 비경상 세금 항목 US$4.4M이 영업비용에 포함돼 있었다.</li>
+</ul>
+<h3>가이던스의 산술 (중요)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>1Q26 YoY</th>
+<th>2Q26 YoY</th>
+<th>상반기 YoY</th>
+<th>연간 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GP</td>
+<td>+39.8%</td>
+<td>+28.6%</td>
+<td>+33.8%</td>
+<td>+25~30% (상향)</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>+15.1%</td>
+<td>+15.1%</td>
+<td>+15.1%</td>
+<td>+27.5~32.5% (유지)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>GP는 상반기 성장률이 이미 가이던스 상단을 넘는다. 따라서 가이던스는 하반기 GP 성장 둔화를 내포한다.</li>
+<li>영업이익은 상반기 <span class="up">+15%</span>다. 연간 <span class="up">+27.5%</span> 이상을 맞추려면 하반기 영업이익 성장률이 상반기의 두 배를 크게 넘어야 한다. FY25 하반기 영업이익 기준치가 제공되지 않아 정확한 필요 성장률은 공시상 확인할 수 없다.</li>
+<li>즉 하반기에는 GP 둔화를 비용 통제로 메워야 한다. 하반기 실적이 가이던스를 맞추려면 회사가 말하는 "자동화·AI 효과와 상반기에 앞당긴 지출의 정상화"가 실현돼야 한다.</li>
+</ul>
+<h3>이익의 질</h3>
+<ul>
+<li>순이익 증가(<span class="up">+28%</span>)가 영업이익 증가(<span class="up">+15%</span>)보다 크다. 주된 이유는 영업외 항목의 개선이다.</li>
+<li>순금융손익: 2Q25 -US$3.8M에서 2Q26 +US$2.3M으로 바뀌었다.</li>
+<li>기타손익: 2Q25 -US$4.8M에서 2Q26 +US$0.8M으로 바뀌었다.</li>
+<li>유효세율은 약 16%(10,213/64,988)로 전년과 비슷하다. 상반기 누계로는 약 20.4%다.</li>
+</ul>
+<h3>현금흐름·재무 건전성</h3>
+<ul>
+<li>2Q26 Adj. FCF는 US$69M(YoY <span class="up">+41%</span>)이고, 순이익 대비 125%로 전환됐다. Adj. FCF의 정확한 정의는 발췌에 없어 확인할 수 없다.</li>
+<li>제공 지표의 TTM FCF US$388.4M은 2Q26 Adj. FCF를 연환산한 값(약 US$276M)보다 상당히 크다. 가맹점 자금 등 운전자본 변동이 섞였을 가능성이 있다(추정). FCF 수익률은 보수적으로 6~9% 범위로 보는 것이 타당하다.</li>
+<li>현금성자산은 US$794.9M(2026-06-30)이다. 이 중 가맹점 정산 대기 자금이 얼마인지는 발췌에서 확인할 수 없다.</li>
+<li>차입 규모는 공시상 확인할 수 없다. CEO는 JPM 컨퍼런스에서 "unlevered balance sheet"라고 말했다.</li>
+<li>주식 수는 294.9M주(2025-12-31)이고, 시총 US$4.28B와 맞는다. 상반기 희석 EPS US$0.33을 단순 연환산하면 PER은 약 22배다(추정치이며, Seeking Alpha 페이지의 Fwd PER 18.17은 별도 출처).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>기존 대형 가맹점의 지갑 점유율 확대</strong>
+   - 근거: 실적콜에서 NRR(순매출유지율) 153%, 5분기 연속 140% 이상이라고 언급됐다.
+   - 실현 조건: 대형 가맹점이 신규 국가와 결제수단을 계속 켜야 한다. 동시에 볼륨 할인에 따른 단가 하락이 둔화돼야 한다.
+   - 검증 포인트: 3Q26 NRR이 140% 이상을 유지하는지, 그리고 GP/TPV가 0.72% 근처에서 하락을 멈추는지 본다. 이번 분기 하락폭은 QoQ 12bp였다.</li>
+<li><strong>브라질·아르헨티나 업종 확장 (승차공유·여행·배달)</strong>
+   - 근거: 2Q26 GP 증가를 이끈 지역이라고 보도자료에 공시됐다.
+   - 실현 조건: 아르헨티나 선지급 비용 하락과 거시 안정이 이어져야 한다. CEO는 브라질의 de minimis(소액 수입 면세 한도) 인하가 가맹점에 우호적이라고 말했다.
+   - 검증 포인트: 3Q26 브라질·아르헨티나 GP 기여, 아르헨티나 advancement cost 추이.</li>
+<li><strong>신제품 (BNPL, APM 플랫폼, Merchant of Record, 옴니채널)</strong>
+   - 근거: JPM 컨퍼런스 CEO 발언이다. 매출 기여 수치는 공시상 확인할 수 없다.
+   - 실현 조건: CEO 표현대로 제품이 "제때 출시되고 충분히 반복 개선"돼야 한다.
+   - 검증 포인트: 신제품 매출이나 가맹점 수 등 정량 지표가 처음 공시되는지 본다.</li>
+<li><strong>동남아 확장</strong>
+   - 근거: CEO가 "final frontier"라고 표현했다. 다만 2Q26에는 베트남 기여가 줄어 GP에 마이너스였다.
+   - 검증 포인트: 아시아 지역의 GP 기여 반전 여부, 라이선스 취득 공시.</li>
+<li><strong>영업 레버리지 (자동화·AI)</strong>
+   - 근거: 회사는 하반기 영업 레버리지 개선을 밝혔고, 영업이익 가이던스를 유지했다.
+   - 검증 포인트: 3Q26 영업이익/GP 비율이 50%를 넘는지, 영업비용 QoQ 증가율이 GP 증가율보다 낮은지 본다.</li>
+<li><strong>주주환원 (EPS 레버리지)</strong>
+   - 근거: JPM 컨퍼런스에서 CEO가 "전년 FCF의 30% 배당, 첫해 US$300M 자사주 매입"이라고 말했다.
+   - 검증 포인트: 3Q26 주식 수 감소폭과 실제 매입 집행액.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 2Q26 실적콜에서 CEO는 네 가지 트렌드를 먼저 제시했다. TPV <span class="up">+92%</span>(2022년 1분기 이후 최고), NRR 153%, GP 연환산 US$500M 초과, 영업이익/GP 6%p 개선이다. 처음부터 물량과 리텐션을 앞세웠다.
+- 동시에 보도자료에서 "하반기~2027년 비교 기저가 까다로워진다"고 스스로 언급했다. 고성장의 정점 가능성을 미리 관리하는 화법이다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 5월(JPM 컨퍼런스): TPV 가이던스 50~60%를 유지하면서 "상단 쪽으로 들어오는 중"이라고 말했다.
+- 8월(2Q26): TPV를 60~70%로, GP를 25~30%로 올렸다. 영업이익은 27.5~32.5%로 유지했다.
+- 물량 지표만 올리고 이익 지표는 올리지 않았다. 회사도 단가 압박을 인정하고 있다고 해석할 수 있다(분석).</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- 2Q26 실적콜의 Q&amp;A는 발췌가 잘려 확인할 수 없다. 참석 증권사는 Goldman Sachs, Susquehanna, JPMorgan, Itaú, Truist, UBS, HSBC다.
+- JPM 컨퍼런스에서는 take rate(수수료율) 경쟁 압력 질문이 다시 나왔다. 투자자가 IPO 이후 계속 주목해 온 쟁점이라고 사회자가 직접 말했다. 다만 답변은 발췌에서 잘려 확인할 수 없다.
+- 1Q26 FCF가 나빠 보인 이유로 CEO는 "보고상 일시적 이슈 2건"을 들었다. 이를 조정하면 FCF 전환율은 약 100%라고 방어했다.
+- M&amp;A 질문에는 "사모 밸류에이션 괴리로 대부분 30초짜리 대화"라고 답했다. 소규모 인수(tuck-in)만 하겠다는 입장이다.</p>
+<p><strong>콜·컨퍼런스에서만 드러난 정보</strong>
+- NRR 153%, 그리고 "2Q에 2023년 연간보다 더 많이 처리"했다는 발언.
+- 배당(전년 FCF의 30%)과 US$300M 자사주 매입. 제공된 SEC 발췌에서는 확인되지 않는다.
+- 레버리지 여력: CEO는 "레버리지를 조금 일으킬 여지도 있다"고 말했다.
+- 시장에 대한 시각: CEO는 결제 섹터에 묶여 일괄 디레이팅되고 있다("throwing out the baby with the bathwater")고 보고 있다.
+- 리스크 인식: 경영진이 꼽은 리스크는 FX, 지정학, 관세·무역장벽이다. CEO는 이를 "개념적 리스크"로 표현했다.</p>
+<h2>6. 리스크</h2>
+<p>20-F 리스크 본문은 제공되지 않았다. 아래는 MD&amp;A·보도자료·발언에 실제로 드러난 항목이다.</p>
+<ol>
+<li><strong>단가 하락의 구조화</strong>
+   - GP/TPV가 1년 사이 1.07%에서 0.72%로 내려왔다.
+   - 대형 가맹점 비중이 커질수록 볼륨 구간 할인(멕시코 Tier 0 사례)이 반복될 수 있다. local-to-local 확대로 크로스보더 마진도 희석될 수 있다.
+   - 이 경우 TPV 고성장이 이익으로 이어지지 못한다.</li>
+<li><strong>하반기 영업이익 가이던스 달성 리스크</strong>
+   - 상반기 영업이익은 <span class="up">+15%</span>로 가이던스(+27.5~32.5%)에 못 미친다. 하반기에 GP는 둔화하므로, 비용 레버리지에 전적으로 의존하는 구조다.
+   - 하반기에도 영업이익/GP 비율이 50% 근처에 머물면 가이던스 하향 가능성이 생긴다.</li>
+<li><strong>신흥국 FX·고위험 국가 노출</strong>
+   - 2Q26 TPV의 고정환율 성장(<span class="up">+80%</span>)과 명목 성장(<span class="up">+92%</span>)이 12%p 벌어졌다. FX 순풍이 있었다는 뜻이고, 반대로 역풍도 가능하다.
+   - 아르헨티나는 인플레이션 조정 손실이 1.5M이었다. 나이지리아에서는 일회성 원가, 모잠비크·베트남에서는 FX 스프레드 축소가 있었다.
+   - 고마진 국가의 변동성이 GP를 직접 흔든다.</li>
+<li><strong>대형 가맹점 집중도</strong>: 성장이 기존 대형 가맹점(NRR 153%)에 기대고 있다. 상위 고객 매출 비중은 공시상 확인할 수 없다. 핵심 고객이 자체 처리나 경쟁사로 이탈하거나 재협상하면 영향이 크다.</li>
+<li><strong>현금 수치 해석 리스크</strong>: TTM FCF(US$388M)와 Adj. FCF 연환산(약 US$276M)이 다르고, 현금 중 가맹점 자금 비중도 공시상 확인할 수 없다. 이 때문에 주주환원 여력이 과대평가될 수 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ("보통")</strong>
+- 긍정 요인
+  - TPV <span class="up">+92%</span>, 매출 <span class="up">+56%</span>, 순이익 <span class="up">+28%</span>다.
+  - Adj. FCF 전환율은 125%다.
+  - FCF 수익률은 약 6~9%(정의에 따라 다름)다.
+  - 자사주 매입 US$300M은 시총의 약 7%다(경영진 발언 기준).
+  - 단순 연환산 PER은 약 22배다.
+- 부정 요인
+  - GP/TPV는 YoY -35bp다.
+  - 영업이익률은 16.1%로 YoY <span class="down">-5.7%</span>p다.
+  - 상반기 영업이익 <span class="up">+15%</span>와 연간 가이던스 <span class="up">+27.5%</span> 이상 사이의 차이가 크다.
+  - 오늘 상승의 촉매가 없다.
+- 성장과 현금 창출 측면에서는 "적극"이 가능하다. 하지만 마진 방향성이 아직 확인되지 않아 "보통"으로 제한한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2Q26 실적콜 Q&amp;A 원문(발췌에서 잘림)에서 take rate, 멕시코 가격 재협상, 하반기 영업비용 계획에 대한 구체적 답변을 확인한다.
+2. 20-F 리스크 본문에서 상위 고객 집중도와 국가별 매출 비중, 그리고 현금 중 가맹점 자금(제한성 자금) 규모를 확인한다.
+3. 자사주 매입 승인 공시(6-K)와 실제 집행 실적, 배당 지급 규모를 확인한다. 현재는 컨퍼런스 발언으로만 확인된 상태다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 3Q26 영업이익/GP 비율이 50% 이하에 머물거나, 영업이익 가이던스(27.5~32.5%)가 하향되는 경우.
+- GP/TPV가 다시 10bp 이상 하락하는데 TPV 성장까지 둔화하는 경우. 물량이 단가 하락을 상쇄하지 못하는 국면이다.
+- 아르헨티나·나이지리아 등에서 FX나 규제 충격으로 GP 가이던스(25~30%)가 하향되는 경우.
+- 자사주 매입이 미집행되거나 축소되는 경우, 또는 회사가 밝힌 하반기 레버리지 개선이 다시 미뤄지는 경우.</p>
+<p><strong>상향 조건 (적극)</strong>: 3Q26에 영업이익 YoY <span class="up">+30%</span> 이상과 영업이익/GP 55% 이상이 나오고, GP/TPV가 안정되며 주식 수 감소가 확인되는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000207097926000113/dlo-20251231.htm">20-F — 2025-12-31_0002070979-26-000113</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000184683226000031/ex_99-4xdlocalx1q26xearnin.htm">8-K — 2026-06-30_0001846832-26-000031__EX-99.4__ex_99-4xdlocalx1q26xearnin</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000184683226000031/ex_99-3xdlocalx1qx26xearni.htm">8-K — 2026-06-30_0001846832-26-000031__EX-99.3__ex_99-3xdlocalx1qx26xearni</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000184683226000031/dlo-20260630.htm">8-K — 2026-06-30_0001846832-26-000031__EX-99.2__dlo-20260630</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000184683226000031/ex_991-dlocalxearningsxres.htm">8-K — 2026-06-30_0001846832-26-000031__EX-99.1__ex_991-dlocalxearningsxres</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1846832/000184683226000031/dlo_6kx2qx2026.htm">8-K — 2026-06-30_0001846832-26-000031</a></li>
+<li>Transcript — 2026-08-14 DLocal Limited (DLO) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-20 DLocal Limited (DLO) Presents at J.P. Morgan 54th Annual Global Technology, Media and Communications Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

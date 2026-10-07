@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LFST — LifeStance Health Group Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LFST — LifeStance Health Group Inc. Common Stock</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">LFST</span><span class="badge">+3.30%</span><span class="badge">거래량 0.68배</span><span class="badge">$4.67B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적:</strong> 성장과 이익이 함께 좋아지고 있음. 최근 분기 매출은 $435.4M(YoY <span class="up">+26.1%</span>), 영업이익률은 7.0%로 1년 전보다 7.9%p 올랐음. TTM 잉여현금흐름(FCF)은 $173.9M임.</li>
+<li><strong>수급 신호 약함:</strong> 오늘 <span class="up">+3.30%</span> 올랐지만 거래량은 20일 중앙값의 0.68배에 그쳤음. 스크린 전제였던 거래량 급증은 이 지표로 확인되지 않음. 오늘 상승을 신규 비중 확대의 트리거로 보기 어려움.</li>
+<li><strong>밸류에이션 부담:</strong> 시가총액 $4.67B를 TTM FCF로 나누면 약 27배(FCF 수익률 약 3.7%)임(계산치). Seeking Alpha 페이지의 8월 시점 선행 PER은 77.55배임. 이익이 고성장해야 정당화되는 가격대임.</li>
+<li><strong>확인 못 한 항목:</strong> 순차입금, 방문수와 방문당 매출(TRPV) 분해, 실적콜 Q&amp;A는 제공 자료에 없음.</li>
+<li><strong>결론:</strong> 구조적 개선은 확인되므로 비중을 담을 수는 있음. 다만 밸류에이션과 확인 못 한 항목 때문에 한 번에 실기보다 나눠서 들어가는 쪽이 맞음.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없음. 2026-09-09자 8-K는 원문이 잘려 있어 내용은 공시상 확인 불가.</li>
+<li><strong>뉴스 후보:</strong></li>
+<li>KeyBanc가 목표주가를 $15.00로 올렸음(Maintain). 근거는 스페셜티 케어 성장으로 보도됨.</li>
+<li>BlackRock이 LFST 38.3M주의 의결권을 보유한다고 보고했음(패시브 지분).</li>
+<li>두 헤드라인 모두 게재일이 제공되지 않아 오늘 주가의 직접 촉매인지는 특정 불가.</li>
+<li><strong>거래 패턴:</strong> 거래량 0.68배, 거래대금 $39.5M로 평소보다 적은 거래 속에 오른 것임. 20일 수익률은 <span class="down">-5.3%</span>, 60일 수익률은 <span class="up">+11.4%</span>로, 중기 상승 추세 안의 단기 조정 뒤 반등으로 읽는 것이 데이터에 부합함(해석).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>무엇을 파는가</strong>
+- 10-K 기준 미국 최대급 외래 정신건강 플랫폼임.
+- 2025-12-31 기준 33개 주에서 면허 임상의 8,040명을 고용했음. 자회사와 "supported practices"를 통한 고용임.
+- 서비스는 정신과 평가·치료(주로 약물관리), 심리·신경심리 검사, 개인·가족·그룹 치료임. 대면과 비대면을 함께 하는 하이브리드 모델임.</p>
+<p><strong>돈 버는 방식</strong>
+- 10-Q에 따르면 매출은 방문 건당으로 발생함(TRPV).
+- 임상의 보수도 주로 방문 건수에 연동됨. 따라서 매출과 원가가 함께 움직이고, 마진은 방문당 매출, 임상의 생산성, 본사 비용 레버리지에서 결정됨.
+- 영업일 수가 적은 분기에는 매출과 생산성이 낮아진다고 회사가 밝혔음. 분기 계절성이 있음.</p>
+<p><strong>고객·지급자 구성</strong>
+- 공시 원문 발췌에서 지급자별 매출 구성 수치는 확인 불가.
+- 실적콜(5/13 BofA 컨퍼런스)에서 CEO가 다음과 같이 언급했음:
+  - 매출의 약 90%가 상업보험에서 나오고, 나머지는 정부 지급자와 일부 환자 직접 부담임.
+  - 시설은 575개 이상 센터, 작년 실적은 약 900만 회 방문과 약 100만 명 환자임.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 업계가 고도로 분절돼 있고 통합은 초기 단계라고 밝혔음.
+- 실적콜에서 "차순위 사업자는 당사 규모의 일부에 불과"하고, 신규 경쟁자 대부분은 비대면 전용이라고 언급했음.
+- 10-K 리스크 요인에도 경쟁 심화가 들어 있음.</p>
+<p><strong>지배구조상 유의점</strong>
+- 10-K상 2025-06-30 기준 비계열 보유 지분의 시가는 $817.2M임. 발행주식은 2026-02-17 기준 389,783,210주임.
+- 당시 시가총액의 상당 부분이 계열·특수관계인 보유였을 가능성이 있음(추정, 당시 주가는 제공되지 않음).</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처/비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$435.4M</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>매출 YoY / QoQ</td>
+<td>+26.1% / <span class="up">+7.9%</span></td>
+<td>지표</td>
+</tr>
+<tr>
+<td>직전 분기 매출</td>
+<td>약 $403.5M</td>
+<td>계산치 (435.4 ÷ 1.079)</td>
+</tr>
+<tr>
+<td>전년 동기 매출</td>
+<td>약 $345.3M</td>
+<td>계산치 (435.4 ÷ 1.261)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>35.2%</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>7.0% (전년 동기 약 <span class="down">-0.9%</span>)</td>
+<td>지표, 전년치는 역산</td>
+</tr>
+<tr>
+<td>분기 영업이익</td>
+<td>약 $30.5M</td>
+<td>계산치</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$173.9M</td>
+<td>지표</td>
+</tr>
+<tr>
+<td>임상의 수</td>
+<td>8,040 → 8,349 → 8,542명</td>
+<td>10-K / 1Q·2Q 10-Q</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 임상의 수는 2025년 말 대비 6개월간 <span class="up">+6.2%</span> 늘었음. 1분기에 +309명, 2분기에 +193명으로 순증 폭은 줄었음.
+- 그런데 매출은 YoY <span class="up">+26%</span>임. 임상의 증가율보다 훨씬 빠름. 차이는 다음 중 하나 또는 조합으로 설명돼야 함:
+  - 임상의 1인당 방문 증가(생산성)
+  - TRPV 상승(수가 인상, 고단가 믹스)
+  - 인수 효과
+- 10-Q의 방문수 기재가 "2.6…"에서 잘려 있음. 방문수와 TRPV 분해는 공시상 확인 불가.
+- 이 분해가 확인되지 않으면 26% 성장이 지속 가능한지 판단할 수 없음.</p>
+<p><strong>마진 방향성</strong>
+- 영업이익률이 전년 적자 수준에서 7.0%로 개선됐음. 매출이 26% 늘 때 영업이익이 흑자전환한, 강한 영업레버리지임.
+- 실적콜에서 CEO는 다음과 같이 언급했음:
+  - 조정 EBITDA 마진: 2023년 약 5.5% → 2026 가이던스 중간값 12.5% 초과
+  - 2028년까지 mid-teens EBITDA 마진 달성
+  - 장기적으로 15~20%까지 가는 경로가 보임</p>
+<p><strong>가이던스 정합성 (계산·추정)</strong>
+- 2026 매출 가이던스 $1.685~1.725B는 SEC 원문이 아니라 Seeking Alpha 뉴스 헤드라인 기준임.
+- 계산 결과:
+  - 상반기 매출 ≈ $838.9M
+  - 가이던스 중간값 $1.705B를 맞추려면 하반기 ≈ $866M, 분기 평균 ≈ $433M
+  - 이는 2분기 실적($435.4M)과 거의 같은 수준임.
+- 해석은 두 가지 중 하나임:
+  - 가이던스가 보수적이어서 추가 상향 여지가 있음.
+  - 하반기 영업일 수, 또는 단가·물량 둔화를 회사가 이미 반영했음.
+- 어느 쪽인지는 공시상 확인 불가.</p>
+<p><strong>현금흐름·재무건전성</strong>
+- TTM FCF는 $173.9M임.
+- 실적콜에서 CEO는 다음과 같이 언급했음:
+  - 2026년은 FCF 흑자 3년째, 순이익 흑자 2년째임.
+  - 자본효율적인 사업이고 대차대조표가 매우 견고함.
+- Seeking Alpha 헤드라인 기준 $100M 자사주 매입 승인이 있었음.
+- 10-K 리스크 요인에 "기존 부채가 사업에 부정적일 수 있음"이 명시돼 있음. 다만 차입금 규모, 만기, 금리 조건은 제공 원문에서 확인 불가.
+- 그래서 EV 기준 밸류에이션은 산출 불가.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 임상의 순증 (용량 확대)</strong>
+- 근거: 회사는 기존 센터에 물리적 여유가 있고, 자체 전국 채용 모델이 있다고 밝혔음(10-Q).
+- 실현 조건: 채용 속도와 이탈률 관리, 그리고 신규 임상의의 진료 일정 채우기.
+- 검증 포인트: 3분기 말 임상의 수. 2분기 순증 +193명보다 다시 늘어나는지 볼 것.</p>
+<p><strong>② 임상의 생산성과 TRPV</strong>
+- 근거: 회사는 생산성이 가용 시간, 신규 환자 유치, 예약의 실제 방문 전환율로 결정된다고 밝혔음.
+- 검증 포인트: 3분기 방문수 증가율과 TRPV 증가율을 분리해서 보기.
+  - 매출 성장이 단가 위주라면 지급자 협상 리스크가 커짐.
+  - 물량 위주라면 성장의 질이 좋다고 판단함.</p>
+<p><strong>③ 스페셜티 서비스 라인 (신경심리검사, Spravato, TMS)</strong>
+- 근거:
+  - 실적콜에서 회사는 신경심리검사 분야 전국 1위이고, 치료저항성 우울증 대상 Spravato와 TMS는 롤아웃 초기라고 언급했음.
+  - KeyBanc 목표가 상향 사유도 스페셜티 케어 성장으로 보도됨.
+- 검증 포인트: 매출 중 스페셜티 비중이나 기여 성장률 공개 여부. 현재 수치는 확인 불가.</p>
+<p><strong>④ 저비용 환자 유입 (의뢰 파트너십)</strong>
+- 근거: 실적콜에서 회사는 신규 환자 확보 비용이 매출의 2% 미만이고, 주 유입 경로가 1차 진료·전문의 의뢰라고 언급했음.
+- 검증 포인트: 마케팅비나 판관비 비율이 유지되는지. 병원·1차 진료 그룹과의 신규 제휴 공시가 나오는지.</p>
+<p><strong>⑤ 현금결제 시장의 보험 편입 (구조적 수요)</strong>
+- 근거: 실적콜에서 회사는 수십 년간 낮은 수가로 현금결제 중심이던 시장이 보험 네트워크로 옮겨가고 있다고 언급했음.
+- 검증 포인트: 주요 지급자와의 수가 재계약 결과. 10-Q 리스크 요인에 수가 관련 변경이 있는지.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>※ 제공된 자료는 2026-05-13 BofA 헬스케어 컨퍼런스의 prepared remarks(15분 발표)와 2026-08-06 2분기 실적 슬라이드 페이지임. 슬라이드 페이지는 본문 없이 메타데이터만 있음. 2분기 실적콜 Q&amp;A 원문은 제공되지 않음.</p>
+<p><strong>톤과 자신감의 근거</strong>
+- 톤은 매우 자신감 있음. "category leader", "tremendous opportunity" 같은 표현이 반복됨.
+- 근거로 정량 지표를 제시했음:
+  - 3년 매출 CAGR 16%(2026 가이던스 중간값 기준)
+  - EBITDA 마진 5.5% → 12.5% 초과
+  - FCF 흑자 3년째
+  - 환자 18만 명 추적 결과 약 3/4이 임상적으로 유의한 개선</p>
+<p><strong>가이던스 화법의 변화</strong>
+- CEO가 직접 "targeting이라고 하지 않겠다, 경로가 보인다"고 표현을 고쳤음. 이어서 최근 2028년 mid-teens EBITDA 마진이라는 시점을 처음 제시했다고 언급했음.
+- 장기 목표를 시점이 있는 약속으로 바꾼 것이라 이후 신뢰도 시험대가 됨.
+- 성장률은 "매년 mid-teens 매출 성장을 기대하며 연초를 시작"한다고 언급했음. 그러나 2분기 실적은 <span class="up">+26%</span>로 이 범위를 크게 웃돌았음. 성장률이 다시 낮아질 때 시장이 실망할 수 있음(추정).</p>
+<p><strong>Q&amp;A</strong>
+- 원문 미제공으로 반복 질문이나 방어 지점은 확인 불가.
+- 다만 BofA 발표에서 CEO가 "타이밍 질문을 많이 받았다"고 언급했음. 마진 목표 달성 시점이 투자자들의 핵심 관심사임을 시사함.</p>
+<p><strong>콜에서만 드러난 정보 (10-K·10-Q 발췌에 없음)</strong>
+- 매출의 약 90%가 상업보험
+- 고객 확보 비용 매출 대비 2% 미만
+- 575개 이상 센터, 연 900만 회 방문, 약 100만 명 환자
+- TAM 약 $50B
+- ABA(자폐 치료) 등 수가 압박 분야는 하지 않음
+- Google 평점 4.7</p>
+<h2>6. 리스크</h2>
+<p><strong>① 상업보험 수가 의존 (10-K 리스크 1순위)</strong>
+- 제3자 지급자가 수가를 인하하거나 진료를 제약하면 중대한 피해가 가능함.
+- 실적콜 기준 상업보험 비중이 약 90%라서 소수 대형 지급자와의 협상력이 실적을 직결함.
+- 26% 성장의 일부가 단가에서 나왔다면 민감도는 더 커짐.</p>
+<p><strong>② 임상의 채용·유지</strong>
+- 10-K는 성장이 임상의 채용, 인수, 유지에 달려 있다고 명시함.
+- 분기 순증 폭이 줄었음(+309명 → +193명). 하반기에도 이어지면 2027년 성장률 둔화로 연결됨.</p>
+<p><strong>③ supported practices 구조의 법적 리스크</strong>
+- 회사는 자신이 소유하지 않은 진료법인(supported practices)에 의존함.
+- 10-K는 이 약정이 법적 도전을 받을 경우 사업에 피해가 있다고 명시함. 의료 법인 소유 규제 관련 구조적 리스크임.</p>
+<p><strong>④ 부채와 밸류에이션 부담</strong>
+- 10-K에 부채 리스크가 명시돼 있으나 규모는 확인 불가.
+- 선행 PER 77.55배, P/FCF 약 27배는 마진 목표가 늦어질 경우 하락폭을 키우는 요인임.</p>
+<p><strong>⑤ 지분 구조와 오버행 (추정)</strong>
+- 비계열 유통 시가가 2025년 6월 기준 $817M으로 작았음. 대주주 블록 매각에 따른 공급 부담 가능성이 있음.
+- 다만 현재 대주주 지분율은 제공 자료로 확인 불가.</p>
+<p>※ OBBBA(Medicaid 개편)는 회사가 중대한 영향이 없을 것이라고 밝혔음. 상업보험 위주 구조를 감안하면 핵심 리스크에서 제외함.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 긍정 요인:
+  - 매출 <span class="up">+26.1%</span> YoY, 영업이익률 <span class="up">+7.9%</span>p 개선, TTM FCF $173.9M
+  - 2026 FY 가이던스 상향과 2분기 매출 컨센서스 상회 $20.8M(Seeking Alpha)
+  - $100M 자사주 매입 승인
+  - 52주 고점 대비 <span class="down">-8.7%</span>로 추세 유지
+- 제약 요인:
+  - 선행 PER 77.55배, P/FCF 약 27배
+  - 오늘 상승의 거래량이 0.68배로 수급 확인 부재
+  - 가이던스가 함의하는 하반기 분기 매출이 2분기와 비슷한 수준(계산치)</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2분기 10-Q 원문에서 방문수와 TRPV 분해, 인수 기여분. 26% 성장이 물량 위주인지 확인.
+2. 차입금 잔액, 만기, 순차입금. EV 기준 밸류에이션과 자사주 매입 여력 판단용.
+3. 2026-09-09 8-K의 실제 내용, 그리고 주요 주주의 지분 변동(대주주 매각 여부).</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 3분기 임상의 순증이 2분기(+193명)보다 더 줄어들고, 매출 성장의 대부분이 TRPV 상승에서 나오는 것으로 확인될 때.
+- 주요 상업보험사와의 수가 인하나 계약 해지가 공시되거나, 10-Q 리스크 요인이 새로 추가될 때.
+- 영업이익률이 전분기 대비 후퇴하거나, 회사가 2028년 mid-teens EBITDA 마진 목표의 시점을 미루거나 표현을 약화할 때.
+- 대주주 블록딜 등 대규모 지분 매각이 확인될 때.</p>
+<p><strong>상향 조건 (적극으로)</strong>
+- 방문수 주도 성장이 확인되고, 순차입금이 낮은 수준(EBITDA 대비)으로 확인되고, 3분기에 FY 가이던스가 추가 상향될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm">10-K — 2025-12-31_0001193125-26-071462</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526338107/lfst-20260630.htm">10-Q — 2026-06-30_0001193125-26-338107</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526211814/lfst-20260331.htm">10-Q — 2026-03-31_0001193125-26-211814</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526389315/d116139d8k.htm">8-K — 2026-09-09_0001193125-26-389315</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-ex99_2.htm">8-K — 2026-08-06_0001193125-26-336057__EX-99.2__lfst-ex99_2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-ex99_1.htm">8-K — 2026-08-06_0001193125-26-336057__EX-99.1__lfst-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-20260806.htm">8-K — 2026-08-06_0001193125-26-336057</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526297525/d98636d8k.htm">8-K — 2026-07-02_0001193125-26-297525</a></li>
+<li>Transcript — 2026-05-13 LifeStance Health Group, Inc. (LFST) Presents at Bank of America Global Healthcare Conference 2026 Prepared Remarks Transcript</li>
+<li>Transcript — 2026-08-06 LifeStance Health Group, Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

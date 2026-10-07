@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTR — Inter &amp; Co. Inc. Class A Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>INTR — Inter &amp; Co. Inc. Class A Common Shares</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">INTR</span><span class="badge">+19.71%</span><span class="badge">거래량 7.01배</span><span class="badge">$2.90B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>2Q26 6-K(8/5) 기준 펀더멘털은 좋다. 순수익 성장률 YoY <span class="up">+31.7%</span>, ROE 16.3%(+240bp YoY), 순이익 421(2Q25 315 대비 <span class="up">+33.7%</span>)이다. 회사는 2Q26에 "자본 중립(capital neutrality)을 넘어섰다"고 밝혔다. 이익으로 성장 자금을 대는 단계에 들어섰다는 뜻이다.</li>
+<li>오늘 <span class="up">+19.7%</span>의 촉매는 회사 고유 이벤트로 보기 어렵다. 브라질 대선 관련 정치 뉴스에 브라질 핀테크가 함께 오른 것으로 보인다. 4일 내 공시는 없다. 선거 결과라는 이분법적 이벤트에 걸린 베타 랠리를 7배 거래량 당일에 따라 들어가는 구조다.</li>
+<li>의미 있는 비중을 실으려면 자산건전성(NPL, 대손비용), 자본비율, BRL 기준 밸류에이션을 확인해야 한다. 제공 자료에서는 모두 <strong>공시상 확인 불가</strong>다. 특히 성장의 핵심인 민간 급여공제대출(Private Payroll)은 2025년 3월 제도 도입 이후 1년 남짓 된 신상품이라 부실 데이터가 쌓이지 않았다.</li>
+<li>펀더멘털 방향은 긍정적이므로 '회피'가 아니라 '관망'이다. 7절의 조건이 확인되면 '보통'으로 올린다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>회사 고유 촉매 없음. 브라질 정치 이벤트에 따른 섹터 동조 상승으로 판단한다.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시(6-K)는 없다. 가장 최근 공시는 8/20 JPM 주관 Private Payroll 세션 자료와 8/5 2Q26 실적이며, 오늘 주가와 시차가 크다.</li>
+<li>직접 관련 뉴스는 Seeking Alpha의 <em>"Brazilian fintech stocks surge as Bolsonaro's lead puts Brazil on track to shift right (XP:NASDAQ)"</em>다. INTR만이 아니라 XP 등 브라질 핀테크가 함께 오른 정황이다.</li>
+<li>나머지 헤드라인은 촉매로 보기 어렵다. Yahoo 기사는 주가 급등을 사후에 다룬 것이고, Globe and Mail의 '2026 Outlook'은 전략 일반론이다. Intrepid Metals는 다른 종목이고, Simply Wall St는 저평가 스크리닝 기사다.</li>
+<li>추정: 거래량 7.01배, 거래대금 $185.7M은 시가총액($2.90B)의 약 6.4%다. 정치 이벤트에 따른 브라질 위험자산 재평가 수급으로 보인다. 오늘을 빼면 20일 수익률은 약 <span class="up">+4.5%</span>(1.251/1.197)에 그친다. 20일 수익률의 대부분이 오늘 하루에 나왔다는 뜻이다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 20-F(FY2025, 2026-04-29 제출) 발췌는 <strong>표지와 목차뿐</strong>이다. Item 4(사업 개요) 본문은 포함되지 않았다. 아래 내용은 20-F 표지와 2Q26 실적자료·8월 세션 자료(6-K)를 근거로 한다.</p>
+</blockquote>
+<p><strong>법인·지배구조 (20-F 표지)</strong>
+- 케이맨 제도 설립, 본사는 브라질 Belo Horizonte다. 해외민간발행인(6-K 제출)이며 IFRS로 보고한다. Large Accelerated Filer다.
+- 발행주식(2025-12-31)은 Class A 324,284,558주와 Class B 117,037,105주, 합계 약 4.41억 주다. $6.56 × 4.41억 주 ≈ $2.90B로 제공된 시가총액과 일치한다.
+- Class B의 의결권 배수와 지배주주 구성은 발췌에 없어 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>사업 모델 (2Q26 실적자료)</strong>
+- 브라질 디지털 은행이자 'SuperApp'이다. 회사는 "7개 버티컬"에서 점유율을 높이고 있다고 밝혔다.
+- 자료에 나오는 상품군은 PIX 결제, 신용카드, 주택담보대출, Home Equity, 급여공제대출(민간), FX, 국채(Tesouro Direto) 투자다.
+- 고객 기반: 총고객 45.3백만, 활성고객 26.4백만(활성화율 58.3%), 신용고객 약 9백만이다.
+- 수익 구조: 대출 이자이익이 핵심이다. 회사는 "첫 두 자릿수 NIM"을 달성했다고 밝혔다. 월 Gross ARPAC은 평균 R$59이며, 성숙 코호트는 R$100 이상이다. 매출총이익률·영업이익률 지표는 은행 특성상 '-'로 제공되었다.
+- 조달 우위: 회사는 조달비용이 <strong>CDI의 66%</strong>로 "업계 최저 수준"이라고 밝혔다. 근거로 PIX 거래 점유율 약 9%를 제시했다. 결제 계좌의 저원가 예금이 대출 마진을 받치는 구조다.
+- 매출 구성(이자 대 수수료, 상품별)의 정량 분해는 제공 발췌에 없어 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>경쟁 위치 (6-K 자료)</strong>
+- 브라질 대출시장(2026년 6월)은 무담보 개인대출 R$1.3조, 담보 개인대출 R$2.7조, SME/기업+농업 R$2.6조다.
+- 상위 5개 은행 점유율은 2019년 이후 전 부문에서 하락했다. 무담보는 -10~-14p, 담보는 -6~-7p, SME는 -10~-11p다.
+- 회사는 담보부 개인대출이 "대체로 디스럽션되지 않은" 시장이라고 밝혔다.
+- 주의: 같은 지표가 8/5 실적자료(67%/82%/65%)와 8/20 세션 자료(63%/81%/67%)에서 다르게 나온다. 각주 정의도 서로 다르다. 회사 자료 간 일관성이 떨어진다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질: 물량보다 단가(ARPAC)가 끈다</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>2Q26</th>
+<th>YoY</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총고객(백만)</td>
+<td>39.3</td>
+<td>45.3</td>
+<td>+15.3%</td>
+<td>실적자료</td>
+</tr>
+<tr>
+<td>활성고객(백만)</td>
+<td>22.7</td>
+<td>26.4</td>
+<td>+16.3%</td>
+<td>실적자료</td>
+</tr>
+<tr>
+<td>순수익 성장률</td>
+<td></td>
+<td></td>
+<td>+31.7%</td>
+<td>실적자료</td>
+</tr>
+<tr>
+<td>순이익(차트 단위 미표기, R$ 백만으로 추정)</td>
+<td>315</td>
+<td>421</td>
+<td>+33.7%</td>
+<td>실적자료</td>
+</tr>
+<tr>
+<td>여신 성장률</td>
+<td></td>
+<td></td>
+<td>+29%</td>
+<td>CEO 서한</td>
+</tr>
+<tr>
+<td>활성고객당 대출</td>
+<td></td>
+<td></td>
+<td>+11%</td>
+<td>CEO 서한</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>13.9%(역산)</td>
+<td>16.3%</td>
+<td>+240bp</td>
+<td>실적자료</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출 <span class="up">+31.7%</span>를 활성고객 <span class="up">+16.3%</span>로 나누면 고객당 매출이 약 <span class="up">+13%</span> 늘었다(추정). 고객 수와 고객당 수익화가 대략 반반씩 기여했다. 회사는 ARPAC 상승이 "신용 침투율 증가" 덕분이라고 밝혔다. 즉 성장이 고객 기반의 신용 리스크를 더 떠안는 방향으로 일어나고 있다.</li>
+<li>고객 유입은 둔화 중이다(분기 순증, 백만):</li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>3Q25</th>
+<th>4Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총고객 순증</td>
+<td>+2.0</td>
+<td>+1.8</td>
+<td>+0.9</td>
+<td>+1.3</td>
+</tr>
+<tr>
+<td>활성고객 순증</td>
+<td>+1.2</td>
+<td>+1.1</td>
+<td>+0.8</td>
+<td>+0.6</td>
+</tr>
+</tbody>
+</table></div>
+<p>활성화율도 1Q26 58.6%에서 2Q26 58.3%로 처음 하락했다. 앞으로 성장은 물량보다 고객당 신용 심화(믹스)에 더 의존하게 된다.
+- 제공 지표의 '최근 분기 매출 $2.64B, YoY 31.6%'는 실적자료의 <span class="up">+31.7%</span>와 성장률이 일치한다. 다만 절대값은 시가총액($2.90B) 대비 비현실적이다. BRL 금액이 USD로 표기된 오류일 가능성이 높다(추정). 절대 매출액은 인용하지 않는다.</p>
+<p><strong>마진·수익성 방향</strong>
+- ROE는 4.2%(2023) → 11.1%(2024) → 13.8%(2025) → 16.3%(2Q26)로 꾸준히 올랐다. 2Q26 'Rule of 50'(매출 성장률 + ROE)은 48.0%다.
+- 회사는 3Q22 이후 효율성 비율이 32p 개선되었고, 2026E~2029E에 Rule of 50 "~50%"를 유지하겠다고 밝혔다. 이는 회사 전망이다.
+- 순이익은 QoQ <span class="up">+5.6%</span>(1Q26), <span class="up">+6.6%</span>(2Q26)로 증가 속도가 안정적이다.
+- 효율성 비율 절대값, NIM 절대값, 대손비용(cost of risk), NPL 비율은 제공 발췌에 없어 <strong>공시상 확인 불가</strong>다. 은행 분석의 핵심인 '이익의 질' 판단이 불완전하다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF $1.45B는 은행에 의미가 약하다. 예금 유입과 대출 집행이 영업현금흐름에 섞이기 때문이다. 판단 근거로 쓰지 않는다.
+- 회사는 2Q26에 총자산 R$1,000억을 처음 넘었고 "자본 중립을 넘어섰다"고 밝혔다. 유상증자 없이 이익만으로 성장 자금을 댈 수 있다는 주장이며, 희석 리스크가 낮아졌다는 신호다.
+- BIS·CET1 비율, 예대율, 유동성 지표는 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>밸류에이션</strong>
+- 순이익 합계(3Q25~2Q26)는 336+374+395+421 = 약 1,526(R$ 백만 추정)이다. 환율이 제공되지 않아 USD 기준 P/E와 P/B는 <strong>산출 불가</strong>다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 민간 급여공제대출 (Private Payroll, 8/20 JPM 세션 6-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>2Q25</th>
+<th>3Q25</th>
+<th>4Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>포트폴리오(R$ 십억)</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>1.9</td>
+<td>2.5</td>
+<td>2.8</td>
+</tr>
+<tr>
+<td>QoQ 성장률</td>
+<td></td>
+<td></td>
+<td>+171%</td>
+<td>+32%</td>
+<td>+12%</td>
+</tr>
+<tr>
+<td>고객(천 명)</td>
+<td>153</td>
+<td>282</td>
+<td>447</td>
+<td>570</td>
+<td>629</td>
+</tr>
+<tr>
+<td>계약(천 건)</td>
+<td>167</td>
+<td>331</td>
+<td>590</td>
+<td>828</td>
+<td>964</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>평균 티켓 R$4.5k, 평균 만기 33개월, 고객당 계약 1.5건이다. ARPAC은 Inter 평균 고객의 3.7배다.</li>
+<li>회사는 잠재 TAM을 대상 근로자 4,800만 명, 대출잔액 약 R$3,000억으로 제시했다. 기본 가정(침투율 70%, 평균만기 14개월)에서는 R$2,315억이며, 민감도 범위는 R$1,130억~3,780억이다.</li>
+<li>현재 점유율은 현재 TAM 대비 2.5%다. 이 TAM은 회사 자체 추정이며 공공·INSS 급여대출 침투율을 그대로 빌려온 가정이다.</li>
+<li>실현 조건: 고용 기반 담보(퇴직금, FGTS 등)의 실제 회수율이 가정대로 작동해야 한다. 이 상품은 2025-03-21 제도 시행 이후 신상품이다.</li>
+<li>우려(사실): 포트폴리오 QoQ 성장률이 171% → 32% → 12%로, 신규 고객 순증이 165k → 123k → 59k로 빠르게 둔화했다. CEO 서한은 "추가 개선(enhancements)을 계획"한다고 밝혔다.</li>
+<li><strong>검증 포인트(3Q26):</strong> 포트폴리오가 R$3bn을 넘고 신규 고객 순증이 다시 가속하는지, 상품별 연체율이 처음 공개되는지 본다.</li>
+</ul>
+<p><strong>② 고객당 신용 심화와 ARPAC 상승</strong>
+- 회사는 신규 코호트의 초기 ARPAC이 R$10 높아졌고, 성숙 코호트 ARPAC이 R$100 이상이라고 밝혔다. 신용고객은 약 900만 명으로 총고객의 약 20%다.
+- 실현 조건: 신용 침투를 늘려도 대손비용이 같은 속도로 오르지 않아야 한다.
+- <strong>검증 포인트:</strong> 3Q26 평균 Gross ARPAC이 R$59를 넘는지, 그리고 대손비용률이 함께 오르는지 본다.</p>
+<p><strong>③ 저원가 조달</strong>
+- 회사는 조달비용이 CDI의 66%라고 밝혔다.
+- 실현 조건: 고객 예금이 순유입을 유지해야 한다. 브라질 금리(CDI) 수준에 따라 이 우위의 절대 크기가 달라진다.
+- <strong>검증 포인트:</strong> 조달비용의 CDI 대비 비율이 66% 이하로 유지되는지 본다.</p>
+<p><strong>④ AI 에이전트 'Seven'과 플랫폼 효율화</strong>
+- 회사는 활성 사용자가 600만 명이라고 밝혔다. 다만 수익 기여는 정량화되어 있지 않다.
+- <strong>검증 포인트:</strong> 효율성 비율이 추가로 개선되는지 본다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>20-F Item 3.D(리스크 요인) 본문은 제공 발췌에 없다. 아래는 제공된 6-K 내용과 지표에서 직접 도출한 것이다.</p>
+</blockquote>
+<ol>
+<li><strong>신상품 신용 리스크 (Private Payroll):</strong> 1년 사이 포트폴리오가 14배(R$0.2bn → 2.8bn) 커졌다. 평균 만기 33개월이라 부실이 아직 드러날 시간이 없었다. 회사 자료 스스로 경쟁 상품군의 "Pastinhas 모델이 비용 상승과 금리 상한으로 지속 불가능해지고 있다"고 썼다. 같은 상품 생태계에 규제(금리 상한) 리스크가 있다는 뜻이다. 연체율 데이터는 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>브라질 정치·거시 베타:</strong> 오늘 상승 자체가 정치 뉴스에 따른 섹터 동조다. 선거 결과나 정책 방향이 바뀌면 같은 크기로 되돌릴 수 있다. USD 투자자에게는 BRL 환율 리스크가 겹친다(제공 자료에 정량 데이터 없음).</li>
+<li><strong>성장 둔화 신호:</strong> 총·활성 고객 순증 둔화, 활성화율 하락, Private Payroll 신규 유입 급감이 같은 분기(2Q26)에 함께 나타났다. 회사가 내건 "~50% Rule of 50" 유지는 고객당 신용 심화에 점점 더 의존하게 된다.</li>
+<li><strong>공시 일관성:</strong> 같은 시장 점유율 지표가 2주 간격의 두 자료에서 다르게 나온다. 실적 차트의 순이익에도 단위가 없다. 회사 제공 non-IFRS 지표(ARPAC, ROE)를 쓸 때는 IFRS 재무제표와 대조해야 한다.</li>
+<li><strong>지배구조:</strong> Class A/B 이중 클래스 구조이고 케이맨 법인이다. Class B 의결권 구조는 발췌상 확인할 수 없어 소수주주 보호 수준을 판단할 수 없다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'을 뒷받침하는 정량 근거</strong>
+- 긍정 요인:
+  - 매출 <span class="up">+31.7%</span>, 순이익 <span class="up">+33.7%</span>(YoY)
+  - ROE 16.3%로 3년 연속 개선
+  - 자본 중립 달성(회사 주장)
+  - 52주 고점 대비 <span class="down">-35.7%</span>로 아직 깊은 할인 상태
+- 보류 요인:
+  - 당일 <span class="up">+19.71%</span> 중 회사 고유 촉매 없음(4일 내 공시 0건), 20일 수익률 25.1%의 대부분이 오늘 발생
+  - 성장 엔진인 Private Payroll의 QoQ 성장률이 <span class="up">+12%</span>로 둔화하고 신규 고객 순증이 반토막(123k → 59k)
+  - NPL, 대손비용, 자본비율, BRL 기준 P/E·P/B 모두 확인 불가</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>자산건전성:</strong> 20-F 본문 또는 2Q26 실적 원문에서 NPL 90일 이상 비율, cost of risk 추이, Private Payroll 단독 연체율을 확인한다.
+2. <strong>밸류에이션:</strong> 환율을 적용해 TTM 순이익 약 R$15.3억(추정 단위) 기준 P/E와 P/B를 산출한다. ROE 16.3%를 감안할 때 정당한 수준인지 검증한다.
+3. <strong>3Q26 실적:</strong> 2Q26이 8/5 발표였으므로 11월 초 발표로 추정한다. 순수익 YoY 30% 내외 유지, ROE 16% 이상, 활성고객 순증 반등을 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통'으로 상향하는 조건:</strong>
+  - NPL이나 cost of risk가 안정 또는 하락하는 가운데 Private Payroll 성장이 재가속(QoQ 15% 이상)할 때
+  - 정치 이벤트 이후 주가가 오늘 상승분을 상당 부분 지키면서 수급이 펀더멘털로 옮겨갔다고 확인될 때
+- <strong>'회피'로 하향하는 조건:</strong>
+  - 3Q26에 대손비용률이 매출 성장률보다 빠르게 오르거나, ROE가 전 분기(16.3%)보다 하락할 때
+  - 활성화율이 연속 하락하고 고객 순증이 계속 둔화할 때
+  - Private Payroll이나 급여공제대출 전반에 금리 상한 등 규제 변경이 공시될 때
+  - 브라질 정치 이벤트가 되돌려져 섹터 전반이 하락하고, 오늘 상승분을 모두 반납할 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000207097926000185/intr-20251231.htm">20-F — 2025-12-31_0002070979-26-000185</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000186416326000067/eventpresentation_vf.htm">8-K — 2026-08-20_0001864163-26-000067__EX-99.1__eventpresentation_vf</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000186416326000067/intr-20260820.htm">8-K — 2026-08-20_0001864163-26-000067</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000186416326000065/interco2q26earningsprese.htm">8-K — 2026-08-05_0001864163-26-000065__EX-99.2__interco2q26earningsprese</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000186416326000065/interco2q26earningsrelea.htm">8-K — 2026-08-05_0001864163-26-000065__EX-99.1__interco2q26earningsrelea</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1864163/000186416326000065/intr-20260805.htm">8-K — 2026-08-05_0001864163-26-000065</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

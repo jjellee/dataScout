@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDGR — Schrodinger Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SDGR — Schrodinger Inc. Common Stock</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SDGR</span><span class="badge">+7.55%</span><span class="badge">거래량 1.72배</span><span class="badge">$2.44B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 <span class="up">+7.55%</span> 상승의 원인이 된 기업 고유 촉매가 확인되지 않습니다. 최근 4일 내 SEC 공시가 없고, 뉴스는 주가 등락 기사와 "업종 전반 랠리(Sector-Wide Rally)" 헤드라인뿐입니다. 주가는 이미 20일 <span class="up">+44.3%</span>, 60일 <span class="up">+76.1%</span> 올랐고 52주 고점에 있습니다.</li>
+<li>펀더멘털에는 개선 신호가 있습니다. 2Q26 ACV(연간 계약가치)가 $29.6M으로 <span class="up">+27%</span> 늘었고, 영업이익률은 전년 대비 <span class="up">+26.0%</span>p 개선됐습니다. 다만 소프트웨어 매출은 <span class="down">-10%</span>였고, 영업이익률 <span class="down">-70.6%</span>, TTM 잉여현금흐름(FCF) -$130.3M으로 적자 구조가 그대로입니다.</li>
+<li>Ajax 매각으로 약 $57.2M의 현금이 들어왔지만, 연간 현금소진 규모와 비교하면 일회성 보강에 가깝습니다. 현금 잔고와 현금으로 버틸 수 있는 기간(runway)은 제공된 발췌에서 공시상 확인 불가입니다.</li>
+<li>결론적으로 펀더멘털 개선과 단기 과열이 겹친 구간입니다. 의미 있는 비중을 싣기 전에 3분기 실적에서 ACV 성장 지속과 소프트웨어 매출 바닥을 확인하는 편이 합리적입니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없습니다.</li>
+<li><strong>뉴스:</strong> 헤드라인은 대부분 주가 등락이나 밸류에이션 관련 기사입니다(Yahoo Finance, GuruFocus, Barron's). 원인을 시사하는 것은 AlphaStreet의 "Sector-Wide Rally" 하나뿐이고, 업종 동조로 해석됩니다.</li>
+<li><strong>실적:</strong> 직전 실적 발표는 2026-08-05(2Q26 8-K)로, 오늘 촉매로 보기는 어렵습니다.</li>
+<li><strong>수급:</strong> 거래량은 20일 중앙값의 1.72배로 늘었지만 "급증"이라고 할 정도는 아닙니다. 20일 <span class="up">+44.3%</span>로 이미 강한 추세가 진행 중이었습니다. 따라서 새로운 재료보다는 추세 추종 매수와 섹터 베타가 겹친 결과일 가능성이 높습니다(추정).</li>
+<li><strong>옵션:</strong> 뉴스에 2026년 10월물 $32.5 풋 차트가 노출된 것 외에 옵션 수급의 실체는 공시상 확인 불가입니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>보고 부문은 두 개입니다(10-Q MD&amp;A).</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>판매 대상</th>
+<th>수익원</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>소프트웨어</td>
+<td>바이오제약·산업(소재) 기업, 학계, 정부 연구소</td>
+<td>제품 라이선스, 호스팅 구독, 유지보수, 전문 서비스, contribution</td>
+</tr>
+<tr>
+<td>신약개발(Drug Discovery)</td>
+<td>빅파마 협업 및 자체 파이프라인</td>
+<td>선급금, 연구비, 마일스톤, 옵션료, 로열티, 협업사 지분 매각 차익</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>소프트웨어 과금 구조</strong>
+- 과금은 사용자 수가 아니라 동시에 돌릴 수 있는 계산 규모(라이선스 수)에 연동됩니다. 고객이 계산을 늘릴수록 라이선스 수가 늘어나는 구조입니다.
+- 전달 방식은 두 가지입니다. ① 고객 하드웨어에 설치하는 기간제 라이선스, ② 회사 클라우드에 접속하는 호스팅 구독.
+- 회사는 현재 호스팅 전환을 가속하고 있습니다. 2Q26 기준 호스팅 매출이 소프트웨어 매출의 47%입니다.</p>
+<p><strong>주요 협업 계약(공시 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>협업사</th>
+<th>내용</th>
+<th>경제성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BMS</td>
+<td>남은 신경계 표적 1개</td>
+<td>마일스톤 최대 $482.0M 중 $32.0M 인식(2026-06-30 기준). 로열티 한 자릿수 중반~두 자릿수 초반</td>
+</tr>
+<tr>
+<td>Lilly (2022)</td>
+<td>면역 표적 1개</td>
+<td>발굴·개발·상업화 마일스톤 최대 $420.0M</td>
+</tr>
+<tr>
+<td>Novartis</td>
+<td>10-K에 협업 계약 존재를 언급</td>
+<td>세부 조건은 발췌 범위 밖, 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>Ajax (공동창업)</td>
+<td>2026년 6월 Lilly가 인수</td>
+<td>약 $57.2M 수령(지분 $47.2M + 협업 마일스톤 $10.0M). 추가 임상·허가 마일스톤과 에스크로 잔금 수령 자격 보유</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>매출 구성(2Q26, 산술 추정)</strong>
+- 총매출 $58.9M에서 소프트웨어 매출 $32.5M을 빼면 신약개발 등 기타 매출은 약 $26.4M입니다.
+- Ajax 마일스톤 $10.0M이 2분기 매출로 인식됐는지는 공시상 확인 불가입니다.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 자사 플랫폼이 "물리 기반으로 분자 특성을 높은 정확도로 예측한다"고 밝힙니다.
+- CEO는 물리 시뮬레이션과 AI 결합, 에이전트형 AI "Bunsen" 출시를 차별화 요소로 제시했습니다.
+- 경쟁사 대비 점유율 등 정량 비교는 공시상 확인 불가입니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 표면상 총매출은 YoY <span class="up">+7.5%</span>, QoQ <span class="up">+0.5%</span>로 정체에 가깝습니다.
+- 소프트웨어 매출은 YoY <span class="down">-10%</span>($32.5M)입니다. 회사는 원인으로 "호스팅 라이선스로의 가속 전환"을 들었습니다.
+  - 일반적인 회계 구조상 설치형 기간제 라이선스는 상당 부분이 계약 시점에 매출로 잡히고, 호스팅 구독은 계약 기간에 걸쳐 나눠 인식됩니다.
+  - 따라서 전환기에는 매출이 계약 실적보다 낮게 찍힐 수 있습니다(해석).
+- 계약 기준 지표인 ACV는 더 양호합니다.
+  - ACV: $29.6M(<span class="up">+27%</span>), 최근 4분기 합계 $208M
+  - contribution 제외 ACV: $22.6M(<span class="up">+23%</span>), 최근 4분기 합계 $196M
+  - contribution을 빼도 <span class="up">+23%</span>이므로 ACV 성장의 질은 양호한 편입니다.
+- 단가와 물량, 고객 수 분해는 제공 발췌에서 공시상 확인 불가입니다.
+- 산술 추정상 전년 동기 총매출은 약 $54.8M, 소프트웨어 매출은 약 $36.1M입니다. 그렇다면 비(非)소프트웨어 매출은 약 $18.7M에서 약 $26.4M으로 늘었습니다. 즉 총매출 성장은 신약개발 쪽, 특히 마일스톤 같은 변동성 큰 항목에 기댄 것으로 보입니다(추정).</p>
+<p><strong>마진</strong>
+- 매출총이익률은 55.1%입니다. 소프트웨어 회사로서는 낮고, 신약개발 부문 원가와 호스팅 인프라 비용이 섞인 결과로 추정됩니다.
+- 영업이익률은 <span class="down">-70.6%</span>로 전년 대비 <span class="up">+26.0%</span>p 개선됐습니다.
+  - 분기 영업손실은 약 $41.6M, 전년 동기는 약 $52.9M으로 역산됩니다(추정).
+  - 적자는 줄고 있지만 손익분기와는 거리가 멉니다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF는 -$130.3M입니다.
+- Ajax로 들어온 $57.2M 중 지분 매각분 $47.2M은 회계상 투자활동 현금흐름으로 분류될 가능성이 높아, FCF 개선에는 거의 반영되지 않는다고 봐야 합니다(추정).
+- 회사는 운영 자금을 공모 자금, 소프트웨어 판매, 협업 수익, 협업사 지분 회수로 조달해 왔다고 밝혔습니다. 앞으로도 지분 회수가 자금원 중 하나라는 뜻입니다.
+- 현금 및 유가증권 잔고, 부채, runway는 제공 발췌에서 공시상 확인 불가입니다. 진입 전 반드시 10-Q 재무상태표로 확인해야 합니다.</p>
+<p><strong>밸류에이션(참고, 추정)</strong>
+- 시가총액 $2.44B ÷ TTM ACV $208M ≈ 11.7배
+- 분기 매출을 연환산한 $235.6M 대비 약 10.4배
+- 순현금을 차감하지 않은 수치라서 EV 기준 배수는 이보다 낮을 수 있습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 소프트웨어 ACV 성장과 호스팅 전환</strong>
+- 회사는 "predict-first 접근의 산업 채택 확대"를 성장 근거로 밝혔습니다.
+- 실현 조건: 호스팅 비중이 오르는 동안 ACV가 20%대 성장을 유지하고, 전환 효과가 줄면서 소프트웨어 매출이 다시 플러스 성장으로 돌아서야 합니다.
+- 검증 포인트(3Q26):
+  - ACV YoY <span class="up">+20%</span> 이상 유지 여부
+  - contribution 제외 ACV 성장률
+  - 호스팅 비중이 47%에서 얼마나 올랐는지
+  - 소프트웨어 매출의 YoY 감소 폭 축소 여부</p>
+<p><strong>② AI 제품군(Bunsen 에이전트형 AI co-scientist)</strong>
+- 회사는 Bunsen이 "복잡한 워크플로를 대규모로 실행하게 해준다"고 밝혔습니다.
+- 현재는 조기 접근(early access) 단계입니다. 별도 과금 여부와 매출 기여는 공시상 확인 불가입니다.
+- 검증 포인트: 정식 출시 시점, 과금 모델, 고객 채택 지표 공개 여부</p>
+<p><strong>③ 협업 마일스톤과 지분 회수</strong>
+- 남은 마일스톤 여력(공시 기준):
+  - BMS 신경계 표적: 최대 $482.0M 중 $32.0M 인식, 미인식분 $450.0M
+  - Lilly 면역 표적: 최대 $420.0M
+  - Ajax: 추가 임상·허가 마일스톤 및 에스크로
+- 실현 조건: 협업사의 임상 진척. 시점은 회사가 통제할 수 없습니다.
+- 검증 포인트: 분기별 마일스톤 인식 여부, Ajax 에스크로 해제 시점, 협업 신규 계약 여부</p>
+<p><strong>④ 플랫폼 확장(독성 예측)</strong>
+- 10-K는 "초기 신약개발 단계의 독성 위험을 예측하도록 플랫폼을 확장하는 이니셔티브"를 미래 전망 사항으로 명시했습니다.
+- 진척도는 공시상 확인 불가입니다.
+- 검증 포인트: 제품화 여부와 R&amp;D 비용 추이</p>
+<p><strong>⑤ 자체 파이프라인</strong>
+- 회사는 임상·전임상 자체 프로그램을 진행 중이라고 밝혔습니다.
+- 개별 후보물질과 일정은 제공 발췌에서 공시상 확인 불가입니다.
+- 검증 포인트: 임상 데이터 발표 일정과 기술이전(out-licensing) 여부</p>
+<h2>6. 리스크</h2>
+<p>※ 제공된 10-K 발췌가 미래전망 문구에서 끊겨 리스크 섹션(Item 1A) 원문은 확인할 수 없었습니다. 아래 리스크는 MD&amp;A와 지표에서 도출했습니다.</p>
+<ol>
+<li><strong>현금소진 지속</strong>
+   - TTM FCF -$130.3M, 영업이익률 <span class="down">-70.6%</span>입니다.
+   - 회사는 지분 매각과 공모를 자금원으로 써 왔다고 밝혔습니다. 현금 잔고가 확인되지 않은 상태에서는 추가 증자 가능성을 배제할 수 없습니다.
+   - 시가총액이 크게 오른 현 시점은 회사 입장에서 증자하기 좋은 구간이기도 합니다(추정).</li>
+<li><strong>소프트웨어 매출 역성장의 장기화</strong>
+   - 호스팅 전환이 회사 설명대로 "일시적 인식 시차"인지, 고객 지출 둔화가 섞여 있는지는 매출 <span class="down">-10%</span>만으로 구분할 수 없습니다.
+   - ACV와 매출의 괴리가 몇 분기 더 이어지면 시장 신뢰가 훼손될 수 있습니다.</li>
+<li><strong>신약개발 매출의 비반복성</strong>
+   - 총매출 성장은 신약개발 부문이 견인한 것으로 추정됩니다.
+   - 이 부문 매출은 협업사의 임상 결정에 달린 마일스톤 중심이라 분기 변동성이 크고 예측이 어렵습니다.
+   - Ajax 관련 유입($57.2M)도 반복되지 않는 수익입니다.</li>
+<li><strong>AI 신약개발 경쟁 심화</strong>
+   - CEO 스스로 "빠르게 변하는 AI 환경"을 언급했습니다. 물리 기반 플랫폼의 차별성이 생성형·데이터 기반 AI 경쟁자 대비 유지되는지가 핵심입니다.
+   - 경쟁 강도를 보여주는 정량 데이터는 공시상 확인 불가입니다.</li>
+<li><strong>기술적 과열</strong>
+   - 60일 <span class="up">+76.1%</span>, 52주 고점, 확인된 촉매 없음이 겹쳐 업종 동조가 되돌려질 때 하락 폭이 클 수 있습니다.
+   - limited common stock이 9,164,193주(2026-02-18 기준) 존재하나, 전환 조건 등 수급 영향은 공시상 확인 불가입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>긍정</td>
+<td>ACV <span class="up">+27%</span>(contribution 제외 <span class="up">+23%</span>), TTM ACV $208M, 영업이익률 <span class="up">+26.0%</span>p 개선, Ajax 현금 $57.2M 유입, 미인식 마일스톤 여력(BMS $450.0M, Lilly 최대 $420.0M)</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>소프트웨어 매출 <span class="down">-10%</span>, 총매출 QoQ <span class="up">+0.5%</span>, 영업이익률 <span class="down">-70.6%</span>, TTM FCF -$130.3M, 확인된 촉매 없이 60일 <span class="up">+76.1%</span></td>
+</tr>
+<tr>
+<td>유동성</td>
+<td>거래대금 $150.6M으로 기관이 비중을 싣는 데 제약은 크지 않습니다. 문제는 진입 가격과 타이밍입니다.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>현금 잔고와 runway:</strong> 2Q26 10-Q 재무상태표로 현금 및 유가증권을 확인하고, TTM FCF -$130.3M 기준으로 몇 년을 버틸 수 있는지 계산합니다. 증자 리스크를 정량화하는 단계입니다.
+2. <strong>2Q26 신약개발 매출 구성:</strong> Ajax 마일스톤 $10.0M 등 일회성 항목이 총매출에 얼마나 들어갔는지 분리합니다. 일회성을 빼고도 총매출이 성장했는지 확인하는 단계입니다.
+3. <strong>3Q26 ACV와 소프트웨어 매출 추이:</strong> ACV 성장률이 <span class="up">+20%</span> 이상 유지되는지, 소프트웨어 매출의 YoY 감소 폭이 줄어드는지 봅니다. 호스팅 전환 논리를 검증하는 단계입니다.</p>
+<p><strong>판단 변경 조건</strong>
+- <strong>보통 이상으로 올릴 조건</strong>
+  - 3Q26에 ACV 20%대 성장이 유지되고 소프트웨어 매출 감소 폭이 축소될 때
+  - 분기 영업손실의 추가 축소가 확인될 때
+  - 충분한 runway가 확인될 때(현금 잔고 기준 3년 이상)
+  - 주가가 단기 과열을 해소한 뒤 진입할 수 있을 때
+- <strong>회피로 내릴 조건</strong>
+  - ACV 성장률이 10%대 초반 이하로 둔화되면서 소프트웨어 매출도 계속 역성장할 때. 이 경우 전환 효과라는 설명의 근거가 약해집니다.
+  - 주가 고점 구간에서 유상증자나 전환사채(CB) 발행이 공시될 때
+  - 영업손실 개선이 멈추거나 다시 확대될 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000010/sdgr-20251231.htm">10-K — 2025-12-31_0001490978-26-000010</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000068/sdgr-20260630.htm">10-Q — 2026-06-30_0001490978-26-000068</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000037/sdgr-20260331.htm">10-Q — 2026-03-31_0001490978-26-000037</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000067/sdgr-20260630x8kxexx991.htm">8-K — 2026-08-05_0001490978-26-000067__EX-99.1__sdgr-20260630x8kxexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000067/sdgr-20260805.htm">8-K — 2026-08-05_0001490978-26-000067</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000059/sdgr-20260629.htm">8-K — 2026-06-29_0001490978-26-000059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/0001490978/000149097826000026/sdgr-20260427.htm">8-K — 2026-06-22_0001490978-26-000049__EX-99.1__sdgr-20260427</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1490978/000149097826000049/sdgr-20260622.htm">8-K — 2026-06-22_0001490978-26-000049</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

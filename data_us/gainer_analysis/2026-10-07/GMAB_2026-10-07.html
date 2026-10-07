@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GMAB — Genmab A/S ADS</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GMAB — Genmab A/S ADS</h1>
+<div class="sub">2026-10-07 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GMAB</span><span class="badge">+10.73%</span><span class="badge">거래량 4.58배</span><span class="badge">$4.94B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>촉매는 실체가 있다.</strong> 뉴스 헤드라인 기준으로 AbbVie와 공동 개발하는 Epkinly가 DLBCL 3상에서 긍정적 결과를 냈다. 같은 날 6-K(2026-10-05)도 제출됐다. 다만 6-K 본문은 제공되지 않아 1차 평가변수, 위험비(HR), 허가 신청 일정 같은 세부 수치는 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>재무 체력은 상위권이다.</strong> 분기 매출 $1.16B(YoY <span class="up">+24.9%</span>), 매출총이익률 92.7%, 영업이익률 35.2%, TTM 잉여현금흐름(FCF) $868.0M이다. 다만 영업이익률이 전년보다 3.7%p 낮아졌다.</li>
+<li><strong>제공된 시가총액 $4.94B는 오류일 가능성이 크다(추정).</strong> 20-F 표지에 따르면 ADS 1주는 보통주 1/10이다. 2026-09-08 EGM 소집공고상 자본금은 DKK 62,377,844(액면 DKK 1)이다. 이를 ADS로 환산하면 약 6.24억 주이고, 종가를 곱하면 실제 시가총액은 <strong>약 $24B</strong>로 계산된다. 따라서 FCF 수익률은 약 17.6%가 아니라 <strong>약 3.6%</strong> 수준이다. 밸류에이션이 싸다는 근거로 쓰면 안 된다.</li>
+<li><strong>20-F의 사업·MD&amp;A·리스크 본문이 발췌에 빠졌다.</strong> 그래서 매출 구성과 파트너 의존도를 검증할 수 없다. 52주 고점에서 10% 갭 상승한 직후라는 점도 감안해, 적극 비중보다는 분할 진입하는 보통 비중이 맞다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: Epkinly DLBCL 3상 긍정 결과 (뉴스 + 6-K 동반)</strong></p>
+<ul>
+<li><strong>뉴스 헤드라인 5건이 모두 같은 사건을 가리킨다.</strong> "Epkinly Shines In Phase 3 DLBCL Trial", "Genmab and AbbVie Phase 3 Trial Shows Epkinly Boosts DLBC…", "posts positive Phase 3 lymphoma data" 등이다.</li>
+<li><strong>6-K(2026-10-05) 제출 시점이 맞물린다.</strong> 본문이 제공되지 않아 내용은 확인할 수 없지만, 날짜상 3상 결과 발표 6-K일 가능성이 높다(추정).</li>
+<li><strong>SCHEDULE 13G(2026-10-05)는 보조 요인이다.</strong> 헤드라인 기준으로 한 운용사와 그 CIO가 각각 5% 초과의 <strong>수동적(passive)</strong> 지분을 보고했다. 신규 매수인지, 기존 보유분을 보고한 것인지는 확인할 수 없다. 당일 주가를 움직인 1차 촉매로 보기는 어렵다.</li>
+<li><strong>수급 측면을 보면 단순 테마성 반등은 아니다.</strong></li>
+<li>거래량은 20일 중앙값의 4.58배, 거래대금은 $477.3M이다.</li>
+<li>20일 수익률 <span class="up">+12.7%</span>, 60일 <span class="up">+31.3%</span>로 이미 오르던 추세에서 갭 상승해 52주 고점을 경신했다(고점 대비 0.0%).</li>
+<li>펀더멘털 이벤트를 기관 자금이 확인 매수한 흐름으로 해석한다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 20-F 발췌는 표지와 목차뿐이고 Item 4(사업)·Item 5(MD&amp;A) 본문은 없다. 아래 내용은 6-K 회사 소개 문구와 표지 정보에 근거한다.</p>
+</blockquote>
+<ul>
+<li><strong>회사 정체성</strong></li>
+<li>덴마크 법인으로 코펜하겐(Valby)에 본사가 있다.</li>
+<li>Nasdaq에는 ADS로 상장돼 있다(ADS 1주 = 보통주 1/10).</li>
+<li>재무제표는 <strong>IFRS(IASB)</strong> 기준으로 작성하며, Large accelerated filer이자 WKSI다.</li>
+<li><strong>제품과 기술</strong></li>
+<li>회사는 자사 과학 기술이 "8개의 승인된 항체 의약품"의 기반이 됐다고 밝혔다.</li>
+<li>이중항체, 항체-약물 접합체(ADC), 면역조절 항체 등을 개발하고 있다.</li>
+<li>상표로는 DuoBody, HexaBody, DuoHexaBody, HexElect, KYSO 등이 있다.</li>
+<li><strong>파트너십 구조</strong></li>
+<li>Epkinly는 AbbVie와 공동으로 진행 중이다(뉴스 헤드라인).</li>
+<li>파트너와의 이익 분배 구조와 지역별 판권은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>전략 전환</strong></li>
+<li>주주서한(EX-99.3)에서 회사는 과거 가치 창출이 "과학적 혁신과 발굴"에서 나왔다고 밝혔다.</li>
+<li>앞으로는 "후기 임상 실행, 글로벌 허가 획득, <strong>자체 항암제 출시</strong>"에 달려 있다고 밝혔다.</li>
+<li>즉 기술·파트너링 중심 모델에서 자체 상업화 모델로 옮겨가는 단계라고 회사 스스로 정의한다.</li>
+<li><strong>매출 구성, 고객군, 경쟁 위치</strong></li>
+<li>로열티, 협업 수익, 자체 제품 매출의 비중은 <strong>공시상 확인 불가</strong>다.</li>
+<li>매출총이익률 92.7%는 로열티·라이선스 비중이 높은 구조와 맞아떨어지지만, 이는 추정이다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$1.16B</td>
+<td>역산 시 전분기 약 $0.90B, 전년 동기 약 $0.93B (계산치)</td>
+</tr>
+<tr>
+<td>YoY / QoQ</td>
+<td>+24.9% / <span class="up">+28.9%</span></td>
+<td>전분기 대비 증가폭이 전년 대비보다 크다. 일회성 마일스톤 등이 포함됐을 가능성이 있다(추정, 확인 불가)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>92.7%</td>
+<td>원가 부담이 매우 낮은 수익 구조</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>35.2% (YoY <span class="down">-3.7%</span>p)</td>
+<td>매출이 25% 늘었는데도 마진이 하락했다. 비용이 매출보다 빠르게 늘었다는 뜻이다</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$868.0M</td>
+<td>자체 현금으로 R&amp;D와 상업화 투자를 감당할 수 있는 수준</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성장의 질(단가·물량·믹스)</strong></li>
+<li>품목별 매출과 로열티 기반 매출이 제공되지 않아 단가, 물량, 믹스로 분해할 수 없다(<strong>공시상 확인 불가</strong>).</li>
+<li>QoQ <span class="up">+28.9%</span>가 반복 가능한 매출인지 판별하는 것이 핵심 검증 과제다.</li>
+<li><strong>마진 방향성</strong></li>
+<li>매출 성장 속에서도 영업이익률이 <span class="down">-3.7%</span>p 하락했다.</li>
+<li>주주서한이 밝힌 "자체 출시·상업화" 전략이 판관비와 R&amp;D 증가로 나타나고 있을 가능성이 높다(추정).</li>
+<li>이 전환이 계속되는 동안은 마진 확대보다 유지·소폭 하락이 기본 시나리오다.</li>
+<li><strong>재무 건전성</strong></li>
+<li>현금, 차입금, 순현금 규모는 제공 자료에 없어 <strong>공시상 확인 불가</strong>다.</li>
+<li>다만 TTM FCF $868M를 감안하면 유동성 위험은 낮다고 판단한다.</li>
+<li><strong>주식 수 변화(계산·추정)</strong></li>
+<li>2025-12-31 보통주는 64,238,408주였고, 2026-09-08 자본금은 DKK 62,377,844(= 62,377,844주)다.</li>
+<li>약 186만 주(약 2.9%) 감소했다. 자사주 소각이 있었을 가능성이 있으나, 소각 공시는 제공되지 않았다.</li>
+<li><strong>밸류에이션 주의</strong></li>
+<li>위 주식 수로 계산한 실제 시가총액은 약 $24.0B다.</li>
+<li>제공된 $4.94B는 보통주 수와 ADS 수를 단순 합산한 값(약 1.29억 주 × $38.48)과 맞아떨어져, 집계 오류로 판단한다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Epkinly DLBCL 적응증 확대</strong> (3상 긍정, 뉴스 기준)</td>
+<td>1차 평가변수의 임상적 의미, 안전성, 허가 신청·승인</td>
+<td>10-05 6-K 원문에서 평가변수·HR·p값 확인. 학회 발표와 허가 신청 일정 공시. AbbVie와의 경제적 배분 구조</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>자체 후기 파이프라인 상업화</strong> (회사는 "wholly owned programs"를 진전시키고 있다고 밝힘)</td>
+<td>허가 획득과 미국 출시 역량 구축</td>
+<td>자체 제품 매출 항목의 등장·성장. 판관비 증가 속도 대비 매출 기여</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>기존 매출 기반의 성장 지속</strong> (YoY <span class="up">+24.9%</span>)</td>
+<td>기존 승인 항체 의약품의 매출 성장 지속</td>
+<td>다음 분기 QoQ 정상화 수준. 이번 분기 일회성 수익(마일스톤 등)이 있었는지 6-K·분기 보고서로 확인</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>주주환원 / 주식 수 감소</strong> (추정)</td>
+<td>FCF를 자사주 매입에 배분</td>
+<td>자사주 매입·소각 공시. 분기별 주식 수 추이</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>20-F 리스크 섹션 본문은 제공되지 않았다. 6-K 미래예측 진술 고지와 EGM 공시에서 실제로 의미 있는 항목만 골랐다.</p>
+</blockquote>
+<ol>
+<li><strong>파트너 의존과 이익 배분의 불투명성</strong>
+   - 회사는 "relationships with affiliated entities"를 주요 위험 요인으로 명시했다.
+   - Epkinly의 3상 성과가 GMAB 손익으로 얼마나 귀속되는지는 AbbVie와의 계약 구조에 달려 있는데, 이 구조는 확인할 수 없다.
+   - 헤드라인 수준의 호재가 손익에 반영되는 정도가 시장 기대보다 낮을 수 있다.</li>
+<li><strong>자체 상업화 전환에 따른 실행·마진 리스크</strong>
+   - 주주서한은 향후 가치가 출시와 상업화 실행에 달려 있다고 밝혔다.
+   - 그러면서 해당 역량을 가진 인재 풀은 "small and highly competitive"하다고 스스로 인정했다.
+   - 이미 영업이익률이 YoY <span class="down">-3.7%</span>p 하락했고, 출시 비용이 커지면 하락폭이 커질 수 있다.</li>
+<li><strong>임상·허가 불확실성</strong>
+   - 회사는 임상 결과와 예상치 못한 안전성 이슈를 위험 요인으로 명시했다.
+   - 이번 3상의 세부 데이터가 확인되지 않은 상태라 학회 발표나 FDA 심사 단계에서 기대가 수정될 수 있다.</li>
+<li><strong>지배구조 마찰</strong>
+   - 2026-03-19 정기주총에서 이사회 보수안이 <strong>철회</strong>됐고, 2026-10-07 임시주총에서 다시 상정됐다.
+   - 회사는 일부 주주와 의결권 자문사의 이견이 "남아 있을 수 있다"고 밝혔다.
+   - 보수 수준과 RSU 구조를 유지한 채 상정했으므로 부결되거나 반대율이 높으면 기관 스튜어드십 측면에서 부담이 된다.</li>
+<li><strong>데이터·통화 리스크</strong>
+   - IFRS 기준 외국 발행사(20-F/6-K)라 미국 10-Q처럼 분기 공시가 비교 가능하지 않다.
+   - 보고통화와 DKK·USD 환율 노출은 <strong>공시상 확인 불가</strong>다.
+   - 스크리닝 지표 중 시가총액이 이미 왜곡돼 있어, 다른 파생 지표도 다시 검증해야 한다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>성장과 수익성:</strong> 매출 YoY <span class="up">+24.9%</span>, 영업이익률 35.2%, 매출총이익률 92.7%로 대형 바이오 중 상위 수준의 수익성이다.
+- <strong>현금창출력:</strong> TTM FCF $868M이며, 실제 시가총액(계산치 약 $24B) 기준 FCF 수익률은 약 3.6%다. 저평가 근거는 아니지만 자체 현금으로 투자를 감당할 수 있다.
+- <strong>수급:</strong> 거래량 4.58배, 거래대금 $477M, 52주 신고가로 이벤트가 기관 수급으로 확인됐다.
+- <strong>'적극'이 아닌 이유:</strong> 매출 구성, 3상 세부 데이터, 파트너 경제성이라는 세 가지 핵심 변수가 모두 제공 자료로 확인되지 않는다. 또 마진이 내려가는 국면이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-05 6-K 원문:</strong> Epkinly 3상의 평가변수, 효과 크기, 안전성, 허가 신청 계획을 확인한다.
+2. <strong>20-F Item 4·5와 최근 분기 6-K:</strong> 매출을 로열티, 협업 수익, 자체 제품으로 나눈 구성과 상위 품목 집중도를 본다. 최근 분기 QoQ <span class="up">+28.9%</span>에 일회성 마일스톤이 포함됐는지도 확인한다.
+3. <strong>10-07 임시주총 결과:</strong> 이사회 보수안 가결 여부와 반대율을 확인하고, 시가총액·주식 수 데이터를 바로잡아 밸류에이션을 다시 계산한다.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 3상 세부 데이터에서 임상적 효과가 미미하거나, 새로운 안전성 시그널이 나오는 경우
+- 이번 분기 매출 급증이 일회성 수익이라서 다음 분기 매출이 YoY 한 자릿수 성장으로 둔화되는 경우
+- 영업이익률이 30% 아래로 떨어지는데도 자체 제품 매출이 가시화되지 않는 경우
+- 임시주총에서 보수안이 부결되거나 높은 반대율로 지배구조 리스크가 커지는 경우
+- 주가가 52주 신고가 갭을 메우며 오늘 거래량(4.58배)을 웃도는 매도 거래량이 나오는 경우. 이 경우 이벤트 소멸로 판단한다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000014/gmab-20251231_d2.htm">20-F — 2025-12-31_0001434265-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab_20260908xex99d3.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.3__gmab_20260908xex99d3</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab20260908xex99d2.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.2__gmab20260908xex99d2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab_20260908xex99d1.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.1__gmab_20260908xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab_20260908x6k.htm">8-K — 2026-09-08_0001434265-26-000116</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000102/gmab_20260715xex99d1.htm">8-K — 2026-07-15_0001434265-26-000102__EX-99.1__gmab_20260715xex99d1</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
