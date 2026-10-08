@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDS — GDS Holdings Limited ADS</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GDS — GDS Holdings Limited ADS</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GDS</span><span class="badge">+5.94%</span><span class="badge">거래량 2.95배</span><span class="badge">$6.22B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>수주는 뚜렷하게 좋아졌습니다.</strong> 2Q26 신규 부킹은 260MW, 상반기 누적은 470MW로 사상 최대입니다. 회사는 연간 부킹 목표를 500MW에서 1GW로 두 배 올렸다고 밝혔습니다. 백로그도 연초 450MW에서 757MW로 늘었습니다.</li>
+<li><strong>손익과 현금흐름은 아직 따라오지 못했습니다.</strong> 매출은 YoY 6.5% 늘었지만 Adj. EBITDA는 2.5% 증가에 그쳤고, 매출총이익률은 23.8%에서 21.5%로 내려갔습니다. TTM FCF는 -$854.8M이고, 회사는 CapEx 가이던스를 RMB 9B에서 10B로 올렸습니다. 회사 스스로도 입주(move-in) 증가가 실적에 반영되는 시점을 <strong>2027년 하반기</strong>로 보고 있습니다.</li>
+<li><strong>오늘 상승에는 확인된 촉매가 없습니다.</strong> 신규 공시가 없고 뉴스도 주가 움직임만 다룬 기사뿐입니다. 거래량이 2.95배로 늘었지만 20일·60일 수익률은 거의 변하지 않아 추세가 바뀌었다고 보기는 어렵습니다.</li>
+<li>결론적으로 지금은 중립 비중이 맞다고 봅니다. <strong>3Q26 부킹과 예약(reservation) 증가가 확인되면</strong> 비중을 늘리는 방식을 권합니다. 시장 지표 표의 '최근 분기 매출 $3.09B'는 실제로는 <strong>RMB 3,088.0M(US$455.1M)</strong>입니다. 통화 단위가 잘못 붙은 것으로 보이니 주의가 필요합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 안에 SEC 공시(6-K)가 없습니다. 가장 최근 공시는 9/4 홍콩 반기보고서인데, 8/13 실적 내용을 다시 정리한 문서입니다.</li>
+<li>뉴스 헤드라인은 옵션 시장의 큰 변동 베팅 기사(Zacks), 장중 <span class="up">+8.2%</span> 급등 기사(MarketBeat), Wall Street Zen의 등급 상향(Hold), 밸류 평가 기사뿐입니다. 회사의 펀더멘털이 바뀌었다는 뉴스는 없습니다.</li>
+<li>(추정) 옵션 수요 증가와 장중 급등 기사가 함께 나온 점을 보면 파생상품 쪽 수급이나 중국 AI 인프라 섹터 동조가 원인일 수 있습니다. 다만 제공 자료로는 확인할 수 없습니다.</li>
+<li>다음 촉매로 볼 만한 것은 CEO가 8/13 실적콜에서 "이번 분기(3Q)에 주요 고객과 추가 대형 수주를 확보하는 중"이라고 언급한 부분입니다. 이 내용이 3Q 실적 발표에서 확인되는지가 핵심입니다. 오늘 상승이 이를 미리 반영한 것인지는 확인할 수 없습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>사업 내용:</strong> 회사는 20-F와 실적 보도자료에서 자신을 "중국의 고성능 데이터센터 개발·운영사"로 소개합니다. 고객과 장기 계약을 맺고 데이터센터 상면과 전력 용량을 임대하는 구조입니다. 시장 지표 표의 산업 분류(Computer Software)는 실제 사업과 맞지 않습니다.</li>
+<li><strong>계약 구조:</strong> 실적콜에서 설명된 내용입니다.</li>
+<li>모든 판매계약에 구속력 있는 take-or-pay 약정이 들어가며, 회사는 이를 부킹으로 공시합니다.</li>
+<li>부킹 후 최대 4분기 안에 인도하고, 이후 보통 4분기 동안 램프업 기간을 둡니다.</li>
+<li>같은 계약서 안에 해당 부지의 향후 용량을 고객용으로 묶어두는 <strong>예약</strong> 조항이 함께 들어갑니다. 예약은 take-or-pay가 아닙니다.</li>
+<li><strong>고객군:</strong> 실적콜에 따르면 상반기 부킹에서 "3대 하이퍼스케일 고객 모두로부터 대규모 신규 수주"를 받았고, 신흥 AI 기업들과도 관계를 쌓기 시작했습니다. 고객별 매출 비중은 공시상 확인할 수 없습니다.</li>
+<li><strong>지역 구성:</strong> 상반기 부킹의 약 절반은 기존 시장(1선 도시권), 나머지 절반은 신규 시장(내몽골 울란차브·호린거, 광둥 샤오관)에서 나왔습니다. 장쑤 창수 캠퍼스는 고객 협의가 진행 중이라고 언급됐습니다.</li>
+<li><strong>규모(2Q26 보도자료):</strong></li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서비스 중 면적</td>
+<td>684,977 sqm</td>
+<td>618,060 sqm</td>
+<td>+10.8%</td>
+</tr>
+<tr>
+<td>사용 면적</td>
+<td>542,236 sqm</td>
+<td>479,186 sqm</td>
+<td>+13.2%</td>
+</tr>
+<tr>
+<td>확약+사전확약 면적</td>
+<td>784,802 sqm</td>
+<td>663,959 sqm</td>
+<td>+18.2%</td>
+</tr>
+<tr>
+<td>가동률</td>
+<td>79.2%</td>
+<td>77.5%</td>
+<td>+1.7%p</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>자산 회수(monetization):</strong> 20-F에 따르면 CITIC Securities를 통해 데이터센터 ABS 스킴을 만들었습니다. 기관투자자가 70%, GDS가 30%를 인수했습니다.</li>
+<li><strong>경쟁 위치:</strong> CEO는 실적콜에서 GDS가 "시장 리더"이고, 정부가 전력 쿼터를 시장 선도 기업에 더 많이 배분하고 있다고 주장했습니다. 경쟁사 대비 점유율은 공시상 확인할 수 없습니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>2Q26 손익(보도자료)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순매출</td>
+<td>RMB 3,088.0M</td>
+<td>RMB 2,900.3M</td>
+<td>+6.5%</td>
+</tr>
+<tr>
+<td>매출원가</td>
+<td>RMB 2,423.7M</td>
+<td>RMB 2,211.4M</td>
+<td>+9.6%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>21.5%</td>
+<td>23.8%</td>
+<td>-2.3%p</td>
+</tr>
+<tr>
+<td>Adj. GP 마진</td>
+<td>48.5%</td>
+<td>52.0%</td>
+<td>-3.5%p</td>
+</tr>
+<tr>
+<td>Adj. EBITDA</td>
+<td>RMB 1,406.0M</td>
+<td>RMB 1,371.8M</td>
+<td>+2.5%</td>
+</tr>
+<tr>
+<td>Adj. EBITDA 마진</td>
+<td>45.5%</td>
+<td>47.3%</td>
+<td>-1.8%p</td>
+</tr>
+<tr>
+<td>순이자비용</td>
+<td>RMB 366.8M</td>
+<td>RMB 405.0M</td>
+<td>-9.4%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>RMB 837.6M</td>
+<td>-RMB 70.6M</td>
+<td>흑자전환</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 사용 면적이 13.2% 늘었는데 매출은 6.5%만 늘었습니다. 단순 계산하면 사용 면적당 매출이 약 6% 줄었습니다(1.065/1.132). (추정) 단가가 낮은 신규 시장과 대형 도매형 계약 비중이 늘어난 영향일 수 있습니다. 회사가 MSR 변동 원인을 따로 밝힌 부분은 제공 발췌에 없습니다.
+- 회사는 매출총이익률 하락이 "매출 대비 전력비(utility cost) 비중 상승" 때문이라고 밝혔습니다.
+- 매출 QoQ <span class="down">-8.3%</span>의 원인은 공시상 확인할 수 없습니다. 1Q 실적콜에서 CFO가 "일회성 항목을 제외하면" 매출 7.9% 성장이라고 말한 점을 보면, 1Q 매출에 일회성 요인이 있었을 가능성이 있습니다(추정).
+- 판관비는 줄었습니다. 판매비(SBC 제외)는 <span class="down">-21.7%</span>였습니다. 일반관리비(조정 기준)는 <span class="down">-24.4%</span>였는데, 회사는 대손충당금 감소와 장비 처분이익을 이유로 밝혔습니다. 비용 통제 효과가 일부 있지만, 처분이익은 반복되기 어려운 요인입니다.</p>
+<p><strong>이익의 질</strong>
+- 보도자료의 비용 항목으로 계산한 영업이익은 약 RMB 439M입니다. 이 값은 시장 지표의 영업이익률 14.2%와 맞습니다.
+- 여기에 이자비용 366.8M, 기타 17.8M, 환차익 1.0M을 반영하면 세전이익은 약 RMB 91M이어야 합니다. 그런데 순이익 837.6M에 법인세 213.5M을 더한 실제 세전이익은 약 RMB 1,051M입니다. <strong>약 RMB 9.6억의 영업외 이익</strong>이 있다는 뜻인데, 무슨 항목인지는 제공 발췌에서 확인할 수 없습니다. 법인세 급증 이유 문장도 발췌에서 잘렸습니다.
+- 따라서 순이익 흑자전환을 경상적 개선으로 보면 안 됩니다. 경상 체력은 Adj. EBITDA <span class="up">+2.5%</span>로 보는 것이 맞습니다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 -$854.8M이고, 2026년 CapEx 지급 가이던스는 RMB 10B로 올랐습니다. 하반기 지출이 대부분이어서 FCF 적자는 더 커질 수 있습니다.
+- 보유 현금은 실적콜 기준 "약 RMB 20B"입니다. 1Q 콜에서는 $2.7B라고 했습니다. 2Q 중 신규 차입과 리파이낸싱은 RMB 4.9B였습니다.
+- 이자보상 여력은 낮습니다.
+  - 영업이익 기준으로 2Q 이자보상배율은 약 1.2배(439/366.8)입니다.
+  - Adj. EBITDA 기준으로는 약 3.8배입니다.
+- 총차입금, 순차입금, 만기 구조는 제공 발췌에서 공시상 확인할 수 없습니다. 그래서 EV/EBITDA도 계산할 수 없습니다. 참고로 Adj. EBITDA를 연환산하면 약 US$829M(207.2×4)이고, 시가총액은 $6.22B입니다.
+- 20-F 표지 각주에 "delta placement로 발행한 6,000,000 ADS를 인수인 계열사에 대여"했다는 내용이 있습니다. (추정) 전환사채 같은 주식연계 자금조달과 관련된 구조일 가능성이 있습니다. 구체 조건은 공시상 확인할 수 없습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축(회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>연간 부킹 1GW.</strong> 회사는 상반기 470MW를 달성했고 연간 목표를 1GW로 올렸다고 밝힘</td>
+<td>하반기에 약 530MW가 더 필요함. 3Q 대형 수주가 실제로 확정돼야 함</td>
+<td>3Q 부킹이 최소 250MW 이상인지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>백로그의 EBITDA 전환.</strong> CFO는 백로그 757MW에서 MW당 RMB 2.2M, 합계 약 RMB 1.6B의 Adj. EBITDA가 나온다고 추정함. 이는 현재 연환산 Adj. EBITDA 약 RMB 5.6B의 약 29%에 해당함</td>
+<td>인도 일정 준수, 램프업 지연 없음, 가격 유지</td>
+<td>분기 순입주 MW. 회사는 하반기 90MW, 2026년 연간 235MW를 제시함</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>2027년 입주 두 배 이상.</strong> 회사는 2027년 입주가 2026년의 두 배를 넘고 하반기에 집중된다고 밝힘</td>
+<td>국산 AI 칩 공급. 1Q 콜 기준 2026년 전망은 수입 칩 없이 국산 칩만 가정함</td>
+<td>4Q 발표 때 제시될 2027년 가이던스(매출·EBITDA)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>예약의 부킹 전환.</strong> 연내 1GW 넘는 예약을 확보하겠다고 밝힘. 현재 확약은 2GW 이상, 예약은 600MW</td>
+<td>예약은 법적 구속력이 없음. 실제 전환율이 중요함</td>
+<td>기존 예약에서 부킹으로 바뀐 MW를 공시하는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>투자수익률 유지.</strong> 회사는 MW당 CapEx 약 RMB 20M, 안정화 시 현금수익률 10~11%, 증분 ROE 약 20%를 제시함</td>
+<td>단가가 안정되고 전력비가 통제돼야 함</td>
+<td>Adj. GP 마진이 48.5%에서 더 떨어지는지</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>자금조달.</strong> 프로젝트 단위로 부채 60%, 자본 40%를 쓰고, 부족분은 현금·영업현금흐름·ABS 등 자산 회수로 메운다고 밝힘</td>
+<td>중국 국내 은행 대출이 계속 우호적이어야 함. 자산 회수 거래가 이어져야 함</td>
+<td>순차입 증가 폭, 추가 ABS·REIT 거래, 주식 희석 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법의 변화</strong>
+- 1Q 콜(5/20)에서 회사는 "부킹 500MW 이상, 연 500~800MW, 3년간 RMB 30~50B 투자"를 제시했습니다. 2Q 콜(8/13)에서는 "1GW로 자신 있게 상향", "AI가 우리 사업을 바꾸고 있다", "사상 최강의 영업 모멘텀"이라고 말했습니다. 한 분기 만에 목표가 두 배가 됐고 톤도 크게 강해졌습니다.
+- 그러면서도 두 콜 모두 "고객과 계약 조건은 선별한다", "재무 규율을 지킨다"는 말을 반복했습니다. 성장 속도를 높이면서 수익성 우려를 미리 막으려는 화법으로 읽힙니다.
+- 실적 지표는 MW당 EBITDA와 수익률(yield) 중심으로 설명했습니다. CFO는 "MSR은 개발비와 함께 봐야 한다"고 했는데, 단가 하락 논란을 수익률 프레임으로 돌리려는 것으로 해석할 수 있습니다(해석).</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>부킹과 예약의 정의:</strong> Jefferies가 확인을 요청했습니다. CFO는 예약이 MOU와 다르고 같은 계약서 안에 있다고 답했습니다. CEO는 "최근 12~18개월 동안 고객이 예약을 100% 행사했다"고 했는데, 이 기록은 기간이 짧고 독립적으로 검증할 수 없습니다.
+- <strong>2027~2028년 매출·EBITDA 경로:</strong> Goldman이 물었습니다. CFO는 연간 가이던스는 3월에 준다며 수치를 내놓지 않았습니다. 대신 "2028년에는 고성장 기업이 될 것"이라는 정성적 답변만 했습니다. 2027년 상반기 실적이 계속 약할 수 있다는 점을 사실상 인정한 셈입니다.
+- <strong>GPU와 CPU 비중:</strong> CEO는 "정확한 수치는 없고 대략 50:50"이며, 국산 칩 공급이 늘면 내년에는 GPU 비중이 다소 높아질 것이라고 답했습니다. 정량 근거는 부족합니다.
+- <strong>신규 사업 모델과 자원:</strong> Macquarie가 Neocloud 진출을, BofA가 전력·부지 확보를 물었습니다. 회사는 Neocloud와는 관계를 쌓는 중이고 아직 거래는 없다고 답했습니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 백로그 757MW에서 MW당 RMB 2.2M, 합계 약 RMB 1.6B의 미청구 EBITDA
+- 입주 실적과 계획: 상반기 145MW, 하반기 90MW, 2027년 두 배 이상
+- 미확약·미예약 개발 가능 용량 약 3GW. 대부분 신규 시장에 있음
+- 1Q 콜 기준 확보 부지 약 4GW
+- 전력 쿼터 승인 절차: 시 정부에서 시작해 성 NDRC를 거쳐 중앙 NDRC에서 최종 승인. CEO는 정부가 시장 리더에게 배분을 몰아준다고 언급함
+- 2026년 입주 전망은 수입 칩 없이 국산 칩만 가정함(1Q 콜)</p>
+<h2>6. 리스크</h2>
+<p>제공된 20-F 발췌는 표지와 용어 정의까지만 포함합니다. Item 3.D 리스크 요인 원문은 들어 있지 않아서, 아래 내용은 제공된 공시와 실적콜에서 확인되는 사실에 근거했습니다.</p>
+<ol>
+<li><strong>현금 소진과 차입 확대:</strong> TTM FCF -$854.8M에 연간 CapEx RMB 10B가 겹칩니다. 회사는 3년간 RMB 30~50B 투자를 밝혔습니다. 영업이익 기준 이자보상배율은 약 1.2배로 얇습니다. 국내 은행의 대출 태도가 바뀌거나 자산 회수 거래가 막히면 주식으로 자금을 조달할 수 있습니다(delta placement 이력 참고).</li>
+<li><strong>단가와 마진 하락:</strong> 사용 면적 증가(<span class="up">+13.2%</span>)보다 매출 증가(<span class="up">+6.5%</span>)가 느리고, 회사도 전력비 비중 상승으로 GP 마진이 2.3%p 떨어졌다고 밝혔습니다. 신규 시장 비중이 50%로 커지면서 이 흐름이 굳어질 수 있습니다.</li>
+<li><strong>이익의 질:</strong> 2Q 순이익 RMB 837.6M에는 영업단으로 설명되지 않는 약 RMB 9.6억이 포함돼 있습니다(계산). 법인세도 RMB 64.9M에서 213.5M으로 급증했습니다. 이 순이익을 기준으로 밸류에이션을 잡으면 왜곡됩니다.</li>
+<li><strong>고객 집중과 칩 공급:</strong> 성장의 상당 부분이 3대 하이퍼스케일 고객에 달려 있습니다(실적콜). 입주 일정은 국산 AI 칩 공급에 연동됩니다. 고객의 CapEx 축소나 칩 공급 차질은 곧바로 램프업 지연으로 이어집니다.</li>
+<li><strong>지배구조와 규제:</strong> 반기보고서에 따르면 Mr. Huang이 Class B 43,590,336주를 보유하고 있습니다. Class B는 이사 과반(6인) 선임·해임과 정관 변경에 주당 50표를 행사합니다. 같은 문서의 자동 전환 조건에 VIE 구조와 외국인투자법(FIL) 관련 문구가 있어, VIE 구조에 의존하고 있다는 점도 확인됩니다. 또한 전력 쿼터는 중앙 NDRC가 최종 승인하므로 정책 변화에 노출돼 있습니다(실적콜).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>긍정</td>
+<td>상반기 부킹 470MW(1Q 콜 시점의 연간 목표 500MW에 거의 도달). 백로그 757MW(연초 대비 <span class="up">+68%</span>). 확약+사전확약 면적 <span class="up">+18.2%</span>. 가동률 79.2%(<span class="up">+1.7%</span>p). 순이자비용 <span class="down">-9.4%</span>. 보유 현금 약 RMB 20B</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>매출 <span class="up">+6.5%</span>, Adj. EBITDA <span class="up">+2.5%</span>로 백로그 증가보다 훨씬 느림. GP 마진 <span class="down">-2.3%</span>p. TTM FCF -$854.8M. CapEx 가이던스 상향. 입주 효과는 2027년 하반기에야 반영</td>
+</tr>
+<tr>
+<td>가격</td>
+<td>52주 고점 대비 <span class="down">-34.7%</span>로 기대감이 일부 빠진 상태. 다만 순차입금을 알 수 없어 EV 기준 밸류에이션은 판단할 수 없음</td>
+</tr>
+<tr>
+<td>오늘</td>
+<td>촉매가 없는 2.95배 거래량 증가. 추세 전환 신호로 보기에는 근거가 약함</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q26 부킹 규모:</strong> CEO가 언급한 "이번 분기 대형 수주"가 연 1GW 목표에 맞게 진행되는지 봐야 합니다. 3Q 누적 700MW 이상이면 목표 달성 경로가 보인다고 판단할 수 있습니다.
+2. <strong>2Q 영업외 이익의 정체와 순차입금:</strong> 홍콩 반기보고서(9/4 6-K) 본문에서 영업외 이익 약 RMB 9.6억의 구성과 총차입금·만기 구조를 확인해야 합니다. 이걸 알아야 EV/EBITDA를 계산할 수 있습니다.
+3. <strong>단가 추세:</strong> 3Q 보도자료에서 MSR(월 서비스 매출)과 Adj. GP 마진이 48.5%에서 더 내려가는지 봐야 합니다. 사용 면적과 매출 성장률의 격차가 좁혀지는지도 함께 확인합니다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>관망 또는 회피로 낮출 조건:</strong>
+  - 3Q 부킹이 150MW에 못 미치거나 회사가 1GW 목표를 다시 낮춤
+  - 예약이 부킹으로 바뀌지 않거나 고객이 예약을 취소했다는 언급이 나옴
+  - 하반기 입주 90MW 가이던스가 하향되거나 국산 칩 공급 문제로 인도가 지연됨
+  - Adj. EBITDA 마진이 45% 아래로 더 떨어지거나 단가가 하락했다는 언급이 나옴
+  - 대규모 주식 희석, 전환사채 추가 발행, 국내 대출 조건 악화가 확인됨
+- <strong>적극으로 높일 조건:</strong> 3Q 부킹이 목표 경로를 넘고, Adj. GP 마진이 안정되고, 자산 회수 거래(ABS·REIT)로 자본을 회수해 순차입 증가가 통제되는 것이 함께 확인되는 경우입니다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926051006/gds-20251231x20f.htm">20-F — 2025-12-31_0001104659-26-051006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926105234/tm2624826d1_ex99-1.pdf">8-K — 2026-09-04_0001104659-26-105234__EX-99.1__tm2624826d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926105234/tm2624826d1_6k.htm">8-K — 2026-09-04_0001104659-26-105234</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926095498/tm2621440d1_ex99-1.htm">8-K — 2026-08-13_0001104659-26-095498__EX-99.1__tm2621440d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926095498/tm2621440d1_6k.htm">8-K — 2026-08-13_0001104659-26-095498</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1526125/000110465926088432/tm2621590d1_ex99-2.htm">8-K — 2026-07-30_0001104659-26-088432__EX-99.2__tm2621590d1_ex99-2</a></li>
+<li>Transcript — 2026-08-13 GDS Holdings Limited (GDS) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-20 GDS Holdings Limited (GDS) Q1 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

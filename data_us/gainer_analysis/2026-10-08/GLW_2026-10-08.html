@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLW — Corning Incorporated Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GLW — Corning Incorporated Common Stock</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GLW</span><span class="badge">+6.02%</span><span class="badge">거래량 1.18배</span><span class="badge">$145.55B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>좋은 점.</strong> 펀더멘털은 강합니다. Q2'26 core 매출은 $4.74B(<span class="up">+17%</span> YoY)입니다. Optical Communications 매출은 $2B를 넘어 <span class="up">+32%</span> 성장했고 Enterprise는 <span class="up">+65%</span>입니다. Meta(최대 $6B)·NVIDIA·Amazon과 다년 계약을 맺어 수요 가시성이 높습니다(실적콜·투자자 행사 발언).</li>
+<li><strong>걸리는 점 ① 촉매 부재.</strong> 오늘 <span class="up">+6.02%</span> 상승은 공시가 뒷받침하지 않습니다. 거래량도 20일 중앙값의 1.18배에 그쳐 '급증'으로 보기 어렵습니다. 하락 추세(60일 <span class="down">-13.0%</span>, 52주 고점 대비 <span class="down">-33.9%</span>) 속 기술적 반등일 가능성이 큽니다.</li>
+<li><strong>걸리는 점 ② 공급 부담.</strong> 2026-09-11 8-K로 최대 $2B 규모 ATM 유상증자 프로그램이 개시되었습니다. 시가총액의 약 1.4%로, 반등 구간마다 매도 물량이 나올 수 있습니다.</li>
+<li><strong>걸리는 점 ③ 밸류에이션.</strong> 최근 분기 GAAP 매출을 연환산하면 PSR 약 8.1배, TTM FCF 수익률은 약 1.6%입니다(제공 지표로 계산). 성장 계획(Springboard)이 계획대로 실현된다는 전제가 이미 상당 부분 가격에 들어 있습니다.</li>
+<li><strong>결론.</strong> 기존 보유분은 유지하는 수준이 적절합니다. 의미 있는 추가 비중은 Q3 실적에서 다음을 확인한 뒤에 싣는 것을 권고합니다.</li>
+<li>연말 매출 run-rate $20B 경로</li>
+<li>GAAP와 core 마진 격차 축소</li>
+<li>ATM 실제 집행 규모</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없습니다.</li>
+<li><strong>뉴스:</strong></li>
+<li>가장 근접한 재료는 "Jim Cramer가 대폭 하락 이후 Corning의 광섬유 스토리를 지지" 헤드라인입니다. 다만 펀더멘털 정보가 아닌 의견성 재료입니다.</li>
+<li>분기 배당 $0.28 선언(기준일 11/13)은 정례 이벤트라 촉매로 보기 어렵습니다.</li>
+<li><strong>가격 흐름:</strong></li>
+<li>전일(10/7) <span class="down">-3.39%</span> 하락 직후의 반등입니다.</li>
+<li>거래량 배수 1.18배로 대형 기관의 신규 매수가 몰렸다고 볼 근거는 약합니다.</li>
+<li>따라서 낙폭 과대 반등이나 AI 인프라·광통신 섹터 동조 흐름으로 추정합니다. 섹터 동조 여부는 제공 자료로는 <strong>공시상 확인 불가</strong>입니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K(FY2025) 기준으로 Corning은 5개 보고 부문을 운영하며 14개국에서 생산합니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>주요 제품</th>
+<th>고객/용처</th>
+<th>2025 부문매출 비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optical Communications</td>
+<td>광섬유(SMF-28e Contour, Vascade 등), 케이블(RocketRibbon, Contour Flow), 커넥티비티(Edge8, Evolv)</td>
+<td>Carrier(통신사·FTTH·DCI), Enterprise(하이퍼스케일 데이터센터)</td>
+<td>38%</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>LCD/OLED용 유리기판(EAGLE XG, Astra, Lotus NXT), Gen 10.5</td>
+<td>패널 제조사(중국·한국·대만 생산)</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>Specialty Materials</td>
+<td>Gorilla Glass, 반도체 장비용 광학소재, 항공·방산 광학</td>
+<td>모바일 OEM(Apple 등), 반도체 장비</td>
+<td>공시상 확인 불가(발췌 절단)</td>
+</tr>
+<tr>
+<td>Automotive</td>
+<td>배기정화 세라믹, 자동차용 유리</td>
+<td>완성차·트럭</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>Life Sciences</td>
+<td>실험·바이오프로세스 소모품</td>
+<td>제약·연구기관</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치</strong>
+- 10-K는 다음을 핵심 해자로 제시합니다.
+  - 1970년 저손실 광섬유 최초 발명
+  - 독자 개발한 퓨전 공정("가장 비용 효율적이라고 믿는다", 회사 주장)
+  - 광범위한 특허 포트폴리오
+- 10-K는 AI가 데이터센터 내부·데이터센터 간 광섬유·커넥티비티 수요를 강하게 끌어올리고 있다고 명시합니다.
+- COO는 J.P. Morgan 컨퍼런스에서 다음과 같이 언급했습니다.
+  - "노스캐롤라이나에 세계 최대·최저원가 광섬유 공장을 보유"
+  - "반도체급 폴리실리콘을 생산하는 유일한 미국 기업"
+  - 이는 회사 주장이며 SEC 원문으로 검증되지 않았습니다.</p>
+<p><strong>믹스 변화 (계산)</strong>
+- Q2'26 OC 매출 $2B 이상 ÷ core 매출 $4.74B = 약 42% 이상입니다.
+- 2025년 38%에서 OC 비중이 높아지고 있어, 회사는 사실상 AI 광연결 기업으로 재편되고 있습니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적: GAAP vs core 비교</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>제공 지표(GAAP 추정)</th>
+<th>실적콜(core, Q2'26)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$4.50B (YoY <span class="up">+16.6%</span>, QoQ <span class="up">+8.7%</span>)</td>
+<td>$4.74B (<span class="up">+17%</span>)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>36.1%</td>
+<td>39.6% (+120bp)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>15.5% (<span class="up">+0.7%</span>p)</td>
+<td>20.9% (+190bp)</td>
+</tr>
+<tr>
+<td>EPS</td>
+<td>공시상 확인 불가</td>
+<td>$0.78 (<span class="up">+30%</span>)</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>—</td>
+<td>14.9% (+180bp)</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>TTM $2.40B</td>
+<td>분기 $1.42B</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 성장은 주로 물량과 믹스에서 나왔습니다(실적콜에서 언급).
+  - Enterprise 매출은 $1.27B로 <span class="up">+65%</span>입니다.
+  - GenAI 제품 매출은 약 2배가 되었습니다.
+  - 현재 매출은 전부 scale-out이며, scale-up과 Photonics는 아직 반영되지 않았습니다.
+  - OC 순이익은 $438M(<span class="up">+77%</span>)로 매출 증가율(<span class="up">+32%</span>)을 크게 웃돌았습니다. 영업 레버리지와 믹스 개선이 확인되는 대목입니다.
+- 단가(ASP) 기여는 <strong>공시상 확인 불가</strong>입니다.
+  - CFO는 "가격을 제대로 받고, 가치사슬 위로 올라가고, 솔루션 판매를 늘리겠다"고 방향성만 밝혔습니다.
+- Carrier는 Q2 단일 분기로는 부진했습니다. 다만 회사는 상반기 누계 기준 약 <span class="up">+17%</span>(약 $0.25B)라며 고객 타이밍 문제라고 설명했습니다(실적콜).
+- 태양광은 매출 <span class="up">+90%</span>였으나 웨이퍼 공장의 장기 정비와 설비 업그레이드가 있었습니다. 회사는 "Q3 매출·수익성 개선을 기대"한다고 밝혔습니다.</p>
+<p><strong>마진: GAAP–core 격차가 핵심 관찰 포인트</strong>
+- core 영업이익률은 20.9%, GAAP는 15.5%로 약 5.4%p 차이가 납니다.
+- 회사는 차이 요인으로 다음을 들었습니다.
+  - 헤지 대상 익스포저 조정(엔화 등)
+  - 비현금성 일회성 세금 항목
+  - 구조조정·손상차손
+- 즉 회사가 강조하는 수익성은 조정 지표 기준입니다. GAAP 영업이익률 개선폭(<span class="up">+0.7%</span>p)은 core(+190bp)보다 훨씬 작습니다.</p>
+<p><strong>현금흐름 — 확인이 필요한 불일치</strong>
+- TTM FCF는 $2.40B인데 실적콜이 밝힌 Q2 단일 분기 FCF는 $1.42B입니다. 나머지 3개 분기 합계가 약 $0.98B에 불과하다는 뜻입니다.
+- NVIDIA의 "수십억 달러 규모 선급금"(CFO 발언) 같은 고객 선수금이 Q2에 일부 들어왔을 가능성이 있습니다. 이는 <strong>추정</strong>입니다.
+- 선수금이 원인이라면 FCF는 일회성으로 부풀려진 것입니다. 이후 설비투자(capex) 집행 시점에는 FCF가 줄어들 수 있습니다.
+- 10-Q MD&amp;A 본문(현금흐름표·선수금 계정)이 발췌에 포함되지 않아 <strong>공시상 확인 불가</strong>입니다.</p>
+<p><strong>재무 건전성·자본정책</strong>
+- <strong>ATM 증자 (2026-09-11 8-K):</strong>
+  - 최대 $2B 규모, Goldman Sachs가 판매 대리인이며 수수료는 1.0%입니다.
+  - 자금 용도는 "general corporate purposes"입니다.
+  - 근거는 2026-04-24에 제출한 S-3 자동발효 shelf 등록입니다.
+- <strong>NVIDIA 지분 (CFO 발언):</strong>
+  - pre-funded warrant로 3M주를 취득했고, 최대 15M주를 추가 취득할 수 있습니다.
+- <strong>희석 규모 (계산):</strong>
+  - ATM: $2B ÷ $168.97 ≈ 11.8M주
+  - NVIDIA 추가분: 최대 15M주
+  - 합계 약 27M주로, 발행주식 857.9M주(2026-01-30) 대비 약 3.1%입니다.
+- <strong>부채:</strong> 순부채·만기 구조는 발췌에 없어 <strong>공시상 확인 불가</strong>입니다.
+  - 2026-07 이후 8-K의 상장증권 목록에서 3.875% 2026년 만기 채권(GLW26)이 빠졌습니다. 상환된 것으로 추정됩니다.
+- <strong>해석 (추정):</strong> FCF를 내는 기업이 동시에 ATM을 개설했다는 것은 다음 단계 증설(미국 광섬유 <span class="up">+50%</span>, 커넥티비티 10배)의 자금 수요가 크다는 신호로 읽힙니다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>회사 목표 (Springboard 20-30-40)</strong>
+- 회사는 연환산 매출 run-rate를 다음과 같이 늘리겠다고 밝혔습니다.
+  - 2026년 말 $20B
+  - 2028년 말 $30B
+  - 2030년 말 $40B
+- 회사는 Q4'26→Q4'30 매출 CAGR 19%와 이익의 매출 초과 성장을 제시했습니다.
+- 투자자용 고신뢰(high-confidence) 계획은 2030년 말 $35~40B입니다.
+- 내부 계획은 "70% 확률로 달성 이상"을 목표로 수립된다고 회사는 밝혔습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Enterprise(데이터센터 scale-out)</td>
+<td>하이퍼스케일러 capex 지속. 회사는 GPU 성장률의 약 1.5배 성장을 기대한다고 밝힘</td>
+<td>Enterprise 매출의 QoQ 성장 지속 여부, 신규 수주 가속 언급</td>
+</tr>
+<tr>
+<td>2</td>
+<td>장기 고객 계약(Meta·NVIDIA·Amazon)</td>
+<td>최소 구매 약정 이행, 선급금으로 capex 부담 분산</td>
+<td>계약부채·선수금 증감, 증설 가동 일정</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Photonics / scale-up(CPO·NPO, FAU 하네스)</td>
+<td>광 포트 비중 확대, AI 팩토리에서 광 scale-up 채택</td>
+<td>Photonics 첫 매출 인식 시점. 회사는 아직 실적에 미반영이라고 밝힘</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Carrier(FTTH·DCI)</td>
+<td>통신사 프로젝트 타이밍 정상화</td>
+<td>Q3 Carrier YoY 회복 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td>태양광·반도체 폴리실리콘</td>
+<td>정비 이후 가동률 회복, 반도체급 비중 확대</td>
+<td>Q3 태양광 수익성 개선(회사가 개선 기대를 밝힘)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>기타(Gorilla, Display, Auto)</td>
+<td>계획은 TV·IT·스마트폰 수요 flat, 엔화 JPY 150 가정</td>
+<td>Display 가격·환율 영향, Apple 켄터키 물량</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>단기 기준점:</strong></li>
+<li>CFO는 5월 현재 run-rate를 "약 $18B"라고 언급했습니다.</li>
+<li>연말 $20B를 달성하려면 Q4 분기 매출이 약 $5.0B여야 합니다.</li>
+<li>Q2 core $4.74B 대비 추가로 약 5.5% 성장해야 하는 수준입니다(계산).</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤</strong>
+- 매우 공격적이고 자신감이 높습니다.
+- CEO는 첫 문장부터 "outstanding"을 쓰며 "가속 성장의 새 국면"을 선언했습니다.
+- 자신감의 근거로 세 가지를 반복합니다.
+  - 고객사와의 장기 계약
+  - 보상 체계와 연동된 내부 계획(70% 신뢰구간)
+  - 미국 내 제조 역량</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 기존 Springboard 목표는 "2028년 말까지 $13B→$21B"였습니다.
+- 이를 2030년 $40B로 사실상 2배 상향했습니다.
+- 동시에 "내부 계획"과 "투자자용 고신뢰 계획($35~40B)"을 분리 제시해 하방 여지를 남겼습니다.
+- 투자 확대 국면에서도 다음 수치를 반복 제시하며 수익성 희석 우려를 선제 방어하는 화법입니다.
+  - 영업이익률 20% 이상 유지
+  - ROIC high-teens
+  - 증분 순이익의 현금전환율 약 100%</p>
+<p><strong>Q&amp;A의 반복 질문과 방어 지점</strong>
+- <strong>Carrier 부진 (Morgan Stanley):</strong>
+  - CEO는 "고객 타이밍일 뿐"이라고 답하고 상반기 누계로 화제를 돌렸습니다.
+  - Verizon·Google 관련 증분 프로젝트 참여 여부에는 구체적인 답을 하지 않았습니다.
+- <strong>Scale-up·FAU가 Springboard에 얼마나 반영되었나 (Susquehanna):</strong>
+  - 애널리스트가 "혼란스럽다"고 할 만큼 설명이 모호했습니다.
+  - 회사는 Photonics MAP $10B에 FAU가 포함된다고만 밝혔습니다.
+  - 채택 속도는 "광 포트 비중에 달렸다"며 투자자가 직접 판단하라는 식으로 넘겼습니다. 가장 큰 업사이드 항목의 계획 반영 정도가 불투명합니다.
+- <strong>2단계 Springboard의 capex 부담과 FCF 전환율 (J.P. Morgan 컨퍼런스):</strong>
+  - 고객 선급금과 리스크 공유로 방어한다고 답했습니다.
+  - 그러나 두 달 뒤 $2B ATM을 개설했습니다. "고객 자금으로 증설한다"는 설명과 실제 자금 조달 사이에 간극이 있습니다(해석).</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- Enterprise Q2 매출 $1.27B(<span class="up">+65%</span>), OC 순이익 $438M
+- NVIDIA 거래 조건
+  - 수십억 달러 규모 선급금
+  - pre-funded warrant로 3M주 취득, 최대 15M주 추가 가능
+  - 최소 구매 약정
+- 미국 광섬유 생산능력 <span class="up">+50%</span>, 커넥티비티 10배 증설
+- 계획의 전제: JPY 150, TV·IT·스마트폰 수요 flat, 메모리 가격 상승 영향 반영</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K 리스크 팩터 원문과 10-Q MD&amp;A 본문은 제공 발췌에 포함되지 않았습니다. 아래는 제공된 8-K·10-K 사업 섹션·실적콜 근거로 한정합니다.</p>
+<ol>
+<li><strong>AI capex 집중 리스크</strong>
+   - 성장의 대부분이 Enterprise(하이퍼스케일러)와 소수 대형 고객에 달려 있습니다.
+   - 회사도 성장률이 GPU 성장률에 연동된다고 밝혔습니다.
+   - 하이퍼스케일러 capex가 둔화되면 성장 축과 고정비가 동시에 타격을 받습니다.</li>
+<li><strong>희석·공급 부담</strong>
+   - $2B ATM 상시 매도가 가능하고, NVIDIA 추가 취득권(최대 15M주)도 있습니다.
+   - 합계 최대 약 3% 희석입니다(계산).
+   - 주가가 고점 대비 <span class="down">-34%</span>인 상황에서 증자 집행은 주당 가치를 희석합니다.</li>
+<li><strong>capex 사이클 진입에 따른 FCF 변동성</strong>
+   - 1단계 Springboard는 기존 유휴 설비를 채우는 구조여서 투자가 적었습니다.
+   - 2단계는 대규모 증설이 필요합니다(J.P. Morgan 컨퍼런스 질문의 전제).
+   - Q2 FCF가 선수금으로 부풀려졌다면(추정) 향후 FCF가 역성장할 수 있습니다.</li>
+<li><strong>GAAP–core 괴리</strong>
+   - 영업이익률 격차가 약 5.4%p입니다.
+   - 헤지 조정, 구조조정·손상차손이 반복되면 조정 지표의 신뢰도가 떨어집니다.</li>
+<li><strong>비AI 부문 정체·환율</strong>
+   - Display·모바일·자동차는 회사 계획상으로도 flat이거나 감소입니다(ICE 수요 감소).
+   - 계획은 JPY 150을 가정합니다.
+   - Display 생산이 아시아(중국·한국·대만)에 집중되어 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>긍정</td>
+<td>매출 YoY <span class="up">+16.6%</span> (GAAP) / <span class="up">+17%</span> (core)</td>
+</tr>
+<tr>
+<td></td>
+<td>OC <span class="up">+32%</span>, Enterprise <span class="up">+65%</span></td>
+</tr>
+<tr>
+<td></td>
+<td>core 영업이익률 20.9% (+190bp), ROIC 14.9%</td>
+</tr>
+<tr>
+<td></td>
+<td>2030년 고신뢰 매출 목표 $35~40B (회사 주장)</td>
+</tr>
+<tr>
+<td>부정</td>
+<td>PSR 약 8.1배, FCF 수익률 약 1.6%, 배당수익률 약 0.66% ($1.12 ÷ $168.97)</td>
+</tr>
+<tr>
+<td></td>
+<td>60일 수익률 <span class="down">-13.0%</span>, 52주 고점 대비 <span class="down">-33.9%</span> (추세 미회복)</td>
+</tr>
+<tr>
+<td></td>
+<td>오늘 상승은 거래량 1.18배, 촉매 부재</td>
+</tr>
+<tr>
+<td></td>
+<td>ATM $2B 공급 부담</td>
+</tr>
+<tr>
+<td>종합</td>
+<td>장기 성장 스토리는 유효하지만 신규 정보 없이 진입할 근거가 약해 <strong>보통</strong>으로 판단</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3'26 실적(일정은 공시상 확인 불가)</strong>
+   - core 매출이 Q4 $5.0B 경로에 있는지
+   - Enterprise 성장이 지속되는지
+   - Carrier·태양광이 회복되는지
+2. <strong>ATM 집행 실적</strong>
+   - 10-Q에 공시될 ATM 판매 주식 수와 단가
+   - NVIDIA의 추가 지분 취득 여부
+3. <strong>현금흐름의 질</strong>
+   - 10-Q 현금흐름표에서 고객 선수금이 FCF에 얼마나 기여했는지
+   - 분기 capex 증가 속도</p>
+<p><strong>판단을 상향(적극)할 조건</strong>
+- Q3에서 core 영업이익률 21% 이상 유지와 Enterprise 가속이 동시에 확인될 때
+- Photonics/scale-up 첫 매출이 인식될 때
+- ATM 집행이 미미하다고 확인될 때</p>
+<p><strong>관망·회피로 낮출 조건</strong>
+- Enterprise 성장률이 급격히 둔화되거나, 하이퍼스케일 고객 계약 이행이 지연될 때
+- ATM이 대규모로 집행되고 FCF가 마이너스로 돌아설 때(증설 부담이 고객 선급금으로 상쇄되지 않는다는 증거)
+- 연말 $20B run-rate 목표가 하향되거나, GAAP–core 격차가 더 커질 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000124/glw-20251231.htm">10-K — 2025-12-31_0000024741-26-000124</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000255/glw-20260630.htm">10-Q — 2026-06-30_0000024741-26-000255</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000205/glw-20260331.htm">10-Q — 2026-03-31_0000024741-26-000205</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000119312526389321/d154232d8k.htm">8-K — 2026-09-11_0001193125-26-389321</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000120677426000517/glw4684541-8k.htm">8-K — 2026-09-04_0001206774-26-000517</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000002474126000253/glw-20260728.htm">8-K — 2026-07-28_0000024741-26-000253</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/24741/000120677426000285/glw4638701-8k.htm">8-K — 2026-05-15_0001206774-26-000285</a></li>
+<li>Transcript — 2026-07-28 Corning Incorporated (GLW) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-19 Corning Incorporated (GLW) Presents at J.P. Morgan 54th Annual Global Technology, Media and Communications Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

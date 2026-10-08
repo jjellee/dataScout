@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FLEX — Flex Ltd. Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FLEX — Flex Ltd. Ordinary Shares</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FLEX</span><span class="badge">+3.96%</span><span class="badge">거래량 0.93배</span><span class="badge">$44.85B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>사업 쪽 근거는 강함.</strong> 최근 분기 매출은 $7.48B이고 YoY <span class="up">+16.9%</span>, QoQ <span class="up">+5.9%</span>다. TTM FCF는 $1.05B다. 실적콜에서 회사는 Q1 FY27에 세 부문 모두 마진이 확대됐고 조정 EPS $1.00으로 사상 최대라고 밝혔다.</li>
+<li><strong>가치 재평가 계기가 있음.</strong> 2026-10-05 8-K에 따르면 CPI 부문(Axiom)에 $2.0B 전환우선주 투자가 들어오며, 이때 Axiom의 enterprise value(EV)는 $37.5B로 매겨졌다. 회사는 2027년 1분기에 Axiom을 별도 상장사로 분리할 계획이라고 밝혔다. 이 $37.5B는 Flex 시가총액 $44.85B의 약 84%다.</li>
+<li><strong>그래도 적극으로 올리지 않는 이유는 네 가지다.</strong></li>
+<li>오늘 거래량은 20일 중앙값의 0.93배다. 상승은 했지만 거래량 급증은 없었다.</li>
+<li>회사가 제시한 FY27 SpinCo 성장률은 <span class="up">+70%</span>(중간값)인데, Q1 CPI 실성장은 <span class="up">+35%</span>였다. 나머지는 하반기에 몰려 있다는 뜻이다.</li>
+<li>영업이익률과 매출총이익률 지표가 제공되지 않았다.</li>
+<li>10/28 Q2 실적 발표가 3주 앞이다.</li>
+<li><strong>운용 방식:</strong> 지금은 기본 비중으로 시작한다. Q2에서 CPI 성장 가속과 분할 조건(전환우선주 조건, 부채 배분)이 확인되면 그때 늘린다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>유력 후보: 10/05 8-K (Axiom $2.0B 전환우선주 투자)</strong></li>
+<li>General Catalyst, Koch Equity Development와 공동투자자가 Axiom의 Series A 전환우선주 $2.0B어치를 인수한다.</li>
+<li>Axiom의 초기 EV는 $37.5B다.</li>
+<li>회사는 이 투자금이 최근 발표한 EPC Power 인수에 쓰일 equity 자금이고, 분리 전에 Axiom의 재무구조를 튼튼하게 만든다고 밝혔다.</li>
+<li>외부 자본이 SpinCo 가치를 처음으로 공개적으로 매긴 셈이어서 sum-of-the-parts 재평가 계기가 될 수 있다.</li>
+<li><strong>그러나 오늘 하루의 촉매로 단정하기는 어렵다.</strong></li>
+<li>공시일(10/05)과 오늘(10/08) 사이에 시차가 있다.</li>
+<li>거래량 배수가 0.93배로 이벤트성 매수 쏠림 신호가 없다.</li>
+<li>그래서 "공시 소화 과정에서 이어진 상승 + 수급/섹터 동조 가능성"이 더 정확한 해석이다. 당일에 따로 확인된 새 촉매는 없다.</li>
+<li><strong>참고:</strong> 60일 수익률 <span class="down">-9.8%</span>, 52주 고점 대비 <span class="down">-25.1%</span>여서 낙폭 회복 구간일 가능성도 있다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 목차뿐이어서, 사업 구조는 10-Q(2026-06-26) 개요를 기준으로 썼다.</p>
+<p><strong>업의 성격</strong>
+- 설계·엔지니어링, 공급망, 제조, 통합 서비스를 묶어 파는 종합 제조 파트너(EMS)다.
+- 여기에 자체 전력·냉각 제품 포트폴리오가 더해진다.
+- 약 30개국에서 운영한다.</p>
+<p><strong>부문 구성 (FY27부터 3개 부문으로 재편, 이전에는 FAS·FRS 2개 부문)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>최종시장</th>
+<th>분리 후 귀속</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITS (Integrated Technology Solutions)</td>
+<td>통신·고속 네트워킹·엔터프라이즈·위성통신, Lifestyle</td>
+<td>Flex 잔존</td>
+</tr>
+<tr>
+<td>RMS (Regulated Manufacturing Solutions)</td>
+<td>산업(자동화·에너지 인프라), 자동차, 헬스케어</td>
+<td>Flex 잔존</td>
+</tr>
+<tr>
+<td>CPI (Cloud and Power Infrastructure) = Axiom</td>
+<td>랙 통합 컴퓨트, 액체냉각(JetCool), 유틸리티·설비급 전력 인프라, 랙/보드 전력</td>
+<td>분리(SpinCo)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>규모와 수익성</strong>
+- 회사는 BofA 컨퍼런스에서 SpinCo 매출이 지난해 $6.7B, 연말 영업이익률이 9.2%였다고 밝혔다.
+- 사업별로는 Cloud가 그보다 낮고 Power는 10% 중반대라고 했다.
+- 부문별 매출 비중, 고객 집중도, 상위 고객 비중은 공시상 확인 불가다.</p>
+<p><strong>경쟁 위치 (회사 주장)</strong>
+- 실적콜에서 CEO는 경쟁 EMS 업체들이 같은 영역에 들어온다는 지적에 대해 이렇게 반박했다. Flex는 400V/800V 전력 설계 IP와 자체 냉각 제품을 갖췄고, 컴퓨트 통합까지 하는 통합 설계 능력이 있으며, 이런 조합을 가진 경쟁자는 아직 보지 못했다고 언급했다.
+- 이는 회사 주장이며, 제3자 검증은 제공 자료에 없다.</p>
+<p><strong>포트폴리오 변화</strong>
+- 실적콜과 컨퍼런스에서 회사는 최근 몇 년간 소비자 사업을 $2B 이상 줄이고 데이터센터 사업으로 대체했다고 언급했다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장</strong>
+- 분기 매출 $7.48B, YoY <span class="up">+16.9%</span>, QoQ <span class="up">+5.9%</span>다.
+- 실적콜에서 CPI는 YoY <span class="up">+35%</span>였고, Communications와 Industrial 사업도 강하게 성장했다고 언급했다.
+- 단가와 물량 효과가 각각 얼마인지는 공시상 확인 불가다.</p>
+<p><strong>관세 효과</strong>
+- 10-Q에 따르면 관세 비용과 고객 회수분이 매출과 매출원가를 약 1% 부풀렸고, 수익성에는 영향이 미미했다.
+- 따라서 <span class="up">+16.9%</span> 가운데 약 1%p는 관세 pass-through로 볼 수 있다(추정).</p>
+<p><strong>믹스</strong>
+- 저마진 소비자 사업이 줄고 데이터센터와 전력 비중이 커지는 방향이다.
+- Power가 10% 중반대 마진이라는 점(회사 발언)을 감안하면 믹스는 마진에 유리하게 움직이는 중이다(추정).</p>
+<p><strong>마진</strong>
+- 영업이익률과 매출총이익률은 제공 지표에서 비어 있어 공시상 확인 불가다.
+- 실적콜에서는 세 부문 모두 마진이 확대됐다고만 언급했다.
+- 회사는 지난해 SpinCo에 약 100bp를 투자했고 올해 이를 회수할 것이라고 밝혔다.</p>
+<p><strong>일회성 비용</strong>
+- 10-Q에 따르면 2025-08-21 우크라이나 무카체보 공장이 미사일 공격을 받아 FY26에 $51M의 손상·재고상각 등이 발생했다.
+- 회사는 앞으로 생길 비효율은 "immaterial"할 것이라고 밝혔다.</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 $1.05B이고, 시가총액 대비 FCF yield는 약 2.3%다(계산값).
+- 10-Q는 관세 선납과 회수 사이의 시차가 영업현금흐름 타이밍을 악화시킬 수 있다고 적시했다.
+- IEEPA 관세 위헌 판결(2026-02-20) 이후 환급 절차가 열렸지만, 환급 금액과 고객 정산 방식은 발췌에서 잘려 있어 확인 불가다.</p>
+<p><strong>재무 건전성</strong>
+- 순부채, 차입 규모, 신용등급은 공시상 확인 불가다.
+- 회사는 Flex가 분리 후 SpinCo 지분을 최대 19.9%까지 보유하고, 이를 활용해 부채를 상환하며, 투자등급을 유지하겠다고 밝혔다.
+- 뉴스 헤드라인에 EPC Power 관련 $3.3B 차입이 언급되지만, SEC 원문에서 조건은 확인되지 않았다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1. SpinCo(Axiom) 고성장: AI 데이터센터의 전력·냉각·랙 통합</strong>
+- 회사 주장: FY27 성장률 <span class="up">+70%</span>(중간값), FY28 <span class="up">+80%</span>다. FY27 물량은 90%, FY28은 70%가 이미 수주돼 있다(booked)고 밝혔다(BofA 컨퍼런스).
+- 실현 조건: Q1 <span class="up">+35%</span>에서 하반기에 크게 가속해야 한다. 회사도 투자 효과가 하반기 성장 가속과 마진 확대로 나타날 것이라고 밝혔다.
+- 검증 포인트: Q2(10/28) CPI 성장률이 <span class="up">+35%</span>보다 의미 있게 높은지, CPI 마진이 9.2% 위로 가는지 본다.</p>
+<p><strong>2. 분리를 통한 가치 재평가</strong>
+- 회사 계획: 2027년 1분기에 Axiom을 분리하고, Flex는 최대 19.9% 지분을 남긴다.
+- 실현 조건: 전환우선주 조건(전환가, 우선배당, 청산우선권)이 기존 주주 몫을 얼마나 희석하는지가 관건이다. 부채가 두 회사에 어떻게 나뉘는지도 봐야 한다.
+- 검증 포인트: 10/05 DEF 14A 원문의 우선주 조건, 가을 Investor Day에서 나올 두 회사의 장기 가이던스.</p>
+<p><strong>3. 잔존 Flex의 고부가 시장</strong>
+- 해당 시장: 네트워킹, 에너지 인프라 위탁생산, 반도체 장비, 로봇·창고 자동화, 헬스케어.
+- 실적콜에서 회사는 이 수요가 경기 회복 덕이 아니라 구조적(secular) 흐름이라고 언급했다.
+- 검증 포인트: RMS와 ITS의 매출·마진 추이. 자동차가 계속 "안정화" 상태인지도 본다.</p>
+<p><strong>4. 고객·제품 확장</strong>
+- 사례: Cerebras CS-3 미국 내 생산 확대, JetCool 신규 액체냉각 제품, Amazon과의 상업 계약.
+- 검증 포인트: Amazon 계약이 SpinCo와 잔존 Flex 중 어디로 어떻게 배분되는지. 실적콜에서는 업데이트가 없었다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤</strong>
+- 매우 자신감 있다. CEO는 "generational build-out", "demand is not slowing down"이라고 했고, AI를 "power story"로 규정했다.
+- 자신감의 근거로는 수주율(FY27 90%, FY28 70%)과 S&amp;P500 편입을 들었다.</p>
+<p><strong>가이던스 화법</strong>
+- FY29 수치 요청에는 답하지 않고 가을 Investor Day로 미뤘다.
+- 대신 "mid-cycle, long cycle play"로 성격을 규정하고, 시간이 지나면 short·mid·long·no-cycle 사업이 섞인 균형 잡힌 포트폴리오로 가겠다고 했다.
+- AI 투자 사이클의 지속성에 대한 질문을 정면으로 수치로 받지는 않았다.</p>
+<p><strong>반복된 질문</strong>
+- 경쟁 EMS 업체들의 진입 위협 (Steve Barger)
+- 지금의 성장이 구조적인지 경기 순환인지 (Steven Fox)
+- Amazon 계약 진행 상황
+- 분리 후 dis-synergy 여부</p>
+<p><strong>방어하거나 피한 지점</strong>
+- Amazon 계약: CFO가 "업데이트할 것이 없다"고 답했다.
+- 고객이 통합 제품 풀세트를 계약하는 비중을 묻자, CEO는 수치 대신 "풀세트를 계약하는 게 아니라 풀세트를 설계하는 것"이라는 개념 설명으로 넘어갔다.</p>
+<p><strong>콜에서만 나온 정보</strong>
+- Q1 조정 EPS $1.00(사상 최대), CPI YoY <span class="up">+35%</span>
+- SpinCo 매출 $6.7B, 연말 영업이익률 9.2%, Power 마진 10% 중반대, 약 100bp 투자 후 회수 계획
+- 80개 공장 가운데 겹치는 곳은 5개뿐이라 dis-synergy가 크지 않다는 설명
+- Flex의 SpinCo 지분 최대 19.9% 보유와 이를 활용한 부채 상환 계획</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>하반기 쏠림과 실행 리스크:</strong> 연간 <span class="up">+70%</span> 목표 대비 Q1 실적은 <span class="up">+35%</span>였다. Q2와 Q3에 가속하지 못하면 가이던스 신뢰도가 떨어진다. 이 경우 Axiom EV $37.5B라는 기준점 자체도 흔들린다.</li>
+<li><strong>분리 구조와 희석:</strong> $2.0B 전환우선주는 Axiom 내부의 우선 청구권이다. 기존 FLEX 주주에게 돌아갈 Axiom 보통주 몫이 줄 수 있다. EPC Power 인수 자금 조달과 부채 배분도 아직 확정 공시로 확인되지 않았다.</li>
+<li><strong>관세와 정책 불확실성 (10-Q 명시):</strong>
+   - 10-Q는 관세를 고객에게 다 넘기지 못하면 영업실적과 현금흐름이 악화된다고 적시했다.
+   - IEEPA 관세 위헌 판결 후 환급과 고객 정산 과정이 복잡해질 수 있다.</li>
+<li><strong>지정학 리스크 (10-Q 명시):</strong>
+   - 우크라이나 공장 피격으로 $51M 비용이 발생한 전례가 있다.
+   - 10-Q는 러시아·우크라이나 전쟁, 이스라엘·하마스 분쟁, 미국·이스라엘의 이란 군사작전을 함께 언급하며 영향이 불확실하다고 밝혔다.</li>
+<li><strong>AI 인프라 투자 사이클 의존:</strong> SpinCo 가치는 하이퍼스케일러의 설비투자 지속성에 달려 있다. 경쟁 EMS 업체의 진입으로 단가 압박이 생길 수 있다는 점도 애널리스트들이 반복해서 물은 우려다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 매출 YoY <span class="up">+16.9%</span>, QoQ <span class="up">+5.9%</span>, TTM FCF $1.05B
+- 외부 투자로 매겨진 Axiom EV $37.5B는 FLEX 시가총액 $44.85B의 약 84%다. 단, 순부채와 우선주 희석을 반영하지 않은 단순 비율이다.
+- SpinCo는 FY27 <span class="up">+70%</span>, FY28 <span class="up">+80%</span> 성장과 수주율 90%/70%를 제시했다(회사 주장).
+- 주가는 52주 고점 대비 <span class="down">-25.1%</span>로, 이 사업 계획에 비해 가격 부담은 줄어 있다.
+- 반대 요인: 거래량 0.93배로 수급 확인이 안 됐고, 마진 지표가 비어 있으며, 실적 발표 전 이벤트 리스크가 있다. 그래서 적극이 아니라 보통으로 판단한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. DEF 14A와 8-K 원문에서 전환우선주 조건(전환가, 배당, 청산우선권, 의결권)과, 기존 주주가 최종적으로 갖게 될 Axiom 지분 비율
+2. 10/28 Q2 실적에서 CPI 성장률이 <span class="up">+35%</span>보다 가속하는지, 회사 전체와 부문별 영업이익률, FY27 가이던스를 유지하거나 올리는지
+3. Flex 연결 순부채, EPC Power 인수 차입 규모, 분리 후 두 회사의 부채 배분. 가능하면 가을 Investor Day 일정과 장기 목표도 함께 본다.</p>
+<p><strong>관망으로 바꿀 조건</strong>
+- Q2 CPI 성장률이 <span class="up">+35%</span> 이하에 머물거나, FY27 SpinCo 가이던스(<span class="up">+70%</span>)를 내리는 경우
+- 우선주 조건이 기존 주주에게 크게 불리하거나, 분리 일정(2027년 1분기)이 늦어지는 경우
+- 관세 pass-through가 깨져 마진이 하락하거나, 관세 환급 정산 때문에 영업현금흐름이 크게 악화되는 경우
+- Amazon 등 핵심 고객 계약이 축소되거나 재협상된다는 공시가 나오는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000086637426000012/flex-20260331.htm">10-K — 2026-03-31_0000866374-26-000012</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000086637426000030/flex-20260626.htm">10-Q — 2026-06-26_0000866374-26-000030</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000086637426000005/flex-20251231.htm">10-Q — 2025-12-31_0000866374-26-000005</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000119312526413173/d123485dex991.htm">8-K — 2026-10-02_0001193125-26-413173__EX-99.1__d123485dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000119312526413173/d123485d8k.htm">8-K — 2026-10-02_0001193125-26-413173</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000110465926113282/tm2626870d1_ex10-01.htm">8-K — 2026-09-29_0001104659-26-113282__EX-10.01__tm2626870d1_ex10-01</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000110465926113282/tm2626870d1_8k.htm">8-K — 2026-09-29_0001104659-26-113282</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/866374/000086637426000036/axflexx91526_flexxspincoxb.htm">8-K — 2026-09-11_0000866374-26-000036__EX-99.1__axflexx91526_flexxspincoxb</a></li>
+<li>Transcript — 2026-07-29 Flex Ltd. (FLEX) Q1 2027 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-03 Flex Ltd. (FLEX) Presents at Bank of America 2026 Global Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

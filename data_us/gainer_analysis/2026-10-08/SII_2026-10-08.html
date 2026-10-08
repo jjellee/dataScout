@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SII — Sprott Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SII — Sprott Inc. Common Shares</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SII</span><span class="badge">+3.15%</span><span class="badge">거래량 1.44배</span><span class="badge">$3.08B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>사업의 질은 좋습니다. 2분기 평균 AUM은 $63.9B로 전년보다 70% 늘었고, 운용보수는 $76.4M으로 72% 늘었습니다. 영업이익률은 56.4%이고, 실적콜에서는 무차입이라고 언급했습니다. 핵심 운용보수의 성장은 분명합니다.</li>
+<li>그러나 분기말 AUM이 $55.6B로 2분기 평균 AUM $63.9B보다 약 13% 낮습니다. 귀금속 가격이 회복되지 않으면 3분기 운용보수는 2분기보다 낮아질 가능성이 큽니다(추정).</li>
+<li>오늘 상승을 설명하는 공시나 실적 촉매는 확인되지 않습니다. 주가는 20일 수익률 <span class="down">-11.2%</span>, 52주 고점 대비 <span class="down">-28.2%</span>로 하락 추세 안에 있습니다.</li>
+<li>2분기 영업이익률이 전년보다 25.2%p 개선됐지만, 상당 부분은 주가 하락으로 주식보상비용이 $18.6M에서 $5.0M으로 줄어든 효과입니다. 반복적인 마진 개선으로 보기 어렵습니다.</li>
+<li>그래서 3분기 AUM과 자금 흐름이 확인될 때까지 비중 확대를 미루는 것이 합리적이라고 판단합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 안에 나온 공시가 없습니다. 제공된 가장 최근 공시는 2026-08-04 2분기 배당 결의(6-K)로, 두 달 전 정보입니다.</li>
+<li><strong>실적:</strong> 2분기 실적은 2026-08-05에 발표됐습니다. 오늘(10-08)의 촉매가 아닙니다.</li>
+<li><strong>뉴스:</strong> 제목은 모두 주가 움직임을 사후에 설명하거나 기술적 지표를 다룬 기사입니다. GuruFocus "3.1% 상승, GF Value상 고평가", MarketBeat "200일 이동평균 하향 이탈" 등이 있고, 펀더멘털 이벤트를 다룬 기사는 없습니다.</li>
+<li><strong>해석(추정):</strong> 이 회사의 AUM은 귀금속과 핵심광물 가격에 연동됩니다. 따라서 당일 금·은·우라늄·구리 가격 반등에 동조했을 가능성이 가장 큽니다. 다만 당일 원자재 가격 데이터는 제공되지 않아 확인할 수 없습니다.</li>
+<li><strong>거래 강도:</strong> 거래량은 20일 중앙값의 1.44배, 거래대금은 $19.3M입니다. 거래량이 크게 터진 수준은 아니며, 20일 수익률 <span class="down">-11.2%</span> 이후의 기술적 반등과 구분하기 어렵습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>참고: SII는 Form 40-F를 내는 캐나다 외국민간발행인입니다. 10-K 사업 섹션은 제공되지 않았습니다. 아래는 6-K 보도자료와 실적콜을 근거로 합니다.</p>
+</blockquote>
+<p><strong>정체성:</strong> 회사는 자신을 "귀금속과 핵심광물에 특화된 글로벌 자산운용사"라고 소개합니다. 일반 운용사와 다른 전문성이 차별점이라고 밝힙니다.</p>
+<p><strong>3개 사업부</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>내용</th>
+<th>확인되는 사실</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchange Listed Products</td>
+<td>실물 트러스트(금·은·금은 혼합·우라늄·구리)와 핵심광물 ETF(희토류 Ex-China ETF인 REXC 등)</td>
+<td>실물 트러스트 AUM이 2분기에 $8.2B(16%) 감소(실적콜). ETF AUM은 10% 감소</td>
+</tr>
+<tr>
+<td>Managed Equities</td>
+<td>광산주 중심 액티브 운용, Sprott USA</td>
+<td>2분기 AUM 약 $0.7B 감소, 순유출은 소폭</td>
+</tr>
+<tr>
+<td>Private Strategies</td>
+<td>사모 대출 펀드 등</td>
+<td>AUM $2B. 4호 사모대출펀드 모집 중이며 회사는 2027년 마감을 예상한다고 밝힘</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수익원(2분기)</strong>
+- 운용보수 $76.4M: 평균 AUM에 연동되는 핵심 수익원입니다.
+- 성과보수·캐리 $0: 1분기에는 사모 부문 캐리가 실현됐습니다(상반기 누계 $52M).
+- 수수료 수입 $1.5M: 미국 브로커딜러의 사모 주선, 우라늄·구리 트러스트 ATM 발행에서 발생합니다.
+- 이자수익 $1.6M.
+- 이 네 항목의 합은 $79.5M으로, 제공된 분기 매출과 정확히 일치합니다.</p>
+<p><strong>확인 불가 항목</strong>
+- 사업부별 매출·이익 구성은 이번 발췌에 없어 공시상 확인 불가입니다.
+- 고객군의 정량 구성도 공시상 확인 불가입니다. 실적콜에서는 "전문 투자자에서 일반 투자자로 관심이 확산되고 있고, 브로커딜러와 기관 채널로 확장 중"이라고 언급했습니다.</p>
+<p><strong>경쟁 위치:</strong> 실적콜에서 REXC가 "회사가 아는 한 세계 유일의 순수 희토류 ETF"이고 중국 노출이 없다고 언급했습니다. 경쟁사 대비 점유율 자료는 공시상 확인 불가입니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<p>헤드라인과 핵심 지표를 분리해서 보면 다음과 같습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>평균 AUM</td>
+<td>$63.9B</td>
+<td>$37.6B</td>
+<td>+70%</td>
+</tr>
+<tr>
+<td>운용보수</td>
+<td>$76.4M</td>
+<td>$44.4M</td>
+<td>+72%</td>
+</tr>
+<tr>
+<td>성과보수·캐리</td>
+<td>$0</td>
+<td>$14.8M</td>
+<td>-$14.8M</td>
+</tr>
+<tr>
+<td>매출(합계)</td>
+<td>$79.5M</td>
+<td>약 $62.1M(역산)</td>
+<td>+27.8%</td>
+</tr>
+<tr>
+<td>순보수(Net fees)</td>
+<td>$69.3M</td>
+<td>$53.5M</td>
+<td>+29%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$34.3M (EPS $1.33)</td>
+<td>$13.5M (EPS $0.52)</td>
+<td>+154%</td>
+</tr>
+<tr>
+<td>Adj. EBITDA</td>
+<td>$50.8M</td>
+<td>$25.5M</td>
+<td>약 2배</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>YoY:</strong> 매출 증가율 <span class="up">+27.8%</span>는 전년 캐리 $14.8M이 사라진 영향으로 낮아 보입니다. 반복성 있는 운용보수는 <span class="up">+72%</span>로, 평균 AUM 증가(<span class="up">+70%</span>)와 거의 같은 속도입니다.</li>
+<li><strong>보수율:</strong> 연환산 운용보수율은 약 48bp로 추정되며(76.4×4÷63,900), 보수율 하락 징후는 보이지 않습니다.</li>
+<li><strong>성장 원천:</strong> 회사는 성장이 "순유입과 시장가치 상승이 결합된 결과"라고 밝힙니다. 상품 가격(시세) 효과가 크다는 뜻입니다.</li>
+<li><strong>QoQ <span class="down">-44%</span> 원인:</strong> 1분기 매출은 약 $141.8M으로 역산됩니다(운용보수 $81.5M, 캐리 $52M, 수수료 $5.8M, 이자 $2.5M). 2분기 감소는 1분기 캐리 실현 기저와 ATM 수수료 감소가 대부분입니다. 운용보수 자체는 $81.5M에서 $76.4M으로 약 6% 감소했습니다.</li>
+</ul>
+<p><strong>마진 방향성: 개선이 과장돼 있음</strong>
+- 순보상비율은 32%로 전년 43%보다 낮아졌습니다. 규모의 경제가 실제로 작동하고 있습니다.
+- 그러나 주식보상비용은 $5.0M으로 전년 $18.6M보다 73% 줄었습니다. 회사는 그 이유를 "분기 중 주가가 21% 하락했기 때문"이라고 밝혔습니다.
+- 반대로 1분기 주식보상비용은 상반기 누계 $39.7M에서 2분기 $5M을 빼면 약 $34.7M입니다(역산). 주가가 오르면 이 비용이 크게 늘어나는 구조입니다.
+- 영업이익률 <span class="up">+25.2%</span>p 중 약 17%p가 주식보상비용 감소 효과로 추정됩니다(전년 대비 $13.6M 감소 ÷ 매출 $79.5M). 즉 주가가 반등하면 마진이 다시 낮아지는 역방향 민감도가 있습니다.
+- 판관비는 $5.1M으로 6% 늘어 통제되고 있습니다.</p>
+<p><strong>3분기 선행 지표(추정)</strong>
+- 분기말 AUM $55.6B에 보수율 48bp를 적용하면 분기 운용보수는 약 $66–67M입니다. 2분기 $76.4M보다 약 13% 낮습니다.
+- 이는 금속 가격이 6월 말 수준에 머문다는 가정입니다. 실적콜에서는 "이후 귀금속 가격이 안정됐다"고 언급했지만, 3분기 실제 AUM은 제공 자료로 확인할 수 없습니다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM 잉여현금흐름은 $139.7M으로, 시가총액 대비 FCF 수익률은 약 4.5%입니다.
+- 실적콜에서 무차입이라고 언급했습니다. 현금 잔액 수치는 공시상 확인 불가입니다.
+- 이자수익 증가는 "현금 잔고 증가" 때문이라고 회사가 밝혀, 현금이 쌓이고 있음을 시사합니다.
+- 2분기 배당은 주당 US$0.40이며, 연환산 수익률은 약 1.3%입니다. 직전 배당과 비교한 인상 여부는 공시상 확인 불가입니다.
+- 자사주 매입(NCIB)은 2분기와 3분기에 집행됐습니다(실적콜). 매입 금액과 주식 수는 공시상 확인 불가입니다.
+- 2026년 RSU 발행은 279,851주로 전년보다 71% 줄어 희석 압력이 낮아졌습니다.</p>
+<p><strong>밸류에이션(추정)</strong>
+- 2분기 순이익 연환산 기준 PER 약 22배, 상반기 연환산 기준 약 24배입니다. 2분기 이익은 낮은 주식보상비용 덕을 봤다는 점을 감안해야 합니다.
+- 주가 기준 TTM P/FCF는 약 22배입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) 귀금속 가격 회복에 따른 실물 트러스트 AUM 복원</strong>
+- 회사 주장: 회사는 이번 조정이 "단기에 그칠 것"이라고 밝혔습니다. 금리 인상 기대 완화, 정책 유동성, 중앙은행 매수 재개를 반등 촉매로 제시했습니다.
+- 실현 조건: 금·은 가격 반등과 함께 트러스트 할인율이 축소돼 환매가 멈춰야 합니다.
+- 검증 포인트: 3분기 분기말 AUM이 2분기 평균 $63.9B를 회복했는지, 실물 트러스트 순흐름이 유입으로 돌아섰는지 확인합니다.</p>
+<p><strong>2) 핵심광물(우라늄·구리·희토류) 상품 확대</strong>
+- 2분기 순흐름이 플러스였고, 우라늄 트러스트도 순유입을 기록했습니다.
+- 실적콜에서 REXC가 32거래일 만에 $50M에 도달했고, 40 Act 펀드의 손익분기점은 펀드당 약 $25M이라고 언급했습니다.
+- 실현 조건: 일반 투자자의 배분 확대가 이어지고, 우라늄 ATM 발행이 재개돼야 합니다. ATM 재개는 수수료 수입과 AUM을 동시에 늘립니다.
+- 검증 포인트: ETF 부문 순유입이 지속되는지, ATM 활동으로 수수료 수입이 1분기 수준($5.8M)으로 회복되는지 확인합니다.</p>
+<p><strong>3) 사모 부문 확대와 캐리 실현</strong>
+- 4호 사모대출펀드는 회사가 2027년 마감을 예상한다고 밝혔습니다.
+- 캐리는 비정기적으로 발생합니다. 1분기 $52M, 2분기 $0이었습니다.
+- 검증 포인트: 사모 부문 AUM($2B)의 증가와 펀드 모집 진척을 확인합니다.</p>
+<p><strong>4) 운영 레버리지</strong>
+- 실적콜에서 Adj. EBITDA 마진이 53%에서 71%로 높아졌다고 언급했습니다.
+- 검증 포인트: 주식보상비용을 제외한 순보상비율이 30%대 초반을 유지하는지 확인합니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 2분기를 "lowlights"라고 인정하면서도 매크로에 대해 매우 강세 입장이었습니다. "QE 신호가 나오면 짧은 시간 안에 전고점을 넘을 것"이라고 말했습니다.
+- 다만 이 자신감은 회사 실적이 아니라 금 가격 전망에 기댄 것입니다. 엔화 개입 뒤에 QE가 있을 것이라는 추정도 CEO 스스로 "확실하지 않다"고 전제했습니다.
+- 수치 가이던스는 제시하지 않았고, 서사 중심의 화법이었습니다.</p>
+<p><strong>Q&amp;A에서 회피하거나 방어한 지점</strong>
+- <strong>가격이 횡보할 때의 AUM 성장 질문(Canaccord):</strong> 목표 수치를 묻는 질문에 "답하기 어렵다"고 한 뒤 세컬러 트렌드 설명으로 대체했습니다. 가격 효과를 뺀 순수 유입 성장의 가시성을 제시하지 못한 것이 핵심 약점입니다.
+- <strong>자사주 매입 원칙 질문(Cantor):</strong> "자체 재무와 현금 수준에 기반한 정해진 레벨이 있고, 주가가 낮을수록 더 공격적"이라고만 답했습니다. 구체적인 기준은 밝히지 않았습니다.
+- <strong>ELP 마진 질문:</strong> ELP 순보수가 약 20% 감소했는데도 마진이 사상 최고인 이유를 묻자, 회사는 규모의 경제(유니터리 보수 구조)로 설명했습니다. 비용 이연 여부에는 직접 답하지 않았습니다.</p>
+<p><strong>공시에는 없고 실적콜에서만 드러난 정보</strong>
+- 금은 혼합 트러스트의 상대적 유출이 컸던 이유는 구조적이었습니다. 단일 금속을 선호하는 수요 때문에 할인 거래가 상시화돼 있어 환매에 취약하다는 설명입니다.
+- 3분기에도 자사주를 매입했다고 확인했습니다.
+- 중앙은행 매수가 5월에 재개됐고, 금은 약 $4,000에서 바닥을 다졌다는 CEO의 시각이 나왔습니다.
+- 40 Act 펀드 손익분기점이 펀드당 약 $25M이고, REXC가 32거래일 만에 $50M에 도달했다고 밝혔습니다.
+- 8분기 연속 순유입이 2분기에 끊겼다고 밝혔습니다.
+- 디지털 상품을 검토하는 팀을 신설했습니다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>참고: 40-F와 연차보고서의 리스크 섹션은 제공되지 않았습니다. 아래는 6-K와 실적콜에서 확인되는 사실에 기반합니다.</p>
+</blockquote>
+<ol>
+<li><strong>금속 가격에 대한 AUM·보수의 직접 민감도</strong>
+   - 2분기 금 <span class="down">-14.1%</span>, 은 <span class="down">-22%</span>에 AUM이 15% 감소했습니다.
+   - 운용보수는 평균 AUM에 연동되므로, 분기말 AUM이 평균보다 낮은 상태에서 시작하는 3분기는 매출이 줄어드는 구조입니다.</li>
+<li><strong>실물 트러스트 환매 사이클의 전환</strong>
+   - 8분기 연속 유입 뒤 2분기에 $0.4B 순유출이 발생했습니다.
+   - 할인 거래되는 트러스트(특히 금은 혼합)는 차익 목적의 환매에 구조적으로 노출돼 있습니다.</li>
+<li><strong>이익 변동성 두 가지</strong>
+   - 캐리는 비정기적입니다. 1분기 $52M이 2분기에 $0이 되면서 매출이 QoQ 44% 줄었습니다.
+   - 주식보상비용은 주가에 연동돼 분기 사이 약 $30M씩 움직입니다(1분기 약 $34.7M, 2분기 $5.0M). 실적의 예측 가능성이 낮습니다.</li>
+<li><strong>테마 집중도</strong>
+   - 귀금속과 핵심광물에 특화돼 있어 분산 효과가 없습니다.
+   - 수수료 수입이 우라늄·구리 트러스트 ATM에 의존합니다. 해당 트러스트의 프리미엄과 할인 상태가 수수료를 좌우합니다.</li>
+<li><strong>유동성과 공시 빈도</strong>
+   - NYSE 거래대금은 약 $19M이고 평소는 약 $13M으로 추정됩니다. 의미 있는 비중을 쌓을 때 시장 충격 비용이 큽니다. TSX 거래량은 포함되지 않았을 수 있습니다.
+   - 외국민간발행인이라 미국 국내 발행사보다 공시 형식과 빈도가 다릅니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망을 뒷받침하는 정량 근거</strong>
+- 분기말 AUM $55.6B는 2분기 평균 $63.9B보다 13% 낮습니다. 3분기 운용보수는 약 $66–67M으로 추정되어 2분기 $76.4M보다 줄어듭니다(가격이 횡보한다는 가정).
+- 영업이익률 개선 <span class="up">+25.2%</span>p 중 약 17%p는 주식보상비용 감소 효과로 추정되어, 반복성이 약합니다.
+- 주가 기준 P/FCF 약 22배, 연환산 PER 22–24배로 저평가 구간이라는 근거가 부족합니다. 배당수익률은 약 1.3%입니다.
+- 주가 흐름(20일 <span class="down">-11.2%</span>, 고점 대비 <span class="down">-28.2%</span>, 200일선 이탈 보도)과 촉매 부재를 감안하면, 오늘의 <span class="up">+3.15%</span>는 추세 전환 신호로 보기 어렵습니다.
+- 긍정 요인도 있습니다. 운용보수 <span class="up">+72%</span>, 무차입(실적콜), TTM FCF $139.7M, 3분기 자사주 매입 지속이 하방을 받쳐 줍니다. 그래서 회피가 아니라 관망으로 판단합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3분기 분기말 AUM:</strong> 2분기 평균 $63.9B 수준을 회복했는지 봅니다. 회복했다면 4분기 운용보수가 2분기 수준으로 돌아옵니다.
+2. <strong>실물 트러스트 순흐름:</strong> 유입으로 돌아섰는지, 우라늄·구리 ATM 발행이 재개됐는지 봅니다(수수료 수입 회복 여부).
+3. <strong>주식보상비용을 정상화한 마진:</strong> 3분기 순보상비율과 주식보상비용을 함께 보고, 주가 반등기에도 Adj. EBITDA 마진이 60%대 후반 이상을 유지하는지 봅니다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통 또는 적극으로 상향:</strong>
+  - AUM이 $60B 이상을 회복하고, 귀금속 트러스트 순유입이 재개된 경우.
+  - 핵심광물 ETF 순유입이 2개 분기 연속 이어져, 금속 가격과 무관한 유입 성장이 확인된 경우.
+- <strong>회피로 하향:</strong>
+  - 3분기 AUM이 $55.6B를 밑돌고 순유출이 2분기 연속 이어진 경우.
+  - 3분기 운용보수가 $65M을 밑돌면서 자사주 매입이 축소되거나 중단된 경우.
+  - 금은 혼합 트러스트 외 다른 트러스트까지 할인 확대와 환매가 번진 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926090780/tm2622178d1_ex99-1.htm">8-K — 2026-08-04_0001104659-26-090780__EX-99.1__tm2622178d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926090780/tm2622178d1_6k.htm">8-K — 2026-08-04_0001104659-26-090780</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926089117/tm2621685d1_ex99-1.htm">8-K — 2026-07-30_0001104659-26-089117__EX-99.1__tm2621685d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926089117/tm2621685d1_6k.htm">8-K — 2026-07-30_0001104659-26-089117</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000162828026052907/pressrelease2026q2.htm">8-K — 2026-06-30_0001628280-26-052907__EX-99.4__pressrelease2026q2</a></li>
+<li>Transcript — 2026-08-05 Sprott Inc. (SII:CA) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

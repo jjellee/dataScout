@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHAK — Shake Shack Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SHAK — Shake Shack Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SHAK</span><span class="badge">+3.54%</span><span class="badge">거래량 1.08배</span><span class="badge">$2.77B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>매출은 좋지만 이익이 따라오지 못한다.</strong> 2Q26 매출은 $417.6M(<span class="up">+17.2%</span> YoY), Same-Shack 매출은 <span class="up">+3.5%</span>(트래픽 <span class="up">+2.0%</span>)로 22분기 연속 플러스였다. 반면 영업이익률은 6.7%로 1.2%p 하락했고, 매장 단위 이익률(Restaurant-level margin)도 23.0%로 0.9%p 하락했다.</li>
+<li><strong>TTM 잉여현금흐름이 $-11.7M이다.</strong> 연 60~65개 직영점 출점에 드는 비용을 영업현금으로 아직 다 감당하지 못한다.</li>
+<li><strong>하반기 여건이 상반기보다 나쁘다.</strong> 비교 기저가 높아지고, 가격 인상분 일부가 8월(~2%)과 12월(~1.4%)에 효과가 소멸되며, 소고기 원가는 계속 높다. 경영진도 Adjusted EBITDA 가이던스 하단 유지와 연간 comp "low single digits"를 재확인하는 데 그쳤다.</li>
+<li><strong>오늘 움직임은 수급 신호로 보기 어렵다.</strong> 거래량 배수가 1.08배에 그쳐 '거래량 급증' 전제가 사실상 충족되지 않았다. 52주 고점 대비 <span class="down">-38.3%</span>로 가격 부담은 줄었지만, 3Q26에서 마진 바닥이 확인되기 전에는 의미 있는 비중 확대 근거가 부족하다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다.</li>
+<li><strong>실적:</strong> 직전 실적(2Q26)은 2026-08-05 발표로 2개월 이상 지났다. 오늘 주가와 직접 연결할 수 없다.</li>
+<li><strong>뉴스:</strong></li>
+<li>"40 Shake Shack burger locations are planned for Brazil by 2036, starting in São Paulo in 2027"이라는 헤드라인이 있다. 다만 보도 날짜를 확인할 수 없고, 해외 확장은 라이선스 모델(수수료 수익)일 가능성이 높다. 2027년 시작, 10년간 40개 규모라 단기 실적 영향은 미미하다고 판단한다(추정).</li>
+<li>GuruFocus 헤드라인 "Stock Up 3.5% and Still Undervalued"는 상승을 사후에 설명한 글로, 원인이 아니다.</li>
+<li>"MCD, PLNT, SHAK Stocks Hit 52-Week Lows"는 최근 소비재·레스토랑 섹터가 약세였음을 시사한다. 오늘 반등은 저점 부근의 기술적 반등이나 섹터 동조일 수 있다(추정).</li>
+<li><strong>수급:</strong> 거래량 배수 1.08배, 거래대금 $105.5M이다. 평소 대비 매수세가 특별히 유입됐다고 보기 어렵다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 10-K 발췌는 표지와 목차, 미래예측 진술 고지까지만 포함돼 있다. Item 1(사업) 본문은 공시상 확인할 수 없어 10-Q 개요와 MD&amp;A를 바탕으로 작성했다.</p>
+</blockquote>
+<p><strong>제품/포지셔닝</strong>
+- 회사는 앵거스 비프 버거, 크링클컷 감자튀김, 크리스피 치킨, 핸드스펀 셰이크, 레모네이드 등 "미국 클래식의 고급판"을 판다고 밝혔다.
+- 스스로를 fine-casual(고급 캐주얼) 카테고리를 만든 "컬트 브랜드"로 소개한다.
+- 실적콜에서 CEO는 "우리는 패스트푸드나 QSR이 되려는 것이 아니다"라고 언급했다.</p>
+<p><strong>매출 구성 (2Q26, 13주)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>금액</th>
+<th>비중</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shack sales (직영점 매출)</td>
+<td>$403.4M</td>
+<td>약 96.6%</td>
+<td>+17.5%</td>
+</tr>
+<tr>
+<td>Licensing revenue (라이선스 수수료)</td>
+<td>$14.2M</td>
+<td>약 3.4%</td>
+<td>+7.1%</td>
+</tr>
+<tr>
+<td><strong>총매출</strong></td>
+<td><strong>$417.6M</strong></td>
+<td>100%</td>
+<td>+17.2%</td>
+</tr>
+<tr>
+<td>(참고) System-wide sales (가맹점 매출 포함, 회계상 매출 아님)</td>
+<td>$625.8M</td>
+<td>—</td>
+<td>+13.8%</td>
+</tr>
+<tr>
+<td>(참고) 라이선스 매장 매출</td>
+<td>$222.4M</td>
+<td>—</td>
+<td>+7.6%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출은 사실상 미국 직영점이 만든다. 라이선스 매장 매출은 판매액의 일정 비율과 개점·지역 수수료만 회계상 매출로 잡힌다.</li>
+<li>매장 수(2Q 말): 직영 406, 라이선스 297, 합계 703개.</li>
+<li>상반기에 직영점은 폐점 없이 33개 출점했다. 라이선스는 16개 출점, 5개 폐점했다.</li>
+</ul>
+<p><strong>고객 접점/채널</strong>
+- 디지털 매출(앱·웹·3자 배달)은 $164.5M(<span class="up">+34.3%</span>)으로 Shack sales의 40.8%다.
+- 실적콜에서 CFO는 이 중 자체 앱이 전체 채널 믹스의 "just over 10%"라고 언급했다.</p>
+<p><strong>경쟁 위치</strong>
+- 경쟁 구도나 시장점유율을 정량화한 자료는 공시상 확인할 수 없다.
+- 실적콜에서 경영진은 "continued competitive intensity"를 하반기 역풍으로 꼽았다.
+- 동시에 할인 경쟁보다 채널별 표적 프로모션과 메뉴 혁신으로 차별화하겠다고 밝혔다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>(1) 성장의 질 — 매출 성장의 대부분은 신규 출점에서 나온다</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>상반기</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same-Shack sales</td>
+<td>+4.6%</td>
+<td>+3.5%</td>
+<td>+4.0%</td>
+</tr>
+<tr>
+<td>ㄴ 트래픽(방문객 수)</td>
+<td>+1.4%</td>
+<td>+2.0%</td>
+<td>+1.7%</td>
+</tr>
+<tr>
+<td>ㄴ price mix(가격·구성)</td>
+<td>+3.2%</td>
+<td>+1.5%</td>
+<td>+2.3%</td>
+</tr>
+<tr>
+<td>평균 주간 매출(AWS)</td>
+<td>$72K (YoY 보합)</td>
+<td>$78K (YoY 보합)</td>
+<td>$75K (보합)</td>
+</tr>
+<tr>
+<td>비교 대상 매장 수</td>
+<td>287</td>
+<td>296</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>총매출 <span class="up">+17.2%</span> 가운데 기존점 성장은 <span class="up">+3.5%</span>에 불과하다. 나머지는 신규 출점이 만들었다.</li>
+<li>2Q comp에는 월드컵 효과가 섞여 있다. 실적콜에서 CFO는 효과를 "약 90bp"로 추정했다. 이를 빼면 기초 comp는 약 2.6%로 1Q보다 둔화됐다(단순 차감 계산).</li>
+<li>2Q price mix(<span class="up">+1.5%</span>)는 가격 인상률보다 훨씬 낮다. 실적콜에서 CFO는 매장 내 가격 <span class="up">+3.7%</span>, 전 채널 합산 가격 <span class="up">+4.4%</span>라고 언급했다. 가격을 올렸는데도 구성이 2~3%p 나빠졌다는 뜻이다. 회사는 앱 프로모션과 저가 메뉴 비중 확대를 의도한 선택이라고 설명했다.</li>
+<li>기존점 comp가 <span class="up">+3.5%</span>인데 AWS는 보합이다. 신규·비교 대상 외 매장의 단위 매출이 기존점보다 낮다는 뜻으로 해석할 수 있다(추정). 신규 매장의 수익성 확인이 필요한 지점이다.</li>
+</ul>
+<p><strong>(2) 마진 방향 — 매장 단위 이익률이 하락으로 돌아섰다</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Shack sales 대비 비중</th>
+<th>1Q25</th>
+<th>1Q26</th>
+<th>변화</th>
+<th>2Q26</th>
+<th>2Q 변화(YoY)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>식자재·포장재</td>
+<td>27.8%</td>
+<td>28.3%</td>
+<td>+0.5%p</td>
+<td>28.8%</td>
+<td>+0.6%p</td>
+</tr>
+<tr>
+<td>인건비</td>
+<td>28.0%</td>
+<td>26.2%</td>
+<td><strong>-1.8%p</strong></td>
+<td>공시상 확인 불가</td>
+<td>회사는 "개선"이라고 밝힘</td>
+</tr>
+<tr>
+<td>기타 운영비</td>
+<td>15.6%</td>
+<td>16.2%</td>
+<td>+0.6%p</td>
+<td>공시상 확인 불가</td>
+<td>증가</td>
+</tr>
+<tr>
+<td>임차료 등</td>
+<td>7.9%</td>
+<td>8.1%</td>
+<td>+0.2%p</td>
+<td>공시상 확인 불가</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>매장 단위 이익률</strong></td>
+<td>20.7%*</td>
+<td>21.2%*</td>
+<td>+0.5%p</td>
+<td><strong>23.0%</strong></td>
+<td><strong>-0.9%p</strong></td>
+</tr>
+<tr>
+<td>일반관리비(G&amp;A, 총매출 대비)</td>
+<td>12.7%</td>
+<td>14.6%</td>
+<td><strong>+1.9%p</strong></td>
+<td>공시상 확인 불가</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>* 1Q 매장 단위 이익률은 공시된 비용 비중으로 역산한 값이다.</p>
+<ul>
+<li><strong>인건비 효율화가 원가 상승을 막아왔다.</strong> 1Q에는 인건비 <span class="down">-1.8%</span>p가 식자재·기타비용 상승을 상쇄하고 남았다. 하지만 2Q에는 사상 최고 수준의 소고기 가격, 프로모션, 원가가 높은 메뉴로의 구성 변화가 이를 넘어섰다.</li>
+<li><strong>회사 측 리스크가 하나 더 있다.</strong> 인건비 모델 변경 효과는 2025년에 도입된 것이라, 실적콜에서 CEO가 말했듯 이제 같은 효과를 전년과 비교해야 하는 국면이다. 남은 개선 여지가 줄어든다.</li>
+<li><strong>본사 비용이 늘었다.</strong> G&amp;A 비중이 1Q에 1.9%p 상승했다. Project Catalyst(POS, 로열티, AI 등 IT 투자) 비용으로 보인다. 회사는 향후 G&amp;A 레버리지를 기대한다고 밝혔다.</li>
+<li>영업이익률 6.7%(<span class="down">-1.2%</span>p YoY)는 매장 단위 마진 하락과 G&amp;A 증가가 겹친 결과로 판단한다.</li>
+</ul>
+<p><strong>(3) 현금흐름 / 재무 건전성</strong>
+- TTM FCF는 $-11.7M이다. 연간 60~65개 직영 출점에 따른 설비투자가 영업현금흐름을 넘는 구조로 추정한다. 설비투자 절대액은 제공 자료상 확인할 수 없다.
+- 현금, 차입금, 리스부채 등 재무상태표 항목은 발췌에 없어 확인할 수 없다.
+- 회사는 FY26 Adjusted EBITDA를 $225~235M 범위의 하단으로 제시했다. 6월 2일 하향 후 유지한 것이다.
+- 단순 비교로 시가총액 $2.77B ÷ $230M ≈ 12배 수준이다. 다만 순현금·부채와 리스부채를 확인할 수 없어 EV 기준 배수는 산출하지 않았다.
+- 주식 수는 Class A 40,257,722주와 Class B 2,434,789주(2026-02-18 기준)다.
+- 참고로 2025-06-25 종가는 $133.90이었다. 현재 주가는 그 대비 약 52% 낮다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>직영점 출점</strong></td>
+<td>회사는 2026년 60~65개 직영점을 출점할 계획이라고 밝힘(상반기 33개). 실적콜에서 장기 직영점 TAM을 1,500개로 언급</td>
+<td>신규 매장이 목표 투자수익률(cash-on-cash)을 달성하고, 건설비를 유지할 것</td>
+<td>3Q 누적 출점 수(연말 목표 대비 진도), AWS가 보합에서 벗어나는지, 가이던스 하향 여부</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>트래픽 중심 comp</strong></td>
+<td>4분기 연속 트래픽 플러스. 회사는 할인 없이 표적 프로모션과 메뉴 혁신으로 트래픽을 만든다고 밝힘</td>
+<td>하반기 높은 기저, 가격 효과 소멸 속에서도 트래픽 플러스 유지</td>
+<td>3Q comp와 트래픽 부호, 월드컵 효과 제거 후 기초 추세, price mix 수준</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>디지털/앱/로열티</strong></td>
+<td>앱 매출(비교 가능 매장 기준) 약 <span class="up">+30%</span>. 실적콜에서 2027년 로열티 플랫폼을 "추가 도구"로 언급</td>
+<td>앱 프로모션이 구성 악화를 줄이면서 방문 빈도를 높일 것</td>
+<td>디지털 비중(40.8%)의 추이, 식자재 비중에서 프로모션 영향이 줄어드는지</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>라이선스 확장</strong></td>
+<td>회사는 2026년 라이선스 매장 40~45개 출점 계획이라고 밝힘(상반기 16개 출점, 5개 폐점)</td>
+<td>중동(UAE) 부진을 미국 공항·캐나다·영국·중국 일부가 상쇄할 것</td>
+<td>라이선스 매출 증가율(<span class="up">+7.1%</span>) 유지 여부, 순증 매장 수</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>비용 구조 개선</strong></td>
+<td>공급망 재협상, 인건비 모델 최적화, Project Catalyst를 통한 G&amp;A 레버리지</td>
+<td>소고기 가격 안정, IT 투자의 비용 효율화 효과 가시화</td>
+<td>식자재 비중이 28.8%를 정점으로 꺾이는지, G&amp;A 비중 추이</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>신규 포맷</strong></td>
+<td>실적콜에서 CEO는 좌석·건설비·메뉴를 줄인 소형 포맷을 검토 중이라고 언급. 드라이브스루는 "주력이 아님"</td>
+<td>2027년 장기 계획에서 구체화 예정(회사 언급)</td>
+<td>단기 검증 대상 아님. 장기 계획 발표 내용 확인</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- <strong>톤:</strong> 매출은 자신 있고 비용은 방어적이다. CEO는 "very confident, very excited about our revenues"라고 말하면서 동시에 "one of the most challenging cost environments… in many years", "we still have a lot of work to do"라고 언급했다.
+- <strong>화법의 변화:</strong> 6월 2일 중간 업데이트에서 이미 2Q·연간 가이던스를 하향했다. 이번 콜은 "수정 범위 안에서 마감"했다는 점을 강조하는 방어적 구조였다.
+  - 연간 EBITDA는 하단 유지, comp는 low single digits를 재확인했을 뿐 상향하지 않았다.
+  - CEO는 "we're not taking that guide up"이라고 명시했다.
+- <strong>예측 실패 인정:</strong> CEO는 연중 소고기 가격이 내려갈 것으로 가정했으나 실현되지 않았다고 언급했다. 비용 가정의 신뢰도가 낮다는 신호다.
+- <strong>CFO 교체:</strong> 이번이 Michelle Hook CFO의 첫 콜이었다. 신임 CFO가 첫해에 보수적으로 가이던스를 재설정할 가능성은 있다(추정).</p>
+<p><strong>반복된 질문과 회피·방어 지점</strong>
+- <strong>EBITDA 하단 유지 근거 (Northcoast):</strong>
+  - 질문은 "6월 이후 무엇이 하단에 대한 확신을 줬나"였다.
+  - CEO는 매출과 출점 호조로 답을 돌리고, 비용에 대해서는 "transparent"하겠다는 원론으로 마무리했다.
+  - 하단 달성을 뒷받침할 비용 측 숫자는 제시하지 않았다.
+- <strong>구성 악화와 마진 회복 시점 (BofA):</strong>
+  - 질문은 "1~2개 분기 뒤 구성·원가 부담이 완화되는가"였다.
+  - CEO는 "더 잘 학습하고 있다", "2027년 로열티 플랫폼"이라는 정성적 답변에 그쳤다.
+  - 구성 악화를 정량화하지도, 완화 시점을 약속하지도 않았다.
+- <strong>가격 정책 (TD Cowen):</strong>
+  - 하반기 추가 인상 가능성은 열어뒀다.
+  - CFO는 7월에도 소고기 가격이 높은 상태가 이어지고 있다고 언급했다.
+- <strong>하반기 트래픽 (JPM):</strong>
+  - CEO는 작년 하반기에 앱 전용 $1 음료(3Q), "135" 프로모션(4Q), 미디어 투자 등이 몰려 있었다고 설명했다.
+  - 기저가 높다는 점은 인정하면서 "aspiration is to continue to drive positive traffic"이라고 답했다. 목표를 확정하지 않은 열망형 표현이다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 월드컵 효과가 2Q comp에 약 90bp 기여했다.
+- 매장 내 가격 <span class="up">+3.7%</span>, 전 채널 합산 가격 <span class="up">+4.4%</span>였고, 6월에 약 1%를 추가 인상했다.
+- 가격 인상 효과 중 약 2%가 8월에, 약 1.4%가 12월에 소멸된다. 3Q·4Q의 가격 기여가 기계적으로 줄어든다는 뜻이다.
+- 자체 앱 비중은 전체 채널의 "just over 10%"다. "앱 <span class="up">+30%</span>"는 작은 기반 위의 성장률이다.
+- 장기 직영점 TAM은 1,500개이고, 소형 포맷을 검토 중이며, 드라이브스루는 주력 포맷이 아니다.
+- 로열티 플랫폼은 2027년에 효과가 본격화될 것으로 시사했다.
+- 중동 분쟁으로 UAE 라이선스 매장이 부진하다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K Item 1A(리스크 요인) 본문은 발췌에 없다. 아래는 MD&amp;A와 실적콜에서 실제로 수치화되거나 언급된 리스크만 추렸다.</p>
+</blockquote>
+<ol>
+<li><strong>소고기 등 원자재 가격</strong>
+   - 2Q 식자재·포장재 비중은 28.8%로 0.6%p 올랐고, 경영진은 소고기 가격을 "record high"라고 표현했다.
+   - 회사는 하반기에도 소고기 가격이 "elevated"할 것으로 예상한다.
+   - 가격을 덜 전가하는 전략(가치 포지셔닝 보호)을 택했기 때문에 원가 충격이 마진으로 직접 이어진다.</li>
+<li><strong>하반기 comp 둔화 가능성</strong>
+   - 높은 기저(작년 하반기 프로모션), 가격 효과 약 2%(8월)와 1.4%(12월) 소멸, 월드컵 효과(약 90bp)의 일회성이 겹친다.
+   - 기초 comp가 약 2.6% 수준에서 더 내려가면 고정비 레버리지가 역으로 작동한다.</li>
+<li><strong>프로모션에 따른 구성 악화 상시화</strong>
+   - 가격은 <span class="up">+4.4%</span> 올렸는데 price mix는 <span class="up">+1.5%</span>에 그쳤다.
+   - 앱·배달 할인으로 트래픽을 사는 구조가 고착되면, 트래픽이 늘어도 매장 단위 마진은 회복되지 않을 수 있다.</li>
+<li><strong>출점 확대와 현금흐름의 괴리</strong>
+   - TTM FCF는 $-11.7M이고, AWS는 보합이다.
+   - 신규 매장의 단위 매출이 기대에 못 미치면 투자 회수가 지연되고 외부 자금 조달 필요성이 커질 수 있다. 재무상태표는 확인할 수 없다.</li>
+<li><strong>G&amp;A 증가와 실행 리스크</strong>
+   - 1Q G&amp;A 비중이 14.6%로 1.9%p 올랐다.
+   - Project Catalyst(POS, 로열티, AI) 투자가 진행되는 가운데 CFO가 교체됐다. 효과가 지연되면 영업이익률 회복도 늦어진다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>성장</td>
+<td>매출 <span class="up">+17.2%</span>, 시스템 전체 매출 <span class="up">+13.8%</span>, 출점은 2분기 기준 역대 최다(16개)</td>
+<td>기존점 comp는 <span class="up">+3.5%</span>, 월드컵 효과를 빼면 약 2.6%. AWS 보합</td>
+</tr>
+<tr>
+<td>수익성</td>
+<td>1Q 인건비 비중 <span class="down">-1.8%</span>p</td>
+<td>2Q 매장 단위 이익률 <span class="down">-0.9%</span>p, 영업이익률 <span class="down">-1.2%</span>p, G&amp;A <span class="up">+1.9%</span>p(1Q)</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>—</td>
+<td>TTM FCF $-11.7M</td>
+</tr>
+<tr>
+<td>가이던스</td>
+<td>출점·라이선스 목표 유지</td>
+<td>EBITDA 하단 유지, comp 가이던스 상향 없음</td>
+</tr>
+<tr>
+<td>주가</td>
+<td>52주 고점 대비 <span class="down">-38.3%</span>, 시가총액 ÷ EBITDA 가이던스 중앙값 약 12배</td>
+<td>오늘 거래량 1.08배로 수급 신호 미약, 촉매 없음</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q26 실적:</strong>
+   - 월드컵 효과와 가격 효과 소멸을 거친 뒤에도 comp와 트래픽이 플러스인지 확인한다.
+   - price mix가 1Q·2Q 수준(<span class="up">+3.2%</span>, <span class="up">+1.5%</span>) 대비 어디서 형성되는지 본다.
+2. <strong>매장 단위 이익률과 식자재 비중의 방향:</strong>
+   - 식자재 비중이 28.8%를 고점으로 꺾이는지 확인한다.
+   - 매장 단위 이익률의 YoY 하락폭이 <span class="down">-0.9%</span>p보다 줄어드는지 확인한다.
+3. <strong>연간 가이던스 유지 여부와 현금흐름:</strong>
+   - EBITDA $225~235M 하단과 직영 출점 60~65개 목표가 유지되는지 확인한다.
+   - FCF 적자 폭이 줄어드는지, 재무상태표상 순현금·부채를 확인한다(현재 자료로는 확인 불가).</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 상향할 조건:</strong>
+  - 3Q comp 2% 이상과 트래픽 플러스 유지
+  - 매장 단위 이익률 YoY 하락폭 축소 또는 반전
+  - EBITDA 가이던스 하단을 지키는 데 그치지 않고 중앙값 쪽으로 회복
+  - 이 셋이 동시에 확인되면 낮아진 주가 수준을 근거로 비중 확대를 검토할 수 있다.
+- <strong>'회피'로 하향할 조건:</strong>
+  - 3Q 트래픽 마이너스 전환, 또는 comp가 0%대로 둔화
+  - EBITDA 가이던스가 $225M 아래로 재하향
+  - 출점 목표 축소, 또는 신규 매장 수익성 저하 언급
+  - FCF 적자 확대와 함께 외부 자금 조달 신호</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000018/shak-20251231.htm">10-K — 2025-12-31_0001620533-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000034/shak-20260701.htm">10-Q — 2026-07-01_0001620533-26-000034</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000026/shak-20260401.htm">10-Q — 2026-04-01_0001620533-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000033/a2q26shareholderletter.htm">8-K — 2026-08-05_0001620533-26-000033__EX-99.2__a2q26shareholderletter</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000033/shak-20260805_exhibit991.htm">8-K — 2026-08-05_0001620533-26-000033__EX-99.1__shak-20260805_exhibit991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000162053326000033/shak-20260805.htm">8-K — 2026-08-05_0001620533-26-000033</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000110465926072950/tm2617505d1_8k.htm">8-K — 2026-06-10_0001104659-26-072950</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1620533/000110465926073466/tm2617735d1_ex99-1.htm">8-K — 2026-06-08_0001104659-26-073466__EX-99.1__tm2617735d1_ex99-1</a></li>
+<li>Transcript — 2026-08-05 Shake Shack Inc. (SHAK) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

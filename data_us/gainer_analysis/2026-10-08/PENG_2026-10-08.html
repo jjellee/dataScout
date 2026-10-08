@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PENG — Penguin Solutions Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>PENG — Penguin Solutions Inc. Common Stock</h1>
+<div class="sub">2026-10-08 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">PENG</span><span class="badge">+5.76%</span><span class="badge">거래량 10.65배</span><span class="badge">$3.29B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적:</strong> 8-K 기준 FY26 4분기 매출은 $567M(YoY <span class="up">+68%</span>), Non-GAAP 영업이익은 $90M(<span class="up">+129%</span>)으로 모두 사상 최대다. FY27 가이던스도 실적콜에서 매출 성장률 약 40%(±10%p), EPS 약 $4.45로 올렸다. 현재 주가 $64.21은 가이던스 EPS 대비 약 14.4배여서, 숫자만 보면 부담스러운 가격은 아니다.</li>
+<li><strong>성장의 질:</strong> 4분기 매출의 약 60%($341M)가 Integrated Memory다. 이 사업은 회사 평균보다 마진이 낮고, 성장은 가격과 물량이 함께 끌어올렸다(GS 컨퍼런스 발언). 메모리 업황에 기댄 성장이라는 점을 감안하면, 지금 실적을 구조적 실적으로 보고 할인율을 낮춰주기는 이르다.</li>
+<li><strong>현금흐름:</strong> 4분기 영업현금흐름은 -$163M, FY26 전체는 -$152M이다. 운전자본이 커지면서 현금이 빠졌고, $750M 전환사채(CB)로 메웠다. 이익이 현금으로 바뀌는지는 아직 확인되지 않았다.</li>
+<li><strong>수급:</strong> 20일 수익률이 <span class="up">+42.2%</span>로 단기 급등이 이미 진행됐다. 따라서 처음부터 큰 비중을 싣기보다는, FY27 1분기에 운전자본 회수와 메모리 마진이 확인될 때 비중을 늘리는 단계적 접근이 맞다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: FY26 4분기 실적 발표와 FY27 가이던스 상향 (2026-10-06 8-K, EX-99.1)</strong></p>
+<ul>
+<li>8-K 보도자료 제목은 "Record Results ... Raising Fiscal 2027 Outlook"이다. 실적 발표 직후의 시세 반응이 이어지는 것으로 본다.</li>
+<li>가이던스가 바뀐 과정</li>
+<li>3분기 실적 때 예비 가이던스는 FY27 매출 성장률 약 30%였다(GS 컨퍼런스, 9/10).</li>
+<li>이번 실적콜에서 약 40% ±10%p로 올렸다. 회사는 FY26 기존 전망 중간값을 기준으로 하면 약 45% 성장이라고 밝혔다.</li>
+<li>4분기 매출 $567M은 회사가 직전에 예고한 "첫 $500M 돌파" 수준을 넘었다. 다만 정확한 가이던스 중간값은 제공 자료로 확인할 수 없다.</li>
+<li>같은 날 8-K가 하나 더 있다(d162527d8k.htm). 제공된 발췌에는 내용이 없어 공시상 확인 불가다. 실적콜에서 언급된 신임 CFO 선임이나 CB 발행과 관련됐을 수 있지만, 이는 추정이다.</li>
+<li>거래량이 20일 중앙값의 10.65배, 거래대금이 $1.00B이다. 실적 이후 기관 리포지셔닝과 모멘텀 매수(헤드라인 "Momentum Traders Target Breakout")가 겹친 것으로 보인다.</li>
+<li><strong>데이터 불일치 주의</strong></li>
+<li>헤드라인에는 "52-Week Highs"라는 표현이 있지만, 지표표는 52주 고점 대비 <span class="down">-21.1%</span>이다. 둘 중 하나는 기준일이나 데이터 소스가 다를 가능성이 있다.</li>
+<li>지표표의 "최근 분기 매출 $478.7M, 영업이익률 10.6%, TTM FCF -$69.4M"은 이번 8-K의 4분기 수치($567M)를 반영하지 않은 직전 분기(3분기) 기준으로 추정된다. 이 리포트는 8-K와 실적콜 수치를 우선한다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>세 개 사업부로 구성된다(10-Q MD&amp;A).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>무엇을 파나</th>
+<th>수요 동인</th>
+<th>FY26 매출 (실적콜)</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Advanced Computing</strong></td>
+<td>HPC·AI 인프라의 설계·구축·배포·운영(AI Factory Platform), ClusterWareAI 소프트웨어, 매니지드 서비스. Penguin Edge는 정리 중</td>
+<td>엔터프라이즈·네오클라우드·소버린 AI</td>
+<td>$559M (<span class="down">-14%</span>)</td>
+<td>약 32%</td>
+</tr>
+<tr>
+<td><strong>Integrated Memory</strong></td>
+<td>OEM 맞춤형 특수 메모리 모듈, CXL 메모리 확장 카드, MemoryAI KV Cache 어플라이언스</td>
+<td>산업·정부·네트워크·HPC·스토리지 OEM, AI 데이터센터</td>
+<td>$924M (<span class="up">+99%</span>)</td>
+<td>약 53%</td>
+</tr>
+<tr>
+<td><strong>Optimized LED</strong></td>
+<td>구 Cree LED. 고출력·중출력 조명, 비디오 디스플레이, 원예용 LED</td>
+<td>특정 최종 시장</td>
+<td>$249M (<span class="down">-3%</span>)</td>
+<td>약 14%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>비즈니스 모델</strong></li>
+<li>메모리와 LED는 "Fab-Light" 모델이다. DRAM은 해외 파운드리, 웨이퍼는 제3자에게서 조달한다(10-Q).</li>
+<li>실적콜에서 엔지니어링 인력의 95% 이상이 인도, 메모리 엔지니어링은 대만, 제조는 말레이시아에 있다고 언급했다. 저비용 구조라는 설명이다.</li>
+<li><strong>회계상 특징</strong></li>
+<li>4분기 총매출(gross sales)은 $1.57B, 총매출원가는 $1.42B였지만 순매출은 $567M이다.</li>
+<li>실적콜에 따르면 이 차이는 주로 메모리 물류 서비스를 대리인(agent) 기준으로 순액 인식한 데서 온다.</li>
+<li>손익계산서에 보이는 것보다 약 2.8배의 물량이 회사를 거쳐 간다. 운전자본과 신용위험의 실제 크기는 순매출보다 크다고 봐야 한다.</li>
+<li><strong>고객 구성 전환</strong></li>
+<li>AI 인프라 사업은 하이퍼스케일러 집중 구조에서 엔터프라이즈·네오클라우드·소버린 고객으로 옮겨가는 중이다. 회사는 전환 기간에 매출이 줄 수 있다고 밝혔다(10-Q).</li>
+<li>4분기 Advanced Computing 매출의 66%가 비하이퍼스케일 AI 인프라에서 나왔다(실적콜).</li>
+<li><strong>경쟁 위치</strong></li>
+<li>회사는 하드웨어에 종속되지 않는 OEM 제품과 SI형 엔드투엔드 서비스를 결합한 단일 파트너라는 점을 차별점으로 내세운다.</li>
+<li>실적콜에서 NVIDIA AI Factory Specialized Partner로 지정됐다고 밝혔다.</li>
+<li>제공된 SEC 원문에는 경쟁사 대비 점유율 데이터가 없다(공시상 확인 불가).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 및 연간 핵심 수치 (8-K, 실적콜)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>FY26 4분기</th>
+<th>YoY</th>
+<th>FY26 연간</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순매출</td>
+<td>$567M</td>
+<td>+68%</td>
+<td>$1.73B</td>
+<td>+26%</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>$163M (GPM 28.8%)</td>
+<td>+57%</td>
+<td>$508M (GPM 29.3%, <span class="down">-1.7%</span>p)</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>영업이익 (GAAP)</td>
+<td>$69M</td>
+<td>+458%</td>
+<td>공시상 확인 불가</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>영업이익 (Non-GAAP)</td>
+<td>$90M (OPM 15.8%, <span class="up">+4.2%</span>p)</td>
+<td>+129%</td>
+<td>$241M (OPM 13.9%, <span class="up">+1.7%</span>p)</td>
+<td>+44%</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$93M</td>
+<td>+115%</td>
+<td>$256M</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>희석 EPS (GAAP / Non-GAAP)</td>
+<td>$1.29 / $1.00</td>
+<td>— / <span class="up">+133%</span></td>
+<td>Non-GAAP $2.87</td>
+<td>+51%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- <strong>메모리</strong>
+  - 4분기 Integrated Memory 매출은 $341M으로 YoY <span class="up">+158%</span>, QoQ <span class="up">+24%</span>다. 회사 전체 YoY 증가분($567M - 약 $338M = 약 $229M) 대부분을 메모리가 만들었다(역산).
+  - GS 컨퍼런스에서는 메모리 매출 성장이 가격 상승과 물량 증가 모두에서 나왔다고 언급했다. 가격 효과와 물량 효과를 나눈 수치는 공시상 확인 불가다.
+  - 메모리 업황에 기대는 정도가 크다.
+- <strong>Advanced Computing</strong>
+  - 4분기 매출은 $154M(<span class="up">+11%</span>)에 그쳤다. 비하이퍼스케일 AI 인프라가 <span class="up">+99%</span> 성장해 약 $102M(66%)까지 올라왔지만, 하이퍼스케일 매출 이탈과 Edge 정리가 이를 상당 부분 상쇄했다.
+  - 서비스 매출은 $57M(<span class="down">-11%</span>)이다. 마진이 높은 서비스 비중이 줄었다는 의미다.
+- <strong>믹스와 마진</strong>
+  - 10-Q에 따르면 Memory의 마진은 회사 평균보다 낮다.
+  - FY26 GPM이 1.7%p 하락한 것은 메모리 비중이 늘어난 결과다.
+  - 그런데도 영업이익률이 개선된 것은 영업비용 증가를 매출 증가보다 낮게 억제했기 때문이다. 영업 레버리지에 따른 개선이다.
+- <strong>GAAP과 Non-GAAP의 역전</strong>
+  - 4분기 GAAP EPS $1.29가 Non-GAAP EPS $1.00보다 높고, GAAP 순이익 $93M은 YoY <span class="up">+888%</span>다.
+  - 일회성 이익이 포함됐을 가능성이 있다. 예를 들어 GS 컨퍼런스에서 언급된 Celestial AI 투자 회수 차익일 수 있으나 추정이며, 내역은 공시상 확인 불가다.
+  - 이익의 질은 Non-GAAP 기준으로 판단하는 것이 맞다.</p>
+<p><strong>현금흐름과 운전자본</strong>
+- 영업현금흐름은 4분기 -$163M, FY26 -$152M이다. CapEx는 4분기 $4M, FY26 $12M이다. 따라서 FY26 FCF는 약 -$164M이다(역산).
+- 지표표의 TTM FCF -$69.4M은 4분기 현금 유출을 반영하기 전 수치로 보인다.
+- 현금전환주기(CCC)는 42일이다. 전분기 33일보다 늘었고, 전년 49일보다는 줄었다.
+  - DSO 46일(전분기 53일에서 개선), DIO 48일, DPO 52일이다(실적콜).
+- 매출채권 회수는 나아졌지만, 재고 확충과 매입채무 감소로 현금이 빠진 것으로 보인다(추정). 회사는 FY27 우선과제로 운전자본 효율화를 들었다.</p>
+<p><strong>재무 건전성과 자본구조</strong>
+- $750M 규모의 0% 전환사채(2031년 만기)를 오버서브스크립션으로 발행했다(실적콜).
+  - 전환가는 약 $116.70로, 현재가 대비 약 <span class="up">+82%</span>다.
+  - 캡드콜로 약 $175.05까지 희석을 막는다.
+- 2029·2030년 만기 노트 약 $296M을 현금과 주식으로 교환했고, 크레딧 약정 $100M을 상환했다. 4분기 말 현금은 $647M이다.
+- 남은 총차입금 잔액은 공시상 확인 불가다. 따라서 순현금·순부채 여부도 판단할 수 없다.
+- 희석 주식 수: 10-K 기준 2025-10-15 발행주식은 52.86M주이고, FY27 가이던스는 희석 주식 63M주를 가정한다. 약 19%의 차이가 있어, 기존 주주 희석이 이미 가이던스에 반영돼 있다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Integrated Memory의 데이터센터·AI 수요.</strong> 회사는 FY27 사업부 성장률을 약 50% ±10%p로 제시했다</td>
+<td>메모리 가격 강세 지속, 공급 확보, 백로그의 매출 전환</td>
+<td>Memory 매출의 QoQ 흐름($341M 유지 또는 증가), Memory 마진, 회사가 가격과 물량 기여를 따로 언급하는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>비하이퍼스케일 AI 인프라 (네오클라우드·엔터프라이즈·소버린).</strong> Advanced Computing 성장률 약 40% ±10%p</td>
+<td>대형 AI 팩토리 수주가 매출로 인식되는 속도(go-live 시점에 좌우됨), 하이퍼스케일 매출 이탈 마무리</td>
+<td>Advanced Computing 전체 매출의 YoY 플러스 전환 폭, 비하이퍼스케일 비중(현재 66%), 신규 고객 수(FY26 17곳, 4분기 6곳)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>CXL 메모리 확장, MemoryAI KV Cache.</strong> 추론 워크로드 확대가 수혜로 이어진다는 주장</td>
+<td>추론 인프라 채택, 고객 인증 통과</td>
+<td>실적콜에서 CXL 매출 기여나 수주를 정량적으로 공개하는지 (현재는 "bookings와 pipeline 강화"라는 정성적 표현뿐)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>영업 레버리지.</strong> FY27 OPEX 약 $275M ±$10M, EPS 성장률이 매출 성장률을 웃돈다는 주장</td>
+<td>GPM이 28% ±2%p 안에서 유지될 것</td>
+<td>분기 OPEX가 약 $69M 이하로 유지되는지, Non-GAAP OPM 15% 이상 유지 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>포토닉 메모리 (Celestial AI/Marvell 협업).</strong> 제품 출시 시점은 2027년 하반기</td>
+<td>R&amp;D 성공</td>
+<td>단기 실적과는 무관하다. FY27 밸류에이션에서는 제외하는 것이 맞다</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>가이던스 역산 (추정)</strong></li>
+<li>4분기 매출을 연환산하면 약 $2.27B다. FY27 가이던스 중간값 약 $2.43B는 분기 평균 약 $607M에 해당해, 4분기보다 약 7% 높은 수준에 불과하다. 성장률 40%의 상당 부분이 이미 현재 매출 수준에 반영돼 있다.</li>
+<li>반대로 가이던스 하단(<span class="up">+30%</span>, 약 $2.25B)은 4분기 연환산보다 낮다. 이는 매출이 분기 기준으로 줄어드는 시나리오, 예컨대 메모리 가격 정상화를 허용하는 범위다.</li>
+<li>중간값 기준 영업이익은 $2.43B × 28% - $275M = 약 $405M(OPM 약 16.7%)으로 역산된다. EPS $4.45 × 63M주 ÷ 0.8로 역산한 세전이익 약 $350M과는 약 $55M 차이가 난다. 이자비용이나 기타 항목으로 추정되지만, 내역은 공시상 확인 불가다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스 화법</strong>
+- 매우 자신감 있는 톤이다. 4분기에 매출·매출총이익·영업이익·OPM·순이익·EBITDA 모두 사상 최대였다는 점을 반복해서 강조했다.
+- 가이던스는 3분기에 낸 "예비 전망 30%"를 이번에 "40% ±10%p"로 공식화하면서 올렸다.
+  - 범위가 ±10%p로 매우 넓다. 상단과 하단의 매출 차이가 약 $350M이다.
+  - 회사는 그 이유로 고객 배포 시점, 부품 리드타임, 메모리 시장 조건을 들었다.
+  - 숫자를 높이면서 변동성 책임은 회피하는 화법으로 읽힌다.
+- 메모리 백로그: "메모리 백로그가 이번 분기 인식 매출보다 훨씬 크고, 최소 4개 분기에 걸쳐 있다"고 언급했다. 이것이 가이던스 상향의 핵심 근거로 제시됐다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>백로그의 매출 커버리지 (Stifel):</strong> FY27 Advanced Computing 매출 중 얼마가 이미 백로그에 있는지 묻자, "그 수준의 세부 내용은 공유하지 않는다"며 답하지 않았다.
+- <strong>네오클라우드 프로젝트의 매출 인식 시점 (Needham):</strong> "어느 프로젝트가 언제 인식되는지는 공유하지 않는다"고 답했다. 대신 "대부분 이미 시작됐다"는 정성적 답변만 내놓았다.
+- <strong>OPEX 투자가 충분한지 (Stifel):</strong> 인도 엔지니어링, 말레이시아 제조, 사내 AI 활용(소프트웨어 엔지니어 100%가 코드 생성 AI 사용)을 근거로 비용 효율을 방어했다.
+- 정리하면, 애널리스트의 관심은 가시성(백로그가 매출로 언제 바뀌는지)에 집중됐고 회사는 정량 공개를 일관되게 피했다. 가이던스의 신뢰도는 다음 분기 실적으로 검증할 수밖에 없다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 노르웨이 36,000 GPU 규모 AI 팩토리 프로젝트에 참여하고 있다.
+- CFO가 교체됐다. 7월부터 임시 CFO가 맡아오다 Stephen Cumming이 신임 CFO로 왔다.
+- 메모리 백로그가 최소 4개 분기에 걸쳐 있다.
+- 순매출과 총매출의 차이: 총매출 $1.57B 대비 순매출 $567M.
+- FY27 희석 주식 63M주, 세율 20%를 가정한다.
+- Celestial AI가 Marvell에 $5.5B에 인수돼 투자금을 회수했다(GS 컨퍼런스).
+- "향후 3년간 $7T 규모 인프라 투자 사이클"은 회사(CEO) 주장일 뿐, 검증된 수치가 아니다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>메모리 사이클 리스크가 실적의 중심에 있다</strong>
+   - 4분기 매출의 약 60%, FY26 매출의 53%가 Integrated Memory다.
+   - 회사도 콜에서 "메모리는 여전히 사이클 산업이며 FY27 중 공급·가격·원가가 바뀔 수 있다"고 인정했다.
+   - DRAM을 해외 파운드리에서 조달하므로(10-Q), 업황이 꺾이면 가격 효과가 사라지고 재고 부담까지 동시에 올 수 있다.</li>
+<li><strong>운전자본 팽창과 현금 소모</strong>
+   - 4분기 영업현금흐름은 -$163M이다. 대리인 기준 물류까지 포함하면 회사를 거쳐 가는 총매출은 $1.57B로, 순매출의 2.8배다.
+   - 매출이 커질수록 운전자본 부담이 비선형적으로 늘어나는 구조로 보인다(추정).
+   - CB 자금으로 메운 상태여서, 성장이 둔화되거나 업황이 꺾일 경우 재고자산 손상 위험이 있다.</li>
+<li><strong>Advanced Computing의 매출 인식 변동성과 고객 전환</strong>
+   - 10-Q에 따르면 매출 인식이 고객의 go-live 결정에 묶여 있다. 대형 고객 이탈이나 할인도 위험 요인이다.
+   - 하이퍼스케일 고객이 빠지면서 FY26 사업부 매출이 <span class="down">-14%</span>였고, 서비스 매출도 줄고 있다.
+   - 콜에서도 대형 프로젝트가 분기 사이에 이동할 수 있다고 인정했다.</li>
+<li><strong>믹스에 따른 마진 압박</strong>
+   - 마진이 낮은 Memory가 회사 평균보다 빨리 성장하면 GPM이 떨어진다(10-Q). FY26 GPM은 이미 <span class="down">-1.7%</span>p였다.
+   - FY27 GPM 가이던스는 28% ±2%p로, 하단이면 26%다. OPEX 레버리지만으로 이를 상쇄하는 데에는 한계가 있다.</li>
+<li><strong>자본구조와 경영 연속성</strong>
+   - 희석 주식은 약 52.9M주(2025-10)에서 63M주(FY27 가정)로 늘어난다.
+   - 인수 확대 전략에 따라 추가 차입이나 지분 발행 가능성이 있다(10-Q).
+   - CFO가 공석이었다가 교체된 직후라, 내부 재무 프로세스의 연속성을 점검할 필요가 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY27 EPS 가이던스 기준 P/E</td>
+<td>$64.21 ÷ $4.45 = 약 14.4배 (가이던스 범위 $3.75~$5.15 기준 12.5~17.1배)</td>
+<td>성장률 대비 낮지만, 메모리 비중이 높아 사이클 할인을 받는 것으로 보인다</td>
+</tr>
+<tr>
+<td>시가총액 / FY27 매출</td>
+<td>$3.29B ÷ $2.43B = 약 1.35배</td>
+<td>메모리 유통·모듈 성격을 반영한 수준</td>
+</tr>
+<tr>
+<td>4분기 Non-GAAP OPM</td>
+<td>15.8% (YoY <span class="up">+4.2%</span>p)</td>
+<td>레버리지는 확인됐다</td>
+</tr>
+<tr>
+<td>FY26 FCF</td>
+<td>약 -$164M (역산)</td>
+<td>가장 큰 약점</td>
+</tr>
+<tr>
+<td>20일 / 60일 수익률</td>
+<td>+42.2% / <span class="down">-6.7%</span></td>
+<td>단기적으로 이미 많이 올랐지만, 중기 고점은 회복하지 못했다</td>
+</tr>
+<tr>
+<td>평상시 일평균 거래대금</td>
+<td>약 $94M ($1.00B ÷ 10.65, 추정)</td>
+<td>기관이 비중을 실을 만한 유동성은 있다</td>
+</tr>
+</tbody>
+</table></div>
+<p>"보통"으로 본 이유는 이렇다. 밸류에이션과 영업 레버리지는 "적극"을 정당화할 만하다. 그러나 현금흐름이 음수이고, 성장 대부분이 메모리 사이클에 기대고 있어 한 단계 낮췄다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 같은 날 공시된 또 다른 8-K(d162527d8k.htm)와 FY26 10-K 원문을 확인한다.
+   - 내용: 남은 총차입금, 재고 구성(원재료와 완제품), 매출 상위 고객 집중도, GAAP 4분기 일회성 이익 내역.
+2. 메모리 매출 성장 가운데 가격 효과와 물량 효과를 나눈다.
+   - 10-K MD&amp;A와 다음 분기 콜에서 회사가 이 수치를 공개하는지 본다.
+   - 가격 효과가 대부분이면 업황 정점 리스크를 더 크게 반영해야 한다.
+3. 4분기 운전자본 증가 성격을 확인한다.
+   - 재고 확충이 백로그 대응용 선매입인지 확인한다.
+   - FY27 1분기에 영업현금흐름이 플러스로 돌아서는지 확인한다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 낮추는 경우)</strong>
+- FY27 1분기 매출이 4분기($567M)보다 줄고, 그 원인이 Memory일 때. 가격 정점의 신호로 본다.
+- Non-GAAP GPM이 27% 아래로 내려가거나 OPM이 14% 아래로 떨어질 때. 레버리지 논리가 훼손된다.
+- 영업현금흐름이 2개 분기 연속 큰 폭으로 음수이거나 추가 자금조달이 이뤄질 때.
+- Advanced Computing의 YoY 성장률이 4분기의 <span class="up">+11%</span>보다 둔화될 때. 비하이퍼스케일 전환으로 하이퍼스케일 이탈을 메우지 못한다는 뜻이다.
+- 회사가 FY27 가이던스 범위(±10%p)의 중간값을 낮출 때.</p>
+<p><strong>반대로 "적극"으로 올리는 조건</strong>
+- 1분기에 영업현금흐름이 플러스로 돌아선다.
+- Memory 매출이 QoQ 증가하면서 GPM 28% 이상을 유지한다.
+- Advanced Computing YoY 성장률이 20%를 넘는다.</p>
+<hr>
+<p>참고로 Fiscal.ai 등 일부 연결 데이터 소스는 인증이 필요해 이번 분석에 쓰지 못했습니다. claude.ai 커넥터 설정에서 인증하면 이후 분석에 쓸 수 있습니다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000161653325000061/peng-20250829.htm">10-K — 2025-08-29_0001616533-25-000061</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000161653326000043/peng-20260529.htm">10-Q — 2026-05-29_0001616533-26-000043</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000161653326000030/sgh-20260227.htm">10-Q — 2026-02-27_0001616533-26-000030</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000161653326000046/pengq4-26form8xkxex991.htm">8-K — 2026-10-06_0001616533-26-000046__EX-99.1__pengq4-26form8xkxex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000161653326000046/peng-20261006.htm">8-K — 2026-10-06_0001616533-26-000046</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000119312526415645/d162527dex991.htm">8-K — 2026-10-06_0001193125-26-415645__EX-99.1__d162527dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000119312526415645/d162527d8k.htm">8-K — 2026-10-06_0001193125-26-415645</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1616533/000119312526307989/d103073dex992.htm">8-K — 2026-07-13_0001193125-26-307989__EX-99.2__d103073dex992</a></li>
+<li>Transcript — 2026-10-06 Q4 2026 Transcript</li>
+<li>Transcript — 2026-09-10 Goldman Sachs Communacopia + Technology Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
