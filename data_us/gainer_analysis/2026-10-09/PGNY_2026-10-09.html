@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGNY — Progyny Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>PGNY — Progyny Inc. Common Stock</h1>
+<div class="sub">2026-10-09 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">PGNY</span><span class="badge">+6.33%</span><span class="badge">거래량 2.14배</span><span class="badge">$2.11B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>현금창출력은 좋다.</strong> TTM 잉여현금흐름은 $178.4M이고 시가총액 $2.11B 대비 FCF 수익률은 약 8.5%(단순 계산)다. 영업이익률은 11.4%로 전년보다 4.1%p 개선됐다.</li>
+<li><strong>성장은 느리다.</strong> 최근 분기 매출 YoY는 <span class="up">+5.3%</span>이고, 10-Q상 커버리지 인원(covered lives)은 1분기와 2분기 모두 약 720만 명으로 같다. 고객사 수만 "590개 이상"에서 "600개 이상"으로 늘었다.</li>
+<li><strong>오늘 상승의 촉매는 공시로 확인되지 않는다.</strong> "연간 영업 시즌 120만…" 뉴스 헤드라인이 유력한 후보다. 하지만 최근 4일 내 SEC 공시가 없어 수치와 범위를 검증할 수 없다.</li>
+<li>60일 수익률은 <span class="down">-13.9%</span>이고 거래량 배수는 2.14배다. 저평가 반등과 수급의 성격이 강하다. 2027년 신규 고객 개시 규모와 단가·이용률 데이터가 공시로 확인되기 전에는 의미 있는 비중을 실을 근거가 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 공시 촉매 없음. 뉴스(영업 시즌 결과 발표 추정) + 수급/저점 반등 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시(8-K 등)는 없다.</li>
+<li>뉴스 헤드라인 중 "Progyny (PGNY) Reports Strong Annual Selling Period with 1.2 Mil"이 유일하게 회사 이벤트를 가리킨다. 헤드라인이 잘려 있어 '1.2 Mil'이 신규 covered lives인지, 무엇의 수치인지는 <strong>공시상 확인 불가</strong>다.</li>
+<li>2분기 실적 보조자료(8-K, 2026-08-06)의 세이프하버 문구에는 "2027년 개시분 영업 시즌에 대한 기대(our expectations for our selling season for 2027 launches)"가 있다. 이 시기에 회사가 영업 시즌 결과를 알리는 관행과는 맞는다. 다만 이번 발표의 내용 자체는 SEC 원문으로 검증되지 않았다.</li>
+<li>나머지 헤드라인("Is Progyny Still Undervalued As Its Stock Rebounds?", "Rotational Strategy Timing")은 밸류에이션 반등과 수급을 다룬 해설성 기사다.</li>
+<li>지표상 60일 <span class="down">-13.9%</span>, 52주 고점 대비 <span class="down">-14.9%</span> 구간에서 나온 반등이다. 거래량 배수 2.14배는 의미는 있지만 폭발적인 수준은 아니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>(10-K 사업 섹션 본문은 발췌에 포함되지 않았다. 아래는 2026년 1·2분기 10-Q MD&amp;A의 Overview·Revenue Model 기준이다.)</p>
+<p><strong>제품/서비스</strong>
+- <strong>난임 복리후생 솔루션(Fertility Benefits)</strong>: 자체 설계한 치료 묶음 상품인 "Smart Cycle" 20종을 제공한다. 진단 검사, PGT(착상 전 유전검사) 등 치료 한 사이클에 필요한 의료 서비스가 묶음에 포함된다. 고객사는 직원 1인당 누적 Smart Cycle 단위(1단위에서 무제한까지)를 구매한다.
+- <strong>케어 매니지먼트</strong>: 선별적 전문의 네트워크 관리, 실시간 자격 확인·치료 승인, 분기별 고객 리포팅, 전담 상담 인력(PCA)의 컨시어지 지원으로 구성된다. 입양·대리모 비용 환급 프로그램을 추가로 붙일 수 있다.
+- <strong>Progyny Rx(약제 솔루션)</strong>: 난임 솔루션 고객사만 구매할 수 있다. 처방집 설계, 승인 절차 간소화, 전문 약국 네트워크를 통한 배송, 투약 교육을 포함한다.
+- <strong>인접 영역 확장</strong>: 임신·산후, 갱년기·중년기, 복리후생·휴직 안내, 부모·자녀 웰빙으로 넓혔다. 회사는 이를 "여성 건강 전 주기 대응"이라고 밝힘. 다만 이 영역들의 매출 기여도는 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>고객군</strong>
+- 대상은 미국 내 covered lives 1,000명 이상인 고용주다. 고객사 수는 1분기 590개 이상에서 2분기 600개 이상으로 늘었다.
+- 40개 이상 산업에 걸쳐 있고, 고객사 규모는 직원 약 1,000명에서 300,000명까지다. covered lives는 약 720만 명이다.</p>
+<p><strong>매출 구성(과금 구조)</strong>
+- <strong>이용량 기반(Utilization)</strong>: 직원이 실제로 이용한 Smart Cycle에 대해 고객사에 묶음 정액(case rate)으로 청구한다. 정액에는 제3자 전문의, 마취, 검사 비용이 포함된다. Progyny Rx는 조제된 약제비를 청구한다.
+- <strong>인원 기반(Population-based)</strong>: 발췌가 중간에 끊겨 세부 구조는 <strong>공시상 확인 불가</strong>다.
+- 난임 솔루션과 Rx의 매출 비중도 제공 발췌에서는 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>경쟁 위치(회사 주장)</strong>
+- 회사는 "출범 이후 실질적으로 모든 고객을 유지했다"고 밝힘. 2025년 말 NPS(고객 추천지수)는 난임 솔루션 +81, Rx +79다.
+- 회사가 제시한 임상 성과에서 자사 회원의 지표가 전국 평균보다 높다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>전국 평균</th>
+<th>Progyny 회원</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>채취 시도당 생아출생률</td>
+<td>34.9%</td>
+<td>46.7%</td>
+</tr>
+<tr>
+<td>이식당 생아출생률</td>
+<td>42.2%</td>
+<td>52.1%</td>
+</tr>
+<tr>
+<td>다태아율</td>
+<td>5.8%</td>
+<td>2.1%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>단, 회원 수치는 2023년 12개월 기준이고 비교 대상은 SART 2021, CDC 2022 데이터다. 시점이 오래됐고 회사가 선택해 제시한 지표라는 점에 유의해야 한다.</li>
+<li>경쟁사와의 점유율 비교는 <strong>공시상 확인 불가</strong>다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$350.5M</td>
+<td>—</td>
+</tr>
+<tr>
+<td>YoY / QoQ</td>
+<td>+5.3% / <span class="up">+6.7%</span></td>
+<td>한 자릿수 중반 성장</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>25.5%</td>
+<td>낮은 마진 구조</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>11.4% (YoY <span class="up">+4.1%</span>p)</td>
+<td>큰 폭의 개선</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$178.4M</td>
+<td>시총 대비 약 8.5%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- 회사는 매출 요인을 이용량, case rate, Rx 비중으로 설명하는 구조다. 그러나 제공된 MD&amp;A 발췌에는 분기 매출 증감 원인(이용 건수, 단가, 믹스)의 분해가 없다. → <strong>공시상 확인 불가</strong>.
+- 정황상 물량 쪽이 정체돼 있다. covered lives는 1·2분기 모두 약 720만 명이고 고객사 수만 10개 정도 늘었다. 따라서 YoY <span class="up">+5.3%</span>는 신규 인원 유입보다 기존 고객의 이용률·단가·Rx 믹스에서 나왔을 가능성이 있다. <em>(추정)</em>
+- QoQ <span class="up">+6.7%</span>가 YoY보다 높은 것은 계절성 또는 이용률 회복 신호일 수 있다. 다만 확인할 근거는 없다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률 25.5%는 낮다. case rate 안에 제3자 의료비가 포함되는 구조(공시 사실)상 매출 상당 부분이 통과 비용이기 때문으로 해석된다. <em>(해석)</em>
+- 영업이익률은 전년 대비 4.1%p 개선됐다. 매출이 5.3% 성장한 것에 비하면 개선 폭이 크다. 원가 개선, 판관비 절감, 주식보상비 감소 등 원인 분해는 발췌에 없다(<strong>공시상 확인 불가</strong>). 일회성 요인 여부를 반드시 검증해야 한다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- TTM FCF $178.4M은 시가총액의 약 8.5%다. 헬스케어 서비스주로는 현금 수익률이 높은 편이다.
+- 보유 현금, 부채, 자사주 매입 내역은 발췌에 없어 <strong>공시상 확인 불가</strong>다.
+- 참고로 10-K 기준 발행주식수는 81,902,232주(2026-01-31)다. 여기에 종가 $27.55를 곱하면 약 $2.26B로, 제시된 시가총액 $2.11B보다 크다. 그 사이 주식수가 줄었을 가능성(자사주 매입 등)이 있다. 다만 이는 <strong>추정</strong>이며 10-Q 재무제표로 확인해야 한다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>연간 영업 시즌(2027년 개시분 신규 고객·covered lives)</strong>
+   - 실현 조건: 헤드라인의 '1.2 Mil'이 신규 covered lives라면 현재 720만 명 대비 약 17% 증가에 해당한다. 단 이는 <strong>미검증 계산</strong>이다. 기존 고객 이탈과 인원 감소를 뺀 순증 규모가 중요하다.
+   - 검증 포인트: 3분기 실적 8-K와 보조자료에 나올 2027년 개시 예정 covered lives 수치, 순증 여부, 고객사 수.</p>
+</li>
+<li>
+<p><strong>이용률(utilization)과 Smart Cycle 단가·믹스</strong>
+   - 실현 조건: 회원 1인당 이용 사이클 증가, 또는 고단가 치료 비중 확대.
+   - 검증 포인트: 다음 10-Q MD&amp;A의 매출 증감 원인 서술(이용 건수, 단가 효과).</p>
+</li>
+<li>
+<p><strong>Progyny Rx 부착률(attach rate)</strong>
+   - 실현 조건: 난임 솔루션 고객 중 Rx를 함께 쓰는 비율 상승.
+   - 검증 포인트: Rx 매출 비중과 증가율 공시.</p>
+</li>
+<li>
+<p><strong>여성 건강 인접 영역(임신·산후, 갱년기, 휴직 안내 등)</strong>
+   - 회사는 "여성 건강 전 주기"로 확장했다고 밝힘. 하지만 매출 기여는 <strong>공시상 확인 불가</strong>다.
+   - 검증 포인트: 해당 솔루션의 고객 수, 매출 별도 공시 여부.</p>
+</li>
+<li>
+<p><strong>영업 레버리지</strong>
+   - 영업이익률 <span class="up">+4.1%</span>p 개선이 유지되는지가 관건이다.
+   - 검증 포인트: 3분기 영업이익률이 10% 이상을 유지하는지, 판관비율 추이.</p>
+</li>
+</ol>
+<h2>6. 리스크</h2>
+<p>(10-K·10-Q 리스크 요인 섹션 원문은 제공 발췌에 없다. 아래는 MD&amp;A에 서술된 사업 구조와 지표에서 직접 나오는 리스크로만 한정했다.)</p>
+<ol>
+<li>
+<p><strong>고용주 복리후생 예산 의존 / 고객 확보 둔화</strong>
+   - 매출은 고용주가 복리후생으로 구매하는 구조다. 2분기 보조자료에도 "경제 불확실성 관리", "고객 의사결정 시점"이 전망 변수로 명시돼 있다.
+   - covered lives가 정체(720만 명 유지)된 상황에서 영업 시즌 성과가 기대에 못 미치면 성장률이 낮은 한 자릿수로 굳을 수 있다.</p>
+</li>
+<li>
+<p><strong>이용량 기반 매출의 변동성</strong>
+   - 매출 상당 부분이 회원의 실제 치료 이용에 연동된다. 이용률, 치료 믹스, 약제 조제량이 바뀌면 분기 실적이 흔들린다. Rx 매출도 조제량에 직접 연동된다.</p>
+</li>
+<li>
+<p><strong>낮은 매출총이익률과 통과 비용 구조</strong>
+   - 매출총이익률이 25.5%다. case rate에 제3자 의료비가 포함되므로 의료기관 비용이 오르면 묶음 가격에 전가하기 전까지 마진이 눌릴 수 있다. <em>(구조적 해석)</em></p>
+</li>
+<li>
+<p><strong>경쟁 우위 근거의 시의성</strong>
+   - 회사가 우위의 근거로 드는 임상 성과는 2021~2023년 데이터다. 최신 기준으로 우위가 유지되는지는 공시상 확인되지 않는다.</p>
+</li>
+<li>
+<p><strong>마진 개선의 지속성</strong>
+   - 영업이익률 <span class="up">+4.1%</span>p 개선의 원인이 공개되지 않았다. 일회성 비용 축소에서 나온 개선이라면 다음 분기에 되돌려질 수 있다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망 판단)</strong>
+- <strong>긍정적인 숫자</strong>
+  - TTM FCF $178.4M(시총 대비 약 8.5%)
+  - 영업이익률 11.4%(YoY <span class="up">+4.1%</span>p)
+  - 매출 QoQ <span class="up">+6.7%</span>
+  - 고객사 수 590개 이상 → 600개 이상
+- <strong>부정적인 숫자</strong>
+  - 매출 YoY <span class="up">+5.3%</span>로 성장 둔화
+  - covered lives 720만 명으로 정체
+  - 60일 <span class="down">-13.9%</span>로 추세 미회복
+  - 오늘 상승의 촉매가 공시로 미검증
+- <strong>종합</strong>: 밸류에이션 하단과 현금흐름은 받쳐준다. 하지만 성장 재가속을 입증할 공시 근거가 없어 '의미 있는 비중'까지는 이르다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 영업 시즌 결과(헤드라인의 '1.2 Mil')의 정확한 의미와 원문. 신규 covered lives인지, 2027년 개시분 순증인지를 3분기 실적 8-K 또는 보도자료 원문으로 확인한다.
+2. 3분기 10-Q MD&amp;A의 매출 증감 분해(이용 건수, 단가, Rx 믹스). 영업이익률 개선의 원인(원가 vs 판관비 vs 일회성)도 함께 확인한다.
+3. 현금, 부채, 자사주 매입 현황. 발행주식수 감소 여부와, 시가총액 $2.11B가 발행주식수 대비 낮게 나오는 이유를 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통 이상으로 상향하는 조건</strong>
+  - 2027년 개시분 covered lives 순증이 두 자릿수 %로 공시된다.
+  - 3분기 매출 YoY가 다시 가속한다(<span class="up">+5.3%</span> 상회).
+  - 영업이익률이 11% 이상을 유지한다.
+- <strong>회피로 하향하는 조건</strong>
+  - 영업 시즌 수치가 신규 계약 기준일 뿐이고 기존 고객 이탈로 순증이 미미하다.
+  - 영업이익률 개선이 일회성으로 확인되어 3분기에 되돌려진다.
+  - 고객 유지 관련 주장("실질적으로 모든 고객 유지")에 반하는 이탈이 공시된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000020/pgny-20251231.htm">10-K — 2025-12-31_0001551306-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000140/pgny-20260630.htm">10-Q — 2026-06-30_0001551306-26-000140</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000068/pgny-20260331.htm">10-Q — 2026-03-31_0001551306-26-000068</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000135/progyny2q2026earningssup.htm">8-K — 2026-08-06_0001551306-26-000135__EX-99.2__progyny2q2026earningssup</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000135/exhibit991q22026.htm">8-K — 2026-08-06_0001551306-26-000135__EX-99.1__exhibit991q22026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000135/pgny-20260806.htm">8-K — 2026-08-06_0001551306-26-000135</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000074/pgny-20260526.htm">8-K — 2026-05-26_0001551306-26-000074</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1551306/000155130626000109/pgny-20260521.htm">8-K — 2026-05-21_0001551306-26-000109</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

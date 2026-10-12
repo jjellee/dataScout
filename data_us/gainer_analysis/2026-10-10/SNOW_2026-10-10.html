@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNOW — Snowflake Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SNOW — Snowflake Inc. Common Stock</h1>
+<div class="sub">2026-10-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SNOW</span><span class="badge">+3.17%</span><span class="badge">거래량 1.0배</span><span class="badge">$121.15B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적:</strong> 실적콜에서 회사는 2분기 제품 매출이 $1.49B로 전년보다 37% 늘었다고 밝혔고, 성장률이 3개 분기 연속 높아졌다고 언급했습니다. 연간(FY2027) 제품 매출 가이던스도 $6.07B(<span class="up">+36%</span>)로 올렸습니다. TTM 잉여현금흐름(FCF)은 $1.19B 흑자입니다.</li>
+<li><strong>밸류에이션 부담:</strong> 시가총액은 $121.15B입니다. 회사의 FY2027 제품 매출 가이던스 대비 약 20배, TTM FCF 대비 약 102배입니다(FCF 수익률 약 1.0%). 지표상 GAAP 영업이익률은 <span class="down">-17.0%</span>로 아직 적자입니다.</li>
+<li><strong>수급 부담:</strong> 9/28에 $3.75B 규모 전환사채(CB) 발행 가격이 정해졌고, 10/7에는 내부자 매도 예정 신고(Form 144)가 접수됐습니다. 주가는 60일 동안 <span class="up">+36.6%</span> 올랐고 52주 고점과의 차이는 <span class="down">-6.9%</span>입니다.</li>
+<li><strong>오늘 상승:</strong> 거래량은 평소와 같은 수준(20일 중앙값의 1.0배)이고, 오늘 나온 공시성 촉매도 없습니다. 오늘 오름세를 근거로 진입을 서두를 이유는 약합니다.</li>
+<li><strong>결론:</strong> 펀더멘털은 '적극'에 가깝지만 가격과 희석 부담을 반영해 '보통'으로 판단합니다. 3분기 실적으로 성장 가속이 지속되는지 확인하면서 비중을 나눠 늘리는 접근이 적절합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 당일 전후 SEC 공시는 2026-10-07 Form 144(내부자 매도 예정 신고) 하나뿐입니다. 이 서류는 상승 요인이 아니라 매도 물량 요인입니다. 신고인, 수량, 금액은 제공된 발췌로는 확인되지 않습니다(공시상 확인 불가).</li>
+<li><strong>거래량:</strong> 20일 중앙값 대비 1.0배, 거래대금은 $1.37B입니다. 전제로 주어진 '거래량 급증'은 지표로 확인되지 않습니다. 평소 수준의 거래에서 <span class="up">+3.17%</span> 오른 것입니다.</li>
+<li><strong>뉴스:</strong> 헤드라인은 차트상 매수 신호(IBD), AI 소프트웨어 심리 개선(Quiver), 2분기 실적 호조가 희석 우려를 상쇄했다는 해석(StocksToTrade) 정도입니다. 새로운 펀더멘털 이벤트는 아닙니다.</li>
+<li><strong>추정:</strong></li>
+<li>9/2 실적 발표 이후 이어진 상승 흐름(20일 <span class="up">+12.1%</span>)에 AI 소프트웨어 섹터 심리가 더해진 것으로 봅니다.</li>
+<li>CB 발행가 산정일인 9/28 주가는 전환가와 전환 프리미엄으로 역산하면 약 $328입니다($500.38 ÷ 1.525). 오늘 종가 $343.40은 그보다 약 4.7% 높아, CB 발행에 따른 하락 압력은 이미 소화된 것으로 보입니다.</li>
+<li>공시 발췌에 따르면 캡드콜 거래상대방의 헤지 매수는 가격 산정 시점과 그 직후에 이뤄지고, 이후 헤지 조정 매매도 가능합니다. 오늘 상승과의 직접적 연관은 확인할 수 없습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지, 목차, 미래예측진술(forward-looking statements) 부분만 들어 있습니다. 사업(Item 1) 본문은 포함되지 않았습니다. 따라서 매출 구성, 지역별 매출, 고객 집중도는 <strong>공시상 확인 불가</strong>입니다.</p>
+<ul>
+<li><strong>제품과 과금 방식:</strong></li>
+<li>10-K에서 회사는 자신을 "AI Data Cloud"로 규정합니다.</li>
+<li>미래예측진술 항목에 "플랫폼 소비(consumption) 유지·증가 능력"이 들어 있습니다. 소비량에 따라 매출이 생기는 구조로 읽힙니다.</li>
+<li>10-K는 퍼블릭 클라우드와 인터넷 인프라 의존을 위험 요인으로 명시합니다.</li>
+<li><strong>매출 구성(일부 추정):</strong></li>
+<li>2분기 총매출은 $1.55B(지표), 제품 매출은 $1.49B(실적콜)입니다.</li>
+<li>따라서 제품 매출이 총매출의 약 96%로 추정됩니다. 나머지는 서비스성 매출로 보이지만 내역은 확인할 수 없습니다.</li>
+<li><strong>고객군(실적콜에서 언급):</strong></li>
+<li>전체 고객 14,554곳, 2분기 순증 692곳, Forbes Global 2000 신규 14곳</li>
+<li>연간 $1M 이상 지출 고객 828곳(분기 중 48곳 순증)</li>
+<li>최근 12개월 제품 매출 $10M 이상 고객 65곳</li>
+<li><strong>AI 제품:</strong></li>
+<li>실적콜에서 회사는 자체 AI 제품 CoCo(9,100여 계정, 분기 중 2,000곳 이상 순증)와 CoWork(5,800 계정)를 성장 축으로 제시했습니다.</li>
+<li>Hybrid Tables와 Postgres를 앞세워 운영계 시스템(system of record) 영역으로 확장하겠다고 언급했습니다.</li>
+<li><strong>경쟁 위치:</strong></li>
+<li>10-K는 기존 경쟁사와 신규 진입자 대비 경쟁력을 위험 항목으로 듭니다.</li>
+<li>실적콜에서 회사는 특정 AI 모델에 묶이지 않는 '모델 중립성'과, 데이터를 복사하지 않는 SaaS 파트너십(bidirectional zero-copy)을 차별점으로 주장했습니다.</li>
+<li>점유율 등 정량 경쟁 지표는 공시상 확인 불가입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- <strong>물량과 고객 1인당 지출:</strong> 매출은 전년 대비 <span class="up">+35.1%</span>, 직전 분기 대비 <span class="up">+11.2%</span>입니다(지표). 순매출유지율(NRR)은 126%라고 실적콜에서 언급했습니다. 기존 고객의 지출 증가가 성장의 중심입니다.
+- <strong>가속 구간:</strong> 실적콜에서 회사는 직전 회계연도 4분기에 30%였던 성장률이 2분기 37%로 7%p 높아졌다고 밝혔습니다.
+- <strong>AI 기여:</strong> 실적콜에서 회사는 가속분의 약 절반이 AI 제품(CoCo, CoWork, AI Functions, AI Gateway)에서 나왔다고 언급했습니다.
+- <strong>인수 효과:</strong> 연간 가이던스 중 1%p는 Observe 인수분입니다. 이를 빼면 기존 사업(오가닉) 기준 성장률은 약 35%입니다(추정).
+- <strong>단가 정보:</strong> 가격(단가) 관련 데이터는 공시상 확인 불가입니다.</p>
+<p><strong>마진 방향성</strong>
+- <strong>GAAP 영업이익률:</strong> <span class="down">-17.0%</span>로 전년 대비 <span class="up">+12.7%</span>p 개선됐습니다(지표). 역산하면 전년 동기는 약 <span class="down">-29.7%</span>입니다.
+- <strong>Non-GAAP 영업이익률:</strong> 실적콜에서 회사는 2분기 15%(전년 대비 400bp 이상 개선)였다고 밝혔습니다. 3분기 15.5%, 연간 14.5%를 가이던스로 제시했습니다.
+- <strong>GAAP과 Non-GAAP의 격차:</strong> 약 32%p입니다. 주식보상비용(SBC) 비중이 큰 것으로 추정되지만, 제공 자료에는 SBC 금액이 없어 확인할 수 없습니다.
+- <strong>매출총이익률:</strong> GAAP 기준 67.0%(지표)입니다. 회사의 연간 Non-GAAP 제품 매출총이익률 가이던스는 74%입니다.
+- <strong>마진 리스크:</strong> 실적콜에서 회사는 빠르게 성장하는 AI 워크로드가 기여마진이 낮다고 스스로 인정했습니다. 매출총이익률에 대한 하방 압력 요인입니다.</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 $1.19B로, TTM 매출 대비 마진은 계산할 수 없습니다(TTM 매출 미제공).
+- 회사는 연간 Non-GAAP 조정 FCF 마진 23%를 유지한다고 밝혔습니다. 23% × $6.07B로 계산하면 약 $1.4B 수준입니다(추정, 제품 매출 기준의 단순 계산).</p>
+<p><strong>재무 건전성</strong>
+- <strong>2분기 말 현금:</strong> 현금, 현금성자산, 투자자산 합계 $4.3B(실적콜)입니다.
+- <strong>신규 CB(8-K, 2026-09-28):</strong> 0% 쿠폰 CB $3.75B(2029년물 $2.0B, 2031년물 $1.75B)입니다.
+  - 순조달액은 약 $3.70B입니다.
+  - 그중 캡드콜 비용 약 $383.5M과 2027년물 CB 일부 재매입 약 $548.3M에 쓰입니다.
+  - 남는 약 $2.77B는 자사주 매입, M&amp;A 등 일반 목적 자금입니다.
+  - 단순 합산한 프로포마 현금은 약 $7.1B입니다(추정, 3분기 영업현금흐름 제외).
+- <strong>2027년물 잔액:</strong> 재매입 후 남은 원금은 공시상 확인 불가입니다.
+- <strong>잠재 희석:</strong>
+  - 2029년물 약 4.0M주, 2031년물 약 3.6M주로 합계 약 7.6M주입니다.
+  - 10-K 기준 발행주식 345.7M주(2026/3/6) 대비 약 2.2%입니다. 추가 발행 옵션까지 모두 행사되면 약 2.5%입니다.
+  - 캡드콜이 일정 한도까지 희석을 줄여주지만, 한도 가격은 발췌에 없습니다.
+  - 전환가($500.38 / $483.98)는 현재가보다 41~46% 높아 단기 희석 가능성은 낮습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>검증 포인트(다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① AI 자체 제품 (CoCo / CoWork)</td>
+<td>실적콜에서 가속분의 약 절반을 기여했다고 언급</td>
+<td>계정 수 증가가 소비 매출로 이어지고 무료/파일럿 사용에 그치지 않을 것</td>
+<td>CoCo 계정 9,100 → 순증 2,000 이상 유지, AI 제품 매출 기여를 정량으로 공개하는지</td>
+</tr>
+<tr>
+<td>② AI 사용 고객의 기존 플랫폼 소비 증가</td>
+<td>실적콜에서 CFO가 "AI 도입 고객이 기존 제품 소비도 늘린다"고 발언</td>
+<td>기존 사업과 AI의 동반 성장이 지속될 것</td>
+<td>NRR 126% 유지 또는 상승, $1M 이상 고객 순증 48곳 이상 유지</td>
+</tr>
+<tr>
+<td>③ 신규 워크로드와 대형 고객 확보</td>
+<td>Forbes Global 2000 분기 14곳 신규, $10M 이상 고객 65곳</td>
+<td>대형 고객 계약이 남은 계약 잔고(RPO)로 쌓일 것</td>
+<td>RPO $9B(<span class="up">+30%</span>)의 성장률이 매출 성장률(35%)을 따라잡는지</td>
+</tr>
+<tr>
+<td>④ 운영계 영역 확장 (Hybrid Tables, Postgres)</td>
+<td>실적콜에서 "앞으로 더 많이 듣게 될 것"이라고 언급</td>
+<td>분석용 중심에서 운영 워크로드로 전환</td>
+<td>정식 출시(GA) 일정, 고객 사례, 매출 언급 여부</td>
+</tr>
+<tr>
+<td>⑤ 운영 효율</td>
+<td>연초 이후 인력 증가 334명(전년 동기 935명), 내부 AI 활용으로 생산성 향상</td>
+<td>성장 가속과 인력 증가 둔화가 동시에 지속될 것</td>
+<td>3분기 Non-GAAP 영업이익률 15.5% 달성, GAAP 적자 축소폭</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법</strong>
+- <strong>자신감:</strong> 경영진은 "once-in-a-lifetime technology shift", "flywheel is accelerating" 같은 강한 표현을 썼습니다.
+- <strong>근거:</strong> 숫자로 뒷받침합니다. 성장률 30%에서 37%로 상승, 연간 가이던스 500bp 이상 상향, 영업이익률 400bp 개선입니다.
+- <strong>가이던스 구성 변화:</strong> 애널리스트(JPM)에 따르면, 직전 분기에는 가이던스 상향분 대부분이 CoCo 덕분이었습니다. 이번에는 기존 사업과 AI가 고르게 기여했습니다. 가시성이 AI 단일 축에서 플랫폼 전반으로 넓어졌다는 신호입니다.
+- <strong>보수적 화법 유지:</strong> CFO는 "가이던스는 실적콜 시점까지 관찰된 소비 행태에 기반한다"고 반복했습니다. 이 화법을 유지하는 점을 고려하면 이번 가이던스는 보수적으로 잡힌 것으로 추정됩니다.</p>
+<p><strong>Q&amp;A 방어 지점</strong>
+- <strong>SaaS·LLM 기업의 데이터 계층 진출(Citi):</strong> CEO는 "사용자 경험을 소유하는 것이 핵심", "interoperability" 같은 원론으로 답했습니다. 경쟁 잠식의 정량 데이터는 내놓지 않았습니다.
+- <strong>기존 사업과 AI의 가이던스 분해(JPM):</strong> CFO는 "둘 다 강하다"고만 답했습니다. 기여도 수치는 공개하지 않았습니다.
+- <strong>한계:</strong> 제공된 transcript는 중간이 생략돼 있습니다. 반복 질문의 전체 패턴은 확인할 수 없습니다.</p>
+<p><strong>콜에서만 드러난 정보(공시 발췌에는 없음)</strong>
+- NRR 126%, RPO $9B(12개월 내 인식 비중 54%), CoCo/CoWork 계정 수, 연초 이후 인력 증가 334명, Observe 인수 인력 173명
+- <strong>수주 시점:</strong> 수주(bookings)는 4분기에 몰릴 것이라고 언급했습니다. 3분기 RPO 성장이 약해 보일 수 있다는 사전 예고로 해석됩니다.
+- <strong>자기잠식 가능성(Six Five 대담, 2026-08-25):</strong> CEO는 "CoCo로 고객이 영업팀 없이 Snowflake 지출을 최적화할 수 있다"며 자랑스럽다고 발언했습니다. 장기 고객 신뢰에는 긍정적입니다. 다만 소비형 과금 모델에서는 단기적으로 사용량을 깎아먹는 요인이 될 수 있습니다.
+- 같은 대담에서 진행자(Futurum)는 "고객의 46%가 지출 확대 계획"이라는 자체 설문을 인용했습니다. 회사 공시가 아닌 제3자 주장이므로 참고만 해야 합니다.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌는 미래예측진술 목록 수준입니다. 리스크 본문(Item 1A)의 세부 내용은 공시상 확인 불가입니다. 아래는 그 목록과 8-K, 실적콜에서 실제로 의미 있는 항목만 추린 것입니다.</p>
+<ol>
+<li><strong>소비형 매출의 변동성:</strong>
+   - 10-K는 "플랫폼 소비 유지·증가 능력"을 핵심 불확실성으로 명시합니다.
+   - 가이던스가 관찰된 소비에만 근거하므로, 고객 최적화(CoCo의 비용 절감 기능 포함)나 거시 경기 둔화가 곧바로 매출에 반영됩니다.</li>
+<li><strong>AI 믹스에 따른 마진 희석:</strong>
+   - 실적콜에서 회사는 AI 워크로드의 기여마진이 낮다고 인정했습니다.
+   - 성장의 절반이 AI에서 나오는 만큼, 성장률이 높아질수록 매출총이익률이 떨어질 수 있습니다. GAAP 매출총이익률은 67%입니다.</li>
+<li><strong>희석과 자본 구조:</strong>
+   - 10-K는 CB와 주식보상비용을 위험 항목으로 명시합니다.
+   - 신규 CB의 잠재 희석은 약 2.2~2.5%입니다.
+   - GAAP과 Non-GAAP 영업이익률 격차(약 32%p)는 주주가치 희석이 상당하다는 뜻입니다(SBC 금액은 확인 불가).
+   - 10/7 Form 144로 내부자 매도도 진행 중입니다.</li>
+<li><strong>경쟁 구도 변화:</strong>
+   - 10-K는 신규 진입자와의 경쟁을 명시합니다.
+   - Q&amp;A에서 SaaS·LLM 기업의 데이터 계층 진출 질문에 정량 방어 없이 답했습니다.</li>
+<li><strong>밸류에이션:</strong>
+   - FCF 대비 약 102배, 제품 매출 가이던스 대비 약 20배입니다.
+   - 성장 가속이 멈추면 주가 배수가 낮아질 위험이 큽니다. 60일 <span class="up">+36.6%</span>로 기대가 이미 상당 부분 가격에 반영돼 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>긍정:</strong>
+  - 매출 성장 <span class="up">+35.1%</span>, 제품 매출 성장 <span class="up">+37%</span>(3개 분기 연속 가속)
+  - NRR 126%, RPO <span class="up">+30%</span>
+  - GAAP 영업이익률 <span class="up">+12.7%</span>p 개선
+  - TTM FCF $1.19B, 프로포마 현금 약 $7B(추정)
+- <strong>부담:</strong>
+  - GAAP 영업이익률 <span class="down">-17.0%</span>
+  - FCF 수익률 약 1.0%
+  - 52주 고점 대비 <span class="down">-6.9%</span>로 고점 근처
+  - CB와 Form 144에 따른 공급 물량
+  - 당일 거래량 1.0배로 확인되는 신규 수급 없음
+- <strong>결론:</strong> 성장 가속과 FCF 흑자는 편입을 정당화합니다. 다만 가격 부담 때문에 '보통'(나눠서 진입)이 적절합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Form 144 상세(10/7):</strong> 신고인(임원 여부), 수량, 매도 예정 규모를 EDGAR 원문에서 확인합니다. 정기 매도 계획(10b5-1)인지 일회성 대량 매도인지가 중요합니다.
+2. <strong>CB 추가 발행 옵션 행사 여부:</strong> 행사 기간은 10/1부터 13일간입니다. 최대 $550M 추가 발행 여부와 캡드콜 한도 가격을 확인해 최종 희석 규모를 확정합니다.
+3. <strong>자사주 매입 집행 여부:</strong> CB 순조달액 중 자사주 매입에 실제로 쓰이는 금액과 시점을 확인합니다. 희석을 상쇄하는지의 문제입니다.</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 3분기 제품 매출이 가이던스 하단 $1.588B를 밑돌거나, 전년 대비 성장률이 37% 아래로 내려가 가속이 멈추는 경우
+- NRR이 126%에서 하락하거나, $1M 이상 고객 순증이 48곳 아래로 둔화되는 경우
+- Non-GAAP 매출총이익률이 74% 가이던스를 밑돌아 AI 믹스로 인한 마진 희석이 확인되는 경우
+- 연간 FCF 마진 가이던스(23%)가 하향되는 경우
+- 임원 다수의 추가 Form 144가 나오거나, 신규 CB 자금이 자사주 매입 없이 대형 M&amp;A에 쓰여 희석이 확대되는 경우</p>
+<p><strong>상향 조건(적극)</strong>
+- 3분기 제품 매출이 가이던스 상단 이상이면서 성장률 38% 이상으로 가속이 지속되는 경우
+- 4분기에 몰린 수주가 RPO 성장률 30% 이상으로 확인되는 경우
+- GAAP 영업이익률 적자 축소폭이 더 커지는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm">10-K — 2026-01-31_0001640147-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm">10-Q — 2026-07-31_0001640147-26-000037</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000030/snow-20260430.htm">10-Q — 2026-04-30_0001640147-26-000030</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000043/exhibit992-pricingpressrel.htm">8-K — 2026-09-28_0001640147-26-000043__EX-99.2__exhibit992-pricingpressrel</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000043/exhibit991-launchpressrele.htm">8-K — 2026-09-28_0001640147-26-000043__EX-99.1__exhibit991-launchpressrele</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000043/exhibit101-formofconfirmat.htm">8-K — 2026-09-28_0001640147-26-000043__EX-10.1__exhibit101-formofconfirmat</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000043/snow-20260928.htm">8-K — 2026-09-28_0001640147-26-000043</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000033/fy2027q2earnings.htm">8-K — 2026-09-02_0001640147-26-000033__EX-99.1__fy2027q2earnings</a></li>
+<li>Transcript — 2026-09-02 Q2 2027 Transcript</li>
+<li>Transcript — 2026-08-25 The Six Five Summit: AI Unleashed 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

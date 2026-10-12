@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMCI — Super Micro Computer Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SMCI — Super Micro Computer Inc. Common Stock</h1>
+<div class="sub">2026-10-09 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SMCI</span><span class="badge">+3.40%</span><span class="badge">거래량 1.21배</span><span class="badge">$29.52B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>외형은 강하다. FY26 매출은 $39.1B(<span class="up">+78%</span>)였고, 실적콜에서 회사는 FY27 매출 가이던스를 $65~72B, Q4 신규 수주를 $60B 이상이라고 밝혔다. 다만 수주가 매출로 바뀌는 속도는 Q2·Q4 연속으로 고객 사정에 따른 지연을 겪었다.</li>
+<li>Q4 GAAP 매출총이익률 17.5%는 일회성 요인이 섞인 고점이다. 회사가 제시한 Q1 FY27 GPM 가이던스는 10.4~10.8%로, 한 분기 만에 약 7%p가 되돌아간다.</li>
+<li>TTM FCF는 -$6.97B다. 현금전환주기(CCC)는 106일에서 149일로 늘었고, 성장에 필요한 운전자본을 2026년 6월 약 $5.6B 규모 주식·강제전환우선주 발행으로 조달했다. 성장의 질과 주주 희석 측면에서 아직 검증이 끝나지 않았다.</li>
+<li>오늘 상승(<span class="up">+3.4%</span>)은 거래량 배수 1.21배로 '급증'으로 보기 어렵다. 확인된 펀더멘털 촉매도 없다. 60일 <span class="up">+59.1%</span>로 이미 반등이 상당 부분 진행된 위치다.</li>
+<li>선행 매출 대비 밸류에이션(가이던스 중간값 기준 P/S 약 0.43배)은 싸다. 그러나 Q1 FY27 실적에서 매출 $14.5B 이상과 현금흐름 개선을 확인한 뒤 비중을 늘리는 것이 맞다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 직전 급락에 대한 기술적 반등과 수급 요인일 가능성이 높다.</strong></p>
+<ul>
+<li>뉴스 헤드라인 "SMCI Stock Rebounds Overnight After Worst Drop In 3 Months: Retail Traders Question $39B Orders"로 보면, 최근 3개월 중 최대 낙폭 직후의 반등이다. 급락의 원인 자체는 제공 자료로 확인할 수 없다.</li>
+<li>2026-10-07 8-K: 뉴스 헤드라인("Intel data-center veteran with 35 years' experience is set to join Supermicro's board")으로 보면 이사 선임 공시로 추정된다. 다만 제공된 8-K 발췌가 표지에서 끊겨 Item 번호와 인물은 <strong>공시상 확인 불가</strong>다. 이사 선임은 주가를 움직일 만한 펀더멘털 촉매가 아니다.</li>
+<li>2026-10-07 Form 144: 내부자의 매도 예정 신고다. 신고인과 수량은 <strong>공시상 확인 불가</strong>이며, 방향상 오히려 부정적인 신호다.</li>
+<li>거래량 배수 1.21배, 거래대금 $1.82B(시총의 약 6.2%)는 대형 이벤트 당일의 거래 패턴이 아니다. 실적이나 수주 관련 신규 공시는 확인되지 않는다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품과 서비스 (10-K, 10-Q)</strong>
+- AI·HPC용 랙 스케일 서버, 스토리지, IoT·엣지, 스위치, 소프트웨어, 지원 서비스를 판다.
+- 핵심 전략은 DCBBS(Data Center Building Block Solutions)다. GPU·CPU 서버, 스토리지, 네트워킹, 랙, 케이블링, 액체냉각, 관리 소프트웨어, 현장 설치, 유지보수를 하나로 묶은 데이터센터 턴키 솔루션이다.
+- 강점은 메인보드·전원·섀시를 자체 설계하는 Building Block 아키텍처다. 이를 바탕으로 NVIDIA·AMD·Intel 등의 신규 플랫폼을 빨리 출시한다(time-to-market).
+- 미국, 대만, 네덜란드에서 자체 생산하며, 실적콜에서는 말레이시아도 언급했다.</p>
+<p><strong>고객군과 매출 구성 (실적콜, Q4 FY26)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Q4 매출</th>
+<th>비중</th>
+<th>YoY</th>
+<th>QoQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise &amp; Channel</td>
+<td>$5.6B</td>
+<td>50%</td>
+<td>+172%</td>
+<td>+98%</td>
+</tr>
+<tr>
+<td>OEM Appliance &amp; Large Data Center</td>
+<td>$5.5B</td>
+<td>50%</td>
+<td>+50%</td>
+<td>-26%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>FY26 전체로는 OEM·대형 데이터센터가 69%(<span class="up">+104%</span>), Enterprise·Channel이 31%(<span class="up">+39%</span>)였다.</li>
+<li>Q4 AI 솔루션 비중은 60%였다. 회사는 앞으로 AI 관련 매출이 80%를 넘을 것이라고 밝혔다.</li>
+<li>FY26에 매출 $1B를 넘긴 고객은 9곳이다. Q4 지역 비중은 미국 71%이며 아시아는 감소했다.</li>
+<li>실적콜에서 CEO는 GPU와 CPU 비중을 "70% 초중반 대 20% 후반"으로 언급했다.</li>
+</ul>
+<p><strong>경쟁 위치</strong>
+- 실적콜에서 회사는 경쟁 구도에 OEM과 ODM 사업모델이 모두 있다고 언급했다. 제품 차별화는 액체냉각과 DCBBS에 있다.
+- 다만 FY26 non-GAAP GPM은 10.9%로, 하드웨어 조립·통합 사업자 수준의 구조적 저마진이다. Q2 MD&amp;A는 GPM 하락 원인을 "점유율 확보를 위한 경쟁적 가격 정책"으로 직접 적었다. 가격으로 점유율을 사는 위치라는 점이 공시에서 확인된다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이 (GAAP, 10-Q·제공 지표 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 FY26 (12월)</th>
+<th>Q3 FY26 (3월)</th>
+<th>Q4 FY26 (6월)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$12.68B</td>
+<td>$10.24B</td>
+<td>$11.12B</td>
+</tr>
+<tr>
+<td>YoY</td>
+<td>+123.4%</td>
+<td>+122.7%</td>
+<td>+93.2%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>6.3%</td>
+<td>9.9%*</td>
+<td>17.5%</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>3.7%*</td>
+<td>6.1%*</td>
+<td>13.4%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$400.6M</td>
+<td>$483.4M</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>희석 EPS (GAAP)</td>
+<td>$0.60</td>
+<td>$0.72</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p>* 10-Q 금액으로 직접 계산한 값이다.</p>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 10-Q MD&amp;A는 매출 증가의 주 원인을 대형 design win의 출하, 즉 물량으로 설명한다. 평균판매단가(ASP) 상승은 믹스에 의한 "modest" 기여에 그쳤다.
+- 고객 집중도가 높다. Q2 성장은 "a large design win from one customer", Q3 성장은 "a few customers"에 의존했다.
+- 매출이 고르지 않다. Q2→Q3 매출은 <span class="down">-19%</span>였다. Q2 MD&amp;A는 직전 분기 지연분이 넘어온 영향을, Q4 실적콜은 고객의 전력·냉각·네트워킹 부족에 따른 지연을 언급했다. 회사는 이를 "purely a timing story"라고 밝혔지만, <strong>세 분기 중 두 분기에서 고객 측 준비 지연이 매출을 흔들었다.</strong></p>
+<p><strong>마진 방향성: Q4는 고점이고 Q1에 되돌아간다</strong>
+- Q4 non-GAAP GPM은 17.6%로 Q3 10.1%에서 크게 올랐다.
+- 실적콜에서 CFO는 개선분의 75%가 믹스, 25%가 관세와 재고평가손(E&amp;O) 감소라고 설명했다. 애널리스트 계산으로는 각각 약 $700M과 $230M이다. CFO는 E&amp;O 개선을 "non-recurring", 관세 효과를 "perhaps a one-time benefit"이라고 했다. 벤더 리베이트도 평소보다 높았다고 인정했다.
+- Q4 믹스 개선의 실체는 Enterprise·Channel 매출이 전 분기 대비 <span class="up">+98%</span>로 늘어난 것이다. 반대로 대형 데이터센터 매출은 <span class="down">-26%</span> 줄었다. 저마진 대형 고객 매출이 일시적으로 줄어 마진이 좋아 보인 효과가 크다는 해석이 가능하다(추정).
+- Q1 FY27 가이던스는 GPM 10.4~10.8%, non-GAAP EPS $1.01~1.10이다. Q4의 $1.70보다 낮다.
+  - 계산해 보면, 매출 중간값 $15B에 GPM 10.6%를 적용한 매출총이익은 약 $1.59B다. Q4 매출총이익 약 $1.95B(=$11.12B×17.5%)보다 적다. <strong>매출이 약 35% 늘어도 이익의 절대 금액은 줄어드는 가이던스다.</strong>
+- FY26 non-GAAP GPM은 10.9%로 전년 11.2%보다 낮다. 연간으로 보면 마진은 개선되지 않았다.</p>
+<p><strong>현금흐름과 운전자본</strong>
+- TTM FCF는 -$6.97B다. 실적콜에서 회사는 Q4 FCF가 +$722M이라고 밝혔다. 이를 빼면 Q1~Q3 FY26 세 분기 누적 FCF는 약 -$7.7B로 추정된다(계산값).
+- Q4 CCC는 149일로 Q3 106일에서 늘었다(DIO 119일, DSO 59일, DPO 29일). 기말 재고는 $12.9B로 분기 매출보다 많다.
+- 실적콜에서 CFO는 기존·신규 고객과의 계약 조건을 강화해 백로그의 현금전환 가시성이 좋아졌다고 밝혔다. 이것은 회사 주장이며, 수치로 검증되지 않았다.
+- FY26 CapEx는 $162M, Q1 FY27 CapEx 가이던스는 $50~60M이다. 현금 소진의 원인은 설비투자가 아니라 운전자본이다.</p>
+<p><strong>재무 건전성과 희석</strong>
+- 실적콜 기준 현금은 $7.5B, 순차입금은 $1.2B다. 자동 요약에는 "직전 분기 $7.5B에서 감소"로 적혀 있는데, 현금과 같은 숫자여서 표기 오류 가능성이 있다. 원문 대조가 필요하다.
+- 2026년 6월에 보통주(기본 $1.25B)와 7.00% Series A 강제전환우선주(기본 $3.75B, 2029년 6월 만기)를 발행했다. 각각 15% 그린슈 옵션이 붙었다. 실적콜에서 회사는 Q4에 $5.6B를 조달했다고 밝혔다.
+  - 우선주 배당은 연 약 $0.26~0.30B로 추정된다(계산값). 2029년까지 보통주로 전환될 예정이어서 희석 물량이 대기 중이다.
+- 최대 $2B의 ATM(시장가 분할 매각) 약정도 있다. 실적콜에서 회사는 "현재 사용 계획 없음"이라고 밝혔다.
+- 10-K 표지 기준으로 내부통제에 대한 외부감사인의 404(b) 인증을 받았고, 과거 재무제표 오류 정정 표시는 없다.
+- 2026년 7월 31일 기준 발행주식은 656,965,384주다.</p>
+<p><strong>밸류에이션 (제공 지표로 계산)</strong>
+- 시총 $29.52B, 순차입금 $1.2B로 EV는 약 $30.7B다.
+- P/S는 FY26 매출 대비 약 0.75배, FY27 가이던스 중간값($68.5B) 대비 약 0.43배다.
+- 주가를 FY26 non-GAAP EPS $3.63로 나누면 약 12.4배다. 기본주식수 기준이며, 전환우선주 희석은 반영하지 않았다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>수주와 백로그</strong>: 실적콜에서 회사는 Q4 신규 수주 $60B 이상, 사상 최대 백로그라고 밝힘. 6월 IR에서는 고객 20곳으로부터 받은 AI 수주 $39B를 언급함</td>
+<td>고객 데이터센터의 전력·냉각·네트워킹 준비, NCNR(취소·반품 불가) 비중</td>
+<td>Q1 매출이 가이던스 하단 $14.5B 이상인지, 지연이나 취소 언급이 있는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>FY27 매출 $65~72B</strong></td>
+<td>분기 평균 $16~18B 출하. Q1 가이던스 대비 이후 분기 가속 필요</td>
+<td>Q2 가이던스가 연간 경로(하반기 집중 정도)와 맞는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>DCBBS 이익 기여</strong>: 회사는 이전에 매출총이익의 약 20%를 목표로 제시함. 실적콜에서 CEO는 "20% should be not far away"라고 언급</td>
+<td>소프트웨어·서비스·냉각 등 고부가 품목의 실제 매출 인식</td>
+<td>DCBBS 매출과 이익 비중의 정량 공개 여부(현재 <strong>공시상 확인 불가</strong>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>엔터프라이즈·CPU 믹스 개선</strong></td>
+<td>Enterprise·Channel 매출이 Q4 $5.6B 수준을 유지하는지</td>
+<td>대형 데이터센터 매출이 회복되는 가운데 non-GAAP GPM이 가이던스 10.4~10.8%를 지키는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>차세대 플랫폼</strong>: 6월 IR에서 NVIDIA VR(Vera Rubin), AMD Helios, Intel, Arm 플랫폼을 하반기에 출시한다고 언급</td>
+<td>부품 공급 할당, first-to-market 유지</td>
+<td>신규 플랫폼 출하 개시 시점, 구세대 재고에 대한 E&amp;O 상각 재발 여부</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>현금전환 개선</strong>: 계약 조건 강화</td>
+<td>DSO와 DIO 단축</td>
+<td>CCC가 149일에서 줄어드는지, 영업현금흐름이 2분기 연속 플러스인지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스 화법</strong>
+- CEO의 톤은 매우 낙관적이다("demand ... even stronger than ever", "fastest growth year"). Q4 매출 미달은 "purely a timing story"로 설명했다.
+- CFO의 화법은 더 방어적이다. 관세와 E&amp;O 효과를 "one-time", "non-recurring"으로 스스로 분류했다. 관세 환급은 반영하지 않았다며, 관세가 다시 오를 수 있다는 업계 전망도 언급했다. CEO와 CFO 사이에 온도차가 있다.
+- 가이던스 구조를 보면 매출(Q1 $14.5~15.5B, FY27 $65~72B)은 공격적이고 마진(Q1 GPM 10.4~10.8%)은 보수적이다. "매출 성장과 수익성의 균형"이라는 표현이 반복된 것은, 대형 데이터센터 매출이 다시 커지면 마진이 희석된다는 점을 사전에 알리는 성격으로 읽힌다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>마진의 지속성</strong>: KeyBanc는 Q4 개선분을 분해해 달라고 하고, 정상화된 기준의 Q1 GPM 전년 대비 비교를 요청했다. CFO는 전년 대비 정량 답변을 피하고 전 분기 대비 설명으로 돌렸다.
+- <strong>DCBBS 기여도</strong>: 매출과 매출총이익 기여의 정량 업데이트를 요청받았지만, CEO는 제품 설명만 하고 숫자 없이 "20% should be not far away"로 답했다. <strong>핵심 성장 축이 정량 검증되지 않았다.</strong>
+- <strong>수주의 확정성</strong> (6월 IR): 취소 가능성 질문에 CFO는 "In general we try to get NCNR POs. We don't always do that"이라고 답했다. 수주 중 일부는 취소할 수 있는 구조임을 인정한 것이다.
+- <strong>수주 급증 시점</strong>: 5월 실적 발표 직후 $39B 수주를 근거로 증자한 점을 묻자, 회사는 "주문서를 받아야만 계획할 수 있다"고만 답했다.
+- <strong>GPU·CPU 믹스와 agentic AI</strong>: 정량 근거 없이 "complicated mix", "should be able to maintain the profit margin"이라는 정성적 답변에 그쳤다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- Q4 신규 수주 $60B 이상, FY27 매출 가이던스 $65~72B, Q1 FY27 세부 가이던스
+- 매출총이익 개선분의 구성(믹스 75%, 관세·E&amp;O 25%)과 Q4 리베이트가 평소보다 높았다는 사실
+- CCC 세부 항목(DIO 119일, DSO 59일, DPO 29일), 계약 조건 강화
+- 매출 $1B 초과 고객 9곳, 미국 매출 비중 71%
+- ATM을 현재 사용할 계획이 없다는 점
+- 실리콘밸리 32에이커 신규 캠퍼스, 월 6,000랙 생산능력(액체냉각 3,000랙, 6월 IR 기준)</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K Item 1A(리스크 요인) 본문은 제공된 발췌에 포함되지 않았다. 아래 리스크는 10-Q MD&amp;A와 실적콜·IR 발언에서 확인되는 것만 추렸다.</p>
+<ol>
+<li><strong>수주가 매출로 바뀌지 않을 리스크</strong>: Q2(고객 구성 변경, 데이터센터 준비)와 Q4(전력·냉각·네트워킹 부족)에서 반복적으로 고객 측 지연이 발생했다. NCNR이 아닌 수주도 섞여 있다. 수주 규모($60B, $39B)는 회사가 발표한 숫자이고, 확정성은 공시상 확인 불가다.</li>
+<li><strong>마진이 되돌아가는 리스크와 가격 경쟁</strong>: Q2 MD&amp;A는 점유율 확보를 위한 경쟁적 가격 정책을 명시했다(GPM 6.3%). Q4의 17.5%는 일회성 요인과 리베이트가 반영된 수치이고, Q1 가이던스는 10.4~10.8%다. 대형 고객 매출 비중이 회복될수록 마진은 다시 낮아지는 구조다.</li>
+<li><strong>운전자본 부담과 재고 리스크</strong>: TTM FCF -$6.97B, 재고 $12.9B, CCC 149일이다. GPU 세대교체가 빨라지면 구세대 재고의 E&amp;O 상각이 다시 생길 수 있다. 실제로 Q4 마진 개선은 E&amp;O가 정상화된 덕을 봤다.</li>
+<li><strong>고객 집중도</strong>: 10-Q MD&amp;A에 매출 성장이 고객 1곳 또는 소수에 의존했다고 명시돼 있다. 특정 고객이 배치를 미루면 분기 매출이 ±20% 흔들린다(Q2→Q3 <span class="down">-19%</span>).</li>
+<li><strong>추가 희석과 자금조달</strong>: 강제전환우선주의 전환이 2029년까지 예정돼 있다. $2B ATM 한도도 남아 있다. 운전자본 수요가 이어지면 추가 조달 가능성을 배제할 수 없다. 2026-10-07 Form 144 내부자 매도 신고도 함께 봐야 한다(규모는 확인 불가).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY27 매출 가이던스 중간값 대비 P/S 약 0.43배</td>
+<td>TTM FCF -$6.97B</td>
+</tr>
+<tr>
+<td>Q4 매출 YoY <span class="up">+93.2%</span>, Q4 FCF +$722M</td>
+<td>Q1 GPM 가이던스 10.4~10.8%로 Q4 대비 약 7%p 하락</td>
+</tr>
+<tr>
+<td>순차입금 $1.2B로 증자 후 레버리지 축소</td>
+<td>CCC 106일에서 149일로 악화, 재고 $12.9B</td>
+</tr>
+<tr>
+<td>Q4 신규 수주 $60B 이상 (회사 주장)</td>
+<td>Q1 EPS 가이던스 $1.01~1.10으로 Q4 $1.70 대비 하락</td>
+</tr>
+<tr>
+<td></td>
+<td>60일 수익률 <span class="up">+59.1%</span>로 반등이 이미 진행됨. 오늘 거래량 배수는 1.21배로 확신이 약함</td>
+</tr>
+</tbody>
+</table></div>
+<p>결론적으로, 싼 멀티플은 "저마진 구조와 현금 소진, 희석"에 대한 할인으로 볼 수 있다. Q4 실적 하나만으로 그 할인이 풀렸다고 판단하기는 이르다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q1 FY27 매출이 $14.5B 이상이고 Q2 가이던스가 FY27 $65~72B 경로와 맞는지</strong>: 수주의 매출 전환을 확인하는 핵심 지표다.
+2. <strong>영업현금흐름 2분기 연속 플러스와 CCC 단축</strong>: 회사가 말한 "계약 조건 강화"가 숫자로 나타나는지 본다.
+3. <strong>10-07 8-K와 Form 144 원문</strong>: 이사 선임 외에 다른 Item(임원 변경 등)이 있는지, 내부자 매도의 주체와 규모를 확인한다. 10-K Item 1A의 고객 집중도 수치도 함께 확인한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올리는 조건</strong>: Q1 매출이 가이던스 상단에 근접하고, non-GAAP GPM이 가이던스 상단(10.8%)을 넘고, 영업현금흐름이 플러스이며, DCBBS 기여도가 정량 공개되는 경우다.
+- <strong>'회피'로 내리는 조건</strong>: 다음 중 하나라도 확인되면 내린다.
+  - Q1 매출이 $14.5B에 못 미치고, 또다시 고객 준비 지연이 원인으로 제시되는 경우
+  - GPM이 가이던스 하단 10.4%를 밑돌거나 E&amp;O 상각이 재발하는 경우
+  - CCC가 추가로 악화되거나, ATM 사용 또는 추가 증자가 이뤄지는 경우
+  - 수주 취소나 축소가 공시되는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000022/smci-20260630.htm">10-K — 2026-06-30_0001375365-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000014/smci-20260331.htm">10-Q — 2026-03-31_0001375365-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000007/smci-20251231.htm">10-Q — 2025-12-31_0001375365-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000023/smci-20261007.htm">8-K — 2026-10-07_0001375365-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000021/exhibit991_20260630.htm">8-K — 2026-08-11_0001375365-26-000021__EX-99.1__exhibit991_20260630</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000021/smci-20260811.htm">8-K — 2026-08-11_0001375365-26-000021</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000020/smci-20260805.htm">8-K — 2026-08-05_0001375365-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1375365/000137536526000019/fq42026businessupdate.htm">8-K — 2026-07-21_0001375365-26-000019__EX-99.1__fq42026businessupdate</a></li>
+<li>Transcript — 2026-08-11 Q4 2026 Transcript</li>
+<li>Transcript — 2026-06-10 Investor update Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

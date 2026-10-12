@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBY — Best Buy Co. Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BBY — Best Buy Co. Inc. Common Stock</h1>
+<div class="sub">2026-10-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">BBY</span><span class="badge">+4.50%</span><span class="badge">거래량 1.16배</span><span class="badge">$18.54B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적 흐름:</strong> 펀더멘털은 개선되고 있다. Q2 FY27(2026년 8월 1일 종료) 전사 동일점포매출(comp)은 <span class="up">+4.1%</span>로 전년 <span class="up">+1.6%</span>보다 빨라졌다. 조정 영업이익률은 4.3%로 전년 대비 <span class="up">+0.4%</span>p이고, 조정 EPS는 $1.47로 <span class="up">+15%</span>다. 회사는 연간 가이던스를 올렸다(8-K).</li>
+<li><strong>밸류에이션:</strong> 부담이 크지 않다. 종가 $88.40은 회사 가이던스 중간값(조정 EPS $6.80) 기준 약 13.0배다. TTM FCF $1.77B는 시가총액 $18.54B 대비 약 9.5%다(제공 지표로 계산).</li>
+<li><strong>오늘 상승:</strong> 근거가 약하다. 당일 공시가 없고, 거래량은 20일 중앙값의 1.16배로 급증이라고 보기 어렵다. 상승을 따라 매수할 이유는 부족하다.</li>
+<li><strong>하반기 부담:</strong> 가이던스를 역산하면 하반기 성장은 둔화된다(추정). 회사도 Q3에 Windows 10 종료 수요라는 높은 기저를 만난다고 밝혔다. 여기에 CEO와 CFO가 동시에 바뀐다.</li>
+<li><strong>결론:</strong> 배당과 FCF가 하방을 받쳐주는 저평가 우량주로서 기본 비중은 정당화된다. 다만 적극 비중을 실을 만한 성장 재평가 촉매는 아직 확인되지 않았다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 크다.</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다. 마지막 실적 발표(8-K)는 2026년 8월 27일로, 이미 6주 이상 지났다.</li>
+<li><strong>뉴스:</strong> 기업 고유 뉴스는 <strong>Best Buy Ads와 LG TV의 광고 제휴</strong> 하나뿐이다. 브랜드가 LG TV 홈 화면에서 Best Buy 쇼핑객에게 광고를 노출할 수 있게 된다는 내용이다(Stock Titan, Seeking Alpha 헤드라인).</li>
+<li>광고 사업은 회사가 꼽은 1순위 전략 축이다(아래 5-1). 그래서 투자심리 측면에서는 그럴듯한 재료다.</li>
+<li>하지만 제휴 조건과 매출 기여는 공시로 확인할 수 없어 실적 영향을 정량화할 수 없다.</li>
+<li><strong>거래 지표:</strong> 거래량 배수 1.16배, 거래대금 $339.1M이다. 정보에 기반한 대규모 매수라고 보기 어렵다.</li>
+<li><strong>최근 주가 흐름:</strong> 20일 수익률이 <span class="down">-4.2%</span>였다. 오늘 상승분 상당 부분은 단기 낙폭을 되돌린 성격으로 해석된다(추정).</li>
+<li>나머지 헤드라인(알고리즘 매매, GF Value, 옵션 시세)은 촉매가 아니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 10-K 발췌는 표지와 목차까지만 담고 있다. 10-K Item 1(사업)과 Item 1A(리스크) 본문은 이 자료로 확인할 수 없다. 아래 내용은 10-Q MD&amp;A와 8-K, 실적콜을 근거로 했다.</p>
+</blockquote>
+<p><strong>제품·서비스 카테고리</strong>(10-Q, FY27 1분기부터 재분류 적용)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>카테고리</th>
+<th>구성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computing &amp; Mobile Phones</td>
+<td>PC, 주변기기, 휴대폰(통신사 커미션 포함), 네트워킹, 태블릿, 웨어러블</td>
+</tr>
+<tr>
+<td>Consumer Electronics</td>
+<td>TV, 홈시어터, 사운드바, 오디오, 디지털 이미징, 헬스·피트니스, 스마트홈</td>
+</tr>
+<tr>
+<td>Appliances</td>
+<td>대형 가전(세탁기, 냉장고 등), 소형 가전</td>
+</tr>
+<tr>
+<td>Entertainment</td>
+<td>게임 하드웨어·주변기기, AI 글래스, 트레이딩 카드, 드론, 장난감, VR</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>광고, 신용카드 수익, 디지털 콘텐츠, 설치, 수리, 기술지원, 멤버십, 워런티, 마켓플레이스 수수료, 헬스 서비스</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>유아용품, 식음료, 아웃도어</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>재분류의 함의:</strong> 신용카드 수익과 디지털 콘텐츠가 제품 카테고리에서 Services로 옮겨졌다. 회사는 경영진 관점에 맞추기 위해서라고 밝혔다. 그 결과 고마진 비(非)상품 수익원(광고, 카드, 멤버십, 마켓플레이스)이 한 카테고리에 모였다.</li>
+<li><strong>카테고리별 매출 비중:</strong> 제공 자료로 확인할 수 없다.</li>
+</ul>
+<p><strong>세그먼트와 고객군</strong>
+- <strong>Domestic:</strong> 미국과 Best Buy Health를 포함한다. Q2 매출 $9,070M으로 전사의 약 93%다.
+- <strong>International:</strong> 캐나다다. Q2 매출 $709M으로 약 7%다.
+- <strong>고객:</strong> 개인 소비자가 중심이고, B2B 채널(Best Buy Business)이 따로 있다. 실적콜에서 B2B 매출이 전년 대비 21% 늘었다고 언급했다.
+- <strong>계절성:</strong> 회계 4분기, 즉 연말 쇼핑 시즌에 매출과 이익이 집중된다(10-Q).</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 자신을 기술 제품의 선도적 옴니채널 목적지로 규정했다(실적콜).
+- 실적콜에서 홈시어터 점유율이 올랐다고 언급했다.
+- 경쟁사 대비 정량적 점유율은 공시로 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>Q2 FY27 핵심 수치(8-K EX-99)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 FY27</th>
+<th>Q2 FY26</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전사 매출</td>
+<td>$9,779M</td>
+<td>$9,438M</td>
+<td>+3.6%</td>
+</tr>
+<tr>
+<td>Domestic 매출</td>
+<td>$9,070M</td>
+<td>$8,698M</td>
+<td>+4.3%</td>
+</tr>
+<tr>
+<td>International 매출</td>
+<td>$709M</td>
+<td>$740M</td>
+<td>-4.2%</td>
+</tr>
+<tr>
+<td>전사 comp</td>
+<td>+4.1%</td>
+<td>+1.6%</td>
+<td>가속</td>
+</tr>
+<tr>
+<td>Domestic comp / 온라인 comp</td>
+<td>+4.5% / <span class="up">+5.1%</span></td>
+<td>+1.1% / <span class="up">+5.1%</span></td>
+<td>오프라인 회복</td>
+</tr>
+<tr>
+<td>International comp</td>
+<td>-1.8%</td>
+<td>+7.6%</td>
+<td>역성장</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>4.3%</td>
+<td>2.7%</td>
+<td>+1.6%p</td>
+</tr>
+<tr>
+<td>조정 영업이익률</td>
+<td>4.3%</td>
+<td>3.9%</td>
+<td>+0.4%p</td>
+</tr>
+<tr>
+<td>GAAP 희석 EPS</td>
+<td>$1.48</td>
+<td>$0.87</td>
+<td>+70%</td>
+</tr>
+<tr>
+<td>조정 희석 EPS</td>
+<td>$1.47</td>
+<td>$1.28</td>
+<td>+15%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>매출 구성:</strong> 매출은 <span class="up">+3.6%</span>, comp는 <span class="up">+4.1%</span>다. 신규 출점이 아니라 기존점과 온라인이 성장을 만들었다.
+- <strong>가속의 원천:</strong> Domestic 온라인 comp는 전년과 같은 5.1%였다. 반면 Domestic 전체 comp는 1.1%에서 4.5%로 뛰었다. 매장 판매가 회복된 것이 가속의 원천이라고 볼 수 있다.
+- <strong>단가 대 물량:</strong> 공시로 분리되지 않아 확인할 수 없다.
+  - 실적콜에서 회사는 고객이 필요하거나 혁신 제품이 있을 때 고가 제품에도 지출한다고 언급했다.
+  - 또 가격 탄력성이 예상보다 양호하다고 밝혔다.
+  - 이를 보면 고가 제품 믹스와 판매 물량이 함께 기여한 것으로 보인다(추정).
+- <strong>믹스:</strong> 실적콜에서 광고와 마켓플레이스가 매출총이익률 개선에 기여했다고 언급했다.
+  - 제공 지표상 매출총이익률은 23.9%다.
+  - 전년 동기 매출총이익률은 공시상 확인 불가다.
+- <strong>해외:</strong> International은 매출과 comp가 모두 역성장했다. 다만 비중이 7%라 전사 영향은 제한적이다.</p>
+<p><strong>마진 방향성</strong>
+- <strong>GAAP 대 조정:</strong> GAAP EPS <span class="up">+70%</span>는 기저효과다. 전년 GAAP 영업이익률(2.7%)이 조정치(3.9%)보다 1.2%p 낮았기 때문이다. 이 차이를 만든 일회성 항목의 내역은 제공 발췌에서 확인할 수 없다. 이익 성장의 실체는 <strong>조정 EPS <span class="up">+15%</span>, 조정 영업이익률 <span class="up">+0.4%</span>p</strong>로 봐야 한다.
+- <strong>수치 차이:</strong> 제공 지표의 영업이익률은 4.2%(YoY <span class="up">+0.3%</span>p)로, 8-K의 4.3%(<span class="up">+0.4%</span>p)와 조금 다르다. 데이터 공급사의 산출 방식 차이로 보인다. 이 리포트는 8-K 수치를 기준으로 삼는다.
+- <strong>레버리지:</strong> 마진 레벨은 4%대로 낮다. 따라서 매출 1~2%p 변화에도 이익이 민감하게 움직이는 구조다.</p>
+<p><strong>현금흐름과 주주환원</strong>
+- <strong>FCF:</strong> TTM 잉여현금흐름은 $1.77B로, 시가총액 대비 FCF 수익률은 약 9.5%다(계산).
+- <strong>배당:</strong>
+  - Seeking Alpha 헤드라인에 "주당 $0.96 배당 선언"이 있다.
+  - 분기 배당으로 가정하면 연 $3.84, 현 주가 기준 수익률은 약 4.3%다(가정에 근거한 계산).
+  - 같은 페이지의 스냅샷(전일 종가 $82.63 시점)에는 배당수익률 4.62%로 표시돼 있다.
+- <strong>주식 수:</strong> 2026년 3월 16일 기준 209.1M주다(10-K).
+- <strong>자사주 매입 규모:</strong> 공시상 확인 불가.</p>
+<p><strong>재무 건전성</strong>
+- 현금, 차입금, 재고, 순부채는 제공 발췌에 없어 <strong>공시상 확인 불가</strong>다.
+- FCF 규모로 보면 배당 여력은 충분한 것으로 추정되지만, 재무상태표로 검증하지는 못했다.</p>
+<p><strong>가이던스(회사 주장)</strong>
+- 회사는 FY27 comp 가이던스를 1.9~3.0%로, 조정 EPS 가이던스를 $6.70~6.90으로 상향했다고 밝혔다(8-K).
+- 상향 전 범위는 제공 발췌에서 확인할 수 없다.
+- 연간 매출 가이던스는 Q1 시점에 $41.2B~42.1B로 유지했다는 Seeking Alpha 요약 헤드라인이 있다. Q2 이후 매출 가이던스는 확인할 수 없다.
+- <strong>하반기 역산(추정):</strong>
+  - 상반기 comp는 Q1 약 <span class="up">+2%</span>, Q2 <span class="up">+4.1%</span>를 매출로 가중해 약 3%다.
+  - 연간 1.9~3.0%를 맞추려면 매출 비중이 큰 하반기(4분기 포함) comp가 대략 1~3% 수준이어야 한다.
+  - 즉 회사 가이던스 자체가 하반기 둔화를 전제하고 있다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버(회사 주장·실적콜 근거)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>리테일 미디어(Best Buy Ads)</strong>: 회사는 광고 사업이 성과 목표를 달성 중이라고 밝힘. 오늘 LG TV 홈 화면 광고 제휴 뉴스가 나옴</td>
+<td>자사 매장 밖 지면으로 확장, 광고주 기반 확대</td>
+<td>Q3에서 매출총이익률 개선 기여가 계속 언급되는지, 광고 매출의 별도 공개 여부</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>마켓플레이스</strong>: 성과 목표 달성 중이라고 밝힘</td>
+<td>입점 셀러와 품목 확대, 수수료 수익 누적</td>
+<td>Services 카테고리 성장률, 마켓플레이스 관련 정량 지표</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>컴퓨팅 교체·혁신 사이클</strong>: 실적콜에서 10분기 연속 플러스 comp, B2B <span class="up">+21%</span>를 언급</td>
+<td>Windows 10 종료 특수가 끝난 뒤에도 AI 기능과 배터리 수명 개선 등 혁신이 수요를 이어갈 것</td>
+<td><strong>Q3에 전년 최고 comp 기저를 넘고도 컴퓨팅이 플러스를 유지하는지</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>홈시어터 회복</strong>: 실적콜에서 FY22 2분기 이후 최고 성장, 점유율 상승을 언급</td>
+<td>고가 TV 교체 수요 지속, 가격대별 상품 구성 대응</td>
+<td>연말 시즌 TV 판촉 성과, 마진 희석 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>신규 카테고리(AI 글래스, 트레이딩 카드, 헬스 링)</strong>: 실적콜에서 매출이 전년 대비 2배 이상이라고 언급</td>
+<td>일시 유행이 아닌 상시 수요로 자리 잡을 것</td>
+<td>성장세 지속 여부. 다만 매출 기여 비중은 확인 불가</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>부착 판매 개선</strong>: 실적콜에서 워런티와 멤버십 부착률이 개선 중이라고 언급</td>
+<td>고가 제품 판매가 늘어나는 동안 서비스 부착 확대</td>
+<td>조정 영업이익률이 매출보다 빠르게 오르는지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스 화법</strong>
+- <strong>톤:</strong> 매우 자신감 있다.
+  - 실적콜에서 Q1과 Q2 모두 "예상보다 좋은 결과"라고 표현했다.
+  - 연간 가이던스도 올렸다.
+- <strong>고객 진단은 신중하다.</strong> 실적콜에서 고객이 여전히 지출하지만 가치를 중시하고 세일 이벤트에 끌린다고 언급했다. 이 진단은 몇 분기째 같다.
+- <strong>성장 원인에 외부 요인이 섞여 있다.</strong> Bonfig는 성장 동인으로 교체·업그레이드 사이클, 혁신과 함께 "더 많아진 세금 환급"을 꼽았다. 일회성에 가까운 외부 요인이 실적에 섞여 있다는 뜻이다.
+- <strong>Q3 기대치를 선제적으로 낮췄다.</strong> Corie Barry는 Q3 후반부에 전년의 높은 기저(Windows 10 종료로 Q3 FY26이 연중 최고 comp 분기)가 영향을 줄 것으로 예상한다고 언급했다.
+  - JPM 애널리스트의 질문에 "8월 1~3% 범위의 상단"이라는 표현이 나온다. 분기 초 진행률을 이 범위로 제시한 것으로 보인다.
+  - 다만 해당 원문은 발췌에서 생략돼 정확한 맥락은 확인할 수 없다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>수요 선반영 여부:</strong> 회사는 대규모 선반영 증거가 없다고 답했다.
+  - 대형 업체의 가격 인상 발표 직후 몇 주간 수요가 튀었다가 정상화됐고, 분기 전체로는 중요하지 않은 수준이라고 했다.
+- <strong>컴퓨팅 수요의 성격(교체 대 AI 사이클):</strong>
+  - Bonfig는 Windows 10 종료로 지난해 업그레이드 물량이 더 많았다고 인정했다.
+  - 앞으로는 순수 업그레이드보다 혁신 제품으로 수요가 이동할 것이라고 답했다.
+  - 즉 AI 사이클이 확실히 시작됐다고 단정하지 않았다.
+  - AI라는 이름보다 AI가 가능하게 하는 기능이 관심을 끈다는 우회적 화법을 썼다.
+- <strong>가격과 탄력성:</strong> 회사는 고객이 4~6년 된 제품에서 업그레이드한다는 점을 들었다. 상품 구성의 가격대를 계속 조정하고 있어 탄력성이 예상보다 양호하다고 방어했다.
+  - 원가 상승 압력의 구체적 규모는 언급되지 않았다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- <strong>경영진 동시 교체:</strong>
+  - 이번 콜이 Corie Barry의 CEO로서 마지막 콜이며, Jason Bonfig가 차기 CEO다.
+  - 새 CFO Anne Bramman은 콜 8일 전에 합류했다.
+  - Q1 콜에 CFO로 참석했던 Matthew Bilunas는 Q2 콜 참석자 명단에 없다.
+  - 그래서 재무 파트는 퇴임하는 CEO가 직접 발표했다.
+- <strong>Bonfig의 4대 우선순위:</strong>
+  - ① 리테일 미디어·광고·테크 기업화
+  - ② 도달 범위 확대
+  - ③ 고객 경험 고도화
+  - ④ 사람 중심, 고객 중심
+- <strong>세부 데이터:</strong> B2B <span class="up">+21%</span>, 휴대폰 6분기 연속 성장, 대형 가전 소폭 성장 전환, 게임은 Switch 2 기저로 역성장. 모두 실적콜 발언이다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K Item 1A 본문이 제공되지 않았다. 아래는 MD&amp;A, 8-K, 실적콜에서 실제로 드러난 리스크다.</p>
+</blockquote>
+<ol>
+<li><strong>Q3 높은 기저와 하반기 둔화</strong>
+   - 회사가 직접 Q3에 Windows 10 종료 기저가 영향을 준다고 언급했다.
+   - 가이던스 역산상 하반기 comp는 1~3%대로 둔화된다(추정).
+   - 컴퓨팅이 최대 comp 동인이었다는 점에서 민감도가 크다.</li>
+<li><strong>경영진 공백기</strong>
+   - CEO 교체와 CFO 교체(입사 8일)가 같은 분기에 겹쳤다.
+   - 실행 리스크가 있고, 신임 경영진이 가이던스 기조나 자본배분 정책을 바꿀 가능성이 있다.
+   - 11월 실적 발표가 신임 체제의 첫 시험대다.</li>
+<li><strong>가치 중심 소비와 외부 요인 의존</strong>
+   - 회사는 고객이 가치를 중시하고 세일 이벤트에 반응한다고 밝혔다.
+   - 세금 환급 증가 같은 일회성 순풍이 상반기 실적에 기여했다.
+   - 이런 요인이 빠지면 판촉 강도가 올라가 마진이 희석될 수 있다.</li>
+<li><strong>얇은 마진 구조</strong>
+   - 영업이익률이 4%대라 매출 둔화나 가격 투자에 이익이 크게 흔들린다.
+   - 회사는 대형 가전 회복이 가격, 마케팅, 배송 속도에 투자한 결과라고 밝혔다. 성장에 비용이 들고 있다는 뜻이다.</li>
+<li><strong>캐나다 역성장</strong>
+   - International comp <span class="down">-1.8%</span>, 매출 <span class="down">-4.2%</span>다.
+   - 비중은 작지만 추세가 반전되지 않으면 전사 성장률을 계속 깎는다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(보통 판단)</strong>
+- <strong>우호 요인:</strong>
+  - 조정 EPS <span class="up">+15%</span>, 조정 영업이익률 <span class="up">+0.4%</span>p, comp <span class="up">+4.1%</span>로 가속
+  - 가이던스 상향
+  - FCF 수익률 약 9.5%
+  - 가이던스 중간값 기준 PER 약 13.0배
+  - 배당수익률 약 4.3%(분기 배당 가정 시)
+- <strong>제약 요인:</strong>
+  - 가이던스가 하반기 comp 1~3%대 둔화를 내포한다(추정).
+  - 오늘 상승은 촉매와 거래량 근거가 약하다.
+  - 52주 고점까지 6.8%밖에 남지 않아 저점 매수 구간이 아니다.
+  - 경영진이 바뀌는 불확실성이 있다.
+- <strong>종합:</strong> 하방은 배당과 FCF가 받쳐주지만, 상방을 재평가할 촉매(광고 매출의 정량 공개, AI 교체 사이클 확인)가 아직 증명되지 않았다. 그래서 <strong>적극이 아닌 보통</strong>으로 판단한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>재무상태표:</strong> 최근 10-Q의 현금, 차입금, 재고, 자사주 매입 규모. 이번 자료에서는 확인할 수 없었으므로 건전성 판단을 마무리해야 한다.
+2. <strong>원문 확인:</strong> 8-K 전문의 GAAP-조정 조정표(전년 일회성 비용 내역)와 상향 전 가이던스 범위. 상향 폭이 의미 있는 수준인지 판단해야 한다.
+3. <strong>배당 확인:</strong> 배당 공시 원문. $0.96이 분기 배당인지와 배당 이력을 확인해 수익률 계산을 검증해야 한다.</p>
+<p><strong>관망으로 바꿔야 하는 조건</strong>
+- <strong>Q3 comp:</strong> Q3 FY27(11월 발표) comp가 마이너스로 돌아서거나, 신임 경영진이 연간 가이던스 하단 이하를 시사하는 경우
+- <strong>마진 역전:</strong> 조정 영업이익률이 전년 대비 하락으로 돌아서는 경우. 판촉 확대로 성장을 사고 있다는 신호다.
+- <strong>경영진 정책 변화:</strong> 신임 CEO와 CFO 체제에서 배당, 자사주 정책이나 중기 마진 목표가 하향 조정되는 경우
+- <strong>고마진 사업 이상:</strong> 광고와 마켓플레이스가 "목표 달성"이라는 표현에서 후퇴하거나, 매출총이익률 개선 기여 언급이 사라지는 경우</p>
+<p><strong>적극으로 올릴 조건:</strong> 높은 기저에도 Q3 comp가 플러스를 지키고, 조정 마진이 개선되며, 광고와 마켓플레이스 성과가 정량적으로 공개되는 경우다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000009/bby-20260131.htm">10-K — 2026-01-31_0000764478-26-000009</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000042/bby-20260801.htm">10-Q — 2026-08-01_0000764478-26-000042</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000022/bby-20260502.htm">10-Q — 2026-05-02_0000764478-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000037/bby-fy27q2xexx99.htm">8-K — 2026-08-27_0000764478-26-000037__EX-99__bby-fy27q2xexx99</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000037/bby-20260827.htm">8-K — 2026-08-27_0000764478-26-000037</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000034/exhibit991newsrelease803.htm">8-K — 2026-08-01_0000764478-26-000034__EX-99.1__exhibit991newsrelease803</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000034/bby-20260801.htm">8-K — 2026-08-01_0000764478-26-000034</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764478/000076447826000027/exhibit991newsrelease622.htm">8-K — 2026-06-19_0000764478-26-000027__EX-99.1__exhibit991newsrelease622</a></li>
+<li>Transcript — 2026-08-27 Best Buy Co., Inc. (BBY) Q2 2027 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-28 Best Buy Co., Inc. (BBY) Q1 2027 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

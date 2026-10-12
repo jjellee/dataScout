@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LQDA — Liquidia Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LQDA — Liquidia Corporation Common Stock</h1>
+<div class="sub">2026-10-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">LQDA</span><span class="badge">+5.02%</span><span class="badge">거래량 3.94배</span><span class="badge">$2.51B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>숫자는 좋습니다. 최근 분기 매출은 $171.7M(YoY <span class="up">+1842.7%</span>, QoQ <span class="up">+29.2%</span>), 영업이익률 49.8%, 매출총이익률 93.3%, TTM 잉여현금흐름 $147.7M입니다. YUTREPIA 출시 약 1년 만에 이익을 내는 단일 제품 회사가 됐습니다.</li>
+<li>다만 2026-09-30 8-K에 따르면 Delaware 연방지방법원이 '327 특허의 청구항 1·14(PH-ILD 환자에게 흡입형 treprostinil을 투여하는 치료)를 <strong>유효하며 Liquidia가 침해했다</strong>고 판결했습니다. 구제수단(remedy)은 아직 정해지지 않았습니다. 20일 수익률 <span class="down">-59.0%</span>가 이 판결을 반영한 것으로 보입니다.</li>
+<li>매출 중 PH-ILD가 차지하는 비중이 공시상 확인되지 않습니다. 그래서 최악의 경우 매출이 얼마나 줄어드는지 계산할 수 없습니다. 계산할 수 없는 손실을 안고 의미 있는 비중을 싣기는 어렵습니다.</li>
+<li>오늘 <span class="up">+5.02%</span>·거래량 3.94배를 설명할 공시나 뉴스 촉매가 없습니다. 폭락 이후 기술적 반등과 수급으로 봅니다. 최종 판결의 구제수단과 3분기 적응증별 매출 정보를 확인한 뒤 판단을 바꾸는 것이 합리적입니다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 안에 SEC 공시가 없습니다. 뉴스 헤드라인도 밸류에이션 논평(ChartMill "Discounted Forward Valuation", Simply Wall St "71%/74% Undervalued")과 이전 하락 기사("Shares Gap Down")뿐입니다. 새로운 사실은 없습니다.</li>
+<li>배경은 9/30 판결입니다. 주가는 52주 고점보다 69.2%, 60일 기준 63.6% 낮습니다. 추정이지만, 판결 쇼크 이후 "특허 리스크를 감안해도 싸다"는 논평이 나오면서 저가 매수와 숏커버가 들어온 기술적 반등 가능성이 높습니다.</li>
+<li>8-K는 양측이 "1주일 내" 판결문 양식을 제출하라는 지시를 받았다고 밝혔습니다. 제출 기한은 10/7 전후로 계산됩니다. 그런데 제출된 구제안의 내용이나 법원의 최종 판결은 제공 자료에 없습니다. 오늘 상승이 구제수단 관련 소식 때문인지는 <strong>확인 불가</strong>입니다.</li>
+<li>거래대금은 $147.4M으로 시가총액의 약 5.9%입니다(계산). 판결 이후 투자자가 교체되는 과정이 진행 중일 수 있습니다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>매출원은 두 가지입니다(10-Q MD&amp;A).</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+<th>수익 인식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YUTREPIA</strong>(treprostinil 흡입 건조분말)</td>
+<td>2025-05-23 FDA 승인(PAH 및 PH-ILD), 2025년 6월 출시</td>
+<td>Product Sales, Net: 리베이트·차지백·할인·반품을 뺀 순매출</td>
+</tr>
+<tr>
+<td><strong>Treprostinil Injection</strong>(Sandoz 제네릭 주사제)</td>
+<td>Promotion Agreement에 따른 공동 상업화. Sandoz가 ANDA와 제품 권리를 보유</td>
+<td>Service Revenue, Net: 미국 판매 이익의 <strong>50%</strong>를 배분받음</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>제품 차별점(회사 주장):</strong> 자체 PRINT 입자공학 기술로 균일한 입자를 만들어 폐 깊숙이 약물을 전달합니다. 저노력 건조분말흡입기(DPI)를 쓰고, 경쟁 흡입형 treprostinil의 라벨 용량보다 높은 용량을 쓸 수 있다고 회사는 밝힙니다.</li>
+<li><strong>고객군:</strong> 미국의 PAH·PH-ILD 치료 의료진, 그리고 유통·보험 이해관계자입니다. 표적화된 영업조직이 담당합니다.</li>
+<li><strong>매출 구성:</strong> 두 매출원의 분기별 금액과 YUTREPIA의 PAH 대 PH-ILD 비중은 <strong>공시상 확인 불가</strong>(제공된 발췌 범위 기준)입니다.</li>
+<li>추정: 전년 동기 매출은 약 $8.8M으로 역산됩니다. YUTREPIA 출시 직후였으므로 현재 매출 대부분은 YUTREPIA로 보입니다.</li>
+<li><strong>경쟁 위치:</strong> 주 경쟁자이자 소송 상대는 United Therapeutics(UTHR)입니다. Delaware 연방지방법원(Hatch-Waxman), 노스캐롤라이나 중부 연방지방법원, Durham 카운티 주법원에서 소송이 걸려 있습니다. 같은 treprostinil 흡입 시장에서 특허로 직접 충돌하는 구조입니다.</li>
+<li><strong>파이프라인:</strong></li>
+<li>L606: Pharmosa에서 도입한 리포좀 treprostinil입니다. 차세대 네뷸라이저로 하루 2회 투여합니다. 미국 공개라벨 시험과 PH-ILD 글로벌 위약대조 pivotal 시험이 진행 중입니다.</li>
+<li>YUTREPIA 적응증 확장: PH-COPD, IPF, PPF, SSc-RP 임상을 계획 중입니다.</li>
+</ul>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장 규모와 속도</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$171.7M</td>
+<td>직전 분기 약 $132.9M, 전년 동기 약 $8.8M (역산)</td>
+</tr>
+<tr>
+<td>매출 QoQ</td>
+<td>+29.2%</td>
+<td>출시 4분기째에도 가속형 성장</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>93.3%</td>
+<td>자체 제조 플랫폼 기반 고마진</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>49.8%</td>
+<td>영업이익 약 $85.5M (계산). 전년 동기 영업이익률 약 <span class="down">-424%</span> (역산)</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td>$147.7M</td>
+<td>시가총액 대비 약 17배 (계산)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- 처방 건수, 환자 수, 순단가 같은 단가·물량 분해는 <strong>공시상 확인 불가</strong>입니다. MD&amp;A는 순매출이 지불자 구성(payor mix)과 총처방 데이터를 기준으로 추정한 차감을 반영한다고만 밝힙니다.
+- 출시 초기의 gross-to-net 추정치가 이후 조정될 수 있습니다. 분기별 순매출에 변동성이 생길 수 있다는 뜻입니다(일반적 구조에 대한 해석).</p>
+<p><strong>이익 전환 (공시로 확인됨)</strong>
+- 누적결손금이 2026-03-31 $573.5M에서 2026-06-30 $498.7M으로 <strong>$74.8M 줄었습니다.</strong> 2분기 순이익이 약 $74.8M이었다는 뜻입니다(자본 항목의 다른 조정이 없다는 가정의 역산).
+- 2025년 연간 순손실 $68.9M, 2024년 $128.3M과 비교하면 흑자 전환이 확인됩니다.</p>
+<p><strong>공시 문구의 변화</strong>
+- 1분기 10-Q에는 "YUTREPIA 판매로 지속적인 매출을 낼 수 있을지 불확실하다"는 문장이 있었습니다.
+- 2분기 10-Q에서는 이 문장이 빠지고, 추가 파이프라인 매출의 불확실성만 남았습니다. 2분기 시점에 회사가 YUTREPIA 매출의 지속성에 자신감을 얻은 것으로 읽힙니다. 다만 이 10-Q는 9/30 판결 이전 문서입니다.</p>
+<p><strong>재무 건전성</strong>
+- HCR Agreement에는 고정 분기 상환과 최소 현금 $15.0M 유지 약정이 있습니다. 상환 기간은 2033년까지로 예상됩니다.
+- 회사는 외부 자금조달 없이도 재무제표 발행 후 1년 넘게 운영비, 자본지출, 최소 현금 약정을 감당할 수 있다고 밝혔습니다.
+- 기말 현금 잔액, HCR 차입 잔액, 분기 고정 상환액은 <strong>공시상 확인 불가</strong>(제공된 발췌 범위)입니다. 따라서 순현금·순차입 여부와 EV도 계산할 수 없습니다.</p>
+<p><strong>밸류에이션 (계산, 참고용)</strong>
+- 시가총액 $2.51B는 최근 분기 매출을 연환산한 약 $687M의 약 3.7배입니다.
+- 연환산 영업이익 약 $342M 기준으로는 약 7.3배입니다.
+- 이 배수는 PH-ILD 매출이 유지된다는 전제에서만 의미가 있습니다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>YUTREPIA 점유율 확대(PAH)</strong></td>
+<td>회사는 FDA 승인을 유지하고 점유율을 높이면 제품 매출이 늘 것으로 기대한다고 밝힘. '327 판결 청구항은 PH-ILD 관련이라 PAH 적응증은 직접 대상이 아닌 것으로 읽힘(판결 요지 기준 해석)</td>
+<td>3분기 10-Q의 제품 순매출 QoQ. PAH와 PH-ILD 매출을 따로 공개하는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>YUTREPIA PH-ILD</strong></td>
+<td>최종 판결의 구제수단이 판매 금지가 아닌 수준(로열티·손해배상 등)으로 정해지거나, 항소 중 집행정지(stay)가 인정되어야 함</td>
+<td>최종 판결문 8-K. 회사는 항소를 포함한 모든 법적 수단을 추진할 준비가 됐다고 밝힘(8-K CEO 코멘트)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Sandoz Treprostinil Injection 이익 배분</strong></td>
+<td>피하주사에 필요한 CADD-MS 3 펌프는 이미 단종됨. 회사는 2026년 말까지는 재고가 충분할 것으로 본다고 밝힘. 이후에는 대체 펌프(Sandoz와 공동 개발 중인 펌프 등)가 필요함</td>
+<td>서비스 매출 추이. 대체 펌프의 개발·승인 진척</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>적응증 확장(PH-COPD, IPF, PPF, SSc-RP)</strong></td>
+<td>임상 착수와 성공. 현재는 "계획" 단계</td>
+<td>임상 개시 공시와 R&amp;D 비용 증가 폭</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>L606(PH-ILD pivotal 진행 중)</strong></td>
+<td>임상 성공과 FDA 승인. 같은 PH-ILD 흡입 treprostinil 영역이어서 '327 특허와 충돌할 소지가 있음(추정)</td>
+<td>pivotal 시험의 등록 진척. '327 판결이 L606에 미치는 영향에 대한 회사 공시</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(실적콜 transcript가 없어 5-1절은 생략합니다.)</em></p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>'327 특허 침해 판결과 구제수단 미확정 (가장 중요)</strong>
+   - 9/30 Delaware 연방지방법원은 청구항 1·14(PH-ILD 흡입 treprostinil 치료, 건조분말 포함)를 유효하며 침해됐다고 판결했습니다. 나머지 청구항 4개는 무효 판결을 받았습니다.
+   - 구제수단이 PH-ILD 적응증 판매 금지나 라벨 제한으로 이어지면 성장 축 하나가 사라집니다. 이 경우 제네릭 시장 진입을 막는 데 쓰이는 Hatch-Waxman 판결 구조상 FDA 승인 효력일 조정 같은 조치도 거론될 수 있습니다(추정).
+   - 노출 규모(PH-ILD 매출 비중)는 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>UTHR과의 다중 소송</strong>
+   - 10-K는 Delaware 외에 노스캐롤라이나 중부 연방지방법원과 Durham 카운티 주법원 소송, 그리고 향후 소송·재심리·항소를 별도로 적고 있습니다. '327 판결 하나로 법적 리스크가 끝나지 않습니다.</li>
+<li><strong>단일 제품 집중과 승인 유지 리스크</strong>
+   - 10-K와 10-Q 모두 첫 위험 문구로 "YUTREPIA 규제 승인 유지 능력"을 듭니다. 회사는 자금 소요도 승인 유지와 상업화 성공에 크게 달려 있다고 밝힙니다.</li>
+<li><strong>Sandoz 주사제 펌프 공급 제약</strong>
+   - CADD-MS 3 펌프는 생산과 지원이 끝났습니다. 그래서 전문약국이 신규 피하주사 환자 수를 제한하고 있습니다. 재고가 2026년 말보다 일찍 소진될 수 있다고 회사가 직접 밝혔습니다.</li>
+<li><strong>HCR 약정</strong>
+   - 2033년까지 고정 분기 상환과 최소 현금 $15.0M 약정이 있습니다. 현재 현금흐름에서는 부담이 작아 보입니다. 다만 PH-ILD 매출이 사라지고 소송 비용이 늘면 고정 상환이 영업 레버리지를 키우는 요인이 됩니다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정·불확실</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출 $171.7M, QoQ <span class="up">+29.2%</span></td>
+<td>20일 <span class="down">-59.0%</span>, 52주 고점 대비 <span class="down">-69.2%</span>로 시장이 판결 리스크를 크게 반영 중</td>
+</tr>
+<tr>
+<td>영업이익률 49.8%, 매출총이익률 93.3%</td>
+<td>PH-ILD 매출 비중이 확인되지 않아 하방 규모를 계산할 수 없음</td>
+</tr>
+<tr>
+<td>TTM FCF $147.7M, 2분기 순이익 약 $74.8M(역산)</td>
+<td>현금·차입 잔액을 확인할 수 없어 EV 기반 하방 지지선을 계산할 수 없음</td>
+</tr>
+<tr>
+<td>연환산 영업이익 기준 시가총액 약 7.3배</td>
+<td>오늘 상승에 확인된 촉매가 없어 추세 전환의 근거가 없음</td>
+</tr>
+</tbody>
+</table></div>
+<p>결론적으로 주가는 이미 상당한 손실을 반영한 것으로 보입니다. 하지만 하방이 어디까지인지 정량화할 수 없습니다. 기관 비중을 정당화하려면 최소한 구제수단과 적응증별 매출 노출이 확인돼야 합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>최종 판결문과 구제수단 8-K:</strong> PH-ILD 판매 금지 여부, 금지라면 시작 시점과 대상 범위(기존 환자 포함 여부), 로열티·손해배상 대체 여부, 항소 중 집행정지 신청과 결과.
+2. <strong>3분기 10-Q의 매출 분해:</strong> YUTREPIA 제품 매출과 Sandoz 서비스 매출, 가능하다면 PAH 대 PH-ILD 비중과 신규 처방 추이.
+3. <strong>재무상태표:</strong> 현금·투자자산 잔액, HCR 차입 잔액과 분기 상환액. 이를 바탕으로 PH-ILD 매출이 0이 되는 시나리오에서도 FCF 흑자가 유지되는지 확인해야 합니다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>보통 이상으로 올릴 조건:</strong>
+  - 구제수단이 판매 금지가 아닌 로열티·손해배상으로 정해지거나, 항소 중 집행정지가 인정되는 경우.
+  - 또는 PH-ILD 매출 비중이 작다는 것이 공시로 확인되고 PAH 매출만으로도 QoQ 성장이 이어지는 경우.
+- <strong>회피로 내릴 조건:</strong>
+  - 집행정지 없이 PH-ILD 판매 금지가 확정되는 경우.
+  - 3분기 제품 매출이 QoQ로 역성장하는 경우.
+  - UTHR의 다른 소송(노스캐롤라이나 연방·주법원)에서 PAH 적응증까지 겨냥한 불리한 결과가 나오는 경우.
+  - 회사가 자금 충분성 문구(1년 이상 운영 가능)를 철회하거나 조건을 다는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926023804/lqda-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-023804</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926094410/lqda-20260630x10q.htm">10-Q — 2026-06-30_0001104659-26-094410</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926058252/lqda-20260331x10q.htm">10-Q — 2026-03-31_0001104659-26-058252</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926112420/tm2626740d1_ex99-1.htm">8-K — 2026-09-30_0001104659-26-112420__EX-99.1__tm2626740d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926112420/tm2626740d1_8k.htm">8-K — 2026-09-30_0001104659-26-112420</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926104929/tm2624724d1_ex99-1.htm">8-K — 2026-09-03_0001104659-26-104929__EX-99.1__tm2624724d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926104929/tm2624724d1_8k.htm">8-K — 2026-09-03_0001104659-26-104929</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1819576/000110465926094411/tm2622888d1_ex99-2.htm">8-K — 2026-08-12_0001104659-26-094411__EX-99.2__tm2622888d1_ex99-2</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

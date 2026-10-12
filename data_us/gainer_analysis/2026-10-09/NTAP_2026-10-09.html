@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NTAP — NetApp Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>NTAP — NetApp Inc. Common Stock</h1>
+<div class="sub">2026-10-09 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">NTAP</span><span class="badge">+3.20%</span><span class="badge">거래량 1.26배</span><span class="badge">$46.31B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>실적 자체는 매우 강합니다. Q1 FY27(2026-07-31 종료) 매출은 YoY <span class="up">+29.9%</span>, 매출총이익률은 70.1%, TTM FCF는 $1.65B이고 순현금은 $1.1B입니다(실적콜 기준).</li>
+<li>다만 이번 성장에는 일회성 요인 세 가지가 섞여 있습니다. 14주 분기 효과, 메모리 원가 상승분의 가격 전가, 고객의 선구매입니다. 추가 1주를 빼면 매출 성장률은 26%라고 실적콜에서 언급했습니다. 경영진도 선구매와 가격 효과가 있었다고 직접 인정했습니다.</li>
+<li>회사가 상향한 FY27 가이던스를 역산하면 하반기 매출 성장률은 YoY 한 자릿수 후반으로 내려갑니다(7절 계산 참조). 시장이 지금의 30% 성장이 이어진다고 가격에 반영했다면 기대치와 어긋날 위험이 있습니다.</li>
+<li>주가는 52주 고점이고 60일 <span class="up">+42.5%</span>입니다. 회사의 1분기 자사주 매입 평균단가 $133.32보다 약 77% 높습니다. 회사 가이던스 중간값 EPS 기준 PER은 약 23.9배, TTM FCF 수익률은 약 3.6%입니다.</li>
+<li>따라서 지금 추격해서 크게 싣기보다는, 하반기 수요 지속 여부와 제품 마진 회복이 확인될 때 분할로 늘리는 전략이 맞다고 판단합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 안에 나온 공시는 없습니다. 2026-09-09자 8-K는 본문이 잘려 있어 내용을 확인할 수 없습니다.</li>
+<li><strong>뉴스상 촉매:</strong> 헤드라인 중 "NTAP Stock Hits Fresh Record High After Evercore Upgrade"와 "NetApp (NTAP) Wins An Analyst Upgrade"가 있습니다. <strong>Evercore의 투자의견 상향이 직접 촉매</strong>로 보입니다. 다만 상향 근거, 목표주가, 상향 폭은 제공된 자료로는 확인할 수 없습니다.</li>
+<li><strong>보조 요인(추정):</strong> "AWS Transform"과 관련해 클라우드 스토리지 기본 착륙지 테마 기사가 있습니다. 같은 날 S&amp;P500과 다우는 금리 부담으로 하락한 것으로 보도됐습니다. 지수와 반대로 오른 만큼 종목 고유 재료의 영향이 컸다고 판단합니다.</li>
+<li><strong>수급:</strong> 거래량은 20일 중앙값의 1.26배로 폭증이라고 보기 어렵습니다. 대규모 신규 자금 유입보다는 기존 강세 추세에 증권사 상향이 더해진 성격으로 해석합니다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>사업 정의(10-K):</strong> 회사는 스스로를 "Intelligent Data Infrastructure" 기업이라고 정의합니다. 핵심은 ONTAP 데이터관리 소프트웨어이고, 여기에 올플래시·하이브리드플래시·클라우드 네이티브 스토리지를 결합해 판매합니다.</p>
+<p><strong>두 개 부문(10-Q):</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>내용</th>
+<th>Q1 FY27 매출(실적콜)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hybrid Cloud</td>
+<td>온프레미스 스토리지 HW·SW·지원·전문서비스</td>
+<td>$1.82B</td>
+<td>+30% (추가 주 제외 시 <span class="up">+27%</span>)</td>
+</tr>
+<tr>
+<td>└ 제품</td>
+<td>올플래시 등</td>
+<td>$987M</td>
+<td>+51%</td>
+</tr>
+<tr>
+<td>└ 지원(Support)</td>
+<td>유지보수</td>
+<td>$720M</td>
+<td>+11%</td>
+</tr>
+<tr>
+<td>└ Keystone(STaaS)+전문서비스</td>
+<td>구독형 스토리지</td>
+<td>$112M</td>
+<td>+15%</td>
+</tr>
+<tr>
+<td>Public Cloud</td>
+<td>AWS·Azure·Google 1st-party/마켓플레이스 스토리지 서비스</td>
+<td>$206M</td>
+<td>+28% (추가 주 제외 시 <span class="up">+19%</span>)</td>
+</tr>
+<tr>
+<td>(참고) 올플래시 어레이</td>
+<td>부문 횡단</td>
+<td>$1.31B</td>
+<td>+47%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>매출 구성 변화(10-Q):</strong> 제품 비중이 49%로 전년 42%에서 올랐고, 서비스 비중은 58%에서 51%로 내려갔습니다. 마진이 낮은 하드웨어 비중이 커지는 방향입니다.</p>
+<p><strong>부문별 수익성(실적콜):</strong>
+- 지원 매출총이익률 93.2%, 퍼블릭클라우드 86.4%, 전문서비스 36.6%, 제품 54.6%입니다.
+- 이익의 바닥을 받치는 것은 고마진 지원·클라우드 매출입니다.
+- 이번 분기 성장은 상대적으로 저마진인 제품이 이끌었습니다.</p>
+<p><strong>고객군:</strong>
+- 약 150개국 기업 고객을 대상으로 합니다(10-Q).
+- 미국 공공부문은 매출의 약 10~11%라고 CFO가 Evercore 컨퍼런스에서 언급했습니다.
+- Google Distributed Cloud와 4.5년 ELA(소버린·고보안 환경용)를 체결했으며, 이 계약은 Hybrid Cloud 부문에 들어간다고 언급했습니다.</p>
+<p><strong>경쟁 위치:</strong>
+- 회사는 "주요 퍼블릭 클라우드 전부에 네이티브로 통합된 유일한 엔터프라이즈 데이터 인프라 제공자"라고 밝혔습니다(10-K·10-Q).
+- 실적콜에서는 미국 유틸리티사 수주에서 "레거시 및 flash-only 경쟁사"를 제치고 기존 공급사를 교체했다고 언급했습니다.
+- 시장점유율 수치는 공시상 확인할 수 없습니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질: 가격·물량·기간 효과 분해</strong>
+- Q1 FY27은 14주 분기입니다(10-Q). 보도 기준 성장률 30% 가운데 약 4%p가 기간 효과입니다(실적콜에서 추가 주 제외 시 26%라고 언급).
+- 회사는 FY26 4분기와 FY27 2분기 초에 가격을 올렸다고 밝혔습니다(10-Q). 메모리 등 부품 원가 상승분을 고객에게 넘긴 것입니다.
+- 선구매에 대한 회사 측 언급은 다음과 같습니다.
+  - CEO는 "가속화된 구매 결정과 가격 효과가 일부 있었지만, 수요 환경의 구조적 개선도 뚜렷하다"고 언급했습니다(실적콜).
+  - CFO는 "가격 인상 시 일부 고객은 구매를 앞당기고 일부는 보류한다"고 언급했습니다(Evercore 컨퍼런스).
+- 가격·물량·믹스를 정량으로 나눈 수치는 공시에서 확인할 수 없습니다. 다만 제품 매출 <span class="up">+51%</span>와 올플래시 <span class="up">+47%</span>에는 가격 효과가 상당 부분 들어 있을 개연성이 높다고 봅니다(추정).
+- <strong>불과 두 분기 전 성장률은 4%였습니다.</strong> FY26 3분기 매출은 $1,713M(<span class="up">+4%</span>), 9개월 누적은 <span class="up">+3%</span>였습니다(10-Q). Q4 FY26은 <span class="up">+12%</span>였다고 Evercore 진행자가 언급했습니다. 성장 가속이 매우 급격했다는 점은 지속성 검증이 필요하다는 뜻입니다.</p>
+<p><strong>마진</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>70% (전년 70%)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>70.1%</td>
+<td>제공 지표</td>
+</tr>
+<tr>
+<td>Non-GAAP 매출총이익률</td>
+<td>70.6%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>24% (전년 20%)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>26.7%</td>
+<td>제공 지표</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업이익률</td>
+<td>31.9%</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>GAAP 영업이익률 24%에는 구조조정비용 $56M(매출의 3%)이 포함돼 있습니다. 제공 지표 26.7%는 이 비용을 조정한 기준일 가능성이 있지만 확인할 수 없습니다.</li>
+<li>영업레버리지는 주로 판매관리비에서 나왔습니다. 매출 대비 비중이 S&amp;M 30%→25%, R&amp;D 16%→14%로 내려갔습니다(10-Q).</li>
+<li>제품 매출총이익률 54.6%는 부품 원가 때문에 전분기보다 하락했다고 실적콜에서 언급했습니다.</li>
+<li>회사는 Q2 매출총이익률을 67~68%로 제시했습니다. Q1 70.6% 대비 추가 하락을 가이드한 것입니다. CFO는 6월 컨퍼런스에서 "Q1이 저점일 수 있다"고 했지만, 실제 Q2 가이던스는 더 낮습니다. <strong>마진 저점 시점이 뒤로 밀린 것으로 읽힙니다.</strong></li>
+</ul>
+<p><strong>현금흐름·주주환원</strong>
+- Q1 FCF는 $401M이고 TTM FCF는 $1.65B입니다.
+- Q1 주주환원은 $302M입니다. 자사주 매입 $200M(150만 주, 평균 $133.32)과 배당 $102M(주당 $0.52)으로 구성됩니다(10-Q).
+- 회사는 FCF의 최대 100%를 주주에게 환원하겠다고 밝혔습니다(Evercore 컨퍼런스).</p>
+<p><strong>재무 건전성</strong>
+- 현금과 단기투자는 $3.6B, 총차입금은 $2.5B, 순현금은 $1.1B입니다(실적콜). FY26 말 $1.4B보다 줄었습니다.
+- 인수 지출도 있었습니다. DataPelago 인수 총액은 $193M이며, 그중 $87M을 현금으로 지급했고 나머지는 조건부 후불입니다(10-Q).
+- 재고는 전분기 대비 거의 2배로 늘었습니다(애널리스트 질문). 재고회전율은 6회로 하락했습니다. CEO는 "전략적 구매"라고 설명했습니다.
+- 이연매출은 $4.85B(<span class="up">+7%</span>), 잔여이행의무(RPO)는 $5.65B(<span class="up">+14%</span>)입니다(실적콜). 매출 성장률 30%와 비교하면 이연매출 증가율이 낮습니다. 이번 성장이 즉시 인식되는 제품 매출 중심이라는 점과 맞아떨어집니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① AI 데이터 인프라</td>
+<td>회사는 "데이터를 이동하지 않고 그 자리에서 AI-ready로 만든다"고 밝혔습니다. Q1에 AI·데이터레이크 현대화 딜 약 350건을 성사시켰고 딜 규모가 커지고 있다고 실적콜에서 언급했습니다.</td>
+<td>PoC가 프로덕션으로 넘어가고, 서버 증설에 스토리지 투자가 뒤따라야 합니다. CFO는 그 시차를 아직 정량화할 수 없다고 했습니다.</td>
+<td>AI 딜 건수와 평균 규모 추이, DataPelago 제품화 여부(INSIGHT 발표)</td>
+</tr>
+<tr>
+<td>② 올플래시 교체 수요</td>
+<td>올플래시 매출 $1.31B, <span class="up">+47%</span></td>
+<td>원가 상승에도 고객 예산이 유지돼야 합니다. 가격을 뺀 물량 성장도 있어야 합니다.</td>
+<td>Q2 매출이 가이던스 $2.1B±$75M 상단을 넘는지, 가격 인상 이후 수요 둔화 신호가 있는지</td>
+</tr>
+<tr>
+<td>③ 퍼블릭클라우드</td>
+<td>매출 $206M, 추가 주 제외 시 <span class="up">+19%</span>. 하이퍼스케일러 1st-party 서비스가 견인</td>
+<td>AWS·Azure·Google과의 관계 유지, 블록스토리지와 저가 티어 확산</td>
+<td>퍼블릭클라우드 YoY가 10%대 후반을 유지하는지, 매출총이익률 86%대가 유지되는지</td>
+</tr>
+<tr>
+<td>④ Keystone(STaaS)</td>
+<td>회사는 올플래시와 비슷한 수준으로 성장했다고 밝혔습니다(구체 수치는 비공개).</td>
+<td>원가 상승기에 구독형 수요가 늘어야 합니다.</td>
+<td>Keystone+전문서비스 합산 매출이 <span class="up">+15%</span>에서 가속하는지</td>
+</tr>
+<tr>
+<td>⑤ 미국 공공부문 회복</td>
+<td>Q4 FY26 +약 20%. 예산 통과로 정상 계절성으로 돌아갈 것이라고 회사는 밝혔습니다.</td>
+<td>연방 예산 집행</td>
+<td>Q2(10월 분기) 연방 회계연도 말 수주</td>
+</tr>
+<tr>
+<td>⑥ 가격 전가와 영업레버리지</td>
+<td>원가 상승분을 전가하고, 매출보다 낮은 OpEx 증가율로 레버리지를 내겠다고 회사는 밝혔습니다.</td>
+<td>경쟁사도 함께 가격을 올려야 합니다.</td>
+<td>제품 매출총이익률이 54.6%에서 반등하는지, 영업이익률 가이던스 30.9~31.9%를 달성하는지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- CEO는 "stellar", "record-setting", "회사 역사상 최고 수준", "가이던스를 실질적으로 상향(materially raising)" 같은 표현을 썼습니다. 이전 Evercore 컨퍼런스의 CFO 화법("mixed bag", "선구매도 가이던스에 반영")보다 확연히 공격적입니다.
+- 근거로는 다음을 제시했습니다.
+  - 전 지표 가이던스 상회
+  - 산업·지역·고객군 전반에 걸친 성장
+  - 다년 계약 증가
+- 그러나 FY27 연간 매출 성장률 가이던스는 17%입니다. Q1 30%, Q2 23%(가이던스)에 비해 낮아, <strong>경영진도 하반기 둔화를 전제</strong>하고 있는 셈입니다.
+- CEO는 하반기에 대해 "하반기와 상반기 비중이 통상 계절성에 근접하다"고 언급했습니다. 상향 의지는 내비쳤지만 하반기 숫자는 보수적으로 남겨둔 것으로 해석합니다(추정).</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>선구매·계절성:</strong> UBS가 하반기 계절성을 물었습니다. CFO가 일부 선구매(pull-in)를 언급했다는 점이 질문에 전제로 깔려 있었습니다. 정량적인 선구매 규모는 공개하지 않았습니다.
+- <strong>Keystone:</strong> Barclays는 추가 주를 빼면 전문서비스 라인 성장이 약하다고 지적했습니다. CEO는 Keystone 수치를 공개하지 않고 "올플래시와 같은 범위"라고만 답했습니다. <strong>수치 공개를 회피한 지점입니다.</strong>
+- <strong>재고 급증:</strong> Raymond James가 재고가 2배로 는 배경과 특정 수주에 묶인 비중을 물었습니다. CEO는 "전략적 구매, 긍정적"이라고만 답했고 수주 연계 비중은 답하지 않았습니다. "가격이 성장에 덜 기여하게 되는가"라는 질문에는 "typically does"라고 짧게 답했습니다.
+- <strong>퍼블릭클라우드:</strong> 성장률이 10%대 후반에 머무는 데 대한 질문에 구체적인 가속 근거 없이 INSIGHT 행사로 답을 미뤘습니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 부문·제품별 매출(Hybrid $1.82B, 제품 $987M, 지원 $720M, 올플래시 $1.31B, 퍼블릭클라우드 $206M)
+- 부문별 매출총이익률(제품 54.6%, 지원 93.2%, 클라우드 86.4%)
+- 이연매출 $4.85B, RPO $5.65B, 재고회전율 6회
+- JetStream(VMware용 클라우드 네이티브 DR) 인수. 10-Q 발췌에는 DataPelago만 나옵니다.
+- 미국 공공부문 비중 10~11%, Google ELA 기간 4.5년(Evercore 컨퍼런스)
+- Q2 및 FY27 가이던스 수치 전체</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에는 리스크 팩터 본문 없이 forward-looking 요인 목록만 있습니다. 아래는 그 목록과 10-Q MD&amp;A, 실적콜을 근거로 정리했습니다.</p>
+<ol>
+<li><strong>부품(메모리/NAND) 원가와 공급 제약</strong>
+   - 회사는 메모리 원가가 "단기적으로 높게 유지되거나 더 오를 것"으로 예상하고, 특정 제품의 공급 부족이 이어질 수 있다고 밝혔습니다(10-Q).
+   - 제품 매출총이익률은 이미 하락했고 Q2 매출총이익률 가이던스도 67~68%로 낮아졌습니다.
+   - 가격 전가가 늦어지거나 경쟁 때문에 막히면 마진이 바로 훼손됩니다.</li>
+<li><strong>선구매 반납과 가격 효과 소멸</strong>
+   - 성장의 일부가 가격 인상 전 선구매라는 점을 회사가 인정했습니다.
+   - 원가가 안정되면 가격 효과가 사라지고, 앞당겨진 수요가 빈자리로 돌아올 수 있습니다.
+   - 가이던스를 역산하면 하반기 성장률은 한 자릿수 후반입니다.</li>
+<li><strong>재고 2배 증가</strong>
+   - 원가가 높을 때 전략적으로 쌓은 재고입니다.
+   - 부품 가격이 꺾이면 재고평가 손실이나 매출총이익률 부담으로 돌아올 수 있습니다(추정). 수주 연계 비중은 공개하지 않았습니다.</li>
+<li><strong>하이퍼스케일러 의존과 경쟁</strong>
+   - 10-K는 퍼블릭 클라우드 사업자와의 관계를 유리한 조건으로 유지하는 것을 리스크 요인으로 명시했습니다.
+   - Public Cloud 부문 전체가 AWS·Azure·Google 위에서 운영됩니다.
+   - 실적콜에서 flash-only 경쟁사를 언급했는데, 경쟁 구도는 상존합니다.</li>
+<li><strong>미국 정부 지출 불확실성</strong>
+   - 10-K 요인 목록에 미국 정부 지출 변화가 명시돼 있습니다.
+   - 공공부문은 매출의 10~11%이고, FY26에는 대부분 분기가 계절 평균에 못 미쳤습니다(Evercore 컨퍼런스).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY</td>
+<td>+29.9% (추가 주 제외 <span class="up">+26%</span>, 실적콜)</td>
+<td>강하지만 가격·선구매가 섞여 있음</td>
+</tr>
+<tr>
+<td>가이던스 역산 하반기 매출(계산)</td>
+<td>FY27 중간값 $8.1B − Q1 $2.03B − Q2 가이던스 $2.1B ≈ $3.97B</td>
+<td>하반기 둔화 전제</td>
+</tr>
+<tr>
+<td>전년 하반기 매출(추정)</td>
+<td>Q3 $1.713B + Q4 약 $1.95B(Q1 QoQ <span class="up">+4%</span>에서 역산)</td>
+<td>이를 기준으로 하반기 YoY 약 +8~9%</td>
+</tr>
+<tr>
+<td>PER(회사 가이던스 기준, 계산)</td>
+<td>$235.77 ÷ FY27 EPS 중간값 $9.88 ≈ 23.9배</td>
+<td>성장률 둔화를 고려하면 저평가 아님</td>
+</tr>
+<tr>
+<td>FCF 수익률(계산)</td>
+<td>$1.65B ÷ $46.31B ≈ 3.6%</td>
+<td>P/FCF 약 28배</td>
+</tr>
+<tr>
+<td>순현금</td>
+<td>$1.1B (실적콜)</td>
+<td>재무 리스크 낮음</td>
+</tr>
+<tr>
+<td>주가 위치</td>
+<td>52주 고점, 20일 <span class="up">+25.8%</span>, 60일 <span class="up">+42.5%</span></td>
+<td>단기 과열 구간</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>펀더멘털 방향성(영업레버리지, 현금창출, 상향 가이던스)은 "회피"나 "관망"으로 보기에는 너무 좋습니다.</li>
+<li>반대로 성장 지속성이 검증되지 않았고 단기 주가 상승이 커서 "적극"으로 보기도 어렵습니다. 그래서 <strong>보통</strong>으로 판단합니다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q2 FY27 실적(11월 발표 예상)</strong>
+   - 매출이 $2.1B 가이던스 상단을 넘는지 봐야 합니다.
+   - 회사가 하반기 가이던스를 추가로 올리는지 봐야 합니다. 그러면 하반기 둔화 우려가 줄어듭니다.
+2. <strong>제품 매출총이익률 반등 여부</strong>
+   - 54.6%에서 회복하는지, Q2 전체 매출총이익률이 67~68%를 지키는지 확인해야 합니다.
+   - 가격 전가가 실제로 작동하는지를 가늠하는 지표입니다.
+3. <strong>이연매출·RPO 증가율과 재고 추이</strong>
+   - RPO 증가율(<span class="up">+14%</span>)이 매출 증가율 쪽으로 따라붙는지 봐야 합니다.
+   - 재고가 매출로 소진되는지(재고회전율 회복)를 봐야 합니다. 이 두 가지로 선구매가 아닌 구조적 수요인지 가려낼 수 있습니다.</p>
+<p><strong>판단을 "관망"으로 바꿀 조건</strong>
+- Q2 매출이 가이던스 하단($2.025B)에 근접하거나, 회사가 FY27 가이던스를 유지만 하고 선구매 반납을 언급하는 경우
+- Q2 매출총이익률이 67%를 밑돌거나, 제품 매출총이익률 하락이 계속되는데 추가 가격 인상이 불가하다고 시사하는 경우
+- 재고가 추가로 늘어나는데 메모리 가격이 꺾였다는 신호가 나오는 경우(재고평가 리스크)
+- 퍼블릭클라우드 성장률(추가 주 제외)이 10%대 중반 이하로 떨어지거나, 하이퍼스케일러 계약 조건이 바뀌었다는 공시가 나오는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526259683/ntap-20260424.htm">10-K — 2026-04-24_0001193125-26-259683</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526380207/ntap-20260731.htm">10-Q — 2026-07-31_0001193125-26-380207</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526076622/ntap-20260123.htm">10-Q — 2026-01-23_0001193125-26-076622</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526389273/ntap-20260909.htm">8-K — 2026-09-09_0001193125-26-389273</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000100204726000003/ntap-ex99_1.htm">8-K — 2026-09-02_0001002047-26-000003__EX-99.1__ntap-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000100204726000003/ntap-20260902.htm">8-K — 2026-09-02_0001002047-26-000003</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526245196/ntap-ex99_1.htm">8-K — 2026-05-21_0001193125-26-245196__EX-99.1__ntap-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1002047/000119312526245196/ntap-20260521.htm">8-K — 2026-05-21_0001193125-26-245196</a></li>
+<li>Transcript — 2026-09-02 Q1 2027 Transcript</li>
+<li>Transcript — 2026-06-04 NetApp, Inc. (NTAP) Presents at 2026 Evercore Global TMT Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

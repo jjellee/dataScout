@@ -8973,3 +8973,101 @@ Error occurred in get_market_ohlcv_by_ticker: Expecting value: line 1 column 1 (
 2026-10-08 16:00:14,562 - ERROR - Failed to download KOSDAQ prices: "None of [Index(['시가', '고가', '저가', '종가'], dtype='object')] are in the [columns]"
 2026-10-08 16:00:14,562 - INFO - Downloaded price changes for 0 KR stocks.
 2026-10-08 16:00:14,562 - ERROR - No stock prices downloaded. Exiting.
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-10-09 16:00:01,653 - INFO - Loading environment variables from .env file...
+2026-10-09 16:00:01,655 - INFO - ==================================================
+2026-10-09 16:00:01,655 - INFO -  Starting Daily KR Market Monitor (Test: False)
+2026-10-09 16:00:01,655 - INFO - ==================================================
+KRX 로그인 시도...
+  로그인 ID: heyork1
+⚠️ KRX 비밀번호 변경이 필요합니다.
+   오류 메시지: 패스워드 변경 필요
+   https://www.krx.co.kr 에서 비밀번호를 변경한 후 다시 시도하세요.
+KRX 로그인 실패: 자격 증명을 확인하세요.
+2026-10-09 16:00:02,532 - INFO - KR market was closed on expected trading date 2026-10-08. Skipping report.
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-10-12 16:00:02,040 - INFO - Loading environment variables from .env file...
+2026-10-12 16:00:02,051 - INFO - ==================================================
+2026-10-12 16:00:02,051 - INFO -  Starting Daily KR Market Monitor (Test: False)
+2026-10-12 16:00:02,051 - INFO - ==================================================
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-10-12 16:00:02
+  만료 시간: 2026-10-12 17:00:02
+2026-10-12 16:00:02,888 - INFO - Processing trading date: 2026-10-12
+2026-10-12 16:00:02,888 - INFO - Fetching KR stock list with WICS industry classification from WiseIndex...
+2026-10-12 16:00:03,589 - INFO - Found active WICS date: 20261008 (offset: 4 days)
+2026-10-12 16:00:07,064 - INFO - WICS classification loaded: 2458 stocks, 28 sectors
+2026-10-12 16:00:35,113 - INFO - Added 304 extra tickers from pykrx (classified as '기타'). Total: 2762
+2026-10-12 16:00:35,114 - INFO - Total metadata stocks loaded: 2762
+2026-10-12 16:00:35,115 - INFO - Downloading KR prices for 20261012 using pykrx...
+2026-10-12 16:00:40,117 - INFO - Downloaded price changes for 2762 KR stocks.
+2026-10-12 16:00:40,119 - INFO - Successfully downloaded price changes for 2762 stocks.
+2026-10-12 16:00:40,123 - INFO - Fetching news for sharp movers (±5%)...
+2026-10-12 16:01:24,892 - INFO - Got news for 0 out of 680 sharp movers
+2026-10-12 16:01:24,893 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_kr/daily_prices/kr_prices_20261012.xlsx...
+2026-10-12 16:01:31,345 - INFO - Qwen response generated (qwen3.7-flash).
+2026-10-12 16:01:31,351 - WARNING - Investor trend CSV not found: /home/inhyuk/projects/dataScout/data_kr/20261012/all_stocks_investor_trend.csv
+2026-10-12 16:01:31,351 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-10-12 16:01:32,423 - INFO - Report text sent successfully to Telegram.
+2026-10-12 16:01:32,423 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-10-12 16:01:34,981 - INFO - Excel document sent successfully to Telegram.
+2026-10-12 16:01:34,981 - INFO - Generating AI market analysis...
+2026-10-12 16:01:47,702 - INFO - Qwen response generated (qwen3.7-flash).
+2026-10-12 16:01:47,703 - INFO - Sending AI market analysis to Telegram...
+2026-10-12 16:01:48,766 - INFO - AI market analysis sent.
+
+--- Generated Report Summary ---
+🇰🇷 *[한국 증시 마감 일일 리포트]* 🇰🇷
+📅 *기준일자: 2026-10-12*
+
+🔥 *주요 상승 섹터/산업 TOP 5*
+1. *보험* (+0.28%)
+2. *은행* (+-0.23%)
+3. *운송* (+-0.48%)
+4. *다각화된금융* (+-0.69%)
+5. *부동산* (+-0.77%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 5*
+1. *반도체와반도체장비* (-4.64%)
+2. *기술하드웨어와장비* (-3.92%)
+3. *에너지* (-3.81%)
+4. *전자와 전기제품* (-3.71%)
+5. *제약과생물공학* (-3.65%)
+
+💬 *섹터별 주목 종목 (AI)*
+- 보험: DB손해보험(+3.6%) - 시가총액 상위권인 주요 손보사 중 유일하게 두 자릿수 상승률을 기록하며 섹터 내 모멘텀 주도
+- 은행: 카카오뱅크(+2.5%) - 하락세인 섹터 내에서 시가총액 대비 가장 높은 등락률을 보이며 상대적 강세 유지
+- 운송: 동양고속(+8.7%) - 시가총액 상위 종목 중 가장 높은 상승률(+8.7%)을 기록하며 섹터 상승 견인
+- 다각화된금융: GMI벤처(+3.7%) - 시가총액 기준 주요 종목 중 유일하게 양의 상승률을 기록하며 섹터 내 선방
+- 부동산: 마스턴프리미어리츠(+1.7%) - 하락세인 섹터 내에서 시가총액 상위 리츠 중 가장 높은 상승률(+1.7%) 보여 차별화
+- 제약과생물공학: HLB파나진(-20.5%) - 섹터 내 가장 큰 폭으로 하락(-20.5%)하며 약세 주도, 하단 지지선 확인 필요
+- 전자와 전기제품: 코칩(-13.0%) - 시가총액 대비 가장 큰 폭으로 하락(-13.0%)하며 섹터 약세 심화 신호
+- 에너지: 에이전트AI(-15.1%) - 시가총액 기준 주요 종목 중 가장 큰 폭으로 하락(-15.1%)하며 매물 부담 존재
+- 기술하드웨어와장비: LG이노텍(-16.2%) - 시가총액 상위권에서 가장 큰 폭으로 하락(-16.2%)하며 섹터 전반적인 조정 압력 반영
+- 반도체와반도체장비: 삼성전자(-4.4%) - 시가총액 1위 종으로서 섹터 평균(-4.64%)에 근접한 하락률로 시장 심리 위축 영향
+
+📌 *나의 관심 섹터/산업 현황*
+- *은행*: -0.23% (상위: 카카오뱅크(+2.5%), 신한지주(+1.0%))
+- *미디어와엔터테인먼트*: -2.22% (상위: 넥슨게임즈(+3.2%), 카카오게임즈(+3.0%))
+- *자동차와부품*: -2.52% (상위: 유니켐(+14.2%), 와이엠(+4.7%))
+- *소프트웨어와서비스*: -3.26% (상위: 라온시큐어(+6.2%), 안랩(+3.6%))
+- *제약과생물공학*: -3.65% (상위: 대화제약(+8.6%), 동국제약(+5.4%))
+- *반도체와반도체장비*: -4.64% (상위: 엑시콘(+6.4%), 알파칩스(+6.2%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *079650* (서산) | ₩6,760 (*+30.00%*)
+2. *250930* (예선테크) | ₩1,508 (*+30.00%*)
+3. *001210* (금호전기) | ₩11,070 (*+29.93%*)
+4. *199730* (바이오인프라) | ₩1,173 (*+29.90%*)
+5. *011080* (형지I&C) | ₩726 (*+29.87%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *005110* (한창) | ₩36 (*-30.77%*)
+2. *335870* (윙스풋) | ₩2,770 (*-29.96%*)
+3. *012340* (뉴인텍) | ₩356 (*-26.75%*)
+4. *439580* (블루엠텍) | ₩2,365 (*-23.59%*)
+5. *065770* (CS) | ₩897 (*-21.66%*)
+
+📂 *전체 2,762개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*

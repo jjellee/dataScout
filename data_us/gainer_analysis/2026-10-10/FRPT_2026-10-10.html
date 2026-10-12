@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FRPT — Freshpet Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FRPT — Freshpet Inc. Common Stock</h1>
+<div class="sub">2026-10-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FRPT</span><span class="badge">+3.05%</span><span class="badge">거래량 1.29배</span><span class="badge">$3.13B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>오늘 상승의 근거가 약합니다.</strong> <span class="up">+3.05%</span> 상승에 거래량 배수 1.29배로 "급증"이라 보기 어렵고, 최근 4일 내 공시도 없습니다. 20일 수익률은 0.5%에 그칩니다. 확인된 촉매가 없어 오늘 움직임만으로 비중을 늘릴 이유는 없습니다.</li>
+<li><strong>펀더멘털은 개선 중입니다.</strong> Q2 매출은 $305.6M(YoY <span class="up">+15.5%</span>)으로 Q1(<span class="up">+13.1%</span>)보다 성장이 빨라졌습니다. 매출총이익률은 Q1 40.5%에서 Q2 42.1%로 올랐고, 영업이익률도 Q1 1.5%에서 Q2 7.1%로 개선됐습니다. TTM FCF는 $61.0M으로 흑자입니다.</li>
+<li><strong>가격 부담이 있습니다.</strong> 시가총액 $3.13B를 TTM FCF로 나누면 약 51배입니다. 연간 매출 가이던스(10~12%, 뉴스 헤드라인 기준)가 상반기 성장률 <span class="up">+14.3%</span>보다 낮아 하반기 성장 둔화가 내포돼 있습니다. 클럽 채널에서는 경쟁 제품이 출시됐고, 공매도 잔량은 17.67%(SA 사이드바)로 높습니다.</li>
+<li><strong>실적 랠리분을 반납했습니다.</strong> 실적 발표 당일 SA 페이지 기준 $71.47(<span class="up">+14.57%</span>)까지 올랐다가 현재 $65.18로 내려왔습니다. 시장은 실적 서프라이즈를 일부만 반영한 상태로 보입니다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없습니다.</li>
+<li>뉴스는 대부분 시세·리뷰성 헤드라인입니다.</li>
+<li>GuruFocus 기사는 "3.0% 상승 후"라는 사후 기사입니다. GF Value $96.15는 제3자 산식이라 판단 근거로 쓰지 않습니다.</li>
+<li>Wells Fargo는 목표가를 $82에서 $77로 내렸습니다. 날짜는 확인되지 않지만 방향상 상승 촉매는 아닙니다.</li>
+<li>Benzinga의 Q2 실적콜 transcript는 8/5 실적 발표 관련 자료로, 오늘 일어난 이벤트가 아닙니다.</li>
+<li>거래량 1.29배, 20일 수익률 0.5%를 보면 박스권 안의 반등으로 보는 것이 맞습니다. 공매도 잔량이 17.67%로 높아 숏커버가 섞였을 가능성은 있지만, 데이터로 확인할 수는 없습니다(추정).</li>
+</ul>
+<hr>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- 냉장 신선 펫푸드를 Freshpet 단일 브랜드로 판매합니다. 리테일 채널별로 원료·포장·라벨을 맞춤화합니다(10-Q).
+- 매출의 대부분은 도그푸드·트릿입니다. 실적콜(dbAccess 컨퍼런스)에서 "대부분의 매출이 $38B 도그푸드·트릿 카테고리에서 나온다"고 언급했습니다.</p>
+<p><strong>판매 구조</strong>
+- 리테일러에게 직판하거나 유통업체(distributor)를 거쳐 판매합니다.
+- 소비자 접점은 매장 안에 회사가 소유한 브랜드 냉장고 <strong>Freshpet Fridge</strong>입니다.
+- Fridge 설치 매장 수는 2026/3/31 약 30,425개, 2026/6/30 약 30,721개입니다(10-Q).
+  - 실적콜에서는 "39,000 fridge infrastructure"라고 언급했습니다. 매장 수가 아니라 냉장고 대수 기준으로 보입니다(추정).</p>
+<p><strong>채널</strong>
+- Grocery, Mass, International, Digital, Pet Specialty, Club입니다.
+- Digital에는 DTC가 포함되고, 오프라인 Fridge 네트워크로 처리되는 주문도 있습니다(10-Q).</p>
+<p><strong>생산</strong>
+- 자체 공장인 Freshpet Kitchens 3곳(Bethlehem, South, Ennis)을 운영하며 증설 중입니다(10-K).</p>
+<p><strong>매출 구성</strong>
+- 채널별·제품별 매출 비중은 <strong>공시상 확인 불가</strong>입니다(제공 발췌 범위 내).</p>
+<p><strong>경쟁 위치(회사 주장)</strong>
+- 회사는 "브랜드, 생산기술, 제조망, 냉장 유통, Fridge, 조직문화로 이루어진 사업모델은 복제하기 어렵다"고 밝혔습니다.
+- 실적콜에서 언급된 시장 데이터는 다음과 같습니다.
+  - 미국 펫푸드 시장 $56B, 그중 신선·냉동 기회 약 $10B입니다.
+  - 그로서리 채널에서 신선 비중이 2.2%에서 23.1%로 커져 캔 제품을 제쳤습니다. 같은 기간 건사료 비중은 73.3%에서 51.2%로 줄었습니다.
+  - 타깃 가구(TAM)는 3,600만이고, 그중 1,600만 가구에 침투했습니다(2018년 480만).</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 비교</strong> (단위 $K, 10-Q)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q1'25</th>
+<th>Q1'26</th>
+<th>Q2'25</th>
+<th>Q2'26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순매출</td>
+<td>263,249</td>
+<td>297,644</td>
+<td>264,689</td>
+<td>305,587</td>
+</tr>
+<tr>
+<td>YoY</td>
+<td>–</td>
+<td>+13.1%</td>
+<td>–</td>
+<td><strong>+15.5%</strong></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>39.4%</td>
+<td>40.5%</td>
+<td>공시상 확인 불가</td>
+<td><strong>42.1%</strong></td>
+</tr>
+<tr>
+<td>영업이익(률)</td>
+<td>(11,497) / <span class="down">-4.4%</span></td>
+<td>4,331 / 1.5%</td>
+<td>약 6.7% (지표 역산)</td>
+<td>약 7.1% (≈$21.7M, 역산)</td>
+</tr>
+<tr>
+<td>SG&amp;A 비율</td>
+<td>43.8%</td>
+<td>39.1%</td>
+<td>–</td>
+<td>약 35% (역산 추정)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>상반기 매출은 $603.2M으로 전년 $527.9M 대비 <span class="up">+14.3%</span>입니다.</li>
+</ul>
+<p><strong>성장의 질</strong>
+- Fridge 설치 매장은 Q2에 +296개(<span class="up">+1.0%</span> QoQ) 늘었는데, 매출은 <span class="up">+2.7%</span> QoQ 늘었습니다.
+- 따라서 이번 분기 성장은 신규 매장보다 <strong>기존 Fridge당 회전율(velocity) 개선</strong>이 더 많이 기여한 것으로 해석됩니다(추정).
+- 단가·물량·믹스 분해는 <strong>공시상 확인 불가</strong>입니다.
+  - MD&amp;A에는 "투입원가 상승 시 가격 인상으로 상쇄한다"는 일반적 서술만 있습니다.</p>
+<p><strong>마진</strong>
+- 매출총이익률은 Q1'25 39%, Q1'26 41%, Q2'26 42.1%로 계속 개선되고 있습니다.
+- 회사는 2027년 조정 매출총이익률을 최소 49%로 목표한다고 밝혔습니다(SA 헤드라인, 8-K 프레젠테이션에 2027 targets 언급).
+- 영업 레버리지는 주로 SG&amp;A 비율 하락에서 나옵니다. 다만 영업이익률 YoY 개선은 <span class="up">+0.4%</span>p에 그쳐, Q2만 보면 레버리지가 크지 않습니다.</p>
+<p><strong>이익의 질: 주의할 점</strong>
+- Q1'26 세전이익 $65.6M 중 $62.0M이 지분투자 평가이익입니다. 비영업·일회성이라 Q1 순이익은 본업 실적을 크게 과대 표시합니다.
+- 2025년에 이연법인세 평가충당금 대부분을 환입했습니다. 이에 따라 2026년부터 이연법인세 비용이 인식돼 GAAP 순이익이 줄어듭니다(현금 영향은 제한적).
+- Q2 GAAP EPS는 $0.39로 컨센서스를 $0.17 상회했다고 SA 헤드라인이 전합니다.</p>
+<p><strong>현금흐름과 재무</strong>
+- TTM FCF는 $61.0M으로 흑자입니다. 다만 시가총액 대비 FCF 수익률은 약 1.9%입니다.
+- 이자비용은 분기 약 $3.5M, 이자 및 기타수익은 약 $2.4~2.9M입니다. 부채와 현금이 함께 있는 구조로 보이지만, 차입금·현금 잔액은 <strong>공시상 확인 불가</strong>(제공 발췌 범위 내)입니다.
+- 2026년 capex 규모도 <strong>공시상 확인 불가</strong>입니다. 8-K 프레젠테이션 목차에 capex와 capital efficiency framework가 있다는 것만 확인됩니다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 제시)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Fridge당 회전율 상승</strong>: 인지·시험구매·재구매, 마케팅 투자</td>
+<td>마케팅비 대비 매출 탄력, 메인밀(main meal) 고객 확대</td>
+<td>Q3 매출 YoY가 가이던스가 내포한 하반기 둔화보다 높게 나오는지, SG&amp;A 비율이 35% 안팎을 유지하는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>MVP 확대</strong>: 실적콜에서 250만에서 1,000만 목표 언급</td>
+<td>대부분을 신규 고객 유입으로 채운다고 함(COO)</td>
+<td>가구 침투율(1,600만)과 MVP 수 업데이트</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>클럽 채널 확대</strong>: 최대 클럽 3번째 SKU 전면 유통, 2위 클럽 3번째 SKU 테스트·추가 냉장고</td>
+<td>경쟁 제품 진입 속에서 진열 공간 유지</td>
+<td>클럽 채널 매출 기여와 SKU 확대 여부(공시상 채널별 분해는 확인 불가)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>신기술(백(bag) 포장 기술)과 증설로 원가 절감</strong>: 2027 조정 GM 49% 이상 목표</td>
+<td>수율·품질을 안정화하며 스케일업</td>
+<td>Q3 매출총이익률이 42%대를 유지·상승하는지, CFO가 약속한 효과의 정량화 공개 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>세대 교체(밀레니얼·Gen Z) 수혜</strong></td>
+<td>중간소득층 소비 여력 유지</td>
+<td>신규 고객 유입률과 가격 인상 의존도</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>가이던스 산술</strong>
+- 회사가 밝힌 2026년 매출 성장 10~12%가 맞다면, 상반기 <span class="up">+14.3%</span>를 감안할 때 하반기 성장률은 12%보다 낮아야 합니다.
+- 다만 이 가이던스가 Q2 발표 때 상향·유지된 수치인지는 헤드라인만으로는 확인할 수 없습니다.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<blockquote>
+<p>주의: 제공된 transcript는 Q2 실적콜이 아니라 <strong>2026/6/2 Deutsche Bank dbAccess 컨퍼런스 발표</strong>입니다. Q2 실적콜(8/5) 본문은 제공되지 않았습니다.</p>
+</blockquote>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 "세대 교체가 카테고리를 바꾸고 있다"는 구조적 서사에 집중했습니다. 단기 수치보다 TAM(2,700만 → 3,300만 → 3,600만 가구)과 침투율을 앞세우는 화법입니다.
+- "K자형 경제"를 먼저 꺼내 고소득층과 저소득층이 갈리는 소비 양극화를 인정했습니다. 그러면서도 "고객 구성이 다변화돼 있다"는 방어 논리를 미리 제시했습니다.
+- 수요 둔화에 대한 시장의 우려를 의식한 화법으로 읽힙니다(추정).</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+1. <strong>클럽 채널 경쟁</strong>
+   - 질문: 최대 클럽 리테일러가 신규·대형 냉장고를 깔고 경쟁 제품을 출시한 데 대한 질문이었습니다.
+   - 답변: COO는 "아직 침투가 낮고 성장 여력이 크다"고 답했습니다.
+2. <strong>Fridge 해자 약화</strong>
+   - 질문: 리테일러 소유의 개방형 냉장고에서는 진열 공간 통제권이 줄어드는 문제입니다.
+   - 답변: CEO는 "통제력이 줄어드는 것은 맞다"고 인정했습니다. 다만 "이번에는 공간과 노출이 늘었다", "다른 리테일러가 따라 하기는 어렵다"고 방어했습니다.
+   - 판단: 해자 핵심 가정의 일부 훼손을 인정한 대목으로, 주시할 지점입니다.
+3. <strong>신기술 효과 정량화</strong>
+   - CFO는 "아직 초기 단계라 몇 달 뒤에야 정량화할 수 있을 것"이라며 수치 제시를 피했습니다.
+   - 2027 GM 49% 목표의 핵심 근거가 아직 검증되지 않았다는 뜻입니다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 나온 정보</strong>
+- 시장 규모: $56B / $38B / $10B
+- 그로서리 내 신선 비중 23.1%
+- 침투 가구 1,600만, MVP 목표 1,000만
+- 클럽 채널 SKU 현황: 최대 클럽 3개, 2위 클럽 2개 + 테스트 1개, 냉장고 1대
+- 신임 CFO John O'Connor 합류</p>
+<hr>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K 본문 리스크 항목은 발췌에 포함되지 않았습니다. 아래는 10-K의 Forward-Looking Statements 목록, MD&amp;A, 컨퍼런스 발언에 근거합니다.</p>
+</blockquote>
+<ol>
+<li><strong>채널 통제력 약화와 경쟁 진입</strong>
+   - 최대 클럽 리테일러가 자체 냉장고를 설치하고 경쟁 제품을 출시했습니다.
+   - Fridge 소유가 회사 해자의 핵심인데, 이를 우회하는 사례가 생겼습니다.</li>
+<li><strong>증설·신기술 실행 리스크</strong>
+   - 10-K는 Freshpet Kitchens 3곳의 적기 증설을 성장 전략의 전제로 명시합니다.
+   - 신규 포장 기술은 CFO가 "위험한 변화"라고 표현할 만큼 초기 단계입니다.
+   - 2027 GM 목표 미달 시 밸류에이션 근거가 약해집니다.</li>
+<li><strong>소비 둔화와 신규 고객 유입</strong>
+   - 10-K는 "소비자 경제 불확실성이 반려동물 입양과 신규 고객 획득률에 미치는 영향"을 별도 리스크로 명시합니다.
+   - 성장 모델이 신규 MVP 유입에 의존하므로 민감도가 높습니다.</li>
+<li><strong>관세·투입원가</strong>
+   - 10-K는 관세와 무역전쟁을 명시합니다.
+   - 회사는 가격 인상으로 상쇄한다는 입장인데, 이는 중간소득 고객 이탈 위험과 맞물립니다.</li>
+<li><strong>이익의 질과 밸류에이션</strong>
+   - Q1의 일회성 평가이익 $62M과 이연법인세 효과로 GAAP 이익이 왜곡돼 있습니다.
+   - P/FCF 약 51배, SA 기준 Fwd PER 약 32배는 성장 둔화 시 하방 여지가 큽니다.
+   - 공매도 잔량 17.67%도 같은 우려를 반영합니다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거: 관망</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>지표</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(+)</td>
+<td>매출 YoY <span class="up">+15.5%</span>, Q1 대비 가속</td>
+<td>성장 건재</td>
+</tr>
+<tr>
+<td>(+)</td>
+<td>GM 39.4%(Q1'25) → 42.1%(Q2'26), TTM FCF +$61M</td>
+<td>수익성 전환 진행 중</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>시가총액 $3.13B / FCF $61M ≈ 51배</td>
+<td>성장 프리미엄이 이미 반영됨</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>가이던스 10~12% vs 상반기 <span class="up">+14.3%</span></td>
+<td>하반기 둔화 내포</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>영업이익률 YoY <span class="up">+0.4%</span>p</td>
+<td>레버리지 속도 완만</td>
+</tr>
+<tr>
+<td>(−)</td>
+<td>실적일 $71.47 → 현재 $65.18, 52주 고점 대비 <span class="down">-23.8%</span></td>
+<td>서프라이즈를 시장이 일부만 반영</td>
+</tr>
+<tr>
+<td>중립</td>
+<td>거래량 1.29배, 공시 없음</td>
+<td>오늘 시그널 자체는 약함</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q2 실적콜 원문(8/5) 확인</strong>
+   - 가이던스가 상향·유지 중 무엇이었는지 봅니다.
+   - 하반기 성장률, capex, FCF 가이던스도 확인합니다.
+   - 현재 자료로는 "10~12%"의 맥락을 알 수 없습니다.
+2. <strong>재무상태표 확인</strong>
+   - 10-Q 재무상태표에서 현금, 차입금(전환사채 포함 여부), 2026년 capex 규모를 확인합니다.
+   - FCF 흑자가 capex 축소에 따른 일시 효과인지 판별합니다.
+3. <strong>클럽 채널 경쟁 영향 확인</strong>
+   - Q3 실적에서 클럽 채널 매출 추이와 경쟁 제품 출시 이후 점유율 관련 발언을 확인합니다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통으로 상향하는 조건</strong>
+  - Q3 매출 YoY 13% 이상을 유지해 가이던스 상단을 넘어서는 경우
+  - 매출총이익률 43% 이상이면서 신기술 효과가 정량적으로 공개되는 경우
+  - 위 조건이 충족된 상태에서 주가가 $65 부근에 머물러 FCF 배수가 낮아지는 경우
+- <strong>회피로 하향하는 조건</strong>
+  - Q3 매출 성장이 한 자릿수로 둔화하는 경우
+  - 매출총이익률이 다시 41% 아래로 내려가는 경우
+  - 다른 리테일러가 개방형 냉장고와 경쟁 브랜드를 도입했다는 사실이 확인되는 경우
+  - FCF가 다시 적자로 돌아서는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000006/frpt-20251231.htm">10-K — 2025-12-31_0001611647-26-000006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000018/frpt-20260630.htm">10-Q — 2026-06-30_0001611647-26-000018</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000012/frpt-20260331.htm">10-Q — 2026-03-31_0001611647-26-000012</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000016/frpt-20260630xexx992.htm">8-K — 2026-08-05_0001611647-26-000016__EX-99.2__frpt-20260630xexx992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000016/frpt-exx991x20260805.htm">8-K — 2026-08-05_0001611647-26-000016__EX-99.1__frpt-exx991x20260805</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000161164726000016/frpt-20260805.htm">8-K — 2026-08-05_0001611647-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000092963826002308/a8k.htm">8-K — 2026-06-22_0000929638-26-002308</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1611647/000092963826002206/a8k.htm">8-K — 2026-06-10_0000929638-26-002206</a></li>
+<li>Transcript — 2026-06-02 Freshpet, Inc. (FRPT) Presents at 23rd annual dbAccess Global Consumer Conference Transcript</li>
+<li>Transcript — 2026-06-04 Freshpet, Inc. (FRPT) Presents at 23rd annual dbAccess Global Consumer Conference - Slideshow</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GENB — Generate Biomedicines Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GENB — Generate Biomedicines Inc. Common Stock</h1>
+<div class="sub">2026-10-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GENB</span><span class="badge">+3.10%</span><span class="badge">거래량 0.91배</span><span class="badge">$1.80B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 주가는 <span class="up">+3.10%</span> 올랐지만 거래량은 20일 중앙값의 0.91배로 오히려 평소보다 적었다. 스크린 전제였던 "유의미한 상승과 거래량 급증"에 맞지 않고, 당일 공시도 없어 확인된 촉매가 없다.</li>
+<li>기업가치는 사실상 GB-0895(anti-TSLP, 6개월 1회 투여) 한 자산의 Phase 3 성공 여부에 달려 있다. 다만 핵심 데이터 시점(CFO 발언 기준 2028년 말~2029년 초)이 회사가 밝힌 현금 소진 시점(2028년 상반기까지)보다 늦다. 데이터가 나오기 전에 증자로 지분이 희석될 가능성이 구조적으로 높다.</li>
+<li>6/30 기준 현금 $457.4M에 TTM FCF는 $-245.9M이다. 시가총액 $1.80B에서 현금을 뺀 기업가치(EV)는 약 $1.34B(추정)로, 이 대부분이 아직 검증되지 않은 플랫폼과 파이프라인 가치다.</li>
+<li>당일 거래대금이 $16.2M에 그쳐 기관이 의미 있는 비중을 쌓거나 덜어낼 유동성도 제한적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다.</li>
+<li>뉴스 헤드라인 3건(MarketBeat 경쟁사 목록, 시세 페이지, GuruFocus의 NVIDIA 보유 이력)은 모두 새 정보가 아닌 일반 정보성 기사다.</li>
+<li>가장 최근 이벤트는 다음과 같으며, 모두 오늘 기준 2주 이상 지난 일이다.</li>
+<li>8/25 8-K: ERS 포스터 조기 노출에 따른 공시</li>
+<li>9/8 ERS COPD 포스터 발표</li>
+<li>9/16 H.C. Wainwright 컨퍼런스, 9/23 Bernstein 컨퍼런스</li>
+<li>20일 수익률이 <span class="down">-8.8%</span>, 52주 고점 대비 <span class="down">-31.4%</span>인 상황에서 거래량 확대 없이 <span class="up">+3.1%</span> 오른 것은 기술적 반등이나 바이오·AI 바이오 섹터와 같이 움직인 것으로 보는 편이 합리적이다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 10-K 사업 섹션은 제공되지 않았다. 10-Q MD&amp;A 개요와 8-K 보도자료를 근거로 작성했다.</p>
+<p><strong>정체성</strong>
+- 임상 단계의 "generative biology" 기업이다.
+- 계산 설계(dry lab)와 대규모 실험 검증(wet lab)을 하나로 묶은 'The Generate Platform'(design–build–test–learn 루프)으로 단백질 치료제를 설계한다.
+- 승인된 제품이 없고, 제품 매출도 지금까지 없다.</p>
+<p><strong>파이프라인(공시 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>자산</th>
+<th>기전/모달리티</th>
+<th>적응증</th>
+<th>단계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GB-0895 (golukibart)</td>
+<td>장기지속형 anti-TSLP mAb (YTE Fc)</td>
+<td>중증 천식 / COPD</td>
+<td>천식 Phase 3 (SOLAIRIA-1·2), COPD Phase 1b</td>
+</tr>
+<tr>
+<td>GB-4362</td>
+<td>MMAE 중화 항체</td>
+<td>엔포투맙 베도틴(PADCEV) 독성 감소, 요로상피암</td>
+<td>Phase 1 (FDA Fast Track)</td>
+</tr>
+<tr>
+<td>GB-5267</td>
+<td>IL-18 armored MUC16 CAR-T (Roswell Park 협업)</td>
+<td>백금 저항성 난소암</td>
+<td>Phase 1 환자 모집 중, 회사는 2026년 첫 투여를 예상한다고 밝힘</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>매출 구성</strong>
+- 현재 매출은 전부 협업 매출이다.
+- 보도자료에 따르면 Q2 매출 $6.3M은 "Amgen·Novartis 연구 프로그램의 진행"을 반영한다. 프로그램별 구성은 공시상 확인 불가하다.
+- 협업 구조는 표적별 맞춤형 계약이다. 실적콜에서는 Amgen과 5년 전, Novartis와 2년 전 계약했다고 언급했다.
+- 상장 전 우선주, 전환사채, Amgen·Novartis 지급금 등으로 조달한 총액은 $934.0M을 넘는다.</p>
+<p><strong>경쟁 위치</strong>
+- GB-0895는 tezepelumab(TEZSPIRE)과 같은 epitope를 겨냥하면서 친화도가 약 20배 높다(ERS 포스터).
+- 목표는 효능 우위가 아니라 투여 간격 차별화(월 1회 → 6개월 1회)다.
+- 실적콜에서 CFO는 경쟁 약물도 이미 표적을 99% 수준으로 포화시키므로 효능을 더 높이기는 어렵고, 투여 지속성이 가치의 원천이라는 취지로 질문에 답했다.
+- 같은 표적의 경쟁 약물과 반감기 연장 경쟁사 현황은 제공 원문상 확인 불가하다.</p>
+<p><strong>구조적 의무</strong>
+- 2026년 2월 PMCo를 인수하면서 비용 분담 협업이 끝났다. 대신 PMCo 모회사에 순매출 연동 지급 의무가 생겼다.
+- 대상 제품과 요율은 제공 원문상 확인 불가하다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 손익(8/6 보도자료, 10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 2026</th>
+<th>Q2 2025</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$6.3M</td>
+<td>$10.1M</td>
+<td>-37.6%(계산)</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>$64.3M</td>
+<td>$59.7M</td>
+<td>+7.7%</td>
+</tr>
+<tr>
+<td>G&amp;A</td>
+<td>$13.6M</td>
+<td>$10.5M</td>
+<td>+29.5%</td>
+</tr>
+<tr>
+<td>영업손실(계산)</td>
+<td>약 $71.6M</td>
+<td>약 $60.1M</td>
+<td>확대</td>
+</tr>
+<tr>
+<td>순손실</td>
+<td>$67.3M</td>
+<td>$56.7M</td>
+<td>+18.7%</td>
+</tr>
+<tr>
+<td>SBC</td>
+<td>$8.2M</td>
+<td>$5.5M</td>
+<td>+49%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>지표 표의 매출 YoY는 "-"로 표시되어 있다. 위 <span class="down">-37.6%</span>는 보도자료의 전년 동기 수치로 계산한 값이다.</li>
+<li>영업이익률 <span class="down">-1134.2%</span>는 위 계산(≒ <span class="down">-1136%</span>)과 일치한다.</li>
+<li>QoQ <span class="down">-12.6%</span>로 역산하면 Q1 매출은 약 $7.2M이다(추정 계산).</li>
+</ul>
+<p><strong>성장의 질</strong>
+- 협업 매출은 마일스톤과 연구 진행에 따라 들쭉날쭉하다. 단가·물량·믹스로 분석할 수 있는 매출이 아니다.
+- CFO는 실적콜에서 "기존 파트너십이 끝나가고 있다"고 언급했다. 신규 계약이 없으면 협업 매출이 줄어드는 흐름이 이어질 가능성이 높다(추정).</p>
+<p><strong>비용 방향성</strong>
+- R&amp;D 증가는 SOLAIRIA Phase 3 비용 때문이며, 외부 discovery 비용 감소가 일부를 상쇄했다(공시).
+- 실적콜에서 CEO는 약 40개국, 약 400개 사이트 규모로 임상을 진행한다고 언급했다. Phase 3가 모집 정점에 가까워질수록 R&amp;D는 더 늘어날 것이다(추정).
+- G&amp;A 증가는 주로 주식보상비(SBC) 때문이다(공시).</p>
+<p><strong>현금흐름·건전성</strong>
+- 현금 등: 3/31 $516.6M → 6/30 $457.4M로 분기 순감소 $59.2M.
+- 상반기 영업현금유출은 $138.3M(전년 $101.9M), TTM FCF는 $-245.9M.
+- 회사는 현재 현금으로 2028년 상반기까지 운영할 수 있다고 밝혔으며, 장기 운영에는 추가 자본이 필요하다고 명시했다.
+- 누적결손은 $805.0M(6/30)이다.
+- 9/30 기준 현금은 공시상 확인 불가하다(Q3 10-Q 미제공).
+- 부채 규모와 IPO 공모가는 제공 원문상 확인 불가하다.</p>
+<p><strong>밸류에이션 맥락(계산)</strong>
+- 시가총액 $1.80B ÷ 종가 $13.99로 역산한 주식 수는 약 1.29억 주다.
+- EV는 약 $1.34B(6/30 현금 기준)다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축(회사 주장)</th>
+<th>실현 조건</th>
+<th>검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GB-0895 천식: 6개월 1회 투여로 anti-TSLP 시장 차별화</td>
+<td>① SOLAIRIA에서 위약 대비 유의한 효능<br>② 6개월 시점에도 효능이 줄지 않음<br>③ 제때 환자 모집 완료</td>
+<td>국가 승인 수(33 → 39/42개국) 및 모집 진척률, 등록 완료 시점(회사 목표 2027년 말) 유지 여부</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GB-0895 COPD 확장</td>
+<td>Phase 1b의 PK/PD가 천식과 비슷하게 재현되고, Phase 2를 건너뛰고 등록 임상으로 바로 진입할지 결정</td>
+<td>실적콜 기준 "near-term" 결정. Q3 실적 발표에서 COPD 등록 임상 착수 여부와 비용 계획 확인</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GB-4362 (MMAE 중화제)</td>
+<td>유리 MMAE를 약 50% 낮추면서 PADCEV의 항종양 효과는 해치지 않을 것. 안전성 평가변수로 등록 임상이 가능한지</td>
+<td>ESMO(10/23~27) trial-in-progress 포스터, 실적콜 기준 2027년 초 POC, 확장 코호트(Grade 1 말초신경병증) 개시</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GB-5267 CAR-T</td>
+<td>2026년 내 첫 환자 투여</td>
+<td>Q3·Q4 업데이트에서 투여 개시 확인</td>
+</tr>
+<tr>
+<td>5</td>
+<td>플랫폼 파트너십</td>
+<td>신규 계약(선급금·마일스톤·로열티)으로 비희석 자금 조달</td>
+<td>신규 계약 8-K와 선급금 규모. 회사가 밝힌 Novartis 전임상 진입 자산의 후속 마일스톤</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>※ 제공된 transcript는 정기 실적콜이 아니라 투자자 컨퍼런스 대담 2건(9/16 H.C. Wainwright CFO, 9/23 Bernstein CEO)이다. Q&amp;A는 진행자 1인 질문 형식이다.</p>
+<p><strong>경영진 톤</strong>
+- 두 경영진 모두 자신감이 강하다. 다만 근거는 대부분 PD 바이오마커와 플랫폼 내러티브다.
+- CEO는 AI 신약개발 산업론에 많은 시간을 썼다(분자 설계의 범용화, 업계의 Intel/Microsoft 국면). 단기 재무나 일정에 대한 구체적 언급은 거의 없었다.
+- CFO는 실적콜에서 "플랫폼이 감당할 수 있는 것보다 할 수 있는 게 훨씬 많다(more than we could possibly afford)"고 언급했다. 자본 제약을 사실상 인정한 발언이다. 8/6 보도자료의 "disciplined capital allocation" 강조와도 같은 맥락이다.</p>
+<p><strong>공시에 없고 콜에서만 나온 정보</strong>
+- 천식 Phase 3는 2027년 말 등록 완료, 데이터는 2028년 말~2029년 초 예상(CFO). 회사가 밝힌 현금 소진 시점(2028년 상반기)과 시간 차가 생긴다.
+- CEO는 Phase 3 등록 기간이 2년이라며 "사이트당 등록 속도가 거의 민망한 수준(almost embarrassing)"이라고 언급했다. 업계 전반을 비판하는 맥락이었지만 자사 임상의 모집 속도에 대한 간접 시그널로도 읽힌다.
+- 국가 승인은 8/6 보도자료 기준 33/42개국에서 9/16 실적콜 기준 39/42개국으로 늘었다.
+- 300mg에서 표적 포화 99.9%(CFO).
+- GB-0895는 Phase 2 없이 Phase 1에서 Phase 3로 바로 진입했으며, 바이오마커와 모델 기반 의약품 개발(MIDD)을 근거로 들었다.
+- GB-0895를 100% 보유하기로 한 이유는 기술의 임상적 유효성을 입증하고 개발 속도를 유지하기 위해서라고 설명했다.
+- 미공시 IL-13 Phase 1 자산이 있다. CFO는 Apogee 약물 대비 생체이용률이 2배이고 반감기가 100일을 넘는다고 주장했다. 10-Q 파이프라인 서술에는 없는 내용이며, 개발 상태와 전략은 확인 불가하다.
+- 임상 진입 분자 수가 엇갈린다. CFO는 5개라고 했지만 10-Q는 "3개"라고 기재했다. 파트너 자산 포함 여부 등 기준 차이로 보이며, 원문으로는 정리할 수 없다.
+- CFO는 향후 12~18개월 안에 신규 파트너십, 기술 도입(in-license), 신규 자산의 spin-out 또는 out-license 가능성을 언급했다.</p>
+<p><strong>방어·회피 지점</strong>
+- 6개월 1회 투여의 실제 효능(악화율 감소)은 아직 데이터가 없다. Phase 1은 경증~중등증 천식 환자의 바이오마커(BEC, FeNO, IL-5, IL-13) 결과다.
+- CFO는 "tozo 데이터가 TSLP에 주는 함의"를 시간 관계상 설명하지 않았다.
+- 현금 소진 시점과 데이터 시점의 차이, 추가 조달 계획에 대한 질문과 답변은 제공된 발췌에 없다.</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K·10-Q의 리스크 팩터 원문은 제공되지 않았다. MD&amp;A, 8-K, transcript에서 확인되는 것만 정리했다.</p>
+<ol>
+<li><strong>데이터 전 희석 리스크</strong>
+   - 회사는 2028년 상반기까지 운영 가능하다고 밝혔지만, 핵심 Phase 3 데이터는 2028년 말~2029년 초다(실적콜).
+   - MD&amp;A는 자금 조달에 실패하면 프로그램을 연기·축소·중단할 수 있고 운영을 지속하지 못할 수도 있다고 명시한다.
+   - COPD 등록 임상까지 추가하면 현금 소진 시점은 더 앞당겨질 수 있다(추정).</li>
+<li><strong>단일 자산 집중 + Phase 2 생략</strong>
+   - 가치 대부분이 GB-0895에 걸려 있다.
+   - Phase 1(경증~중등증, 바이오마커)에서 Phase 3(중증 비조절)로 바로 넘어갔기 때문에 효능 신호가 임상적으로 검증된 적이 없다.
+   - SOLAIRIA의 1차 평가변수는 제공 원문상 확인 불가하다.</li>
+<li><strong>차별화 축이 '편의성' 하나</strong>
+   - 경영진 스스로 효능 우위는 기대하기 어렵다는 취지로 언급했다.
+   - 6개월 투여 시점에도 효능이 유지된다는 근거는 현재 PD 데이터뿐이다.
+   - 경쟁 반감기 연장 약물의 진척에 따라 프리미엄이 줄어들 수 있다(추정).</li>
+<li><strong>협업 매출 감소와 파트너십 공백</strong>
+   - YoY <span class="down">-37.6%</span>, QoQ <span class="down">-12.6%</span>이고, CFO는 기존 파트너십이 끝나간다고 언급했다.
+   - 신규 계약이 늦어지면 비희석 자금원이 사라진다.</li>
+<li><strong>임상 실행과 유동성</strong>
+   - 42개국·약 400개 사이트 규모의 운영이 복잡하고, CEO 발언에서 모집 속도가 느리다는 정황이 있다.
+   - 8/25 ERS 포스터의 엠바고 전 노출은 경미하지만 정보 관리 측면의 이슈다.
+   - 일일 거래대금 약 $16M은 기관이 진입·청산할 때 제약이 된다.
+   - 2026년 3월 IPO 이후의 보호예수 해제 일정은 공시상 확인 불가하다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(관망)</strong>
+- 당일 거래량 0.91배, 당일 공시 없음 → 모멘텀 진입 근거가 없다.
+- 현금 $457.4M ÷ TTM 소진 $245.9M ≈ 약 1.9년(단순 계산). 회사가 밝힌 2028년 상반기와 대체로 일치하며, Phase 3 데이터(2028년 말~2029년 초)보다 앞선다.
+- EV 약 $1.34B는 바이오마커 단계 자산과 플랫폼에 대한 가치다. 다음 12개월 안의 확정적 가치 재평가 이벤트는 GB-4362·GB-5267의 POC(2027년 초~말) 정도이고, 둘 다 초기 단계다.
+- 순손실 증가율(<span class="up">+18.7%</span> YoY)이 매출(<span class="down">-37.6%</span>)과 반대 방향이다. 영업 레버리지가 아직 시작되지 않았다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Q3 10-Q(11월 예상): 9/30 현금 잔고, 분기 소진액, 현금 소진 시점 가이던스 유지 여부, 보호예수 해제 일정.
+2. SOLAIRIA 모집 진척: 승인 국가 42/42 달성 여부, 등록 완료(2027년 말) 목표 유지 여부, 1차 평가변수와 통계 설계(ERS SOLAIRIA 디자인 포스터 원문).
+3. 비희석 자금: 신규 플랫폼 파트너십 체결과 선급금 규모, 또는 COPD 등록 임상 착수 시 파트너 공동개발 여부.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 상향</strong>
+  - 대형 파트너십(선급금으로 현금 소진 시점을 2029년 이후로 연장)이 체결될 때
+  - 또는 GB-4362 POC에서 유리 MMAE 50% 이상 감소와 신경병증 진행 억제 신호가 확인될 때
+  - 여기에 유동성(거래대금)이 함께 개선될 때
+- <strong>'회피'로 하향</strong>
+  - 할인 증자나 대규모 ATM이 데이터 전에 실행될 때
+  - SOLAIRIA 등록 완료 시점이 2028년 이후로 밀릴 때
+  - COPD 등록 임상을 자체 자금으로 추가해 현금 소진 시점이 단축될 때
+  - 경쟁 장기지속형 TSLP 약물이 6개월 투여에서 효능 감소를 보이는 등 계열 리스크가 드러날 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336437/ck0002100782-20260630.htm">10-Q — 2026-06-30_0001193125-26-336437</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526210059/ck0002100782-20260331.htm">10-Q — 2026-03-31_0001193125-26-210059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526365556/ck0002100782-ex99_1.htm">8-K — 2026-08-25_0001193125-26-365556__EX-99.1__ck0002100782-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526365556/ck0002100782-20260825.htm">8-K — 2026-08-25_0001193125-26-365556</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336462/ck0002100782-ex99_1.htm">8-K — 2026-08-06_0001193125-26-336462__EX-99.1__ck0002100782-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336462/ck0002100782-20260806.htm">8-K — 2026-08-06_0001193125-26-336462</a></li>
+<li>Transcript — 2026-09-23 Bernstein Insights: Healthcare Leaders and Disruptors – 3rd Annual Healthcare Forum Transcript</li>
+<li>Transcript — 2026-09-16 H.C. Wainwright 28th Annual Global Investment Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
