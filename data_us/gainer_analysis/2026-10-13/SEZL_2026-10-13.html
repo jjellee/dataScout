@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEZL — Sezzle Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SEZL — Sezzle Inc. Common Stock</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SEZL</span><span class="badge">+9.74%</span><span class="badge">거래량 1.41배</span><span class="badge">$4.33B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>펀더멘털은 상위권입니다.</strong> 2Q26 매출은 전년 대비 <span class="up">+51.7%</span>($149.7M), 영업이익률은 34.5%, TTM FCF는 $271.9M입니다. 시가총액 $4.33B 기준 FCF 수익률은 약 6.3%(역산)입니다. 성장과 수익성을 함께 갖춘 핀테크로는 밸류에이션 부담이 크지 않습니다.</li>
+<li><strong>오늘 상승(<span class="up">+9.74%</span>)의 촉매는 확인되지 않습니다.</strong> 거래량 배수도 1.41배에 그칩니다. 60일 <span class="down">-25.3%</span>, 52주 고점 대비 <span class="down">-31.8%</span> 구간에서 나온 기술적 반등일 가능성이 더 높습니다.</li>
+<li><strong>당장 의미 있는 비중을 싣기 어려운 이유는 네 가지입니다.</strong></li>
+<li>회사가 하반기 매출 성장 둔화와 대손충당금 비율 상승을 이미 예고했습니다.</li>
+<li>10월 9일 Form 144(내부자 매도 예정 신고) 2건이 제출됐습니다.</li>
+<li>10-K 표지에 '과거 재무제표 오류 정정' 체크 표시가 있습니다.</li>
+<li>대차대조표와 펀딩 구조가 제공 자료에 없습니다.</li>
+<li><strong>대응:</strong> 3Q26 실적(11월 4일) 전에는 목표 비중의 일부만 담고, 실적에서 충당금과 매출 레벨이 확인되면 늘리는 분할 접근을 권합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 당일 전후 공시는 세 가지뿐이며, 모두 주가를 끌어올릴 성격이 아닙니다.</li>
+<li>10/8 8-K: 3Q 실적 발표일(11/4)과 IR 컨퍼런스 일정 공지</li>
+<li>10/9 DEF 14A: 위임장 권유 서류. 본문이 제공되지 않아 안건은 공시상 확인 불가</li>
+<li>10/9 Form 144 2건: 매도 예정 신고. 신고인·수량은 공시상 확인 불가</li>
+<li><strong>뉴스 헤드라인:</strong> "Fintech Momentum Accelerates", "Q3 실적 앞두고 월가가 선호하는 소비자금융주" 등 섹터 전반 기사입니다. 개별 촉매는 보이지 않습니다.</li>
+<li><strong>추정:</strong></li>
+<li>2분기 실적 후 급락 국면이 있었습니다. 헤드라인 "Worst Day In A Year … Cautious H2 Guidance"가 있고, SA 차트상 8/4~9/4 주가 범위가 $113~183입니다. 그 이후의 반등과 실적 시즌을 앞둔 소비자금융 섹터 동조가 겹친 것으로 봅니다.</li>
+<li>SA 페이지에 표시된 공매도 잔량은 12.38%(기준일 불명)입니다. 숏커버링이 반등을 키웠을 가능성이 있지만 확인되지는 않았습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- <strong>핵심은 미국·캐나다의 BNPL(선구매 후결제)입니다.</strong> 결제 시점에 계약금을 받고 잔액을 분할로 회수하며, 일시불 결제도 지원합니다.
+- <strong>유료 구독 상품이 2개 있습니다.</strong>
+  - Sezzle Premium: 제휴되지 않은 대형 가맹점 이용권
+  - Sezzle Anywhere: 가상카드로 거의 모든 가맹점에서 이용 가능
+- <strong>비구독자용 상품:</strong> Sezzle On-Demand는 구독하지 않은 소비자가 건별 금융수수료를 내고 이용하는 방식입니다.
+- <strong>신규 상품(10-Q 기준):</strong>
+  - 2025년: 가격비교, Earn 탭, Sezzle Balance
+  - 2026년: Sezzle Mobile(AT&amp;T망 기반 통신요금제), SezzleCash(서비스 수수료를 받는 단기 현금 대출)
+  - 제3자 파트너와 함께 최대 $15,000, 최장 48개월의 이자부 할부 상품도 제공합니다. 2Q 중 새 장기 대출 파트너를 추가했습니다.</p>
+<p><strong>수익원</strong>
+- <strong>가맹점 처리 수수료:</strong> GMV의 일정 비율에 건당 고정 수수료를 더한 구조입니다. 회사가 가맹점에 대금을 선지급하고 사기·연체·부도 비용을 모두 부담합니다.
+- <strong>파트너 수익:</strong> 가상카드 인터체인지 수수료, 프로모션, 제휴 마케팅 수익이 있습니다.
+- <strong>소비자 측 수익:</strong> 구독료와 On-Demand·SezzleCash 수수료입니다.
+- 회사는 매출 대부분이 소비자의 결제 이용(특히 가상카드)과 구독 가입에서 나온다고 밝혔습니다.
+- <strong>매출 구성 비율(수수료·구독·인터체인지별)은 제공 자료상 확인 불가입니다.</strong></p>
+<p><strong>고객군과 경쟁 위치</strong>
+- 신용카드를 선호하지 않거나 이용하기 어려운 젊은 소비층이 대상입니다. 회사는 "next generation" 금융 역량 강화를 미션으로 내세웁니다.
+- 10-K는 경쟁이 매우 치열한 산업임을 리스크로 명시합니다. 같은 기사에 AFRM, KLAR가 함께 언급됩니다.
+- 실적콜 발언을 보면 회사의 차별화 축은 가맹점 연동형 BNPL보다 구독 생태계 쪽으로 옮겨가고 있습니다. 신규 진입 경로의 주력이 On-Demand에서 구독으로 바뀌었습니다.</p>
+<p><strong>참고(사실 확인만)</strong>
+- 1Q 10-Q의 가맹점 툴킷 설명에는 Sezzle Capital(제3자 중소기업 대출 연결)이 있었습니다. 2Q 10-Q 문구에서는 빠졌습니다. 사업 중단 여부는 공시상 확인 불가입니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV</td>
+<td>$1.3B (YoY <span class="up">+37.9%</span>)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>매출</td>
+<td>$149.7M (YoY <span class="up">+51.7%</span>, QoQ <span class="up">+10.4%</span>)</td>
+<td></td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$40.8M (순이익률 27.2%)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$58.0M (마진 38.8%)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>거래 관련 비용 차감 후 매출(RLTC)</td>
+<td>매출의 63.5%</td>
+<td>목표 범위 55~65% 중 상단</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>34.5% (YoY <span class="down">-2.1%</span>p)</td>
+<td></td>
+</tr>
+<tr>
+<td>마케팅비</td>
+<td>$19.4M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>활성 구독자</td>
+<td>85.4만 명 (YoY <span class="up">+76.4%</span>, QoQ +14만 명)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>분기 구매 빈도</td>
+<td>7.2회 (전년 6.1회)</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (물량·단가·믹스)</strong>
+- <strong>물량:</strong> GMV가 <span class="up">+37.9%</span> 늘었습니다. 실적콜에서 "5월 GMV가 12월 연말 시즌 GMV를 넘었다(예년에는 8월에야 넘었다)"고 언급했습니다.
+- <strong>단가(revenue yield):</strong> 매출 성장(<span class="up">+51.7%</span>)이 GMV 성장보다 빨랐던 차이가 수익률 개선분입니다.
+  - 역산하면 매출/GMV는 전년 약 10.5%에서 약 11.5%로 올랐습니다.
+  - CFO는 "작년 10%대에서 올해 11%대"로 개선됐다고 확인했습니다.
+  - 다만 CFO는 2Q가 기저효과(easy comp) 덕분이었고 연간으로는 flattish(보합)라고 밝혔습니다. 즉 이 개선은 일회성 성격이 강합니다.
+- <strong>믹스:</strong> 구독자 증가(<span class="up">+76.4%</span>)가 GMV 증가(<span class="up">+37.9%</span>)를 크게 앞섭니다. 실적콜에 따르면 On-Demand 이용자는 줄고 구독자는 늘고 있습니다.</p>
+<p><strong>마진 방향</strong>
+- 영업이익률은 전년 대비 2.1%p 하락했습니다.
+- 실적콜에서 2Q 마케팅비 $19.4M 증액은 의도적 테스트라고 설명했습니다. 지출을 어디까지 늘릴 수 있는지 시험한 것이며 새 기준선(run-rate)은 아니라고 했습니다.
+- 마케팅비가 정상화되면 이익률이 개선될 여지가 있습니다. 반대로 회사는 3Q·4Q 대손충당금 비율 상승을 예고했습니다. 하반기 마진은 두 요인이 맞서는 구도입니다.</p>
+<p><strong>지표 정의 주의</strong>
+- 제공 지표의 매출총이익률 74.1%와 회사가 밝힌 2Q 매출총이익 $95.1M(매출의 약 63.5%)은 정의가 다릅니다. 회사 정의로는 RLTC 63.5%가 실질 기준입니다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 $271.9M입니다.
+- BNPL은 소비자 대출채권과 이를 위한 차입이 영업·재무 현금흐름에 섞이는 구조입니다. 이 FCF가 채권 증감을 어떻게 반영했는지는 공시상 확인 불가입니다.
+- 대출채권 잔액, 차입금·신용한도, 현금 잔액, 자사주 매입 내역은 제공 자료에 없어 공시상 확인 불가입니다. 10-K는 자본 접근성을 리스크로 명시합니다.</p>
+<p><strong>밸류에이션 (역산, 추정)</strong>
+- 시총 $4.33B ÷ 회사 가이던스 조정순이익 $185M ≈ 23.4배
+- 종가 $128.64 ÷ 조정 EPS 가이던스 $5.25 ≈ 24.5배
+- SA 페이지의 Forward PER은 22.92배였습니다(당시 주가 $120.58).</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 구독 가입자 확대</strong>
+- 2Q 순증 14만 명은 구독 프로그램 출시 이후 최대입니다. 회사는 마케팅 회수기간 6개월 이내를 유지했다고 밝혔습니다.
+- 실현 조건: 마케팅비를 줄여도 순증이 유지되어야 합니다.
+- <strong>검증 포인트:</strong> 3Q 순증 구독자 수와 마케팅비 감소 폭을 같이 봅니다. 마케팅비가 줄었는데 순증이 10만 명 미만으로 떨어지면 2Q는 지출에 의존한 성장으로 봐야 합니다.</p>
+<p><strong>② 구독 혜택 강화와 이탈 억제</strong>
+- Sezzle Mobile, SezzleCash, 카드연동 오퍼가 추가됐습니다. Anywhere 구독자에게는 Sezzle Send 수수료를 면제할 예정입니다.
+- 실현 조건: 구독 해지율이 안정되고 구독자당 매출이 늘어야 합니다.
+- <strong>검증 포인트:</strong> 구매 빈도(2Q 7.2회)의 전년 대비 상승이 이어지는지, 해지율·구독 매출을 공개하는지 확인합니다.</p>
+<p><strong>③ 신규 상품 (SezzleCash, Sezzle Send)</strong>
+- 회사는 Sezzle Send의 바이럴 확산을 기대합니다.
+- 실현 조건: 신규 유입이 충당금 상승을 감수할 만큼 수익성이 있어야 합니다.
+- <strong>검증 포인트:</strong> 3Q 10-Q에서 신상품 매출 기여 공시와 충당금/GMV 비율을 확인합니다.</p>
+<p><strong>④ 가맹점·엔터프라이즈 제휴(On-Demand 진입로)</strong>
+- 실적콜에 따르면 신규 On-Demand 이용자는 대부분 가맹점 결제 화면을 통해 들어옵니다.
+- <strong>검증 포인트:</strong> GMV 성장률이 30%대를 유지하는지 봅니다.</p>
+<p><strong>⑤ 가이던스 상향 흐름</strong>
+- 회사는 연간 매출 성장률 35%(기존 30~35% 범위 상단), 조정순이익 $185M(기존 $180M), 조정 EPS $5.25(기존 $5.10)를 밝혔습니다.
+- <strong>검증 포인트:</strong> 3Q 실적 때 추가 상향이 나오는지, 유지에 그치는지, 하향하는지가 핵심입니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤</strong>
+- 매우 자신감 있는 톤입니다. CEO는 2020~21년 고성장기와 닮았다고 했고, 상장 전인 2019년 2Q와 비교해 GMV 30배, 매출 60배라고 강조했습니다.
+- 가이던스는 매 분기 소폭 상향하는 보수적 화법을 유지합니다.</p>
+<p><strong>가이던스 화법에서 읽히는 변화: 마케팅을 스스로 제한</strong>
+- CEO는 회수기간 6개월 이내라는 계산상으로는 더 쓸 수 있지만 "직감상 더 낮은 지출 수준의 높은 ROI가 편하다"고 밝혔습니다.
+- 3Q 마케팅 축소는 "all things being equal"이라는 단서를 달았습니다. SezzleCash와 Sezzle Send 출시가 변수로 남아 있습니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- <strong>대손충당금(Needham):</strong>
+  - 회사는 소비자 신용 상태는 "정상적"이라고 답했습니다.
+  - 연간 충당금 가이던스 2.5~3%를 유지했고 3Q·4Q 상승을 명시했습니다.
+  - 신규 유입이 모델보다 많으면 충당금도 모델보다 높아질 수 있다는 단서를 붙였습니다. 사실상 하반기 충당금 상방 리스크를 미리 깔아둔 것입니다.
+- <strong>매출 수익률과 하반기 성장 둔화(Oppenheimer):</strong>
+  - 애널리스트가 2Q 대비 하반기 매출 성장의 급격한 둔화를 지적했습니다.
+  - CFO는 2Q 기저효과와 연간 수익률 보합으로 설명했습니다.
+  - 하반기 성장률 수치 자체는 콜에서 제시되지 않았습니다.
+- <strong>On-Demand에서 구독으로의 전환(TD Cowen):</strong>
+  - 일부 전환은 있다고 인정했습니다.
+  - 그러나 주된 원인은 전면에 내세우는 상품을 바꾼 데 있다고 설명했습니다. 전환율 수치는 제시하지 않았습니다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 이 정보들은 제공된 SEC 발췌에는 없습니다.
+- 지표: 구독자 85.4만 명, 구매 빈도 7.2회, 마케팅비 $19.4M, 회수기간 6개월 이내, 충당금 가이던스 2.5~3%, 매출 수익률 연간 보합 전망
+- 일정·상품: 5월 GMV가 12월 GMV를 넘었다는 언급, Sezzle Send 출시 임박과 Anywhere 구독자 수수료 면제</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>하반기 대손충당금 상승과 신규 이용자 손실률</strong>
+   - 회사는 손실 비용을 전액 부담하며, 10-Q는 충당금을 "significant component of operating expenses"(영업비용의 주요 항목)로 명시합니다.
+   - 실적콜에서 3Q·4Q 충당금 상승과 신규 이용자의 손실률이 더 높다는 점을 직접 언급했습니다.
+   - SezzleCash는 계약금 없는 현금 대출이라 기존 BNPL보다 위험 구조가 불리할 수 있습니다(추정).</li>
+<li><strong>매출 성장 둔화</strong>
+   - 2Q의 <span class="up">+51.7%</span>는 기저효과가 반영된 수치입니다. 연간 가이던스 35%는 하반기 둔화를 전제합니다.
+   - 시장이 이미 이를 "Cautious H2 Guidance"로 받아들여 연중 최악의 하루를 기록했다는 헤드라인이 있습니다.</li>
+<li><strong>BNPL 규제 강화</strong>
+   - 10-K 리스크 요인 중 첫 항목입니다.
+   - 사업이 현금 대출(SezzleCash), 통신, 송금(Send) 등 비BNPL 영역으로 넓어지면 적용받는 규제 범위도 커질 수 있습니다(추정).</li>
+<li><strong>자본 조달</strong>
+   - 10-K는 적정 자본 접근성 유지를 리스크로 명시합니다.
+   - 차입 구조와 금리 민감도는 제공 자료상 확인 불가입니다. 실사에서 반드시 메워야 할 공백입니다.</li>
+<li><strong>지배구조·공시 품질 신호</strong>
+   - 10-K 표지에 '과거 재무제표 오류 정정 반영'과 '임원 성과보수 환수 분석이 필요한 재작성' 체크가 표시돼 있습니다. 대형·소규모 보고기업이 동시에 체크되는 등 파싱 오류일 가능성도 있어 원문 확인이 필요합니다.
+   - 10/9 Form 144 2건(신고인·수량 확인 불가)도 있습니다.
+   - 같은 날 DEF 14A가 제출됐는데 통상적인 정기주총 시기가 아닙니다. 안건은 공시상 확인 불가입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>긍정 요인:</strong>
+  - 매출 YoY <span class="up">+51.7%</span>, 영업이익률 34.5%, 순이익률 27.2%
+  - 구독자 YoY <span class="up">+76.4%</span>
+  - TTM FCF $271.9M, 시총 대비 약 6.3%
+  - 조정순이익 가이던스 기준 약 23배
+  - 52주 고점 대비 <span class="down">-31.8%</span>로 이미 상당 부분 조정됨
+- <strong>제약 요인:</strong>
+  - 영업이익률 YoY <span class="down">-2.1%</span>p
+  - 하반기 충당금 상승 예고
+  - 하반기 매출 성장 둔화 전제
+  - 오늘 거래량 배수 1.41배로, 강한 수급 전환 신호로 보기 어려움
+  - 3Q 실적까지 약 3주 남은 이벤트 리스크
+- <strong>종합:</strong> 성장과 이익의 질은 '적극'에 가깝습니다. 그러나 재무구조 공백과 공시·내부자 관련 미확인 사항 때문에 '보통'으로 판단합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-K 원문:</strong> 오류 정정과 재작성의 범위·금액, 영향 받은 계정, 성과보수 환수 여부
+2. <strong>Form 144 2건과 DEF 14A:</strong> 매도 주체(창업자·임원 여부)와 규모, 위임장 안건(주식 발행 승인, 보상 플랜 등 희석 요인 포함 여부)
+3. <strong>2Q 10-Q 재무상태표와 유동성 섹션:</strong> 소비자 대출채권 잔액, 차입금·신용한도 만기, 충당금 비율 추이. 이를 바탕으로 FCF $271.9M이 대출채권 증감을 반영한 실질 잉여현금인지 확인</p>
+<p><strong>판단을 뒤집을 조건 (관망 이하로 하향)</strong>
+- 3Q 충당금 비율이 연간 가이던스 상단(3%)을 넘는 흐름이 확인될 때
+- 연간 매출 성장 35% 또는 조정순이익 $185M 가이던스가 하향되거나 유지에 그칠 때. 지금까지 매 분기 상향해 온 흐름이 끊기는 것입니다.
+- 마케팅비를 줄였는데 순증 구독자가 급감할 때. 2Q 성장이 지출 의존이었다는 뜻입니다.
+- 10-K 재작성이 매출 인식이나 충당금 같은 핵심 계정과 관련된 것으로 확인되거나, Form 144 매도 주체가 창업자이고 규모가 클 때</p>
+<p><strong>상향 조건 (적극으로 전환)</strong>
+- 3Q에 충당금이 가이던스 범위 안에 있고, 마케팅비 축소에도 구독자 순증과 구매 빈도 상승이 유지되며, 연간 가이던스가 추가 상향될 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000016/szl-20251231.htm">10-K — 2025-12-31_0001662991-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000126/szl-20260630.htm">10-Q — 2026-06-30_0001662991-26-000126</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000065/szl-20260331.htm">10-Q — 2026-03-31_0001662991-26-000065</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000165/sezl-20261008ex9901.htm">8-K — 2026-10-08_0001662991-26-000165__EX-99.1__sezl-20261008ex9901</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000165/sezl-20261008.htm">8-K — 2026-10-08_0001662991-26-000165</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000148/sezl-20260828.htm">8-K — 2026-08-28_0001662991-26-000148</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000144/sezl-20260812.htm">8-K — 2026-08-12_0001662991-26-000144</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1662991/000166299126000132/sezl-20260812ex9901.htm">8-K — 2026-08-12_0001662991-26-000132__EX-99.1__sezl-20260812ex9901</a></li>
+<li>Transcript — 2026-08-06 Sezzle Inc. (SEZL) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-08-10 Sezzle Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RDNT — RadNet Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>RDNT — RadNet Inc. Common Stock</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">RDNT</span><span class="badge">+3.96%</span><span class="badge">거래량 0.78배</span><span class="badge">$5.58B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>사업은 좋아지고 있다.</strong> 2Q26 매출은 전년 대비 25.0% 늘어난 $622.7M으로 분기 최대다. 고급영상(MRI·CT·PET/CT) 비중은 2.38%p 올랐고, Digital Health ARR은 $105.5M으로 1년 새 97% 늘었다. 회사는 영상센터 부문 연간 가이던스를 1Q에 이어 2Q에도 올렸다.</li>
+<li><strong>주당이익은 오히려 줄었다.</strong> 조정 EPS는 $0.34에서 $0.29로 감소했다. 전사 조정 EBITDA 마진은 약 16.3%에서 16.0%로 낮아졌다(공시 수치로 계산). 성장의 상당 부분이 인수에서 나왔고, 인수 통합 비용과 인건비 상승이 마진 개선을 상쇄하고 있다.</li>
+<li><strong>밸류에이션 여유가 작다.</strong> 시가총액 $5.58B 대비 TTM FCF는 $72.4M으로, FCF 수익률이 약 1.3%다. 현재 주가는 경영진이 말한 하반기 마진 회복과 2028년 마진 개선이 이루어진다는 전제를 이미 반영하고 있다.</li>
+<li><strong>오늘 상승은 근거가 약하다.</strong> 거래량은 20일 중앙값의 0.78배로 급증이 아니고, 확인된 촉매도 없다. 따라서 오늘 움직임을 근거로 진입할 이유는 약하다.</li>
+<li>약 4주 뒤 나올 3Q 실적에서 하반기 마진 회복과 ARR 경로를 확인한 뒤 비중을 정하는 편이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다. 가장 최근 공시는 8월 14일 8-K로, See-Mode 인수 마일스톤 대가로 발행할 34,069주의 재매도 등록이다. 규모가 작아 주가 촉매가 아니다.</li>
+<li><strong>뉴스:</strong> Simply Wall St 기사 「Should Earnings Beat Require Action From RadNet Investors?」가 유일하다. 약 2개월 전(8/9) 발표된 2Q 실적을 다룬 해설성 기사로 보이며, 새로운 정보로 보기 어렵다(추정).</li>
+<li><strong>수급:</strong> 거래량이 평균보다 적고(0.78배) 거래대금은 $36.0M이다. "거래량 급증 동반"이라는 스크린 전제와 맞지 않는다. 20일 수익률이 <span class="down">-5.3%</span>였던 만큼 단기 낙폭을 되돌린 반등이거나 헬스케어 서비스 섹터와 함께 움직였을 가능성이 있으나, 제공 자료로는 확인할 수 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>① Imaging Centers 부문 — 매출의 대부분</strong>
+- 10-K 기준(2025년 말) 418개 외래 영상센터를 운영했다. 지역은 애리조나, 캘리포니아, 델라웨어, 플로리다, 메릴랜드, 버지니아, 뉴저지, 텍사스, 뉴욕이다. 2Q26 보도자료 기준으로는 442개로 늘었다.
+  - 실적콜에서 인디애나 인수와 아이다호 보이시 JV가 언급돼, 운영 지역이 10-K 시점보다 넓어졌다.
+- 서비스는 MRI, CT, PET, 핵의학, 유방촬영, 초음파, X-ray, 투시조영 등이다. 회사는 대부분 센터가 여러 장비를 함께 갖춘 것(multi-modality)이 경쟁사와의 차별점이며, 수가 변경 위험을 분산한다고 밝혔다.
+- <strong>병원 JV:</strong> 442개 중 157개(약 36%)가 병원·의료 시스템과의 파트너십 안에 있다. 2Q에는 Trinity Health 산하 Saint Alphonsus와 보이시 5개 센터 JV를 체결했다.
+- <strong>영국:</strong> 자회사 HLH Imaging Group이 NHS를 대상으로 원격판독(teleradiology) 서비스를 제공한다.</p>
+<p><strong>② Digital Health 부문 (DeepHealth)</strong>
+- 제품은 eRad RIS/PACS, 클라우드 기반 DeepHealth OS, 유방·폐·전립선 AI(Aidence, Quantib)다. 이후 iCAD, See-Mode, Gleamer(X-ray AI)를 인수했다.
+- 2Q26 매출은 $32.4M(부문 간 매출 포함)으로, 전사 매출의 약 5%다.
+  - AI 매출: $16.1M, 전년 대비 <span class="up">+136%</span>
+  - Enterprise Imaging 매출: $16.3M, 전년 대비 <span class="up">+17.3%</span>
+- 실적콜 기준 FDA 승인 27건, CE 인증 26건을 보유하고 있다.</p>
+<p><strong>고객과 경쟁 위치</strong>
+- 고객은 의뢰 의사, 보험사(payor), 병원 시스템이다. Digital Health는 외부 병원과 RadNet 자체가 고객이다.
+- 보험사별 매출 구성(Medicare, 민간보험 등)과 수가 단가: <strong>공시상 확인 불가</strong> (제공 발췌에 없음)
+- 회사는 센터 수와 연간 영상 매출 기준으로 미국 선두 사업자라고 주장한다. 경쟁사 대비 시장점유율 수치는 공시상 확인 불가하다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>2Q26</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전사 매출</td>
+<td>$498.2M</td>
+<td>$622.7M</td>
+<td>+25.0%</td>
+</tr>
+<tr>
+<td>전사 조정 EBITDA</td>
+<td>$81.2M</td>
+<td>$99.7M</td>
+<td>+22.7%</td>
+</tr>
+<tr>
+<td>조정 EBITDA 마진(계산)</td>
+<td>약 16.3%</td>
+<td>약 16.0%</td>
+<td>약 <span class="down">-0.3%</span>p</td>
+</tr>
+<tr>
+<td>영상센터 조정 EBITDA 마진</td>
+<td>16.0%</td>
+<td>16.1%</td>
+<td>+17bp</td>
+</tr>
+<tr>
+<td>Digital Health 조정 EBITDA</td>
+<td>$3.4M</td>
+<td>$2.5M</td>
+<td>감소 (1Q26 $1.3M보다는 개선)</td>
+</tr>
+<tr>
+<td>조정 순이익 / 조정 EPS</td>
+<td>$25.7M / $0.34</td>
+<td>$23.2M / $0.29</td>
+<td>-9.7% / <span class="down">-14.7%</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 — 물량·믹스·단가</strong>
+- <strong>물량:</strong> 전체 고급영상 물량은 <span class="up">+21.2%</span>, 기존점(same-center) 고급영상은 <span class="up">+9.6%</span>다.
+  - 전체 물량 증가의 절반가량은 인수·신규 센터 효과로 추정된다(전체 증가율과 기존점 증가율의 차이로 추론).
+  - 모달리티별(기존점 기준) 증가율: MRI <span class="up">+10%</span>, CT <span class="up">+8.6%</span>, PET/CT <span class="up">+8.8%</span>
+- <strong>믹스:</strong> 고급영상 비중이 27.5%에서 29.9%로 올라, 구조적인 개선이 확인된다.
+- <strong>단가(검사당 수가):</strong> 공시상 확인 불가</p>
+<p><strong>마진</strong>
+- 고급영상 비중이 2.4%p 올랐는데도 영상센터 마진은 +17bp 개선에 그쳤다. 그사이 Digital Health 마진은 약 16%에서 약 8%로 떨어졌다(계산).
+- 실적콜에서 회사가 든 원인은 세 가지다: 기사·영상의학 전문의 인건비 상승, AI 도입·교육 비용, 마진이 낮은 플로리다·인디애나 인수 자산의 통합 비용.
+- 데이터 기준 GAAP 영업이익률은 6.8%(전년 대비 <span class="up">+0.1%</span>p)로, 조정 EBITDA 마진과 차이가 크다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 $72.4M이다. 회사는 FCF 가이던스를 올렸다고 밝혔지만, 구체적인 범위는 제공 발췌에 없어 <strong>공시상 확인 불가</strong>하다.
+- 2Q 말 현금은 $726.3M, 순부채/조정 EBITDA는 1.8x다.
+- 6월에 $250M 증액 Term Loan을 조달했다. 기존 잔액 $958.7M과 합쳐 Term Loan은 약 $1.21B이고, 만기는 2031년 4월이다. 금리는 25bp 낮아졌다.
+- 실적콜에서 CFO는 이번 증액이 기회주의적이었다고 설명했다. 채권이 액면가 위에서 거래되고 있었고, Gleamer와 플로리다·인디애나 인수에 쓴 자금을 다시 채워 넣는 목적이었다는 것이다.
+- <strong>주당 희석:</strong> 조정 순이익은 9.7% 줄었는데 EPS는 14.7% 줄었다. 주식 수 증가에 따른 희석이 있었다는 뜻이다(추정).</p>
+<p><strong>밸류에이션 참고 (추정)</strong>
+- 2Q 조정 EBITDA를 단순히 4배 하면 연간 약 $399M이다. 여기에 순부채 1.8x를 적용하면 순부채는 약 $0.7B로 추산된다.
+- 이를 시가총액에 더하면 EV/연환산 EBITDA는 약 15~16x 수준이다(비지배지분 제외).
+- 이 계산은 공시값이 아니라 추정치다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고급영상 믹스 상승</td>
+<td>업계 수요 증가와 장비 증설 효과라고 밝힘</td>
+<td>기사 채용, 장비 가동률</td>
+<td>3Q 기존점 고급영상 증가율이 8~10%대를 유지하는지, 고급영상 비중이 30%를 넘는지</td>
+</tr>
+<tr>
+<td>인수 통합 후 마진 회복</td>
+<td>중복 비용이 하반기에 사라진다고 실적콜에서 언급</td>
+<td>플로리다·인디애나 자산의 RadNet 플랫폼 전환</td>
+<td>3Q 영상센터 마진이 전년 대비 의미 있게(수십 bp 이상) 개선되는지</td>
+</tr>
+<tr>
+<td>병원 JV 확장</td>
+<td>문의(inbound)가 늘고 있고 신규·확장 발표가 예정돼 있다고 언급</td>
+<td>Medicare HOPPS 예산중립 조항 등 병원에 대한 압박</td>
+<td>JV 센터 수(157개 → ?), 신규 파트너 발표</td>
+</tr>
+<tr>
+<td>Digital Health ARR</td>
+<td>2026년 말 ARR $140M 초과, 외부 고객 비중 65~70%를 회사가 제시</td>
+<td>하반기, 특히 4Q에 계약이 몰리는 계절성</td>
+<td>3Q ARR $120M대 진입 여부, 3Q 신규 계약총액(TCV)</td>
+</tr>
+<tr>
+<td>유방 초음파 AI</td>
+<td>FDA 510(k) 승인. 연말까지 RadNet 전 센터 도입, 매출과 비용 절감 효과를 회사가 기대</td>
+<td>Category III CPT 코드에 대한 보험사 수가 인정(갑상선 AI는 30~40%)</td>
+<td>3Q·4Q AI 매출과 RadNet 내부 도입률</td>
+</tr>
+<tr>
+<td>AI 자동 판독 초안</td>
+<td>연말 RadNet 검사량의 약 15%, 2027년 2Q 말 50% 초과를 회사가 제시</td>
+<td>영상의학 전문의의 초안 수용률(갑상선 기준 90% 초과)</td>
+<td>도입률 진척, 판독 인력 비용 증가율</td>
+</tr>
+<tr>
+<td>2028년 마진 개선</td>
+<td>2025년 대비 100~150bp를 회사가 제시(작년 11월 Investor Day 수치 재확인)</td>
+<td>위 항목들의 합산</td>
+<td>분기별 영상센터 마진 추이</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><em>transcript 중간 일부가 생략(중략)된 상태로 제공되었다.</em></p>
+<p><strong>톤과 가이던스 화법</strong>
+- 전반적으로 자신감이 높다. "record", "very pleased", "quite confident" 같은 표현이 반복됐다.
+- 영상센터 가이던스는 1Q에 이어 연속으로 상향했다. 반면 Digital Health 가이던스는 상향하지 않고 유지했다.
+  - Digital Health EBITDA가 전년보다 줄어든 상황에서 상향이 아니라 유지를 택한 점은, 하반기에 실적이 몰리는 구조에 대한 보수성으로 읽힌다.
+- Digital Health 마진에 대해 회사는 "2027~2028년에 20%+로 높이는 데 상당히 자신 있다"고 언급했다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>마진 (CJS Solow):</strong> "믹스가 240bp나 개선됐는데 마진 개선이 왜 이 정도인가"라는 질문이 나왔다. 이번 콜에서 가장 핵심적인 질문이다.
+  - CFO는 특이 요인이 없다고 답하고, 인건비 상승과 AI 도입 비용 때문이라고 설명했다. CEO와 CFO는 인수 자산의 통합 중복 비용과 낮은 출발 마진을 추가로 들었다.
+  - 회사는 원인을 일시적 요인으로 돌렸다. 하지만 인건비 상승은 구조적 요인이고, CFO도 도입 비용이 앞으로 몇 년간 이어진다고 인정했다.
+- <strong>AI 수가 (KeyBanc Gillmor):</strong> 유방 초음파 AI의 수가 인정 속도에 대한 질문이었다. 회사는 갑상선보다 빠를 것이라고 답했다. CEO는 매출이 처음부터 갑상선의 4배가 될 수 있다며 "조심스럽게 낙관"한다고 했다. 다만 갑상선 AI의 실제 매출 절대값은 공개하지 않았다.
+- <strong>TCV 계절성:</strong> 회사는 하반기, 특히 4Q에 계약이 몰린다고 인정했다. 이는 연말 ARR $140M 목표가 4Q 계약 실적에 크게 좌우된다는 의미다.
+- <strong>자본배분 (Sidoti):</strong> CFO는 Gleamer 규모의 대형 Digital Health 인수는 다시 하기 어렵다고 말했다. 자본은 주로 영상센터 인수에 쓰일 것이라고 밝혔다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- AI와 Enterprise Imaging 매출 분리 수치, 외부 고객 ARR 63%를 연말 65~70%로 높이는 목표
+- 영업 파이프라인(funnel) TCV: 연초 $101M에서 $224M 이상으로 증가(연간 계약가치 환산 $65M)
+- Gleamer: 2Q 말 ARR 약 $25M, 연말 $30M 초과 목표, 2027년 비용 시너지 약 $4M
+  - 1년간 ARR 증가분 $52M 중 상당 부분이 Gleamer 인수에서 왔다는 점을 감안해야 한다.
+- 2027년 1Q까지 Nuance PowerScribe를 자체 Reporting Pro로 교체해 비용을 절감할 계획
+- 2028년 마진 100~150bp 개선 목표 재확인
+- Medicare HOPPS 예산중립 조항 제안이 병원 JV 수요를 늘리는 요인이라는 회사 해석
+- 외부 고객 비중 표기의 불일치: 보도자료는 외부 고객 ARR이 "Digital Health 매출"의 약 63%라고 썼고, 콜에서는 "ARR 기반"의 63%라고 말했다. 정의를 확인할 필요가 있다.</p>
+<h2>6. 리스크</h2>
+<p><em>10-K의 리스크 섹션과 10-Q MD&amp;A 본문은 제공된 발췌에 포함되지 않았다. 아래는 보도자료, 8-K, 실적콜에서 확인된 사항을 바탕으로 정리했다.</em></p>
+<ol>
+<li><strong>인건비 상승의 구조화:</strong> 실적콜에서 CFO는 기사·영상의학 전문의 인건비 상승이 계속되고 있다고 언급했다. 믹스 개선 효과를 인건비가 상쇄하는 구조가 이어지면 2028년 마진 개선 목표가 늦어질 수 있다.</li>
+<li><strong>인수 의존 성장과 통합 위험:</strong> 센터 수는 418개에서 442개로 늘었고, 플로리다·인디애나 자산은 인수 당시 마진이 RadNet 평균보다 낮았다고 회사가 밝혔다. $250M 추가 차입으로 M&amp;A를 이어갈 계획이어서, 통합 비용이 계속 반복될 위험이 있다.</li>
+<li><strong>주당 가치 희석:</strong> 매출이 25% 늘었는데 조정 EPS는 15% 줄었다. 인수 대가로 주식을 발행하는 구조(See-Mode 마일스톤 주식 등)와 이자·감가상각 부담이 겹쳐 주당 이익이 매출 성장을 따라가지 못하고 있다.</li>
+<li><strong>Digital Health 목표의 하반기 쏠림:</strong> 연말 ARR $140M을 달성하려면 하반기에만 약 +$35M(<span class="up">+33%</span>)이 필요하다. 회사도 4Q 쏠림을 인정했다. 미달하면 AI 성장 서사가 손상되고, 이 서사에 기댄 밸류에이션 프리미엄도 약해질 수 있다.</li>
+<li><strong>AI 수가와 규제:</strong> 유방 초음파 AI 매출은 Category III CPT 코드에 대한 보험사별 개별 인정에 달려 있다. 갑상선 AI의 수가 인정률도 30~40%에 그친다. CMS 수가 개편(HOPPS 등)은 회사가 유리하다고 보지만, 실제 효과는 확정되지 않았다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>긍정 요인</strong>
+  - 매출 <span class="up">+25.0%</span>, 기존점 고급영상 <span class="up">+9.6%</span>
+  - 고급영상 비중 29.9%(+238bp)
+  - ARR $105.5M(<span class="up">+97%</span>)
+  - 순부채/EBITDA 1.8x, 현금 $726.3M
+  - 2분기 연속 가이던스 상향
+- <strong>부정 요인</strong>
+  - 조정 EPS <span class="down">-14.7%</span>
+  - 전사 조정 EBITDA 마진 약 <span class="down">-0.3%</span>p(계산)
+  - Digital Health EBITDA가 전년 대비 감소($3.4M → $2.5M)
+  - TTM FCF 수익률 약 1.3%
+  - EV/연환산 조정 EBITDA 약 15~16x(추정)
+- <strong>기술적 요인</strong>
+  - 오늘 거래량 0.78배로, 상승의 신뢰도가 낮다.
+  - 52주 고점 대비 <span class="down">-16.1%</span>로 가격 부담은 일부 완화됐지만, 촉매가 없는 반등이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q 영상센터 조정 EBITDA 마진:</strong> 회사가 말한 하반기 통합 비용 해소가 전년 대비 의미 있는 개선으로 나타나는지
+2. <strong>3Q ARR과 TCV:</strong> ARR이 $120M대에 들어서고, Gleamer를 제외한 내부 성장(organic) 기여가 구분돼 공개되는지
+3. <strong>조정 EPS 증가율:</strong> 매출 성장이 주당이익으로 이어지기 시작하는지, 그리고 FY26 FCF 가이던스 범위가 TTM $72.4M 대비 얼마나 큰 개선을 뜻하는지</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>보통 이상으로 올릴 조건:</strong> 3Q 영상센터 마진 개선, ARR $140M 달성 경로 확인, 조정 EPS가 전년 대비 증가로 돌아섬. 이 세 가지가 함께 확인되면 비중을 늘릴 근거가 생긴다.
+- <strong>회피로 낮출 조건:</strong> 아래 중 하나라도 확인되면 회피로 낮춘다.
+  - 기존점 고급영상 증가율이 한 자릿수 초반으로 둔화
+  - 인건비 때문에 영상센터 마진이 전년 대비 하락
+  - Digital Health 가이던스 하향
+  - 순부채/EBITDA가 2.5x 이상으로 오르는 대형 차입 인수</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000162828026013337/rdnt-20251231.htm">10-K — 2025-12-31_0001628280-26-013337</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000162828026055338/rdnt-20260630.htm">10-Q — 2026-06-30_0001628280-26-055338</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000162828026033607/rdnt-20260331.htm">10-Q — 2026-03-31_0001628280-26-033607</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000168316826006479/radnet_8k.htm">8-K — 2026-08-14_0001683168-26-006479</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000168316826006125/radnet_ex9901.htm">8-K — 2026-08-09_0001683168-26-006125__EX-99.1__radnet_ex9901</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000168316826006125/radnet_8k.htm">8-K — 2026-08-09_0001683168-26-006125</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000168316826004716/radnet_ex9901.htm">8-K — 2026-06-10_0001683168-26-004716__EX-99.1__radnet_ex9901</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/790526/000168316826004716/radnet_ex1001.htm">8-K — 2026-06-10_0001683168-26-004716__EX-10.1__radnet_ex1001</a></li>
+<li>Transcript — 2026-08-10 RadNet, Inc. (RDNT) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

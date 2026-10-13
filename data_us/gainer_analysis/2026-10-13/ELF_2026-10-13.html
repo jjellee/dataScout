@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELF — e.l.f. Beauty Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ELF — e.l.f. Beauty Inc. Common Stock</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ELF</span><span class="badge">+3.09%</span><span class="badge">거래량 0.74배</span><span class="badge">$6.45B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>성장 자체는 확인됨.</strong> FY27 1분기(2026년 6월 말 종료) 매출은 $479.4M로 전년 대비 36% 늘었다. 30분기 연속 성장이고, 회사는 연간 매출 성장 가이던스를 12~14%에서 18~20%로 올렸다.</li>
+<li><strong>마진 개선은 대부분 일회성이다.</strong> 영업이익률이 전년 대비 <span class="up">+10.9%</span>p 올랐지만, 약 $50M의 IEEPA 관세 환급(매출 대비 약 10.4%p)을 빼면 개선폭은 약 <span class="up">+0.5%</span>p 수준으로 추정된다. 회사는 이 환급금을 전액 가격 조정과 마케팅에 재투자하겠다고 밝혔다.</li>
+<li><strong>가이던스대로라면 2~4분기 수익성은 낮아진다.</strong> 연간 조정 EBITDA 가이던스 중간값($404M)에서 1분기 실적($168.2M)을 빼면 2~4분기 EBITDA 마진은 약 16%로 계산된다(1분기 35%). 2~4분기 매출 성장률도 약 +14~15%로 둔화되는 구조다.</li>
+<li><strong>밸류에이션에 기대가 상당 부분 반영돼 있다.</strong> 회사 조정 EPS 가이던스 중간값 기준 PER은 약 31배다. 60일 수익률은 <span class="up">+49.2%</span>다. 오늘은 확인된 촉매가 없고 거래량도 평소보다 적다(0.74배). CEO의 지분 매도 뉴스도 있다.</li>
+<li><strong>결론:</strong> 오늘은 기초 비중까지만 권고한다. 의미 있는 비중 확대는 11월 2분기 실적에서 rhode 유럽 출시 효과와 관세 환급 제외 마진이 확인된 뒤가 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 있다.</strong></p>
+<ul>
+<li>최근 4일 안에 SEC 공시가 없다. 마지막 실적 발표는 8월 5일(8-K), 마지막 주요 공시는 8월 20일 주총 결과(8-K)다.</li>
+<li>뉴스 헤드라인에는 실적이나 사업 관련 촉매가 없다. 오히려 "CEO Tarang Amin, $4.85M 규모 지분 매도"라는 부정적 헤드라인이 있다. 매도 시점과 방식(10b5-1 계획 여부)은 제공 자료로 확인할 수 없다.</li>
+<li>거래량은 20일 중앙값의 0.74배, 거래대금은 $100.7M다. <strong>"거래량 급증을 동반한 상승"이라는 스크린 전제와 맞지 않는다.</strong> <span class="up">+3.09%</span>는 60일 <span class="up">+49.2%</span>, 20일 <span class="up">+13.6%</span>로 이어진 상승 추세의 연장선으로 보는 것이 타당하다. 그 추세의 출발점은 8월 5일 가이던스 상향으로 추정된다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 목차뿐이다. 사업 섹션 본문(고객 집중도, 채널별 매출 비중 등)은 <strong>공시상 확인 불가</strong>다. 아래 내용은 8-K 보도자료와 실적콜 기준이다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>브랜드</td>
+<td>e.l.f. Cosmetics, e.l.f. SKIN, e.l.f. Hair, rhode, Naturium, Well People</td>
+<td>8-K 보도자료</td>
+</tr>
+<tr>
+<td>가격대</td>
+<td>e.l.f. Cosmetics 평균 약 $7 (기존 매스 브랜드 $10 이상, 프레스티지 $30 이상)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>브랜드 믹스</td>
+<td>e.l.f. 외 브랜드 비중이 3년 새 1% 미만에서 30% 이상으로 상승. 1분기 rhode 매출 약 $160M(전체의 약 33%)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>카테고리</td>
+<td>스킨케어 비중 10%에서 약 25%로 상승. 2026년 6월 헤어케어 진출</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>채널</td>
+<td>리테일과 이커머스 병행. 디지털 비중 18%에서 30%로 상승</td>
+<td>8-K, 실적콜</td>
+</tr>
+<tr>
+<td>지역</td>
+<td>해외 비중 21%. 1분기 미국 <span class="up">+29%</span>, 해외 <span class="up">+61%</span></td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>공급망</td>
+<td>중국 외 생산 비중이 수년 전 1%에서 FY27 말 약 60%로 오를 것이라고 회사가 밝힘</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치 (회사 주장)</strong>
+- e.l.f. Cosmetics: 매스 시장 판매량 1위, 매출액 2위
+- e.l.f. SKIN: 매스 스킨케어 11위이며 점유율은 약 2%다. 1위 브랜드는 13%다.
+- Naturium: 상위 50개 스킨케어 브랜드 중 가장 빠르게 성장
+- rhode: Sephora와 Mecca에서 뷰티 브랜드 1위</p>
+<p><strong>구조적 특징</strong>
+- 매출총이익률이 높고(관세 환급 제외 시 약 72~73%로 추정), 마케팅비를 매출의 23~25%로 쓰는 고마진·고마케팅 모델이다.
+- rhode 인수로 프레스티지 DTC 축이 생겼다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>1분기 FY27 (2026년 4~6월) 핵심 수치</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$479.4M (YoY <span class="up">+36%</span>, QoQ <span class="up">+6.7%</span>)</td>
+<td>rhode 약 $160M 포함</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>83% (+1,400bp)</td>
+<td>관세 환급 효과 약 1,050bp. 이를 빼면 +350bp</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>$280.3M (+$84.5M)</td>
+<td>매출 대비 약 58.5%, 전년 약 55.3%(계산치)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>24.7% (YoY <span class="up">+10.9%</span>p)</td>
+<td>환급 제외 시 약 14.3%로 추정</td>
+</tr>
+<tr>
+<td>GAAP 순이익 / 희석 EPS</td>
+<td>$66.6M / $1.12</td>
+<td></td>
+</tr>
+<tr>
+<td>조정 순이익 / 조정 EPS</td>
+<td>$104.6M / $1.75</td>
+<td>전년 $51M / $0.89 (실적콜)</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$168.2M (매출 대비 35%, <span class="up">+93%</span>)</td>
+<td>환급 제외 시 <span class="up">+36%</span> (실적콜)</td>
+</tr>
+<tr>
+<td>rhode 조건부 대가(earn-out) 공정가치 조정</td>
+<td>$16.1M 비용</td>
+<td>rhode 매출이 earn-out 기준을 웃돌아 발생</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>매출 구성: 인수 효과가 크다.</strong> rhode가 1분기 매출 약 $160M을 냈다. 전년 동기 매출이 약 $354M(계산치)이었으므로 rhode를 빼면 유기적 성장은 낮다. 회사는 연간 유기적 성장 가이던스를 6~7%로 제시했고, rhode가 연간 성장에 13%p를 기여할 것이라고 밝혔다.
+- <strong>가격과 물량:</strong> CEO가 "지난 수개월간 둔화"를 인정했다. 회사는 5월부터 대부분의 e.l.f. SKU에 임시 가격 인하 테스트를 했고, 약 10% SKU는 인하된 가격을 영구 유지한다고 밝혔다. e.l.f. 핵심 브랜드는 가격보다 물량 회복에 의존하는 국면으로 해석된다(추정). 반면 매출총이익률 개선(환급 제외 +350bp)은 가격과 관세율 하락 덕분이라고 보도자료가 설명한다.
+- <strong>영업 레버리지는 마이너스다.</strong> SG&amp;A 증가율(<span class="up">+43%</span>)이 매출 증가율(<span class="up">+36%</span>)보다 높다. 마케팅, 물류, 인건비, 상각비가 모두 늘었다.</p>
+<p><strong>마진 방향성 (가이던스 기준 계산)</strong>
+- FY27 매출 가이던스는 $1,938~1,968M, 조정 EBITDA는 $401~407M(약 21%)다.
+- 2~4분기 합산으로 환산하면 매출 약 $1,474M, 조정 EBITDA 약 $236M이다. <strong>EBITDA 마진이 약 16%로 1분기 35%보다 크게 낮다.</strong>
+- 이유는 두 가지다. 관세 환급 효과가 1분기에만 반영됐고, 회사는 2~4분기 마케팅비가 매출의 25%를 넘을 수 있다고 밝혔다.
+- 같은 방식으로 2~4분기 매출 성장률은 약 +14~15%로 계산된다. FY26 매출 약 $1,641M을 가이던스에서 역산한 값이 기준이다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM 잉여현금흐름은 $280.2M이다. 시가총액 대비 FCF 수익률은 약 4.3%다. 1분기 관세 환급 $50M이 포함됐을 가능성이 높아, 이를 빼면 약 3.6%로 추정된다.
+- 현금은 $344.2M, 총차입금은 $834.2M이다. 전년에는 각각 $170.0M, $256.7M이었다. rhode 인수로 차입금이 크게 늘어, 순차입금은 약 $490M이다.
+- 회사는 순차입금/조정 EBITDA가 1.5배 미만이라고 밝혔다.
+- 1분기 자사주 $50M을 매입했다.
+- 연내 rhode earn-out을 현금으로 지급할 예정이다. <strong>지급 규모는 공시상 확인 불가</strong>다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장과 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① rhode 해외 확장</td>
+<td>Sephora 유럽 19개국 출시. 회사는 출고 물량(파이프라인) 전량이 2분기에 반영된다고 밝힘. rhode 입점 매장은 Sephora 전 세계 매장의 20% 미만</td>
+<td>2분기 rhode 매출과 해외 성장률. 출고 물량 효과가 빠진 뒤 매장 판매 지속성. earn-out 지급액</td>
+</tr>
+<tr>
+<td>② e.l.f. 핵심 브랜드 재가속</td>
+<td>가격 조정(10% SKU 영구 인하)과 신제품 출시. 회사는 가을 신제품이 기대 이상이라고 밝힘</td>
+<td>미국 e.l.f. 판매량·매출액 점유율. 가격 원복 SKU의 판매량 이탈 여부. 관세 환급 제외 매출총이익률 유지</td>
+</tr>
+<tr>
+<td>③ 카테고리 확장(스킨케어·헤어)</td>
+<td>e.l.f. SKIN의 Dollar General 입점. e.l.f. Hair의 Target 단독 출시</td>
+<td>회사는 헤어 구매자의 약 절반이 신규 고객이라고 밝힘. 헤어 매출 규모는 미공개라 IR 질의 필요</td>
+</tr>
+<tr>
+<td>④ e.l.f. 해외 확장</td>
+<td>Boots UK 확대, Sephora Brazil 출시. Naturium의 Sephora 캐나다·멕시코 진출</td>
+<td>해외 매출 비중이 21%보다 오르는지</td>
+</tr>
+<tr>
+<td>⑤ 마케팅 재투자</td>
+<td>관세 환급 $50M의 대부분을 마케팅에 투입. 회사는 올해 안에도 효과가 있다고 밝힘</td>
+<td>마케팅비 비중이 25%를 넘는 상황에서 유기적 성장 6~7%를 달성하는지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤</strong>
+- 매우 공세적이다. CEO는 "이번 콜에서 한 가지만 가져간다면 우리 사업에 대한 자신감"이라고 직접 강조했다. 근거로 30분기 연속 성장, 516개 소비재 기업 중 6개 사례, 연 매출 $200M 이상 브랜드 4개를 들었다.
+- 한편 e.l.f. 핵심 브랜드에 대해서는 "지난 수개월간의 둔화"를 인정했다. 이에 대한 방어 논리로 지난 1년간 점유율 +60bp(상위 10개 브랜드 중 최대)를 제시했다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 1분기만 지났는데 매출 성장 가이던스를 6%p 올렸다.
+- 다만 CFO는 "한 분기씩 보겠다"고 말해 하반기 추가 상향은 약속하지 않았다.
+- 유기적 성장 가이던스를 6~7%로 올렸고, 하반기 유기적 성장은 10~12%로 제시했다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 쟁점</strong>
+1. <strong>관세 환급 재투자의 배분과 수익률</strong> (JPM, Deutsche Bank)
+   - 가격 조정과 마케팅 배분에 대해 회사는 "일부는 가격, 대부분은 마케팅"이라고만 답했다. JPM 애널리스트가 마케팅 몫이 절반인지 확인을 요청했지만 정량 확인은 하지 않았다.
+   - 분기별 집행 시점도 공개하지 않았다.
+   - <strong>방어 지점:</strong> 재투자가 장기적으로 영업 레버리지 회복으로 이어지는지에 대해 명확한 답이 없었다.
+2. <strong>원가 인플레이션:</strong> 회사는 공급사발 원가 상승은 없고, 운임 상승은 가이던스에 반영했다고 밝혔다.
+3. <strong>rhode 유럽 출고 물량 규모:</strong> 회사는 "정량화하지 않았다"며 답하지 않았다. 2분기 강세가 출고 물량 효과임을 스스로 시사한 셈이다.
+4. <strong>가격 원복 후 탄력성:</strong> 회사는 할인 테스트에서 판매량은 개선됐지만 인하폭을 정당화할 수준은 아니었다고 밝혔다. 그래서 대부분 SKU를 원래 가격으로 되돌린다는 설명이다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 1분기 rhode 매출 약 $160M. 출시 이후 하루 DTC 매출 최대 $27M 기록
+- rhode 팔로워의 70% 이상이 미국 밖에 있음
+- 관세 환급 제외 매출총이익률 +350bp, 조정 EBITDA <span class="up">+36%</span>
+- FY27 매출총이익률 가이던스 +200bp
+- 중국 외 생산 비중 약 60% 목표
+- 2~4분기 마케팅비가 25%를 넘을 가능성
+- 1분기 자사주 매입 $50M
+- earn-out 현금 지급 예정</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>일회성 이익이 착시를 만든다.</strong> 1분기 매출총이익률과 영업이익률 개선의 대부분은 IEEPA 관세 환급이다. 가이던스상 2~4분기 EBITDA 마진은 약 16%다. 시장 지표의 "영업이익률 <span class="up">+10.9%</span>p"만 보고 수익성이 구조적으로 좋아졌다고 판단하면 오류다.</li>
+<li><strong>인수 의존 성장이 둔화할 수 있다.</strong> 연간 성장 18~20% 중 13%p가 rhode 몫이다. rhode가 유기적 성장으로 편입되고 2분기 유럽 출고 물량 효과가 끝나면, 시장은 유기적 성장률(6~7%)로 회사를 평가하게 된다.</li>
+<li><strong>핵심 브랜드가 둔화하고 가격 결정력이 약해졌다.</strong> CEO가 e.l.f. 브랜드 둔화를 인정했고, 가격 인하 테스트는 판매량 방어가 필요했다는 신호다. 저가 포지션의 브랜드가 가격으로 물량을 사는 구조가 길어지면 마진에 부담이다.</li>
+<li><strong>재무 레버리지와 earn-out 부담이 있다.</strong> 총차입금이 $256.7M에서 $834.2M으로 늘었다. rhode가 잘될수록 earn-out 부담도 커진다. 1분기에만 공정가치 조정 비용이 $16.1M이었고, 연내 현금 지급 규모는 공시상 확인 불가다.</li>
+<li><strong>관세·공급망과 지배구조 신호.</strong> 생산의 약 40%는 FY27 말에도 중국에 남는다(회사 목표 기준). 관세 정책이 바뀌면 원가가 다시 오를 수 있다. 8월 주총에서 Maureen Watson 이사 선임안은 반대(Withheld)가 약 7.5M주로 득표의 약 22.5%였다. 다른 이사들은 0.3~2.7% 수준이었다. CEO 지분 매도 뉴스도 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PER (FY27 조정 EPS 가이던스 중간값 $3.525 기준)</td>
+<td>약 31배</td>
+<td>성장 프리미엄이 이미 반영됨</td>
+</tr>
+<tr>
+<td>EV/EBITDA (FY27 조정 EBITDA 가이던스 중간값 기준)</td>
+<td>약 17배</td>
+<td>EV는 시총 $6.45B + 순차입금 약 $0.49B로 계산</td>
+</tr>
+<tr>
+<td>FCF 수익률 (TTM)</td>
+<td>약 4.3%, 환급 제외 시 약 3.6%</td>
+<td>양호하지만 일회성이 섞여 있음</td>
+</tr>
+<tr>
+<td>매출 성장</td>
+<td>연간 18~20%, 2~4분기 약 14~15%(계산치), 유기적 6~7%</td>
+<td>둔화 경로</td>
+</tr>
+<tr>
+<td>주가</td>
+<td>60일 <span class="up">+49.2%</span>, 52주 고점 대비 <span class="down">-20.2%</span></td>
+<td>실적 이후 재평가가 상당 부분 진행됨</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>"보통"인 이유:</strong> 브랜드 포트폴리오와 현금 창출력, 연속 성장 실적은 비중을 실을 만하다. 다만 일회성 이익을 뺀 마진 경로와 유기적 성장률이 아직 "적극"을 정당화하지 못한다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-Q MD&amp;A의 유기적 매출 분해.</strong> 제공된 발췌에는 본문이 없다. rhode를 뺀 e.l.f. 브랜드의 판매량과 가격 기여, 미국 핵심 브랜드 성장률을 확인해야 한다.
+2. <strong>rhode earn-out 지급 규모와 시점, 지급 후 순차입금/EBITDA.</strong> 현재 공시상 확인 불가다.
+3. <strong>CEO 매도의 성격.</strong> Form 4에서 10b5-1 계획인지, 매도 규모가 보유 지분 대비 어느 정도인지 확인해야 한다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>관망으로 낮출 조건</strong>
+  - 2분기(11월 발표) 관세 환급 제외 매출총이익률이 전년 대비 개선되지 않는 경우
+  - 마케팅비가 25%를 넘는데도 e.l.f. 핵심 브랜드 판매량이 회복되지 않는 경우
+  - 연간 유기적 성장 가이던스 6~7%가 유지되지 못하거나 하향되는 경우
+  - rhode의 2분기 이후 매장 판매가 출고 물량 대비 부진해 재고가 쌓이는 신호가 나오는 경우
+  - earn-out이나 추가 인수로 순차입금/EBITDA가 1.5배를 넘는 경우
+- <strong>적극으로 올릴 조건</strong>
+  - 2분기에 rhode 유럽 성과와 함께 연간 가이던스가 다시 상향되는 경우
+  - 관세 환급 제외 EBITDA 마진이 가이던스 경로(약 16%)를 뚜렷이 웃도는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000020/elf-20260331.htm">10-K — 2026-03-31_0001600033-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000040/elf-20260630.htm">10-Q — 2026-06-30_0001600033-26-000040</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000007/elf-20251231.htm">10-Q — 2025-12-31_0001600033-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000044/elf-20260820.htm">8-K — 2026-08-20_0001600033-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000036/q12027er-991.htm">8-K — 2026-08-05_0001600033-26-000036__EX-99.1__q12027er-991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000036/elf-20260805.htm">8-K — 2026-08-05_0001600033-26-000036</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000018/q42026er-991.htm">8-K — 2026-05-20_0001600033-26-000018__EX-99.1__q42026er-991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1600033/000160003326000018/elf-20260520.htm">8-K — 2026-05-20_0001600033-26-000018</a></li>
+<li>Transcript — 2026-08-05 Q1 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

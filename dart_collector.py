@@ -79,6 +79,7 @@ def classify_for_download(report_nm):
         "대량보유상황보고서",       # 주식등의대량보유상황보고서
         "소유주식변동보고서",       # 임원ㆍ주요주주소유주식변동보고서
         "소유상황보고서",           # 임원ㆍ주요주주특정증권등소유상황보고서
+        "기업설명회",               # IR 개최·안내공시 — ir_events.py (엑셀·캘린더)
     ]
     if any(kw in nm for kw in important_keywords):
         return "important"

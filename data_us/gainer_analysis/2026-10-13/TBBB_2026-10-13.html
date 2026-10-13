@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TBBB — BBB Foods Inc. Class A Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TBBB — BBB Foods Inc. Class A Common Shares</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">TBBB</span><span class="badge">+4.75%</span><span class="badge">거래량 2.02배</span><span class="badge">$6.55B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>2Q26 6-K 실적 발표 기준 매출은 Ps. 26,037백만으로 전년 대비 <span class="up">+38.7%</span>, 기존점 매출(SSS)은 <span class="up">+20.0%</span>였습니다. 실적콜에 따르면 SSS 증가분의 약 2/3가 물량(volume)에서 나왔습니다. 무형 성장(가격 인상)이 아니라 고객이 실제로 더 많이 사는 성장이라 질이 높습니다.</li>
+<li>회사는 "구조적인 마이너스 운전자본(조정 기준 Ps. 10.2B) 덕분에 유기적 확장을 영업현금흐름만으로 충당한다"고 밝혔습니다.</li>
+<li>반면 공시된 마진은 낮아지고 있습니다. 보고 EBITDA 마진은 3.7%로 81bps 하락했고, 영업이익률은 1.4%로 0.7%p 하락했습니다. 주식보상비용(SBP)이 143.8% 늘어난 영향이 큽니다.</li>
+<li>주가는 5월 증자 가격 $32.50에서 약 <span class="up">+71%</span> 올랐고, 60일 수익률은 <span class="up">+38.2%</span>, 52주 고점과의 차이는 <span class="down">-1.3%</span>입니다. 오늘 상승의 촉매도 확인되지 않습니다.</li>
+<li>밸류에이션 배수는 환율과 순이익이 제공되지 않아 산출할 수 없습니다. 따라서 펀더멘털은 '적극' 수준이지만 진입 시점과 가격은 '보통'으로 판단합니다. 비중은 나눠서 쌓고, 3Q26 실적을 확인한 뒤 확대하는 것을 권합니다.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>데이터 단위 주의:</strong> 시장 지표의 "최근 분기 매출 $26.04B"는 6-K의 <strong>Ps. 26,037백만(멕시코 페소)</strong>과 일치합니다. 달러가 아니라 페소 값이 잘못 표기된 것으로 판단합니다. 같은 이유로 "TTM 잉여현금흐름 $3.21B"도 페소 값일 가능성이 높습니다. 제공 자료에 환율이 없어 USD 환산치는 확인할 수 없습니다. 이 리포트의 재무 수치는 모두 페소(Ps.) 기준입니다.</p>
+</blockquote>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시(6-K)가 없습니다. 마지막 실적 공시는 2026-08-12(2Q26)입니다.</li>
+<li>뉴스 헤드라인은 "52주 신고가 경신"과 2026년 10월 만기 $65 콜옵션 시세 페이지뿐입니다. 상승의 원인이 아니라 결과를 다룬 기사입니다.</li>
+<li>거래량은 20일 중앙값의 2.02배, 거래대금은 $61.7M입니다. 20일 <span class="up">+9.4%</span>, 60일 <span class="up">+38.2%</span>의 추세 위에서 신고가 돌파에 따른 모멘텀 매수가 붙은 것으로 추정합니다(추측).</li>
+<li>3분기 실적 발표 일정은 제공 자료로 확인할 수 없습니다. 실적 발표를 앞둔 선취매일 가능성은 있지만 근거는 없습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 20-F 발췌는 표지와 목차만 담고 있어 Item 4(사업 개요) 본문은 확인할 수 없습니다. 아래는 6-K 보도자료와 실적콜에 근거한 내용입니다.</p>
+</blockquote>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>업태</td>
+<td>멕시코 식료품 하드 디스카운트(Hard Discount) 체인 'Tiendas 3B'</td>
+<td>6-K 보도자료</td>
+</tr>
+<tr>
+<td>포지셔닝</td>
+<td>회사는 "멕시코 하드 디스카운트 모델의 개척자이자 리더"라고 밝힘</td>
+<td>6-K</td>
+</tr>
+<tr>
+<td>점포 수</td>
+<td>3,624개(2026-06-30). 최근 12개월 순증 593개(<span class="up">+20%</span>), 2Q 순증 155개</td>
+<td>6-K, 실적콜</td>
+</tr>
+<tr>
+<td>물류</td>
+<td>물류센터(DC) 21개, 3Q에 3개 추가 예정(2개는 이미 개점)</td>
+<td>6-K, 실적콜</td>
+</tr>
+<tr>
+<td>고객</td>
+<td>가격에 민감한 멕시코 서민층(회사 표현: "budget savvy consumers")</td>
+<td>6-K</td>
+</tr>
+<tr>
+<td>상품 전략</td>
+<td>SKU를 적게 유지하고 회전이 빠른 상품만 취급. 자체 브랜드(PB) 비중이 있음을 실적콜에서 언급</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>매출 구성(카테고리·PB 비중)</td>
+<td><strong>공시상 확인 불가</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>경쟁</td>
+<td>FEMSA의 디스카운트 매장 확장을 실적콜에서 언급. SSS가 업계 협회 ANTAD 대비 20%p 넘게 앞섰다고 언급</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수익 구조의 핵심:</strong> 매출총이익률 16.8%의 박리다매 모델입니다. 수익은 마진보다 회전율과 운전자본에서 나옵니다. 재고일수는 20일 미만(실적콜)이고 조정 마이너스 운전자본은 LTM 매출의 약 11.2%입니다. 공급사 대금 지급 전에 상품 판매 대금을 먼저 회수하는 구조라, 매장이 늘어날수록 현금이 쌓입니다.</p>
+<p><strong>지배구조:</strong> 영국령 버진아일랜드(BVI) 설립 법인이며 외국 민간 발행인(20-F/6-K 제출)입니다. 2025년 말 기준 발행주식은 Class A 62,141,441주, Class B 5,200,000주, Class C 49,393,697주입니다. 클래스별 의결권·경제적 권리 차이는 제공 발췌로 확인할 수 없습니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<h3>2Q26 손익 (단위: Ps. 백만, 6-K)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>매출 대비</th>
+<th>2Q25</th>
+<th>매출 대비</th>
+<th>YoY</th>
+<th>마진 변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>26,037</td>
+<td>100%</td>
+<td>18,770</td>
+<td>100%</td>
+<td>+38.7%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>매출총이익</td>
+<td>4,362</td>
+<td>16.8%</td>
+<td>3,043</td>
+<td>16.2%</td>
+<td>+43.4%</td>
+<td>+54bps</td>
+</tr>
+<tr>
+<td>판매비</td>
+<td>(2,598)</td>
+<td>10.0%</td>
+<td>(1,978)</td>
+<td>10.5%</td>
+<td>+31.4%</td>
+<td>-56bps(개선)</td>
+</tr>
+<tr>
+<td>관리비</td>
+<td>(1,428)</td>
+<td>5.5%</td>
+<td>(731)</td>
+<td>3.9%</td>
+<td>+95.3%</td>
+<td>+159bps(악화)</td>
+</tr>
+<tr>
+<td>EBITDA(보고)</td>
+<td>960</td>
+<td>3.7%</td>
+<td>844</td>
+<td>4.5%</td>
+<td>+13.8%</td>
+<td>-81bps</td>
+</tr>
+<tr>
+<td>SBP</td>
+<td>615</td>
+<td>2.4%</td>
+<td>252</td>
+<td>1.3%</td>
+<td>+143.8%</td>
+<td>+102bps</td>
+</tr>
+<tr>
+<td>EBITDA(SBP 제외)</td>
+<td>1,575</td>
+<td>6.1%</td>
+<td>1,096</td>
+<td>5.8%</td>
+<td>+43.8%</td>
+<td>+21bps</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 실적콜에서 CEO는 "SSS 성장의 약 2/3는 물량, 1/3은 가격이며, 가격 부분도 대부분 믹스 개선"이라고 언급했습니다. 내부 인플레이션은 매우 낮다고 했습니다.
+- 전년 SSS가 <span class="up">+17%</span>(HSBC 애널리스트 언급)였던 높은 기저 위에서 <span class="up">+20%</span>를 기록했습니다. 2년 누적으로 보면 가속입니다.
+- 6-K는 매출 성장 대부분이 1년 이상 운영 점포에서 나왔고 신규 점포 기여는 상대적으로 작다고 설명합니다.
+- 매출 QoQ <span class="up">+13.9%</span>를 역산하면 1Q26 매출은 약 Ps. 22.9B입니다(추정).</p>
+<p><strong>마진 방향성</strong>
+- <strong>매출총이익률은 개선</strong>(+54bps)되었습니다. 6-K는 상거래 마진(commercial margin) 개선과 운송비율 하락을 원인으로 듭니다.
+- <strong>판매비는 영업 레버리지가 작동</strong>(-56bps)하고 있으며, 인건비를 포함해 대부분 항목에서 레버리지가 나타났습니다.
+- <strong>관리비는 악화</strong>(+159bps)되었습니다. SBP 영향이 102bps, SBP 제외분이 +57bps입니다. 후자에는 일회성 증자 비용 Ps. 37백만이 포함됩니다.
+- 보고 기준 영업이익률은 1.4%로 YoY <span class="down">-0.7%</span>p(시장 지표)입니다. <strong>SBP 제외 지표만 개선되고 보고 이익은 후퇴하는 괴리</strong>가 있습니다.
+- 실적콜에서 CFO는 "SBP는 비현금이며 이미 완전희석 주식수에 반영되어 있다"고 언급했습니다. 그래도 주주 입장에서는 실질 희석 비용입니다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- 실적콜에 따르면 상반기 영업현금흐름은 Ps. 4.3B로 전년 대비 <span class="up">+119%</span>입니다.
+- 조정 마이너스 운전자본은 Ps. 10.2B(전년 7.1B)이고, IPO·증자 대금을 빼면 LTM 매출의 약 11.2%입니다(실적콜). 이를 역산한 LTM 매출은 약 Ps. 91B입니다(추정).
+- TTM FCF는 3.21B(지표 표기는 $, 실제로는 Ps.일 가능성이 높음)입니다.
+- 5~6월 증자로 회사 몫 신주 2,695,626주를 발행해 총 조달액 약 $87.6M을 확보했습니다. 용도는 "일반 목적, 전략적 투자 포함 가능"(6-K)입니다. 차입금, 순현금, 리스부채는 <strong>공시상 확인 불가</strong>입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 점포 확장</td>
+<td>실적콜에서 CEO는 "부동산 제약이 없고 멕시코 내 확장 여력이 막대하다"고 언급. 자동 요약상 조건이 좋으면 출점 가속 가능</td>
+<td>3Q 순증 점포 수(2Q 155개 대비), LTM 순증 593개 유지·확대 여부</td>
+</tr>
+<tr>
+<td>② 기존점 지갑점유율 확대</td>
+<td>실적콜에서 "고객당 1개만 더 팔아도 SSS가 크게 오른다", "기존 상품군도 침투가 끝나지 않았다"고 언급</td>
+<td>SSS <span class="up">+20%</span>가 유지되는지, 물량 비중 2/3 유지, ANTAD 대비 격차 20%p 이상 유지</td>
+</tr>
+<tr>
+<td>③ 신규 카테고리·플랫폼화</td>
+<td>실적콜에서 "3B는 플랫폼이며, 고객이 필요로 하는 것은 원칙만 지키면 무엇이든 팔 수 있다"고 언급. 신규 카테고리가 낮은 기저에서 빠르게 성장 중</td>
+<td>재고일수 20일 미만 유지(신규 카테고리가 운전자본을 해치지 않는지)</td>
+</tr>
+<tr>
+<td>④ 규모의 경제와 매출총이익률</td>
+<td>구매력 개선과 PB 생산 효율화. 단 CEO는 "어느 시점부터는 마진율보다 가격 인하로 돌려준다"고 언급</td>
+<td>3Q 매출총이익률이 16.8%를 유지하는지, 신규 DC 3개에 따른 물류비 부담 규모</td>
+</tr>
+<tr>
+<td>⑤ 신형 매장 포맷·ERP</td>
+<td>자동 요약상 신규 점포 100%가 개선 포맷이며 램프업이 빠름. ERP 재구축은 AI 도구로 가속되어 1단계 테스트 중</td>
+<td>신규 점포 램프업 데이터 공개 여부, ERP 배포 일정</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤</strong>
+- 매우 자신감 있는 톤입니다. "1분기 모멘텀을 유지하고 더 강화했다", "글로벌로 가장 빠르게 성장하는 리테일러 중 하나"라고 표현했습니다.
+- 자신감의 근거는 정량 지표(SSS 20%, OCF <span class="up">+119%</span>, 운전자본)로 뒷받침됩니다.
+- 수치 가이던스는 내놓지 않는 화법을 유지합니다. "EBITDA 마진을 목표로 경영하지 않는다(we don't drive to an EBITDA)"를 반복합니다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+1. <strong>매출총이익률 지속성</strong> (Morgan Stanley Ruben, JPMorgan Mendez): 두 차례 나왔습니다. CEO는 "장기 추세는 항상 긍정적"이라면서도 "마진율은 어느 시점에 정체될 수 있고, 중요한 것은 이익 총액"이라고 답했습니다. 즉 <strong>매출총이익률이 계속 오른다고 가정하지 말라는 신호</strong>로 읽습니다. 분기별 변동성은 있다고 인정했고 계절성은 부인했습니다.
+2. <strong>관리비·인재 투자</strong> (Goldman Sachs Sgarz): CEO는 "현재로선 인재 추가에 한도가 없다"고 답했습니다. 레버리지는 판매비 라인에서 나와야 한다는 데 동의했습니다. <strong>관리비 디레버리지가 열린 상태로 지속될 위험</strong>을 경영진이 사실상 인정한 셈입니다.
+3. <strong>경쟁(FEMSA)</strong> (HSBC Thomas): "이미 본 것 이상은 없다", "여러 플레이어가 공존할 시장"이라고만 답했습니다. 구체적 대응책은 제시하지 않았습니다.
+4. <strong>스톡옵션 매도 물량</strong> (JPMorgan Mendez): 질문 시점 기준 실적 발표 48시간 뒤 매도 제한이 풀린다고 했습니다. CEO는 "질서 있는 매도 장치가 이미 있다"고만 했고, <strong>구체적 메커니즘은 공개하지 않았습니다.</strong></p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- SSS 구성: 물량 약 2/3, 가격(주로 믹스) 약 1/3.
+- 3Q에 DC 3개 신규 개점(2개는 이미 개점)과 그에 따른 물류비 압박 가능성. 2Q 운송비 개선은 DC 개점 전 비용 관리 덕분이라고 언급.
+- 카드 결제를 빼는 'cardless' 테스트를 진행 중이며 영향은 미미하다고 언급. 확대는 결정되지 않음.
+- 재고일수 20일 미만 유지, 신규 카테고리의 운전자본 영향 없음.
+- 도심 매장은 주차 제약이 있고, 현재 신형 매장 크기에 만족한다고 언급.
+- G&amp;A가 단기적으로 매출의 약 3%일 것이라는 발언은 자동 요약에만 있습니다. 제공된 전문에서는 중략 구간이라 원문으로 확인할 수 없습니다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>20-F 리스크 팩터 본문은 제공되지 않았습니다. 아래는 6-K 실적 발표, 증자 공시, 실적콜에서 확인되는 것만 정리했습니다.</p>
+</blockquote>
+<ol>
+<li><strong>SBP 확대와 보고 이익 후퇴</strong>
+   - SBP는 Ps. 615백만으로 <span class="up">+143.8%</span>, 매출 대비 2.4%입니다. 보고 EBITDA 마진은 81bps 하락했고 영업이익률은 1.4%입니다.
+   - 회사가 강조하는 'SBP 제외' 지표와 실제 주주 귀속 이익 사이의 괴리가 커지고 있습니다.
+   - 6-K 부록에 SBP 전망이 있다고 하지만 제공 자료에는 그 수치가 없습니다.</li>
+<li><strong>매도 물량(오버행)</strong>
+   - 5~6월 증자 15.3M주 중 12.6M주(약 $409.6M)가 기존 주주의 구주 매출이었습니다.
+   - 직원 스톡옵션 락업 해제와 함께 주가가 증자가 대비 <span class="up">+71%</span>인 지금은 추가 매도 유인이 큽니다.
+   - 추가 매도 계획은 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>관리비 디레버리지의 지속</strong>
+   - SBP 제외 관리비가 +57bps 늘었습니다. 경영진은 인재 투자에 "한도 없음"이라고 했습니다.
+   - 판매비 레버리지(-56bps)가 이를 상쇄하지 못하면 SBP 제외 마진도 정체됩니다.</li>
+<li><strong>3Q 물류비와 매출총이익률 반납 가능성</strong>
+   - DC 3개를 동시에 추가합니다. CFO가 물류비 압박을 직접 예고했습니다.
+   - CEO도 매출총이익률 정체 가능성을 언급했습니다. 2Q의 +54bps는 연간 추세로 외삽하기 어렵습니다.</li>
+<li><strong>멕시코 소비와 환율, 경쟁 구조</strong>
+   - 회사는 "멕시코 소비 환경이 약하다(soft consumer environment)"고 밝혔습니다.
+   - 실적은 페소, 주가는 달러로 매겨져 페소 약세가 USD 수익률을 직접 깎습니다.
+   - FEMSA 등의 디스카운트 업태 확장이 진행 중입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ('보통')</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정 (적극 쪽)</th>
+<th>부정 (관망 쪽)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 <span class="up">+38.7%</span>, SSS <span class="up">+20.0%</span>(전년 기저 <span class="up">+17%</span> 위에서)</td>
+<td>영업이익률 1.4%, YoY <span class="down">-0.7%</span>p</td>
+</tr>
+<tr>
+<td>SSS 중 물량 약 2/3, 내부 인플레이션 낮음</td>
+<td>보고 EBITDA 마진 3.7%(-81bps), SBP <span class="up">+143.8%</span></td>
+</tr>
+<tr>
+<td>매출총이익률 +54bps, 판매비 -56bps</td>
+<td>관리비 +159bps(SBP 제외 +57bps)</td>
+</tr>
+<tr>
+<td>상반기 OCF Ps. 4.3B(<span class="up">+119%</span>), 조정 마이너스 운전자본 Ps. 10.2B</td>
+<td>60일 <span class="up">+38.2%</span>, 증자가 대비 <span class="up">+71%</span>, 52주 고점과 <span class="down">-1.3%</span></td>
+</tr>
+<tr>
+<td>확장을 자체 자금으로 충당(회사 주장), 점포 <span class="up">+20%</span></td>
+<td>오늘 상승의 촉매 없음, 밸류에이션 배수 산출 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>밸류에이션 재산출:</strong> 공식 USD/MXN 환율로 LTM 매출(약 Ps. 91B, 추정)과 SBP 반영 이익을 환산합니다. 시가총액 $6.55B 대비 EV/매출과 EV/EBITDA(보고 기준과 SBP 제외 기준 둘 다)를 직접 계산합니다. 시장 지표의 $ 표기 오류도 함께 정정해야 합니다.
+2. <strong>2Q26 6-K 부록의 SBP 전망 원문:</strong> 향후 분기 SBP 규모와 완전희석 주식수를 확인해, SBP를 현금비용처럼 취급했을 때의 이익을 계산합니다.
+3. <strong>오버행 점검:</strong> 5월 구주 매출에 참여한 주주의 잔여 지분과 락업 조건(F-3 보충설명서), 직원 옵션 매도 장치의 실체를 확인합니다.</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 하향)</strong>
+- 3Q26 SSS가 10%대 중반 이하로 떨어지거나, 물량 비중이 줄고 가격 비중이 늘어날 때.
+- 3Q 매출총이익률이 2Q 개선분(+54bps)을 넘어서 반납되고, 동시에 SBP 제외 EBITDA 마진이 전년 대비 하락할 때.
+- SBP가 매출 대비 2.4%를 넘어 계속 늘거나, SBP 제외 관리비 디레버리지가 판매비 레버리지보다 커질 때.
+- 대주주의 추가 구주 매출(6-K/F-3)이 공시되거나, ANTAD 대비 SSS 격차가 20%p 아래로 좁혀질 때(경쟁 심화 신호).</p>
+<p><strong>상향 조건 (적극):</strong> 3Q에 DC 3개 비용을 흡수하고도 SSS 20% 안팎과 SBP 제외 마진 개선이 유지되고, 주가 조정으로 밸류에이션 부담이 해소될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526140232/tbbb-20251231.htm">20-F — 2025-12-31_0001193125-26-140232</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526346965/6k_tbbb_2q26_earnings_re.htm">8-K — 2026-08-12_0001193125-26-346965</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526251437/tbbb-ex99_1.htm">8-K — 2026-06-01_0001193125-26-251437__EX-99.1__tbbb-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526251437/trilogy_-_closing_6-k.htm">8-K — 2026-06-01_0001193125-26-251437</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526246212/trilogy_-_pricing_press_.htm">8-K — 2026-05-28_0001193125-26-246212</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1978954/000119312526241958/trilogy_-_launch_pr_-_6-.htm">8-K — 2026-05-27_0001193125-26-241958</a></li>
+<li>Transcript — 2026-08-13 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

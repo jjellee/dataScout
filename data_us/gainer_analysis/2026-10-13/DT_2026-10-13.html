@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DT — Dynatrace Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>DT — Dynatrace Inc. Common Stock</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">DT</span><span class="badge">+3.89%</span><span class="badge">거래량 1.18배</span><span class="badge">$18.35B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>장점: 펀더멘털 가속이 확인됐다.</strong> 1Q FY27(2026년 6월 말) ARR은 $2,136M(<span class="up">+17%</span> YoY)이다. 실적콜에서 순증 ARR(net new ARR)은 $85M으로 <span class="up">+66%</span>, 오가닉 기준 <span class="up">+41%</span> 늘었다고 언급했다. 매출과 구독매출은 회사 가이던스 상단을 넘었다.</li>
+<li><strong>현금창출력이 크다.</strong> TTM FCF는 $570.6M, 매출총이익률은 81.3%다. 회사는 자사주 매입 한도를 $1B로 두 배 늘렸다고 밝혔다(5월 J.P. Morgan 컨퍼런스 발언). 행동주의 펀드 Starboard가 관여하고 있어 주주환원과 마진 개선 압력이 이어진다.</li>
+<li><strong>약점: 가격이 이미 많이 반영했다.</strong> 60일 수익률은 <span class="up">+46.9%</span>, 52주 고점까지는 <span class="down">-2.7%</span>다. 회사의 FY27 non-GAAP EPS 가이던스($1.97~1.99) 기준 PER은 약 32배, TTM FCF 수익률은 약 3.1%다(산술 계산).</li>
+<li><strong>불확실성이 남아 있다.</strong> GAAP 영업이익률은 12.9%로 전년 대비 <span class="down">-0.2%</span>p다. 매출총이익률에는 단기 하방 압력이 있고, 순증 ARR에 비오가닉(인수) 기여분이 섞여 있다. 1분기 이후 CFO 교체도 발표됐다.</li>
+<li><strong>결론:</strong> 성장 가속이라는 논리는 유효하다. 다만 2Q 실적으로 가속이 재확인되기 전에 추격 매수하기에는 기대가 이미 높다. 그래서 <strong>분할 편입으로 기본 비중까지 싣는 것</strong>은 정당화되지만 적극 비중은 보류한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없다. 공시가 촉매일 가능성은 배제한다.</li>
+<li><strong>뉴스(가장 유력한 촉매):</strong> 두 가지가 겹쳤다.</li>
+<li>RBC가 목표주가를 $73.00으로 제시했다(MarketBeat).</li>
+<li>연방정부 클라우드 보안 인증이 진전됐다는 헤드라인이 나왔다(Investing.com, Stock Titan).</li>
+<li>단, Stock Titan은 "full certification is still ahead"라고 써서 <strong>최종 인증은 아직 완료되지 않았다</strong>. 인증 이름과 단계는 제공 자료로 확인할 수 없다.</li>
+<li><strong>수급 해석:</strong> 거래량은 20일 중앙값의 1.18배로 '급증'이라 보기 어렵다. 거래대금은 $532.4M다. 새로운 펀더멘털 정보가 나왔다기보다, 8월 1Q 실적 이후 이어진 모멘텀(20일 <span class="up">+22.3%</span>)에 셀사이드 목표가 상향과 정부 부문 이벤트가 더해진 <strong>추세 연장형 상승</strong>으로 본다(추정).</li>
+<li><strong>실적:</strong> 8월 5일 1Q 실적 이후 새 실적 이벤트는 없다. 참고로 실적 직후 Seeking Alpha 페이지에 표시된 주가는 $48.87이었다. 현재가 $63.50은 그 대비 약 <span class="up">+30%</span>다(산술 계산).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>10-K Item 1(사업) 본문은 발췌에 없다. 아래는 10-Q MD&amp;A Overview와 실적콜·컨퍼런스 발언을 근거로 썼다.</p>
+</blockquote>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제품</td>
+<td>통합 관측성(observability) 플랫폼. 런타임 애플리케이션 보안과 에이전틱 AI 운영 자동화를 결합한다. 2016년 상용화 이후 주력 단일 제품이다.</td>
+</tr>
+<tr>
+<td>신성장 제품</td>
+<td>차세대 로그 관리. 로그·트레이스·메트릭을 단일 데이터스토어로 통합한다.</td>
+</tr>
+<tr>
+<td>과금 모델</td>
+<td>구독(SaaS, 기간제 라이선스, 유지보수). 대부분 SaaS로 배포되고, 고객 자체 인프라 배포도 지원한다.</td>
+</tr>
+<tr>
+<td>DPS 라이선스</td>
+<td>고객이 연간 최소 지출을 약정하고, 레이트카드에 따라 사용량만큼 소진한다. 플랫폼의 모든 기능을 자유롭게 쓸 수 있다.</td>
+</tr>
+<tr>
+<td>고객군</td>
+<td>글로벌 상위 15,000개 기업. 10-Q(FY26 3Q)는 대체로 연매출 $1B 이상 기업이라고 기술한다.</td>
+</tr>
+<tr>
+<td>채널</td>
+<td>글로벌 직판 조직과 GSI·클라우드 사업자·리셀러·기술 파트너</td>
+</tr>
+<tr>
+<td>매출 구성(1Q FY27)</td>
+<td>총매출 $555M 중 구독 $530M(약 95.5%). 나머지 약 $25M는 비구독 매출이며 세부 내역은 공시상 확인 불가.</td>
+</tr>
+<tr>
+<td>지역별 매출</td>
+<td>공시상 확인 불가. 콜에서 EMEA, 특히 중동의 부진이 언급됐다.</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>경쟁 위치:</strong> CEO는 관측성 시장을 "$75B 이상"으로 언급했다. 로그 시장에서는 Splunk 등을 거론하며, 자사가 단독형 로그 솔루션보다 우월하다고 주장했다(5월 컨퍼런스).</li>
+<li>10-Q 원문도 회사의 로그 제품이 비싸고 가치가 낮거나 고립된 기존 로그 솔루션보다 더 큰 가치를 준다고 밝힌다.</li>
+<li>객관적 점유율 수치는 공시상 확인 불가다.</li>
+<li><strong>해자의 성격(추정):</strong> 대형 엔터프라이즈 환경에 깊이 통합되고, 여러 데이터 유형을 결합한 결정론적 근본원인 분석을 제공한다. 이 두 가지가 전환비용을 만든다. 회사는 이것이 벤더 통합(tool consolidation) 수요를 흡수하는 근거라고 주장한다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<h3>분기 비교</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>FY26 3Q (2025.12)</th>
+<th>FY27 1Q (2026.06)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARR</td>
+<td>$1,972M (<span class="up">+20%</span>)</td>
+<td>$2,136M (<span class="up">+17%</span>)</td>
+<td>10-Q 공시</td>
+</tr>
+<tr>
+<td>총매출</td>
+<td>$515M (<span class="up">+18%</span>)</td>
+<td>$555M (<span class="up">+16%</span>)</td>
+<td>10-Q 공시</td>
+</tr>
+<tr>
+<td>구독매출</td>
+<td>$493M (<span class="up">+18%</span>)</td>
+<td>$530M (<span class="up">+16%</span>)</td>
+<td>10-Q 공시</td>
+</tr>
+<tr>
+<td>GAAP 영업이익</td>
+<td>$73M</td>
+<td>$71M</td>
+<td>10-Q 공시</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업이익</td>
+<td>$153M</td>
+<td>$162M (마진 29%)</td>
+<td>10-Q, 실적콜</td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>$34M</td>
+<td>$306M</td>
+<td>10-Q 공시</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>$27M ("free cash flow")</td>
+<td>$309M ("adjusted free cash flow")</td>
+<td>10-Q 공시</td>
+</tr>
+</tbody>
+</table></div>
+<h3>성장의 질</h3>
+<ul>
+<li><strong>보고 기준 성장률 해석:</strong> ARR 성장률은 보고 기준으로 20%에서 17%로 낮아졌다. 그런데 5월 컨퍼런스에서 애널리스트는 "4분기 연속 16% ARR 성장"이라고 표현했다. 실적콜의 성장률은 고정환율(constant currency) 기준이다.</li>
+<li>따라서 FY26 3Q의 20%에는 환율 효과가 섞였을 가능성이 크다(추정). <strong>고정환율 기준으로는 16%에서 17%로 소폭 가속</strong>한 것으로 해석된다.</li>
+<li><strong>순증 ARR:</strong> 실적콜 발언은 $85M, <span class="up">+66%</span>, 오가닉 <span class="up">+41%</span>다.</li>
+<li>이로부터 역산하면 전년 동기 순증 ARR은 약 $51M, 오가닉 순증은 약 $72M, 인수 기여분은 약 $13M다(산술 추정).</li>
+<li><strong>오가닉만으로도 강한 가속</strong>이지만, 헤드라인 숫자에는 인수 효과가 섞여 있다. 인수 대상과 규모는 발췌 공시로 확인할 수 없다.</li>
+<li><strong>성장 구성:</strong></li>
+<li>물량: 신규 고객 증가율이 사상 최고인 160% 이상이었다(실적콜).</li>
+<li>단가·믹스: 직전 분기 $1M 이상 딜이 22건이었다(5월 컨퍼런스).</li>
+<li>로그: 연환산 소비가 $100M를 넘었고 100% 이상 성장 중이다(5월 컨퍼런스).</li>
+<li>단가와 물량의 정량 분해는 공시상 확인 불가다.</li>
+<li><strong>매출 QoQ <span class="up">+4.3%</span>:</strong> 매출 성장(16%)이 ARR 성장(17%)을 소폭 밑돈다. DPS 소비형 모델 특성상 ARR이 매출에 선행하는 구조로 보인다(추정).</li>
+</ul>
+<h3>마진</h3>
+<ul>
+<li><strong>GAAP와 non-GAAP 격차:</strong> 1Q 기준 분기 약 $91M, 매출의 약 16%다. 주식보상비용과 무형자산상각이 주된 원인으로 추정하지만 세부 내역은 발췌상 확인 불가다.</li>
+<li>GAAP 영업이익률은 12.9%로 전년 대비 <span class="down">-0.2%</span>p다. <strong>GAAP 레버리지는 아직 없다.</strong></li>
+<li><strong>경영진 발언(5월 컨퍼런스):</strong> CFO는 FY27에 영업비용 레버리지 150bp로 <strong>단기 매출총이익률 하락을 상쇄</strong>하겠다고 밝혔다. 매출총이익률 하락 원인은 명시되지 않았다. 로그와 클라우드 호스팅 비용 증가 가능성을 추정한다.</li>
+</ul>
+<h3>현금흐름</h3>
+<ul>
+<li><strong>계절성:</strong> 1Q 영업현금흐름은 $306M, FY26 3Q는 $34M로 계절성이 극단적이다. 연간 선청구가 1Q에 몰리는 구조로 추정한다. 분기 FCF로 추세를 판단하면 안 되고 TTM으로 봐야 한다.</li>
+<li><strong>밸류에이션 지표(산술 계산):</strong> TTM FCF $570.6M는 시가총액의 약 3.1%다. 시가총액 대비 FCF는 약 32배다.</li>
+<li><strong>용어 변경:</strong> FCF 지표명이 FY26 3Q의 "free cash flow"에서 FY27 1Q의 "adjusted free cash flow"로 바뀌었다. 정의 변경 내역은 발췌상 확인 불가이며, <strong>진입 전 정의 확인이 필요하다.</strong></li>
+</ul>
+<h3>재무 건전성</h3>
+<ul>
+<li><strong>현금·부채 잔액:</strong> 공시상 확인 불가. CFO는 "상당한 현금이 대차대조표에 있다"고만 언급했다.</li>
+<li><strong>신규 신용계약(2026.09.24, 8-K):</strong> Bank of America가 행정대리인이다. 한도, 금리, 인출 여부는 발췌상 확인 불가다.</li>
+<li>기존 무차입에 가까운 구조에서 레버리지 여력을 확보한 것으로 보인다(추정). 용도(자사주 매입, M&amp;A, 일반운영)를 확인해야 한다.</li>
+<li><strong>주식수:</strong> 2026년 5월 19일 기준 291,475,733주였다. 현재 시가총액과 주가로 역산하면 약 2.89억 주로, 자사주 매입에 따른 소폭 감소와 일치한다(추정).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축(회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>로그 관리</strong>: 회사는 로그 사업이 "계속 두 배씩 성장"하고 장기적으로 $1B까지 갈 수 있다고 밝혔다(5월 컨퍼런스, $250M은 aspirational).</td>
+<td>기존 로그 벤더 워크로드가 Dynatrace로 옮겨 오고, 가격 경쟁력이 유지돼야 한다.</td>
+<td>로그 연환산 소비 규모와 성장률이 갱신되는지 본다. 공시가 아니라 콜에서만 나올 가능성이 높다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>엔드투엔드 관측성과 벤더 통합</strong>: 대형 딜 증가($1M 이상 22건)</td>
+<td>대형 고객의 툴 통합 예산이 유지되고 영업사원 생산성이 오르는지</td>
+<td>$1M 이상 딜 수, 순증 ARR 오가닉 성장률(1Q <span class="up">+41%</span>)이 유지되는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>DPS 소비 확대</strong>: 10-Q는 DPS가 소비 확대와 확장 기회를 키운다고 기술한다.</td>
+<td>실제 소비가 약정을 넘어서는지(오버리지, 조기 갱신)</td>
+<td>순매출유지율(NRR)은 발췌상 확인 불가다. 콜에서 소비 대비 약정 코멘트가 나오는지 본다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>영업조직 재편</strong>: 전략 고객군을 Global 500에서 100~150개 더 넓히고, 계정당 4~5명을 배치한다(5월 컨퍼런스 CFO 발언).</td>
+<td>담당 계정 축소로 침투율이 높아지는지</td>
+<td>신규 고객 증가율(1Q 160% 이상)이 기저효과 이후에도 높게 유지되는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>에이전틱 AI와 자율 운영</strong>: 10-Q는 사람의 개입 없이 의사결정·실행하는 에이전틱 AI 역량에 계속 집중한다고 밝힌다.</td>
+<td>고객이 이를 돈을 내고 쓰는지</td>
+<td>AI 관련 매출이나 사용 지표가 정량 공개되는지. 현재는 공시상 확인 불가다.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>연방정부 시장</strong>: 인증이 진행 중이다(뉴스).</td>
+<td>최종 인증 획득</td>
+<td>인증 완료 공시나 보도, 연방 부문 수주 코멘트</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스 화법</strong>
+- <strong>톤이 강해졌다.</strong> CEO는 5월에 밝힌 FY27 ARR 가속에 대해 "확신이 강화됐다(reinforces our conviction)"고 표현했다(1Q 콜).
+- <strong>'보수적 가이던스' 프레임을 반복한다.</strong> CFO는 5월 컨퍼런스에서 "내부 계획에서 할인(haircut)한 숫자를 시장에 제시한다", "가이던스 상단을 상회할 가시성이 있다"고 말했다.
+  - 실제로 1Q 순증 ARR은 <span class="up">+66%</span>로 연간 함의치(16~23%)를 크게 웃돌았다.
+  - 그런데도 1Q 이후 ARR 성장률 가이던스 15.5~16.5%는 <strong>상향 없이 유지</strong>했다(SA 뉴스 헤드라인).
+  - 회사가 밝힌 상반기 쏠림(순증 ARR 46/54 배분)과 인수 기여분을 감안하면 일관된 화법이다. 그러나 하반기에 순증 ARR이 기대보다 둔화될 여지를 열어둔 것으로도 읽힌다(해석).
+- <strong>FY27 EPS 가이던스는 $1.97~1.99다</strong>(SA 요약). 1Q 이후 상향 여부와 폭은 제공 자료로 확인할 수 없다.</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점(5월 컨퍼런스 기준)</strong>
+- <strong>가이던스 범위가 넓다는 지적:</strong> 순증 ARR 16~23%라는 범위에 대해, CFO는 하단도 가속이라는 논리로 방어했다.
+- <strong>FY26 4Q 순증 ARR 성장률 9% 부진:</strong> CFO는 EMEA, 특히 중동이 내부 기대보다 약했다고 인정했다. "두 자릿수와 9%의 차이는 수백만 달러"라며 영향을 축소했다.
+- <strong>Starboard 서한(4월 28일):</strong> 애널리스트가 서한 자체는 다루지 않겠다고 하며 질문했다. CFO는 서한의 구체 요구에는 답하지 않았다. 대신 성장 가속, 150bp 영업비용 레버리지, 자사주 매입 확대라는 일반 프레임으로 답했다. <strong>행동주의 펀드의 요구사항은 여전히 불투명하다.</strong></p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 순증 ARR $85M와 오가닉 <span class="up">+41%</span>: 인수 기여분 존재가 콜에서 드러났다.
+- 신규 고객 증가율 160% 이상, non-GAAP 영업이익률 29%
+- 로그 연환산 소비 $100M 이상과 100% 이상 성장, $1M 이상 딜 22건
+- 자사주 매입 한도를 2월에 $1B로 2배 확대, 매입 속도를 3Q 대비 4Q에 40% 확대
+- FY27 매출총이익률 단기 하락과 영업비용 레버리지 150bp 계획
+- <strong>CFO 교체 발표</strong>(SA 헤드라인 "announces CFO transition"). 후임과 시점은 제공 자료로 확인할 수 없다.</p>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K Item 1A(리스크 요인) 본문은 발췌에 없다. 아래는 MD&amp;A, 실적콜, 8-K를 근거로 꼽은 실질 리스크다.</p>
+</blockquote>
+<ol>
+<li><strong>성장 가속의 질 리스크:</strong> 1Q 순증 ARR <span class="up">+66%</span> 가운데 오가닉은 <span class="up">+41%</span>다. 하반기에 인수 효과가 사라지거나 상반기 쏠림(46%)이 겹치면 헤드라인 성장률이 꺾일 수 있다.
+   - 연간 ARR 가이던스를 유지했다는 것은 하반기 기여가 크지 않을 가능성을 회사 스스로 열어둔 것이다.</li>
+<li><strong>매출총이익률과 GAAP 수익성:</strong> 매출총이익률 81.3%에 단기 하락 압력이 있다고 회사가 직접 밝혔다.
+   - GAAP 영업이익률은 12.9%로 전년 대비 <span class="down">-0.2%</span>p이며 개선되지 않고 있다.
+   - 로그처럼 데이터 집약적인 제품이 커질수록 원가 부담이 커지는 구조일 수 있다(추정).</li>
+<li><strong>경영진 교체와 행동주의:</strong> CFO 교체 발표와 Starboard 관여가 동시에 진행 중이다.
+   - "보수적 가이던스"라는 신뢰를 쌓아온 CFO가 바뀌면 가이던스 화법이 바뀔 위험이 있다.
+   - 행동주의 펀드의 요구(매각, 이사회 변경, 마진 목표 등)는 공시상 확인 불가다.</li>
+<li><strong>거시 환경과 지역 리스크:</strong> 10-Q는 지정학, 관세, 환율, 금리가 딜 규모와 영업 사이클에 영향을 준다고 명시한다.
+   - FY26 4Q에는 EMEA와 중동 부진이 실제 실적 미달로 이어졌다(5월 컨퍼런스).
+   - 소비형 DPS 모델은 고객 예산이 줄 때 사용량이 먼저 감소할 수 있다(추정).</li>
+<li><strong>재무 구조 변화:</strong> 2026년 9월 24일 BofA 주관 신규 신용계약을 체결했다. 한도와 용도가 확인되지 않았다. 차입 기반 자사주 매입이나 M&amp;A로 쓰이면 자본배분 성격이 바뀐다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>'보통'을 뒷받침하는 정량 근거</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>지표</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>성장</td>
+<td>ARR $2,136M(<span class="up">+17%</span>), 오가닉 순증 ARR <span class="up">+41%</span>, 신규 고객 <span class="up">+160%</span> 이상</td>
+<td>긍정. 가속 국면 진입</td>
+</tr>
+<tr>
+<td>수익성</td>
+<td>Non-GAAP 영업이익률 29%, 매출총이익률 81.3%</td>
+<td>긍정. 다만 GAAP 영업이익률 12.9%로 정체</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>TTM FCF $570.6M, FCF 수익률 약 3.1%</td>
+<td>중립. 질은 우수하나 가격이 높음</td>
+</tr>
+<tr>
+<td>밸류에이션</td>
+<td>FY27 EPS 가이던스 중간값 대비 PER 약 32배(산술)</td>
+<td>중립~부담</td>
+</tr>
+<tr>
+<td>주가 위치</td>
+<td>60일 <span class="up">+46.9%</span>, 52주 고점 대비 <span class="down">-2.7%</span>, RBC 목표가 $73 대비 상승여력 약 15%</td>
+<td>부담. 단기 기대가 상당 부분 반영</td>
+</tr>
+<tr>
+<td>수급</td>
+<td>거래량 1.18배</td>
+<td>확신을 실은 매수세의 증거로는 약함</td>
+</tr>
+</tbody>
+</table></div>
+<p>판단 요약: 펀더멘털은 '적극'에 가깝다. 그러나 가격, 하반기 성장 가시성, 경영진 교체를 감안해 <strong>'보통'(분할 편입)</strong>으로 한 단계 낮췄다.</p>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>2Q FY27 실적(발표 일정은 제공 자료로 확인 불가):</strong> 오가닉 순증 ARR 성장률이 두 자릿수 이상 유지되는지, 연간 ARR 가이던스 15.5~16.5%가 상향되는지 확인한다.</li>
+<li><strong>신규 신용계약(8-K)의 한도·인출 여부·용도, 그리고 adjusted FCF 정의 변경 내역:</strong> 차입 기반 자사주 매입이나 M&amp;A인지, FCF에서 무엇을 조정했는지 확인한다.</li>
+<li><strong>CFO 후임과 Starboard 관련 후속 공시:</strong> 이사회 변경, 합의, 마진 목표 등이 있는지 본다. 동시에 매출총이익률 하락 폭이 회사가 말한 '단기'에 머무는지 확인한다.</li>
+</ol>
+<h3>판단을 뒤집을 조건</h3>
+<ul>
+<li><strong>'관망'으로 낮출 조건:</strong></li>
+<li>2Q 오가닉 순증 ARR 성장률이 FY27 연간 함의치 하단(16%) 근처로 급락하거나, ARR 가이던스를 하향할 때</li>
+<li>매출총이익률 하락이 영업비용 레버리지를 넘어 non-GAAP 영업이익률이 29% 아래로 의미 있게 떨어질 때</li>
+<li>신용계약 인출이 수익성을 동반하지 않은 대형 M&amp;A로 이어질 때</li>
+<li>신임 CFO 체제에서 가이던스 화법이 바뀌어(보수성 철회) 신뢰도가 낮아질 때</li>
+<li><strong>'적극'으로 올릴 조건:</strong></li>
+<li>2Q에도 오가닉 순증 ARR 가속(<span class="up">+30%</span> 이상)이 확인되고, 연간 ARR 가이던스를 상향할 때</li>
+<li>로그 연환산 소비가 2배 성장 궤적을 유지할 때</li>
+<li>GAAP 영업이익률이 전년 대비 개선으로 돌아설 때</li>
+<li>위 조건이 충족되기 전에 주가가 조정받아 밸류에이션 부담이 줄어들 때</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000019/dt-20260331.htm">10-K — 2026-03-31_0001773383-26-000019</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000050/dt-20260630.htm">10-Q — 2026-06-30_0001773383-26-000050</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000008/dt-20251231.htm">10-Q — 2025-12-31_0001773383-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000059/exhibit101-dynatracebofa.htm">8-K — 2026-09-24_0001773383-26-000059__EX-10.1__exhibit101-dynatracebofa</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000059/dt-20260924.htm">8-K — 2026-09-24_0001773383-26-000059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000057/dt-20260826.htm">8-K — 2026-08-26_0001773383-26-000057</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000054/exhibit992-pricingpressrel.htm">8-K — 2026-08-20_0001773383-26-000054__EX-99.2__exhibit992-pricingpressrel</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1773383/000177338326000054/exhibit991-announcementpre.htm">8-K — 2026-08-20_0001773383-26-000054__EX-99.1__exhibit991-announcementpre</a></li>
+<li>Transcript — 2026-08-05 Dynatrace, Inc. (DT) Q1 2027 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-19 Dynatrace, Inc. (DT) Presents at J.P. Morgan 54th Annual Global Technology, Media and Communications Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

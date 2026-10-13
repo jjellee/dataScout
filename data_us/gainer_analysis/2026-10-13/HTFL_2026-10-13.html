@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTFL — Heartflow Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>HTFL — Heartflow Inc. Common Stock</h1>
+<div class="sub">2026-10-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">HTFL</span><span class="badge">+4.43%</span><span class="badge">거래량 0.5배</span><span class="badge">$4.33B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털 모멘텀은 확인된다. 2Q26 매출은 $64.1M로 전년 대비 <span class="up">+48%</span> 늘었고, 이는 실적콜 기준 최근 8개 분기 중 가장 빠른 성장이다. 연간 매출 가이던스는 $246~250M로 올라갔다(종전 $228~232M). 매출총이익률은 83.0%(Non-GAAP 83.3%)이고, Non-GAAP 영업손실은 $11.5M에서 $7.9M으로 줄었다.</li>
+<li>다만 주가가 펀더멘털을 상당 부분 선반영했다. 60일 수익률은 <span class="up">+103.2%</span>이고 주가는 52주 고점 대비 <span class="down">-4.7%</span>에 있다. 시가총액 $4.33B는 2026년 매출 가이던스 기준 약 17.3~17.6배다(당사 계산).</li>
+<li>오늘 상승에는 확인된 촉매가 없다. 거래량도 20일 중앙값의 0.5배에 그쳐 스크린 전제인 '거래량 급증'과 맞지 않는다. 확신을 담은 매수세로 보기 어렵다.</li>
+<li>성장은 물량 주도이고 건당 매출은 하락 중이다(4절 참조). 마진 개선의 상당 부분은 2027년 이후 이벤트(자동화 처리, Plaque 가격 인상)에 달려 있다.</li>
+<li>결론: 기본 비중으로 시작한다. 비중 확대는 3Q26 실적에서 성장 속도와 Plaque 지표가 확인되거나 주가가 조정받을 때로 미룬다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 뉴스 헤드라인도 시세 페이지와 'AI 헬스케어 종목' 리스트성 기사뿐이고 개별 재료가 아니다.</li>
+<li>거래량 배수 0.5배, 거래대금 $40.4M로 상승폭(<span class="up">+4.43%</span>)에 비해 수급 강도가 약하다. 20일 수익률은 <span class="up">+2.1%</span>다. 8월 13일 2Q 실적과 가이던스 상향 이후 생긴 추세가 이어지는 것으로 보이며, 고점 부근에서 소폭 반등한 성격으로 판단한다(추정).</li>
+<li>'AI 헬스케어' 테마 기사에 함께 거론된 점은 섹터·테마 동조 가능성을 시사한다. 인과는 입증되지 않았다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- 관상동맥 CT 혈관조영술(CCTA) 영상 한 장에 AI와 전산유체역학을 적용해 환자별 3D 심장 모델을 만드는 소프트웨어 플랫폼이다(10-K).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>제품</th>
+<th>기능</th>
+<th>과금</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FFRCT Analysis</td>
+<td>혈류 제한(FFR ≤0.80) 판정</td>
+<td>건당 과금. 2026년 3월 말 기준 누적 매출의 98%(1Q 10-Q)</td>
+</tr>
+<tr>
+<td>Plaque Analysis</td>
+<td>플라크 양·성상 정량화</td>
+<td>건당 과금. CPT 75577 급여가 2026년 1월 1일 발효</td>
+</tr>
+<tr>
+<td>RoadMap Analysis</td>
+<td>해부학적 시각화</td>
+<td>무료. 고객 유지용</td>
+</tr>
+<tr>
+<td>PCI Navigator (2026년 4월 출시)</td>
+<td>시술 계획 지원</td>
+<td>무료. 실적콜에서 "보험 급여 추진 계획 없음"이라고 언급</td>
+</tr>
+<tr>
+<td>Plaque Tracker (2027년 예정)</td>
+<td>연속 CCTA로 플라크 변화 추적</td>
+<td>미정</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수익 모델</strong>
+- 사실상 전량이 'pay-per-click' 매출이다. 의사가 분석을 요청해 결과가 전달되는 시점에 매출로 인식한다.
+- 장비 판매가 없는 클라우드 모델이다. 회사는 영업 조직이 시술 현장에 들어가지 않는 "capital efficient" 구조라고 밝힘.</p>
+<p><strong>고객 및 지역 구성</strong>
+- 미국 계정 수는 2025년 말 기준 1,465개 이상이다. 2025년 신규 계정은 사상 최대인 340개였다(실적콜).
+- 2Q26 미국 매출은 $59.6M(<span class="up">+51%</span>), 해외 및 기타는 $4.5M(약 7%)이다(실적콜).
+- 미국·영국·EU·일본에서 승인과 상업화를 마쳤다.</p>
+<p><strong>매출 구성(2Q26)</strong>
+- Plaque 매출은 $7.8M로 전체의 약 12%다(당사 계산).
+- 나머지 대부분은 FFRCT 매출로 추정된다. 제품별 정확한 분해는 공시상 확인 불가하다.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 자사가 "가장 널리 채택된 AI 기반 CAD 검사"라고 밝힘.
+- 누적 75만 명 이상의 환자를 분석했다(2026년 6월 말 기준).
+- 실적콜에서 lesion-specific FFRCT 값을 제공하고 침습적 표준검사 대비 전향적 검증을 받은 유일한 제품이라고 언급했다.
+- 제공된 발췌 범위에서는 경쟁사 이름과 점유율을 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 추이</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$52.6M (<span class="up">+41.4%</span> YoY)</td>
+<td>$64.1M (<span class="up">+47.7%</span> YoY, <span class="up">+21.9%</span> QoQ)</td>
+<td>성장 가속</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>공시상 확인 불가</td>
+<td>83.0% (전년 75.6%, 실적콜)</td>
+<td>+770bp</td>
+</tr>
+<tr>
+<td>GAAP 영업손실</td>
+<td>공시상 확인 불가</td>
+<td>$17.9M (마진 <span class="down">-27.9%</span>)</td>
+<td>영업이익률 <span class="up">+3.7%</span>p YoY</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업손실</td>
+<td>—</td>
+<td>$7.9M (전년 $11.5M)</td>
+<td>GAAP과 약 $10M 차이. 조정 항목 구성은 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>GAAP 순손실</td>
+<td>$27.4M</td>
+<td>$15.7M (전년 $9.2M)</td>
+<td>전년 대비로는 확대</td>
+</tr>
+<tr>
+<td>현금성 자산 및 투자자산</td>
+<td>$254.9M</td>
+<td>$246.8M</td>
+<td>분기 감소 약 $8.1M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 — 단가·물량·믹스</strong>
+- 2Q 매출 건수는 84,491건으로 <span class="up">+74%</span> 늘었지만 매출은 <span class="up">+48%</span>에 그쳤다.
+- 이를 역산하면 건당 매출은 약 $894에서 약 $758로 대략 15% 하락했다(당사 계산). 건수 집계 기준, 즉 FFRCT와 Plaque를 따로 세는지는 확인할 수 없다.
+- 실적콜에서 애널리스트도 1Q 건당 매출이 약 10% 하락했다고 언급했다.
+- 따라서 성장은 물량 주도이고, FFRCT 단가 압력과 상대적으로 낮은 단가 상품의 믹스 증가가 함께 작용한 것으로 판단한다.
+- CFO는 FFRCT 평균판매단가(ASP)가 "예상보다 소폭 양호"했고, 전년 대비 ASP 변동폭은 2027년부터 완화된다고 언급했다.
+- Plaque ASP는 2026년 하반기에는 변화가 없고, 2027년 초에 의미 있게 오를 것이라고 언급했다.</p>
+<p><strong>마진 방향성</strong>
+- 연간 Non-GAAP 매출총이익률 가이던스는 약 82%다. 2Q 수준(83.3%)보다 낮아 하반기에 원가성 인력 채용을 반영한 것으로 보인다.
+- 2Q 매출총이익 서프라이즈의 약 75%는 Plaque 매출 초과 덕분이었다. 나머지는 인원 효율과 무형자산 상각 감소다(실적콜).
+- 중기 목표 85%는 2027년 자동화 처리(autonomous processing) 확대가 전제다.</p>
+<p><strong>GAAP 순손실 확대</strong>
+- 2Q 순손실이 전년 $9.2M에서 $15.7M으로 늘었다. 영업 개선과 방향이 다르다.
+- 영업외 항목(전년도 공정가치 변동 등) 영향으로 추정되나, 발췌 범위에서는 확인 불가하다.</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM 잉여현금흐름(FCF)은 -$59.2M이다. 현금 $246.8M 대비 TTM 소진 속도로 약 4년을 버틸 수 있다(당사 계산).
+- 2Q 순현금 감소는 약 $8M로 둔화됐다.
+- IPO 순조달액은 $332.4M(2025년 8월, 공모가 $19)이다.
+- 실적콜에서 2028년 중반 현금흐름 흑자를 목표로 하고, 현 재무구조로 흑자까지 운영 가능하다고 언급했다.
+- 추가 증자 필요성은 낮아 보인다(추정).</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① Plaque Analysis 상업화</strong>
+- 근거: CPT 75577이 2026년 1월 발효됐다. MAC 7곳 중 5곳이 급여하고, 실적콜 기준 커버리지는 약 78%다.
+- 회사 전망: 연간 Plaque 매출 $29~31M, 활성 계정 약 1,250개라고 밝힘.
+- 실현 조건:
+  - 계정당 활용률이 상승해야 한다. 회사가 제시한 최대 적용 가능률은 60%이고, 현재는 "아직 60%와는 거리가 멀다"고 언급했다.
+  - 나머지 MAC 2곳으로 급여가 확대돼야 한다.
+- 검증 포인트:
+  - 3Q Plaque 매출이 $8M을 넘는 추세인지 본다. 연간 하단 $29M과 상반기 실적의 차이에서 역산한다. 1Q Plaque 매출은 발췌 범위에서 확인 불가다.
+  - 활성 계정 수 경로를 확인한다.</p>
+<p><strong>② FFRCT 물량과 신규 계정 램프업</strong>
+- 근거: 2025년 코호트 340개 계정이 예상대로 램프업 중이다. 2026년 코호트의 초기 추세도 "고무적"이라고 언급했다(실적콜).
+- 검증 포인트:
+  - 3Q 건수 증가율을 본다.
+  - 건당 매출의 하락폭이 축소되는지 본다. 회사 주장대로라면 2027년부터 완화돼야 한다.
+  - CFO가 언급한 FFRCT 계절성을 소화하는지 확인한다.</p>
+<p><strong>③ 마진 레버리지(자동화 처리, 운영비 효율)</strong>
+- 회사 전망: 운영비/매출 비율이 연간 최소 5%p 개선되고, 중기 매출총이익률은 85%라고 밝힘.
+- 검증 포인트:
+  - 3Q Non-GAAP 운영비/매출 비율을 확인한다(2Q 96%).
+  - 자동화 처리 롤아웃 일정(2027년)이 유지되는지 확인한다.</p>
+<p><strong>④ 무증상 고위험군 시장 진출(장기)</strong>
+- 회사 전망: 미국 TAM을 약 $6B 늘려 약 $11B로 확대한다고 밝힘.
+- 이를 위해 무작위 대조시험(RCT) 3건을 진행한다. 2건은 4Q26, 1건은 1Q27에 등록을 시작한다. 실적콜에서 "2020년대 말 이전 급여 기술로 접근"하겠다고 언급했다.
+- 단기 실적 기여는 없다.
+- 검증 포인트: RCT 등록 개시 공시와 R&amp;D 비용 증가 폭.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 가이던스 화법</strong>
+- 매우 자신감 있는 톤이다. CEO는 "outstanding quarter", "momentum is accelerating"이라고 표현했다.
+- 가이던스는 2개 분기 연속 올렸다. 이번 상향폭은 2Q 서프라이즈의 2배를 넘는다(CFO).
+- CFO는 "high conviction baseline + 순차 성장"이라는 보수적 가이던스 철학을 반복했다.
+  - 실제로 상향 후 가이던스를 역산하면 하반기 매출은 $129.3~133.3M이다(당사 계산).
+  - 분기 평균 $64.7~66.7M으로 2Q($64.1M)와 거의 같은 수준이라 비트(beat) 여지가 커 보인다(추정).</p>
+<p><strong>반복된 질문</strong>
+- 건당 매출/ASP 동향(Stifel)
+  - CFO는 FFRCT와 Plaque로 나눠 상세히 답했다.
+  - 다만 FFRCT ASP 하락 자체는 부인하지 않았다. "컨센서스가 대체로 맞다"는 수준의 답변이었다.
+- 매출총이익률 경로(Baird)
+  - 하반기 마진이 왜 오르지 않는지 묻자, 원가성 인력 채용으로 상쇄된다고 방어했다.
+- Plaque 가이던스에 Plaque Staging 효과가 반영됐는지
+  - "step change는 가정하지 않았다"고 답했다.
+- 법적 이슈(Canaccord)
+  - DOJ CID에 대해서는 "기존 공개 내용 외 업데이트 없음"이라고 답했다. 사실상 정보 제공을 회피한 것이다.
+  - "수개월이 아닌 수년" 걸릴 사안이라고 언급했다.</p>
+<p><strong>콜에서만 드러난 정보</strong>
+- 2Q 글로벌 매출 건수 84,491건(<span class="up">+74%</span>), Plaque 매출 $7.8M, 미국 매출 <span class="up">+51%</span>
+- Plaque 활용률 상한 60%
+- NIH PRE-EMPT 연구(1,500명)의 독점 Plaque 공급자로 선정
+- 2028년 중반 현금흐름 흑자 목표
+- PCI Navigator는 무과금이며 보험 급여 추진 계획 없음
+- CMS의 AI 소프트웨어 급여 체계 개편안을 "constructive"로 평가하고, 단기 부정적 영향은 없다고 봄
+- 학습 데이터셋이 2억 장 이상의 CCTA 이미지로 늘었다(10-K 시점 1.6억 장 대비)</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>FFRCT 단가 하락과 단일 제품 의존</strong>
+   - FFRCT가 누적 매출의 98%다.
+   - 물량 성장(<span class="up">+74%</span>)과 매출 성장(<span class="up">+48%</span>)의 격차가 크다.
+   - ASP 하락이 2027년에 완화되지 않으면 성장률과 마진 가정이 모두 약해진다.</li>
+<li><strong>급여·규제 의존</strong>
+   - Plaque 성장은 CPT 75577과 MAC 커버리지에 달려 있다. 아직 2곳은 사례별 심사다.
+   - CMS의 AI 소프트웨어 급여 체계 개편안은 회사가 긍정적으로 보지만 최종 확정 전이다(실적콜).</li>
+<li><strong>DOJ CID 조사</strong>
+   - 실적콜에서 DOJ CID의 존재가 확인됐다. 조사 범위와 대상은 제공된 발췌에서 확인 불가하다.
+   - 의료기기와 보험청구 관련 조사라면 결과에 따라 매출 구조에 영향이 있을 수 있다(추정). 회사는 수년이 걸릴 것이라고 언급했다.</li>
+<li><strong>특허 소송</strong>
+   - 다년간 진행될 것으로 언급됐다. 실적콜 발언("our claims", "the complaint")으로 보아 회사가 제기한 소송으로 추정되나, 당사자 관계와 쟁점은 발췌상 확인 불가하다.</li>
+<li><strong>밸류에이션과 수급</strong>
+   - 60일간 <span class="up">+103%</span> 오른 뒤라 주가가 52주 고점 부근이다. 매출 대비 약 17배로 프리미엄이 크다.
+   - 적자 기업(GAAP 영업이익률 <span class="down">-27.9%</span>)이어서 성장 둔화 신호에 주가가 민감하게 반응할 것이다(추정).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong>
+- 긍정 요인:
+  - 매출 성장이 1Q <span class="up">+41%</span>에서 2Q <span class="up">+48%</span>로 가속했다.
+  - 가이던스가 2회 연속 상향돼 연간 +40~42%를 제시했다.
+  - 매출총이익률이 770bp 개선됐다.
+  - Non-GAAP 운영비/매출 비율이 102%에서 96%로 낮아졌다.
+  - 순현금 감소는 분기 약 $8M인 반면 현금은 $246.8M이다.
+  - 하반기 가이던스가 보수적이어서 비트 여지가 크다(당사 계산).
+- 제약 요인:
+  - 매출 대비 약 17배 밸류에이션에 60일 <span class="up">+103%</span> 급등했다.
+  - 건당 매출이 약 15% 하락했다(당사 계산).
+  - GAAP 순손실이 전년 대비 확대됐다.
+  - 오늘 상승은 거래량 0.5배로 촉매가 없다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q26 실적(11월 예상)</strong>
+   - 매출이 상향된 하반기 기준선(분기 약 $65~67M)을 의미 있게 넘는지 본다.
+   - Plaque 매출이 순차적으로 늘어나는지 본다.
+2. <strong>건당 매출 추이</strong>
+   - 3Q 건수 성장률과 매출 성장률의 격차가 2Q(74% 대 48%)보다 좁혀지는지 확인한다.
+   - 이것이 ASP 하락 완화 주장을 검증하는 1차 지표다.
+3. <strong>DOJ CID 관련 10-Q 리스크 문구 변화</strong>
+   - 다음 10-Q 법률 절차 항목에서 조사 범위, 충당금, 합의 관련 기재가 새로 생기는지 확인한다.
+   - 조사 개요 자체도 직접 확인해야 한다. 이번 발췌에는 포함되지 않았다.</p>
+<p><strong>판단을 뒤집을 조건(관망 이하로 하향)</strong>
+- 3Q 매출이 가이던스 기준선 수준에 그치거나 성장률이 40% 아래로 둔화하는 경우
+- Plaque 연간 가이던스($29~31M)나 활성 계정 목표(약 1,250개)를 하향하는 경우
+- 매출총이익률이 82% 아래로 떨어지거나, 2027년 ASP 하락 완화 발언을 철회하는 경우
+- DOJ CID가 민·형사 소송으로 확대되거나 급여 청구 관행 문제로 구체화되는 경우
+- CMS AI 소프트웨어 급여 체계가 FFRCT나 Plaque 급여액을 낮추는 방향으로 확정되는 경우</p>
+<p><strong>적극으로 상향할 조건</strong>
+- 3Q에 매출 가속과 Plaque 서프라이즈가 확인되고, 건당 매출 하락폭이 축소되는 경우
+- 또는 위 펀더멘털 변화 없이 주가만 조정받는 경우(밸류에이션 부담 완화)</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000042/htfl-20251231x10k.htm">10-K — 2025-12-31_0001464521-26-000042</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000131/htfl-20260630x10q.htm">10-Q — 2026-06-30_0001464521-26-000131</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000071/htfl-20260331x10q.htm">10-Q — 2026-03-31_0001464521-26-000071</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000129/htfl-20260813xex99_1.htm">8-K — 2026-08-13_0001464521-26-000129__EX-99.1__htfl-20260813xex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000129/htfl-20260813x8k.htm">8-K — 2026-08-13_0001464521-26-000129</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1464521/000146452126000081/htfl-20260616x8k.htm">8-K — 2026-06-16_0001464521-26-000081</a></li>
+<li>Transcript — 2026-08-13 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
