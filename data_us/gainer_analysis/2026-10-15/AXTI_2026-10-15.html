@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AXTI — AXT Inc Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AXTI — AXT Inc Common Stock</h1>
+<div class="sub">2026-10-15 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">AXTI</span><span class="badge">+4.28%</span><span class="badge">거래량 1.38배</span><span class="badge">$4.24B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적:</strong> 실적은 확실히 돌아섰습니다. 2Q26 매출은 $47.6M(YoY <span class="up">+164.8%</span>, QoQ <span class="up">+76.8%</span>)이고, GAAP 매출총이익률은 8.0%에서 44.9%로 올랐습니다. GAAP 영업이익은 흑자($10.4M, 영업이익률 21.9%)로 돌아섰습니다. 회사는 3Q 매출을 "최소 $66M"으로 제시했습니다.</li>
+<li><strong>고객 계약과 현금:</strong> Lumentum·Coherent·Casela와 장기공급계약(LTA)을 맺으면서 선수금이 들어오는 구조가 만들어졌습니다. 4월 유상증자로 현금·투자자산은 $748.8M이 됐습니다. 그래서 재무 리스크는 사실상 없습니다.</li>
+<li><strong>밸류에이션:</strong> 문제는 가격입니다. 3Q 가이던스를 연환산(4배)하면 약 $264M이고, 시가총액 $4.24B는 그 약 16배입니다. GAAP EPS 가이던스 중간값($0.30)을 연환산하면 PER은 약 54배입니다(모두 추정 계산). 이미 실적 개선 상당 부분이 가격에 들어가 있습니다.</li>
+<li><strong>구조적 변수:</strong> 생산이 전부 중국에 있습니다. 그래서 중국 수출허가가 매출이 언제 잡히는지를 좌우합니다. 52주 고점 대비 <span class="down">-54.1%</span>라는 숫자도 변동성이 매우 크다는 뜻입니다.</li>
+<li><strong>오늘 상승:</strong> 회사 고유의 촉매가 없고 거래량도 1.38배에 그쳤습니다. 따라서 오늘을 근거로 비중을 늘리지는 않습니다. 임박한 3Q 실적에서 $66M 달성과 InP 생산능력 증설 진척을 확인하면서 나눠서 담는 것이 적절합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급 또는 섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시가 없습니다. 가장 최근 회사 이벤트는 7/26 Lumentum 계약(8-K)과 7/30 2Q 실적입니다. 둘 다 2개월 넘게 지난 일입니다.</li>
+<li><strong>뉴스:</strong> 회사 고유 뉴스는 없습니다. 섹터 관련 헤드라인으로 "Lumentum이 2029년까지 sold out이며, 이는 공급사·파운드리에 bullish"라는 Wedbush 코멘트(Seeking Alpha)가 있습니다. AXT는 Lumentum과 2031년까지 InP 생산능력 예약 계약을 맺은 공급사입니다. 따라서 이 헤드라인이 공급사 수혜로 해석됐을 가능성이 있습니다. 다만 기사 게시일과 오늘 주가의 인과관계는 확인할 수 없습니다.</li>
+<li><strong>수급:</strong> 거래량 배수는 1.38배로, 급증이라고 보기 어려운 수준입니다. 20일 수익률이 <span class="down">-4.2%</span>이고 GuruFocus 헤드라인이 "Down 9.5%"인 점을 함께 보면, 직전 하락 뒤 기술적 반등일 가능성도 배제할 수 없습니다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 10-K 발췌에는 사업 섹션 본문이 없습니다. 아래는 10-K 표지와 미래예측 문구, 8-K 보도자료(About AXT), 실적콜을 근거로 정리했습니다.</p>
+<p><strong>제품</strong></p>
+<p>화합물·단원소 반도체 웨이퍼 기판입니다. 실리콘 기판으로는 성능 요구를 맞출 수 없는 소자에 쓰입니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>품목</th>
+<th>2Q26 매출</th>
+<th>비중</th>
+<th>주 용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인듐인화물(InP)</td>
+<td>$30.7M</td>
+<td>약 64%</td>
+<td>데이터센터 광연결(사상 최대, "주로 데이터센터 응용", 실적콜)</td>
+</tr>
+<tr>
+<td>갈륨비소(GaAs)</td>
+<td>$6.6M</td>
+<td>약 14%</td>
+<td>산업용, 로보틱스, 데이터센터 레이저, VCSEL</td>
+</tr>
+<tr>
+<td>게르마늄(Ge)</td>
+<td>$0.272M</td>
+<td>약 1%</td>
+<td>위성 태양전지 등</td>
+</tr>
+<tr>
+<td>연결 원재료 JV</td>
+<td>$10.0M</td>
+<td>약 21%</td>
+<td>원재료·소모품 외부 판매</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객 구조:</strong> 상위 5개 고객이 매출의 약 30%이고, 매출 10%를 넘는 단일 고객은 없습니다(실적콜). 지역별로는 중국 매출이 40~60%라고 언급됐습니다(stockanalysis 자동 요약 기준이며, 원문 발언 위치는 발췌에서 확인할 수 없습니다).</li>
+<li><strong>수직계열화 구조:</strong> 본사는 미국 Fremont에 있지만 생산시설 3곳은 모두 중국에 있습니다. 원재료·소모품을 만드는 중국 기업 10여 곳의 지분도 일부 보유합니다(8-K). 웨이퍼 생산 자회사 Tongmei(北京通美)는 별도 상장을 추진 중입니다.</li>
+<li><strong>경쟁 위치:</strong> CEO는 실적콜에서 "우리는 InP의 지배적 사업자(dominant player)이며, 공급망에서 더 많은 마진을 얻는다"고 언급했습니다. 고품질 InP는 기술 진입장벽이 높아 경쟁 구도가 제한적이라는 취지입니다. 점유율 수치는 공시상 확인할 수 없습니다.</li>
+<li><strong>소유 구조:</strong> Tongmei에는 중국 PE 투자자가 있습니다. 그래서 순이익은 소수지분 차감 후 기준입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이</strong> (8-K 보도자료, 실적콜)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>3Q26 가이던스(회사 제시)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$18.0M</td>
+<td>$26.9M</td>
+<td>$47.6M</td>
+<td>최소 $66M</td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>8.0%</td>
+<td>29.6%</td>
+<td>44.9%</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>GAAP 영업비용</td>
+<td>$8.2M</td>
+<td>$9.6M</td>
+<td>$10.9M</td>
+<td>약 $11M</td>
+</tr>
+<tr>
+<td>GAAP 영업이익</td>
+<td>-$6.7M</td>
+<td>-$1.6M</td>
+<td>$10.4M</td>
+<td>-</td>
+</tr>
+<tr>
+<td>GAAP 순이익(소수지분 차감 후)</td>
+<td>-$7.0M</td>
+<td>-$1.6M</td>
+<td>$11.1M ($0.17)</td>
+<td>EPS $0.29~0.31</td>
+</tr>
+<tr>
+<td>Non-GAAP 순이익</td>
+<td>-$6.4M</td>
+<td>-$0.6M</td>
+<td>$11.9M ($0.19)</td>
+<td>EPS $0.30~0.32</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질(물량·믹스·단가)</strong></p>
+<ul>
+<li>회사는 매출총이익률 개선이 "주로 물량 증가와 우호적인 제품 믹스" 덕분이라고 밝혔습니다. InP 비중 확대와 3/4/6인치 대구경화가 고마진을 뒷받침한다는 언급도 있습니다(실적콜 요약).</li>
+<li>단가(ASP) 인상 여부와 폭은 공시상 확인할 수 없습니다. 그래서 물량과 단가를 분리해 분석할 수는 없습니다.</li>
+</ul>
+<p><strong>영업레버리지</strong></p>
+<ul>
+<li>매출이 $29.6M 늘어나는 동안 GAAP 영업비용은 $1.3M만 늘었습니다.</li>
+<li>3Q 가이던스대로라면 매출은 약 <span class="up">+39%</span> 늘고 영업비용은 거의 그대로입니다. 그러면 영업이익률이 한 단계 더 오를 구조입니다(추정).</li>
+<li>EPS 가이던스 $0.29~0.31에 희석 주식수 약 63.5M주 이상을 곱하면, 회사가 암시한 3Q GAAP 순이익은 대략 $18~20M 수준입니다(추정 계산).</li>
+</ul>
+<p><strong>현금흐름</strong></p>
+<ul>
+<li>TTM 잉여현금흐름은 -$19.6M입니다.</li>
+<li>2Q에 Casela($22.3M)와 Coherent($25.4M) 선수금 합계 $47.7M이 들어왔습니다. 이 지표가 2Q를 포함한다면, 선수금을 빼고 본 영업현금 창출력은 지표보다 더 약합니다(추정).</li>
+<li>재고는 $96.3M으로 QoQ +$6.2M 늘었습니다. 증설 국면이라 운전자본 부담이 이어지고 있습니다.</li>
+<li>2Q 감가상각비는 $2.5M, 주식보상비는 $0.8M입니다. Capex 규모는 발췌에서 확인할 수 없습니다.</li>
+</ul>
+<p><strong>재무 건전성</strong></p>
+<ul>
+<li>현금·현금성자산·투자자산은 $748.8M입니다(3/31의 $120M에서 증가). 4/22 마감한 유상증자(비용 차감 전 약 $632M) 효과입니다.</li>
+<li>선수금은 부채로 잡혀 있다가 출하 시점에 매출로 바뀝니다.</li>
+<li>차입 규모는 발췌상 확인할 수 없습니다.</li>
+</ul>
+<p><strong>희석</strong></p>
+<ul>
+<li>발행주식수는 10-K 기준 55.57M주(2026/3/2)였습니다.</li>
+<li>현재 시가총액을 종가로 나누면 약 65.6M주입니다. 즉 약 18% 희석된 것으로 추정됩니다(계산값).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① AI 데이터센터 광트랜시버용 InP 수요</strong></p>
+<ul>
+<li>회사 설명: 데이터센터 광연결 수요와 생산능력 증설이 맞물려 매출이 계단식으로 늘고 있다고 밝혔습니다(8-K, CEO). 200G 이상 고속 전송에서는 InP 레이저와 디텍터가 유리하다는 입장입니다(실적콜).</li>
+<li>실현 조건: 고객사의 1.6T/200G-lane 전환 속도. 그리고 GaAs VCSEL이나 실리콘 포토닉스로 대체되는 정도.</li>
+<li>검증 포인트: 3Q InP 매출이 2Q의 $30.7M에서 얼마나 늘었는지. InP 비중이 64% 이상으로 유지되는지.</li>
+</ul>
+<p><strong>② InP 생산능력 증설</strong></p>
+<ul>
+<li>회사 설명: 2026년 말 분기 $60M, 2027년 말 분기 $130M 수준이 목표라는 언급이 있습니다(실적콜 요약 기준). 또 Capex 계획에는 큰 변화가 없고, 생산성 개선과 믹스가 매출 증가를 이끈다고 했습니다.</li>
+<li>실현 조건: 중국 공장의 수율과 생산성. 장비 반입. 환경 규제에 따른 가동 중단이 없어야 합니다.</li>
+<li>검증 포인트: 3Q 실적과 4Q 가이던스에 InP 분기 $60M 경로가 반영됐는지. 재고와 Capex 변화.</li>
+</ul>
+<p><strong>③ 장기공급계약(LTA)과 선수금</strong></p>
+<ul>
+<li>계약 내용:</li>
+<li>Lumentum: 2031년 말까지 최소 연간 물량을 예약하는 계약입니다(8-K). 1차 예치금 $43.5M은 계약 후 30영업일 이내, 2차 $43.5M은 시기를 2028년 중 확정하기로 했습니다. 예치금은 출하대금에서 차감됩니다.</li>
+<li>Coherent: 선수금 $25.4M.</li>
+<li>Casela: 선수금 $22.3M이며, 계약 물량은 2027년부터 시작합니다(실적콜).</li>
+<li>실현 조건: 고객사 퀄(qualification) 통과와 출하.</li>
+<li>검증 포인트: 3Q 10-Q에서 Lumentum 1차 예치금 $43.5M 수취 여부(현재 공시상 확인 불가). 선수금 부채가 매출로 바뀌는 속도.</li>
+</ul>
+<p><strong>④ 수출허가 처리 속도</strong></p>
+<ul>
+<li>회사 설명: 실적콜에서 "허가가 점점 원활해지고 빨라지고 있다"고 언급했습니다. 3Q 가이던스는 "최소" 수치이며, 허가에 따라 상향 여지가 있다고 했습니다.</li>
+<li>검증 포인트: 3Q 매출이 $66M을 넘는 폭. 허가 지연으로 넘어간 매출에 대한 언급.</li>
+</ul>
+<p><strong>⑤ Tongmei 상장(중국 STAR → 홍콩)</strong></p>
+<ul>
+<li>회사 설명: 중국 내 생산능력을 키우는 효율적 수단이라고 밝혔습니다. 홍콩 상장까지 약 1년이 걸릴 것으로 봅니다.</li>
+<li>검증 포인트: 홍콩거래소 신청서 제출 여부. PE 투자자의 상환 요구 여부(약 $49M이며, 상환 여력은 충분하다고 언급).</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤</strong></p>
+<ul>
+<li>매우 공격적이고 자신감이 넘칩니다. 표현을 보면 CFO는 "inflection", "multi-year growth phase"를, CEO는 "가장 중대한 챕터"를 썼습니다. CFO는 InP 사상 최대 매출을 두 번 반복해 말하기도 했습니다.</li>
+<li>자신감의 근거로는 다음을 제시했습니다.</li>
+<li>선수금이 붙은 LTA 3건</li>
+<li>3~4분기 앞까지 보이는 수주 가시성</li>
+<li>"주문을 다 받지 않고 있다"는 공급 우위</li>
+</ul>
+<p><strong>가이던스 화법</strong></p>
+<ul>
+<li>매출을 범위 대신 하한("at least $66M")으로 제시했습니다.</li>
+<li>수출허가라는 외생 변수를 상향 여지로 남겨 둔 화법입니다. 보수적으로 깔아 둔 하한일 가능성이 있습니다(추정).</li>
+</ul>
+<p><strong>Q&amp;A에서 반복·방어된 지점</strong></p>
+<ul>
+<li><strong>수주잔고:</strong> Needham(Charles Shi)이 "수주잔고 $100M+는 3Q 매출 속도 기준으로 2분기 남짓밖에 안 된다"고 지적했습니다. 회사는 정확한 수치 공개를 거부했고, "well over $100M, 2분기 초과는 확실"이라고만 답했습니다. 이어서 다음 논리로 방어했습니다.</li>
+<li>생산능력을 넘는 주문은 받지 않는다. 그래서 수주잔고는 더 이상 수요를 재는 척도가 아니다.</li>
+<li>수주잔고에는 중국 내 매출이 대부분 빠져 있다.</li>
+<li>허가는 주문이 있어야 신청할 수 있다.</li>
+<li>이 설명은 그럴듯합니다. 하지만 정량 수요를 확인할 수 없다는 점은 그대로 남습니다.</li>
+<li><strong>기술 대체:</strong> GaAs VCSEL이 scale-up 용도로 InP를 대체할 수 있느냐는 질문이 있었습니다. 회사는 두 기술이 공존할 것이며, 200G 이상에서는 InP가 우위라고 답했습니다. 또 이미 대형 데이터센터·레이저 기업 2곳에 VCSEL용 GaAs를 공급 중이라고 밝혔습니다. 대체되더라도 GaAs로 일부 방어할 수 있다는 논리입니다.</li>
+<li><strong>LTA 기여 시점:</strong> LTA는 2Q 실적에 거의 기여하지 않았습니다. 기여는 3Q부터 커지고 4Q 이후 더 늘어날 것이라고 했습니다. 즉 성장의 상당 부분은 아직 앞에 있다는 설명입니다.</li>
+</ul>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong></p>
+<ul>
+<li>품목별 매출 분해</li>
+<li>상위 고객 집중도</li>
+<li>Casela·Coherent 선수금 금액</li>
+<li>수주잔고 범위</li>
+<li>중국 매출 비중 40~60%</li>
+<li>Tongmei 상장지 변경 경위(6/26 STAR 신청 철회)</li>
+<li>InP 생산능력 목표 경로</li>
+</ul>
+<p>※ 두 transcript 버전에서 수주잔고 답변의 화자가 서로 다르게 기록돼 있습니다(Morris Young / Tim Bettles). 그래서 본문에서는 "경영진"으로 표기했습니다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>중국 수출허가:</strong> 생산이 전부 중국에 있어서, 중국 밖 고객에게 출하하려면 중국 수출허가가 필요합니다(10-K 미래예측 문구, 실적콜). 허가 시점에 따라 분기 매출이 이연되거나 출렁일 수 있습니다. 미·중 갈등이 심해지면 허가가 중단될 수도 있습니다. 매출 인식 시점을 좌우하는 가장 큰 단일 변수입니다.</li>
+<li><strong>중국 생산·규제 집중:</strong> 10-K는 대기오염으로 인한 공장 가동 중단, 중국의 정책·규제 변경, 관세와 무역분쟁을 명시하고 있습니다. 실적콜은 환경 규제 강화도 언급했습니다. 생산능력 목표를 달성하는 것 자체가 이 리스크에 노출돼 있습니다.</li>
+<li><strong>Tongmei 관련 지배구조·자본 리스크:</strong> 10-K는 중국 PE 투자자의 철회·상환 요구, 정부 승인 절차를 리스크로 들었습니다. STAR 상장은 이미 철회됐고 홍콩 상장으로 전환해 약 1년이 소요됩니다. 상장되면 자회사 지분이 희석되고 소수지분 순이익 유출이 커집니다.</li>
+<li><strong>밸류에이션과 변동성:</strong> 연환산 매출 기준 약 16배, 연환산 GAAP EPS 기준 PER 약 54배입니다(추정). 52주 고점 대비 <span class="down">-54.1%</span>로, 기대 변화에 주가가 극단적으로 반응해 왔습니다. 생산능력 증설이 지연되거나 가이던스를 맞추기만 해도 주가가 크게 조정될 수 있습니다.</li>
+<li><strong>현금흐름의 질:</strong> TTM FCF가 -$19.6M이고 재고가 늘고 있습니다. 매출 성장이 선수금(부채)에 기대고 있는 셈입니다. 증설 부담이 이어지면, 이익이 나도 영업현금 전환이 늦어질 수 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(+) 펀더멘털</td>
+<td>매출 YoY <span class="up">+164.8%</span>, GAAP 매출총이익률 44.9%(YoY <span class="up">+36.9%</span>p), 영업이익률 21.9%(YoY <span class="up">+59.4%</span>p). 3Q 가이던스 최소 $66M(QoQ <span class="up">+39%</span>↑)</td>
+</tr>
+<tr>
+<td>(+) 가시성</td>
+<td>LTA 3건, 선수금·예치금 합계 $91.2M(Lumentum 1차 $43.5M 포함, 수취는 미확인). 수주잔고 $100M 초과. 10% 넘는 고객 없음</td>
+</tr>
+<tr>
+<td>(+) 재무</td>
+<td>현금·투자자산 $748.8M(시가총액의 약 18%)</td>
+</tr>
+<tr>
+<td>(−) 가격</td>
+<td>시가총액 $4.24B, 연환산 매출 약 16배, PER 약 54배(추정). 순현금을 빼도 EV/연환산 매출 약 13배(추정, 현금에 선수금 포함)</td>
+</tr>
+<tr>
+<td>(−) 현금</td>
+<td>TTM FCF -$19.6M</td>
+</tr>
+<tr>
+<td>(−) 촉매</td>
+<td>오늘 상승은 회사 고유 촉매가 없고 거래량은 1.38배에 그침</td>
+</tr>
+</tbody>
+</table></div>
+<p>이를 종합하면 결론은 "보통"입니다. 펀더멘털 방향은 적극에 가깝습니다. 하지만 지정학 리스크와 밸류에이션 때문에 처음부터 의미 있는 비중을 한 번에 싣기는 어렵습니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li><strong>3Q26 실적(10월 말 발표 예상, 정확한 일정은 공시상 확인 불가):</strong> 매출 $66M 이상인지, InP 매출과 매출총이익률이 45% 이상 유지되는지.</li>
+<li><strong>4Q 가이던스와 생산능력 경로:</strong> InP 생산능력이 연말 분기 $60M 목표대로 가고 있는지. 수출허가 이연 규모가 어느 정도인지.</li>
+<li><strong>3Q 10-Q 원문:</strong> Lumentum 1차 예치금 $43.5M 수취 여부, 선수금 부채 잔액과 그 변화, 영업현금흐름과 Capex, Tongmei PE 상환 관련 업데이트.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건(관망 또는 회피로 하향)</strong></p>
+<ul>
+<li>3Q 매출이 $66M에 못 미치거나, 4Q 가이던스가 QoQ 정체 또는 역성장인 경우.</li>
+<li>수출허가 거부나 중단, 미·중 조치로 중국 외 출하가 막힌 경우.</li>
+<li>매출총이익률이 40% 아래로 되돌아간 경우. 이는 믹스와 수율의 질이 무너졌다는 신호입니다.</li>
+<li>LTA 고객이 예치금을 내지 않거나 계약 조건을 변경한 경우, 혹은 대형 고객이 다른 공급처를 확보했다는 공시가 나온 경우.</li>
+<li>선수금 유입이 끝났는데도 영업현금흐름이 계속 적자인 경우.</li>
+</ul>
+<p><strong>상향 조건(적극)</strong></p>
+<ul>
+<li>3Q 매출이 $66M을 의미 있게 넘고, 4Q 가이던스가 InP 생산능력 목표 달성을 확인해 주는 경우.</li>
+<li>영업현금흐름이 선수금을 빼고도 흑자로 돌아선 경우.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926008612/axti20251231_10k.htm">10-K — 2025-12-31_0001437749-26-008612</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926027677/axti20260630_10q.htm">10-Q — 2026-06-30_0001437749-26-027677</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926017054/axti20260331_10q.htm">10-Q — 2026-03-31_0001437749-26-017054</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/ex_974537.htm">8-K — 2026-07-30_0001437749-26-025061__EX-99.1__ex_974537</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/axti20260609_8k.htm">8-K — 2026-07-30_0001437749-26-025061</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926024883/ex_993544.htm">8-K — 2026-07-26_0001437749-26-024883__EX-99.1__ex_993544</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926024883/axti20260715_8k.htm">8-K — 2026-07-26_0001437749-26-024883</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1051627/000143774926024882/axti20260729_8k.htm">8-K — 2026-07-26_0001437749-26-024882</a></li>
+<li>Transcript — 2026-07-31 AXT, Inc. (AXTI) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-07-30 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

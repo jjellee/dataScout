@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORCL — Oracle Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ORCL — Oracle Corporation Common Stock</h1>
+<div class="sub">2026-10-15 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ORCL</span><span class="badge">+4.23%</span><span class="badge">거래량 1.02배</span><span class="badge">$434.11B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>펀더멘털 성장은 확인됩니다. 1Q FY27 매출은 $19.34B로 YoY <span class="up">+29.6%</span>이고, OCI 매출은 $7.4B로 <span class="up">+121%</span>입니다(실적콜). 회사는 FY27 매출 가이던스를 "최소 $90B(<span class="up">+34%</span>)"로 올렸다고 밝혔습니다.</li>
+<li>다만 이 성장은 대규모 자본 투입으로 사고 있습니다. TTM FCF는 $-28.72B입니다. 회사가 밝힌 FY27 CapEx는 $90~95B이고, 1Q에만 $20B 규모의 ATM 유상증자를 마쳤습니다. 주주가치 희석과 자금조달 부담이 이어지는 구조입니다.</li>
+<li>오늘 <span class="up">+4.23%</span> 상승의 거래량 배수는 1.02배로, 사실상 거래량 급증이 없었습니다. 공시도 없습니다. 52주 고점 대비 <span class="down">-54.2%</span>, 20일 <span class="down">-8.8%</span> 하락 추세 안의 기술적 반등일 가능성이 높습니다.</li>
+<li>회사 가이던스 non-GAAP EPS $8.10 기준 단순 PER은 약 17.7배입니다(종가 $143.20 ÷ $8.10, 단순 계산). 성장률 대비 부담스럽지 않은 수준입니다. 그러나 총차입금·이자비용·신용등급은 제공 자료에서 <strong>공시상 확인 불가</strong>여서 EV 기준 밸류에이션과 재무 리스크를 판단할 수 없습니다.</li>
+<li>12/14 예정인 2Q 실적과 약 한 달 뒤 Analyst Day(실적콜 Q&amp;A에서 언급)에서 자금조달 구조가 확인되기 전까지는 의미 있는 비중 확대를 보류합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음: 수급/섹터 동조 가능성(전일 급락 후 기술적 반등)</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 내 공시가 없습니다.</li>
+<li><strong>뉴스:</strong> 제공된 헤드라인은 모두 <em>하락</em>을 다룹니다. "Why Did Oracle Stock Drop Today?", "Opened Down by 6.61% on Oct 14", "14-Month Low Amid High Debt, Execution Risks", "Retail Calls $300B OpenAI Deal A 'Liability'" 등입니다. 상승 촉매가 될 만한 헤드라인은 없습니다.</li>
+<li><strong>실적:</strong> 1Q FY27 실적 발표(9/10)는 한 달 이상 지났습니다. 다음 실적은 12/14 예정입니다(실적콜 IR 언급).</li>
+<li><strong>추정(사실 아님):</strong> 10/14 장 초반 <span class="down">-6.61%</span> 급락과 14개월 저점 도달 뒤의 반등으로 보입니다. 거래량 배수가 1.02배라 신규 매수 수요가 몰렸다고 보기 어렵습니다. 숏커버나 섹터 동반 반등 같은 수급 요인일 가능성이 큽니다.</li>
+<li>참고로 9/12 8-K에서 Larry Ellison의 10b5-1 매도계획 취소가 공시됐지만, 오늘 주가와 직접 연결할 근거는 없습니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>사업부 구성(10-K/10-Q):</strong> 단일 operating segment 3개로 이뤄져 있습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업</th>
+<th>내용</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud &amp; Software</td>
+<td>Cloud(OCA=SaaS, OCI=IaaS)와 Software(라이선스+서포트)</td>
+<td>최근 4개 분기 누적 매출의 <strong>88%</strong></td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>Engineered Systems, 서버, 스토리지 등과 하드웨어 서포트</td>
+<td>공시상 확인 불가(두 사업 합산 약 12%)</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>컨설팅 등 전문 서비스</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>클라우드 비중의 구조적 상승:</strong></li>
+<li>클라우드 매출 비중은 FY24 37% → FY25 43% → FY26 51%로 올라왔습니다(10-K).</li>
+<li>분기 기준으로는 1Q FY26 48% → 1Q FY27 <strong>60%</strong>입니다(10-Q).</li>
+<li>단순 계산하면 1Q 클라우드 매출은 약 $11.6B, 이 중 OCI $7.4B를 빼면 클라우드 앱은 약 $4.2B로 추정됩니다(추정치).</li>
+<li><strong>수익 인식 구조:</strong></li>
+<li>클라우드 계약은 대체로 1~5년이며, 기간 안분 또는 사용량 기반으로 인식합니다.</li>
+<li>라이선스는 일시 인식이어서 대형 거래 몇 건이 분기 실적을 크게 흔들 수 있습니다.</li>
+<li>서포트는 대체로 1년 단위 선청구이며, 10-Q에 따르면 "substantially all" 고객이 갱신합니다. 사실상 연금형 캐시카우입니다.</li>
+<li><strong>고객군:</strong> 다양한 규모와 업종의 기업, 정부기관, 교육기관, 리셀러입니다. 직판 조직과 Oracle Partner Network로 판매합니다.</li>
+<li><strong>경쟁 위치(회사 주장):</strong></li>
+<li>회사는 클라우드, 온프레미스, 하이브리드(Cloud@Customer), 멀티클라우드를 모두 제공하는 배포 유연성이 경쟁사 대비 우위라고 밝힙니다.</li>
+<li>회사는 OCI가 OCA(SaaS)를 구동하는 풀스택 구조를 강조합니다.</li>
+<li>경쟁사 이름과 점유율은 제공 원문에서 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>R&amp;D:</strong> FY24 $8.9B → FY25 $9.9B → FY26 $10.3B입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질(단가·물량·믹스)</strong>
+- <strong>물량:</strong> 성장은 사실상 OCI 증설 물량이 이끕니다.
+  - OCI는 <span class="up">+121%</span>입니다.
+  - 실적콜에서 1Q에 850MW의 AI 용량을 인도했고, 이는 4Q의 약 3배라고 언급했습니다.
+  - GPU 가동률은 97.9%라고 언급했습니다.
+  - 공급, 즉 용량 증설 속도가 매출의 병목입니다.
+- <strong>단가:</strong> 실적콜에서 "용량 갱신이 20% 프리미엄으로 이뤄진다"고 언급했습니다. 동시에 부품과 데이터센터 비용이 오르고 있다고도 인정했습니다. 단가 상승이 원가 상승을 상쇄하는지는 공시상 확인 불가입니다.
+- <strong>믹스:</strong>
+  - 저마진 IaaS 비중이 커지고 있습니다.
+  - 고마진 SaaS(<span class="up">+10%</span>, Fusion <span class="up">+14%</span>, 산업 앱 20% 이상)와 라이선스/서포트는 상대적으로 둔화되고 있습니다.
+  - 실적콜에서 NetSuite는 고객 의사결정 지연으로 성장이 뒤처졌다고 언급했습니다.
+- <strong>계절성 변화:</strong>
+  - 실적콜에서 사상 처음으로 1Q 매출이 직전 4Q 대비 증가했다고 언급했습니다(지표상 QoQ <span class="up">+0.8%</span>).
+  - FY27 가이던스 $90B를 맞추려면 남은 3개 분기에 약 $70.7B, 즉 분기 평균 약 $23.6B가 필요합니다. 1Q 대비 약 22% 높은 수준이라 하반기 집중도가 높은 가이던스입니다(단순 계산).</p>
+<p><strong>마진 방향성</strong>
+- 지표상 GAAP 영업이익률은 35.3%로 YoY <span class="up">+3.9%</span>p 개선됐습니다. 매출총이익률은 60.0%입니다.
+- 실적콜에서 CFO는 다음과 같이 밝혔습니다.
+  - 매출총이익률은 데이터센터 램프업과 IaaS 가속으로 예상대로 하락했습니다.
+  - 효율화로 영업비용이 줄어 non-GAAP 영업이익률은 42%로 대체로 유지됐습니다.
+- GAAP 마진은 <span class="up">+3.9%</span>p 개선됐는데 non-GAAP 마진은 보합인 이유(구조조정비, 주식보상, 무형자산상각 등 조정항목 변동)는 제공 자료에서 <strong>공시상 확인 불가</strong>입니다.
+- 회사는 램프업이 끝나면 매출총이익률이 안정되고, 영업이익률이 핵심 가치 지표라고 밝혔습니다. 따라서 <strong>매출총이익률이 하락하는 동안 판관비 효율화가 무한정 상쇄할 수 있는지</strong>가 핵심입니다.</p>
+<p><strong>현금흐름</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1Q 영업현금흐름</td>
+<td>$23B(사상 최대, 고객 선급금 영향)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>1Q CapEx</td>
+<td>$28B</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>1Q FCF</td>
+<td>약 -$5B</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>1Q net cash CapEx</td>
+<td>$18B</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td><strong>$-28.72B</strong></td>
+<td>지표</td>
+</tr>
+<tr>
+<td>FY27 CapEx 가이던스</td>
+<td>$90~95B(net cash CapEx는 $70B 이하)</td>
+<td>실적콜, 회사 주장</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>1Q 영업현금흐름은 고객 선급금에 크게 기대고 있습니다. 반복 가능한 수준인지는 확인 불가입니다.</li>
+</ul>
+<p><strong>재무 건전성</strong>
+- 1Q에 $20B의 ATM 유상증자를 마쳤습니다(실적콜).
+- 6.50% Series D 의무전환우선주도 상장돼 있습니다(10-K 표지). 추가 희석 요인입니다.
+- 10-Q(2026년 2월)에서 ATM 프로그램을 자금원으로 명시하고 "희석 관리 능력"을 미래예측 진술에 포함했습니다. 주식 발행이 상시 자금원이 됐다는 뜻입니다.
+- 지분 희석 관련 수치:
+  - 2026년 6월 12일 기준 발행주식은 2,880.5M주입니다.
+  - 현재 시가총액($434.11B) ÷ 종가로 역산하면 약 3,031M주로, 약 5% 늘어난 것으로 추정됩니다(추정치).
+- 총차입금, 순부채, 만기 구조, 이자보상배율, 신용등급은 <strong>공시상 확인 불가</strong>입니다. 뉴스 헤드라인의 "High Debt" 표현도 제공 원문으로는 검증할 수 없습니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버(회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>OCI AI 인프라 대규모 공급</strong>: 회사는 "산업 최대 규모의 컴퓨트 인도"가 가능하다고 밝힘</td>
+<td>전력과 부지를 확보하고 데이터센터를 일정대로 완공해야 함. GPU 가동률이 유지돼야 함</td>
+<td>2Q 클라우드 성장률이 가이던스 65~71% 범위 안인지. 인도 MW 추이. New Mexico·Wisconsin 일정 업데이트</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>RPO의 매출 전환</strong>: 4Q 대비 RPO +$26B. 실적콜에서 약 절반이 36개월 안에 매출로 전환된다고 언급</td>
+<td>신규 RPO 대부분이 선급·BYOH 구조여서 추가 CapEx가 필요 없다는 회사 설명이 맞아야 함</td>
+<td>RPO 절대액(제공 자료에선 확인 불가), 고객별 집중도, 전환 속도</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>멀티클라우드 DB</strong>: 실적콜에서 YoY <span class="up">+353%</span>, 고객 수 <span class="up">+180%</span>, 리전 70개·AZ 119개라고 언급</td>
+<td>타 하이퍼스케일러 내 Oracle DB 배포 확대</td>
+<td>멀티클라우드 매출의 절대 규모 공개 여부</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>SaaS + 임베디드 AI</strong>: Fusion <span class="up">+14%</span>, 산업 앱 20% 이상, AI 에이전트 2,300개 이상(QoQ <span class="up">+90%</span>)</td>
+<td>AI로 구축 기간을 줄여 이연매출 인식을 앞당기는 것. 회사는 VA 의료기록 구축이 18개월에서 8개월로 줄었다고 밝힘</td>
+<td>클라우드 앱 성장률이 10%에서 다시 오르는지, NetSuite 반등 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>자본 효율 모델</strong>: 고객 선급, BYOH, net cash CapEx 상한 $70B</td>
+<td>고객 측 자금조달 여력이 유지돼야 함</td>
+<td>2Q net cash CapEx 누계, 영업현금흐름 중 선급금 비중, 추가 ATM 발행 규모</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- CFO는 이번 분기를 한 단어로 "acceleration"이라고 표현했습니다. 톤은 매우 자신감 있습니다.
+- 근거로는 다음을 들었습니다.
+  - 1Q 첫 QoQ 성장
+  - OCI <span class="up">+121%</span>
+  - FY27 가이던스 상향(최소 $90B, EPS $8.10)
+- 화법에서는 <strong>자본 부담을 희석하는 프레이밍</strong>이 두드러집니다.
+  - 총 CapEx($90~95B)와 함께 "net cash CapEx $70B 이하"라는 별도 지표를 제시했습니다.
+  - 신규 RPO의 "대부분이 선급·BYOH라 추가 자본이 필요 없다"고 강조했습니다.
+  - 이전 분기에도 같은 지표를 썼는지는 제공 자료로 확인할 수 없습니다.
+- 매출총이익률 하락은 "예상된 것"이라며 먼저 방어했고, 평가 기준을 영업이익률로 옮기려 했습니다.</p>
+<p><strong>Q&amp;A 반복 질문과 방어 지점</strong>
+- transcript 중간이 생략돼 있어 Q&amp;A 전체의 반복 패턴은 확인이 제한적입니다.
+- 확인 가능한 범위의 질문은 SaaS 성장(Brent Thill)과 AI Data Platform 수익 모델(Kirk Materne)입니다.
+  - AI Data Platform 질문에 Sicilia는 "all of the above"라고 답했습니다. 매출 귀속과 규모 같은 정량 답변은 피했습니다.
+- 요약본에 따르면 데이터센터 건설과 전력이 물류상 어려움으로 논의됐습니다.
+  - 회사는 부지 다변화와 단계적 인도로 대응한다고 밝혔습니다.
+  - New Mexico·Wisconsin 일정이 FY27 매출 가이던스에 영향이 없다고 별도로 답했습니다. 두 사이트 일정에 이슈가 있다는 간접 신호로 해석됩니다(추정).</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- GPU 가동률 97.9%, 1Q 인도 850MW, 용량 갱신 시 20% 프리미엄
+- AI 에이전트 2,300개 이상, Fusion 임베디드 AI 사용량 QoQ <span class="up">+42%</span>
+- 신규 RPO는 FY28 이후에야 CapEx와 매출에 반영됨
+- OpenAI·Quantinuum 신규 파트너십(구체 조건은 확인 불가)
+- Analyst Day가 약 한 달 뒤 예정(애널리스트 언급)
+- Deutsche Bank 컨퍼런스(8/26)에서 Sicilia 발언:
+  - "스케일아웃 인프라 인도의 정점에 다가가고 있다"고 언급했습니다.
+  - "이연매출이 당기 매출보다 많다"고 언급했습니다.
+  - 향후 1년 시장 평가의 관건으로 대규모 컴퓨트 인도 실적을 꼽았습니다.</p>
+<h2>6. 리스크</h2>
+<p>※ 10-K Item 1A 원문은 제공 발췌에 포함돼 있지 않습니다. 아래는 MD&amp;A, 실적콜, 지표를 근거로 합니다.</p>
+<ol>
+<li><strong>자금조달과 희석</strong>
+   - TTM FCF $-28.72B에 FY27 CapEx $90~95B가 예정돼 있습니다.
+   - $20B ATM 증자를 마쳤고, ATM 프로그램은 상시 자금원으로 명시돼 있습니다.
+   - 의무전환우선주도 있습니다.
+   - 영업현금흐름이 고객 선급금에 의존하는 만큼, 선급이 줄면 외부 조달 수요가 급증할 수 있습니다.</li>
+<li><strong>고객 집중과 거래상대방 리스크</strong>
+   - 실적콜에서 OpenAI 파트너십을 언급했습니다.
+   - 뉴스 헤드라인은 "$300B OpenAI deal"을 리스크로 거론합니다(금액은 제공 공시로 검증 불가).
+   - RPO 중 특정 고객 비중은 <strong>공시상 확인 불가</strong>입니다. 대형 AI 고객의 지불 능력이 백로그의 질을 좌우합니다.</li>
+<li><strong>데이터센터 실행 리스크</strong>
+   - 회사는 전력, 건설, 부품비 상승을 인정했습니다.
+   - New Mexico·Wisconsin 일정 관련 질의가 있었습니다.
+   - 하반기에 몰린 FY27 가이던스(남은 분기 평균 약 $23.6B 필요)는 증설 지연에 민감합니다.</li>
+<li><strong>매출총이익률 하방</strong>
+   - IaaS 믹스가 커지면서 매출총이익률이 구조적으로 내려가고 있습니다(현재 60.0%).
+   - 효율화로 상쇄하는 데는 한계가 있습니다.
+   - 회사가 말한 "램프 후 안정"이 언제인지는 제시되지 않았습니다.</li>
+<li><strong>고마진 레거시 둔화</strong>
+   - 클라우드 앱 <span class="up">+10%</span>이고 NetSuite는 의사결정 지연을 겪고 있습니다(실적콜).
+   - 10-Q에 따르면 라이선스 매출은 대형 거래 타이밍에 따라 변동성이 큽니다.
+   - IaaS 외 사업의 성장 동력이 약해지면 전체 마진 구조가 IaaS에 더 의존하게 됩니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'의 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY <span class="up">+29.6%</span>, OCI <span class="up">+121%</span></td>
+<td>TTM FCF $-28.72B, 1Q FCF 약 -$5B</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률 35.3%(<span class="up">+3.9%</span>p)</td>
+<td>FY27 CapEx $90~95B, 1Q $20B 증자(발행주식 약 5% 증가 추정)</td>
+</tr>
+<tr>
+<td>가이던스 EPS 기준 PER 약 17.7배(단순 계산)</td>
+<td>52주 고점 대비 <span class="down">-54.2%</span>, 20일 <span class="down">-8.8%</span> 하락 추세</td>
+</tr>
+<tr>
+<td>RPO +$26B, 실적콜에서 약 절반이 36개월 내 전환된다고 언급</td>
+<td>오늘 거래량 배수 1.02배, 촉매 없음</td>
+</tr>
+<tr>
+<td>실적콜에서 GPU 가동률 97.9%라고 언급</td>
+<td>부채, 이자, 신용 정보는 공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-Q의 대차대조표와 부채 각주:</strong> 총차입금, 만기 구조, 이자비용 증가율, 리스 부채(데이터센터 리스 포함)를 확인해 EV 기준 밸류에이션을 다시 계산해야 합니다.
+2. <strong>RPO 절대액과 고객 집중도:</strong> 10-Q의 잔여수행의무 각주를 보고, 대형 AI 고객 비중과 선급·BYOH 계약 비중에 대한 공시가 있는지 확인해야 합니다. Analyst Day 공개 여부도 봐야 합니다.
+3. <strong>2Q(12/14) 실적:</strong> 아래 세 가지를 함께 봐야 합니다.
+   - 매출 +30~34%, 클라우드 +65~71% 가이던스 달성 여부
+   - 상반기 net cash CapEx 누계가 연간 상한 $70B 페이스 안인지
+   - 추가 ATM 발행 규모</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올릴 조건:</strong>
+  - 2Q에서 클라우드 성장이 가이던스 상단을 넘습니다.
+  - 매출총이익률 하락이 멈춥니다.
+  - 분기 FCF 적자가 줄고 추가 증자 없이 CapEx를 감당하는 것이 확인됩니다.
+  - Analyst Day에서 고객 집중도와 자금조달 계획이 정량적으로 공개됩니다.
+- <strong>'회피'로 낮출 조건:</strong>
+  - FY27 매출 가이던스($90B 이상)를 하향합니다.
+  - 데이터센터 일정 지연이 FY27 매출에 영향을 준다고 인정합니다.
+  - 대형 AI 고객 계약이 축소되거나 재협상됩니다.
+  - $20B 수준의 대규모 증자가 반복되거나 신용등급이 하향됩니다.
+  - 영업이익률(non-GAAP 42%)이 의미 있게 꺾입니다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm">10-K — 2026-05-31_0001193125-26-277521</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm">10-Q — 2026-08-31_0001193125-26-389274</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526101045/orcl-20260228.htm">10-Q — 2026-02-28_0001193125-26-101045</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526389753/d20034dex991.htm">8-K — 2026-09-12_0001193125-26-389753__EX-99.1__d20034dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526389753/d20034d8k.htm">8-K — 2026-09-12_0001193125-26-389753</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526387905/orcl-ex99_1.htm">8-K — 2026-09-10_0001193125-26-387905__EX-99.1__orcl-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526387905/orcl-20260910.htm">8-K — 2026-09-10_0001193125-26-387905</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/orcl-ex99_1.htm">8-K — 2026-06-10_0001193125-26-265848__EX-99.1__orcl-ex99_1</a></li>
+<li>Transcript — 2026-09-10 Q1 2027 Transcript</li>
+<li>Transcript — 2026-08-26 Deutsche Bank 2026 Technology Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEDG — SolarEdge Technologies Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SEDG — SolarEdge Technologies Inc. Common Stock</h1>
+<div class="sub">2026-10-15 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SEDG</span><span class="badge">+3.33%</span><span class="badge">거래량 1.01배</span><span class="badge">$2.00B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>Q2 2026 non-GAAP 영업이익은 $10.2M 흑자입니다. 그런데 일회성 IEEPA 관세 환급 이익 $13.3M이 매출총이익에 들어가 있습니다. 이것을 빼면 약 $-3.1M 적자이므로(직접 계산), 흑자 전환이 구조적으로 이뤄졌다고 보기는 아직 이릅니다.</li>
+<li>회사가 낸 Q3 가이던스는 매출 $310~340M(중간값 기준 전분기 대비 약 <span class="down">-6%</span>), non-GAAP 매출총이익률 22~26%입니다. 회사 스스로 "7월에 받은 IEEPA 환급 $11.5M을 넣어야 중간값 기준 흑자"라고 밝혔습니다. 즉 본업만으로는 다시 적자를 예상한다는 뜻입니다.</li>
+<li>오늘 <span class="up">+3.33%</span> 상승은 거래량 배수 1.01배를 동반했을 뿐이고, 이를 설명할 공시나 뉴스 촉매는 확인되지 않습니다. 반면 60일 <span class="down">-39.3%</span>, 52주 고점 대비 <span class="down">-58.6%</span>로 추세는 하락이 이어지고 있습니다.</li>
+<li>긍정 요인은 세 가지입니다. 순현금 $264.6M(시가총액의 약 13%), 유럽 매출의 전년 대비 2배 이상 성장, 미국 C&amp;I 점유율 50% 이상입니다. 그래도 11월 Q3 실적에서 본업 마진을 확인하기 전에 의미 있는 비중을 싣기는 어렵다고 판단합니다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 있습니다.</strong></p>
+<ul>
+<li><strong>공시</strong>: 최근 4일 안에 SEC 공시가 없습니다. 가장 가까운 공시는 10/1 사건 기준(10/5 제출) 8-K로, Chief Revenue Officer Daniel Huber의 사임 통보입니다(2027/3/31 퇴임). 성격상 주가에 부정적인 공시입니다.</li>
+<li><strong>뉴스</strong>: 헤드라인은 모두 중립이거나 부정적입니다. "Declines More Than Market", Susquehanna 기대치 하향, 북미 리더십 교체(Gokul Krishnan), Seeking Alpha의 "$250 Million Hurdle"이 있습니다. 마지막 기사가 말하는 "$250M"이 무엇인지는 제공된 자료로 확인할 수 없습니다.</li>
+<li><strong>수급</strong>: 거래량 배수가 1.01배라서 "거래량 급증"이라는 스크린 조건과 맞지 않습니다. 거래대금 $83.5M도 평소 수준입니다. 20일 <span class="down">-12%</span>, 60일 <span class="down">-39.3%</span> 하락 뒤의 기술적 반등일 가능성이 가장 높아 보입니다. 다만 이는 추정입니다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 10-K 발췌에는 Item 1(사업) 본문이 없고 앞부분의 forward-looking 목록만 있습니다. 그래서 세그먼트별·지역별 매출 구성은 <strong>공시상 확인 불가</strong>입니다. 아래는 보도자료 회사 소개, 10-K 리스크 목록, 실적콜을 근거로 정리했습니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>핵심 제품</td>
+<td>PV 인버터, 파워 옵티마이저(DC 최적화), 에너지 관리·모니터링, 에너지 저장(배터리)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>신규 플랫폼</td>
+<td><strong>Nexis</strong>: PV와 저장장치를 통합한 플랫폼. 유럽 DACH 3상 제품부터 출시했고, 단상 제품은 2027년 1분기 유럽 출시 예정</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>신사업</td>
+<td><strong>SST(Solid-State Transformer)</strong>: AI 데이터센터용 장비로 34.5kV AC를 800V DC로 한 번에 변환. Infineon과 협력</td>
+<td>실적콜, TD Cowen 콘퍼런스</td>
+</tr>
+<tr>
+<td>중단 사업</td>
+<td>e-Mobility, energy storage business(10-K 표기), PV Tracker</td>
+<td>10-K</td>
+</tr>
+<tr>
+<td>고객군</td>
+<td>유통업체(distributor), 대형 설치업체, TPO(제3자 소유, 리스·PPA 사업자), C&amp;I EPC, 엔터프라이즈 고객</td>
+<td>10-K, 실적콜</td>
+</tr>
+<tr>
+<td>생산</td>
+<td>소수의 외부 위탁생산업체에 의존하고 일부 부품은 단일 공급원에서 조달. 미국 내 생산 제품 보유</td>
+<td>10-K, 실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치 (회사 주장)</strong>
+- 실적콜에서 회사는 미국 C&amp;I 지붕형 설치 시장 점유율이 50%를 넘었고, Fortune 100 기업의 60% 이상 지붕에 자사 시스템이 설치돼 있다고 언급했습니다.
+- 회사는 미국 C&amp;I 시장 3강을 SolarEdge, Chint, SMA로 봅니다. 그리고 domestic content, non-FEOC(중국 등 '우려 외국 기업' 규제 비대상), FCC Covered List 요건을 동시에 맞추면서 규모 있게 공급하는 업체는 자사뿐이라고 밝혔습니다. 경쟁사 두 곳은 domestic content를 충족하지 못하고, 그중 한 곳은 FEOC 기업이라는 주장입니다.
+- 회사는 유럽 DACH와 네덜란드의 설치 기반이 100만 가구를 넘는다고 밝혔습니다. 이 기반을 대상으로 한 리트로핏(기존 설비 업그레이드) 업셀 매출이 Q2에 $20M 이상이었다고 실적콜에서 언급했습니다.</p>
+<p>※ 데이터 제공 업체는 섹터를 "Semiconductors"로 분류하지만, 실제 사업은 태양광 파워 일렉트로닉스(인버터)와 저장장치입니다. 비교 대상(peer)을 고를 때 주의해야 합니다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<h3>4-1. 분기 실적 (Q2 2026 보도자료)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>(백만 달러)</th>
+<th>Q2'26</th>
+<th>Q1'26</th>
+<th>Q2'25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAAP 매출</td>
+<td>346.2</td>
+<td>310.5</td>
+<td>289.4</td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>27.5%</td>
+<td>22.0%</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>Non-GAAP 매출총이익률</td>
+<td>28.6%</td>
+<td>23.5%</td>
+<td>13.1%</td>
+</tr>
+<tr>
+<td>GAAP 영업비용</td>
+<td>111.2</td>
+<td>123.3</td>
+<td>147.6</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업비용</td>
+<td>88.5</td>
+<td>97.7</td>
+<td>85.2</td>
+</tr>
+<tr>
+<td>GAAP 영업손익</td>
+<td>(16.0)</td>
+<td>(55.0)</td>
+<td>(115.5)</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업손익</td>
+<td>10.2</td>
+<td>(24.8)</td>
+<td>(48.3)</td>
+</tr>
+<tr>
+<td>GAAP 순손익</td>
+<td>(30.8)</td>
+<td>(57.4)</td>
+<td>(124.7)</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>3.1</td>
+<td>20.7</td>
+<td>(9.1)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4-2. 성장의 질</h3>
+<ul>
+<li><strong>지역 믹스</strong>: 회사는 실적콜에서 유럽 매출이 전년 대비 2배 이상 늘었고 미국 C&amp;I도 강했던 반면, 미국 주택용은 업계 전반이 부진했다고 언급했습니다. 성장은 유럽과 C&amp;I가 이끌고 미국 주택용이 끌어내리는 구조입니다. 지역별 매출 금액은 <strong>공시상 확인 불가</strong>입니다.</li>
+<li><strong>단가와 물량</strong>: 회사는 실적콜에서 저장장치 가격이 제품별로 안정적이며, 분기마다 달라 보이는 것은 주로 제품 믹스 때문이라고 언급했습니다. 출하량(MW)이나 평균판매단가(ASP) 수치는 제공되지 않아 <strong>확인 불가</strong>입니다.</li>
+<li><strong>선행 수요(pull-forward) 여부</strong>: 회사는 Q2에 "의미 있는 매출 당겨오기가 없었다"고 밝혔습니다.</li>
+<li><strong>GAAP과 non-GAAP 매출 차이</strong>: Q2'25 기준 GAAP $289.4M, non-GAAP $281.0M으로 $8.4M 차이가 납니다. 그래서 YoY 성장률이 GAAP 19.6%, non-GAAP 23.0%로 다릅니다. 무엇을 조정한 것인지는 발췌본에서 <strong>확인 불가</strong>입니다. 중단 사업과 관련 있을 가능성이 있지만 추정입니다.</li>
+</ul>
+<h3>4-3. 마진의 방향성: IEEPA 효과를 빼면 달라지는 그림 (직접 계산)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>보고치</th>
+<th>IEEPA $13.3M 제외 시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>27.5%</td>
+<td>약 23.7%</td>
+</tr>
+<tr>
+<td>Non-GAAP 매출총이익률</td>
+<td>28.6%</td>
+<td>약 24.7%</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업손익</td>
+<td>+$10.2M</td>
+<td>약 -$3.1M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>본업 기준 non-GAAP 매출총이익률은 Q1 23.5%에서 Q2 약 24.7%로 1.2%p쯤 개선됐습니다. 회사가 말하는 "6분기 연속 YoY 매출총이익률 확장"이라는 방향은 맞습니다. 하지만 헤드라인 숫자가 보여주는 것만큼 크게 뛰지는 않았습니다.</li>
+<li>Q3 가이던스 중간값(매출 $325M, 매출총이익률 24%, 영업비용 $88.5M)을 넣으면 non-GAAP 영업손익은 약 -$10.5M입니다. IEEPA 환급 $11.5M을 더하면 약 +$1M이 되어, "환급을 넣어야 중간값 기준 흑자"라는 회사 설명과 맞습니다. 본업 마진은 Q3에 멈추거나 소폭 후퇴할 것으로 회사 스스로 예상하는 셈입니다.</li>
+<li><strong>지표 불일치</strong>: 제공된 지표의 영업이익률은 <span class="down">-2.7%</span>(YoY <span class="up">+21.2%</span>p)입니다. 공시 수치로 계산하면 GAAP 기준 <span class="down">-4.6%</span>(16.0/346.2), 전년 동기 <span class="down">-39.9%</span>로 YoY 개선 폭은 약 <span class="up">+35%</span>p입니다. 데이터 제공 업체의 산식을 확인해야 합니다.</li>
+</ul>
+<h3>4-4. 현금흐름과 재무 건전성</h3>
+<ul>
+<li>TTM FCF는 $90.0M(지표 기준)입니다. 그런데 최근 두 분기(Q1 $20.7M, Q2 $3.1M) 합이 $23.8M이므로, 나머지 약 $66M은 2025년 하반기 두 분기에서 나왔다는 계산이 됩니다. <strong>FCF 창출력이 갈수록 줄고 있습니다.</strong></li>
+<li>6/30 기준 순현금(현금·투자자산에서 부채를 뺀 값)은 $264.6M으로, 연초($244.2M)보다 $20.4M 늘었습니다. 총부채 규모와 만기 구조는 발췌본에서 <strong>공시상 확인 불가</strong>입니다. 10-K는 "부채 상환 능력"을 리스크로 명시하고 있습니다.</li>
+<li>GAAP과 non-GAAP 영업비용의 차이가 분기당 약 $22.7M입니다(111.2 − 88.5). 어떤 항목인지는 <strong>확인 불가</strong>지만, 주주 입장에서는 실제 비용으로 봐야 합니다.</li>
+<li>밸류에이션(직접 계산): 시가총액 $2.00B에서 순현금을 빼면 EV는 약 $1.74B입니다. Q2 매출을 단순 연환산한 $1.385B 대비 EV/Sales는 약 1.26배입니다. 연환산 방식이라 계절성은 반영하지 않았습니다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>유럽 회복 + Nexis 확산</strong></td>
+<td>DACH에서 3상 Nexis 점유율 확대, 2027년 1분기 단상 Nexis 출시가 일정대로 진행</td>
+<td>Q3 유럽 매출 감소 폭이 회사가 제시한 중간값 약 -$15M 이내인지, Nexis 수주·출하 언급이 나오는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>저장장치·리트로핏 업셀</strong></td>
+<td>네덜란드 등에서 net metering(잉여전력 상계) 폐지가 진행되면서 기존 고객이 저장장치를 추가 설치</td>
+<td>업셀 매출이 Q2의 $20M+ 이상으로 유지·확대되는지, Q4 계절 하락을 상쇄하는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>미국 C&amp;I 점유율 확대</strong></td>
+<td>domestic content·non-FEOC 요건이 유지되고 safe harbor(세액공제 요건 선확보) 계약이 실제 출하로 이어짐</td>
+<td>C&amp;I 매출 성장률, safe harbor 계약 규모. 회사는 아직 금액을 공개하지 않았습니다</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>미국 주택용 회복</strong></td>
+<td>택스 에퀴티 자금 조달 환경 개선, FEOC 규정 명확화, 유통 재고 정상화</td>
+<td>회사는 Q3에도 부진이 이어진다고 밝혔습니다. Q4 가이던스 문구가 바뀌는지 봐야 합니다</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>AI 데이터센터용 SST</strong></td>
+<td>2026년 말까지 34.5kV 3상 개념검증(PoC) 완료, 2027년 파일럿, 2028년 매출 발생. NVIDIA의 800V DC 전환 일정에 달려 있음</td>
+<td>연말 PoC 완료 발표 여부, 파일럿 고객 확보 여부. 다만 이 항목은 2028년 이전 실적에는 기여하지 않습니다</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스 화법</strong>
+- 실적콜에서 CEO는 "turnaround의 중요한 이정표", "거의 3년 만의 흑자 복귀"라고 강조했습니다. 톤은 자신감이 높습니다. 그러나 IEEPA 환급이 흑자의 상당 부분을 차지한다는 점은 경영진 발표에서 강조되지 않았습니다. 이 사실은 보도자료 각주와 Q3 가이던스 문구에만 나옵니다.
+- 회사는 "현재 분기만 가이던스를 준다"는 원칙을 반복하면서 Q4 질문에 답하지 않았습니다. 대신 상승 요인(저장장치, Nexis 램프업)과 하락 요인(계절성)을 나열했습니다.
+- 5월 TD Cowen 콘퍼런스에서 CEO는 "이번 분기 가이던스 중간값이 흑자 근처까지 왔다"고 말했습니다. 실제로 Q2는 흑자였지만 IEEPA 효과가 포함된 결과입니다.</p>
+<p><strong>반복된 질문과 회사의 방어 지점</strong>
+- <strong>SST 매출 규모</strong>: 매출 규모를 언제 정량화하느냐는 질문(Deutsche Bank)에 "9/10 Investor Day에서 공유하겠다"고 미뤘습니다. Investor Day 이후 주가는 계속 떨어졌습니다(20일 <span class="down">-12%</span>). 그날 발표가 시장 기대에 못 미쳤을 가능성이 있지만, 이는 추정입니다.
+- <strong>safe harbor 규모</strong>: TD Cowen이 경쟁사 Enphase의 약 $800M 공개 사례와 비교하며 물었지만, 회사는 "아직 작업 중"이라며 금액 공개를 피했습니다.
+- <strong>유럽의 중국산 인버터 금지</strong>: 회사는 실제로 확정된 것은 유럽투자은행(EIB)이 자금을 대는 프로젝트에 한정된다고 하며 추측을 피했습니다. 주택용과 C&amp;I 시장에서는 아직 확인된 수혜가 아닙니다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 미국 C&amp;I 지붕형 점유율 50% 이상, Fortune 100의 60% 이상에 설치, 유럽 매출 2배 이상 성장, 리트로핏 업셀 $20M+
+- 메모리 등 부품 가격 상승분 일부를 회사가 흡수하고 있다는 점. 회사는 영향이 크지 않다고 밝혔습니다
+- 이스라엘 셰켈 강세로 영업비용이 "수백만 달러" 늘어나는 역풍
+- 주택용 배터리를 NMC에서 LFP로 전환해 원가를 개선한다는 계획</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>일회성 이익 의존과 본업 수익성의 불확실성</strong>: Q2 흑자와 Q3 가이던스상 흑자가 모두 IEEPA 환급에 기대고 있습니다. 환급이 끝나면 non-GAAP 기준으로도 적자로 돌아갈 수 있습니다. 10-K도 첫 번째 리스크로 "향후 수익성 달성 능력"을 꼽습니다.</li>
+<li><strong>미국 정책·통상 리스크</strong>: IRA와 H.R.1 같은 세법 변경, FEOC 규정, 관세가 회사의 C&amp;I 경쟁우위(domestic content·non-FEOC)의 근거입니다. 규정 해석이 바뀌면 그 우위가 약해질 수 있습니다. 10-K는 세법·관세·보조금 축소를 별도 리스크로 적고 있습니다.</li>
+<li><strong>미국 주택용 수요와 유통 재고</strong>: 실적콜에서 회사는 설치업체의 자금난과 유통업체의 재고 축소가 Q3에도 이어진다고 언급했습니다. 10-K도 태양광 산업의 주기적 침체와 유통업체 통합을 리스크로 명시합니다.</li>
+<li><strong>경영진 교체와 실행 리스크</strong>: 10월 CRO 사임(8-K)과 북미 리더십 교체 보도가 있었습니다. 10-K는 인력 감축 상태에서의 글로벌 운영, 구조조정 효과, 새 ERP 도입, 핵심 인력 유지를 리스크로 열거합니다.</li>
+<li><strong>이스라엘 소재 본사와 공급망 집중</strong>: 10-K는 이스라엘 분쟁에 따른 사업 차질, 이스라엘 세제 혜택 축소 가능성, 소수 위탁생산업체와 단일 공급원 의존, 해상 운송 의존을 리스크로 명시합니다. 셰켈 강세는 비용 역풍입니다.</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 (관망)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IEEPA 제외 Q2 non-GAAP 영업손익</td>
+<td>약 -$3.1M</td>
+<td>구조적 흑자는 미확인</td>
+</tr>
+<tr>
+<td>Q3 가이던스 중간값의 본업 영업손익</td>
+<td>약 -$10.5M</td>
+<td>회사 스스로 본업 적자를 예상</td>
+</tr>
+<tr>
+<td>Q3 매출 가이던스 중간값</td>
+<td>$325M (전분기 대비 <span class="down">-6%</span>)</td>
+<td>성장 둔화</td>
+</tr>
+<tr>
+<td>최근 두 분기 FCF</td>
+<td>$23.8M (TTM $90M 중)</td>
+<td>현금 창출력 둔화</td>
+</tr>
+<tr>
+<td>순현금</td>
+<td>$264.6M (시가총액의 약 13%)</td>
+<td>하방을 일부 받쳐줌</td>
+</tr>
+<tr>
+<td>EV / 연환산 매출</td>
+<td>약 1.26배</td>
+<td>턴어라운드가 확인되면 재평가 여지</td>
+</tr>
+<tr>
+<td>거래량 배수 / 60일 수익률</td>
+<td>1.01배 / <span class="down">-39.3%</span></td>
+<td>매수 주체 미확인, 추세 하락</td>
+</tr>
+<tr>
+<td>일 거래대금</td>
+<td>$83.5M</td>
+<td>기관이 편입할 유동성은 충분</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 실적의 본업 마진</strong>: IEEPA 효과를 뺀 non-GAAP 매출총이익률이 24% 이상을 유지하는지, 영업비용이 $86~91M 범위에 들어오는지 확인해야 합니다.
+2. <strong>Q4 가이던스와 FCF</strong>: 계절 하락에도 매출이 $300M대를 지키는지, FCF가 다시 플러스 $10M 이상으로 돌아오는지 봐야 합니다.
+3. <strong>Investor Day 내용과 "$250M" 이슈 확인</strong>: 9/10 Investor Day 자료에 나온 중장기 재무 목표, safe harbor 규모, SST 매출 경로를 원문으로 확인해야 합니다. Seeking Alpha 기사가 말하는 $250M 부담(부채 상환 또는 재무 목표로 추정)도 10-Q 원문으로 검증해야 합니다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올릴 조건</strong>: IEEPA를 빼고도 non-GAAP 영업흑자가 두 분기 연속 나오고, 유럽 Nexis와 C&amp;I 성장으로 Q4 매출이 전년보다 늘어나는 것이 동시에 확인될 때.
+- <strong>'회피'로 내릴 조건</strong>:
+  - 본업 기준 non-GAAP 매출총이익률이 22% 아래로 떨어질 때
+  - FCF가 마이너스로 돌아서고 순현금이 줄어들 때
+  - FEOC나 domestic content 규정 변경으로 미국 C&amp;I 점유율 근거가 훼손될 때
+  - 리더십 이탈이 CEO나 CFO 수준으로 번질 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326000632/zk2634374.htm">10-K — 2025-12-31_0001178913-26-000632</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326003854/zk2635807.htm">10-Q — 2026-06-30_0001178913-26-003854</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326002432/zk2635169.htm">10-Q — 2026-03-31_0001178913-26-002432</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326004710/zk2636192.htm">8-K — 2026-10-01_0001178913-26-004710</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326004477/zk2636103.htm">8-K — 2026-09-10_0001178913-26-004477</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326003833/exhibit_99-1.htm">8-K — 2026-08-05_0001178913-26-003833__EX-99.1__exhibit_99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326003833/a2635832.htm">8-K — 2026-08-05_0001178913-26-003833</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1419612/000117891326003337/zk2635609.htm">8-K — 2026-06-22_0001178913-26-003337</a></li>
+<li>Transcript — 2026-08-05 SolarEdge Technologies, Inc. (SEDG) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-28 SolarEdge Technologies, Inc. (SEDG) Presents at TD Cowen's 54th Annual Technology, Media &amp; Telecom Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

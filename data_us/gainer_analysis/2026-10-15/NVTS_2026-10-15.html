@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NVTS — Navitas Semiconductor Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>NVTS — Navitas Semiconductor Corporation Common Stock</h1>
+<div class="sub">2026-10-15 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">NVTS</span><span class="badge">+4.61%</span><span class="badge">거래량 1.3배</span><span class="badge">$2.73B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>매출 대비 시가총액이 지나치게 높다.</strong> 분기 매출은 $10.5M(YoY <span class="down">-27%</span>)이고 GAAP 영업손실은 $27.2M입니다. 시가총액 $2.73B는 Q2 매출을 연율화한 값(약 $42M)의 약 65배입니다. 회사의 Q3 가이던스(약 $13.5M)를 연율화해도 약 50배입니다. 지금 주가는 실적이 아니라 "AI 인프라 전력(800V·IVR)" 서사에 기대고 있습니다.</li>
+<li><strong>실적은 좋아지는 중이지만 아직 기대 단계다.</strong> 매출총이익률은 16.1%(Q2'25)에서 38.7%(Q2'26)로 올랐고, 매출은 QoQ <span class="up">+22.5%</span>입니다. 회사는 Q3에 YoY 성장으로 돌아서고, 연말까지 AI 인프라 매출 비중이 1/3을 넘는다고 밝혔습니다. 다만 이것이 실제 매출로 확인되는 시점은 2027년 800V 전환 이후입니다.</li>
+<li><strong>희석이 이미 진행 중이다.</strong> 1H26에 ATM(시장가 분할 매각)으로 약 17.4M주, 총 약 $380.8M을 조달했고, $500M 한도 중 약 $244M이 남아 있습니다. Claros 인수(10/6 완료)까지 더해져 주당 가치가 계속 희석될 위험이 있습니다.</li>
+<li><strong>오늘 상승은 근거가 약하다.</strong> 거래량 배수가 1.3배에 그쳐 '거래량 급증'으로 보기 어렵습니다. 당일 공시도 없습니다. 60일 수익률이 <span class="down">-27%</span>인 하락 추세 안의 기술적 반등일 가능성을 배제할 수 없습니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 안에 공시가 없습니다.</li>
+<li><strong>Claros 인수:</strong> 헤드라인("$233M에 Claros 인수")은 있지만, 인수 완료 8-K는 2026-10-06에 이미 나왔습니다. 오늘(10/15) 처음 나온 재료가 아닙니다. 인수 금액 $233M은 뉴스 헤드라인 기준이며, 제공된 SEC 발췌에서는 거래 조건이 확인되지 않습니다.</li>
+<li><strong>NVIDIA 협업 보드:</strong> "NVIDIA와 전력 변환 단계를 생략하는 보드 협업" 헤드라인(Stock Titan)이 촉매일 수 있습니다. 하지만 기사 게재일과 세부 내용을 확인할 수 없어 촉매로 특정하지 않았습니다.</li>
+<li><strong>수급 정황:</strong> 거래대금은 $206.9M입니다. 반면 거래량은 20일 중앙값의 1.3배에 그쳐, 새 정보가 반영된 날의 패턴으로 보기 어렵습니다. 20일 <span class="down">-10.7%</span>, 60일 <span class="down">-27.1%</span>로 52주 고점 대비 <span class="down">-67%</span> 구간이라 낙폭 과대 반등이나 AI 전력 반도체 섹터 동조로 보는 편이 합리적입니다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 표지와 목차까지만 포함하고 있어, 아래 내용은 10-Q MD&amp;A의 개요 부분을 기준으로 작성했습니다.</p>
+<ul>
+<li><strong>제품</strong></li>
+<li>GaN 전력 IC와 GaN FET</li>
+<li>고전압 SiC MOSFET·모듈, 쇼트키 다이오드</li>
+<li>고속 실리콘 시스템 컨트롤러, 디지털 아이솔레이터</li>
+<li>Claros 인수로 IVR(통합 전압 레귤레이터)이 추가되었습니다. 8-K CEO 서한에 따르면 이는 xPU 바로 앞단의 전력 공급(VPD/EPD)을 겨냥합니다.</li>
+<li><strong>비즈니스 모델:</strong> 팹리스입니다. 웨이퍼 제조, 조립, 테스트를 모두 외부 파트너에 맡기므로 설비투자 부담은 낮습니다. 반대로 파트너의 생산능력, 수율, 원가에 실적이 좌우됩니다.</li>
+<li><strong>판매 경로:</strong> 전문 유통사를 거쳐 OEM과 그 공급망에 판매합니다.</li>
+<li><strong>지역별 매출(Q1'26, 최종고객 소재지 기준)</strong></li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지역</th>
+<th>Q1'26</th>
+<th>Q1'25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미국</td>
+<td>$3.5M (41%)</td>
+<td>31%</td>
+</tr>
+<tr>
+<td>중국</td>
+<td>$3.1M (36%)</td>
+<td>41%</td>
+</tr>
+<tr>
+<td>유럽</td>
+<td>$1.1M (12%)</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>중국 외 아시아</td>
+<td>$0.9M (11%)</td>
+<td>13%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>사업 전환(Navitas 2.0):</strong> 2025년 4분기에 시작한 구조조정으로 모바일·저가 소비자용 충전기에서 고전력 시장(AI 데이터센터, 에너지·그리드, 산업 전동화)으로 옮겨가고 있습니다. 6월 말 기준으로 회사는 "실질적으로 완료"라고 밝혔습니다.</li>
+<li><strong>경쟁 위치:</strong> GaN과 고전압 SiC를 동시에 보유한 점, 그리고 그리드에서 xPU까지(Grid-to-xPU) 전 구간을 공략한다는 점을 회사가 차별화로 내세웁니다. 경쟁사 대비 점유율 같은 정량 비교는 공시상 확인 불가입니다.</li>
+<li><strong>고객 집중도와 제품별 매출 비중(GaN/SiC):</strong> 공시상 확인 불가입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기별 손익(10-Q 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2'25</th>
+<th>Q1'26</th>
+<th>Q2'26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$14.5M</td>
+<td>$8.6M</td>
+<td>$10.5M</td>
+</tr>
+<tr>
+<td>매출원가율(무형자산상각 제외)</td>
+<td>83.9%</td>
+<td>62.4%</td>
+<td>61.3%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>16.1%</td>
+<td>37.6%</td>
+<td>38.7%</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>$11.5M</td>
+<td>$14.6M</td>
+<td>$13.2M</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>$7.8M</td>
+<td>$11.3M</td>
+<td>$13.0M</td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>-$21.7M</td>
+<td>-$27.8M</td>
+<td>-$27.2M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- <strong>매출 감소 원인:</strong> Q1에 YoY <span class="down">-39%</span>를 기록했고, 회사는 그 원인을 "중국 등 아시아 모바일과 소비자 시장 매출 감소"라고 공시했습니다. Q2 매출도 YoY <span class="down">-27%</span>로, 모바일 이탈이 계속 매출을 깎고 있습니다.
+- <strong>QoQ 반등과 믹스 개선:</strong> QoQ <span class="up">+22.5%</span> 반등에 대해 실적콜에서 "고전력 시장 성장 덕분이며, 고전력은 YoY 50% 이상 성장했다"고 언급했습니다. 매출이 줄어드는 동안 매출총이익률이 16%에서 39%로 오른 것은 제품 믹스 개선을 뒷받침하는 증거입니다.
+- <strong>확인되지 않는 부분:</strong> 단가와 물량을 나눈 분석, 그리고 Q2'25 원가율 83.9%의 원인(재고 평가손실 여부 등)은 발췌 범위에서 공시상 확인 불가입니다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률은 개선되고 있습니다.
+- 반면 영업이익률은 시장 지표 기준 <span class="down">-255%</span>로 YoY 105.6%p 악화되었습니다. 10-Q 영업손실로 직접 계산하면 약 <span class="down">-258%</span>입니다.
+- SG&amp;A가 YoY <span class="up">+68%</span>($5.3M) 늘어난 것이 결정적입니다. 증가 사유는 발췌에서 공시상 확인 불가입니다. Claros 인수 관련 비용일 가능성은 추정에 그칩니다.
+- <strong>손익분기 추정(단순 계산):</strong> 상각비와 구조조정비를 뺀 Q2 영업비용은 약 $26.2M입니다. 매출총이익률 40%를 가정하면 분기 매출이 약 $65M은 되어야 손익분기에 도달합니다. 이는 현재 매출의 약 6배입니다. 회사는 Q3에 OpEx를 늘리겠다고 밝혔으므로 실제 문턱은 더 높아질 수 있습니다.</p>
+<p><strong>현금흐름·재무</strong>
+- TTM 잉여현금흐름은 -$67.8M입니다.
+- 1H26 ATM 조달 내역은 다음과 같습니다.
+  - 첫 번째 $125M 프로그램: 약 6.5M주로 전액 소진
+  - 두 번째 $500M 프로그램: 6월 말까지 약 10.9M주, 총 $255.8M
+  - 두 번째 프로그램의 평균 매각가는 약 $23.5/주(단순 계산)로 현재가 $10.45의 두 배를 넘습니다. 고점 부근에서 자본을 확보한 점은 긍정적입니다.
+- 6월 말 기준 현금 잔액, 부채, 그리고 Claros 인수 대금의 현금·주식 구성은 제공된 발췌에서 공시상 확인 불가입니다.
+- 발행주식수는 2026-02-25 기준 230.8M주였습니다. 이후 ATM과 인수로 늘어났을 가능성이 높으나, 정확한 현재 주식수는 공시상 확인 불가입니다.
+- 요약하면 현금 소진 기간(런웨이)은 ATM 덕분에 짧지 않을 것으로 추정되지만, 그 비용을 기존 주주가 희석으로 부담하는 구조입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① AI 데이터센터 PSU(AC/DC·DC/DC·BBU)</td>
+<td>회사는 고전력 AC/DC PSU에서 실리콘을 고전압 SiC로 바꾸는 수요가 이미 진행 중이고, 2H26에 여러 프로그램이 양산에 들어간다고 밝힘</td>
+<td>하이퍼스케일러와 머천트 파워 업체의 양산 출하</td>
+<td>Q3 매출이 가이던스 약 $13.5M을 달성하는지, Q4에도 두 자릿수 QoQ 성장이 이어지는지</td>
+</tr>
+<tr>
+<td>② 800V DC 전환</td>
+<td>실적콜에서 "2027년에 단계적으로 전환되며, 단계마다 변곡점이 생긴다"고 언급</td>
+<td>xPU·하이퍼스케일러의 800V 아키텍처 채택 일정</td>
+<td>NVIDIA 등 생태계 파트너의 800V 제품 일정, 회사가 공개하는 디자인윈 수</td>
+</tr>
+<tr>
+<td>③ 그리드·에너지(SST·BESS·PCS·태양광)</td>
+<td>실적콜에서 "SST의 큰 도약은 2028년이고, 그 외 응용처는 2027년부터 늘어난다"고 언급</td>
+<td>6.5kV·10kV 초고전압 SiC 개발과 고객 인증</td>
+<td>초고전압 SiC 샘플링·인증 진척도</td>
+</tr>
+<tr>
+<td>④ Claros IVR(최종단 전력 공급)</td>
+<td>회사는 Grid-to-xPU 전 구간 플랫폼을 완성한다고 밝힘(8-K CEO 서한)</td>
+<td>아직 기술 단계로, 매출 기여 시점은 확인 불가</td>
+<td>다음 10-Q의 인수가 배분(영업권 규모), Claros 매출과 비용의 연결 효과</td>
+</tr>
+<tr>
+<td>⑤ JFET로 SAM 확대</td>
+<td>실적콜에서 "JFET로 SAM이 $1B 늘었다"고 언급</td>
+<td>제품 출시와 디자인윈 확보</td>
+<td>출시 일정, 초기 고객 공개 여부</td>
+</tr>
+</tbody>
+</table></div>
+<p>공통 검증 포인트는 세 가지입니다.
+- 회사가 연말 목표로 제시한 "AI 인프라 매출 비중 1/3 이상"이 Q4 실적에서 수치로 공개되는지
+- 실적콜에서 언급한 "역대 최고 book-to-bill"이 구체적인 수치로 제시되는지
+- 영업비용 증가가 매출 증가의 1/4~1/3 범위 안에 머무는지</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤</strong>
+- 매우 자신감 있는 톤입니다. CEO는 "Navitas 2.0은 우리가 앞으로 될 모습이 아니라 지금의 모습"이며 전환이 "예상보다 1분기 빨리" 끝났다고 강조했습니다.
+- 그 근거로 든 것은 세 가지입니다.
+  - 매출 QoQ <span class="up">+22%</span>
+  - 고전력 매출 YoY <span class="up">+50%</span> 이상
+  - 2026년을 넘어서는 백로그와 역대 최고 book-to-bill(구체 수치는 미공개)</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 초점이 "구조조정"에서 "성장 가속"으로 옮겨갔습니다. 회사가 제시한 전망은 다음과 같습니다.
+  - Q3 매출: 중간값 기준 QoQ <span class="up">+28%</span>(약 $13.5M)
+  - 하반기: 두 자릿수 QoQ 성장 지속
+  - 연간: 한 자릿수 중반 성장
+- 동시에 OpEx 확대를 "의식적인 결정"이라고 공식화했습니다. CEO는 "성장이 6~9개월 전 추정보다 빨리 와서 투자를 앞당겼다"고 말했습니다.</p>
+<p><strong>애널리스트 Q&amp;A</strong>
+- <strong>질문:</strong> Craig-Hallum의 Richard Shannon이 OpEx 가이던스 범위가 $2M으로 넓어졌다는 점과 앞으로의 OpEx 추이를 물었습니다.
+- <strong>답변:</strong> CFO는 "Q3 가이던스 상단에서도 OpEx 증가율은 약 10%로, 매출 증가율 28%보다 크게 낮다"고 방어했습니다. OpEx 증가를 매출 증가의 1/4~1/3 수준으로 관리하겠다는 원칙도 제시했습니다.
+- <strong>비어 있는 부분:</strong> 흑자전환 시점, 즉 언제 손익분기에 도달하는지에 대한 정량 목표는 제시되지 않았습니다. "수익성으로 가는 길" 같은 정성적 표현만 반복되었습니다.
+- 제공된 발췌는 중간이 생략되어 있어, Q&amp;A에서 반복된 질문의 전체 패턴은 확인할 수 없습니다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 고전력 매출 YoY <span class="up">+50%</span> 이상
+- 2027년 800V 전환, 2028년 SST라는 단계별 일정
+- JFET로 SAM +$1B
+- 연말 AI 인프라 매출 비중 1/3 초과 목표
+- 모바일·저가 소비자 매출이 연말에 "무의미한 수준"이 될 것이라는 언급
+- "단일 고객이 아니라 여러 하이퍼스케일러와 여러 플랫폼"이라는 강조. 다만 고객명이나 매출 비중은 공개되지 않았습니다.</p>
+<p><strong>시장 반응</strong>
+- 실적 발표 다음 날 주가는 <span class="down">-12.27%</span> 하락했습니다($11.41 → $10.01, SA 페이지 기준). 가이던스가 개선되었는데도 시장이 받아들이지 않았다는 신호입니다.
+- 같은 페이지 기준 공매도 비율은 13.99%입니다.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌에는 리스크 팩터 본문이 빠져 있습니다. 아래는 MD&amp;A와 실적콜에서 실제로 확인되는 리스크입니다.</p>
+<ol>
+<li><strong>지속적인 주주 희석</strong>
+   - 1H26에만 약 17.4M주(총 약 $381M)를 ATM으로 발행했고, $500M 프로그램 잔여 한도가 약 $244M입니다.
+   - 영업손실이 분기 약 $27M 수준이고 OpEx를 더 늘리겠다고 밝혔으므로 추가 발행 가능성이 높습니다(추정).</li>
+<li><strong>밸류에이션과 실적 사이의 간극</strong>
+   - 시가총액 $2.73B 대비 연율화 매출은 약 $42~54M입니다.
+   - 800V 전환(2027년)이나 SST(2028년) 일정이 늦어지면 주가가 크게 재평가될 위험이 큽니다.
+   - Q2 실적 발표 후 <span class="down">-12%</span>, 52주 고점 대비 <span class="down">-67%</span>라는 흐름은 이 민감도를 보여줍니다.</li>
+<li><strong>팹리스 공급망 의존</strong>
+   - MD&amp;A에 "실적이 제조 파트너의 생산능력·원가·수율에 좌우된다"고 명시되어 있습니다.
+   - SiC 기판 수급이나 수율 문제가 생기면 매출총이익률 개선이 되돌려질 수 있습니다.</li>
+<li><strong>중국 노출과 매출 공백</strong>
+   - Q1'26 기준 중국 매출 비중은 36%입니다.
+   - 모바일 매출이 빠지는 속도가 고전력 매출이 늘어나는 속도보다 빠르면 매출 공백이 생깁니다. 지정학적 리스크도 함께 존재합니다.</li>
+<li><strong>인수 통합과 무형자산 부담</strong>
+   - 기존 무형자산 상각비만 분기 $4.7M입니다.
+   - Claros 인수로 영업권과 무형자산이 늘어날 수 있습니다(구체 규모는 공시상 확인 불가). 기술 단계 자산이라 향후 손상차손 위험이 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'관망'의 정량 근거</strong>
+- <strong>부정 요인</strong>
+  - 연율화 매출 대비 시가총액이 약 50~65배입니다.
+  - 영업이익률 약 <span class="down">-255%</span>, TTM FCF -$67.8M입니다.
+  - SG&amp;A가 YoY <span class="up">+68%</span> 늘었습니다.
+  - 1H26 ATM 발행이 약 17.4M주로, 2월 말 주식수 대비 약 7.5%입니다.
+- <strong>긍정 요인</strong>
+  - 매출총이익률이 16.1%에서 38.7%로 23%p 올랐습니다.
+  - 매출 QoQ <span class="up">+22.5%</span>, Q3 가이던스 <span class="up">+28%</span>입니다.
+  - 고점 부근의 ATM으로 현금을 확보해 단기 유동성 위험은 낮다고 추정합니다.
+- <strong>판단:</strong> 실적이 바닥을 찍었다는 신호는 있지만, 의미 있는 비중을 실으려면 성장이 실제 매출로 확인되어야 합니다. 그 확인은 빨라야 Q3 실적(11월 초 예상)과 2027년 800V 전환 시점에 가능합니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 매출:</strong> 가이던스 약 $13.5M을 달성하는지, YoY 성장으로 실제 전환하는지, 그리고 Q4 가이던스가 다시 두 자릿수 QoQ 성장을 제시하는지
+2. <strong>Q3 10-Q의 재무 정보:</strong> 현금 잔액, 남은 ATM 한도와 9월 말 기준 사용분, Claros 인수 대금 구성(현금·주식)과 영업권 규모, 그리고 이를 바탕으로 한 현재 주식수와 희석률
+3. <strong>매출총이익률과 OpEx 규율:</strong> 매출총이익률이 40% 이상으로 계속 오르는지, OpEx 증가가 회사가 밝힌 대로 매출 증가의 1/4~1/3 안에 머무는지</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올리는 조건</strong>
+  - 두 분기 연속으로 두 자릿수 QoQ 성장을 하면서 AI 인프라 매출 비중(1/3 이상)과 book-to-bill이 수치로 공개될 것
+  - 같은 기간 추가 ATM 사용이 멈추거나 둔화될 것
+  - 하이퍼스케일러 대상 800V 디자인윈이 공시나 고객 발표로 구체화될 것
+- <strong>'회피'로 낮추는 조건</strong>
+  - Q3 매출이 가이던스에 못 미치거나 Q4 가이던스가 QoQ 둔화(한 자릿수)를 제시하는 경우
+  - 주가가 낮은 상태에서 ATM을 대규모로 추가 사용하는 경우(예: 남은 한도 상당 부분 소진)
+  - 매출총이익률이 다시 35% 미만으로 후퇴하는 경우
+  - 실적콜에서 회사가 800V 전환 시점을 2027년 이후로 미루는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000182176926000007/nvts-20251231.htm">10-K — 2025-12-31_0001821769-26-000007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000162828026049808/nvts-20260630.htm">10-Q — 2026-06-30_0001628280-26-049808</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000162828026030524/nvts-20260331.htm">10-Q — 2026-03-31_0001628280-26-030524</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000110465926114051/tm2626897d3_ex99-2.htm">8-K — 2026-10-06_0001104659-26-114051__EX-99.2__tm2626897d3_ex99-2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000110465926114051/tm2626897d3_ex99-1.htm">8-K — 2026-10-06_0001104659-26-114051__EX-99.1__tm2626897d3_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000110465926114051/tm2626897d3_8k.htm">8-K — 2026-10-06_0001104659-26-114051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000110465926109125/tm2625807d1_ex10-1.htm">8-K — 2026-09-18_0001104659-26-109125__EX-10.1__tm2625807d1_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1821769/000110465926109125/tm2625807d1_8k.htm">8-K — 2026-09-18_0001104659-26-109125</a></li>
+<li>Transcript — 2026-07-27 Navitas Semiconductor Corporation (NVTS) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-07-28 Navitas Semiconductor Corporation 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
