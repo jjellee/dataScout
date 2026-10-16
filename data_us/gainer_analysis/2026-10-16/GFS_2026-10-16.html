@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GFS — GlobalFoundries Inc. Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GFS — GlobalFoundries Inc. Ordinary Shares</h1>
+<div class="sub">2026-10-16 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GFS</span><span class="badge">+4.80%</span><span class="badge">거래량 3.08배</span><span class="badge">$27.28B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 상승(<span class="up">+4.80%</span>, 거래량 20일 중앙값의 3.08배)은 "일본이 GF의 뉴욕 신규 팹 2곳에 최대 $21B 투입" 뉴스가 촉매로 보입니다. 다만 2026-10-14 6-K 본문은 제공되지 않아 계약 구조(누가 CAPEX를 부담하는지, GF의 지분과 운영 역할)를 공시로 확인할 수 없습니다.</li>
+<li>Q2 실적 자체는 괜찮았습니다. 매출 $1.786B(QoQ <span class="up">+9.3%</span>), 회사는 매출과 Non-IFRS 매출총이익률이 가이던스 상단을 넘었다고 밝혔습니다. 그러나 IFRS 영업이익률은 9.7%로 YoY <span class="down">-1.9%</span>p입니다. Q2 Non-IFRS 조정 FCF는 $(3)M으로 현금 창출이 사실상 0이었습니다.</li>
+<li>밸류에이션은 시총 $27.28B 기준 TTM FCF 대비 약 34배입니다(아래 7절 계산). 성장률(매출 YoY <span class="up">+5.8%</span>)에 비해 싸지 않습니다. 오늘의 재평가는 확정된 수익이 아니라 신규 팹 구조에 대한 기대에 기대고 있습니다.</li>
+<li>재무 건전성은 양호합니다. 현금성 자산 $3.3B가 차입금 $1.12B보다 많아 순현금이고, 미사용 $1.5B 리볼버도 새로 확보했습니다. 하방 리스크는 제한적이지만, 의미 있는 비중을 실으려면 일본 팹 계약 조건과 Q3 실적·마진을 먼저 확인해야 합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>촉매: 뉴스(일본-미국 동맹 하의 뉴욕 신규 팹 2곳 투자). 관련 6-K는 존재하지만 내용은 미확인입니다.</strong></p>
+<ul>
+<li>뉴스 헤드라인 5건 중 4건이 같은 사안입니다.</li>
+<li>"Japan Is Putting Up to $21 Billion Into New GlobalFoundries Chip Plants in New York"</li>
+<li>"GlobalFoundries To Operate Two New Chip Fabs Under U.S.-Japan Alliance"</li>
+<li>"Wedbush praises New York fab deal"</li>
+<li>2026-10-14에 6-K가 제출됐습니다. 시점상 이 딜과 관련됐을 가능성이 높지만, 본문이 제공되지 않아 공시로 확인한 사실로 다룰 수 없습니다.</li>
+<li>확인이 필요한 핵심 쟁점: 헤드라인 표현이 "Operate"입니다. GF가 자본을 직접 대는 소유주인지, 일본 측 자금으로 지은 팹을 운영하는 구조인지에 따라 FCF와 희석 영향이 정반대가 됩니다.</li>
+<li>운영 구조라면 GF의 CAPEX 부담은 작아집니다(추정).</li>
+<li>소유 구조라면 CAPEX와 자금조달 부담이 커집니다(추정).</li>
+<li>이 내용은 공시상 확인 불가입니다.</li>
+<li>수급 측면: 거래대금 $674.8M, 거래량 3.08배는 기관 수요가 들어왔음을 시사합니다. 다만 주가는 60일 <span class="down">-16.6%</span>, 52주 고점 대비 <span class="down">-45.6%</span> 상태입니다. 그래서 오늘 상승은 낙폭 과대 구간의 반등 성격도 겹쳐 있다고 봅니다(해석).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 20-F 발췌는 목차에서 끊겨 있습니다. 그래서 Item 4(사업 개요)의 매출 구성, 고객 집중도, 경쟁 구도는 <strong>공시상 확인 불가</strong>입니다. 아래는 Q2 실적 보도자료(6-K EX-99.1)와 재무제표에서 확인되는 내용만 정리한 것입니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>확인 내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>본업</td>
+<td>반도체 웨이퍼 제조. 회사는 "advanced manufacturing", "wafer technologies"를 언급함</td>
+<td>Q2 보도자료</td>
+</tr>
+<tr>
+<td>차별화 기술</td>
+<td>실리콘 포토닉스, 실리콘 게르마늄(SiGe), BCD, GaN, 통합 인덕터, cryogenic CMOS</td>
+<td>Q2 보도자료</td>
+</tr>
+<tr>
+<td>전략적 성장 축(회사 표현)</td>
+<td>AI 데이터센터 내 광네트워킹(Optical Networking), AI 데이터센터 전력공급(IVR), RISC-V IP(MIPS + Synopsys ARC), Physical AI, 양자(QTS)</td>
+<td>Q2 보도자료</td>
+</tr>
+<tr>
+<td>사업모델 확장</td>
+<td>회사는 IP·소프트웨어 툴·커스텀 설계·제조를 묶은 "software-to-silicon" 파트너가 되겠다고 밝힘</td>
+<td>Q2 보도자료</td>
+</tr>
+<tr>
+<td>제조 거점</td>
+<td>본사는 뉴욕 Malta. 차입 자회사로 GLOBALFOUNDRIES Singapore Pte. Ltd.와 GLOBALFOUNDRIES U.S. Inc.가 있음</td>
+<td>20-F 표지, 2026-08 6-K</td>
+</tr>
+<tr>
+<td>회계기준</td>
+<td>IFRS(외국 민간발행인, 20-F/6-K 제출)</td>
+<td>20-F</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>매출 구성(엔드마켓별·지역별·노드별):</strong> 공시상 확인 불가</li>
+<li><strong>주요 고객과 집중도:</strong> 공시상 확인 불가</li>
+<li><strong>경쟁 위치(점유율, 경쟁사 대비 기술 위치):</strong> 공시상 확인 불가</li>
+<li>해석: 매출총이익률이 28.3%(Non-IFRS 29.9%)입니다. 자본집약적인 성숙·특화 공정 제조업의 마진 구조로 보이며, 선단 공정 프리미엄형 마진은 아닙니다(추정).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<h3>4-1. 손익 (Q2 2026, 2026-06-30 종료 분기)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>IFRS</th>
+<th>Non-IFRS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$1.786B (YoY <span class="up">+5.8%</span>, QoQ <span class="up">+9.3%</span>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>28.3%</td>
+<td>29.9%</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>9.7% (YoY <span class="down">-1.9%</span>p)</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$167M</td>
+<td>$256M</td>
+</tr>
+<tr>
+<td>희석 EPS</td>
+<td>$0.30</td>
+<td>$0.46</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>—</td>
+<td>$587M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>IFRS와 Non-IFRS의 괴리가 큽니다.</strong> 영업이익률 기준 7.0%p 차이입니다. 조정 항목의 세부 내역은 제공 자료에서 공시상 확인 불가입니다. 다만 같은 기간 M&amp;A가 이어져 영업권·무형자산이 $493M 늘었으므로, 무형자산 상각과 인수 관련 비용이 조정 항목에 포함됐을 가능성이 있습니다(추정).</li>
+<li><strong>성장의 질(단가·물량·믹스):</strong> 웨이퍼 출하량, ASP, 가동률 같은 분해 데이터는 공시상 확인 불가입니다. 확인되는 것은 다음뿐입니다.</li>
+<li>회사는 광네트워킹 등 "strategic growth drivers"에서 매출 성장과 고객 수요 가속을 확인하고 있다고 밝혔습니다.</li>
+<li>해석: QoQ <span class="up">+9.3%</span>에 비해 YoY <span class="up">+5.8%</span>가 낮습니다. 강한 순환적 회복이라기보다 전년 대비 완만한 성장에 계절적·분기적 반등이 더해진 모습입니다.</li>
+<li><strong>마진 방향성:</strong> IFRS 영업이익률은 YoY <span class="down">-1.9%</span>p로 악화됐습니다. 매출이 늘어도 영업레버리지가 나타나지 않은 것은 부정적 신호입니다. 원인(감가상각, 인수 비용, 믹스)은 공시상 확인 불가입니다.</li>
+<li><strong>Q3 가이던스:</strong> 제공된 보도자료 발췌가 중간에 끊겨 공시상 확인 불가입니다.</li>
+</ul>
+<h3>4-2. 현금흐름</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2 영업활동현금흐름</td>
+<td>$405M</td>
+</tr>
+<tr>
+<td>Q2 Non-IFRS 조정 FCF</td>
+<td>$(3)M</td>
+</tr>
+<tr>
+<td>TTM FCF(제공 지표)</td>
+<td>$796.0M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Q2 영업현금흐름과 조정 FCF의 차이는 약 $408M입니다. 설비투자 등 투자성 지출로 거의 전액 소진된 것으로 보입니다. 조정 FCF의 정확한 정의(정부 보조금 수령분 포함 여부 등)는 공시상 확인 불가입니다.</li>
+<li>TTM FCF $796M은 Q2 조정 FCF($(3)M)와 산출 기준이 다를 수 있습니다. <strong>최근 분기 기준으로는 FCF 창출력이 TTM보다 확실히 약해졌다</strong>는 점에 유의해야 합니다.</li>
+</ul>
+<h3>4-3. 재무상태 (2026-06-30 vs 2025-12-31, $M)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2026-06</th>
+<th>2025-12</th>
+<th>변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현금 및 현금성자산</td>
+<td>1,087</td>
+<td>1,809</td>
+<td>-722</td>
+</tr>
+<tr>
+<td>유동 + 비유동 유가증권</td>
+<td>2,216</td>
+<td>2,180</td>
+<td>+36</td>
+</tr>
+<tr>
+<td>현금성 합계</td>
+<td>3,303</td>
+<td>3,989</td>
+<td>-686</td>
+</tr>
+<tr>
+<td>총차입금(유동 + 비유동)</td>
+<td>1,122</td>
+<td>1,151</td>
+<td>-29</td>
+</tr>
+<tr>
+<td>리스부채(유동 + 비유동)</td>
+<td>556</td>
+<td>556</td>
+<td>0</td>
+</tr>
+<tr>
+<td>재고자산</td>
+<td>1,622</td>
+<td>1,577</td>
+<td>+45</td>
+</tr>
+<tr>
+<td>영업권·무형자산</td>
+<td>1,861</td>
+<td>1,368</td>
+<td>+493</td>
+</tr>
+<tr>
+<td>유형자산(순액)</td>
+<td>7,098</td>
+<td>7,223</td>
+<td>-125</td>
+</tr>
+<tr>
+<td>자본총계</td>
+<td>11,874</td>
+<td>11,983</td>
+<td>-109</td>
+</tr>
+<tr>
+<td>발행주식수</td>
+<td>548.75M</td>
+<td>555.89M</td>
+<td>-7.14M (<span class="down">-1.3%</span>)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>순현금:</strong> 약 $2.18B입니다(현금성 합계 3,303 - 차입금 1,122, 리스 제외). 리스까지 빼도 약 $1.63B로 순현금이 유지됩니다.</li>
+<li><strong>상반기 현금 감소 $686M의 사용처(재무제표상 정황):</strong></li>
+<li>자사주 매입 추정: 주식수 -7.1M주, 추가납입자본 -$294M</li>
+<li>M&amp;A: 영업권·무형자산 +$493M, Synopsys ARC 인수(2026년 6월 완료) 등</li>
+<li>현금흐름표상 정확한 항목별 금액은 공시상 확인 불가입니다.</li>
+<li><strong>신용 여력:</strong> 2026-08-21에 $1.5B 무담보 리볼버를 새로 체결했습니다(만기 2031-08-21, 최대 레버리지 비율 4.00x). 기존 $1.0B 리볼버는 미인출 상태에서 해지됐습니다. 유동성 여력은 확대됐습니다.</li>
+<li><strong>주주환원:</strong> 2026-07-14에 사상 첫 분기배당 $0.12를 지급했고, 이사회는 같은 금액을 2026-10-09에 지급하기로 승인했습니다. 연환산 $0.48로 종가 기준 수익률은 약 0.98%입니다.</li>
+<li><strong>유형자산 감소:</strong> -$125M으로, 상반기 감가상각이 신규 투자보다 컸을 가능성이 있습니다(추정). 신규 팹 2곳이 GF의 직접 CAPEX라면 이 흐름은 크게 바뀝니다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>근거(출처)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>AI 데이터센터 광네트워킹(실리콘 포토닉스·SiGe)</strong></td>
+<td>회사는 광네트워킹에서 수요 가속과 매출 성장을 확인하고 있다고 밝힘(Q2 보도자료). 미 상무부 CHIPS R&amp;D 사무국과 $300M 지원 LOI 체결(2026년 7월)</td>
+<td>고객 디자인윈이 양산 매출로 전환되고 증설 시점과 수요가 맞아야 함</td>
+<td>Q3 보고서에서 광네트워킹(또는 데이터센터) 매출의 별도 언급과 성장률. $300M LOI가 최종 계약으로 전환되는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>뉴욕 신규 팹 2곳(미·일 동맹, 뉴스상 최대 $21B)</strong></td>
+<td>뉴스 헤드라인. SEC 본문은 공시상 확인 불가</td>
+<td>GF의 자본 부담이 제한되는 구조, 확정 고객 물량, 일정</td>
+<td>10-14 6-K와 후속 공시에서 자금 부담 주체, GF 지분과 운영 역할, 생산 개시 시점, 고객 확약 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>RISC-V IP + 제조 결합(MIPS + Synopsys ARC)</strong></td>
+<td>2026년 6월 Synopsys ARC 인수 완료(Q2 보도자료)</td>
+<td>IP 라이선스 고객이 GF 제조 물량으로 이어지는 교차판매</td>
+<td>인수 사업의 매출 기여 공시 여부. 영업권 증가분 대비 매출과 상각 부담</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>AI 데이터센터 전력공급(IVR, BCD, GaN)</strong></td>
+<td>2026년 7월 Photeon IVR 사업 인수 완료(Q2 보도자료)</td>
+<td>하이퍼스케일 전력공급 체인에서 실제 채택</td>
+<td>관련 디자인윈이나 매출 언급. 인수가와 회계처리(Q3 재무제표 주석)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>양자(QTS)</strong></td>
+<td>2026년 5월 출범. 미 상무부 $375M 보조금 LOI(Q2 보도자료)</td>
+<td>보조금 최종 확정. 양자 산업의 상업화는 장기 과제</td>
+<td>LOI가 최종 계약으로 전환되는지. 단기 매출 기여는 미미할 것으로 봄(추정)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>해석: 2~5번은 모두 <strong>LOI, 인수 직후, 계약 구조 미확인</strong> 단계입니다. 숫자로 검증된 드라이버는 사실상 1번의 정성적 언급뿐입니다. 회사 스스로 정량적인 매출 기여를 밝힌 부분은 제공 자료에서 공시상 확인 불가입니다.</li>
+</ul>
+<p><em>(5-1절은 실적콜 transcript가 제공되지 않아 생략)</em></p>
+<h2>6. 리스크</h2>
+<p>제공된 20-F 발췌는 목차에서 끊겨 Item 3D(Risk Factors) 본문을 확인할 수 없습니다. 아래 항목은 6-K와 재무제표에서 실제로 확인되는 수치와 사실에 근거한 리스크입니다.</p>
+<ol>
+<li><strong>FCF 급감과 자본집약도:</strong> Q2 조정 FCF가 $(3)M으로, 영업현금흐름 $405M이 사실상 전부 재투자됐습니다. 여기에 신규 팹 2곳의 자금 부담 일부가 GF로 귀속되면 FCF 적자 전환, 배당·자사주 정책 후퇴, 외부 조달 가능성이 생깁니다. 회사는 F-3 등록신고서(File No. 333-294214)를 보유하고 있어 증권 발행 경로가 열려 있습니다. 발행 계획은 공시상 확인 불가입니다.</li>
+<li><strong>마진 역레버리지:</strong> 매출이 QoQ <span class="up">+9.3%</span> 늘었는데도 IFRS 영업이익률은 YoY <span class="down">-1.9%</span>p입니다. IFRS와 Non-IFRS 영업이익률 차이도 7.0%p로 큽니다. 조정 항목이 반복적 성격이라면 보고 이익의 질에 대한 의문이 커집니다.</li>
+<li><strong>M&amp;A 통합과 영업권:</strong> 상반기 영업권·무형자산이 +$493M(36%) 늘었습니다. 7월 Photeon IVR 인수는 Q3 재무에 추가로 반영됩니다. 인수 사업의 매출 기여가 공시되지 않으면 성과 검증이 어렵고, 향후 손상 리스크가 있습니다.</li>
+<li><strong>정부 지원이 LOI 단계:</strong> $300M(실리콘 포토닉스)와 $375M(양자)은 모두 의향서(LOI)이며 최종 계약이 아닙니다. 회사도 "expected to award"로 표현했습니다. 성장 스토리의 일부가 정책 실행에 걸려 있습니다.</li>
+<li><strong>지배구조 변동:</strong> 2026-07 AGM에서 Carlos Obeid 이사 선임 찬성률이 82.35%로, 다른 후보(99.53%, 94.44%)보다 낮았습니다. 같은 날 Elissa Murphy 이사가 사임했고(회사는 이견에 따른 사임이 아니라고 밝힘), Martin Edelman 이사의 임기가 끝나 이사회가 13명에서 11명으로 줄었습니다. 대주주 구성과 지분율은 제공 자료에서 공시상 확인 불가입니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>7-1. 정량 근거 (제공 지표 기반, 단순 연환산 포함)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>계산</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P/FCF(TTM)</td>
+<td>$27.28B / $0.796B</td>
+<td>약 34.3배</td>
+<td>매출 성장률 <span class="up">+5.8%</span> 대비 부담</td>
+</tr>
+<tr>
+<td>EV(순현금 차감)</td>
+<td>$27.28B - $2.18B</td>
+<td>약 $25.1B</td>
+<td>—</td>
+</tr>
+<tr>
+<td>EV/조정 EBITDA(Q2 연환산)</td>
+<td>$25.1B / ($587M × 4)</td>
+<td>약 10.7배</td>
+<td>단순 연환산 기준</td>
+</tr>
+<tr>
+<td>P/E(Non-IFRS, Q2 연환산)</td>
+<td>$48.94 / ($0.46 × 4)</td>
+<td>약 26.6배</td>
+<td>—</td>
+</tr>
+<tr>
+<td>P/E(IFRS, Q2 연환산)</td>
+<td>$48.94 / ($0.30 × 4)</td>
+<td>약 40.8배</td>
+<td>IFRS 기준으로는 고평가</td>
+</tr>
+<tr>
+<td>배당수익률</td>
+<td>$0.48 / $48.94</td>
+<td>약 0.98%</td>
+<td>하방 지지 효과는 제한적</td>
+</tr>
+<tr>
+<td>순현금 / 시총</td>
+<td>$2.18B / $27.28B</td>
+<td>약 8%</td>
+<td>재무 리스크는 낮음</td>
+</tr>
+<tr>
+<td>주가 위치</td>
+<td>—</td>
+<td>52주 고점 대비 <span class="down">-45.6%</span>, 60일 <span class="down">-16.6%</span></td>
+<td>기대치 리셋 구간</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>'관망'인 이유:</strong> 재무 안정성(순현금, $1.5B 미사용 리볼버)과 주가 리셋은 우호적입니다. 반면 다음 세 가지가 아직 확인되지 않았습니다.</li>
+<li>최근 분기 FCF ≈ 0</li>
+<li>IFRS 마진 YoY 악화</li>
+<li>오늘 촉매(일본 팹 딜)의 GF 귀속 경제성</li>
+</ul>
+<p>이 상태에서 TTM 기준 30배대 FCF 멀티플에 의미 있는 비중을 싣는 것은 기대에 대한 선반영입니다.</p>
+<h3>7-2. 진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>10-14 6-K와 후속 공시의 일본 팹 계약 구조:</strong> 팹 소유 주체, GF의 CAPEX 분담액, 운영 수수료나 물량 확약 구조, 생산 개시 시점을 확인합니다. "GF 자본 부담 제한 + 확정 물량"이면 긍정적으로 판단합니다.</li>
+<li><strong>Q3 2026 실적(6-K):</strong> 매출 YoY 성장률이 Q2의 <span class="up">+5.8%</span>보다 높아지는지 봅니다. 또 IFRS 영업이익률이 YoY로 개선되는지, 조정 FCF가 플러스로 돌아오는지 확인합니다.</li>
+<li><strong>성장 드라이버의 정량화:</strong> 광네트워킹이나 데이터센터 매출의 별도 수치 공시 여부, 그리고 $300M·$375M LOI의 최종 계약 전환 여부를 확인합니다.</li>
+</ol>
+<h3>7-3. 판단을 바꿀 조건</h3>
+<ul>
+<li><strong>'보통' 이상으로 올리는 조건:</strong></li>
+<li>일본 팹 구조에서 GF의 직접 CAPEX 부담이 제한적이라는 점이 공시로 확인됨</li>
+<li>Q3에 IFRS 영업이익률 YoY 개선과 조정 FCF 플러스가 동시에 나옴</li>
+<li>회사가 데이터센터·광네트워킹 매출 성장을 수치로 제시함</li>
+<li><strong>'회피'로 내리는 조건:</strong></li>
+<li>신규 팹 자금의 상당 부분을 GF가 부담하고, 그 조달을 위한 증자나 대규모 차입이 공시됨(F-3 활용 포함)</li>
+<li>Q3에도 조정 FCF가 마이너스이거나 IFRS 영업이익률 하락이 이어짐</li>
+<li>정부 LOI가 지연·축소되거나, 인수 자산의 손상 또는 추가 지배구조 이탈(이사 사임 등)이 공시됨</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000022/gfs-20251231.htm">20-F — 2025-12-31_0001709048-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000225/gf-igrcfxclosing6xkdraft82.htm">8-K — 2026-08-27_0001709048-26-000225</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000154/a2026-07form6xkagmresults.htm">8-K — 2026-07-29_0001709048-26-000154</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000219/gfs-20260630_d2.htm">8-K — 2026-06-30_0001709048-26-000219__EX-99.1__gfs-20260630_d2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000219/gfs-20260630.htm">8-K — 2026-06-30_0001709048-26-000219</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1709048/000170904826000218/globalfoundries2q2026earni.htm">8-K — 2026-06-30_0001709048-26-000218__EX-99.1__globalfoundries2q2026earni</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

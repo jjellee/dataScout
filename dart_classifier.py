@@ -1438,13 +1438,55 @@ def parse_treasury_html_fallback(html_path, base_type):
             
         current_primary_key = ""
         in_period = False
-        
+        # 본문은 「기타 투자판단에 참고할 사항」에서 끝난다. 그 뒤 부록표 【자기주식 취득금액 한도】가
+        # '신탁계약의 계약금액 3,000'(백만원)·'취득방법 … 비고' 같은 라벨을 다시 써서 본문 값을 덮었다
+        # (2026-10-15 디씨엠 신탁 30억 → 3,000원, 취득방법 '비고' 2,475건). 부록에서는 금액만
+        # 보조값으로 받아 본문 금액이 없을 때(기간연장 정정 등)만 단위를 맞춰 쓴다.
+        # 정정공시 앞의 「정정사항」 표에도 '기타 투자판단' 행이 있으므로 그 표에서는 본문 종료로 보지 않는다.
+        in_appendix = False
+        appendix_amount = None
+        appendix_unit = 1
+
         for table in soup.find_all('table'):
             in_period = False
+            table_text = re.sub(r'\s+', '', table.get_text())
+            is_correction_table = "정정전" in table_text and "정정후" in table_text
+            # 본문 없는 정정공시에서 「기타 투자판단」 행이 정정사항 표 안에만 있는 경우 —
+            # 한도표·보유현황표 자체로 부록 시작을 잡는다 (본문 항목이 섞인 통짜 표는 제외)
+            is_body_table = any(k in table_text for k in ["이사회결의일", "취득결정일", "결정일)"])
+            if (not in_appendix and not is_correction_table
+                    and ("취득금액한도" in table_text or "기초수량" in table_text) and not is_body_table):
+                in_appendix = True
+            # 정정공시는 정정사항 뒤에 「기타 투자판단」 주석표·부록이 먼저 오고 본문이 그 뒤에 붙기도 한다
+            # → 이사회결의일·취득결정일이 있는 본문 표를 만나면 다시 본문으로 본다
+            if in_appendix and is_body_table and not is_correction_table:
+                in_appendix = False
+            if in_appendix:
+                um = re.search(r'단위[:：]?(백만원|천원|억원|원)', table_text)
+                if um:
+                    appendix_unit = {"백만원": 1_000_000, "천원": 1_000, "억원": 100_000_000, "원": 1}[um.group(1)]
             for r in table.find_all('tr'):
                 children = r.find_all(recursive=False)
                 cols = [c.get_text().strip().replace('\n', ' ') for c in children]
                 cols = [re.sub(r'\s+', ' ', col) for col in cols]
+                # 본문 없이 정정사항 표 + 부록만 있는 정정공시는 【…】 표제로 부록 시작을 잡는다
+                if not in_appendix and cols and not is_correction_table and (
+                        "기타투자판단" in cols[0].replace(" ", "") or re.match(r'\s*【', cols[0])):
+                    in_appendix = True
+                    continue
+                if in_appendix:
+                    label = cols[0].replace(" ", "") if cols else ""
+                    # 취득결정 부록의 '신탁계약의 계약금액'은 기존 신탁 잔액이라 이번 결정 금액이 아니다
+                    amount_label = {"자기주식신탁": "계약금액", "자기주식취득": "취득예정금액",
+                                    "자기주식소각": "소각예정금액"}.get(base_type, "취득예정금액")
+                    if appendix_amount is None and len(cols) >= 2 and amount_label in label:
+                        val = clean_numeric(cols[1] if "억원" in label else cols[-1])
+                        if isinstance(val, (int, float)) and val > 0:
+                            unit = 100_000_000 if "억원" in label else appendix_unit
+                            if unit == 1 and val < 1_000_000:
+                                unit = 1_000_000  # 단위 표기 없이 백만원으로 쓴 한도표
+                            appendix_amount = val * unit
+                    continue
                 if len(cols) >= 2:
                     first_cell = cols[0].replace(" ", "")
                     if first_cell:
@@ -1475,7 +1517,8 @@ def parse_treasury_html_fallback(html_path, base_type):
                         # 보통주식/기타주식 하위 행 중 큰 값(보통주식)을 채택
                         if isinstance(val, (int, float)) and val > (res["issued_shares"] or 0):
                             res["issued_shares"] = val
-                    if "취득방법" in key or "소각할주식의취득방법" in key:
+                    # 보유현황표 머리행(취득방법|주식의 종류|기초수량|…|비고)은 취득방법 값이 아니다
+                    if ("취득방법" in key or "소각할주식의취득방법" in key) and "기초수량" not in "".join(cols):
                         res["method"] = cols[-1]
                     if "위탁투자" in key or "계약체결기관" in key or "자기주식취득위탁" in key:
                         res["broker"] = cols[-1]
@@ -1501,6 +1544,12 @@ def parse_treasury_html_fallback(html_path, base_type):
                             elif len(dates) == 1:
                                 res["start_date"] = dates[0]
                                 
+        # 정정공시 '해지 후' 칸처럼 "16,952,601,263-" 같은 문자열이 오면 금액 열(₩)이 깨진다
+        if isinstance(res["total_amount"], str):
+            res["total_amount"] = None
+        if not res["total_amount"] and appendix_amount:
+            res["total_amount"] = appendix_amount
+
         # Date normalization
         for k in ["start_date", "end_date", "cancellation_date"]:
             if res[k] and res[k] != "-":
@@ -2166,7 +2215,10 @@ def build_excel_summary(workspace_dir, parse_only=False):
                             record_detail["data"] = d
                             cache[rcept_no] = record_detail
 
-            if not FAST_MODE and is_treasury and (cached_is_other or not record_detail.get("data")):
+            # treasury_v2: 부록표(【자기주식 취득금액 한도】)가 본문 금액·취득방법을 덮던 파서(2026-10-15 수정)로
+            # 만든 캐시는 1회 재파싱한다
+            if not FAST_MODE and is_treasury and (cached_is_other or not record_detail.get("data")
+                                                  or not record_detail["data"].get("treasury_v2")):
                 record_detail["category"] = "재무_자기주식"
                 record_detail["base_type"] = base_type
                 html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
@@ -2180,7 +2232,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     "cancellation_date": t_data["cancellation_date"],
                     "method": t_data["method"],
                     "broker": t_data["broker"],
-                    "purpose": t_data["purpose"]
+                    "purpose": t_data["purpose"],
+                    "treasury_v2": True
                 }
                 cache[rcept_no] = record_detail
 
@@ -2524,7 +2577,8 @@ def build_excel_summary(workspace_dir, parse_only=False):
                 "cancellation_date": t_data["cancellation_date"],
                 "method": t_data["method"],
                 "broker": t_data["broker"],
-                "purpose": t_data["purpose"]
+                "purpose": t_data["purpose"],
+                "treasury_v2": True
             }
             
         # 6-2. 자산 취득·처분 파싱 (유형자산·타법인주식)
