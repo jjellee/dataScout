@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIQ — NIQ Global Intelligence plc Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>NIQ — NIQ Global Intelligence plc Ordinary Shares</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">NIQ</span><span class="badge">+3.78%</span><span class="badge">거래량 0.9배</span><span class="badge">$5.59B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>실적은 좋다.</strong> Q2 2026 매출은 $1,124.2M으로 전년 대비 8.0% 늘었다(유기적·고정환율 기준 OCC <span class="up">+5.8%</span>). Adj. EBITDA 마진은 23.3%로 270bp 올랐다. Levered FCF는 $74.1M으로 흑자 전환했다. 연간 가이던스는 전 항목 상향됐다. 회사는 5분기 연속 가이던스 상단을 넘었다고 밝혔다.</li>
+<li><strong>오늘 상승의 촉매는 확인되지 않는다.</strong> 4일 내 공시가 없다. 거래량도 20일 중앙값의 0.9배로, 급증 없이 오른 상승이다.</li>
+<li><strong>이미 많이 올랐다.</strong> 60일 수익률이 78.3%이고 52주 고점 대비 <span class="down">-1.6%</span>다. Adj. EPS 가이던스 중간값($1.10) 기준 PER은 약 17배(계산값)다. 단기 재평가는 상당 부분 반영된 것으로 판단한다.</li>
+<li><strong>구조적 제약이 있다.</strong> 순레버리지 3.1배, GAAP 순손실 지속(Q2 -$30.5M), 내부통제 중대한 취약점(material weakness)이 있다. 유통주식은 약 15%(CFO 발언)이고 거래대금은 하루 $20.0M이어서 의미 있는 비중을 쌓을 유동성이 부족하다.</li>
+<li><strong>실행안:</strong> 기본 비중으로 시작한다. 11월 12일 Q3 실적에서 가이던스 상단 달성과 순레버리지 3배 미만 경로를 확인한 뒤 증액한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 최근 실적 발표(8-K, Q2)는 2026-08-10로 두 달 전이다.</li>
+<li>뉴스 헤드라인 중 촉매 후보는 두 개다. 하나는 "BMO Capital의 Buy 유지"인데 날짜가 확인되지 않고, 신규 상향이 아닌 유지다. 다른 하나는 "Q3 실적 발표일(11/12) 공지"로 일정 공지일 뿐이다. 둘 다 <span class="up">+3.78%</span>를 설명하는 결정적 재료로 보기 어렵다.</li>
+<li>거래량은 0.9배로 평소 수준을 밑돈다. 스크린 전제("거래량 급증")와 맞지 않는다. 거래대금 $20.0M의 저유동성 종목이어서 적은 매수세로도 가격이 움직였을 가능성이 있다. 이는 추정이다.</li>
+<li>20일 수익률은 2.3%에 그친다. 60일 <span class="up">+78.3%</span>의 급등 뒤 고점 부근에서 횡보하다 고점을 다시 시도하는 흐름으로 읽힌다.</li>
+<li>참고(계산값): 60일 전 주가는 약 $10.6이다. IPO 공모가는 $21.00(2025-07-24)이므로 현재가 $18.94는 여전히 공모가 아래다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>※ 제공된 10-K 발췌는 표지와 목차뿐이다. 사업 설명은 10-Q MD&amp;A의 Company Overview와 William Blair 컨퍼런스 발언을 근거로 썼다.</p>
+<p><strong>제품/서비스(10-Q 기준)</strong>
+- <strong>Intelligence (Consumer Measurement), 매출의 약 81%(2026 상반기)</strong>
+  - 리테일 측정, 소비자 행동·인사이트, 리테일러 솔루션으로 구성된다.
+  - 다년 또는 연간 구독 계약이며, 계약에 연간 가격·제품 개선 에스컬레이터가 들어 있다.
+  - Intelligence 구독의 NDR(순매출유지율)은 105%(상반기)로, Q1의 104%에서 올랐다.
+- <strong>Activation (Consumer Analytics), 약 19~20%</strong>
+  - 상품·가격·마케팅·공급망 의사결정용 맞춤 분석과 예측 모델이다.
+- 고객 관계는 보통 Intelligence로 시작해 Activation으로 넓어진다(회사 설명).</p>
+<p><strong>고객군과 규모(컨퍼런스 발언, 2026-06-03)</strong>
+- 브랜드 23,000곳, 리테일러 9,000곳 이상, 90개국 이상에서 사업한다.
+- 추적하는 소비지출은 $7.4조, 패널 약 550만 명, 추적 품목 2.53억 개다.
+- 상위 5개 고객과의 관계가 75년을 넘는다고 CFO가 언급했다.
+- Intelligence 계약은 통상 3~5년이라고 CFO가 언급했다.</p>
+<p><strong>지역 세그먼트(Q2, 실적콜/보도자료)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>OCC 성장</th>
+<th>Adj. EBITDA</th>
+<th>마진</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Americas</td>
+<td>+8.3%</td>
+<td>$143M (<span class="up">+10.5%</span>)</td>
+<td>31.4%</td>
+</tr>
+<tr>
+<td>EMEA</td>
+<td>+4.9%</td>
+<td>$179M (<span class="up">+26.1%</span>)</td>
+<td>35.3% (+550bp)</td>
+</tr>
+<tr>
+<td>APAC</td>
+<td>+1.9% (성장 복귀)</td>
+<td>$32M (<span class="up">+9.2%</span>)</td>
+<td>19.8%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>경쟁 위치</strong>
+- 회사는 데이터의 90% 이상이 자체 데이터이며, 이를 리테일러와의 관계, 글로벌 패널, 상품 매핑에서 얻는다고 밝혔다.
+- 실적콜에서 CEO는 이 데이터 자산을 "복제가 비현실적"이라고 표현했다. 이는 회사 주장이다.
+- 경쟁사 이름과 시장점유율은 공시상 확인 불가다.
+- 컨퍼런스에서 EMEA의 경쟁사 고객 탈환(win-back) 사례가 언급됐으나, 정량 수치는 공시상 확인 불가다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 보고 매출 <span class="up">+8.0%</span>와 OCC <span class="up">+5.8%</span> 사이의 약 2.2%p는 환율과 인수 효과다. M-Trix 인수는 2025-08-01에 마감됐으므로 Q2에는 비유기적 기여가 포함된다. 다만 환율과 M&amp;A 효과를 나눈 수치는 공시상 확인 불가다.
+- 유기 성장의 원천은 두 가지로 보인다.
+  - 단가: 연간 가격 에스컬레이터와 value-based pricing.
+  - 기존 고객 확대: GDR(총매출유지율) 99%, NDR 105%이므로 기존 고객 업셀·크로스셀로 약 6%p가 늘어난다.
+  - 신규 고객 물량이 차지하는 비중은 공시상 확인 불가다.
+- 연환산 Intelligence 구독 매출은 $3B를 넘었고 <span class="up">+5.8%</span> 성장해 OCC 성장률과 같다. 반복 매출이 성장을 이끄는 구조로, 질은 양호하다.
+- Activation(OCC <span class="up">+6.1%</span>)이 Intelligence(<span class="up">+5.7%</span>)보다 약간 빠르다. 프로젝트성 매출이라 변동성이 더 크다는 점은 감안해야 한다.
+- 매출 QoQ <span class="up">+4.8%</span>로, 계산상 Q1 매출은 약 $1.07B다. Q1이 계절적 비수기라는 점은 CFO 발언으로 확인된다.</p>
+<p><strong>마진 방향성</strong>
+- Adj. EBITDA 마진은 23.3%(+270bp)다. 반면 GAAP 영업이익률은 6.3%(<span class="up">+2.5%</span>p)다.
+- 둘 사이 약 17%p 괴리의 내역은 다음과 같다.
+  - 감가상각비 $154M(매출의 14%).
+  - 일회성 구조조정 비용 $36M(매출의 약 3.2%, 계산값).
+  - 나머지 조정 항목.
+- 따라서 구조조정이 끝나면 GAAP 마진도 개선될 여지가 있다. 하지만 D&amp;A 14%는 구조적이다. CapEx가 매출의 6.5~7%이고 과거 인수 관련 무형자산 상각이 포함된 것으로 추정된다.
+- 매출총이익률은 55.5%다. 회사는 고정비 비중이 약 80%라고 밝혔다(CFO). 매출 증가가 마진으로 이어지는 영업 레버리지 구조다.
+- 마진 개선 경로:
+  - 2021년 3월 약 13% → 2026 Q1 21% → Q2 23.3%.
+  - 회사는 FY26 23.5~23.9%, 중기 25%, 장기 30%를 제시했다.
+  - 2026 구조조정의 연간 run-rate 절감액은 $70~80M이며, 실적콜에서 대부분 실행을 마쳤다고 언급했다.</p>
+<p><strong>현금흐름</strong>
+- TTM FCF는 $266.2M이다. Q2 Levered FCF는 $74.1M으로 전년 대비 $137.3M 개선됐다.
+- 회사는 FY26 Levered FCF 가이던스를 $245~255M으로 상향했다.
+- 시가총액 대비 FCF 수익률은 TTM 기준 약 4.8%, 가이던스 중간값 기준 약 4.5%다(계산값).
+- 이자비용은 $55M으로 전년 대비 $40M 줄었다. IPO 순조달액 $985.1M을 차입금 상환에 쓰고 리파이낸싱한 효과다. 이것이 FCF 개선의 큰 축이다.</p>
+<p><strong>재무 건전성</strong>
+- 순레버리지는 3.1배다(Q1 3.4배, 2025년 말 3.4배). 회사는 연말까지 3배 미만이 목표라고 밝혔다.
+- 현금 $417M, 미사용 리볼버 $747M으로 총유동성은 약 $1.2B다.
+- S&amp;P 신용등급이 B에서 B+로 상향됐다. 그래도 여전히 투기등급이다.
+- 순부채 절대액은 공시상 확인 불가다. CEO가 언급한 Adj. EBITDA 약 $1B 이상에 3.1배를 곱하면 약 $3B 이상으로 추정된다. 이 경우 EV/EBITDA는 약 8~9배 수준이다. 이는 추정치다.
+- GAAP 순손실은 Q2 -$30.5M이다. 회사는 전년보다 환차익이 줄어든 탓이라고 설명했다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축(회사 제시)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>구독 가격 에스컬레이터와 업셀(NDR 105%)</td>
+<td>GDR 99% 유지, value-based pricing에 대한 고객 수용</td>
+<td>Q3 NDR 105% 이상, GDR 99% 유지 여부</td>
+</tr>
+<tr>
+<td>2</td>
+<td>이커머스·소비자 패널 확장 (컨퍼런스: 이커머스 30% 이상, 패널 15% 이상 성장)</td>
+<td>옴니채널 측정 수요 지속, 패널 투자 회수</td>
+<td>실적콜에서 두 영역 성장률을 재확인하는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AI 네이티브 제품 (Optiq Suite, Cadence, Bridge, ConnectAI), 소비량 기반 과금</td>
+<td>무료·시범 사용 뒤 정식 과금으로 전환, 2027년 매출화</td>
+<td>AI 네이티브 매출 성장률(Q2 <span class="up">+34%</span>)과 매출 기반 규모 공개 여부, ConnectAI charter 고객의 유료 전환, Optiq Bridge 9월 정식 출시 뒤 데이터 커버리지 확대</td>
+</tr>
+<tr>
+<td>4</td>
+<td>리테일러 측 수익화 (기존 데이터 교환 관계를 유료화)</td>
+<td>에이전틱 커머스 관련 리테일러 수요</td>
+<td>리테일러 매출이나 고객 수 지표 공개 여부</td>
+</tr>
+<tr>
+<td>5</td>
+<td>마진 확장 (구조조정, AI를 통한 생산성)</td>
+<td>$70~80M 절감 실현, 고정비 레버리지</td>
+<td>Q3 Adj. EBITDA 마진 23.0~23.5%, 성장률 +15~17% 달성 여부</td>
+</tr>
+<tr>
+<td>6</td>
+<td>소규모 인수 (YiMian, M-Trix, Gastrograph)</td>
+<td>건당 $25~50M 규모를 유통망에 붙여 빠르게 이익 기여</td>
+<td>인수 금액이 디레버리징 경로를 해치지 않는지</td>
+</tr>
+<tr>
+<td>7</td>
+<td>APAC 회복</td>
+<td>중국·동남아 디지털커머스 (YiMian)</td>
+<td>APAC OCC 플러스 성장 유지 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 자신감의 근거</strong>
+- 톤은 매우 자신감 있다. 근거는 실적 숫자로 뒷받침된다.
+  - 5분기 연속 가이던스 상단 초과.
+  - 10분기 연속 OCC 5% 이상 성장.
+  - 가이던스 전 항목 상향.
+- <strong>가이던스 화법이 바뀌었다.</strong>
+  - 6월 컨퍼런스에서 CFO는 Q1 당시 경쟁사들의 "beat and hold"를 참고해 가이던스를 유지했다고 설명했다.
+  - Q2에는 전면 상향으로 전환했다.
+  - 장기 마진 표현도 강해졌다. 6월 CFO는 "path to 30%"라고 했고, Q2 콜에서 CEO는 "longer-term path into the 30s"라고 언급했다.
+- 회사는 "달성 가능한 목표를 내고 맞추거나 넘는다"는 보수적 가이던스 철학을 공개적으로 밝혀 왔다. 그래서 가이던스 상단을 넘는 것은 시장이 이미 기대하는 수준이라는 점에 유의해야 한다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- 반복된 주제는 AI 수익화 방식이다.
+  - Wells Fargo는 가격 모델을 물었다.
+  - Baird는 초기 고객의 시범 사용·할인 구조와 2027년 정상 과금 전환을 물었다.
+- 답변은 회피적이었다.
+  - 가격 모델에 대해 CEO는 "그 정도까지만 말하겠다(as far as I will probably take that one right now)"며 구체화를 피했다.
+  - 시범 사용·할인 질문에는 "먼저 가치를 확인하고, 계속 쓰려면 보상이 있을 것"이라는 원론적 답변에 그쳤다.
+  - 그 결과 AI 매출 규모, 과금 단가, 전환 시점은 정량화되지 않았다.
+- 에이전틱 커머스 측정 제품(share of prompt, share of discovery, 클릭, 전환 측정)은 "곧 공개"라는 수준만 언급됐다.</p>
+<p><strong>공시에는 없고 콜·컨퍼런스에서만 나온 정보</strong>
+- AI 관련 지표: AI 네이티브 솔루션 매출 <span class="up">+34%</span>, 플랫폼 데이터 소비량 <span class="up">+25%</span>.
+- Q3 가이던스: 보고 매출 +4.9~5.3%, Adj. EPS $0.22~0.24.
+- 연간 가이던스: Adj. EPS $1.08~1.12. 실적콜에서 Q4 Adj. EPS가 Q3의 거의 두 배가 될 것이라고 언급했다. 하반기, 특히 Q4에 실적이 몰리는 구조다.
+- 6월 컨퍼런스 CFO 발언:
+  - 유통주식이 약 15%에 불과해 자사주 매입의 실익이 작다.
+  - 부채 상환이 최우선 과제다.
+  - 대형 변혁적 인수는 하지 않는다.
+- 같은 컨퍼런스에서 Claude 등 LLM과의 파트너십 및 연동이 언급됐다.</p>
+<h2>6. 리스크</h2>
+<p>※ 제공된 10-K 발췌에는 리스크 섹션 본문이 없다. 아래는 10-Q MD&amp;A 위험요인 요약, 재무 지표, 실적콜을 근거로 썼다.</p>
+<ol>
+<li><strong>내부통제 중대한 취약점</strong>
+   - 10-Q 위험요인에 "material weaknesses의 적시 개선 능력"이 명시돼 있다.
+   - 회사는 비가속신고기업(Non-accelerated filer)이고, 감사인의 404(b) 내부통제 인증이 없다.
+   - 개선이 늦어지면 재무 신뢰도 할인과 정정 공시 위험이 생긴다.</li>
+<li><strong>레버리지와 금리</strong>
+   - 순레버리지 3.1배, S&amp;P B+로 아직 투기등급이다.
+   - FCF 개선의 상당 부분이 이자비용 감소($40M)에서 나왔다. 리파이낸싱이나 금리 여건이 바뀌면 민감하다.</li>
+<li><strong>GAAP와 조정 지표의 괴리</strong>
+   - Adj. EBITDA 마진 23.3% 대비 GAAP 영업이익률은 6.3%다.
+   - 구조조정 비용이 반복되고 있다(2026 프로그램 Q2 $36M). 순손실도 지속된다.
+   - "일회성" 비용이 해마다 나오면 조정 지표의 신뢰도가 떨어진다.</li>
+<li><strong>하반기 집중 가이던스와 높은 기대치</strong>
+   - Q3 보고 매출 성장 가이던스(+4.9~5.3%)는 Q2(<span class="up">+8.0%</span>)보다 낮아진다.
+   - 연간 EPS 달성이 Q4에 크게 의존한다.
+   - 60일 <span class="up">+78%</span> 급등 뒤라 가이던스 상단을 못 넘으면 주가 반응이 클 수 있다.</li>
+<li><strong>유동성과 대주주 지분 매각(오버행)</strong>
+   - 유통주식 약 15%(CFO), 거래대금 하루 $20.0M이다.
+   - 나머지 약 85%의 보유 주체와 락업·매각 계획은 공시상 확인 불가다.
+   - 대주주가 추가 매각(블록딜이나 추가 공모)에 나서면 단기 수급에 부담이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>"보통"을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>긍정</td>
+<td>OCC 성장 <span class="up">+5.8%</span>(10분기 연속 5% 이상)</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>NDR 105%, GDR 99%</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>Adj. EBITDA <span class="up">+21.9%</span>, 마진 +270bp</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>Levered FCF가 전년 대비 $137.3M 개선</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>순레버리지 3.4배 → 3.1배, 신용등급 상향</td>
+</tr>
+<tr>
+<td>긍정</td>
+<td>연간 가이던스 전면 상향</td>
+</tr>
+<tr>
+<td>밸류에이션(계산값)</td>
+<td>가이던스 중간값 기준 PER 약 17배, FCF 수익률 약 4.5~4.8%. 성장률과 디레버리징을 감안하면 과도하지 않다.</td>
+</tr>
+<tr>
+<td>제약</td>
+<td>60일 <span class="up">+78.3%</span>, 52주 고점 대비 <span class="down">-1.6%</span>로 재평가가 상당 부분 진행됐다.</td>
+</tr>
+<tr>
+<td>제약</td>
+<td>오늘 상승의 촉매가 없고 거래량은 0.9배다.</td>
+</tr>
+<tr>
+<td>제약</td>
+<td>거래대금 $20M과 유통주식 15%로는 의미 있는 비중을 쌓을 때 시장 충격 비용이 크다.</td>
+</tr>
+<tr>
+<td>제약</td>
+<td>GAAP 순손실이 지속된다.</td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 펀더멘털은 "적극"에 가깝지만, 가격 위치·유동성·이벤트 일정(11/12)을 고려해 "보통"으로 판단한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 실적(11/12)</strong>
+   - OCC +5.2~5.5%와 Adj. EPS $0.22~0.24 가이던스의 상단을 넘는지.
+   - 연간 가이던스를 다시 상향하거나 최소한 유지하는지.
+2. <strong>현금흐름과 레버리지</strong>
+   - Levered FCF가 연간 $245~255M 경로에 있는지.
+   - 연말 순레버리지 3배 미만이 가시화되는지.
+   - 인수(YiMian 등)가 디레버리징을 지연시키지 않는지.
+3. <strong>지분 구조와 오버행</strong>
+   - 대주주 지분율, 락업 해제 일정, 추가 매각 가능성을 13D/G·S-1·위임장 서류(proxy)에서 확인한다. 제공 자료로는 확인 불가다.</p>
+<p><strong>판단을 뒤집을 조건 (관망 이하로 하향)</strong>
+- Q3 OCC가 5% 아래로 떨어지거나 GDR이 99% 아래로 내려가는 경우. 핵심 구독 기반의 균열로 본다.
+- 연간 가이던스를 유지하거나 하향하는 경우, 특히 Q4 집중 구조에서 Adj. EBITDA 마진 가이던스(23.5~23.9%)를 내리는 경우.
+- 순레버리지가 3배 미만 목표에서 이탈하거나 대형 차입성 인수를 하는 경우.
+- 내부통제 취약점 개선이 지연되거나 재무제표 정정이 공시되는 경우.
+- 대주주 대량 매각 공시가 나오는 경우.</p>
+<p><strong>상향 조건 (적극)</strong>
+- Q3에서 가이던스 상단을 넘기고 연간 가이던스를 재상향하는 경우.
+- AI 네이티브 매출의 절대 규모와 유료 전환 지표가 공개되는 경우.
+- 지분 매각 등으로 유통주식과 거래대금이 늘어 비중 확대가 가능해지는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000162828026012572/niq-20251231.htm">10-K — 2025-12-31_0001628280-26-012572</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000162828026055223/niq-20260630.htm">10-Q — 2026-06-30_0001628280-26-055223</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000162828026034787/niq-20260331.htm">10-Q — 2026-03-31_0001628280-26-034787</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000162828026055207/niqpressrelease-q226.htm">8-K — 2026-08-10_0001628280-26-055207__EX-99.1__niqpressrelease-q226</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000162828026055207/niq-20260810.htm">8-K — 2026-08-10_0001628280-26-055207</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2054696/000205469626000018/niq-20260521.htm">8-K — 2026-05-21_0002054696-26-000018</a></li>
+<li>Transcript — 2026-08-10 Q2 2026 Transcript</li>
+<li>Transcript — 2026-06-03 46th Annual William Blair Growth Stock Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

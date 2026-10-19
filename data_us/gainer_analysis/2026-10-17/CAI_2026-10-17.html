@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAI — Caris Life Sciences Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CAI — Caris Life Sciences Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CAI</span><span class="badge">+4.97%</span><span class="badge">거래량 0.81배</span><span class="badge">$8.98B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li><strong>펀더멘털은 비중을 실을 만함.</strong> 2Q26 매출은 $263.7M(YoY <span class="up">+45.4%</span>)이고 순손실은 $0.6M으로 사실상 손익분기임. 2Q25 순손실은 $71.8M이었음. Adjusted EBITDA는 $55.7M(전년 $16.7M), TTM FCF는 $124.0M으로 성장과 현금창출을 함께 보여줌.</li>
+<li><strong>진입 시점은 나쁨.</strong> 60일 수익률이 <span class="up">+95.3%</span>이고 52주 고점과의 거리는 <span class="down">-1.6%</span>임. TTM FCF 기준 시가총액 배수는 약 72배(추정, $8.98B ÷ $124.0M)로 기대가 크게 반영돼 있음.</li>
+<li><strong>오늘 상승은 근거가 약함.</strong> 거래량은 20일 중앙값의 0.81배로 평소보다 적었음. 당일 전후 SEC 공시도 없어 펀더멘털 이벤트로 보기 어려움.</li>
+<li><strong>2Q 매출에는 일회성이 섞여 있음.</strong> 과거기간 수금(prior period collections) 약 $24M이 포함됨(실적콜 Q&amp;A). 이를 빼면 성장률은 소폭 낮아짐.</li>
+<li><strong>권고:</strong> 처음부터 목표 비중을 다 채우지 않음. 일부만 편입하고, 3Q 실적에서 ASP·물량·Detect 초기 지표를 확인한 뒤 확대함.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>공시:</strong> 최근 4일 내 SEC 공시 없음. 가장 최근 8-K는 2026-09-14자인데 발췌가 잘려 있어 내용은 공시상 확인 불가함.</li>
+<li><strong>뉴스:</strong> 촉매 후보는 "JPMorgan 목표주가 상향(MarketBeat)" 헤드라인 하나뿐임. 다만 날짜, 상향 폭, 투자의견이 제공되지 않아 당일 촉매로 단정할 수 없음. 나머지 헤드라인은 이름만 비슷한 다른 회사 이야기라 무관함(CAI Corp, 홍콩 / CA Immo, 오스트리아).</li>
+<li><strong>실적:</strong> 2Q26 실적콜은 2026-08-05로 두 달 넘게 지났음. 당일 촉매가 아님.</li>
+<li><strong>수급:</strong> 이 종목은 "거래량 급증" 스크린을 통과했다고 되어 있으나, 실제 거래량은 20일 중앙값의 <strong>0.81배</strong>로 전제와 맞지 않음. 거래대금은 $112.9M임. 60일 <span class="up">+95%</span> 랠리의 연장선에서 나온 모멘텀성 상승으로 보는 것이 합리적임(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지와 목차만 있음. 그래서 아래 내용은 10-Q MD&amp;A 개요와 컨퍼런스 발언을 근거로 함.</p>
+<p><strong>제품/서비스 (10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>플랫폼</th>
+<th>내용</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MI Profile Platform</td>
+<td>조직 기반 WES/WTS 분자 프로파일링</td>
+<td><strong>지금까지 매출의 대부분</strong>(10-Q). MI Cancer Seek가 NGS 구성요소로, 4Q24 FDA 동반진단 승인, 1Q25 출시</td>
+</tr>
+<tr>
+<td>Caris Assure Platform</td>
+<td>혈액 기반 WES/WTS(액체생검)</td>
+<td>1Q24 치료제 선택 용도로 출시</td>
+</tr>
+<tr>
+<td>Precision Whole Genome Platform</td>
+<td>WGS 기반 혈액·조직 검사</td>
+<td>2Q26 Caris Detect(다중암 조기진단, MCED)와 Caris ChromoSeq(골수성 혈액암) 출시</td>
+</tr>
+<tr>
+<td>Caris MI Clarity</td>
+<td>AI 디지털 병리 예후 솔루션(조기 유방암)</td>
+<td>2Q26 출시. 첫 비시퀀싱 디지털 제품</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군:</strong> 임상(종양내과의, 암센터), 학계, 바이오파마임. 10-Q에 명시된 바이오파마 파트너는 Moderna, AbbVie, Xencor, Merck KGaA, Genentech임. 임상 매출과 바이오파마 매출의 구성비는 <strong>공시상 확인 불가</strong>(제공 발췌 범위 내).</p>
+<p><strong>가격 (Goldman 컨퍼런스, 2026-06-08)</strong>
+- MI Cancer Seek의 CLFS(메디케어 임상검사 수가표) 가격은 $8,455임. CFO는 이 가격이 ADLT가 아니라 CDLT 기반이라고 언급함.
+- Caris Assure 가격은 $3,649임.</p>
+<p><strong>경쟁 위치 (회사 주장)</strong>
+- 회사는 모든 적격 샘플에 WES/WTS를 표준으로 적용하는 유일한 유전체 프로파일링 기업이라고 밝힘(10-Q).
+- 누적 113만 건 이상의 케이스 데이터셋을 보유한다고 밝힘(2026-06-30 기준).
+- 컨퍼런스에서는 다음과 같이 언급함:
+  - 전사체(transcriptome) 72.8만 건 보유
+  - FDA 승인 WES/WTS 기술은 회사가 유일함
+  - 처방 종양내과의 6,000명 이상
+  - Precision Oncology Alliance 100개 기관
+- 경쟁사와의 정량 비교(시장점유율 등)는 제공 자료에 없음.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 추이 (10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q25</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$120.9M</td>
+<td>$181.4M</td>
+<td>$216.2M</td>
+<td>$263.7M</td>
+</tr>
+<tr>
+<td>순이익(손실)</td>
+<td>$(102.6)M</td>
+<td>$(71.8)M</td>
+<td>$(0.5)M</td>
+<td>$(0.6)M</td>
+</tr>
+<tr>
+<td>Adj. EBITDA</td>
+<td>$(36.2)M</td>
+<td>$16.7M</td>
+<td>$26.2M</td>
+<td>$55.7M</td>
+</tr>
+<tr>
+<td>Adj. EBITDA 마진(계산)</td>
+<td>—</td>
+<td>9.2%</td>
+<td>12.1%</td>
+<td>21.1%</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>$(34.0)M</td>
+<td>공시상 확인 불가</td>
+<td>$22.5M</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (물량·단가·일회성)</strong>
+- <strong>물량:</strong> 실적콜에서 2Q 임상 케이스 59,200건, 전분기 대비 약 6,400건 증가(분기 기준 최대)라고 언급함. 2Q 임상 종양 검사는 34.5만 건, 그중 WES/WTS가 11.4만 건이라고 함.
+- <strong>단가:</strong> CFO는 3Q 블렌디드 ASP를 $3,800~3,900으로 예상하고 4Q에 추가 개선을 기대한다고 언급함.
+- <strong>과거기간 수금:</strong> 2Q 매출에 약 $24M이 포함됨. 애널리스트 질문 기준으로 전년 동기의 약 2배, 1Q의 약 $10M보다 큰 규모임.
+  - 이를 제외하면 YoY 성장률은 약 +41~42%, QoQ는 약 <span class="up">+16%</span>로 추정됨(2Q25 해당액을 약 $12M으로 가정).
+  - 보고 기준 성장률 <span class="up">+45.4%</span>와 QoQ <span class="up">+22.0%</span>에는 일회성 수금이 일부 끼어 있음.
+  - CFO는 이 수금의 대부분이 조직(tissue) 검사에서 나왔고, 매출 대비 비중이 줄어드는 추세라고 답함.
+- <strong>가이던스:</strong> 실적콜 Q&amp;A에 따르면 연간 매출 가이던스는 올렸고 물량 가이던스는 유지함. 구체 수치는 공시상 확인 불가함.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률은 68.1%임. 영업이익률은 10.2%로 YoY <span class="up">+20.1%</span>p 개선됨. 영업이익은 약 $26.9M으로 추정됨.
+- 영업이익이 흑자인데 순손실 $0.6M이 나왔음. 영업외에서 약 $27M의 비용이 나갔다는 뜻임(추정). $400M 기간대출 이자 등이 원인으로 보이나 세부 내역은 공시상 확인 불가함.
+- 회사는 Detect 출시 초기 고정비 때문에 매출총이익률이 희석되고, 물량이 늘면 회복된다고 밝힘(실적콜).</p>
+<p><strong>현금흐름과 재무 건전성</strong>
+- TTM FCF는 $124.0M임. 1Q26 영업현금흐름은 $32.9M(전년 $(31.3)M)임.
+- 2026-03-31 기준 현금·현금성자산·제한현금·유가증권은 $825.7M, 기간대출 원금은 $400.0M임. 순현금은 약 $426M으로 계산됨(1Q말 기준). 2Q말 잔액은 제공 발췌에 없어 공시상 확인 불가함.
+- 2026-06-08 자사주매입 발표가 컨퍼런스에서 언급됨. 규모는 공시상 확인 불가함.</p>
+<p><strong>밸류에이션 (참고, 추정)</strong>
+- 2Q 매출을 연율화하면 약 $1.05B임.
+- 1Q말 순현금 기준 EV는 약 $8.55B으로 연율화 매출의 약 8.1배임.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>조직·혈액 임상 물량 확대</strong>(영업인력 300명 달성 후 추가 확충)</td>
+<td>늘린 영업인력의 생산성이 유지돼야 함</td>
+<td>3Q 케이스 수가 전분기 대비 +6,400건 수준을 유지하는지. 판관비 증가율보다 매출 증가율이 높은지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ASP 개선</strong>(PAMA 가격 인상 기대, Assure 보험 커버리지 확대)</td>
+<td>Assure가 NY주 승인 → FDA 승인 → ADLT 경로를 밟아야 함. PAMA 결과도 필요함</td>
+<td>3Q 블렌디드 ASP가 $3,800~3,900을 달성하는지. 과거기간 수금을 뺀 ASP. Assure 커버리지 계약 진척</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Caris Detect(MCED)</strong> — Everlywell 통한 자가부담(self-pay) 출시</td>
+<td>소비자 수요가 실제 주문으로 이어지고, 백오더 없이 처리 능력을 키우고, 원가를 낮춰야 함</td>
+<td>처음 보고되는 Detect 물량·매출. 매출총이익률 희석 폭. 추가 유통 파트너십</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>신제품 메뉴 확대</strong>(ChromoSeq, MI Clarity, 연내 MRD)</td>
+<td>현재 가이던스에는 미반영. 회사는 1~2분기 성숙 후 가이던스에 넣겠다고 밝힘</td>
+<td>신제품이 가이던스에 반영되는 시점. MRD 출시 일정이 지켜지는지</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>바이오파마·데이터 사업</strong></td>
+<td>113만 건 데이터셋을 수익으로 연결해야 함</td>
+<td>바이오파마 매출 공시. 신규 파트너 계약</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 가이던스 화법</strong>
+- CEO의 톤은 매우 공격적임. 자사 검사를 "indisputably superior"라고 표현했고, 다른 검사를 주문하는 것은 "환자에게 해가 된다"고까지 말함.
+- 자신감의 근거로는 분기 최대 케이스 증가, 흑자 상태에서의 자체 투자 재원 조달을 들었음.
+- CEO는 Detect 수요가 "내 예상도 앞섰다"며 백오더 가능성을 언급함. 수요가 강하다는 신호이면서, 동시에 처리 능력(capa)의 병목 리스크를 회사가 먼저 인정한 셈임.
+- 가이던스 화법은 보수적이고 단계적임. 신제품은 성숙 후에 가이던스에 반영하겠다고 함. 신제품 성과가 가시화되면 가이던스가 추가로 올라갈 여지가 있음(추정).</p>
+<p><strong>Q&amp;A에서 반복된 질문과 방어 지점</strong>
+- <strong>Detect 매출총이익률:</strong> 회사는 "deeper, not cheaper"를 내세우며 마진 목표치 제시를 피함. 2026-06 컨퍼런스에서도 같은 화법을 썼음. 정량 목표가 없다는 점이 약점임.
+- <strong>영업인력 최종 목표:</strong> "계속 평가하겠다"는 답만 하고 숫자를 주지 않음. 비용 상단이 열려 있다는 뜻임.
+- <strong>매출 가이던스 상향 vs 물량 유지:</strong> 차이는 ASP 상승으로 설명함. 다만 과거기간 수금이 기여한 부분을 분리해서 설명하지는 않음.
+- <strong>Assure 커버리지 목표의 가이던스 반영 여부:</strong> "계속 추진하겠다"는 답만 하고 반영 여부를 명확히 하지 않음.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 2Q 케이스 59,200건, 과거기간 수금 약 $24M
+- 3Q ASP 예상 범위 $3,800~3,900
+- Detect 가격 $3,500(Everlywell, 분할결제 옵션은 유연하게 검토)
+- PAMA 가격 인상 기대(CEO 발언)
+- 영업인력 300명 돌파
+- 개인화 펩타이드(조기 차단, "early interception") 구상
+- 자사주매입 배경: CEO의 자신감과 재무 여력이라고 언급(컨퍼런스)</p>
+<h2>6. 리스크</h2>
+<p>10-K 리스크 섹션 원문은 발췌에서 빠져 있음. 아래는 MD&amp;A·실적콜에서 확인되는 구체 리스크만 정리함.</p>
+<ol>
+<li><strong>매출 품질과 수금 변동성</strong>
+   - 2Q 매출의 약 9%(약 $24M)가 과거기간 수금임.
+   - 수금 시점이 바뀌면 분기 성장률과 마진이 크게 흔들릴 수 있음. 보고 기준 QoQ <span class="up">+22%</span>는 실제 체력보다 높게 보였을 수 있음.</li>
+<li><strong>수가·보험 의존</strong>
+   - MI Cancer Seek는 CLFS $8,455, Assure는 $3,649임. 메디케어 수가 체계(CDLT·PAMA)에 묶여 있음.
+   - Assure의 가격 개선은 NY주 승인 → FDA 승인 → ADLT라는 다단계 규제 경로가 모두 통과돼야 가능함.</li>
+<li><strong>비용 증가 재개 가능성</strong>
+   - 회사는 단기적으로 순손실이 계속될 수 있다고 밝힘(1Q 10-Q). 신제품 개발, 조직 확대, 마케팅으로 비용이 늘어날 것이라고 명시함.
+   - 영업인력 상한과 Detect 출시 비용이 열려 있어, 영업이익률 개선 추세가 꺾일 수 있음.</li>
+<li><strong>Detect 실행 리스크</strong>
+   - WGS는 고원가 검사이고, 출시 초기 매출총이익률 희석을 회사도 인정함.
+   - 자가부담 채널(Everlywell)에서 수요가 어떻게 나올지 불확실함.
+   - 회사가 언급한 백오더 가능성은 고객 경험 리스크로 이어짐.</li>
+<li><strong>밸류에이션과 영업외 비용</strong>
+   - 60일 <span class="up">+95%</span> 상승 후 TTM FCF 약 72배임.
+   - 영업이익이 흑자여도 $400M 대출 등 영업외 비용 때문에 순이익이 손익분기에 머무름.
+   - 회사는 EGC(신생성장기업)이자 비가속 신고기업(non-accelerated filer)임. 따라서 내부통제에 대한 외부감사인 검증(404(b))을 받지 않음(10-K 표지).</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- <strong>긍정 요인</strong>
+  - 매출 YoY <span class="up">+45.4%</span>(일회성 제외 시 약 <span class="up">+41%</span>, 추정)
+  - 영업이익률 <span class="up">+20.1%</span>p 개선, Adj. EBITDA 마진 9.2% → 21.1%
+  - TTM FCF $124.0M, 1Q말 순현금 약 $426M
+  - 2025년 3Q부터 순이익 기준 흑자~손익분기 유지
+- <strong>비중을 제한하는 요인</strong>
+  - 60일 <span class="up">+95.3%</span>, 52주 고점 대비 <span class="down">-1.6%</span>
+  - TTM FCF 약 72배, 연율화 매출의 약 8.1배(추정)
+  - 당일 거래량 0.81배로 신규 수급 확인 안 됨
+  - 당일 촉매 미확인
+- 결론적으로 사업의 질은 '적극'에 가깝지만, 가격 위치 때문에 <strong>'보통'(분할 편입)</strong>이 적정함.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 2Q 10-Q 원문의 재무 세부 항목:
+   - 2Q말 현금·부채 잔액
+   - 2Q FCF
+   - 영업외 비용 약 $27M의 내역(이자 vs 일회성)
+   - 임상/바이오파마 매출 구성
+2. 2026-09-14자 8-K의 내용(발췌가 잘려 미확인)과 자사주매입 규모·집행 현황
+3. JPMorgan 목표주가 상향의 날짜·목표가, 그리고 컨센서스 대비 현재 주가 위치. 오늘 상승이 리포트 때문인지, 단순 모멘텀 연장인지 구분해야 함</p>
+<p><strong>판단을 뒤집을 조건(관망으로 하향)</strong>
+- 3Q 블렌디드 ASP가 $3,800을 밑돌거나, 과거기간 수금을 뺀 매출의 QoQ 성장이 한 자릿수 초반으로 둔화될 때
+- Detect 출시로 매출총이익률이 60%대 초반 이하로 크게 희석되는데 물량 지표 공개가 없을 때
+- 영업비용 증가율이 매출 증가율을 넘어서 영업이익률이 전분기보다 후퇴할 때
+- 수가 관련 부정 이벤트가 나올 때(PAMA 인상 불발, Assure NY주·FDA 절차 지연)</p>
+<p><strong>상향(적극) 조건</strong>
+- 3Q에 케이스 증가세가 유지되고 ASP 가이던스를 달성할 때
+- Detect 등 신제품이 매출 가이던스에 반영될 때
+- 주가 조정으로 FCF 배수 부담이 줄어들 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000016/cai-20251231.htm">10-K — 2025-12-31_0002019410-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000055/cai-20260630.htm">10-Q — 2026-06-30_0002019410-26-000055</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000044/cai-20260331.htm">10-Q — 2026-03-31_0002019410-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000061/cai-20260914.htm">8-K — 2026-09-14_0002019410-26-000061</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000053/cai_ex99-1.htm">8-K — 2026-08-05_0002019410-26-000053__EX-99.1__cai_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000053/cai-20260805.htm">8-K — 2026-08-05_0002019410-26-000053</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2019410/000201941026000046/cai-20260604.htm">8-K — 2026-06-04_0002019410-26-000046</a></li>
+<li>Transcript — 2026-08-05 Caris Life Sciences, Inc. (CAI) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-06-08 Caris Life Sciences, Inc. (CAI) Presents at Goldman Sachs 47th Annual Global Healthcare Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

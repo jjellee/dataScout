@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALNY — Alnylam Pharmaceuticals Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ALNY — Alnylam Pharmaceuticals Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ALNY</span><span class="badge">+4.26%</span><span class="badge">거래량 1.1배</span><span class="badge">$31.32B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>분기 실적은 좋다. 공시 기준 Q2 2026 제품 순매출은 $1,172M으로 전년 대비 <span class="up">+74%</span>이고, 이 중 TTR 매출이 $1,030M(<span class="up">+89%</span>)이다. 시장 지표상 영업이익률은 17.9%로 1년 새 20.0%p 올랐고, TTM 잉여현금흐름도 $819.9M 흑자다.</li>
+<li>다만 회사가 Q2에 2026년 TTR 가이던스를 $4,400~4,700M에서 $4,200~4,500M으로 낮췄다. 이 때문에 성장 경로를 시장이 믿을 수 있는지가 핵심 쟁점이 됐다. 주가는 52주 고점 대비 <span class="down">-52.4%</span>, 60일 <span class="down">-13.7%</span>로 아직 하락 추세에 있고, 증권사들도 목표주가를 연달아 내렸다(UBS $354, Citi $320, Wells Fargo $253).</li>
+<li>오늘 <span class="up">+4.26%</span> 상승에는 확인된 촉매가 없다. 거래량은 20일 중앙값의 1.1배에 그쳐 '거래량 급증'이라고 보기 어렵다.</li>
+<li>하향된 가이던스를 맞추려면 하반기 TTR 매출이 분기 평균 약 $1.2B(중간값 기준)까지 다시 빨라져야 한다. 이를 확인할 Q3 실적과 340B 규정 결정(실적콜 기준 11월 전후)이 곧 나온다. 지금 미리 비중을 싣기보다 이 두 결과를 보고 들어가는 쪽이 낫다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 안에 나온 SEC 공시는 없다.</li>
+<li>뉴스 헤드라인은 대부분 목표주가 하향이거나("Guidance Cut" 이후 신뢰 회복 여부를 다룬) 기존 이슈를 다시 정리한 기사다. 상승을 직접 설명하는 재료는 보이지 않는다.</li>
+<li>거래량 배수가 1.1배여서 새로운 정보가 들어와 수급이 바뀌었다는 신호는 약하다. 20일 <span class="down">-3.2%</span>, 60일 <span class="down">-13.7%</span> 하락 뒤의 기술적 반등일 가능성이 있다(추정).</li>
+<li>일정상 다가오는 재료는 있다. 회사는 ALN-HTT02(헌팅턴병) 1상 결과를 10월 EHDN에서 발표하고, 10월 26일 RNAi Roundtable에서 다룬다고 밝혔다. 이를 앞둔 선반영 매수일 수 있지만 근거로 확인할 수는 없다(추정).</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌에는 표지·목차·상표 목록만 있고 사업 섹션 본문이 없다. 그래서 아래 내용은 Q2 8-K 실적 보도자료와 실적콜(투자자 행사)에 근거한다.</p>
+<p><strong>제품별 매출(Q2 2026, 8-K)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>제품</th>
+<th>Q2 2026 순매출</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TTR</td>
+<td>AMVUTTRA(vutrisiran)</td>
+<td>$1,012M</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>TTR</td>
+<td>ONPATTRO(patisiran)</td>
+<td>$18M</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td><strong>TTR 합계</strong></td>
+<td></td>
+<td><strong>$1,030M</strong></td>
+<td><strong>+89%</strong></td>
+</tr>
+<tr>
+<td>Rare</td>
+<td>GIVLAARI(givosiran)</td>
+<td>$90M</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>Rare</td>
+<td>OXLUMO(lumasiran)</td>
+<td>$52M</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td><strong>Rare 합계</strong></td>
+<td></td>
+<td><strong>$142M</strong></td>
+<td><strong>+11%</strong></td>
+</tr>
+<tr>
+<td><strong>제품 순매출 합계</strong></td>
+<td></td>
+<td><strong>$1,172M</strong></td>
+<td><strong>+74%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>매출 집중도:</strong> TTR이 제품 매출의 약 88%(1,030/1,172)를 차지한다. 사실상 AMVUTTRA 하나에 의존하는 구조다.</li>
+<li><strong>제품 외 매출:</strong> 시장 지표상 분기 매출 $1.29B와 제품 매출 $1,172M의 차이인 약 $118M은 협업·로열티 등 제품 외 매출로 추정된다. 구체적인 구성은 공시상 확인 불가다.</li>
+<li><strong>고객군과 채널:</strong></li>
+<li>질환 대상은 ATTR 아밀로이드증, 즉 hATTR-PN(유전성 다발신경병증)과 ATTR-CM(심근병증)이다.</li>
+<li>실적콜에서 회사는 심장내과 buy-and-bill 경로로 공급하며, 환자 90%가 집에서 10마일 이내에서 투여받을 수 있다고 언급했다.</li>
+<li>대부분의 환자는 본인부담 $0이라고도 언급했다.</li>
+<li><strong>지역 확장:</strong> 스페인 출시, 독일·일본 출시가 진행 중이다. 중국(본토·마카오)은 BeOne Medicines와 독점 상업화 계약을 맺었으며, 판매 허가가 전제 조건이다(8-K).</li>
+<li><strong>경쟁 위치:</strong></li>
+<li>회사는 AMVUTTRA가 ATTR 전 스펙트럼(PN과 CM)에 승인된 유일한 제품이라고 밝혔다(8-K).</li>
+<li>실적콜에서는 HELIOS-B의 TTR 감소율 81%가 경쟁 약물 eplontersen(CARDIO-TTRansform, 70% 미만)보다 높다고 했다.</li>
+<li>처방 경험이 있는 의사 사이 점유율이 50%를 넘는다고 언급했다.</li>
+<li>tafamidis 제네릭 출시 예상 시점은 2031년이라고 언급했다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질: 물량 주도, 가격은 약간 하락</strong></p>
+<ul>
+<li>8-K 기준 미국 TTR 매출은 직전 분기보다 $106M 늘었다. 분해하면 수요(물량)가 +$129M, 재고 영향이 약 -$20M, 순가격은 소폭 하락이다.</li>
+<li>회사는 Q2 수요 증가폭이 Q1(전 분기 대비) 증가폭의 2배를 넘는다고 밝혔다.</li>
+<li>해외 TTR은 직전 분기보다 +$14M 늘었다. hATTR-PN과 ATTR-CM 수요가 함께 늘었다.</li>
+<li>결론적으로 성장은 물량에서 나오고 가격은 약간 깎이는 구조다. 실적콜에서도 순가격은 물량이 늘면서 완만하고 점진적으로 떨어질 것이라고 언급했다.</li>
+</ul>
+<p><strong>가이던스에서 역산한 하반기 요구 수준(공시 수치 기반 단순 계산)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1 TTR(역산)</td>
+<td>Q2 $1,030M − 직전 분기 대비 증가 $120M(미국 $106M + 해외 $14M) ≈ <strong>$910M</strong></td>
+</tr>
+<tr>
+<td>상반기 TTR</td>
+<td>≈ $1,940M</td>
+</tr>
+<tr>
+<td>연간 가이던스 $4,200~4,500M일 때 하반기 필요액</td>
+<td>≈ $2,260~2,560M</td>
+</tr>
+<tr>
+<td>분기 평균 필요액</td>
+<td>≈ <strong>$1,130~1,280M</strong>(중간값 약 $1,205M)</td>
+</tr>
+<tr>
+<td>Q2 대비 필요 증가율</td>
+<td>약 +10~24%(중간값 기준 약 <span class="up">+17%</span>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 계산대로라면 Q3·Q4에도 분기마다 $100M 이상 늘어야 가이던스 중간값에 도달한다.</p>
+<p><strong>마진</strong></p>
+<ul>
+<li>매출총이익률은 76.9%다.</li>
+<li>영업이익률은 17.9%로 전년 대비 <span class="up">+20.0%</span>p다. 전년 동기는 대략 적자에서 손익분기 수준이었던 것으로 역산된다.</li>
+<li>매출이 늘면서 판관비·연구개발비 부담이 줄어드는 영업 레버리지가 강하게 작동하는 국면이다.</li>
+<li>다만 회사는 TTR 프랜차이즈와 파이프라인(ZENITH 11,000명 임상, 제조 투자 등)에 계속 크게 투자하겠다고 밝혔다. 그래서 마진 개선 속도는 매출 성장 속도에 달려 있다.</li>
+</ul>
+<p><strong>현금흐름과 재무 건전성</strong></p>
+<ul>
+<li>TTM 잉여현금흐름은 $819.9M이다. 시가총액 대비 FCF 수익률은 약 2.6%다.</li>
+<li>현금·부채 잔액, 전환사채 등 대차대조표 항목은 제공된 발췌에 없어 공시상 확인 불가다.</li>
+<li>밸류에이션 참고치: 분기 매출 $1.29B를 단순 연환산하면 약 $5.2B다. 시가총액 대비 PSR은 약 6배다(EV 기준은 확인 불가).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>드라이버</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AMVUTTRA ATTR-CM 1차 치료 확대</td>
+<td>2차 치료 대기 수요(밀린 수요)가 소진된 뒤에도 신규 1차 처방이 늘어야 함</td>
+<td>Q3 미국 TTR의 수요 기여분이 Q2의 +$129M을 유지하거나 넘는지, 재고 영향을 뺀 순수요</td>
+</tr>
+<tr>
+<td>2</td>
+<td>진단률 개선</td>
+<td>실적콜에서 시장의 80%가 아직 진단·치료되지 않았다고 언급. AI 심초음파 선별 연구(DETECT-ATTR), Viz.ai·AHA 협업 등</td>
+<td>신규 처방의 수, 처방 의사 기반 확대 수치 공개 여부</td>
+</tr>
+<tr>
+<td>3</td>
+<td>해외 확장</td>
+<td>독일·일본 출시 진행, 스페인 출시, 중국은 허가 후 BeOne 통해 판매</td>
+<td>해외 TTR의 직전 분기 대비 증가폭(Q2 +$14M), 중국 허가 일정</td>
+</tr>
+<tr>
+<td>4</td>
+<td>차세대 TTR: nucresiran</td>
+<td>실적콜에서 TTR 감소율 95%, TRITON-CM 임상 규모 확대를 언급. 회사는 3상이 성공하면 hATTR-PN 출시 가능성이 있다고 밝힘</td>
+<td>TRITON 임상 진행 상황과 데이터 시점</td>
+</tr>
+<tr>
+<td>5</td>
+<td>파이프라인 옵션 가치</td>
+<td>HTT02 1상(10월 EHDN), ALN-6400 HHT 2상(곧 완료), 비만 ALN-6222 개념증명(연내), zilebesiran ZENITH(MACE 결과, 수년 소요)</td>
+<td>10월 HTT02 데이터, 연내 비만 프로그램에서 지방조직 전달 성공 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 자료는 실적콜 원문이 아니다. Morgan Stanley 헬스케어 컨퍼런스(9/14) 대담과 zilebesiran 투자자 행사(9/17) transcript다.</p>
+<p><strong>경영진의 톤</strong></p>
+<ul>
+<li>CEO는 Q2에 분기 매출 $1B를 넘긴 점, HELIOS-B 데이터, 접근성(본인부담 $0, 10마일 이내 투여)을 근거로 자신감을 보였다.</li>
+<li>가이던스 하향에 대해서는 "시장 변화에 대한 이해가 깊어진 결과", 특히 2차 치료 수요가 정상화됐기 때문이라고 설명했다.</li>
+<li>하향을 실행상의 문제가 아니라 일회성 수요 소진으로 규정하는 방어적 화법이다.</li>
+</ul>
+<p><strong>반복된 질문과 방어 지점</strong></p>
+<ul>
+<li><strong>가이던스 하향 배경:</strong> 첫 질문 가운데 하나로 나왔다. 회사는 1차·2차 치료 수요 정상화로 답했다. 1차 치료 점유율의 구체적 수치는 제시하지 않았다.</li>
+<li><strong>경쟁사 eplontersen의 CARDIO-TTRansform 결과:</strong> 회사는 TTR 감소율 차이(81% 대 70% 미만)를 들었고, 의사 설문에서 silencer 계열 약물 사용에 큰 변화가 없다고 방어했다.</li>
+<li><strong>심혈관 결과 임상(CVOT) 실패 사례:</strong> Lp(a), IL-6 등 다른 회사들의 실패 사례가 ZENITH에도 위험이 되는지 질문이 나왔다. R&amp;D 책임자 Pushkal Garg는 분자·생물학·임상 설계 위험을 나눠 설명하며 "상당히 자신 있다"고 답했다. 다만 MACE 15~20% 감소는 회사가 목표로 제시한 수치일 뿐 검증된 결과가 아니다.</li>
+<li><strong>출혈 감소 기준(ALN-6400):</strong> 임상 성공 기준을 묻자 CEO는 "결과가 나오면 다시 말하겠다"며 구체적 수치를 피했다.</li>
+</ul>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong></p>
+<ul>
+<li>340B 규정 변경에 대한 결정이 11월 전후로 예상된다. 회사는 투여 기관 네트워크로 접근성을 유지하겠다고 했다.</li>
+<li>tafamidis 제네릭 출시 예상이 2031년으로 미뤄졌다.</li>
+<li>처방 경험이 있는 의사 사이 점유율이 50%를 넘는다.</li>
+<li>시장의 80%가 아직 진단되지 않았다.</li>
+<li>nucresiran TRITON-CM 임상 규모가 늘었다.</li>
+<li>Leqvio의 미국 매출이 직전 분기 55% 늘었다는 언급과 함께, 심장내과 buy-and-bill 채널이 성숙했다고 설명했다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<p>10-K 리스크 섹션 원문은 발췌에 포함되지 않았다. 아래는 8-K와 대담 내용에서 확인되는 실질 리스크다.</p>
+<ol>
+<li><strong>단일 제품 집중과 가이던스 신뢰도:</strong> TTR이 제품 매출의 약 88%다. 첫 해 가이던스를 이미 한 번 낮췄고, 하반기에 분기 평균 약 <span class="up">+17%</span> 재가속이 필요하다. 다시 미달하면 성장주로서의 평가가 흔들릴 수 있다.</li>
+<li><strong>순가격 하락과 340B:</strong> 회사도 순가격의 점진적 하락을 인정했다. 340B 규정 변경 결과가 11월 전후로 나오며, 순가격과 투여 기관 경제성에 영향을 줄 수 있다. 영향 규모는 공시상 확인 불가다.</li>
+<li><strong>분기별 재고 변동:</strong> Q2 미국 TTR에서 재고 영향이 약 -$20M이었다. buy-and-bill 구조상 분기 실적이 실제 수요와 어긋날 수 있다.</li>
+<li><strong>경쟁 심화:</strong> eplontersen과 안정제(tafamidis 등)가 경쟁한다. 2031년 tafamidis 제네릭이 나오면 1차 치료 경쟁 구도가 바뀔 수 있다. 자사 nucresiran으로 AMVUTTRA 수요가 옮겨갈 가능성도 있다(추정).</li>
+<li><strong>파이프라인 결과 위험:</strong> ZENITH(11,000명, MACE 결과) 결과는 수년 뒤에 나온다. Roche와 공동 개발이어서 경제적 지분 구조가 어떤지는 확인 불가다. HTT02, 비만, ALN-6400은 초기 단계라 결과가 성공 아니면 실패로 갈린다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 YoY <span class="up">+66.9%</span>, 직전 분기 대비 <span class="up">+10.6%</span></td>
+<td>TTR 가이던스 중간값 -$200M 하향</td>
+</tr>
+<tr>
+<td>영업이익률 17.9%(<span class="up">+20.0%</span>p)</td>
+<td>하반기 분기 평균 약 $1.2B 필요(Q2 대비 약 <span class="up">+17%</span>)</td>
+</tr>
+<tr>
+<td>매출총이익률 76.9%, TTM FCF $819.9M</td>
+<td>52주 고점 대비 <span class="down">-52.4%</span>, 60일 <span class="down">-13.7%</span></td>
+</tr>
+<tr>
+<td>미국 TTR 수요 증가(+$129M)가 Q1의 2배 이상</td>
+<td>목표주가 하향 3건(최저 $253, 현재가 대비 <span class="up">+8%</span>)</td>
+</tr>
+<tr>
+<td>PSR 약 6배(단순 연환산)</td>
+<td>오늘 거래량 1.1배로 매수세 확인 안 됨</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li><strong>Q3 TTR 매출:</strong> $1,130M(가이던스 하단의 분기 평균)을 넘는지 본다. 미국 수요 증가분이 Q2의 +$129M 이상인지도 확인한다.</li>
+<li><strong>340B 최종 규정과 순가격:</strong> 11월 전후 결정이 순가격 가이던스에 어떤 영향을 주는지 회사가 정량화해서 설명하는지 본다.</li>
+<li><strong>10월 파이프라인 결과:</strong> 10월 HTT02 1상 데이터와 연내 비만 개념증명 데이터가 나온 뒤에도 TTR 외 가치가 주가에 반영되는지 본다.</li>
+</ol>
+<p><strong>판단을 바꿀 조건</strong></p>
+<ul>
+<li><strong>관망 → 보통/적극:</strong></li>
+<li>Q3 TTR이 $1.2B 이상이고, 연간 가이던스를 유지하거나 올리는 경우</li>
+<li>340B 영향이 제한적이라고 확인되는 경우</li>
+<li>거래량을 동반한(2배 이상) 추세 전환이 나오는 경우</li>
+<li><strong>관망 → 회피:</strong></li>
+<li>Q3 TTR이 $1.1B 아래로 나오거나, 가이던스를 다시 낮추는 경우</li>
+<li>순가격 하락 폭이 커지는 경우(340B 영향 포함)</li>
+<li>미국 수요 증가분이 Q2보다 줄어드는 경우. 1차 치료 전환이 2차 치료 수요 정상화를 메우지 못한다는 뜻이기 때문이다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000162828026007497/alny-20251231.htm">10-K — 2025-12-31_0001628280-26-007497</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000117867026000062/alny-20260630.htm">10-Q — 2026-06-30_0001178670-26-000062</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000162828026028605/alny-20260331.htm">10-Q — 2026-03-31_0001628280-26-028605</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000117867026000060/alny2026q2earningsrelease.htm">8-K — 2026-07-30_0001178670-26-000060__EX-99.1__alny2026q2earningsrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000117867026000060/alny-20260730.htm">8-K — 2026-07-30_0001178670-26-000060</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1178670/000162828026038499/alny-20260520.htm">8-K — 2026-05-20_0001628280-26-038499</a></li>
+<li>Transcript — 2026-09-17 Investor update Transcript</li>
+<li>Transcript — 2026-09-14 Morgan Stanley 24th Annual Global Healthcare Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

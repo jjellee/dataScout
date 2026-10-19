@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WDAY — Workday Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>WDAY — Workday Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">WDAY</span><span class="badge">+4.16%</span><span class="badge">거래량 1.57배</span><span class="badge">$47.39B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>기초 체력은 탄탄하다. 구독매출이 전체 매출의 약 93%이고, 계약은 3년 이상·해지 불가 구조다. 실적콜에서 회사는 GRR(총매출유지율) 97%라고 언급했다. 시가총액 대비 TTM FCF 수익률은 약 6.0%($2.84B ÷ $47.39B)이고, 회사는 비GAAP 마진을 FY27 31%로, FY28에는 최소 <span class="up">+2%</span>p 더 끌어올리겠다고 밝혔다.</li>
+<li>성장은 둔화가 공식화됐다. 회사가 밝힌 구독매출 성장률은 Q3 12%, FY27 13%, FY28 약 11%로 낮아진다. 총 구독 백로그 성장률도 Q1 11%에서 Q2 8%로 떨어졌다.</li>
+<li>AI ARR은 약 $6억으로 빠르게 늘고 있다. 다만 무료 프로그램(Sana Lighthouse)과 과금 유예(SSA)가 겹쳐 있어, 실제 매출 기여는 FY28 이후로 미뤄진 상태다.</li>
+<li>주가는 60일간 <span class="up">+49.2%</span> 올랐는데, 오늘 상승을 설명할 단일 촉매는 확인되지 않는다. 과거 실적 개선의 상당 부분은 이미 반영됐다고 본다.</li>
+<li>그래서 기준 비중(중립)을 유지하되, 추격 매수는 하지 않는다. Q3 실적에서 cRPO와 백로그를 확인한 뒤 비중 확대 여부를 정하는 '보통'이 맞다고 판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 단일 촉매 없음. 이벤트 후속 반응과 섹터 동조가 겹친 것으로 추정한다.</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>후보</th>
+<th>근거</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workday Rising 2026 및 C1.ai 인수 (8-K, 2026-10-13)</td>
+<td>회사는 에이전틱 아이덴티티 플랫폼 C1.ai 인수에 대해 확정 계약을 체결했다고 밝혔다. 실적콜에서는 Rising(10/12~15) 기간에 Financial Analyst Day를 연다고 언급했다.</td>
+<td>인수 대가, 매출 기여, Analyst Day의 신규 중기 목표는 <strong>제공 자료상 확인 불가</strong>다. 8-K 공시일과 오늘 등락일 사이의 관계도 특정할 수 없다.</td>
+</tr>
+<tr>
+<td>SaaS 섹터 반등</td>
+<td>뉴스 헤드라인 "Stock Surges Amid SaaS Industry Recovery"</td>
+<td>헤드라인 외에 구체 근거는 없다. 섹터 동조 가능성은 있다.</td>
+</tr>
+<tr>
+<td>반대 재료</td>
+<td>KeyBanc가 AI 지출과 HR 예산을 이유로 하향 조정했다는 헤드라인</td>
+<td>하향 조정의 시점과 내용은 확인 불가다. 상승과는 반대 방향 재료다.</td>
+</tr>
+<tr>
+<td>내부자 매도 신호</td>
+<td>Form 144 (2026-10-13)</td>
+<td>매도 주체와 규모는 <strong>공시상 확인 불가</strong>다. 부정적 수급 신호일 수 있다.</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>거래량은 20일 중앙값의 1.57배다. 펀더멘털 서프라이즈라고 보기엔 약하다.</li>
+<li>20일 수익률 <span class="down">-1.6%</span>, 52주 고점 대비 <span class="down">-20.0%</span>로, 직전 박스권 안에서 나온 반등이다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품</strong> (10-K, 10-Q): HCM, 재무관리, 지출관리, 플래닝 클라우드 애플리케이션과 AI 에이전트를 판다. 인수한 에이전트(Paradox, HiredScore, Evisort, Sana)는 자체 플랫폼에 통합하는 구조다.</li>
+<li><strong>고객 기반</strong> (10-K): 11,500개 이상의 조직, 계약 사용자 7,500만 명 이상, Fortune 500의 65% 이상이다. 업종은 금융, 정부, 헬스케어, 고등교육, 제조, 리테일 등으로 분산돼 있다.</li>
+<li><strong>매출 구성</strong> (Q2 FY27 10-Q):</li>
+<li>구독 $2,471M (전체의 93%, YoY <span class="up">+14%</span>)</li>
+<li>전문서비스 $178M (총매출에서 구독매출을 빼서 계산, 전년 $179M과 비슷)</li>
+<li>구독매출은 미청구 수익의 97%를 차지한다.</li>
+<li>회사는 파트너가 고객과 직접 서비스 계약을 맺는 비중이 늘 것이라고 밝혔다. 서비스 매출은 구조적으로 정체된다는 뜻이다.</li>
+<li><strong>과금 동인</strong> (10-Q): 고객 수, 고객별 근로자 수(seat), 구독 애플리케이션 수, 단가로 정해진다. 대체로 연 단위로 선청구한다.</li>
+<li><strong>지역</strong> (실적콜): 회사는 해외 매출이 17% 늘어 $682M, 미국은 12% 늘어 $1.97B라고 언급했다.</li>
+<li><strong>경쟁 위치</strong>:</li>
+<li>제공된 10-K 발췌에는 경쟁사 명시가 없어 <strong>확인 불가</strong>다.</li>
+<li>실적콜에서 회사는 "통합 데이터 모델 덕분에 레거시 경쟁사보다 앞선다"고 주장했다.</li>
+<li>CEO는 "Workday를 자체 개발이나 스타트업 제품으로 대체하려는 고객은 한 곳도 못 봤다"고 언급했다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 추이 (10-Q)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q1 FY27</th>
+<th>Q2 FY27</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$2,542M (<span class="up">+13%</span>)</td>
+<td>$2,649M (<span class="up">+13%</span>)</td>
+<td>QoQ <span class="up">+4.2%</span></td>
+</tr>
+<tr>
+<td>구독매출</td>
+<td>$2,354M (<span class="up">+14%</span>)</td>
+<td>$2,471M (<span class="up">+14%</span>)</td>
+<td></td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>13.3%</td>
+<td>11.8% (+124bp YoY)</td>
+<td></td>
+</tr>
+<tr>
+<td>비GAAP 영업이익률</td>
+<td>31.8%</td>
+<td>31.1% (+212bp YoY)</td>
+<td></td>
+</tr>
+<tr>
+<td>12개월 백로그(cRPO)</td>
+<td>$8,806M (<span class="up">+15%</span>)</td>
+<td>$9,034M (<span class="up">+14%</span>)</td>
+<td>둔화</td>
+</tr>
+<tr>
+<td>총 구독 백로그</td>
+<td>$27,294M (<span class="up">+11%</span>)</td>
+<td>$27,403M (<span class="up">+8%</span>)</td>
+<td>둔화</td>
+</tr>
+<tr>
+<td>비유동 백로그 (계산)</td>
+<td>$18,488M (<span class="up">+8.8%</span>)</td>
+<td>$18,369M (<span class="up">+5.2%</span>)</td>
+<td><strong>QoQ 감소</strong></td>
+</tr>
+<tr>
+<td>현금 및 유가증권</td>
+<td>$4,353M</td>
+<td>$3,403M</td>
+<td>1월 말 $5,443M 대비 <span class="down">-37%</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong>
+- 성장은 대부분 물량(기존 고객 확장)에서 나온다. 실적콜에서 회사는 구독 성장의 약 60%가 기존 고객 확장분이라고 언급했다.
+- 반면 MD&amp;A에는 갱신 시 인원 기준 약정(seat 수) 증가가 둔화됐다는 내용이 있다. seat 기반 물량 동력은 약해지고, AI SKU와 신규 모듈이 믹스로 이를 보완하는 구조다.
+- 단가 정보는 <strong>공시상 확인 불가</strong>다.
+- 비유동 백로그가 전 분기보다 줄었다. UMSA 전환이나 계약 기간 단축의 영향일 수 있지만, 이는 추정이며 원인은 공시상 확인 불가다.</p>
+<p><strong>마진</strong>
+- 비GAAP과 GAAP 영업이익의 차이는 Q2 $511M, 매출의 약 19%다. 주식보상 등 조정 항목의 세부는 확인 불가다.
+- GAAP 영업이익률 개선은 실제로 진행 중이다. 다만 상반기 GAAP 영업이익이 <span class="up">+126%</span>로 보이는 것은 전년 Q1 GAAP 영업이익 $39M이라는 낮은 기저 효과가 크다.
+- 실적콜에서 회사는 Q2 GAAP 실적에 일회성 세금 혜택 $374M이 포함됐다고 언급했다. 순이익 기준 비교에는 주의가 필요하다.
+- 헤드카운트는 20,896명으로 QoQ +62명에 그쳤다. 사실상 동결이며, 실적콜의 "인원을 동결한 채 더 많은 일을 한다"는 발언과 맞는다.</p>
+<p><strong>현금흐름</strong>
+- 상반기 OCF는 $1,215M(<span class="up">+13%</span>), FCF는 $1,076M(<span class="up">+7%</span>)이다.
+- 하지만 Q2만 떼어 보면 약해졌다 (Q1 값을 빼서 계산):
+  - OCF $519M (전년 동기 $616M, <span class="down">-16%</span>)
+  - FCF $460M (전년 동기 $588M, <span class="down">-22%</span>)
+- 회사가 MD&amp;A에서 밝힌 '유연한 지급 조건 제공'과 관련이 있을 수 있다. 다만 이는 추정이다.
+- 회사가 밝힌 FY27 FCF 가이던스는 $3.18B(<span class="up">+15%</span>)다. 달성하려면 하반기에 약 $2.10B가 필요하다. 상반기의 2배에 가까워 연간 선청구 시점에 크게 의존하는 구조로 보인다(추정).</p>
+<p><strong>재무 건전성</strong>
+- 회사는 Q2에 자사주 $1.3B를 매입해 $5B 프로그램을 조기 완료했고, $4B 신규 프로그램을 승인했다고 밝혔다(실적콜).
+- 현금 감소의 주원인은 자사주 매입으로 보인다. 다만 인수 지출 등 다른 내역은 확인 불가다.
+- 차입금 규모와 만기는 제공 자료상 <strong>확인 불가</strong>다.</p>
+<p><strong>참고 밸류에이션</strong> (제공 지표로 단순 계산)
+- 시가총액 / TTM FCF: 약 16.7배 (FCF 수익률 약 6.0%)
+- 시가총액 / FY27 FCF 가이던스: 약 14.9배
+- 시가총액 / Q2 연환산 매출: 약 4.5배</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 사실</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI SKU 수익화</td>
+<td>실적콜: AI ARR 약 $6억 (YoY <span class="up">+200%</span> 이상, QoQ <span class="up">+20%</span> 이상), AI가 신규 ACV의 25% 이상(&gt;$1억)</td>
+<td>무료·유예 프로그램이 유료 Flex Credit으로 넘어가야 함</td>
+<td>AI ARR의 QoQ <span class="up">+20%</span> 페이스 유지 여부, SSA 과금 시작 후 Flex Credit 소진 수치 공개 여부</td>
+</tr>
+<tr>
+<td>에이전트 도입 확대</td>
+<td>실적콜: 자체 에이전트 사용 고객 5,500곳 이상 (QoQ <span class="up">+35%</span>)</td>
+<td>도입이 과금으로 이어져야 함 (회사 스스로 "지금은 매출 환산이 어렵다"고 언급)</td>
+<td>사용 고객 수 대비 유료 전환 지표</td>
+</tr>
+<tr>
+<td>해외·중견기업</td>
+<td>실적콜: 해외 <span class="up">+17%</span>, EMEA 신규 ACV의 약 3분의 1이 AI, Workday GO 고객 볼륨이 Q1 대비 5배 이상</td>
+<td>해외 성장률이 미국 둔화를 상쇄해야 함</td>
+<td>해외 매출 성장률 15% 이상 유지</td>
+</tr>
+<tr>
+<td>플랫폼 확장 (Data Cloud, Developer Agent, C1.ai 아이덴티티)</td>
+<td>8-K: 회사는 C1.ai로 "사람·자금·에이전트의 아이덴티티 거버넌스 레이어"가 되겠다고 밝힘</td>
+<td>IT 예산 영역으로 진입해야 함 (회사 주장)</td>
+<td>C1.ai 인수 대가와 종결 시점, 크로스셀 지표 (10-Q 공시)</td>
+</tr>
+<tr>
+<td>마진 확대</td>
+<td>회사는 FY27 비GAAP 마진 31%, FY28 최소 <span class="up">+2%</span>p를 밝힘</td>
+<td>헤드카운트 동결, 내부 AI 활용</td>
+<td>Q3 비GAAP 마진 30% 가이던스 달성 여부, 헤드카운트 추이</td>
+</tr>
+<tr>
+<td>주주환원</td>
+<td>$4B 신규 자사주 매입 프로그램 (실적콜)</td>
+<td>FCF 가이던스 달성</td>
+<td>분기 매입 속도, 주식 수 감소</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- CEO는 6개월 전 복귀했다. "This is Workday's moment", "다음 콜에서는 AI 회사인지 의문이 남지 않을 것" 등 매우 낙관적인 톤이었다.
+- 자신감의 정량 근거로는 AI ARR $6억, AI 신규 ACV 25% 이상, 에이전트 도입 고객 5,500곳, BMO 5.5만 명 전사 배포 등을 들었다.
+- 가이던스 화법의 특징:
+  - 비GAAP 마진 가이던스는 31%로 올렸다.
+  - 구독매출 성장률은 Q3 12%, FY28 약 11%로 둔화를 미리 제시했다.
+  - 즉 마진은 올리고 성장은 보수적으로 잡는 프레이밍이다.
+  - CFO는 AI가 하반기 가이던스에 "일부만" 반영됐고, 본격 기여는 FY28 이후라고 언급했다.</p>
+<p><strong>Q&amp;A 반복 질문과 방어 지점</strong>
+- <strong>AI 수익화 정량화</strong> (Wolfe Research, JPMorgan):
+  - Flex Credit 단가, 고객당 확장 규모, UMSA의 매출 기여 시점을 물었다.
+  - 회사는 "지금은 답하기 어렵다. 초점은 도입이다"라고 답했다. <strong>사실상 회피</strong>로 본다.
+  - 인수 에이전트의 FY28 영향 질문에도 정성적인 통합 설명만 했다.
+- <strong>마진 상향의 근거</strong> (UBS):
+  - 회사는 지출 우선순위 조정, 내부 AI 활용, 인원 동결을 근거로 들었다.
+  - 그러면서 "<span class="up">+2%</span>p는 좋은 출발점"이라며 추가 상향 여지를 남겼다.
+- 제공된 발췌는 중간이 생략돼 있어, 전체 Q&amp;A의 반복 주제는 일부만 확인 가능하다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- AI ARR 약 $6억 (전년 약 $1.5억 남짓), GRR 97%, 구독 성장 중 기존 고객 확장 약 60%
+- Sana Enterprise Lighthouse 프로그램(전략 고객에게 1년 무료), Self-Service Agent의 8~9월까지 과금 유예
+  - 단기 매출에는 부정적 요인이다.
+- UMSA 전환 고객이 전체의 절반을 넘었다.
+- FY28 구독 성장률 약 11% 목표, $4B 신규 자사주 매입 프로그램
+- 사소한 수치 불일치: 사내 Sana 커스텀 에이전트 수를 준비된 발언에서는 22,000개, Q&amp;A에서는 24,000개로 말했다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>seat 기반 과금 모델 잠식</strong>
+   - 10-Q MD&amp;A는 갱신 시 인원 기준 약정 증가가 둔화됐고, AI 환경 변화에 맞춰 신규 가격 모델을 도입 중이라고 밝힌다.
+   - AI로 고객사 인력이 효율화되면 핵심 과금 동인인 근로자 수가 줄어든다.
+   - KeyBanc 하향 헤드라인(HR 예산)도 같은 맥락이다.</li>
+<li><strong>장기 백로그 둔화</strong>
+   - 총 구독 백로그 성장률이 11%에서 8%로 떨어졌고, 비유동 백로그는 QoQ로 줄었다.
+   - 이것이 지속되면 FY28 이후 성장률 하방 압력이 된다.</li>
+<li><strong>공공·교육·헬스케어 영업 사이클 장기화</strong>
+   - 10-Q는 연방 재원과 연동된 업종에서 영업 사이클 지연이 특히 두드러지고, 신규 딜 심사가 강화됐다고 명시한다.</li>
+<li><strong>현금 전환 약화</strong>
+   - 회사는 유연한 지급 조건을 제공했고 앞으로도 제공할 수 있다고 밝혔다.
+   - Q2 FCF가 YoY <span class="down">-22%</span>이고, 연간 가이던스는 하반기 집중 구조에 의존한다.</li>
+<li><strong>M&amp;A 연속 집행과 통합 리스크</strong>
+   - Paradox, HiredScore, Evisort, Sana에 이어 C1.ai까지 인수가 이어지고 있다.
+   - C1.ai 대가는 공시상 확인 불가다.
+   - 현금은 7개월 사이 $5.4B에서 $3.4B로 줄었다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 ('보통')</strong>
+- 긍정 요인:
+  - TTM FCF $2.84B (시가총액 대비 약 6.0%)
+  - 비GAAP 영업이익률 31.1% (+212bp)
+  - cRPO <span class="up">+14.2%</span>
+  - GRR 97% (실적콜)
+  - AI ARR YoY <span class="up">+200%</span> 이상 (실적콜)
+  - 자사주 매입 여력 $4B
+- 제약 요인:
+  - 회사가 밝힌 구독 성장률 경로 13% → 12%(Q3) → 약 11%(FY28)
+  - 총 백로그 <span class="up">+8%</span>로 둔화
+  - Q2 FCF YoY <span class="down">-22%</span>
+  - 60일 <span class="up">+49.2%</span>로 상당 부분 선반영
+  - 오늘 상승의 촉매 불명확</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. Rising/Analyst Day에서 제시된 중기 목표, 그리고 C1.ai 인수 대가와 재무 영향 (제공 자료상 확인 불가)
+2. Form 144의 매도 주체와 규모 (계획된 매도인지 여부 포함)
+3. Q2 OCF·FCF 감소의 원인 (지급 조건 완화 때문인지, 단순 시점 차이인지)과 차입금 및 만기 구조</p>
+<p><strong>판단을 뒤집을 조건 (관망으로 전환)</strong>
+- Q3 cRPO 성장률이 12% 아래로 내려가거나, 비유동 백로그가 2개 분기 연속 QoQ 감소할 때
+- FY27 FCF($3.18B) 또는 비GAAP 마진(31%) 가이던스가 하향될 때
+- AI ARR의 QoQ 성장률이 20%에서 크게 꺾이거나, 과금 유예가 끝난 뒤에도 Flex Credit 수익화 수치가 나오지 않을 때
+- GRR이 97% 아래로 떨어지거나, MD&amp;A에 seat 약정 축소 관련 문구가 강화될 때</p>
+<p>(반대로 cRPO가 14% 이상을 유지하면서 총 백로그가 재가속하고, AI 과금 지표가 공시되면 '적극'으로 상향을 검토한다.)</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000014/wday-20260131.htm">10-K — 2026-01-31_0001327811-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000044/wday-20260731.htm">10-Q — 2026-07-31_0001327811-26-000044</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000026/wday-20260430.htm">10-Q — 2026-04-30_0001327811-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000051/wday-10122026x991.htm">8-K — 2026-10-12_0001327811-26-000051__EX-99.1__wday-10122026x991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000051/wday-20261012.htm">8-K — 2026-10-12_0001327811-26-000051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000110465926112898/tm2626731d2_ex10-1.htm">8-K — 2026-10-01_0001104659-26-112898__EX-10.1__tm2626731d2_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000110465926112898/tm2626731d2_8k.htm">8-K — 2026-10-01_0001104659-26-112898</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1327811/000132781126000048/wday-20260929.htm">8-K — 2026-09-29_0001327811-26-000048</a></li>
+<li>Transcript — 2026-08-27 Q2 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>URBN — Urban Outfitters Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>URBN — Urban Outfitters Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">URBN</span><span class="badge">+3.21%</span><span class="badge">거래량 1.25배</span><span class="badge">$7.49B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>펀더멘털 자체는 좋다. 매출이 8개 분기 연속 사상 최대를 기록했고, 모든 리테일 브랜드의 기존점 매출(comp)이 플러스였다. 고성장 축도 두 개(Nuuly <span class="up">+29%</span>, FP Movement <span class="up">+26%</span>)다.</li>
+<li>다만 스크린을 통과시킨 마진 지표는 일회성 요인으로 부풀려져 있다. 영업이익률 17.4%와 YoY <span class="up">+5.8%</span>p, 매출총이익률 43.4%는 IEEPA 관세 환급금 $95.7M을 원가에서 차감한 GAAP 수치다. 회사가 제시한 조정 기준으로 보면 Q2 영업이익률은 약 11.6%로 전년과 거의 같다(산식은 4절).</li>
+<li>이익 증가 속도가 느려지고 있다. 조정 EPS 증가율은 FY26 <span class="up">+35%</span> → Q1 <span class="up">+12%</span> → Q2 <span class="up">+9%</span>로 내려왔다. 회사는 Q3 매출 증가율을 high single digit로 제시했고, 하반기 운임·유류할증 부담을 약 70bp로 언급했다.</li>
+<li>주가는 52주 신고가 수준이다(60일 <span class="up">+24.4%</span>). 반면 오늘 상승을 설명할 공시상 촉매는 없고, 거래량도 20일 중앙값의 1.25배로 '급증'이라 부르기 어렵다.</li>
+<li>그래서 지금 비중을 크게 싣기보다는, 3분기 실적에서 일회성을 뺀 마진이 버티는지 확인하면서 단계적으로 진입하는 쪽이 맞다고 본다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음. 수급이나 섹터 동조 가능성이 크다.</strong></p>
+<ul>
+<li>당일 전후 SEC 공시는 2026-10-15 Form 144(내부자 매도 예정 신고) 1건뿐이다. 이는 주가에 우호적인 공시가 아니다.</li>
+<li>뉴스 중 "Insider Harry Cherken Jr Sells 5,000 Shares"(MarketBeat)가 있다. Harry Cherken은 이사회 멤버다(2026-06-03 주주총회에서 재선임). 이 Form 144가 해당 매도와 같은 건인지는 제공된 자료로 확인할 수 없다.</li>
+<li>나머지 헤드라인은 기관 매수 소식(Fort Washington), 밸류에이션 비교(URBN vs. ZGN, 저평가 여부), Q2 동종업계 리뷰다. 모두 새로운 펀더멘털 정보는 아니다.</li>
+<li>실적 발표(8/26)는 이미 7주 전이다. 오늘 주가 반응은 52주 고점 돌파에 따른 모멘텀 매수와 밸류에이션 재평가 기사 같은 수급 요인으로 보는 것이 합리적이다(추정).</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>포트폴리오 (10-K 기준)</strong>
+- Anthropologie, Free People, FP Movement, Urban Outfitters, Nuuly 등 여러 소비자 브랜드를 운영하는 라이프스타일 기업이다.
+- FY26(2026년 1월 결산) 매출은 약 $6.2B, 최근 5년 연평균 매출 성장률은 약 12%다.</p>
+<p><strong>3개 보고 부문</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>내용</th>
+<th>비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail</td>
+<td>매장과 디지털(웹·앱·SNS·제3자 플랫폼·프랜차이즈)</td>
+<td>FY26 매출의 85.7%</td>
+</tr>
+<tr>
+<td>Subscription</td>
+<td>Nuuly. 여성 의류를 월 구독으로 렌탈</td>
+<td>공시상 확인 불가</td>
+</tr>
+<tr>
+<td>Wholesale</td>
+<td>Free People·FP Movement와 UO의 BDG, "iets frans" 컬렉션을 백화점·전문점·제3자 디지털 채널에 공급</td>
+<td>공시상 확인 불가</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>회사는 리테일 성과를 매장과 디지털로 나누지 않고 하나의 옴니채널로 관리한다. 그래서 채널별 수익성은 공시되지 않는다.</li>
+</ul>
+<p><strong>고객군과 브랜드</strong>
+- <strong>Anthropologie Group</strong>(Anthropologie, Terrain, Maeve)
+  - 핵심 고객은 28~45세 여성이다.
+  - 의류, 액세서리, 가구·홈데코, 뷰티, 브라이덜을 판다.
+  - FY26 말 매장은 254개(북미 234, 유럽 20)다.
+- <strong>FP Group</strong>: 여성 컨템포러리 의류, 이너웨어, 액티브웨어(FP Movement)를 판다.
+- <strong>Urban Outfitters</strong>: 북미에서는 턴어라운드가 진행 중이다. 주총에서 회사는 "유럽 매출 호조와 합쳐 FY26에 브랜드가 흑자로 돌아섰다"고 밝혔다.
+- <strong>Nuuly</strong>: 2019년에 출범했다. 실적콜 기준 6월에 활성 구독자 50만 명을 넘었다.</p>
+<p><strong>경쟁 위치</strong>
+- 경쟁사 대비 점유율이나 순위는 공시상 확인할 수 없다.
+- 회사는 주총에서 "모든 브랜드에서 점유율을 늘리고 있다"고 밝혔다. 이는 회사 주장이다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>Q2 FY27(2026년 5~7월) 핵심 수치</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>GAAP</th>
+<th>조정(일회성 제외)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$1.66B (<span class="up">+10.4%</span> YoY)</td>
+<td>동일</td>
+<td>8-K/지표</td>
+</tr>
+<tr>
+<td>순이익</td>
+<td>$240.7M</td>
+<td>$149.3M</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>희석 EPS</td>
+<td>$2.78</td>
+<td>$1.72 (<span class="up">+9%</span>)</td>
+<td>8-K, 실적콜</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>43.4%</td>
+<td>37.7% (+4bp)</td>
+<td>지표, 실적콜</td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td>약 $289M (추정 계산: 193 + 95.7)</td>
+<td>$193M (<span class="up">+11%</span>)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>17.4%</td>
+<td>약 11.6% (추정 계산: 193 / 1,660)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>일회성 요인 분해</strong></li>
+<li>IEEPA 관세 환급 $100.1M 중 $95.7M은 매출원가 차감, $4.4M은 이자수익으로 잡혔다(10-Q).</li>
+<li>해외 이연법인세자산의 평가충당금 환입 효과도 있다. 금액은 공시 발췌상 확인할 수 없다.</li>
+<li><strong>GAAP와 조정 기준의 차이</strong></li>
+<li>GAAP 영업이익률 17.4%에서 환급분(약 5.8%p)을 빼면 약 11.6%다.</li>
+<li>전년 Q2 조정 영업이익률도 약 11.6%로 추정된다(영업이익 <span class="up">+11%</span>, 매출 <span class="up">+10.4%</span>로 역산).</li>
+<li>따라서 스크린상의 영업이익률 YoY <span class="up">+5.8%</span>p는 사실상 전부 일회성이다. 본업 마진은 거의 같은 수준이다.</li>
+<li><strong>성장의 질</strong></li>
+<li>리테일 comp는 <span class="up">+6%</span>였고, 디지털 comp가 매장 comp를 소폭 웃돌았다.</li>
+<li>4개 성장 엔진의 구성:</li>
+</ul>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>엔진</th>
+<th>매출 성장</th>
+<th>Comp</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP Group</td>
+<td>+15%</td>
+<td>+10%</td>
+<td>도매 <span class="up">+19%</span></td>
+</tr>
+<tr>
+<td>FP Movement</td>
+<td>+26%</td>
+<td>+13%</td>
+<td></td>
+</tr>
+<tr>
+<td>Urban Outfitters</td>
+<td>+8%</td>
+<td>+8%</td>
+<td></td>
+</tr>
+<tr>
+<td>Anthropologie</td>
+<td>+5%</td>
+<td>+3%</td>
+<td>홈 부문은 보합, 영업이익률 low-teens</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Nuuly 매출은 <span class="up">+29%</span>였다. 평균 활성 구독자가 약 11.3만 명 늘어 48.4만 명이 된 것이 주된 동력이다. 즉 단가보다 물량 주도다. Nuuly 영업이익률은 10%다.</li>
+<li><strong>단가</strong>: 실적콜에서 객단가(AUR) 상승은 동일 상품 기준 가격 인상이 아니라 믹스 효과라고 언급했다. 하의(bottoms) 패션 사이클로 고가 품목 비중이 늘었고, 품질 고급화와 핸드백·아우터 판매 호조가 더해졌다. 반대로 말하면 패션 사이클이 바뀌면 AUR이 되돌려질 수 있는 구조다.</li>
+<li><strong>마진 방향</strong></li>
+<li>매출총이익률은 +4bp에 그쳤다. FY26 연간 +126bp에 비하면 개선 속도가 크게 둔화됐다.</li>
+<li>판관비는 <span class="up">+10%</span>로 매출과 같은 속도로 늘었다.</li>
+<li>FY27 연간 가이던스는 매출총이익률 약 +25bp이며, 회사는 판관비 증가율을 매출 증가율 이하로 관리하겠다고 밝혔다.</li>
+<li>이익 레버리지가 둔화되는 국면에 들어섰다고 판단한다.</li>
+<li><strong>현금흐름</strong></li>
+<li>TTM 잉여현금흐름(FCF)은 $295.2M으로, 시가총액 대비 약 3.9%(추정 계산)다.</li>
+<li>이 TTM에는 Q2에 들어온 관세 환급 현금(약 $100M)이 포함됐을 가능성이 크다(추정).</li>
+<li>FY27 설비투자(capex)는 $475M 계획으로 투자 부담이 크다. 비중은 물류·자동화 50%, 출점 35%, IT·본사 15%다.</li>
+<li><strong>재무 건전성</strong></li>
+<li>현금, 차입금, 자사주 매입 규모는 제공된 발췌에서 확인할 수 없다.</li>
+<li>실적콜에서 재고 증가율은 매출 증가율 이하로 관리하겠다고 언급했다.</li>
+<li><strong>밸류에이션 참고(추정 계산)</strong>: FY26 조정 EPS $5.44 기준 주가수익비율(P/E)은 약 16.1배다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nuuly 구독 렌탈</strong></td>
+<td>회사는 FY27 매출 $700M+, Q3 성장률 high-20s%를 제시했다. 필라델피아 인근 신규 풀필먼트 센터로 수용 능력을 120만 구독자까지 늘린다. 실현 조건은 구독자 유입이 이어지면서 렌탈 상품 감가와 물류비가 통제되는 것이다.</td>
+<td>Q3 평균 활성 구독자, 매출 +high-20s% 달성 여부, 영업이익률 10% 유지 여부</td>
+</tr>
+<tr>
+<td><strong>FP Movement 출점</strong></td>
+<td>FY27에 54개 신규 출점, 18개 폐점이 계획돼 있고, 그중 FP Movement 신규가 21개다. 회사는 유럽에서 도매와 직판(DTC) 먼저, 매장은 그다음 순서로 확장한다고 밝혔다.</td>
+<td>FP Movement comp(Q2 <span class="up">+13%</span>)가 출점 가속 속에서 두 자릿수를 유지하는지</td>
+</tr>
+<tr>
+<td><strong>FP Group 도매</strong></td>
+<td>Q2 도매 <span class="up">+19%</span>였고, 회사는 Q3 도매 부문 성장률을 low-teens%로 제시했다. Selfridges 등 유럽 파트너십도 진행 중이다.</td>
+<td>도매 성장률과 백화점 채널 재고 수준</td>
+</tr>
+<tr>
+<td><strong>UO 북미 턴어라운드</strong></td>
+<td>Q2 글로벌 comp <span class="up">+8%</span>였다. 실적콜에서 8월 UO comp는 정가 판매 중심으로 high single digit라고 언급했다.</td>
+<td>Q3 UO comp가 가이던스(mid-single)를 넘는지, 프로모션 비중</td>
+</tr>
+<tr>
+<td><strong>물류 자동화와 AI</strong></td>
+<td>capex의 50%가 물류·자동화에 배정됐다. 회사는 효율화 효과가 "완전히 나타나려면 시간이 걸린다"고 밝혔다.</td>
+<td>판관비 증가율 ≤ 매출 증가율 유지 여부, 배송비율</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>※ 제공된 transcript는 중간이 생략돼 있다. 아래는 확인 가능한 부분만 바탕으로 했다.</p>
+<p><strong>경영진 톤</strong>
+- 매우 자신감 있는 톤이다. "8분기 연속 사상 최대 실적", 모든 브랜드와 부문에서 플러스 comp를 강조했다.
+- 자신감의 근거로 고용 안정, 소득 증가, 수요 둔화 신호 부재를 들었다.
+- 6월 주총에서 회사는 "올해와 그 이후에도 매출 성장과 마진 확대를 이어갈 수 있다"고 밝혔다.
+- 다만 Q3 가이던스의 숫자는 보수적이다. 매출 high single digit 성장은 Q2 <span class="up">+10%</span>보다 낮다.</p>
+<p><strong>반복된 질문: 가격과 프로모션</strong>
+- Baird의 Mark Altschwager가 업계 가격 상승 효과가 둔화되는지, 경쟁사가 가격을 재조정하는지 물었다.
+- CEO는 프로모션 증가를 부인했다. 6월 아마존 Prime Day 무렵 잠깐 늘었을 뿐이고, 백투스쿨 프로모션은 전년과 비슷하다고 답했다.
+- 동시에 "블랙프라이데이부터는 예측 불가(all bets are off)"라고 언급했다. 4분기 프로모션 리스크를 사실상 열어둔 발언이다.</p>
+<p><strong>답변이 모호했던 지점: AI 효과</strong>
+- Guggenheim 측이 AI 효과가 언제 의미 있게 숫자로 나타나는지 물었다.
+- Nuuly 대표 Dave Hayne은 정성적 열의만 반복했고, 효과의 정량화나 시점 제시는 피했다.</p>
+<p><strong>공시에는 없고 콜에서만 나온 정보</strong>
+- 중동 분쟁에 따른 운임·유류할증이 Q3와 Q4 마진에 각각 약 70bp 부담을 준다(요약본 기준).
+- 회사는 Section 301 관세가 새로 시행됐지만 연말까지 유효 관세율은 우호적일 것이라고 밝혔다.
+- 연간 조정 유효세율은 약 24.75%다.
+- Anthropologie 뷰티 카테고리 comp가 high single digit였다.
+- 8월 UO comp는 정가 판매 중심이었다.
+- AUR 상승은 동일 상품 비교가 아니라 믹스 효과라는 설명(Frank Conforti)이 있었다.</p>
+<h2>6. 리스크</h2>
+<p>※ 제공된 10-K 발췌에는 Item 1A 리스크 본문이 없다. 아래는 10-K 서두의 위험 요인 목록, 10-Q MD&amp;A, 실적콜을 근거로 했다.</p>
+<ol>
+<li><strong>본업 마진 개선 정체와 이익 증가 둔화</strong>
+   - 조정 매출총이익률은 +4bp에 그쳤고, 조정 EPS 증가율(<span class="up">+9%</span>)이 매출 증가율(<span class="up">+10%</span>)보다 낮았다.
+   - 하반기에는 운임 부담 약 70bp가 예고돼 있다. FY26의 이익 레버리지(영업이익 <span class="up">+28%</span>) 재현은 어렵다.</li>
+<li><strong>패션 사이클 의존적인 객단가</strong>
+   - AUR 상승이 하의 사이클과 믹스에 기대고 있다(실적콜). 사이클이 바뀌면 단가와 매출총이익률이 동시에 압박받을 수 있다.
+   - 회사도 10-K에서 "패션 트렌드 변화의 예측·대응 어려움"을 첫머리 위험 요인으로 든다.</li>
+<li><strong>관세 체제 불확실성</strong>
+   - 10-Q에 따르면 2026년 7월 24일부터 Section 301 관세가 시행됐다. 정부는 과잉생산 조사 결과에 따라 추가 Section 301 관세를 예고했다.
+   - Section 122 관세 환급 가능 여부는 미정이다.
+   - 환급 효과는 대부분 이미 반영됐다. 회사도 실적콜에서 남은 효과는 미미하다고 언급했다. 따라서 앞으로 관세 쪽에서 나올 수 있는 건 상방보다 하방이다.</li>
+<li><strong>중동 분쟁에 따른 물류비</strong>
+   - 10-Q는 분쟁의 기간과 규모를 "매우 예측하기 어렵다"고 쓰고, FY27 내내 부정적 영향이 이어질 수 있다고 밝혔다.</li>
+<li><strong>지배구조와 핵심 인력</strong>
+   - 창업자 Dick Hayne이 CEO와 의장을 겸한다. Meg Hayne은 이사, Dave Hayne은 Nuuly 대표, Azeez Hayne은 CAO다.
+   - 10-K 위험 요인에 핵심 경영진 이탈이 명시돼 있다.
+   - 52주 고점 부근에서 내부자 매도 신고(Form 144)가 나왔다는 점도 단기 수급상 부담이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>'보통'을 뒷받침하는 정량 근거</strong>
+- <strong>긍정 요인</strong>
+  - 매출 <span class="up">+10.4%</span>. 모든 리테일 브랜드의 comp가 플러스다.
+  - Nuuly <span class="up">+29%</span>(영업이익률 10%), FP Movement <span class="up">+26%</span>.
+  - TTM FCF $295.2M.
+  - FY26 조정 EPS 기준 P/E 약 16배(추정 계산)로 과도한 밸류에이션은 아니다.
+- <strong>제약 요인</strong>
+  - 일회성을 빼면 영업이익률 YoY 개선은 사실상 0이다(약 11.6% vs 약 11.6%, 추정).
+  - 조정 EPS 증가율이 <span class="up">+35%</span> → <span class="up">+12%</span> → <span class="up">+9%</span>로 둔화되고 있다.
+  - Q3 매출 가이던스(high single digit)는 Q2보다 낮다.
+  - FY27 capex $475M로 FCF 개선 여력이 제한된다.
+  - 주가는 52주 고점, 60일 <span class="up">+24.4%</span>로 이미 상당 부분 반영됐다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 실적(11월 말 예상)</strong>: 조정 영업이익률이 운임 약 70bp 부담 속에서도 전년 수준을 지키는지, 매출이 high single digit 가이던스를 넘는지 본다.
+2. <strong>Form 144 신고자와 규모</strong>: Cherken 이사 외에 추가 내부자 매도가 이어지는지 Form 4로 확인한다.
+3. <strong>재무상태표</strong>: 현금·차입금·자사주 매입 여력을 10-Q 본문(제공 발췌 밖)으로 확인한다. TTM FCF에서 관세 환급 현금을 뺀 경상 FCF 수준도 함께 본다.</p>
+<p><strong>판단을 '관망'으로 바꿀 조건</strong>
+- Q3 리테일 comp가 mid-single digit에 못 미치거나, FP Group comp가 한 자릿수 초반으로 떨어진다.
+- 조정 매출총이익률 하락폭이 회사가 제시한 운임 부담(약 70bp)을 넘거나, FY27 매출총이익률 가이던스(+약 25bp)가 하향된다.
+- Nuuly 매출 성장률이 20% 밑으로 내려가거나 영업이익률이 악화된다(신규 센터 가동 비용 포함).
+- 재고 증가율이 매출 증가율을 넘는다. 이는 4분기 블랙프라이데이 프로모션 확대의 선행 신호가 된다.
+- 추가 Section 301 관세가 확정돼 회사가 FY27 마진 가이던스를 내린다.</p>
+<p><strong>'적극'으로 올릴 조건</strong>
+- Q3에 조정 기준 영업이익률이 전년 대비 의미 있게 확대된다.
+- 동시에 회사가 FY27 매출 또는 마진 가이던스를 올린다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526137916/urbn-20260131.htm">10-K — 2026-01-31_0001193125-26-137916</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526386468/urbn-20260731.htm">10-Q — 2026-07-31_0001193125-26-386468</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526263929/urbn-20260430.htm">10-Q — 2026-04-30_0001193125-26-263929</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526369924/urbn-ex99_1.htm">8-K — 2026-08-26_0001193125-26-369924__EX-99.1__urbn-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526369924/urbn-20260826.htm">8-K — 2026-08-26_0001193125-26-369924</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526259496/d158763d8k.htm">8-K — 2026-06-03_0001193125-26-259496</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526233928/urbn-ex99_1.htm">8-K — 2026-05-20_0001193125-26-233928__EX-99.1__urbn-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/912615/000119312526233928/urbn-20260520.htm">8-K — 2026-05-20_0001193125-26-233928</a></li>
+<li>Transcript — 2026-08-26 Q2 2027 Transcript</li>
+<li>Transcript — 2026-06-03 Urban Outfitters, Inc. (URBN) Shareholder/Analyst Call Prepared Remarks Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

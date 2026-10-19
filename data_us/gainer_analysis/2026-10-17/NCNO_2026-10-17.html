@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCNO — nCino Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>NCNO — nCino Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">NCNO</span><span class="badge">+7.37%</span><span class="badge">거래량 1.25배</span><span class="badge">$2.23B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>수익성과 현금흐름은 확실히 좋아졌다. Q2 FY27 GAAP 영업이익률은 8.5%로 전년 대비 <span class="up">+14.7%</span>p, Non-GAAP 영업이익률은 25%이고, TTM FCF는 $132.2M이다. 시가총액 $2.23B 대비 FCF 수익률은 약 5.9%로(산술 계산) 밸류에이션 부담은 크지 않다.</li>
+<li>반면 외형 성장은 둔화되고 있다. 총매출 성장률은 Q1 10.6%에서 Q2 8.2%로, 구독매출 성장률은 12.2%에서 9.7%로 낮아졌다. 회사가 제시한 Q3 구독매출 성장률도 7~8%다. 미국 모기지 부진이 원인이다.</li>
+<li>자사주 매입($300M 집행, $100M 추가 승인)에는 $200M 신규 Term Loan이 일부 쓰였다. 부채를 일으켜 주주환원을 한 구조라 재무 유연성은 줄었다.</li>
+<li>오늘 <span class="up">+7.37%</span> 상승은 거래량이 20일 중앙값의 1.25배에 그쳐 강한 수급 신호로 보기 어렵다. 공시 촉매도 없다. 정상 비중을 잡고, Q3 실적에서 모기지를 뺀 성장의 재가속이 확인되면 비중을 늘리는 접근이 적절하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>SEC 공시</strong>: 최근 4일 내 공시가 없다. 공시 촉매는 없다.</li>
+<li><strong>실적</strong>: 최근 실적 발표는 2026-08-25(Q2 FY27)로, 오늘 상승의 직접 원인으로 보기 어렵다.</li>
+<li><strong>뉴스상 유력 후보</strong>: Stephens가 커버리지를 재개하며 Overweight 의견을 냈다는 헤드라인이 있다(MarketBeat, GuruFocus). 다만 제공된 자료로는 보도 일자와 목표주가를 확인할 수 없다.</li>
+<li><strong>수급 판단</strong>: 거래량 배수가 1.25배로 "급증"이라 하기에는 약하다. 20일 수익률 <span class="down">-2.6%</span>, 60일 <span class="up">+26.4%</span>로, 단기 조정 뒤 되돌림이 나온 성격이 섞여 있을 수 있다(추정).</li>
+<li><strong>결론</strong>: 애널리스트 커버리지 재개(Overweight)가 가장 유력한 촉매다. 다만 날짜가 확인되지 않아 "<strong>확인된 공시 촉매 없음 — 애널리스트 이벤트 + 수급/섹터 동조 가능성</strong>"으로 판단한다.</li>
+<li><strong>참고</strong>: CEO가 행사가 $4.98 옵션을 행사한 뒤 43,992주를 $19.90에 매도했다는 뉴스가 있다. 규모는 작지만 긍정적 신호는 아니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품 및 서비스 (10-Q MD&amp;A Overview)</strong>
+- 은행과 신용협동조합 등 금융기관(FI)에 통합 클라우드 플랫폼(nCino Platform)을 판다. 영역은 상업, 소상공인, 소비자 대출(모기지 포함), 고객 온보딩, 계좌 개설, 포트폴리오 모니터링이다.
+- 인수로 기능을 넓혀 왔다. SimpleNexus(모기지), DocFox·FullCircl(온보딩), ILT, Visible Equity, FinSuite, Sandbox Banking(분석·AI) 등이다.
+- AI 계층으로는 Banking Advisor, Digital Partners, Agentic OS가 있다. 실적콜에서는 이를 "Intelligence Unit" 단위로 판매한다고 언급했다.</p>
+<p><strong>과금 구조</strong>
+- 해지할 수 없는 3~5년 다년 구독 계약이 기본이다.
+- FY25부터 자산 기반 가격제(asset-based pricing)와 Intelligent Solution Framework를 도입하고 있다.
+- 실적콜에서 전체 ACV 중 플랫폼 가격제 비중이 48%로, 전 분기 40%에서 높아졌다고 언급했다.
+- 프로페셔널 서비스(구축·교육·자문)는 매출총이익률이 사실상 0% 근처인 부수 사업이다. Q2 기준 3%다(실적콜).</p>
+<p><strong>매출 구성 (Q2 FY27)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>금액</th>
+<th>YoY</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$161.0M</td>
+<td>+8.2%</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>구독매출</td>
+<td>$143.5M (총매출의 약 89%)</td>
+<td>+9.7%</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>미국 모기지 구독</td>
+<td>$20.6M</td>
+<td>-1%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>모기지 제외 구독</td>
+<td>공시상 확인 불가(금액)</td>
+<td>+12%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>비미국 구독</td>
+<td>$30.9M</td>
+<td>+13%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>해외 매출</td>
+<td>$36.4M</td>
+<td>+9%</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군</strong>
+- 미국은 금융기관 규모별로, 해외는 지역별로 영업한다.
+- 회사는 "엔터프라이즈 FI가 플랫폼 판매에서 더 큰 비중을 차지할 것"이라고 밝혔다.
+- 엔터프라이즈 고객 구축은 Accenture, Deloitte, PwC 같은 SI 파트너가 맡는다.</p>
+<p><strong>경쟁 위치</strong>
+- 이 부분은 회사 주장이다. William Blair 컨퍼런스에서 CFO는 다음과 같이 언급했다.
+  - 커뮤니티 뱅크부터 글로벌 대형 은행까지 단일 코드베이스로 확장할 수 있는 점이 차별점이다.
+  - 경쟁사는 주로 미국 하위 시장(커뮤니티 뱅크, 신협)에 집중되어 있다.
+  - 플랫폼 위 자산이 $11조를 넘는다.
+- 10-K 리스크 요인에는 "Salesforce와의 관계"가 핵심 변수로 적혀 있다. 다만 의존 구조의 세부 내용은 제공된 발췌에서 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 헤드라인 성장은 둔화되고 있다.
+  - 총매출 YoY: Q1 10.6% → Q2 8.2%
+  - 구독매출 YoY: Q1 12.2% → Q2 9.7%
+  - QoQ 성장률: 1.0%
+- 둔화는 미국 모기지(<span class="down">-1%</span>) 탓이다. 모기지를 빼면 구독매출이 <span class="up">+12%</span> 성장했다(실적콜).
+- 실적콜에서 Morgan Stanley 애널리스트가 "모기지와 일회성 요인을 빼면 유기적 구독 성장은 13~14%이고, 약 2년 내 최고"라고 추정했다. CFO는 "그 평가를 정정하지 않겠다"고만 답했다.
+- 단가(Price) 측면:
+  - 실적콜에서 미국 대형 엔터프라이즈 고객 20곳이 조기에 다년 계약을 갱신했고, 평균 ACV가 10% 넘게 올랐다고 언급했다.
+  - 플랫폼 가격제 전환 비중이 40%에서 48%로 늘었다.
+  - 따라서 단가와 믹스 요인이 성장을 주도하는 것으로 읽힌다(추정).
+- 물량(Volume) 측면:
+  - 신규 고객 수, 순매출유지율(NRR)은 공시상 확인할 수 없다.
+  - 실적콜에서 FY27 이탈(churn)을 $25M로 예상했고, 그중 약 1/3이 모기지라고 언급했다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률 62.6%. 전년 비교치는 제공 자료에서 확인할 수 없다.
+- GAAP 영업이익률 8.5%(전년 대비 <span class="up">+14.7%</span>p). 보도자료 기준으로는 "8%, +1,500bp"다.
+- Non-GAAP 영업이익률 25%(+500bp). Non-GAAP 영업이익은 $40.8M로 <span class="up">+36%</span>다.
+- GAAP과 Non-GAAP 사이 차이는 약 16~17%p, 분기 약 $27M 수준이다(산술 계산). 주식보상비용(SBC)과 무형자산 상각이 주된 원인일 것으로 보이지만, 항목별 금액은 공시상 확인할 수 없다.
+- 프로페셔널 서비스 마진은 Q1 10%(William Blair 발언)에서 Q2 3%로 낮아졌다. 다만 전년 <span class="down">-3%</span>보다는 좋다. 분기별 변동성이 크다.
+- 순이익: Q2 $5.1M(전년 순손실 $15.3M), 상반기 $18.7M(전년 순손실 $9.7M). 순이익 기준으로 흑자 전환이 이어지고 있다.</p>
+<p><strong>현금흐름</strong>
+- Q2 FCF는 $34M로 <span class="up">+170%</span>다(실적콜). Q1 FCF는 $80.8M였다(William Blair).
+- TTM FCF는 $132.2M다.
+- 회사가 제시한 FY27 FCF 가이던스는 $137~142M(<span class="up">+69%</span>)로 상향됐다.
+- 시가총액 대비 FCF 배수는 약 16배(가이던스 중간값 기준)다.
+- 다만 SBC 규모를 확인할 수 없어, FCF에서 SBC를 뺀 "진짜" 주주귀속 현금흐름은 공시상 확인할 수 없다. 기관 입장에서는 핵심 확인 사항이다.</p>
+<p><strong>재무 건전성</strong>
+- 2026-03-30에 $200M 선순위 담보 Term Loan을 증액 조달했다. 만기 2029-10-28, 분기 원금 상환 $2.5M다.
+- 조달 자금은 리볼빙 대출 일부 상환과 $100M ASR(가속 자사주매입)에 썼다. ASR 초기 가격은 $14.98, 최종 정산 가격은 $16.57였다.
+- 2025년 4월 이후 1,580만 주를 $300M에 매입했다(실적콜). 평균 단가는 약 $19로, 현재 주가와 비슷하다(산술 계산).
+- 총차입금, 현금 잔액, 리볼버 잔액, 금리는 제공 발췌로 확인할 수 없다.
+- 유통주식은 2026-03-26 기준 114,534,701주다. 시가총액 $2.23B ÷ $21.12로 역산하면 약 1.06억 주로, ASR 효과가 반영된 것으로 보인다(추정).</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>성장 축 (회사 주장)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>AI 수익화</strong>: Intelligence Unit 구매 고객 230곳 이상, 사용량이 10월 대비 38배 증가(William Blair)</td>
+<td>시범 환경(Sandbox)에서 실제 운영(production) 전환이 이어지고, 초기 번들을 다 쓴 고객이 추가로 구매해야 함</td>
+<td>IU 구매 고객 수가 230곳에서 얼마나 늘었는지, 운영 전환 고객 비율(현재 약 1/3), 추가 구매 사례가 정량으로 공개되는지</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>플랫폼 가격제 전환</strong>: ACV 비중 40% → 48%</td>
+<td>갱신 시점에 ACV가 올라가야 함(대형 고객 20곳 평균 <span class="up">+10%</span> 이상)</td>
+<td>플랫폼 가격제 비중이 50%를 넘는지, 갱신 시 ACV 인상률이 유지되는지</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>해외 확장</strong>: 비미국 구독 <span class="up">+13%</span>, 일본·독일·오스트리아 수주, "올해 최대 해외 딜"을 Q3 초에 계약</td>
+<td>대형 딜이 매출로 인식되는 시점(구축 리드타임)과 FX 영향(분기당 -$0.2M)</td>
+<td>Q3 비미국 구독 성장률이 13% 이상 유지되는지, 대형 딜의 규모와 인식 시점</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>신협 전담팀, 모기지 교차판매</strong>: 신협팀 사상 최대 딜, 상위 35위권 은행에 모기지 교차판매</td>
+<td>금리 환경이 개선되고 IMB(독립 모기지 업체) 이탈이 멈춰야 함</td>
+<td>미국 모기지 구독(Q2 $20.6M, <span class="down">-1%</span>)의 감소 폭, 모기지 관련 이탈액</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>온보딩(DocFox, FullCircl)</strong></td>
+<td>DocFox 통합이 지연된 뒤 정상화돼야 함(CFO가 "예상보다 오래 걸렸다"고 인정)</td>
+<td>온보딩 제품의 수주 사례와 수치 공개 여부</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>SI 생태계 확장</strong>: 모기지 MCP 공개</td>
+<td>파트너가 nCino 위에서 개발하는 사례가 생겨야 함</td>
+<td>MCP 기반 파트너 솔루션이나 매출 기여가 언급되는지</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- 톤은 매우 낙관적이다. CEO는 "모든 재무 가이던스를 다시 상회했다", "상한을 두기 어려운 성장"이라고 말했다.
+- 자신감의 근거로는 세 가지를 들었다. 대형 고객 조기 갱신과 ACV 인상, AI 운영 전환 고객이 연초 대비 2배로 늘어난 점, 가장 큰 해외 딜 계약이다.
+- 가이던스 화법은 이렇다.
+  - 모기지를 분리해 보여주는 방식을 일관되게 쓴다. Q3 구독 성장률은 전체 7~8%, 모기지 제외 11%다.
+  - FCF 가이던스는 올렸지만 미국 모기지 전망은 낮췄다. 낮춘 이유로 "고금리 장기화와 IMB 이탈"을 들었다.
+  - 결과적으로 수익성과 현금 지표는 올리고 헤드라인 매출 성장은 보수적으로 잡는 구조다.</p>
+<p><strong>반복된 질문과 방어 지점</strong>
+- Morgan Stanley는 "유기적 성장이 13~14%로 가속했는데 하반기에 왜 재가속하지 않느냐"고 물었다. CFO는 숫자를 정정하지 않았지만, 하반기 재가속을 명시적으로 약속하지도 않았다. "말한 딜을 말한 시점에 닫는 데 집중하겠다"는 답이었다. 가이던스 상향 여지를 남겨두는 방어적 화법이다.
+- Piper Sandler는 IU 판매가 구독매출로 이어지는 연결고리를 물었다. CEO는 "운영 전환 후 성과를 고객에게 다시 보여주면 확장이 일어난다"는 정성적 답변만 했다. <strong>AI 매출 기여의 정량 수치는 제시하지 않았다.</strong>
+- Banking Advisor의 매출 기여가 "미미하다(minimal)"는 점은 애널리스트 발언에서 드러났다. 회사는 이를 반박하지 않았다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 미국 모기지 구독 $20.6M(<span class="down">-1%</span>), 모기지 제외 구독 <span class="up">+12%</span>, 비미국 구독 $30.9M
+- FY27 이탈 예상 $25M(1/3이 모기지)
+- 플랫폼 가격제 ACV 비중 48%
+- IU 구매 고객 230곳 이상
+- 프로페셔널 서비스 매출총이익률 3%
+- FX 역풍 분기당 $0.2M
+- Q3, FY27 가이던스 전체(8-K 보도자료 발췌는 중간에 잘려 있음)
+- 직원 약 1,600명</p>
+<p><strong>주의할 점</strong>: transcript 원문에서 "20곳의 최대 고객과 다년 갱신"이라고 한 직후 "네 곳 모두(All four) 조기 갱신"이라는 문장이 나온다. 숫자가 서로 맞지 않는다. 받아쓰기 오류일 가능성이 있다. 원문을 확인하기 전까지 "20곳 평균 ACV <span class="up">+10%</span>"는 확정 사실로 쓰지 않는 것이 맞다.</p>
+<h2>6. 리스크</h2>
+<p>제공된 10-K 발췌는 리스크 요인 본문이 잘려 있어, 미래예측 진술 요약 목록과 MD&amp;A, 실적콜을 근거로 정리했다.</p>
+<ol>
+<li><strong>미국 모기지 노출과 헤드라인 성장 둔화</strong>
+   - 모기지는 구독매출의 약 14%다($20.6M / $143.5M).
+   - 회사는 고금리 장기화와 IMB 이탈로 모기지 전망을 낮췄다고 밝혔다.
+   - Q3 구독 성장 가이던스는 7~8%까지 내려왔다. 시장이 "모기지 제외 성장"을 인정하지 않으면 멀티플이 오르기 어렵다.</li>
+<li><strong>부채를 활용한 자사주 매입</strong>
+   - $200M 선순위 담보 Term Loan 중 일부로 ASR을 집행했다. 2029년 만기 구조다.
+   - FCF가 꺾이거나 금리가 부담이 되면 재무 유연성이 줄어든다.
+   - 현금 잔액과 순부채를 확인할 수 없는 점 자체가 정보 공백이다.</li>
+<li><strong>가격제 전환 실행 리스크</strong>
+   - 10-K는 FY25 도입한 자산 기반 가격제를 "성공적으로 실행할 수 있는지"를 핵심 변수로 들었다.
+   - 갱신 시 가격 인상이 이탈을 부를 수 있다. 실제로 FY27 이탈 예상은 $25M다.</li>
+<li><strong>AI 수익화의 속도</strong>
+   - 실적콜에서 "AI 도입은 고객의 보안·거버넌스 심사를 거쳐야 해 매출 인식 속도에 영향을 줄 수 있다"고 언급했다.
+   - 현재 AI 매출 기여는 미미하다. AI 기대가 주가에 먼저 반영되면 실망 위험이 생긴다.</li>
+<li><strong>산업 집중과 플랫폼 의존</strong>
+   - 고객이 금융기관 섹터에 몰려 있다. 은행의 IT 지출 사이클과 금리, 규제에 민감하다.
+   - 10-K는 Salesforce 및 SI 파트너와의 관계를 핵심 리스크 요인으로 명시했다. 세부 계약 조건은 제공 발췌로 확인할 수 없다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>"보통"을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시가총액 / FY27 FCF 가이던스 중간값</td>
+<td>약 16배 (FCF 수익률 약 6.2%)</td>
+<td>고성장 SaaS 대비 낮은 수준. 하방을 지지함</td>
+</tr>
+<tr>
+<td>시가총액 / FY27 매출 가이던스 중간값</td>
+<td>약 3.5배</td>
+<td>성장률 8~9%에 맞는 수준. 재평가 여지는 제한적</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업이익률</td>
+<td>25% (FY27 가이던스 기준 약 26~27%)</td>
+<td>수익성이 개선되는 추세</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률 변화</td>
+<td>+14.7%p</td>
+<td>GAAP 기준으로도 흑자 전환</td>
+</tr>
+<tr>
+<td>구독 성장률</td>
+<td>12.2% → 9.7% → (가이던스) 7~8%</td>
+<td>헤드라인이 둔화 중. 비중 확대를 막는 요인</td>
+</tr>
+<tr>
+<td>52주 고점 대비</td>
+<td>-22.1%</td>
+<td>60일간 <span class="up">+26.4%</span> 반등 뒤라 단기 가격 매력은 줄었음</td>
+</tr>
+<tr>
+<td>자사주 매입 평균 단가</td>
+<td>약 $19</td>
+<td>현재 주가 $21.12보다 낮음</td>
+</tr>
+</tbody>
+</table></div>
+<p>FCF 수익률과 마진 추세는 하방을 지지한다. 그러나 매출 성장이 둔화되고 있고, 자사주 매입에 차입이 쓰였고, 오늘 거래량 신호가 약하다. 이 때문에 "적극"이 아닌 "보통"으로 판단한다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>SBC 규모와 순현금 상태</strong>: 10-Q의 현금흐름표와 부채 주석(Note 10)에서 SBC, 현금, 총차입금을 확인한다. SBC를 뺀 FCF가 TTM $132.2M보다 크게 낮다면 밸류에이션 매력이 줄어든다.
+2. <strong>오늘 촉매의 실체</strong>: Stephens 커버리지 재개의 날짜, 목표주가, 논리를 확인한다. 거래량이 1.25배에 그친 반등이 이어지는지 2~3거래일 수급도 본다.
+3. <strong>"20곳 갱신, ACV <span class="up">+10%</span>" 사실관계</strong>: transcript의 "20곳"과 "네 곳" 불일치를 보도자료나 IR 자료 원문으로 확인한다. 성장의 질을 판단하는 핵심 데이터다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>"관망"으로 낮출 조건</strong>
+  - Q3 모기지 제외 구독 성장률이 회사 가이던스 11%를 밑돌 때. 핵심 성장 축이 무너진 것으로 본다.
+  - FY27 FCF 가이던스($137~142M)가 하향될 때
+  - 이탈 예상($25M)이 상향되거나, 플랫폼 가격제 비중 확대가 멈출 때
+  - 리볼버를 추가로 꺼내 자사주 매입을 이어가는 등 차입이 늘어날 때
+- <strong>"적극"으로 올릴 조건</strong>
+  - Q3에 모기지 제외 구독 성장률이 12~13% 이상으로 재가속할 때
+  - AI(IU) 관련 매출 기여가 정량으로 공개될 때
+  - 동시에 미국 모기지 구독이 감소를 멈출 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000022/ncno-20260131.htm">10-K — 2026-01-31_0001902733-26-000022</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000101/ncno-20260731.htm">10-Q — 2026-07-31_0001902733-26-000101</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000066/ncno-20260430.htm">10-Q — 2026-04-30_0001902733-26-000066</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000099/secondquarterfy27earningsp.htm">8-K — 2026-08-25_0001902733-26-000099__EX-99.1__secondquarterfy27earningsp</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000099/ncno-20260825.htm">8-K — 2026-08-25_0001902733-26-000099</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000119312526277659/d68043d8k.htm">8-K — 2026-06-18_0001193125-26-277659</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000064/firstquarterfy27earningspr.htm">8-K — 2026-05-27_0001902733-26-000064__EX-99.1__firstquarterfy27earningspr</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1902733/000190273326000064/ncno-20260527.htm">8-K — 2026-05-27_0001902733-26-000064</a></li>
+<li>Transcript — 2026-08-25 Q2 2027 Transcript</li>
+<li>Transcript — 2026-06-03 46th Annual William Blair Growth Stock Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

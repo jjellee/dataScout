@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASST — Strive Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ASST — Strive Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ASST</span><span class="badge">+3.93%</span><span class="badge">거래량 1.54배</span><span class="badge">$3.18B</span><span class="badge">비중 판단 회피</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 회피</strong></p>
+<ul>
+<li>ASST는 사실상 비트코인을 레버리지로 보유하는 회사입니다. 10-Q에 따르면 2026년 8월 7일 기준 비트코인 20,167개(6월 30일 공정가치 약 $1.2B), 현금 $154.9M, STRC Stock $48.0M을 보유했습니다. 반면 영업 매출은 분기 $2.9M, 영업이익률은 <span class="down">-729.5%</span>로 영업에서 나오는 가치는 사실상 없습니다.</li>
+<li>우선주 조달 비용이 크게 늘었습니다. 10월 15일 가격이 정해진 SATS 우선주는 7백만 주, 연 15% 누적배당이고 주당 $90에 발행돼 발행가 기준 실효 배당률은 약 16.7%입니다. 연간 배당 부담은 약 $105M(추정)으로 연환산 매출 약 $11.6M의 9배 수준입니다. 기존 SATA 배당도 따로 있습니다.</li>
+<li>주식 수가 빠르게 늘었습니다. 시가총액을 종가로 나누면 약 1.24억 주로 추정됩니다. 3월 17일 공시 기준 A·B주 합계 약 6,916만 주의 약 1.8배이며, 반복된 증자로 희석이 진행된 것으로 보입니다.</li>
+<li>6월 30일 평가액 기준 순자산 대비 시가총액 배율은 약 2.3배 이상으로 추정됩니다. 다만 우선주 청산가치와 부채는 공시상 확인 불가여서 반영하지 못했습니다. 비트코인 노출이 목적이라면 현물 ETP보다 나은 점이 확인되지 않습니다.</li>
+<li>오늘 상승(<span class="up">+3.93%</span>, 거래량 1.54배)은 크지 않고 촉매도 특정되지 않습니다. 의미 있는 비중을 실을 근거로 보기 어렵습니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>당일 전후 유일하게 내용이 확인되는 사건은 SATS 우선주 공모가 확정입니다(10/15 가격 결정, 10/16 8-K Ex.99.1·424B5·FWP 제출).</li>
+<li>공모 규모는 기존 발표보다 2백만 주 늘어난 7백만 주이고, 발행가 $90에 총 조달액은 약 $630M입니다. 10월 20일 결제 예정입니다.</li>
+<li>뉴스 헤드라인("ASST Stock Slips Overnight: Strive Upsizes SATS Preferred Offering At 10% Discount")을 보면 이 공시 직후 시장 반응은 오히려 약세였던 것으로 보입니다.</li>
+<li>따라서 오늘 상승을 이 공시의 직접 효과로 보기는 어렵습니다.</li>
+<li>가능성 하나는 증자 물량이 확정되면서 불확실성이 해소된 데 따른 반등입니다(추정).</li>
+<li>다른 가능성은 비트코인 가격과 함께 움직인 것입니다(추정). 다만 당일 비트코인 가격 자료가 제공되지 않아 확인할 수 없습니다.</li>
+<li>10/13·10/14 8-K, 10/13 Schedule 13D/A, 10/13 424B5·FWP는 본문이 제공되지 않아 내용을 확인할 수 없습니다.</li>
+<li>거래량은 20일 중앙값의 1.54배로 아주 높지 않습니다. 20일 수익률이 <span class="down">-19.9%</span>여서 기술적 반등일 가능성도 배제할 수 없습니다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>정체성</strong>
+- 회사는 자신을 "structured finance company"로 정의하고, 비트코인을 자본 배치의 "hurdle rate(최저 요구수익률)"로 삼는다고 밝혔습니다(2026년 2분기 10-Q).
+- 1분기 10-Q에서는 "structured finance company <strong>and institutional asset manager</strong>"라고 표현했습니다. 2분기에는 자산운용사라는 표현이 빠졌습니다. 회사 스스로 운용업보다 비트코인 재무전략을 앞세우는 쪽으로 정체성을 옮기고 있다는 신호로 해석됩니다(추정).</p>
+<p><strong>수익원 1: 비트코인 보유</strong>
+- 회사가 밝힌 비트코인 확보 방식은 두 가지입니다.
+  - ATM 방식의 보통주·우선주 발행으로 조달한 자금으로 시장에서 매입합니다.
+  - M&amp;A로 비트코인을 확보합니다. Asset Entities, Semler Scientific 합병이 이에 해당합니다.
+- 회사는 SATA 우선주의 조달 비용과 비트코인의 장기 수익률 사이의 차이(스프레드)를 얻는 구조라고 밝혔습니다.
+- 비트코인 보유량 추이(10-Q 기준):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>시점</th>
+<th>비트코인 보유량</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026년 3월 31일</td>
+<td>13,628개</td>
+</tr>
+<tr>
+<td>2026년 5월 12일</td>
+<td>15,009개</td>
+</tr>
+<tr>
+<td>2026년 6월 30일</td>
+<td>19,864개</td>
+</tr>
+<tr>
+<td>2026년 8월 7일</td>
+<td>20,167개</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수익원 2: 자산운용 수수료</strong>
+- 회사는 2026년 6월 30일 기준 AUM이 "over $2.8 billion"이고(3월 말 $2.5B 초과), 이 AUM에서 수수료 기반의 반복 매출이 나온다고 밝혔습니다.
+- 분기 매출 $2.9M을 연환산해 AUM으로 나누면 약 0.4% 수준입니다(추정). 다만 매출이 모두 운용수수료인지는 공시상 확인 불가입니다.</p>
+<p><strong>금융상품: 우선주</strong>
+- SATA(변동금리 영구 우선주, Nasdaq 상장)는 ATM과 결합돼 있습니다.
+  - 2026년 6월 16일부터 영업일마다 배당을 지급합니다. 회사는 이것이 "미국 자본시장 최초"라고 밝혔습니다.
+- SATS(15% 누적배당 영구 우선주)는 이번에 새로 상장합니다.</p>
+<p><strong>고객군·매출 구성·경쟁 위치</strong>
+- 매출을 사업부별·고객군별로 나눈 자료는 공시상 확인 불가입니다.
+- 10-K 리스크 요약은 비트코인 현물 ETP가 회사 증권의 가격에 부정적 영향을 줄 수 있다고 직접 밝히고 있습니다. 즉 경쟁 상대는 비트코인 ETP와 다른 비트코인 보유 기업입니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>손익: 영업은 사실상 의미가 없음</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>분기 매출</td>
+<td>$2.9M</td>
+<td>YoY <span class="up">+106.7%</span>, QoQ <span class="up">+6.6%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>-505.3%</td>
+<td>매출원가 약 $17.6M 역산(추정)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>-729.5%</td>
+<td>분기 영업손실 약 $21.2M 역산(추정)</td>
+</tr>
+<tr>
+<td>영업이익률 YoY 변화</td>
+<td>-443.3%p</td>
+<td></td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$69.0M</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>매출총이익률이 마이너스 500%라는 것은 매출원가에 운용 이외의 비용이 포함됐을 수 있다는 뜻입니다. 원가 구성은 공시상 확인 불가입니다.</li>
+<li>합병으로 회계상 전신(Predecessor)과 후신(Successor) 회사가 나뉘어 표시됩니다(10-Q의 "Successor" 표기). 이 때문에 YoY <span class="up">+106.7%</span>가 같은 기준끼리의 비교(오가닉 성장)인지 단정할 수 없습니다. 단가·물량·제품 구성별 분해 자료도 제공되지 않았습니다.</li>
+<li>결론적으로 기업가치는 손익계산서가 아니라 비트코인 가격, 그리고 주식·우선주 발행 조건에 좌우됩니다.</li>
+</ul>
+<p><strong>비트코인 매입 단가 대비 평가액: 추정상 미실현 손실 구간</strong>
+- 2분기에 6,236개를 평균 $74,290에 매입했습니다(약 $463M, 추정).
+- 6월 30일 평가액 약 $1.2B를 보유량 19,864개로 나누면 개당 약 $60K입니다(추정, "approximately" 표기라 오차가 있음). 2분기 매입 단가보다 낮아, 6월 말 기준으로 2분기 매입분은 평가손실 상태로 추정됩니다.
+- 1분기 말 평가액 $929.4M ÷ 13,628개는 개당 약 $68.2K입니다(추정).</p>
+<p><strong>유동성</strong>
+- 현금: 6월 30일 $145.5M, 8월 7일 $154.9M
+- STRC Stock: 6월 30일 $42.9M, 8월 7일 $48.0M
+- SATS 총 조달액 약 $630M(발행비용 차감 전)이 10월 20일 결제되면 유동성은 크게 늘어납니다.</p>
+<p><strong>재무 건전성: 고정비 성격의 우선주 부담이 커짐</strong>
+- SATS 배당 부담(추정): 7백만 주 × 액면 $100 × 15% = 연 약 $105M, 분기 약 $26M
+  - 누적배당이어서 이사회가 배당을 결의하지 않아도 미지급분이 쌓입니다(뉴스: "payment depends on Strive's board declaring it").
+- SATA 발행 잔액, 배당률, 부채 규모는 제공 자료로 확인 불가입니다.
+- 영업현금흐름이 마이너스(TTM FCF -$69M)이므로, 배당 재원은 다음 셋 중 하나에 의존할 수밖에 없습니다.
+  - 추가 증자
+  - 우선주 추가 발행
+  - 비트코인이나 STRC 매각</p>
+<p><strong>순자산 대비 시가총액 배율(추정)</strong>
+- 6월 30일 평가액 기준 순자산: 비트코인 약 $1.2B + 현금 $145.5M + STRC $42.9M ≈ $1.39B
+- 시가총액 $3.18B는 이 순자산의 약 2.3배입니다.
+- 우선주 청산가치와 부채를 빼면 보통주 1주당 순자산은 더 낮아지고 배율은 더 높아집니다. 현재 비트코인 가격을 반영한 수치는 확인 불가입니다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>회사가 제시한 성장 축</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 우선주 조달 → 비트코인 매입 확대(회사는 SATS 순조달금을 비트코인 매입, 수익자산 매입, 운전자본, ASST·SATA 자사주 매입, 인수 등에 쓰겠다고 밝힘)</td>
+<td>비트코인 수익률이 우선주 조달 비용보다 높아야 함. SATS만 놓고 보면 발행가 기준 약 16.7%</td>
+<td>3분기·4분기 10-Q의 비트코인 순증 수량, 평균 매입 단가, 보통주 1주당 비트코인 보유량의 변화(희석을 감안한 증가 여부)</td>
+</tr>
+<tr>
+<td>② SATA 상시 발행(ATM)·영업일 배당 구조로 조달 플랫폼화</td>
+<td>매일 배당하는 SATA의 시장가가 액면 근처에서 안정돼야 ATM 발행 가능</td>
+<td>SATA 잔액과 분기 ATM 조달액, SATA 시장가의 액면 대비 괴리</td>
+</tr>
+<tr>
+<td>③ M&amp;A로 비트코인 확보(회사 표현은 시장가 대비 할인 또는 "differentiated value proposition")</td>
+<td>피인수 기업이 순자산보다 싸게 사들일 수 있는 대상이어야 함</td>
+<td>추가 합병 공시와 인수 대가(주식 교환비율)</td>
+</tr>
+<tr>
+<td>④ AUM 기반 수수료 매출(회사는 AUM이 늘면 수수료 매출도 는다고 밝힘)</td>
+<td>AUM 증가가 실제 매출로 이어져야 함</td>
+<td>분기 매출과 AUM의 비율. 현재 매출 $2.9M은 영업손실 $21M을 메우기에 턱없이 작음</td>
+</tr>
+<tr>
+<td>⑤ 자사주 매입(SATS 자금 용도에 포함)</td>
+<td>주가가 순자산 대비 할인으로 바뀔 때만 의미가 있음</td>
+<td>실제 매입 실행 여부와 매입 가격</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>비트코인 쏠림과 가격 변동</strong>
+   - 10-K 리스크 요약은 회사 자산이 이자·배당이 없고 현금보다 유동성이 낮은 비트코인에 집중돼 있으며, 가격 하락 시 재무 의무 이행 능력이 손상될 수 있다고 밝힙니다.
+   - 6월 말 평가 기준으로 2분기 매입분은 이미 매입가보다 낮은 것으로 추정됩니다.</li>
+<li><strong>우선주 고정 부담의 누적과 보통주 후순위화</strong>
+   - SATS의 연 15% 누적배당(연 약 $105M, 추정)과 SATA 배당은 보통주보다 먼저 지급되는 청구권입니다.
+   - 비트코인이 횡보만 해도 순자산 대비 고정비가 보통주 가치를 잠식하는 구조입니다.
+   - 발행가가 액면보다 10% 낮아(뉴스 헤드라인) 실질 조달 비용은 더 높습니다.</li>
+<li><strong>희석</strong>
+   - 10-K의 forward-looking 리스크에 보통주·SATA 추가 발행에 따른 희석이 명시돼 있습니다.
+   - 시가총액으로 추정한 주식 수(약 1.24억 주)는 3월 대비 약 1.8배입니다(추정).
+   - 2026년 2월 1:20 액면병합 이력도 있습니다.</li>
+<li><strong>비트코인 현물 ETP와의 경쟁, 순자산 대비 할증 축소</strong>
+   - 10-K가 ETP의 존재가 회사 증권 가격에 부정적일 수 있다고 직접 명시합니다.
+   - 시가총액이 순자산의 2배 이상(추정)이라는 할증은 줄어들 수 있고, 그러면 주가 하락 폭이 비트코인 하락 폭보다 커집니다.</li>
+<li><strong>검증되지 않은 사업모델과 고위험 투자 계획</strong>
+   - 10-K는 사업 이력이 짧고 전략이 다양한 시장 상황에서 검증되지 않았다고 밝힙니다.
+   - "비트코인 담보 신용구조의 후순위 트랜치" 투자 계획도 고위험 요인으로 명시돼 있습니다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>함의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순자산 대비 시가총액 배율(6/30 평가 기준, 추정)</td>
+<td>약 2.3배 이상</td>
+<td>비트코인 대비 할증을 지불하는 셈</td>
+</tr>
+<tr>
+<td>SATS 발행가 기준 실효 배당률</td>
+<td>약 16.7%</td>
+<td>보통주가 이기려면 비트코인 연수익률이 이를 넘어야 함</td>
+</tr>
+<tr>
+<td>SATS 연 배당 부담 vs 연환산 매출(추정)</td>
+<td>약 $105M vs 약 $11.6M</td>
+<td>영업으로 감당 불가, 시장 조달에 의존</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$69.0M</td>
+<td>자체 현금 창출 없음</td>
+</tr>
+<tr>
+<td>주식 수 변화(추정)</td>
+<td>3월 대비 약 1.8배</td>
+<td>1주당 비트코인 보유량이 희석됨</td>
+</tr>
+<tr>
+<td>가격 변동성</td>
+<td>60일 <span class="up">+99.3%</span>, 20일 <span class="down">-19.9%</span></td>
+<td>비중을 늘리기 어려운 변동성</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 10/13·10/14 8-K와 Schedule 13D/A 원문
+   - 대주주 지분 변동 여부와 최근 비트코인 매입·발행 내역
+2. 비트코인 1개당 보통주 가치
+   - 계산식: (비트코인 평가액 + 현금 + STRC − 부채 − SATA·SATS 청산가치) ÷ 완전희석 주식 수
+   - 이 값과 현재 주가의 배율을 확인
+3. SATA 발행 잔액과 현재 배당률을 반영한 우선주 배당 총액
+   - 그리고 이를 보유 현금($154.9M + SATS 순조달금)으로 몇 년간 감당할 수 있는지</p>
+<p><strong>회피에서 관망으로 바꿀 조건</strong>
+- 위 2번 기준 배율이 1배 근처나 그 아래로 내려오고, 회사가 SATS 자금 용도에 포함된 자사주 매입을 실제로 실행하는 경우
+- 분기 공시에서 희석을 감안한 1주당 비트코인 보유량이 연속으로 늘어나는 경우
+- 영업손실이 크게 줄어(분기 매출이 영업비용을 의미 있게 메우는 수준) 우선주 배당이 매각·증자 없이 감당되는 모습이 확인되는 경우</p>
+<p><strong>판단을 더 보수적으로 유지할 신호</strong>
+- 추가 우선주를 15% 이상 금리나 할인 발행으로 조달하는 경우
+- SATA 시장가가 액면보다 크게 낮아지는 경우
+- 비트코인 매각이나 배당 지급 유보가 공시되는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026019879/asst-20251231.htm">10-K — 2025-12-31_0001628280-26-019879</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026054985/asst-20260630.htm">10-Q — 2026-06-30_0001628280-26-054985</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026034805/asst-20260331.htm">10-Q — 2026-03-31_0001628280-26-034805</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000095010326015690/dp255095_ex9901.htm">8-K — 2026-10-15_0000950103-26-015690__EX-99.1__dp255095_ex9901</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000095010326015690/dp255095_8k.htm">8-K — 2026-10-15_0000950103-26-015690</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026065816/asst-20261014.htm">8-K — 2026-10-14_0001628280-26-065816</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026065737/strive-preferredlaunchpres.htm">8-K — 2026-10-13_0001628280-26-065737__EX-99.1__strive-preferredlaunchpres</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1920406/000162828026065737/asst-20261013.htm">8-K — 2026-10-13_0001628280-26-065737</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

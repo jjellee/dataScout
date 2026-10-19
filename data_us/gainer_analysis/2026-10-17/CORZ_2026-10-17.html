@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CORZ — Core Scientific Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CORZ — Core Scientific Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CORZ</span><span class="badge">+7.00%</span><span class="badge">거래량 3.13배</span><span class="badge">$4.64B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론: 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>긍정 요인:</strong> 사업 구조 전환이 숫자로 확인된다. 2Q26 매출은 $164.2M(YoY <span class="up">+108.8%</span>)이고, 이 중 코로케이션이 $136.7M(약 83%)이다. CoreWeave 590MW 계약에 이어 AMD와 15년 530MW 계약을 맺었다. 회사는 AMD 계약의 기본 계약매출이 $14B 이상이라고 밝혔다. 수주 측면의 가시성은 동종업계 상위권이다.</li>
+<li><strong>부담 요인:</strong> TTM 잉여현금흐름이 -$957.8M이다. 7.75% 선순위 담보채 $3.3B의 연 표면이자는 약 $256M(계산치)으로, 2Q 조정 EBITDA $41.1M을 연환산한 약 $164M보다 크다. AMD 530MW를 지으려면 추가 대규모 조달이 필요하다. 10-K 리스크 요약도 "추가 자본 조달이 필요하다"고 명시한다.</li>
+<li><strong>주가:</strong> 오늘 <span class="up">+7%</span>, 거래량 3.13배는 60일 <span class="down">-43.7%</span>, 52주 고점 대비 <span class="down">-50.4%</span> 하락 이후의 반등이다. 오늘 새로 확인된 촉매는 없다. 당일 전후 SEC 공시는 내부자 매도 예정 신고(Form 144)뿐이다.</li>
+<li>지금 "의미 있는 비중"을 싣기에는 근거가 부족하다. 조달 구조(희석 여부)와 3Q 실적에서 과금 MW 증가가 확인되기 전까지는 관망한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 신규 촉매 없음. 낙폭과대 반등과 수급·섹터 동조 가능성이 크다.</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 당일 전후 공시는 2026-10-13 Form 144 한 건이다. Form 144는 계열인·내부자의 주식 매도 예정 신고로, 상승 촉매가 아니라 잠재적 매도 물량이다. 매도자와 수량은 제공된 발췌상 확인 불가.</li>
+<li><strong>뉴스:</strong> "CORZ Stock Rebounds After AMD Partnership…"(Stocktwits) 헤드라인이 있지만, AMD 파트너십은 2026-07-28 실적 발표 때 이미 공개된 사안이다. 새 정보가 아니라 기존 재료를 다시 해석한 기사로 판단한다. "Can Its 7.0% Jump…"(Yahoo)는 상승의 결과를 다룬 기사이지 원인이 아니다.</li>
+<li><strong>실적:</strong> 3Q 실적은 아직 발표 전이다(2Q 콜은 7/28).</li>
+<li><strong>가격 맥락(계산치):</strong> 60일 수익률 <span class="down">-43.7%</span>로 역산하면 약 60거래일 전 주가는 약 $25.7이다. AMD 발표 전후 수준에서 절반 가까이 빠진 뒤의 기술적 반등으로 보는 것이 합리적이다. 거래대금 $488M은 시가총액의 약 10.5%로, 숏커버나 단기 수급이 개입했을 가능성이 있다. 다만 이는 추정이다.</li>
+<li>2026-09-10 8-K의 본문은 발췌에서 잘려 있어 내용을 확인할 수 없다.</li>
+</ul>
+<h2>3. 사업 구조: 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>정체성:</strong> 비트코인 채굴 회사에서 AI·HPC용 고밀도 코로케이션(HDC) 데이터센터 임대 회사로 전환하는 중이다. 섹터 분류가 "Finance: Consumer Services"로 되어 있지만 실질은 데이터센터 인프라다. 스크리닝 분류상의 오류로 보이며, 비교 대상(peer)은 데이터센터·네오클라우드 인프라 기업으로 잡아야 한다.</p>
+<p><strong>매출 구성 (2Q26, 10-Q 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>부문</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>코로케이션</td>
+<td>$136.7M</td>
+<td>$10.6M</td>
+<td>과금 MW 증가가 원인</td>
+</tr>
+<tr>
+<td>자체 채굴</td>
+<td>$21.5M</td>
+<td>$62.4M</td>
+<td>채굴량 <span class="down">-53%</span>, 평균 BTC 가격 <span class="down">-27%</span></td>
+</tr>
+<tr>
+<td>기타(호스팅 채굴 등, 차감 계산)</td>
+<td>약 $6.0M</td>
+<td>약 $5.6M</td>
+<td>호스팅 채굴은 2026-12-31 종료 예정</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td><strong>$164.2M</strong></td>
+<td><strong>$78.6M</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객</strong>
+- <strong>CoreWeave:</strong> 2024년 16MW로 시작해 590MW까지 확대됐다(5개 사이트). 6/30 기준 395MW가 과금 중이다(10-Q). 실적콜에서는 7/28 현재 437MW 과금 중이며 일정보다 앞서 있다고 언급했다. 2026년 상반기에 일부 라이선스 계약이 SPV 금융구조로 양도됐고, CoreWeave는 계속 주채무자로 남았다.
+- <strong>AMD(7/28 발표):</strong> 최대 2.5GW 잠재 용량 중 1차로 15년 약 530MW 계약을 맺었다.
+  - 약 380MW: Pecos·Hunt·Muskogee 사이트를 AMD에 triple net 리스로 직접 공급
+  - 약 150MW: Auburn·Dalton 사이트를 이름이 공개되지 않은 네오클라우드에 modified gross 리스로 공급하고, AMD가 15년간 전액 신용보강을 한다(실적콜)</p>
+<p><strong>자산 (6/30 기준, 10-Q)</strong>
+- 총 유틸리티 전력 약 2.1GW, 임대 가능 용량 약 1.3GW, 7개 주 11개 데이터센터다.
+- Hunt County(TX) 부지·전력을 $233M 현금에 인수했다(약 430MW 총용량, ERCOT 연계 승인).
+- Polaris DS를 약 $421M에 인수하기로 했다. Muskogee 인접 부지로 최대 440MW이며, 3Q 종결 예정이었다. 종결 여부는 발췌상 확인 불가.</p>
+<p><strong>경쟁 위치</strong>
+- 이미 확보한 전력과 다수 사이트에서 대규모 공급을 실제로 해낸 이력이 차별점이다.
+- 회사는 고객사 계약 전에 먼저 착공한 전략이 AMD 수주로 검증됐다고 밝혔다.
+- 고객이 사실상 2곳(CoreWeave, AMD 계열)뿐인 집중 구조다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong>
+- 성장은 물량(과금 MW)이 끌었다. 10-Q는 코로케이션 증가 원인을 "incremental billable customer power capacity"로 명시한다.
+- 코로케이션 매출은 1Q $77.5M(계산치: 상반기 $214.2M - 2Q $136.7M)에서 2Q $136.7M으로 QoQ 약 <span class="up">+76%</span> 늘었다.
+- 단가(MW당 요율)는 공시상 확인 불가다. 분기 중 과금이 단계적으로 시작돼 MW당 매출을 역산하기도 어렵다.
+- 믹스 변화는 긍정적이다. 변동성이 큰 채굴 매출이 줄고 장기 계약 매출의 비중이 커졌다. 다만 채굴 매출 감소분이 전체 성장률을 일부 깎는다.</p>
+<p><strong>마진</strong>
+- 매출총이익률 42.7%, 영업이익률 <span class="down">-9.6%</span>로, 영업이익률은 YoY <span class="up">+18.5%</span>p 개선됐다.
+- 조정 EBITDA는 1Q $4.4M에서 2Q $41.1M으로 늘었고, 매출 대비 약 25%(계산치)다. 방향은 뚜렷하게 개선 중이다.
+- 실적콜에서 CFO는 리스 회계상 에스컬레이터가 매출을 앞당겨 인식해 GAAP 마진을 부풀린다고 언급했다. 회사 스스로 GAAP 마진보다 현금 기준을 보라고 한 셈이다.</p>
+<p><strong>순손익</strong>
+- 2Q 순손실은 $1.2B, 상반기는 $1.5B다.
+- 2Q 손실의 주원인은 워런트 공정가치 변동(비현금)이고, 1Q에는 채굴 설비 손상차손 $266.5M이 반영됐다.
+- 주가가 크게 하락한 3Q에는 워런트 평가이익이 발생할 수 있다. 이는 추정이며, 비현금 항목이라 영업 판단에서는 제외해야 한다.</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름은 -$957.8M이다.
+- 10-Q 발췌의 "Capital expen…" 부분이 잘려 분기 CAPEX 금액과 현금 잔고는 공시상 확인 불가다.
+- TD Cowen 컨퍼런스에서 CEO는 MW당 건설비가 $8M에서 $11.5~12M으로 올랐다고 언급했다. 이를 AMD 530MW에 단순 적용하면 약 $6.1~6.4B의 건설비가 나온다. 이는 추정치이며, 리스 형태별 회사 부담 범위는 확인 불가다.</p>
+<p><strong>재무 건전성</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>선순위 담보채</td>
+<td>$3.3B, 7.75%, 2031년 만기, 발행가 99.25%. 자회사 Core Scientific Finance I가 발행했고 개발 프로젝트 자산을 1순위로 담보 제공</td>
+</tr>
+<tr>
+<td>사용처</td>
+<td>원리금 상환 준비금 계좌 적립, $1.0B Term Loan(SOFR+2.50%, 2027-03 만기) 전액 상환·해지</td>
+</tr>
+<tr>
+<td>연 표면이자</td>
+<td>약 $256M(계산치). 현 EBITDA 수준으로는 감당하지 못하며, 준비금 계좌와 이자 자본화 여부가 관건(확인 불가)</td>
+</tr>
+<tr>
+<td>희석 요인</td>
+<td>상장 워런트 2종(행사가 $6.81, $0.01), AMD에 신규 워런트 발행(시장가 수준 행사가, 상업 조건 충족 시 베스팅). 2026-02-26 기준 발행주식 315.3M주이고, 현재 시총으로 역산하면 약 321M주</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>실적콜 발언("$30 billion on the balance sheet")은 SEC 공시($3.3B)와 단위가 맞지 않아 전사(transcript) 오류로 판단한다. 공시 수치를 채택한다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1) CoreWeave 590MW 완전 과금 전환</strong>
+- 과금 MW는 6/30 395MW에서 7/28 437MW(실적콜)로 늘었다. 마지막 약 150MW(Dalton Phase 2)는 연말부터 공급을 시작해 2027년 초 완료될 예정이라고 실적콜에서 언급했다.
+- 실현 조건: 공정이 지연되지 않을 것, CoreWeave SPV 구조에 문제가 없을 것.
+- 검증 포인트: 3Q 10-Q의 과금 MW(437MW 이상인지), 코로케이션 매출의 QoQ 증가율, Dalton Phase 2의 에너지화 시점.</p>
+<p><strong>2) AMD 1차 530MW (15년, 연 2.5% 에스컬레이터)</strong>
+- 회사는 기본 계약매출이 $14B 이상이라고 밝혔다(실적콜). 단순 평균하면 연 약 $0.93B로, 2Q 연환산 매출의 약 1.4배다(계산치).
+- 실현 조건: 신규 5개 사이트의 첫 RFS(Ready for Service)가 2027년이라고 Cowen에서 언급됐다. 그 전까지 수십억 달러 규모의 건설 자금을 조달해야 하고, 노동비와 장납기 장비 문제를 관리해야 한다.
+- 검증 포인트: AMD 리스 계약의 8-K 세부(개시일, 위약 조항), 프로젝트 파이낸싱 발표 여부와 조건(지분 희석 여부), 착공·장비 발주 진척.</p>
+<p><strong>3) AMD 독점 예약권 최대 2GW 추가</strong>
+- 회사는 Pecos·Muskogee 사이트가 각각 최대 1GW까지 가능하다고 밝혔다. 그리드 증설과 BTM(behind-the-meter, 현장 자가발전) 조합이 전제다.
+- 실현 조건: AMD가 예약권을 실제 행사해야 하고, BTM 발전 설비를 확보해야 한다.
+- 검증 포인트: 추가 리스 체결 공시, 전력 연계 연구(load study) 진척, BTM 장비 계약.</p>
+<p><strong>4) 사이트 확장 (Hunt 430MW, Polaris 440MW)</strong>
+- 실현 조건: Polaris 인수 종결, ERCOT 연계 일정 준수.
+- 검증 포인트: 3Q 10-Q의 Polaris 종결 여부와 총 전력 용량 업데이트(2.1GW에서 얼마나 늘었는지).</p>
+<p><strong>5) 채굴 종료에 따른 손익 단순화</strong>
+- CFO는 2027년을 "clean year"로 시작할 것이라고 언급했다(실적콜).
+- 검증 포인트: 4Q 호스팅 채굴 종료, 추가 손상차손 발생 여부.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 2Q 콜은 매우 공격적이고 자신감 있는 톤이었다. 근거로 제시한 것은 세 가지다.
+  - CoreWeave 계약이 16MW에서 590MW로 확대된 이력
+  - 과금 437MW로 일정보다 앞서 있다는 점
+  - AMD와 CoreWeave, 각각 500MW 이상을 약정한 고객 2곳 확보
+- AMD 계약에 지분 개입권(equity step-in)이 없다는 점을 강조해 주주가치 보호를 내세웠다.</p>
+<p><strong>가이던스 화법</strong>
+- 정량 가이던스는 계속 회피했다. 2028년 EBITDA 마진 질문에 CFO는 "구체적 목표를 제시하지 않았다"며 현금 기준 마진이 높고 영업 레버리지가 크다는 정성적 답변에 그쳤다.
+- SG&amp;A 기준선은 "quarterly baseline of about $30 million a year"라고 표현해 분기 기준인지 연간 기준인지 모호하다. 확인이 필요하다.</p>
+<p><strong>답변 회피·방어 지점</strong>
+- 네오클라우드 고객의 정체와 규모: "현재 코멘트 불가". AMD 신용보강만 강조했다.
+- 예약 용량의 가격: 시장가로 재협상하는지 묻자 "기존과 실질적으로 유사한 조건"이라고 답했다. 요율이 고정돼 있다면, 그사이 건설비 인플레이션(Cowen에서 노동비 20~30% 상승 언급)이 일어날 경우 수익률이 떨어질 위험이 있다(추정).
+- 네오클라우드 리스의 NOI 마진: "시장 표준과 유사"라는 답에 그쳤고 수치는 비공개다.</p>
+<p><strong>공시에는 없고 콜·컨퍼런스에서만 드러난 정보</strong>
+- 예약 용량에 대해서는 다른 고객과 협상하지 않는다. 고객 다변화 전략이 사실상 AMD 단일 축으로 묶이는 구조다.
+- AMD 계약 기본 계약매출 $14B 이상, 연 2.5% 에스컬레이터, 사이트별 MW 배분.
+- Cowen(5/28) 발언:
+  - MW당 건설비 $11.5~12M, 노동비가 건설비의 최대 40%
+  - 중전압 스위치기어 리드타임 최대 100주
+  - 하이퍼스케일 거래 기대 수익률 12~14%
+  - 장기적으로 REIT 전환 고려(NOL 보유)
+  - 지역사회 반발이 "밤잠을 설치게 하는" 리스크</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>자금 조달과 희석</strong>
+   - 10-K는 사업이 자본집약적이며 추가 조달이 필요하고, 실패하면 확장을 지연·중단해야 한다고 명시한다.
+   - 이미 $3.3B 담보채가 있고 TTM FCF는 -$958M이다. AMD 530MW 건설비(추정 $6B 이상)를 어떤 구조로 조달하느냐가 주주가치를 결정한다.
+   - 주식 발행이 섞이면 현 주가 수준에서 희석이 클 수 있다. 기존 워런트 2종과 AMD 워런트도 추가 희석 요인이다.</li>
+<li><strong>고객 집중과 거래상대방 구조</strong>
+   - 10-K는 HDC 사업이 단일 고객에 크게 의존한다고 명시한다.
+   - CoreWeave 계약 일부가 SPV 금융구조로 양도됐다. 10-Q는 이와 관련한 위험을 별도로 서술한다.
+   - AMD 몫 중 약 150MW는 실질 이용자가 비공개 네오클라우드다. AMD 보증에 의존하는 구조다.</li>
+<li><strong>건설 지연과 원가 초과</strong>
+   - 10-K 리스크 요약 첫 항목이 시설 전환 지연과 비용 초과다.
+   - Cowen에서 회사 스스로 노동비 20~30% 상승, 스위치기어 100주 리드타임을 언급했다.
+   - 예약 용량 요율이 "기존과 유사한 조건"이라면 원가 상승분이 수익률을 잠식한다.</li>
+<li><strong>전력 확보와 지역사회 반발</strong>
+   - 10-K는 전력 가용성 리스크를 명시한다.
+   - 2GW 예약분은 BTM 발전에 의존하는데, BTM 기술 선택과 장비 확보가 아직 미정이라고 실적콜에서 언급됐다.
+   - CEO는 데이터센터에 대한 지역사회 반발을 최대 걱정거리로 꼽았다.</li>
+<li><strong>손익 변동성과 내부자 매도 신호</strong>
+   - 워런트 공정가치 변동으로 분기 순손익이 수억~10억 달러대로 출렁인다.
+   - 10/13 Form 144 제출로 내부자·계열인 매도 물량이 대기 중이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망을 뒷받침하는 정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>계약 가시성(우호적)</td>
+<td>CoreWeave 590MW(과금 437MW), AMD 530MW·15년·$14B 이상(회사 주장)</td>
+</tr>
+<tr>
+<td>이익 대비 부채 부담(비우호)</td>
+<td>연 표면이자 약 $256M 대 2Q 조정 EBITDA 연환산 약 $164M</td>
+</tr>
+<tr>
+<td>현금흐름(비우호)</td>
+<td>TTM FCF -$957.8M</td>
+</tr>
+<tr>
+<td>밸류에이션</td>
+<td>시가총액 $4.64B에 담보채 $3.3B를 더하면 EV는 최소 약 $7.9B(현금 미반영, 계산치). 현금 잔고 확인 불가로 정확한 EV 산출 불가</td>
+</tr>
+<tr>
+<td>추세</td>
+<td>20일 <span class="down">-25.1%</span>, 60일 <span class="down">-43.7%</span>, 고점 대비 <span class="down">-50.4%</span>. 오늘 반등은 신규 촉매 없이 일어남</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3Q 10-Q의 현금 잔고, 분기 CAPEX, 원리금 상환 준비금 규모, 이자 자본화 여부. 이를 통해 2027년 RFS까지 자금 공백이 얼마인지 확인한다.
+2. AMD 사이트 건설 자금의 조달 구조. 프로젝트 레벨 부채(비소구)인지 보통주·전환사채 발행인지, 그리고 AMD 워런트의 조건(수량, 행사가)을 확인한다. 09-10 8-K 원문도 확인이 필요하다.
+3. 3Q 과금 MW와 코로케이션 매출, Polaris 종결 여부, 10/13 Form 144의 매도 주체와 규모.</p>
+<p><strong>판단 상향 조건 (보통 이상)</strong>
+- 지분 희석이 없거나 제한적인 프로젝트 파이낸싱으로 AMD 1차분 자금이 확정될 때
+- 3Q 과금 MW가 증가하고 조정 EBITDA 마진이 개선 추세를 이어갈 때</p>
+<p><strong>판단 하향 조건 (회피)</strong>
+- 할인 유상증자나 대규모 전환사채로 자금을 조달할 때
+- Dalton Phase 2 공급이 2027년 초를 넘어 지연될 때
+- CoreWeave SPV 구조나 네오클라우드 고객의 신용 문제가 공시될 때
+- AMD 리스 개시 조건에 해지·연기 조항이 드러날 때
+- 내부자 매도가 연속으로 나올 때</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000162828026013305/core-20251231.htm">10-K — 2025-12-31_0001628280-26-013305</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000014/core-20260630.htm">10-Q — 2026-06-30_0001839341-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000162828026031396/core-20260331.htm">10-Q — 2026-03-31_0001628280-26-031396</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000023/core-20260910.htm">8-K — 2026-09-10_0001839341-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000021/revolverprvf.htm">8-K — 2026-08-25_0001839341-26-000021__EX-99.1__revolverprvf</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000021/a01corescientificrevolve.htm">8-K — 2026-08-25_0001839341-26-000021__EX-10.1__a01corescientificrevolve</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000021/core-20260825.htm">8-K — 2026-08-25_0001839341-26-000021</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1839341/000183934126000018/polarisclosingvf20260814.htm">8-K — 2026-08-13_0001839341-26-000018__EX-99.1__polarisclosingvf20260814</a></li>
+<li>Transcript — 2026-07-28 Core Scientific, Inc. (CORZ) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-05-28 TD Cowen's 54th Annual Technology, Media &amp; Telecom Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

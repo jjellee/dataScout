@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RGTI — Rigetti Computing Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>RGTI — Rigetti Computing Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">RGTI</span><span class="badge">+8.13%</span><span class="badge">거래량 1.83배</span><span class="badge">$4.22B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>현금은 충분하다.</strong> Q2 2026 말 현금성자산과 투자자산은 $541.3M이고 부채는 없다(실적콜). TTM FCF가 -$87.6M이므로 단순 계산하면 약 6년을 버틸 수 있다. 다만 회사는 2026년 CapEx가 높아진다고 밝혔다.</li>
+<li><strong>매출이 시가총액을 뒷받침하지 못한다.</strong> 분기 매출은 $5.1M이고, 이를 연환산하면 약 $20M이다. 시가총액 $4.22B는 연환산 매출의 약 200배다. 영업이익률은 <span class="down">-546%</span>다. 매출이 185% 늘어난 것은 작은 기저 때문이다.</li>
+<li><strong>CEO도 매출 기대를 낮추고 있다.</strong> CEO는 5월 행사에서 "매출은 들쭉날쭉하고 모두 연구용"이라고 말했다. 상업적 의미가 생기는 시점으로는 "약 3년 후 퀀텀 어드밴티지"를 제시했다.</li>
+<li><strong>오늘 상승은 근거가 확인되지 않는다.</strong> 최근 4일간 공시가 없다. 직전 20일 수익률은 <span class="down">-25.1%</span>이고 거래량은 1.83배에 그쳤다. 펀더멘털 변화보다는 낙폭 과대에 따른 반등으로 본다.</li>
+<li><strong>추가 희석 요인이 있다.</strong> 상무부 $100M 계약에는 정부 지분 취득이 조건으로 붙어 있다. 행사가 $11.50 워런트도 현재 내가격이다. 지분 규모와 워런트 잔량은 공시상 확인 불가다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다.</li>
+<li>가장 최근 재료는 상무부 CHIPS $100M 본계약이다(8-K, 계약일 2026-09-04, 발표 2026-09-08). 6주 전 재료라 오늘 촉매로 보기 어렵다.</li>
+<li>뉴스 헤드라인은 시세 페이지이거나 부정적 논조다("Falls 21% in the Past Month", "No Commercial Traction, No Premium Valuation"). 호재성 뉴스는 확인되지 않는다.</li>
+<li>수급 정황은 다음과 같다.</li>
+<li>20일 <span class="down">-25.1%</span>, 60일 <span class="down">-20.5%</span>, 52주 고점 대비 <span class="down">-72.8%</span>로 과매도 구간이었다.</li>
+<li>거래량 배수 1.83배는 급증이라 하기엔 약하다.</li>
+<li>거래대금 $332.6M은 시가총액의 약 7.9%다.</li>
+<li>섹터 동반 상승 여부는 제공 자료로 확인 불가다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 발췌는 사업 섹션 본문이 잘려 있다. 따라서 이 절은 8-K(EX-99.1) 회사 소개와 실적콜 내용을 함께 사용했다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>온프레미스 시스템</td>
+<td>Novera 9큐비트 QPU(고객의 기존 냉각·제어 장비에 장착), Cepheus 36~108큐비트 시스템(칩렛 기반, 제어 전자장비 포함)</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>클라우드(QCaaS)</td>
+<td>Rigetti QCS, AWS Braket, Azure 등을 통한 접근</td>
+<td>8-K, 실적콜</td>
+</tr>
+<tr>
+<td>정부 R&amp;D 계약</td>
+<td>DARPA, 영국 ProQure, 인도 C-DAC($8.4M 수주), 미 상무부 CHIPS</td>
+<td>실적콜, 8-K</td>
+</tr>
+<tr>
+<td>제조</td>
+<td>자체 팹 Fab-1에서 칩을 설계·제조</td>
+<td>8-K</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객군</strong></li>
+<li>10-K는 매출 상당 부분이 공공부문 계약에 의존한다는 고객 집중 리스크를 명시한다.</li>
+<li>실적콜에서는 "상반기 성장은 주로 상업 기관의 온프레미스 시스템 구매"이고 "올해 첫 9큐비트 시스템 2대가 모두 상업 기관에 납품"됐다고 언급했다.</li>
+<li>같은 콜에서 CEO는 이 고객들이 실제 업무가 아닌 연구 목적이라고 말했다.</li>
+<li>5월 행사에서는 AWS에서 108Q 시스템 사용자가 약 1,000명이고, 대부분 몇 초에서 몇 분만 쓰는 연구용이라고 언급했다.</li>
+<li><strong>매출 구성:</strong> 제품·서비스·정부 계약별 매출 비중은 공시상 확인 불가다.</li>
+<li><strong>경쟁 위치</strong></li>
+<li>회사는 초전도 게이트 방식을 쓴다. 이 분야에는 IBM, Google, Amazon, Microsoft 같은 대형사가 함께 있다(5월 행사 발언).</li>
+<li>회사는 차별점으로 칩렛 관련 특허 약 15건과 108Q 시스템을 클라우드에 공개 배포한 유일한 칩렛 기반 시스템이라는 점을 든다.</li>
+<li>실적콜 요약에는 100큐비트 이상 게이트 방식 시스템을 가진 회사가 3곳뿐이라는 언급이 있다.</li>
+<li>이상은 모두 회사 주장이다.</li>
+<li><strong>협업:</strong> 10-K는 Quanta Computer와의 협업 계약을 언급한다. 실적콜에서는 HPE, Pittsburgh Supercomputing Center, Riverlane(오류정정), QphoX(신호 변환), Fermilab과의 협업을 언급했다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적(Q2 2026, 실적콜 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 2026</th>
+<th>Q2 2025</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$5.1M</td>
+<td>$1.8M</td>
+<td>YoY <span class="up">+185.3%</span>, QoQ <span class="up">+16.8%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>43% (지표 42.6%)</td>
+<td>31%</td>
+<td>계약 믹스와 Novera 판매 효과</td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>$30.3M</td>
+<td>$20.4M</td>
+<td>+48.5%(계산값), R&amp;D·인프라</td>
+</tr>
+<tr>
+<td>영업손실</td>
+<td>$28.1M</td>
+<td>$19.9M</td>
+<td>영업이익률 <span class="down">-546%</span></td>
+</tr>
+<tr>
+<td>GAAP 순손실</td>
+<td>$52.6M</td>
+<td>$39.7M</td>
+<td>비현금성 공정가치 조정 포함</td>
+</tr>
+<tr>
+<td>Non-GAAP 순손실</td>
+<td>$16.0M ($0.05/주)</td>
+<td>$13.3M ($0.04/주)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성장의 질</strong></li>
+<li>매출 증가분은 +$3.3M, 영업비용 증가분은 +$9.9M이다. 비용 증가 폭이 매출 증가 폭의 3배다.</li>
+<li>영업이익률이 557.7%p 개선된 것은 분모(매출)가 작은 데서 생긴 효과다. 영업손실 절대액은 41% 늘었다.</li>
+<li>매출은 Novera 판매 대수에 좌우된다. 대당 단가와 판매 대수는 공시상 확인 불가다.</li>
+<li><strong>마진 방향성</strong></li>
+<li>매출총이익률 개선은 믹스 효과다.</li>
+<li>분기 매출이 $5M 수준이라 계약 하나만 바뀌어도 마진이 크게 흔들린다. 추세로 해석하기 어렵다.</li>
+<li><strong>GAAP과 Non-GAAP 차이</strong></li>
+<li>분기 순손실 차이는 $36.6M이다. 실적콜은 파생상품 부채(워런트 등)의 공정가치 조정을 원인으로 든다.</li>
+<li>주가가 오를수록 GAAP 손실이 커지는 구조다. 조정 항목별 내역은 공시상 확인 불가다.</li>
+<li><strong>현금흐름</strong></li>
+<li>TTM FCF는 -$87.6M이다.</li>
+<li>회사는 2026년 CapEx가 Fab-1 투자와 대형 시스템용 냉각장비 때문에 높아진다고 밝혔다.</li>
+<li><strong>재무 건전성</strong></li>
+<li>현금 $541.3M, 무차입이다. 시가총액의 약 12.8%다.</li>
+<li>단순 계산한 EV는 약 $3.68B다.</li>
+<li>상무부 자금 $100M이 들어오면 현금 여력은 더 늘어난다. 다만 이 자금을 매출로 인식하는지, 비용 상계로 처리하는지는 공시상 확인 불가다.</li>
+<li><strong>기타:</strong> 회사는 2026년 1분기부터 SRC(소규모 보고기업) 지위를 잃는다(10-K). 공시·컴플라이언스 비용이 늘어난다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>인도 C-DAC $8.4M 매출 인식</strong>
+   - 회사는 Q4 2026에 인식할 예정이라고 밝혔다.
+   - 이 한 건이 Q2 분기 매출의 1.6배다.
+   - 검증 포인트: Q4 실적에서 실제로 인식됐는지, 인도 시점이 미뤄졌는지 확인한다.</li>
+<li><strong>미 상무부 CHIPS $100M</strong>
+   - 계약 기간은 최대 5년이다(8-K). 실적콜 발언은 "3년간"이었다.
+   - 과제는 3가지다: 판독 전자장비 소형화, 냉각 용량 확대, 고연결성 칩 제조.
+   - 자금은 마일스톤과 분할 지급(tranche) 구조다(EX-10.1 목차).
+   - 검증 포인트: Q3 10-Q에서 실제 수령액, 회계처리 방식, 정부에 발행하는 증권의 종류·수량·가격을 확인한다.</li>
+<li><strong>기술 로드맵</strong>
+   - 회사는 3년 내 1,000큐비트, 2큐비트 게이트 정확도 99.9%, 게이트 속도 40ns 미만을 목표로 한다고 밝혔다.
+   - 1,000큐비트는 36큐비트 칩렛 약 30개를 연결해 달성한다는 계획이다.
+   - 현재 정확도는 9Q 99.8%, 36Q 99.6%(중앙값)이고, 108Q는 공시상 확인 불가다.
+   - 검증 포인트: 2026년 하반기 로드맵 업데이트에서 108Q 정확도 수치가 나오는지, 목표 시점이 유지되는지 본다.</li>
+<li><strong>상업 기관의 온프레미스 수요</strong>
+   - 실적콜에서 신규 Novera 수주(University of Saskatchewan, 일본 대기업)를 언급했다.
+   - 검증 포인트: 분기별 Novera 판매 대수와 수주 공시. 연구용 구매가 반복적으로 이어지는지 본다.</li>
+<li><strong>HPE·PSC 하이브리드 슈퍼컴퓨터와 각국 정부 프로그램</strong>
+   - 대상은 영국 ProQure, DARPA 등이다.
+   - 검증 포인트: 구체적인 계약 금액이 공시되는지 확인한다.</li>
+</ol>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>톤과 자신감의 근거</strong></li>
+<li>경영진은 기술 지표(정확도, 가동률)와 정부 자금 확보를 자신감의 근거로 든다.</li>
+<li>반대로 매출 기대는 스스로 낮춘다. 5월 Canaccord 행사에서 CEO는 다음과 같이 말했다.<ul>
+<li>"일부 투자자 기대가 앞서 있다"</li>
+<li>"매출은 들쭉날쭉하고 모두 연구 관련"</li>
+<li>"매출보다 기술 지표에 집중한다"</li>
+<li>"내년에 일어날 일이 아니다"</li>
+</ul>
+</li>
+<li>매출 기반 밸류에이션을 경영진 스스로 부정한 셈이다.</li>
+<li><strong>가이던스 화법</strong></li>
+<li>수치 가이던스는 없다.</li>
+<li>실적콜에서 "매출 변동성이 지속될 것"이라고 하면서 C-DAC 한 건만 시점을 특정했다.</li>
+<li>기술 로드맵 업데이트는 2026년 하반기로 미뤘다. "더 많은 운영 데이터 확보 후"라는 이유를 댔다.</li>
+<li><strong>Q&amp;A의 회피·방어 지점</strong></li>
+<li>Gary Mobley(StoneX)가 파이프라인을 1년 전과 비교해 달라고 물었다. 답변은 "관심이 크게 늘었다"는 정성적 설명뿐이었다. 금액이나 건수는 제시하지 않았다.</li>
+<li>Nehal Chokshi(Northland)가 36Q 정확도 개선이 108Q에도 적용됐는지 물었다. 답은 "아직 적용하지 않았고, 클라우드 사용자 때문에 별도 108Q 시스템에서 시험 중"이었다.</li>
+<li>즉, 대표 제품인 108Q의 성능 개선은 아직 검증 전이다.</li>
+<li><strong>콜에서만 드러난 정보</strong></li>
+<li>AWS 108Q 사용자 약 1,000명, 대부분 몇 초에서 몇 분 수준의 사용.</li>
+<li>IBM 퀀텀 파운드리를 장래 제조 대안으로 고려 중이며, 대규모 CapEx 부담을 줄일 수 있다고 언급.</li>
+<li>상반기 성장이 상업 기관 구매에서 나왔다는 설명.</li>
+<li>실적콜과 5월 행사 모두에서 "약 3년 후 퀀텀 어드밴티지"를 반복.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>희석</strong>
+   - 상무부가 계약 조건으로 소수 지분을 받는다(8-K). EX-99.1은 "기존 주주 희석"을 위험 요인으로 직접 적었다.
+   - 행사가 $11.50 워런트는 현재 주가 $12.63에서 내가격이다.
+   - 지분율, 발행 가격, 워런트 잔량은 공시상 확인 불가다.</li>
+<li><strong>매출 집중과 변동성</strong>
+   - 10-K는 매출 상당 부분이 공공부문 계약에 의존한다고 명시한다.
+   - 분기 매출이 단일 계약의 인도 시점에 좌우된다. 예를 들어 C-DAC $8.4M이 지연되면 Q4 매출 성장률이 크게 꺾인다.</li>
+<li><strong>기술 실행과 경쟁</strong>
+   - 회사가 상업화 조건으로 제시한 목표는 1,000큐비트와 정확도 99.9%다. 현재 수준과의 차이가 크다.
+   - 경쟁사는 자본력이 압도적인 대형사(IBM, Google 등)다.
+   - 108Q 정확도는 공개되지 않았고, 개선 사항도 아직 적용되지 않았다.</li>
+<li><strong>정부 자금 조건부 지급과 정책 변수</strong>
+   - 상무부 계약은 마일스톤과 분할 지급 구조이고, 해지 조항이 있다(EX-10.1 Article XI).
+   - 회사도 "자금 수령 시점"을 위험 요인으로 명시했다.
+   - 10-K는 정부 셧다운과 정책 변화를 위험으로 적었다.</li>
+<li><strong>GAAP 손익 변동성</strong>
+   - 파생상품 부채의 공정가치 조정 때문에 주가가 오를수록 GAAP 순손실이 커진다.
+   - 분기 순손실 $52.6M 가운데 Non-GAAP 손실은 $16.0M뿐이다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong>
+- 시가총액 대비 연환산 매출이 약 200배다(단순 계산 $4.22B / $20.4M).
+- 영업이익률은 <span class="down">-546%</span>다. 영업비용 증가액($9.9M)이 매출 증가액($3.3M)보다 크다.
+- 현금 $541.3M은 시가총액의 12.8%로, 하방을 일부 받친다. 하지만 기업가치의 87%는 3년 이상 먼 기술 성공에 대한 옵션 가치다.
+- 오늘 상승에는 확인된 촉매가 없다. 거래량 1.83배는 기관 매수를 확신할 수준이 아니다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 2026 10-Q:</strong> 상무부 자금 수령액, 회계처리 방식, 정부에 발행한 증권의 조건과 희석률. 워런트 잔량도 함께 본다.
+2. <strong>Q4 2026 실적:</strong> C-DAC $8.4M이 예정대로 인식됐는지, 이를 뺀 매출에서도 성장이 이어지는지 본다.
+3. <strong>하반기 로드맵 업데이트:</strong> 108Q 2큐비트 게이트 정확도 공개치, 3년 목표(1,000Q·99.9%·40ns 미만)의 유지 또는 지연 여부를 본다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통 이상으로 올릴 조건:</strong> 다음이 모두 확인될 때 상향을 검토한다.
+  - 108Q 정확도가 99.5% 이상으로 공개된다.
+  - C-DAC 외에도 반복 수주가 이어져 분기 매출이 $10M 이상으로 정착한다.
+  - 희석 조건이 시장 예상보다 우호적이다.
+- <strong>회피로 내릴 조건:</strong> 다음 중 하나라도 확인되면 하향한다.
+  - C-DAC 인식이 지연된다.
+  - 로드맵 목표 시점이 뒤로 밀린다.
+  - 상무부 자금 지급이 중단되거나 조건이 바뀐다.
+  - 현금 소진이 TTM -$87.6M에서 크게 빨라진다.
+  - 정부 지분 발행 외에 추가 증자가 공시된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926023454/rgti-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-023454</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926091993/rgti-20260630x10q.htm">10-Q — 2026-06-30_0001104659-26-091993</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926058641/rgti-20260331x10q.htm">10-Q — 2026-03-31_0001104659-26-058641</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926105662/tm2624940d1_ex99-1.htm">8-K — 2026-09-04_0001104659-26-105662__EX-99.1__tm2624940d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926105662/tm2624940d1_ex10-1.htm">8-K — 2026-09-04_0001104659-26-105662__EX-10.1__tm2624940d1_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926105662/tm2624940d1_8k.htm">8-K — 2026-09-04_0001104659-26-105662</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926098999/tm2623611d2_8k.htm">8-K — 2026-08-19_0001104659-26-098999</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1838359/000110465926098877/tm2623611d1_ex99-1.htm">8-K — 2026-08-18_0001104659-26-098877__EX-99.1__tm2623611d1_ex99-1</a></li>
+<li>Transcript — 2026-08-06 Q2 2026 Transcript</li>
+<li>Transcript — 2026-05-21 Canaccord Genuity Virtual Quantum Symposium Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

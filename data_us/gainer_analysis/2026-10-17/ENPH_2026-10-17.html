@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENPH — Enphase Energy Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ENPH — Enphase Energy Inc. Common Stock</h1>
+<div class="sub">2026-10-17 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ENPH</span><span class="badge">+5.01%</span><span class="badge">거래량 1.06배</span><span class="badge">$4.07B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>헤드라인 실적이 실제 체력보다 좋아 보인다.</strong> 2Q26 매출 $291.9M 중 $84.3M(28.9%)이 safe harbor 매출이다. 이를 빼면 핵심 매출은 1Q26 약 $248M에서 2Q26 약 $208M으로 약 16% 줄었다. 이는 제공 지표와 실적콜 수치로 추정한 값이다.</li>
+<li><strong>GAAP 매출총이익률 60%와 영업이익률 YoY <span class="up">+6.9%</span>p는 일회성 요인이 크다.</strong> 2분기에 관세 환급금 $41M이 들어왔다. Non-GAAP 매출총이익률은 46.8%이고, 회사가 제시한 3분기 GAAP 매출총이익률은 42~45%다.</li>
+<li><strong>재무 하방은 탄탄하다.</strong> 현금·유가증권 $937.7M은 시가총액의 약 23%다. 별도로 PTC(세액공제) $193.5M을 보유하고 있고, TTM 잉여현금흐름은 $152.6M로 흑자다. 다만 부채 규모는 제공 자료상 확인할 수 없다.</li>
+<li><strong>성장 촉매는 대부분 미래 이벤트다.</strong> IQ Battery 5는 4Q26, 네덜란드 배터리 수요는 4Q 이후, IQ SST는 2027년 파일럿·2028년 양산이다. 미국 주거용 sell-through는 YoY <span class="down">-34%</span>로 수요 바닥이 확인되지 않았다.</li>
+<li><strong>오늘 상승은 거래로 확인되지 않는다.</strong> 거래량은 20일 중앙값의 1.06배로 사실상 평소 수준이다. 의미 있는 비중 확대보다는 3분기 실적에서 핵심 매출이 반등하는지 확인한 뒤 판단하는 것이 맞다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li><strong>SEC 공시:</strong> 최근 4일 내 공시가 없다.</li>
+<li><strong>뉴스:</strong> "Goldman Sachs Reaffirms Bullish Stance"(Stocktwits) 헤드라인이 있다. 다만 보고서 날짜와 목표주가 등 세부 내용이 제공되지 않아 오늘 상승의 직접 촉매로 특정할 수 없다. 같은 묶음에 "Why Is Enphase Energy Stock Falling Wednesday?"(Benzinga)도 있어 방향이 엇갈린다. 펜실베이니아 상업용 현장에 마이크로인버터 561대가 설치됐다는 뉴스는 규모상 주가 촉매로 보기 어렵다.</li>
+<li><strong>실적:</strong> 2Q26 실적 발표(2026-07-28) 이후 약 2.5개월이 지나 직접 관련은 없다.</li>
+<li><strong>수급 정황(추정):</strong></li>
+<li>20일 <span class="down">-11.6%</span>, 60일 <span class="down">-21.3%</span>, 52주 고점 대비 <span class="down">-57.4%</span>로 낙폭이 큰 상태다.</li>
+<li>실적콜 당시 Seeking Alpha 페이지에 표시된 주가는 $36.32였는데, 현재 $30.82로 약 15% 더 내렸다.</li>
+<li>같은 페이지에 공매도 잔량 17.85%가 표시되어 있었다(7월 말 기준, 현재치는 확인 불가).</li>
+<li>거래량 배수 1.06배와 함께 보면, 기술적 반등이나 숏커버, 섹터 동조 가능성이 크다.</li>
+<li><strong>스크린 조건 재확인:</strong> '거래량 급증'이라는 스크린 전제와 달리 실제 거래량 배수는 1.06배로 급증이 아니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong> (10-Q 사업 개요 기준)
+- 주력은 마이크로인버터(IQ Microinverters)다. 2026-06-30까지 누적 약 8,940만 대를 출하했고, 165개국 이상에 530만 개 이상의 시스템이 설치됐다.
+- 그 밖에 IQ Battery, IQ Load Controller, IQ EV Charger, IQ Combiner·IQ Gateway(모니터링), Enphase App·Installer App(클라우드 SW)을 판매한다.
+- 신규 제품군으로 상업용 IQ9N 마이크로인버터와 IQ Vault 배터리가 있다(실적콜). 데이터센터용 1.25MW IQ Solid-State Transformer(IQ SST)도 개발 중이다(10-Q).</p>
+<p><strong>고객군</strong>
+- 매출의 중심은 태양광 유통업체(distributor)다. 유통업체가 모듈·랙킹과 묶어 설치업체에 재판매하는 구조다.
+- 그 외에 대형 설치업체 직판, OEM(모듈 제조사가 마이크로인버터를 통합해 판매), 전략적 파트너(TPO 금융사업자 등)에 판매한다. 일부 제품은 온라인 스토어에서 주택 소유자에게 직접 판다.</p>
+<p><strong>매출 구성</strong>
+- 지역별로 2Q26 미국 78%, 해외 22%다(실적콜). 10-Q 발췌에는 수치가 없다.
+- 제품별(마이크로인버터 대 배터리) 매출 구성은 공시상 확인할 수 없다.
+- 물량 기준으로 2분기에 마이크로인버터 159만 대, 배터리 113.8MWh를 출하했다.</p>
+<p><strong>경쟁 위치</strong>
+- 회사는 전통적인 스트링 인버터 경쟁사와 달리 발전·저장 양쪽에 시스템 이중화를 갖춰 단일 고장점 위험이 없다고 밝힌다.
+- 회사는 원격 펌웨어 업데이트로 유지보수 비용을 낮출 수 있다고 주장한다.
+- 미국 텍사스·사우스캐롤라이나 생산을 바탕으로 45X 생산세액공제를 받고 있다. 회사는 FEOC 요건 충족과 국내 콘텐츠 크레딧 적격성을 경쟁 요소로 제시한다.
+- 시장점유율 수치는 공시상 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>3Q26 가이던스</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>약 $282.8M (QoQ <span class="up">+3.2%</span>로 역산)</td>
+<td>$291.9M</td>
+<td>$290~320M</td>
+</tr>
+<tr>
+<td>Safe harbor 매출</td>
+<td>$34.5M</td>
+<td>$84.3M</td>
+<td>약 $75M</td>
+</tr>
+<tr>
+<td><strong>핵심 매출(safe harbor 제외, 추정)</strong></td>
+<td><strong>약 $248M</strong></td>
+<td><strong>약 $208M</strong></td>
+<td><strong>약 $215~245M (CEO 언급 core 약 $230M)</strong></td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td>35.5%</td>
+<td>60.0%</td>
+<td>42~45%</td>
+</tr>
+<tr>
+<td>Non-GAAP 매출총이익률</td>
+<td>43.9%</td>
+<td>46.8%</td>
+<td>44~47% (관세 영향 약 2%p 포함)</td>
+</tr>
+<tr>
+<td>GAAP / Non-GAAP 영업이익률</td>
+<td>공시상 확인 불가</td>
+<td>17.7% / 19.4%</td>
+<td>확인 불가</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업비용</td>
+<td>확인 불가</td>
+<td>약 $79.7M (매출의 27.3%)</td>
+<td>$76~80M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질 (물량·단가·믹스)</strong>
+- 매출 YoY <span class="down">-19.6%</span>는 미국 수요 위축 때문이다. 실적콜 기준 미국 sell-through는 QoQ <span class="down">-7%</span>, YoY <span class="down">-34%</span>다. 10-Q는 25D 주거용 ITC가 2025-12-31에 만료됐다고 공시했다.
+- QoQ <span class="up">+3.2%</span>라는 숫자는 safe harbor 매출 증가($34.5M → $84.3M)가 만든 착시다. 핵심 매출은 오히려 크게 줄었다(추정).
+- 지역 믹스는 개선 중이다. 미국 매출은 QoQ <span class="down">-3%</span>였고, 유럽은 <span class="up">+35%</span>로 배터리가 성장을 이끌었다(실적콜).
+- 단가(ASP) 데이터는 공시상 확인할 수 없다.</p>
+<p><strong>마진 방향성</strong>
+- 2Q GAAP 매출총이익률 60%는 관세 환급금 $41M의 효과다. 분기 후에도 $11M이 추가로 들어왔다.
+- 지속 가능한 수준은 non-GAAP 45~47% 수준으로 본다.
+- 영업이익률 YoY <span class="up">+6.9%</span>p는 이 일회성 요인을 포함한 수치라서 구조적 개선으로 해석하면 안 된다.
+- 3Q 가이던스 중간값(매출 $305M, non-GAAP 매출총이익률 45.5%, 영업비용 $78M)을 적용하면 non-GAAP 영업이익률은 약 20% 전후다(추정). 즉 영업 레버리지는 유지되지만 확대 신호는 없다.</p>
+<p><strong>현금흐름</strong>
+- 2Q 영업현금흐름 $40.3M, 설비투자 $14.4M, 잉여현금흐름 $25.9M이다.
+- TTM 잉여현금흐름 $152.6M은 시가총액 대비 약 3.7%다.
+- 10-Q는 safe harbor 계약 때문에 매출 인식과 현금흐름 시점의 변동성이 커진다고 명시한다. 분기별 잉여현금흐름은 들쭉날쭉할 수 있다.</p>
+<p><strong>재무 건전성</strong>
+- 현금·현금성자산·유가증권은 $937.7M이다.
+- 대차대조표상 PTC 자산은 $193.5M이다. $150M 규모의 PTC 양도 계약을 발표했고, 앞으로는 IRS 직접 환급 대신 매각으로 현금화할 계획이다(실적콜).
+- 차입금·전환사채 잔액은 제공 발췌에 없어 순현금 여부를 판단할 수 없다(공시상 확인 불가).</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 유럽 배터리</strong></td>
+<td>실적콜에서 네덜란드 넷미터링 종료로 4Q부터 배터리 수요가 "big breakout"할 것이라고 언급했다. 2Q 네덜란드 배터리 활성화는 <span class="up">+102%</span>였다. 회사는 3Q는 여름 계절성으로 보합을 예상했다.</td>
+<td>3Q 해외 매출 비중이 22%보다 오르는지, 4Q 가이던스에 유럽 배터리 증가가 반영되는지</td>
+</tr>
+<tr>
+<td><strong>② IQ Battery 5</strong></td>
+<td>회사는 4Q26 출하를 시작하며, 이전 세대보다 에너지밀도가 50% 높고 kWh당 원가가 40% 낮다고 밝혔다.</td>
+<td>출하 일정이 지켜지는지, 배터리 출하량이 3Q 가이던스 130~150MWh(2Q 113.8MWh)를 달성하는지</td>
+</tr>
+<tr>
+<td><strong>③ 미국 TPO(Propel)</strong></td>
+<td>6개 주에서 3Q 말까지 12개 주로 늘리고, 주당 신규 계약을 약 200건에서 연말 500건으로 늘리는 것이 목표다(실적콜). 48E 리스형 ITC는 유지되지만, 태양광 단독 프로젝트는 2027년 말까지 가동을 시작해야 한다.</td>
+<td>3Q 콜에서 주 수 12개와 주당 계약 건수 추이를 공개하는지</td>
+</tr>
+<tr>
+<td><strong>④ Safe harbor 매출</strong></td>
+<td>2Q $84.3M, 3Q 약 $75M이다. 세액공제 마감을 앞둔 선구매 성격이라 지속성이 낮다.</td>
+<td>4Q 이후 safe harbor 규모가 줄어들 때 핵심 매출이 그 공백을 메우는지</td>
+</tr>
+<tr>
+<td><strong>⑤ 상업용(IQ9N, IQ Vault)</strong></td>
+<td>신제품을 출시했고, 회사는 미국 상업용 마이크로인버터 시장 기회를 강조한다(10-Q 미래예측 항목).</td>
+<td>상업용 매출을 따로 공개하는지(현재 공시상 확인 불가)</td>
+</tr>
+<tr>
+<td><strong>⑥ IQ SST(데이터센터)</strong></td>
+<td>2027년 파일럿, 2028년 양산 출하 계획이다. 실적콜에서 GaN 등 범용 부품, 소프트 스위칭, 플라스틱 외함을 통한 원가 우위와 1ms 미만 응답속도를 주장했다. 6월에 데이터센터 전문가를 이사로 선임했다(8-K).</td>
+<td>파일럿 고객 확보 공시, 45X 적용 여부 확정(콜에서 "검토 중")</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤·가이던스 화법</strong>
+- CEO는 유럽 배터리(네덜란드)와 신제품(IQ Battery 5, IQ SST)에 대해 매우 적극적인 어조였다. 반면 미국 주거용 시장에 대해서는 "안정화됐지만 전년보다 약 30% 낮다"며 방어적으로 말했다.
+- 3Q 가이던스는 sell-through 약 $245M에서 의도적인 under-shipment 약 $15M을 차감해 core 매출 약 $230M을 산출하고, safe harbor $75M을 더해 중간값 $305M을 만든 구조다. CEO는 차감 이유를 "just out of caution"이라고만 설명했다.
+- 마이크로인버터 채널 재고가 "slightly elevated"라고 인정한 것과 함께 보면, 유통 채널의 소화 속도가 아직 불확실하다는 신호로 읽힌다.</p>
+<p><strong>반복 질문과 방어 지점</strong>
+- 가이던스 가정(지역별 활성화 전망, under-shipment의 이유)에 대한 질문이 반복됐다. 회사는 지역별 물량 공개를 거부했고("We don't usually break out volumes by region"), under-shipment 사유도 구체화하지 않았다.
+- IQ SST의 45X 적용 여부에 대해서는 "working through the details"라며 답을 미뤘다.
+- EU Cyber Act 관련 질문에는 규제를 선제적으로 충족하고 있다는 원론적인 답변만 했다.</p>
+<p><strong>콜에서만 확인되는 정보</strong>
+- 3Q sell-through 전망 약 $245M(2Q 대비 <span class="up">+10%</span>)과 under-shipment 약 $15M
+- 관세 환급금 2Q $41M과 분기 후 $11M 추가
+- PTC 현금화 방식을 IRS 환급에서 매각으로 전환하고 $150M 양도 계약 체결
+- 고객서비스 NPS 80%(1Q 82%), 누적 고장률 500 DPPM
+- 네덜란드 넷미터링 대응 맥락에서 "Enphase has got half a million solar homes" 언급
+- 참고로 제공된 transcript는 중간이 생략되어 있어, CFO 발언 상세와 Q&amp;A 전체는 확인할 수 없다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>미국 세액공제 축소(OBBBA)</strong>
+   - 25D 주거용 ITC는 2025-12-31에 만료됐다.
+   - 48E 태양광 단독 프로젝트는 2027년 말까지 가동을 시작해야 한다.
+   - 국내 콘텐츠 기준이 45%로 올랐고, FEOC 요건이 단계적으로 강화된다(10-Q).
+   - 미국 매출 비중이 78%라서 직접 타격이 크다. 2028년 이후 TPO 태양광 단독 수요가 한 번 더 꺾일 위험이 있다.</li>
+<li><strong>Safe harbor 매출의 일시성</strong>
+   - 2Q 매출의 29%, 3Q 가이던스의 약 25%가 safe harbor다.
+   - 10-Q도 매출·현금흐름 시점의 변동성 확대를 명시한다. 이 매출이 빠지면 핵심 매출 약 $210~230M 수준이 실제 체력이다.</li>
+<li><strong>미국 주거용 수요와 채널 재고</strong>
+   - 미국 sell-through는 YoY <span class="down">-34%</span>다. 10-Q는 금리와 이란 분쟁 등 매크로 요인을 위험으로 명시한다.
+   - 마이크로인버터 채널 재고가 다소 높아 추가 under-shipment 가능성이 있다.</li>
+<li><strong>관세·무역 규제</strong>
+   - 3Q 매출총이익률에 관세 영향 약 2%p가 반영돼 있다.
+   - 2Q 마진을 끌어올린 관세 환급은 반복되지 않는다. 중국산 인버터 규제와 상호관세 변화가 공급망과 점유율의 변수다(실적콜·10-Q).</li>
+<li><strong>거버넌스</strong>
+   - 8-K(2026-08-10)에서 이사회는 2026 주총 이사 선임 투표 결과에 대응해 Kortlang 이사 유임을 결정했다. 동시에 지배구조 개선 조치를 발표했다.
+   - 득표율 수치는 발췌상 확인할 수 없다. 다만 주주 반발이 공식적으로 드러난 사례로 볼 수 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>관망 판단의 정량 근거</strong>
+- <strong>매출:</strong> 핵심 매출(추정)은 QoQ 약 <span class="down">-16%</span>이고, 3Q 가이던스 core 약 $230M도 1Q 수준(약 $248M)보다 낮다.
+- <strong>마진:</strong> 2Q GAAP 매출총이익률 60%는 3Q 가이던스 42~45%로 정상화된다. 영업이익률 개선은 일회성 요인의 영향이 크다.
+- <strong>밸류에이션 하방:</strong> 시가총액 $4.07B 대비 현금 $937.7M(23%)과 PTC $193.5M(5%)을 보유하고, TTM 잉여현금흐름 수익률은 약 3.7%다. 하방 지지는 있지만 부채 규모를 몰라 EV를 정확히 산출할 수 없다.
+- <strong>수급:</strong> 거래량 배수 1.06배, 60일 <span class="down">-21.3%</span>로 추세 전환 신호가 없다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q 실적(10월 말 예상)의 core 매출:</strong> safe harbor를 제외한 매출이 $230M 이상이고, sell-through가 QoQ <span class="up">+10%</span>를 실제로 달성했는지 본다.
+2. <strong>4Q 가이던스의 구성:</strong> safe harbor 의존도가 줄어드는지, 유럽 배터리와 IQ Battery 5 출하가 숫자로 반영되는지 확인한다.
+3. <strong>부채 구조와 채널 재고:</strong> 10-Q 대차대조표에서 차입금·전환사채 만기를 확인해 순현금 여부를 판단하고, 마이크로인버터 채널 재고가 정상화됐는지 본다.</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>'보통' 이상으로 올릴 조건:</strong>
+  - core 매출이 2개 분기 연속 QoQ로 증가
+  - non-GAAP 매출총이익률 45% 이상 유지
+  - 해외 비중이 25% 이상으로 올라 미국 의존도 축소가 확인됨
+  - 위 조건이 확인된 상태에서 거래량을 동반한 추세 반등
+- <strong>'회피'로 낮출 조건:</strong>
+  - 3Q core 매출이 $215M(가이던스 하단 수준) 미만
+  - 4Q safe harbor 매출 공백을 core 매출이 메우지 못해 전체 매출 가이던스가 $280M 아래로 하락
+  - IQ Battery 5 출하 지연
+  - 마이크로인버터 채널 재고 추가 증가로 under-shipment 확대</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm">10-K — 2025-12-31_0001463101-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000081/enph-20260630.htm">10-Q — 2026-06-30_0001463101-26-000081</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000047/enph-20260331.htm">10-Q — 2026-03-31_0001463101-26-000047</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000092/ex991_kortlangannouncement.htm">8-K — 2026-08-10_0001463101-26-000092__EX-99.1__ex991_kortlangannouncement</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000092/enph-20260810.htm">8-K — 2026-08-10_0001463101-26-000092</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000080/a2026q2exx991pressrelease.htm">8-K — 2026-07-28_0001463101-26-000080__EX-99.1__a2026q2exx991pressrelease</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000080/enph-20260728.htm">8-K — 2026-07-28_0001463101-26-000080</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1463101/000146310126000061/enph-20260615.htm">8-K — 2026-06-15_0001463101-26-000061</a></li>
+<li>Transcript — 2026-07-29 Enphase Energy, Inc. (ENPH) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-07-28 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

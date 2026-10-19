@@ -34,6 +34,10 @@ echo "================================================================="
 echo "Step 1: Collecting daily market data..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python batch_collector.py
 
+# 1b. 당일 시가총액 캐시(data_kr/<날짜>/market_cap.csv) — 섹터 Weekly/Daily Data가 시총 기준 수익률에 쓴다 (2026-10-19)
+echo "Step 1b: Caching market cap snapshot..."
+/home/inhyuk/projects/ExportImportAutomation/venv/bin/python weekly_sector_data.py --collect-mcap
+
 # 2. Run telegram reporter to update charts, upload and forward them
 # DISABLED 2026-07-29: 종목별 주체 수급 차트 전송 중지 (사용자 요청)
 # echo "Step 2: Generating cumulative investor charts and uploading to Telegram..."
