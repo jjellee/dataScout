@@ -264,3 +264,92 @@ Traceback (most recent call last):
   File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
     raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
 requests.exceptions.JSONDecodeError: Expecting value: line 13 column 1 (char 25)
+2026-10-19 21:34:03,224 - INFO - IR 원문 보충 0/0건
+2026-10-19 21:34:03,646 - INFO - IR 공시 파싱 10건 (원문 없음 5680 — 2025년 이전 미수집분 포함, 일자 미파싱 0)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 13 column 1 (char 25)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/ir_events.py", line 708, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/ir_events.py", line 681, in main
+    out, events, up, fut = build_outputs(cache)
+                           ~~~~~~~~~~~~~^^^^^^^
+  File "/home/inhyuk/projects/dataScout/ir_events.py", line 643, in build_outputs
+    out, up, fut = build_excel(events, EXCEL_PATH, today=today)
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/dataScout/ir_events.py", line 405, in build_excel
+    from quarterly_earnings import _style_sheet, FMT_INT, FONT_NAME
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 45, in <module>
+    from download_important_historical import (  # noqa: E402
+        get_api_key, rotate_api_key, QuotaExhausted, wait_until_quota_reset,
+        note_request, DART_KEYS, load_env)
+  File "/home/inhyuk/projects/dataScout/download_important_historical.py", line 19, in <module>
+    from dart_classifier import classify_disclosure
+  File "/home/inhyuk/projects/dataScout/dart_classifier.py", line 20, in <module>
+    from pykrx import stock as pykrx_stock
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/__init__.py", line 7, in <module>
+    from . import bond, stock
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/bond/__init__.py", line 1, in <module>
+    from .bond import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/bond/bond.py", line 5, in <module>
+    from pykrx.website import krx
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/__init__.py", line 3, in <module>
+    from .bond import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/bond/__init__.py", line 2, in <module>
+    from .wrap import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/bond/wrap.py", line 5, in <module>
+    from pykrx.website.comm import dataframe_empty_handler
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/__init__.py", line 8, in <module>
+    from pykrx.website.comm.webio import get_session, set_session
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/webio.py", line 12, in <module>
+    _session = build_krx_session()
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 192, in build_krx_session
+    success = krxs.refresh(login_id, login_pw)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 53, in refresh
+    success = login_krx(login_id, login_pw, self.session)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 153, in login_krx
+    data = resp.json()
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 13 column 1 (char 25)
+2026-10-20 12:34:07,561 - INFO - IR 원문 보충 0/0건
+2026-10-20 12:34:08,112 - INFO - IR 공시 파싱 3건 (원문 없음 5680 — 2025년 이전 미수집분 포함, 일자 미파싱 0)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-10-20 12:34:09
+  만료 시간: 2026-10-20 13:34:09
+2026-10-20 12:34:09,379 - INFO - Loaded 25558 closing prices from cache.
+2026-10-20 12:34:09,380 - INFO - Loaded 2086 option-date LLM results from cache.
+2026-10-20 12:34:15,509 - INFO - 엑셀 저장: /home/inhyuk/projects/dataScout/data_dart/ir_events.xlsx (예정 90건, 행사 0+165, 종목 902)
+2026-10-20 12:34:15,555 - INFO - ICS 저장: /home/inhyuk/projects/dataScout/data_dart/ir_calendar.ics (1302건)
+2026-10-20 12:34:15,577 - INFO - ICS 저장: /home/inhyuk/projects/dataScout/data_dart/ir_calendar_major.ics (699건)
+2026-10-20 16:04:38,963 - INFO - IR 원문 보충 0/0건
+2026-10-20 16:04:39,393 - INFO - IR 공시 파싱 6건 (원문 없음 5680 — 2025년 이전 미수집분 포함, 일자 미파싱 0)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-10-20 16:04:40
+  만료 시간: 2026-10-20 17:04:40
+2026-10-20 16:04:40,775 - INFO - Loaded 25590 closing prices from cache.
+2026-10-20 16:04:40,776 - INFO - Loaded 2086 option-date LLM results from cache.
+2026-10-20 16:04:45,662 - INFO - 엑셀 저장: /home/inhyuk/projects/dataScout/data_dart/ir_events.xlsx (예정 96건, 행사 0+165, 종목 903)
+2026-10-20 16:04:45,708 - INFO - ICS 저장: /home/inhyuk/projects/dataScout/data_dart/ir_calendar.ics (1308건)
+2026-10-20 16:04:45,728 - INFO - ICS 저장: /home/inhyuk/projects/dataScout/data_dart/ir_calendar_major.ics (701건)

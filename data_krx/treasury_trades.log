@@ -7409,3 +7409,64 @@ KRX 로그인 완료.
 2026-10-16 22:20:02,252 - INFO - Loaded 2081 option-date LLM results from cache.
 2026-10-16 22:20:07,519 - INFO - Excel saved: /home/inhyuk/projects/dataScout/data_krx/treasury_stock_trades.xlsx (1137KB, 354종목·10,740행·93일)
 2026-10-16 22:20:13,202 - INFO - Telegram upload OK
+2026-10-19 22:20:01,493 - INFO - 20261019 코스닥: 63행 파싱 (20261019000687)
+2026-10-19 22:20:01,510 - INFO - 20261019 유가증권: 45행 파싱 (20261019000688)
+KRX 로그인 시도...
+  로그인 ID: heyork1
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 13 column 1 (char 25)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 497, in <module>
+    main()
+    ~~~~^^
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 491, in main
+    out = build_excel(cache, EXCEL_PATH, args.date)
+  File "/home/inhyuk/projects/dataScout/krx_treasury_trades.py", line 285, in build_excel
+    from quarterly_earnings import _style_sheet, FMT_INT, FMT_DEC, FMT_PCT
+  File "/home/inhyuk/projects/dataScout/quarterly_earnings.py", line 45, in <module>
+    from download_important_historical import (  # noqa: E402
+        get_api_key, rotate_api_key, QuotaExhausted, wait_until_quota_reset,
+        note_request, DART_KEYS, load_env)
+  File "/home/inhyuk/projects/dataScout/download_important_historical.py", line 19, in <module>
+    from dart_classifier import classify_disclosure
+  File "/home/inhyuk/projects/dataScout/dart_classifier.py", line 20, in <module>
+    from pykrx import stock as pykrx_stock
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/__init__.py", line 7, in <module>
+    from . import bond, stock
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/bond/__init__.py", line 1, in <module>
+    from .bond import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/bond/bond.py", line 5, in <module>
+    from pykrx.website import krx
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/__init__.py", line 3, in <module>
+    from .bond import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/bond/__init__.py", line 2, in <module>
+    from .wrap import *
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/bond/wrap.py", line 5, in <module>
+    from pykrx.website.comm import dataframe_empty_handler
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/__init__.py", line 8, in <module>
+    from pykrx.website.comm.webio import get_session, set_session
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/webio.py", line 12, in <module>
+    _session = build_krx_session()
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 192, in build_krx_session
+    success = krxs.refresh(login_id, login_pw)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 53, in refresh
+    success = login_krx(login_id, login_pw, self.session)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/auth.py", line 153, in login_krx
+    data = resp.json()
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 13 column 1 (char 25)
