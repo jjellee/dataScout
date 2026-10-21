@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADEA — Adeia Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ADEA — Adeia Inc. Common Stock</h1>
+<div class="sub">2026-10-21 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ADEA</span><span class="badge">+3.08%</span><span class="badge">거래량 1.03배</span><span class="badge">$2.32B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>오늘 등락률은 <span class="up">+3.08%</span>이고 거래량은 20일 중앙값 대비 1.03배입니다. 요청 전제인 '거래량 급증'은 지표상 확인되지 않으며, 확인된 촉매도 없어 수급 또는 섹터 동조에 따른 움직임일 가능성이 큽니다.</li>
+<li>밸류에이션 부담은 낮아 보입니다. TTM 잉여현금흐름 $172.0M 기준 수익률은 약 7.4%이고(계산), 52주 고점 대비 −37.4%입니다.</li>
+<li>회사는 2026년 매출 가이던스 $395–435M을 재확인했습니다. 상반기 매출이 약 $200.9M이므로(계산), 하반기에 $194–234M이 필요합니다. 회사도 실적콜에서 자신들은 "back-end loaded" 구조라고 언급했습니다.</li>
+<li>신임 CEO는 2026년 10월 12일 취임했습니다(8-K). 취임 후 첫 실적과 Pay-TV 소송 방향이 확인되기 전까지는 비중을 실을 근거가 부족합니다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시는 없습니다. 가장 최근 공시는 2026년 9월 28일자 8-K(CEO 선임 보도자료)이며 4일 창 밖입니다.</li>
+<li>뉴스 헤드라인은 주가 움직임 자체를 다룬 내용이 대부분입니다(GuruFocus "Stock Up 3.1% but GF Value Says Overvalued", Stock Traders Daily "Price Dynamics"). Simply Wall Street의 "Charter License Renewal" 헤드라인은 있으나 본문이 제공되지 않아 계약 조건은 확인 불가입니다.</li>
+<li>거래량이 평소 수준(1.03배)이므로 기관 대량 매수 신호로 보기 어렵습니다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>[10-K 사업 개요]</strong></p>
+<ul>
+<li>회사는 자사를 "기술 회사이자 혁신 인큐베이터"로 소개하며, 미디어·엔터테인먼트, 소비자 가전, 반도체 산업을 대상으로 IP를 <strong>라이선싱</strong>하는 구조입니다.</li>
+<li>보고 부문은 <strong>IP Licensing 단일 부문</strong>입니다(10-Q).</li>
+<li>특허 자산은 10-K 기준 약 13,750건, 2026년 2분기 10-Q 기준 약 14,250건입니다. 내부 혁신 엔진이 전체 특허 포트폴리오의 약 80%를 차지한다고 밝혔습니다.</li>
+<li>직원은 약 150명이며 대부분 미국에 있습니다(10-Q).</li>
+</ul>
+<p><strong>고객군</strong></p>
+<ul>
+<li>대형 미디어·엔터테인먼트, 소비자 가전, 소셜미디어, 반도체 기업이 고객입니다(10-K).</li>
+<li>실적콜에서 언급된 주요 고객군은 다음과 같습니다.</li>
+<li><strong>Pay-TV·OTT:</strong> Google/YouTube TV 갱신, Disney(Hulu + Live TV) 계약</li>
+<li><strong>e-commerce:</strong> RPX 단일 계약에 10개 회사 참여</li>
+<li><strong>반도체:</strong> AMD 라이선스, SanDisk·Kioxia 고객 언급(회사 주장)</li>
+</ul>
+<p><strong>매출 구성</strong></p>
+<ul>
+<li>공시상 확인 가능한 범위에서 미디어와 반도체의 매출 비중은 <strong>확인 불가</strong>입니다. 발췌 원문이 절단되었습니다.</li>
+<li>회사는 장기 목표로 미디어 연 $400M(변경 없음)과 반도체 연 $200M(기존 $100M에서 상향)을 제시했습니다(실적콜).</li>
+<li>소비자 가전 사업은 전체 매출의 약 10% 수준이라고 언급했습니다(실적콜).</li>
+</ul>
+<p><strong>경쟁 위치</strong></p>
+<ul>
+<li>회사는 자사를 "업계 선도적인 IP 라이선싱 플랫폼"이라고 밝혔습니다(회사 주장).</li>
+<li>경쟁사 구도와 시장점유율은 제공된 원문에 없어 <strong>확인 불가</strong>입니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 (매출)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026년 1분기 매출</td>
+<td>$104.8M (YoY <span class="up">+19.5%</span>)</td>
+<td>10-Q (1Q)</td>
+</tr>
+<tr>
+<td>2026년 2분기 매출</td>
+<td>$96.1M (YoY <span class="up">+12.1%</span>, QoQ −8.3%)</td>
+<td>10-Q (2Q), 지표</td>
+</tr>
+<tr>
+<td>상반기 매출</td>
+<td>약 $200.9M (YoY 약 <span class="up">+15.9%</span>)</td>
+<td>계산</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>라이선스 매출은 계약 타이밍에 따라 분기별 변동이 큽니다. 회사도 "big deals, small volume high dollar" 구조라고 밝혔습니다(실적콜).</li>
+<li>2분기에는 라이선스 계약 6건을 체결했고, 신규 고객 12곳을 확보했다고 밝혔습니다(실적콜).</li>
+<li>고정수수료·최소보장 계약이 매출의 상당 부분을 차지한다고 10-Q에 기재되어 있습니다.</li>
+<li>가격·물량·믹스 분해는 공시상 <strong>확인 불가</strong>입니다.</li>
+<li>비-Pay-TV 반복매출은 2분기 기준 전년 대비 54% 성장했고, Pay-TV 반복매출의 거의 2배 규모라고 회사가 밝혔습니다(실적콜). 2분기 반복매출의 절대 금액은 원문이 절단되어 <strong>확인 불가</strong>입니다.</li>
+</ul>
+<p><strong>마진 방향성</strong></p>
+<ul>
+<li>영업이익률은 31.9%이고, 전년 대비 <span class="up">+4.4%</span>p입니다(지표표).</li>
+<li>회사 비GAAP 운영비용은 $40.2M으로 전 분기 대비 −6%입니다. 주로 소송비와 인건비 감소 때문이라고 설명했습니다(실적콜).</li>
+<li>2분기 소송비는 $5.3M으로 전 분기 대비 −11%입니다(실적콜).</li>
+<li>조정 EBITDA 마진은 58.7%입니다(회사 비GAAP 기준, 실적콜).</li>
+<li>매출총이익률은 지표에 '-'로 되어 있어 <strong>확인 불가</strong>입니다.</li>
+</ul>
+<p><strong>현금흐름</strong></p>
+<ul>
+<li>TTM 잉여현금흐름은 $172.0M입니다(지표).</li>
+<li>2분기 영업현금흐름은 $54.6M입니다(실적콜).</li>
+<li>회사는 2026년 연간 영업현금흐름을 약 $150M으로 제시했고, 3분기는 "fairly modest", 4분기는 회복을 예상한다고 밝혔습니다(실적콜).</li>
+<li>TTM 잉여현금흐름($172.0M)과 연간 영업현금흐름 가이던스($150M)는 기간과 정의가 달라 직접 비교할 수 없습니다.</li>
+</ul>
+<p><strong>재무 건전성</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현금 및 유가증권</td>
+<td>$137.1M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>텀론 잔액</td>
+<td>$392.6M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>순부채</td>
+<td>약 $255.5M</td>
+<td>계산</td>
+</tr>
+<tr>
+<td>2분기 이자비용</td>
+<td>$8M (유효이자율 7.1%)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>2분기 원금상환</td>
+<td>$6.1M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>2분기 자사주 매입</td>
+<td>약 35.3만 주, $10M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>2분기 소규모 IP 인수</td>
+<td>6건, $9.5M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>배당 규모</td>
+<td>확인 불가 (배당 프로그램 존재만 언급)</td>
+<td>실적콜</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>발행주식 수는 2026년 2월 6일 기준 109,052,507주입니다(10-K 표지).</li>
+<li>시가총액은 $2.32B입니다(지표). 순부채를 더한 내재가치(EV)는 약 $2.58B입니다(계산).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 제시 내용</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 2026 매출 가이던스</td>
+<td>$395–435M 재확인</td>
+<td>하반기 매출 $194–234M 필요(계산)</td>
+<td>3분기 매출이 하반기 필요 구간 하단을 넘는지, 가이던스 하향 여부</td>
+</tr>
+<tr>
+<td>② 비-Pay-TV 반복매출</td>
+<td>2분기 전년 대비 <span class="up">+54%</span>, OTT·e-commerce·CE·소셜 중심</td>
+<td>신규 계약의 연속적 체결, 갱신 유지</td>
+<td>성장률이 둔화되는지, 2분기 반복매출 절대 금액 공개 여부</td>
+</tr>
+<tr>
+<td>③ e-commerce (RPX)</td>
+<td>10개 회사 단일 계약, 장기적으로 CE와 유사한 규모 가능성 주장</td>
+<td>유사 구조 계약의 추가 체결</td>
+<td>RPX 외 유사 딜 발표 여부, e-commerce 매출 공개 여부(공시상 확인 불가)</td>
+</tr>
+<tr>
+<td>④ 반도체 하이브리드 본딩</td>
+<td>장기 기회 $100M→$200M 상향(약 5년 장기계획 기준)</td>
+<td>HBM·NAND 메모리 고객 라이선스 체결, 업계 설비투자 실행</td>
+<td>AMD 이외 메모리 업체 라이선스 체결 여부, RapidCool 라이선스 진전</td>
+</tr>
+<tr>
+<td>⑤ 장기 목표</td>
+<td>연 $600M (기존 $500M)</td>
+<td>미디어 $400M + 반도체 $200M 구조</td>
+<td>목표 상향의 근거가 되는 신규 계약이 분기 매출에 반영되는지</td>
+</tr>
+<tr>
+<td>⑥ 소규모 IP 인수</td>
+<td>2분기 6건, $9.5M</td>
+<td>인수 특허의 라이선스 전환</td>
+<td>분기별 인수 건수와 금액 누적 추이</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>반도체 시장 규모, 업계 설비투자 규모(약 $125B), NVIDIA Feynman 하이브리드 본딩 채택(2028년), Samsung 본딩 장비 주문 50대 등은 <strong>회사 또는 업계 보고서 인용</strong>이며 독립적으로 검증되지 않았습니다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 자신감의 근거</strong></p>
+<ul>
+<li>경영진은 전반적으로 자신감 있는 톤을 유지했습니다. 2분기 실적이 "기대에 부합했다"고 평가하고, 가이던스를 재확인했으며, 장기 목표를 상향했습니다.</li>
+<li>자신감의 근거로는 Google 갱신, RPX 계약, AMD 라이선스, 2분기 신규 고객 12곳을 제시했습니다.</li>
+<li>가이던스 화법에는 변화가 있었습니다. 회사는 "we're in better shape than last year"라고 언급하면서도 "back-end loaded" 구조임을 인정했습니다.</li>
+<li>장기 목표 상향은 반도체 쪽 가정이 주도했습니다. 미디어 목표($400M)는 변경하지 않았습니다.</li>
+</ul>
+<p><strong>반복된 질문과 회사의 방어 지점</strong></p>
+<ul>
+<li><strong>가이던스 달성 경로:</strong> 애널리스트(Khorsand)가 "1~2개 딜에 의존하는지", "하단 페이스인데 상단은 어떻게 가는지"를 두 차례 질문했습니다. 회사는 "여러 경로가 있다"고 답했고 구체적인 딜 수는 밝히지 않았습니다. 또한 Pay-TV 분쟁 건이 "움직임을 크게 만들 수 있다"고 언급했습니다. CFO는 내부 전망이 컨센서스 모델과 "많이 닮았다"고 답했습니다.</li>
+<li><strong>반도체 장기 목표의 시점:</strong> 애널리스트(Cassidy)가 시점을 묻자, 회사는 장기 계획 기준 약 5년을 언급했습니다.</li>
+<li><strong>Pay-TV 소송:</strong> 회사는 소송의 해결 시점을 "예측하기 어렵다"고 밝혔습니다. 단기 실적에 영향을 줄 수 있다고 인정했습니다.</li>
+<li><strong>RPX 계약 조건:</strong> 협상 세부 사항은 "언급하지 않겠다"고 방어했습니다.</li>
+<li><strong>현금흐름:</strong> 3분기 영업현금흐름이 가벼울 것이라는 점을 인정하면서도, 2분기 현금 확보가 높았던 이유를 설명했습니다.</li>
+</ul>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong></p>
+<ul>
+<li>RPX 계약은 10개 회사가 참여하는 단일 계약이고, 미디어 포트폴리오 약 10,900건의 <strong>텀 라이선스</strong>입니다. 회사는 이 구조를 다른 고객에게도 반복할 수 있다고 봅니다.</li>
+<li>소송 관련: Fubo를 상대로 미디어 포트폴리오 특허 4건으로 소송을 제기했다고 밝혔습니다. Disney 계약은 이 소송과 무관하다고 강조했습니다.</li>
+<li>미디어 측면 쟁점: 애널리스트는 DIRECTV와 DISH가 매출 수치에서 빠져나가고 있다고 언급했고, 회사는 이를 정정하지 않았습니다.</li>
+<li>CEO 승계: 2분기 콜 시점에 후계자는 4분기 내 발표될 예정이라고 밝혔습니다. 이후 9월 28일 8-K에서 Dipti Vachani 선임이 확인되었습니다(10월 12일 효력).</li>
+<li>전사 전략은 "same strategy, same team, same goals"라고 강조했습니다.</li>
+</ul>
+<p><strong>전사 발언 신뢰도 참고</strong></p>
+<ul>
+<li>콜 녹취록에는 수치 옆에 "(sic)"으로 표기된 정정 사항이 있습니다. 예를 들어 매출은 $96M(sic) [$96.1M], 영업현금흐름은 $55M(sic) [$54.6M]입니다. 원문과 대조된 값을 사용했습니다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>Pay-TV 및 특허 소송 타이밍</strong>
+   - 2분기 소송비는 $5.3M입니다(실적콜).
+   - Fubo 소송(4건)이 신규로 제기되었고, 회사는 해결 시점을 예측하기 어렵다고 밝혔습니다.
+   - Pay-TV 쟁점이 가이던스 달성의 한 경로로 언급되어, 소송 결과가 매출 시점에 영향을 줄 수 있습니다.</p>
+</li>
+<li>
+<p><strong>하반기 매출 집중</strong>
+   - 연간 가이던스 달성에는 하반기 매출 $194–234M이 필요합니다(계산).
+   - 회사는 "small volume, high dollar" 구조를 인정했고, 소수 대형 계약의 체결 시점에 실적이 좌우됩니다.
+   - 2분기 매출은 1분기 대비 −8.3%였습니다. 분기 변동성이 크다는 점을 보여줍니다.</p>
+</li>
+<li>
+<p><strong>CEO 전환 직후의 전략 연속성</strong>
+   - 신임 CEO는 2026년 10월 12일 취임했습니다. 전임 CEO 역시 건강상 이유로 사임했다고 8-K에 기재되어 있습니다.
+   - 장기 목표 상향(반도체 $200M, 총 $600M)은 전임 CEO 체제에서 발표되었습니다. 신임 체제에서 이 목표를 재확인하는지는 아직 확인되지 않았습니다.</p>
+</li>
+<li>
+<p><strong>레버리지와 이자 부담</strong>
+   - 텀론 $392.6M, 유효이자율 7.1%, 분기 이자비용 $8M입니다.
+   - 순부채는 약 $255.5M입니다(계산). 현금흐름이 가벼운 3분기를 거쳐야 합니다.
+   - 회사는 자사주 매입, 배당, 부채 상환, 인수를 동시에 추진 중입니다.</p>
+</li>
+<li>
+<p><strong>반도체 목표의 가정 의존성</strong>
+   - $200M 목표는 하이브리드 본딩 채택이 광범위하게 확산된다는 가정에 기반합니다.
+   - 이 근거로 제시된 업계 보고서 인용 등은 독립 검증되지 않았습니다.
+   - 반도체 고객 집중도는 공시상 <strong>확인 불가</strong>입니다.
+   - 소비자 가전 시장의 변동성도 10-Q에 리스크로 명시되어 있습니다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<ul>
+<li>주가: 52주 고점 대비 −37.4%, 20일 수익률 −17.5%, 60일 수익률 −18.3%(지표).</li>
+<li>거래량: 20일 중앙값 대비 1.03배로 평이함(지표). 수급 신호 약함.</li>
+<li>밸류에이션(계산):</li>
+<li>시가총액 $2.32B, EV 약 $2.58B</li>
+<li>TTM FCF 수익률 약 7.4%</li>
+<li>2026 가이던스 중간값($415M) 기준 EV/매출 약 6.2배</li>
+<li>실적 질:</li>
+<li>영업이익률 31.9%(<span class="up">+4.4%</span>p YoY)</li>
+<li>비-Pay-TV 반복매출 <span class="up">+54%</span>(회사 주장)</li>
+<li>갱신율 90% 이상(회사 주장)</li>
+<li>가이던스: 상반기 $200.9M 대비 하반기 $194–234M 필요(계산).</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li><strong>신임 CEO 체제의 첫 실적 발표(3분기)에서 가이던스 재확인 여부</strong>
+   - 3분기 매출이 하반기 필요 구간 하단 이상인지 확인합니다.
+   - 장기 목표($600M, 반도체 $200M)의 재확인 여부도 봅니다.</li>
+<li><strong>Pay-TV 소송(Fubo 등)의 진행 상황과 매출 반영 시점</strong>
+   - 소송 결과가 가이던스에 얼마나 반영되어 있는지 확인합니다.</li>
+<li><strong>신규 대형 라이선스 계약의 공시 여부와 반복매출 비중</strong>
+   - 8-K 또는 10-Q에서 계약 발표가 이어지는지, 2분기 반복매출 절대 금액이 공개되는지 확인합니다.</li>
+</ol>
+<p><strong>관망 → 보통으로 상향하는 조건</strong></p>
+<ul>
+<li>3분기 실적에서 가이던스가 재확인되고, 하반기 매출이 필요 구간 중간 이상으로 확인될 때</li>
+<li>반도체 메모리(HBM 또는 NAND) 고객과의 신규 라이선스가 공시될 때</li>
+<li>Fubo 등 주요 Pay-TV 소송이 합의나 판결로 정리되어 불확실성이 줄 때</li>
+</ul>
+<p><strong>관망 → 회피로 하향하는 조건</strong></p>
+<ul>
+<li>연간 매출 가이던스가 하향 조정될 때</li>
+<li>주요 Pay-TV 고객 이탈 또는 대형 계약 갱신 실패가 확인될 때</li>
+<li>신임 CEO가 장기 목표를 철회하거나, 전략 변경을 발표할 때</li>
+<li>텀론 재조정 또는 이자 부담 확대가 확인될 때</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526076549/adea-20251231.htm">10-K — 2025-12-31_0001193125-26-076549</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526335038/adea-20260630.htm">10-Q — 2026-06-30_0001193125-26-335038</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526208924/adea-20260331.htm">10-Q — 2026-03-31_0001193125-26-208924</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526405315/adea-ex99_1.htm">8-K — 2026-09-28_0001193125-26-405315__EX-99.1__adea-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526405315/adea-20260928.htm">8-K — 2026-09-28_0001193125-26-405315</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526330539/adea-ex99_1.htm">8-K — 2026-08-03_0001193125-26-330539__EX-99.1__adea-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526330539/adea-20260803.htm">8-K — 2026-08-03_0001193125-26-330539</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1803696/000119312526320977/adea-20260722.htm">8-K — 2026-07-22_0001193125-26-320977</a></li>
+<li>Transcript — 2026-08-03 Adeia Inc. (ADEA) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

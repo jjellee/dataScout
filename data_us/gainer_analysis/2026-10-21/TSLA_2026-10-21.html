@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSLA — Tesla Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TSLA — Tesla Inc. Common Stock</h1>
+<div class="sub">2026-10-21 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">TSLA</span><span class="badge">+3.76%</span><span class="badge">거래량 1.22배</span><span class="badge">$1.45T</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>매출은 Q2 2026 기준 $28.24B(YoY <span class="up">+25.5%</span>)로 성장하지만, 영업이익률은 1.4%(YoY <span class="down">-2.7%</span>p)이고 Q2 순이익은 $1.11B로 전년 대비 $58M 감소했다.</li>
+<li>경영진은 2026년 CapEx를 공격적으로 늘리고 있으며, H1 CapEx $8.28B가 H1 영업현금흐름 $8.63B와 거의 같다. 잉여현금흐름이 얇은 상태에서 추가 자금조달 가능성도 10-Q에 언급되었다.</li>
+<li>오늘 <span class="up">+3.76%</span> 상승에 확인된 기업 고유 촉매는 없고, 거래량도 20일 중앙값 대비 1.22배로 급증 수준이 아니다. 실적 발표는 오늘 장 마감 후 예정이므로 발표 전 비중 확대 근거가 부족하다.</li>
+<li>긍정 요인(FSD·로보택시·에너지저장장치 성장, 현금 $43.52B)은 실적 확인 전까지 가설 단계다. 실적과 마진 방향을 확인한 뒤 재판단이 합리적이다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong> 제공된 자료 중 당일(10-21) 발표된 기업 공시나 뉴스는 확인되지 않았다.</li>
+<li>최근 공시: 10-19 DEF 14A 및 DEFA14A 5건, ARS. 본문이 제공되지 않아 안건과 내용은 <strong>공시상 확인 불가</strong>다.</li>
+<li>10-02 8-K(3분기 생산·인도·저장장치 설치 발표)는 이미 알려진 정보다. 회사는 3분기 실적을 10-21 장 마감 후 발표하고 같은 날 오후 4시 30분(중부시간) 웹캐스트를 연다고 밝혔다. 즉 오늘 상승은 실적 발표 직전에 나타났다.</li>
+<li>뉴스 헤드라인은 "Tesla Catalyst Week"와 "Q3 earnings preview: flat revenue, falling profits"를 제시한다. 본문은 확인하지 못했고, 헤드라인 기준으로는 실적 기대치가 매출 보합·이익 감소에 가깝다.</li>
+<li>거래량은 20일 중앙값 대비 1.22배로 제한적이다. 20일 수익률은 <span class="down">-1.4%</span>, 60일 수익률은 <span class="up">+20.9%</span>이므로 단기 반등 성격이 강하다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K는 표지와 forward-looking 문단만 포함하므로 사업 섹션 본문은 <strong>공시상 확인 불가</strong>다. 아래는 10-Q MD&amp;A 기준이다.</p>
+<ul>
+<li><strong>자동차</strong>: 소비자용 차량 설계·제조·판매·리스. 2026년 H1 생산 약 86만 대, 인도 약 83.8만 대(회사 발표). 제품 믹스(모델별 매출)는 확인 불가.</li>
+<li><strong>에너지 생성·저장</strong>: 2026년 H1 저장장치 22.3GWh 설치(Q1 8.8GWh). 10-Q는 관세 영향이 자동차보다 에너지 사업에 더 크다고 밝혔다.</li>
+<li><strong>AI·소프트웨어</strong>: FSD(Supervised), 2025년 6월 출시된 로보택시 서비스, 전용 로보택시 Cybercab, 휴머노이드 로봇 Optimus. 회사는 이를 "서비스 중심 사업 모델"로 제시한다. 소프트웨어·서비스 매출은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>공급망 확장</strong>: 리튬 정련·양극재(텍사스), 배터리 셀, 반도체, 태양광 제조. 회사는 공급망 수직계열화를 진행 중이라고 밝혔다.</li>
+<li><strong>고객군</strong>: 소비자, 리스·금융 이용 고객, 기업 고객. 10-Q는 기업 고객의 유동성 리스크를 언급한다. 데이터센터 고객(실적콜에서 SpaceX의 메가팩 구매를 언급)은 경영진 발언이다.</li>
+<li><strong>경쟁 위치</strong>: 10-Q는 경쟁사 증가를 리스크로 언급한다. 시장점유율은 <strong>공시상 확인 불가</strong>다. 실적콜에서 Model Y가 "세계에서 가장 많이 팔린 차"라고 주장했으나 검증된 수치는 아니다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q1 2026</th>
+<th>Q2 2026</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$22.39B</td>
+<td>$28.24B</td>
+<td>Q2 YoY <span class="up">+25.5%</span>, QoQ <span class="up">+26.1%</span> (지표)</td>
+</tr>
+<tr>
+<td>순이익(보통주 귀속)</td>
+<td>$477M</td>
+<td>$1.11B</td>
+<td>Q2 YoY -$58M</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>—</td>
+<td>1.4%</td>
+<td>YoY <span class="down">-2.7%</span>p (지표)</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>—</td>
+<td>16.8%</td>
+<td>(지표)</td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>$3.94B</td>
+<td>≈$4.69B</td>
+<td>Q2는 H1 - Q1로 계산</td>
+</tr>
+<tr>
+<td>CapEx</td>
+<td>$2.49B</td>
+<td>≈$5.79B</td>
+<td>Q2는 H1 - Q1로 계산</td>
+</tr>
+<tr>
+<td>현금 및 단기투자</td>
+<td>$44.74B</td>
+<td>$43.52B</td>
+<td>연초 대비 -$535M</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성장의 질</strong>: 매출 성장률은 높지만 단가·물량·믹스 분해는 제공 자료에 없다. Q2 인도량 약 48만 대(H1 838k - Q1 358k로 계산)를 제외하면 전년 동기 인도량이 없어 물량 성장률은 <strong>확인 불가</strong>다.</li>
+<li><strong>마진</strong>: 매출은 25% 이상 늘었으나 영업이익률은 전년 대비 낮아졌다. 회사는 AI·소프트웨어·로보택시 투자로 "수익성에 부정적 영향을 미칠 것"이라고 10-Q에 명시했다.</li>
+<li><strong>순이익과 영업이익의 차이</strong>: Q2 영업이익률 1.4%(영업이익 약 $0.4B로 추정)에 비해 순이익이 $1.11B로 크다. 영업외 항목 구성은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>현금흐름</strong>: H1 기준 영업현금흐름 $8.63B에서 CapEx $8.28B를 뺀 잉여현금흐름은 약 $0.35B다. Q2 단독으로는 약 -$1.1B다. TTM 잉여현금흐름은 $5.75B(지표)다.</li>
+<li><strong>재무 건전성</strong>: 현금 $43.52B. 부채 규모는 <strong>공시상 확인 불가</strong>다. 10-Q는 "추가 자금조달을 포함할 수 있다"고 밝혔다. 뉴스 헤드라인에는 "2026년 CapEx 250억 달러 이상, 최대 300억 달러 부채 여력 추구"라는 제목이 보이나 본문은 확인하지 못했다.</li>
+<li><strong>데이터 불일치</strong>: 지표의 시가총액 $1.45T는 주당 $368.06 기준 약 3.94억 주에 해당한다. 10-K의 2026년 1월 23일 기준 주식수 3.752B로 계산하면 약 $1.38T다. 기준일 차이 가능성이 있으나 <strong>확인 불가</strong>다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>드라이버</th>
+<th>회사 주장 / 현황</th>
+<th>검증 포인트 (다음 분기에 확인할 것)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>자동차 판매 회복</td>
+<td>회사는 Q3 생산 464,391대, 인도 486,532대를 발표(8-K). Q2 추정치 대비 QoQ 각각 약 <span class="up">+2.7%</span>, <span class="up">+1.4%</span></td>
+<td>인도 증가가 가격 인하나 리스 조건에 의존하는지, 마진을 훼손하는지 확인</td>
+</tr>
+<tr>
+<td>FSD(Supervised)</td>
+<td>경영진은 FSD 채택률이 높다고 발언(실적콜). 수치는 미공개</td>
+<td>FSD 매출 또는 가입자 수 공개 여부, 소프트웨어 매출 항목 신설 여부</td>
+</tr>
+<tr>
+<td>로보택시</td>
+<td>회사는 서비스를 확대 중이라고 밝힘. 실적콜에서 플로리다·텍사스·베이에어리어 확대와 주간 주행거리 10% 이상 증가를 언급(경영진 주장)</td>
+<td>운영 도시 수, 유료 운행 여부, 사고·규제 이슈</td>
+</tr>
+<tr>
+<td>에너지 저장장치</td>
+<td>Q3 13.7GWh(8-K). Q2는 H1 - Q1로 약 13.5GWh</td>
+<td>분기 설치량이 13~14GWh 대에서 가속하는지, 관세 영향과 마진 방향</td>
+</tr>
+<tr>
+<td>Cybercab·Optimus</td>
+<td>10-Q는 Cybercab 생산 개시를 밝힘. Optimus는 실적콜에서 초기 S커브가 "길고 평평할 것"이라고 발언</td>
+<td>Optimus 생산 대수와 매출 인식 여부(현재 매출 기여는 확인 불가로 보는 것이 보수적)</td>
+</tr>
+<tr>
+<td>CapEx 효율화</td>
+<td>CapEx 집행 속도 우선 방침(실적콜)</td>
+<td>분기별 CapEx 증가율 대비 영업현금흐름 개선 여부</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>※ 실적콜 transcript는 2026년 7월 22일 <strong>2분기</strong> 콜 기준이며, 제공된 발췌는 일부 구간만 포함한다(중략 있음). 3분기 콜 내용이 아니다.</p>
+<ul>
+<li><strong>경영진의 톤</strong>: 매우 자신감 있다. 머스크는 "기록적 2분기 인도", "최고 수준의 CapEx 수익률", "역사상 가장 야심찬 제조 인프라 확장"을 주장했다. 다만 수치로 입증된 주장은 많지 않다.</li>
+<li><strong>가이던스 화법</strong>: 정량 가이던스(매출·마진·CapEx 금액)는 발췌에서 확인되지 않았다. 대신 "가능한 한 빨리 CapEx를 집행한다", "효율이 약간 떨어져도 빨리 하는 것이 NPV에 유리하다"고 밝혔다. 자본효율보다 속도를 우선한다는 방침이 드러난다.</li>
+<li><strong>반복 질문과 방어 지점</strong>:</li>
+<li>CapEx 속도가 효율 때문에 제약받는지에 대한 질문(Barclays)에는 수치 답변 없이 "가능한 한 빠르게"라는 원칙을 반복했다.</li>
+<li>에너지 저장장치가 공급 제약을 받는지에 대한 질문에는 직접적인 공급 제약 수준이 답변되지 않았고, 전력망 균형·데이터센터 수요 서사로 답했다.</li>
+<li>로보택시 사고 리스크에 대해서는 경영진이 "한 명이라도 다치면 규제 당국이 즉각 조치할 것"이라고 인정했다.</li>
+<li><strong>콜에서만 드러난 정보</strong>: Tesla Semi 생산 개시, Megapack 3 생산 임박, LFP 공장 가동(2026년 초), 반도체 팹 계획, 미국 내 태양광 제조 확대, Optimus용 Fremont 라인(Model S/X 라인 대체), 회사가 대부분의 건설 현장에서 일반 시공자 역할을 한다는 점, SpaceX의 데이터센터용 메가팩 구매 언급.</li>
+<li><strong>분석가 구성</strong>: Morgan Stanley, BofA, Wells Fargo, LightShed, Truist, Barclays. 발췌에서는 Barclays 질문만 확인되며, 나머지 질의응답은 <strong>확인 불가</strong>다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>마진 압박과 수익성 부족</strong>: 영업이익률 1.4%(YoY <span class="down">-2.7%</span>p), 순이익 YoY 감소. 10-Q는 AI·R&amp;D 투자가 수익성에 부정적 영향을 준다고 명시했다. 매출 성장이 이익 성장으로 이어지지 않고 있다.</li>
+<li><strong>CapEx 대비 현금흐름 부족과 자금조달</strong>: H1 잉여현금흐름이 약 $0.35B에 그쳤다. 10-Q는 추가 자금조달 가능성을 언급했다. CapEx 집행 속도 우선 방침과 맞물려 현금 소진 리스크가 있다.</li>
+<li><strong>관세·공급망</strong>: 10-Q는 관세 체계가 에너지 사업에 상대적으로 더 큰 영향을 준다고 밝혔다. 정책 변화가 부품 조달과 공장 확장에 영향을 줄 수 있다고 명시했다.</li>
+<li><strong>수요 사이클과 금리</strong>: 10-Q는 자동차 산업이 경기·금리에 민감하며, 리스·할부 조건의 가격 경쟁이 마진을 압박할 수 있다고 밝혔다.</li>
+<li><strong>로보택시·자율주행 규제</strong>: 실적콜에서 경영진이 사고 시 규제 조치를 인정했다. 10-K 리스크 섹션 본문은 제공되지 않아 구체적 소송·규제 사안은 <strong>공시상 확인 불가</strong>다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거(파생 계산 포함)</strong>
+- Q2 순이익 연환산(×4) 약 $4.4B 기준 시가총액 $1.45T는 <strong>약 327배 PER</strong>에 해당한다. 일회성 손익에 따라 변동이 크므로 참고용이다.
+- Q2 매출 연환산(×4) 약 $113B 기준 <strong>약 12.8배 PS</strong>.
+- TTM 잉여현금흐름 $5.75B 기준 <strong>FCF 수익률 약 0.4%</strong>.
+- 52주 고점 대비 <span class="down">-24.9%</span>, 60일 <span class="up">+20.9%</span>, 20일 <span class="down">-1.4%</span>. 거래량 1.22배.
+- 제3자 등급(SA 페이지, 2026년 7월 23일 스냅샷, 최신 데이터 아님): SA 애널리스트 Hold 2.76, 증권가 Buy 3.61, 퀀트 Hold 3.34. 참고만 한다.</p>
+<p><strong>진입 전 확인할 3가지</strong>
+1. 10-21 장 마감 후 발표되는 3분기 매출·영업이익률·총이익률·영업현금흐름·CapEx 수치.
+2. 2026년 CapEx 총액과 추가 자금조달(부채·지분) 계획.
+3. 소프트웨어·FSD 매출 공개 여부와 영업이익률 회복 경로.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>관망 → 보통(상향)</strong>: 3분기 영업이익률이 Q2(1.4%)보다 의미 있게 개선되고 매출 성장이 유지되며, 잉여현금흐름이 플러스로 전환될 때. 기준은 애널리스트 판단이다.
+- <strong>관망 → 회피(하향)</strong>: 영업이익률이 추가 하락하거나, 추가 자금조달이 발표되거나, 현금이 분기 단위로 급감하거나, 로보택시 사고·규제 조치가 발생할 때.
+- <strong>데이터 정합성 메모</strong>: (1) 지표의 시가총액은 10-K 주식수와 차이가 있다. (2) SA 페이지의 가격 $320.56(2026년 7월 23일)은 오래된 값이므로 사용하지 않았다. (3) SA 페이지의 매출 성장률 2.25%는 10-Q의 25.5%와 불일치하므로 10-Q를 우선했다. (4) SA 위젯의 EPS 방향 표기("$0.33 misses $0.21")는 문맥상 모순되어 근거로 쓰지 않았다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm">10-K — 2025-12-31_0001628280-26-003952</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/tsla-20260630.htm">10-Q — 2026-06-30_0001628280-26-049270</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm">10-Q — 2026-03-31_0001628280-26-026673</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm">8-K — 2026-10-02_0001628280-26-064366__EX-99.1__exhibit991111111</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/tsla-20261002.htm">8-K — 2026-10-02_0001628280-26-064366</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026063820/tsla-20260929.htm">8-K — 2026-09-29_0001628280-26-063820</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm">8-K — 2026-07-22_0001628280-26-049213__EX-99.1__exhibit991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/tsla-20260722.htm">8-K — 2026-07-22_0001628280-26-049213</a></li>
+<li>Transcript — 2026-07-22 Tesla, Inc. (TSLA) Q2 2026 Earnings Call Transcript</li>
+<li>Transcript — 2026-07-23 Tesla, Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

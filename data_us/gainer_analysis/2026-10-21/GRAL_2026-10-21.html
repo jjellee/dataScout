@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GRAL — GRAIL Inc. Common Stock </title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GRAL — GRAIL Inc. Common Stock </h1>
+<div class="sub">2026-10-21 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GRAL</span><span class="badge">+3.91%</span><span class="badge">거래량 0.56배</span><span class="badge">$5.47B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>매출은 2분기 $44.7M(<span class="up">+26%</span> YoY)으로 성장하고 있고, 현금 $861.6M과 회사 추정 2026년 현금소진 $300M 미만을 감안하면 단기 유동성 우려는 크지 않다 (8-K, 실적콜-Canaccord).</li>
+<li>그러나 매출총이익률은 <span class="down">-28.1%</span>이고 TTM 잉여현금흐름은 -$296.2M이다. 물량 성장(<span class="up">+35%</span>)이 매출 성장(<span class="up">+24%</span>)보다 빨라 단가는 내려가고 있다 (지표, 8-K).</li>
+<li>핵심 규제 이벤트인 FDA 자문위원회(AdCom, 9월 23일 예정)와 PMA 결과는 제공 자료에 없어 확인되지 않았다. 이 결과가 확인되기 전까지 비중을 싣기에는 이벤트 리스크가 크다.</li>
+<li>오늘 상승은 확인된 촉매가 없고 거래량도 평소의 0.56배에 그쳤다. 신뢰도가 낮은 움직임이다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다. 가장 최근 공시는 2026-08-05 8-K(2분기 실적)다.</li>
+<li>제공된 헤드라인은 옵션 체인 차트, 기술적 분석, 타 종목(VKTX) 관련 기사 등이며 GRAL 고유의 실적·규제 뉴스로 보기 어렵다.</li>
+<li><strong>전제 점검:</strong> 입력에는 "거래량 급증"이 포함되어 있으나, 지표상 거래량 배수는 <strong>0.56배(20일 중앙값 대비)</strong>다. 오늘 상승은 거래량이 줄어든 상태에서 나타났으므로 "거래량 동반 급등"으로 해석하지 않는다.</li>
+<li>중기 흐름은 강하다. 20일 수익률 <span class="up">+14.9%</span>, 60일 수익률 <span class="up">+86.7%</span>이다 (지표). 52주 고점 대비 <span class="down">-20.5%</span>이므로 역산하면 52주 고점은 약 $154 수준이다 (계산, 추정치).</li>
+<li>제공 자료에서 확인되지 않는 것: 9월 AdCom 결과, 그 이후 공시, 최근 옵션 수급 및 공매도 데이터.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품:</strong> Galleri, 다중암 조기검출(MCED) 혈액검사. 회사는 "임상 검증을 받은 유일한 MCED"라고 주장한다 (8-K, 실적콜-Canaccord). 다만 10-K 사업 섹션 본문은 제공된 발췌에 포함되지 않아, 제품 구조에 대한 세부 설명은 공시상 확인 불가다.</p>
+<p><strong>매출 구성 (8-K 2분기 기준):</strong>
+- 총매출 $44.7M = 스크리닝 및 개발 서비스 매출
+- Galleri 검사 매출 $42.6M (약 95%, 계산)
+- 나머지(약 $2.1M, 계산)는 개발 서비스 등으로 추정되나 세부 내역은 공시상 확인 불가</p>
+<p><strong>고객 채널 (실적콜 기준):</strong>
+- 전통적 의사 진료소(브릭앤모르타르): 영업사원 확대 완료 (2분기 말)
+- 디지털헬스: Function 등과 제휴. 디지털헬스 물량은 전년 대비 2배 증가했다고 회사가 밝힘 (실적콜-Canaccord)
+- 고용주/자가보험(self-insured employers): Priority Health 협업 (8-K)
+- 보험사 및 메디케어 어드밴티지: Priority Health의 Thrive 플랜 등 (8-K)
+- EHR 연동: Quest Diagnostics, athenahealth 연동 완료. Epic 연동은 2026년 말 예정 (실적콜-Canaccord)
+- 국제: 삼성 C&amp;T/삼성전자와 한국 상업화 협업. 일본과 싱가포르 확장 가능성 언급 (8-K)</p>
+<p><strong>경쟁 위치:</strong> 회사는 NHS-Galleri와 PATHFINDER 2 데이터를 근거로 경쟁사 대비 임상 우위를 주장한다. 경쟁사 3~4곳이 언급되었으나 이는 애널리스트 발언이며, 경쟁사 데이터의 질에 대한 평가는 회사 주장으로 봐야 한다 (실적콜-Canaccord).</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 — 물량 대비 단가 하락</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>1H26</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$44.7M (<span class="up">+26%</span>)</td>
+<td>—</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>Galleri 검사 매출</td>
+<td>$42.6M (<span class="up">+24%</span>)</td>
+<td>$82.5M (<span class="up">+30%</span>)</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>Galleri 검사 물량</td>
+<td>6.1만+ (<span class="up">+35%</span>)</td>
+<td>11.7만+ (<span class="up">+42%</span>)</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>검사당 매출(ASP, 계산)</td>
+<td>약 $698</td>
+<td>약 $705</td>
+<td>계산</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>2분기 기준 매출 성장률(24%)이 물량 성장률(35%)보다 낮으므로 검사당 매출은 약 8% 하락했다 (계산: 1.24/1.35 ≈ 0.92).</li>
+<li>1H 기준으로도 매출 <span class="up">+30%</span>, 물량 <span class="up">+42%</span>로 약 8~9% 하락이다 (계산).</li>
+<li>애널리스트는 ASP를 약 $700로 언급했고, 회사는 가격 탄력성을 인정했다. 회사는 ASP가 Medicare 수가 연동 시 약 $500까지 내려갈 수 있다고 밝혔다 (실적콜-Canaccord).</li>
+</ul>
+<p><strong>마진 방향성</strong>
+- 매출총손실 -$12.6M으로 전년 대비 29% 개선 (8-K)
+- 비GAAP 조정 매출총이익 $21.6M, <span class="up">+34%</span> (8-K)
+- 매출총이익률 <span class="down">-28.1%</span> (지표). 다만 이 값은 분기 매출과 매출총손실(-$12.6M)로 계산한 <span class="down">-28.2%</span>와 일치한다.
+- 영업이익률 <span class="down">-332%</span>, 전년 대비 36.1%p 개선 (지표)
+- 순손실 $110.2M, 3% 개선 (8-K)
+- 조정 EBITDA -$90.3M으로 <strong>적자가 전년 대비 15%(약 $11.9M) 확대</strong>되었다 (8-K). 영업 레버리지가 아직 나타나지 않았다는 뜻이다.
+- 참고: 영업이익률 <span class="down">-332%</span>를 매출 $44.7M에 적용하면 영업손실은 약 $148M으로 계산되나, 순손실은 $110.2M이다. 두 값의 차이(이자수익, 기타손익 등)는 공시상 확인 불가이며 검증이 필요하다.
+- 회사는 가동 시 영업이익률 50~60%를 목표로 한다고 밝혔다 (실적콜-Canaccord). 회사의 목표치이며 현재 데이터로는 검증되지 않는다.</p>
+<p><strong>현금흐름 및 재무 건전성</strong>
+- 현금·현금성자산 및 단기 유가증권: $861.6M (2026-06-30, 8-K)
+- TTM 잉여현금흐름: -$296.2M (지표)
+- 2026년 현금소진 $300M 미만 (회사 전망, 실적콜-Canaccord)
+- 단순 계산 시 현재 현금은 회사 전망 소진 속도 기준 약 2.9년분이다.
+- 실적콜 CFO는 분기 말 현금을 "약 $900M"이라고 말했으나 8-K 수치는 $861.6M이다. 차이의 원인은 공시상 확인 불가다.
+- 부채 규모는 제공 자료에서 확인되지 않는다.
+- 삼성 C&amp;T/삼성전자가 1억 1천만 달러 규모로 보통주를 매입해 6월에 완료되었다 (8-K).</p>
+<p><strong>희석 지표</strong>
+- 2026년 3월 6일 기준 발행주식 수: 41,020,255주 (10-K 표지)
+- 2026년 4월 22일 기준일 주식 수: 42,916,593주 (8-K, 6월 주총)
+- 약 7주 사이 약 4.6% 증가했으나 원인은 공시상 확인 불가다. 삼성 인수분이 포함되었을 가능성이 있으나 제공 자료로는 판단할 수 없다.
+- 지표 시가총액 $5.47B를 주가 $122.42로 나누면 약 44.7M주이다 (계산). 이는 4월 기준 주식 수보다 많아 추가 발행이 있었을 가능성을 시사하나 확인되지 않았다.</p>
+<p><strong>밸류에이션 (계산, 참고용)</strong>
+- 시가총액 $5.47B − 현금 $0.86B ≈ EV $4.6B (부채 미확인)
+- 2분기 매출 연환산 약 $179M 기준 EV/매출 약 26배 (단순 연환산, 계절성 미반영)</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 제시 내용</th>
+<th>실현 조건</th>
+<th>검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영업사원 확대</td>
+<td>2분기 완료, 전원 교육 완료 (실적콜)</td>
+<td>신규 처방 의사 증가</td>
+<td>다음 분기 물량 성장률이 35% 수준을 유지하는지</td>
+</tr>
+<tr>
+<td>디지털헬스/고용주 채널</td>
+<td>디지털헬스 물량 2배 (실적콜)</td>
+<td>파트너 마케팅 투자 지속</td>
+<td>Hims &amp; Hers의 투자 재개 여부, 채널별 물량 공개 여부</td>
+</tr>
+<tr>
+<td>EHR 연동</td>
+<td>Quest/athena 완료, Epic 2026년 말 예정</td>
+<td>적시 연동</td>
+<td>연말 Epic 연동 완료 여부</td>
+</tr>
+<tr>
+<td>FDA 승인</td>
+<td>PMA 제출 완료, AdCom 9/23 예정 (8-K, 실적콜)</td>
+<td>긍정적 AdCom 결과와 PMA 승인</td>
+<td><strong>AdCom 결과 및 승인 여부 (제공 자료 없음)</strong></td>
+</tr>
+<tr>
+<td>CMS/Medicare</td>
+<td>NCD 논의 초기 단계, REACH 최종 결과 2030~31년 예상 (실적콜)</td>
+<td>FDA 승인 후 NCD 개시</td>
+<td>중간 데이터 공개 여부, 수가 확정 시점</td>
+</tr>
+<tr>
+<td>국제 확장</td>
+<td>삼성 협업으로 한국 시장 진출 (8-K)</td>
+<td>규제 승인 및 유통 파트너 확정</td>
+<td>한국 상업화 개시 시점과 매출 기여</td>
+</tr>
+<tr>
+<td>임상 추가 데이터</td>
+<td>NHS-Galleri 12개월 추적 결과 2027년 상반기, 사망률 데이터 2028년 (실적콜)</td>
+<td>데이터 긍정</td>
+<td>동료심사 논문 발표 여부</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 자신감의 근거</strong>
+- 8월 Canaccord 콜에서 CFO는 1H 실적에 "really happy"라고 표현했다. 근거는 물량 성장과 영업 확대다.
+- 자신감의 핵심은 NHS-Galleri의 Stage IV 감소(12개 사전지정 공격적 암종 기준 2차 22%, 3차 26%)다 (8-K).
+- 9월 MS 컨퍼런스에서 CMO는 NHS-Galleri가 <strong>사전 지정 엔드포인트(합산 Stage III·IV 감소)를 달성하지 못했다고 직접 인정</strong>했다. 다만 Stage III 증가가 Stage IV 감소를 상쇄했다고 해석했다. 이 설명은 공시 문서에는 없고 콜에서만 나왔다.</p>
+<p><strong>가이던스 화법의 변화 (8월 → 9월)</strong>
+- 8월: 현금 소진이 근시일에 높을 수 있다고 하면서도 "수요가 지속되면 계속 투자하겠다"는 조건부 표현이었다.
+- 9월: 규제 승인 중심의 서술이 강해졌다. FDA 승인이 시장 명확성과 보험 확대의 전제라고 반복했다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 회사 대응</strong>
+- 반복 질문 1: 가격 탄력성과 ASP 하락. 회사는 물량 기반 계약 구조로 설명했으나 구체적인 ASP 경로는 제시하지 않았다.
+- 반복 질문 2: CMS 타이밍. 회사는 "현재 일정은 가지고 있지 않다(I do not have that currently)"며 답을 피했다.
+- 반복 질문 3: 경쟁사. 회사는 경쟁사의 false positive 및 데이터 범위를 비판하며 방어했다. 이는 회사 주장이다.
+- 반복 질문 4: 현금 소진과 추가 조달 가능성. 회사는 "수요가 지속 가능한지 확인 중"이라고 답했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- 영업팀은 2분기 말 전원 교육이 완료되었다 (Canaccord).
+- 1백만 건 이상 처리 가능한 연구소 용량을 보유했다 (Canaccord).
+- 회사가 Hims &amp; Hers 제휴의 투자 재개를 기대하고 있다 (Canaccord). 현재는 GLP-1 사업에 집중하고 있어 투자가 이루어지지 않은 상태다.
+- 경영진은 AI 기반 개선과 검사 개인화(Galleri 버전 4~6)를 언급했다 (MS).</p>
+<hr>
+<h2>6. 리스크</h2>
+<p>10-K 리스크 섹션 본문은 제공된 발췌에 포함되지 않아, 아래는 8-K, 10-K 표지 및 실적콜 기반으로 정리했다.</p>
+<ol>
+<li>
+<p><strong>FDA 규제 결과 미확인 (최대 리스크)</strong>
+   AdCom은 9월 23일로 예정되었으나 결과는 제공 자료에 없다. PMA 승인 여부가 가치의 핵심이다. 회사는 승인 후 CMS가 NCD를 검토할 수 있다고 설명했지만 (실적콜), 승인 확률이나 일정에 대한 제3자 평가는 없다.</p>
+</li>
+<li>
+<p><strong>임상 엔드포인트 미달과 해석 논쟁</strong>
+   NHS-Galleri는 사전 지정 주요 엔드포인트(합산 Stage III·IV 감소)를 달성하지 못했다 (MS 콜, 8-K 표현). 회사는 Stage IV 감소를 강조하지만, 규제 당국과 보험사가 이를 동일하게 평가할지는 불확실하다.</p>
+</li>
+<li>
+<p><strong>CMS/보험 수가 불확실성</strong>
+   CMS 논의는 초기 단계이며 REACH 최종 결과는 2030~31년으로 예상된다. 수가 연동 시 ASP가 약 $500으로 내려갈 수 있다는 회사 설명에 따르면 현재 매출 단위당 수익성은 더 약화된다 (실적콜).</p>
+</li>
+<li>
+<p><strong>단가 하락과 매출총손실 지속</strong>
+   물량 성장 대비 매출 성장이 낮고 (2분기 물량 <span class="up">+35%</span>, 매출 <span class="up">+24%</span>), 매출총이익률이 <span class="down">-28.1%</span>다. 매출 총이익이 흑자로 전환되는 시점은 제공 자료로 추정할 수 없다.</p>
+</li>
+<li>
+<p><strong>현금 소진 및 희석</strong>
+   TTM 잉여현금흐름 -$296.2M, 2026년 소진 전망 $300M 미만이다. 발행 주식 수는 2개월 만에 증가했으며 추가 조달 가능성도 언급되었다 (실적콜-Canaccord 질문). 회사는 추가 자금 조달 필요성을 명확히 부정하지 않았다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 매출 성장: 2분기 <span class="up">+26%</span>, 1H <span class="up">+30%</span> (8-K). 성장은 유지되고 있다.
+- 검사당 매출: 약 $700 수준에서 하락 중 (계산). 목표 $500 시 매출 규모는 현재의 약 70%다 (계산: 500/700).
+- 매출총이익률: <span class="down">-28.1%</span> (지표). 흑자 전환 경로는 공시상 확인 불가다.
+- 현금 대비 소진 기간: 약 2.9년 (계산, 회사 전망 기준).
+- 밸류에이션: 시총 $5.47B, EV 약 $4.6B, 연환산 매출 기준 EV/매출 약 26배 (계산, 부채 미확인).
+- 주가 모멘텀: 60일 <span class="up">+86.7%</span>, 20일 <span class="up">+14.9%</span>. 오늘 상승은 거래량 0.56배에서 나타났다 (지표).</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>FDA AdCom 결과와 PMA 승인 일정.</strong> 9월 23일 이후 공시를 직접 확인해야 한다. 제공 자료에 없으므로 이것이 최우선 확인 사항이다.
+2. <strong>3분기 10-Q의 검사당 매출, 물량, 매출총이익률.</strong> 물량 성장률이 20%대 중반 이상을 유지하는지, 매출총손실이 추가로 줄어드는지를 본다.
+3. <strong>현금 소진 및 희석 현황.</strong> 분기 말 현금 금액을 8-K 기준 $861.6M으로 재확인하고, 발행 주식 수 증가 원인과 추가 조달 계획을 확인한다.</p>
+<p><strong>판단을 뒤집을 조건</strong></p>
+<p><em>관망 → 회피로 전환</em>
+- AdCom이 부정적이거나 PMA가 반려되는 경우
+- 3분기 물량 성장이 크게 둔화되고 검사당 매출 하락이 지속되는 경우
+- 매출총손실이 확대되거나 현금 소진 전망이 상향되는 경우</p>
+<p><em>관망 → 보통으로 상향</em>
+- AdCom 긍정 + FDA 승인이 확인되는 경우
+- CMS NCD 일정이 구체화되거나 보험 커버리지 확대가 공시되는 경우
+- 매출총이익률이 플러스로 전환되고 조정 EBITDA 적자가 축소되는 경우</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026017319/gral-20251231.htm">10-K — 2025-12-31_0001628280-26-017319</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026054307/gral-20260630.htm">10-Q — 2026-06-30_0001628280-26-054307</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026032090/gral-20260331.htm">10-Q — 2026-03-31_0001628280-26-032090</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026053341/ex9912026q2earningspressre.htm">8-K — 2026-08-05_0001628280-26-053341__EX-99.1__ex9912026q2earningspressre</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026053341/gral-20260805.htm">8-K — 2026-08-05_0001628280-26-053341</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026044693/gral-20260618.htm">8-K — 2026-06-18_0001628280-26-044693</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026039461/presentation_final2026as.htm">8-K — 2026-06-01_0001628280-26-039461__EX-99.1__presentation_final2026as</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1699031/000162828026039461/grail-offerletterofmanfinal.htm">8-K — 2026-06-01_0001628280-26-039461__EX-10.1__grail-offerletterofmanfinal</a></li>
+<li>Transcript — 2026-09-14 Morgan Stanley 24th Annual Global Healthcare Conference Transcript</li>
+<li>Transcript — 2026-08-11 Canaccord Genuity's 46th Annual Growth Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

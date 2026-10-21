@@ -441,20 +441,44 @@ def find_original_date_from_html(html_path):
         logger.error(f"Error finding original date in amendment HTML {html_path}: {e}")
     return None
 
+# 요약 엑셀에 일별 폴더(2024-01~) 밖의 과거 공시까지 넣을 종목 폴더 목록.
+# data_dart/company/<폴더>/disclosures.json + <접수번호>.html (한 줄에 폴더명 하나, #은 주석).
+# 2026-10-21 이엠텍 전 기간 공시 요청으로 신설. 일별 폴더를 만들지 않는 이유: quarterly_earnings·
+# periodic_report_saver 등이 data_dart/20*를 전부 읽어 특정 종목만 과거 분기가 섞인다.
+SUMMARY_EXTRA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_dart", "summary_extra_companies.txt")
+
+
+def summary_extra_dirs(workspace_dir):
+    """요약 엑셀에 추가로 읽을 data_dart 하위 경로(예: 'company/091120_이엠텍') 목록."""
+    path = os.path.join(workspace_dir, "data_dart", os.path.basename(SUMMARY_EXTRA_FILE))
+    out = []
+    if os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            name = line.split("#", 1)[0].strip()
+            if name and os.path.exists(os.path.join(workspace_dir, "data_dart", "company", name, "disclosures.json")):
+                out.append(os.path.join("company", name))
+    return out
+
+
 def find_original_disclosure_on_disk(corp_code, base_type, orig_date, workspace_dir):
-    """Searches disclosures.json on disk for the specified date to find the original disclosure matching company and type."""
-    json_path = os.path.join(workspace_dir, "data_dart", orig_date, "disclosures.json")
-    if not os.path.exists(json_path):
-        return None
-    try:
-        with open(json_path, "r", encoding="utf-8") as f:
-            disclosures = json.load(f)
-        for d in disclosures:
-            if d.get("corp_code") == corp_code:
-                if identify_base_report_type(d.get("report_nm", "")) == base_type:
-                    return d
-    except Exception as e:
-        logger.warning(f"Error loading historical disclosures.json for {orig_date}: {e}")
+    """Searches disclosures.json on disk for the specified date to find the original disclosure matching company and type.
+
+    반환 dict의 '_dir'은 원문 HTML이 있는 data_dart 하위 경로(일별 폴더 또는 company/<종목> 폴더).
+    """
+    cands = [(orig_date, os.path.join(workspace_dir, "data_dart", orig_date, "disclosures.json"))]
+    cands += [(d, os.path.join(workspace_dir, "data_dart", d, "disclosures.json")) for d in summary_extra_dirs(workspace_dir)]
+    for sub, json_path in cands:
+        if not os.path.exists(json_path):
+            continue
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                disclosures = json.load(f)
+            for d in disclosures:
+                if d.get("corp_code") == corp_code and (sub == orig_date or str(d.get("rcept_dt")) == str(orig_date)):
+                    if identify_base_report_type(d.get("report_nm", "")) == base_type:
+                        return dict(d, _dir=sub)
+        except Exception as e:
+            logger.warning(f"Error loading historical disclosures.json for {orig_date}: {e}")
     return None
 
 # Cache for closing price lookups
@@ -2148,7 +2172,20 @@ def build_excel_summary(workspace_dir, parse_only=False):
                     all_disclosures.append(item)
         except Exception as e:
             logger.error(f"Error reading {p}: {e}")
-            
+
+    # 종목 단위 과거 공시 폴더(summary_extra_companies.txt) — collected_date를 'company/<폴더>'로 둬
+    # 원문 경로(data_dart/<collected_date>/<접수번호>.html)가 그대로 맞는다. 일별 폴더와 겹치면 일별이 우선.
+    for sub in summary_extra_dirs(workspace_dir):
+        try:
+            with open(os.path.join(workspace_dir, "data_dart", sub, "disclosures.json"), "r", encoding="utf-8") as f:
+                extra = json.load(f)
+            for item in extra:
+                item['collected_date'] = sub
+                all_disclosures.append(item)
+            logger.info(f"Extra company disclosures: {sub} {len(extra)}건")
+        except Exception as e:
+            logger.error(f"Error reading extra {sub}: {e}")
+
     logger.info(f"Total raw disclosures loaded: {len(all_disclosures)}")
     if not all_disclosures:
         return False
@@ -2501,7 +2538,7 @@ def build_excel_summary(workspace_dir, parse_only=False):
             if is_amended and original_date:
                 orig_disc = find_original_disclosure_on_disk(corp_code, base_type, original_date, workspace_dir)
                 if orig_disc:
-                    orig_html = os.path.join(workspace_dir, "data_dart", original_date, f"{orig_disc['rcept_no']}.html")
+                    orig_html = os.path.join(workspace_dir, "data_dart", orig_disc.get("_dir", original_date), f"{orig_disc['rcept_no']}.html")
                     if os.path.exists(orig_html):
                         base_data = parse_capital_increase_html(orig_html)
                         

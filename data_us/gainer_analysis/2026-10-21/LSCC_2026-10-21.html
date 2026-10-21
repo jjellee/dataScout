@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LSCC — Lattice Semiconductor Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LSCC — Lattice Semiconductor Corporation Common Stock</h1>
+<div class="sub">2026-10-21 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">LSCC</span><span class="badge">+4.90%</span><span class="badge">거래량 1.5배</span><span class="badge">$15.44B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong>
+- 성장은 확인된다. 2Q26 매출은 $201.1M으로 YoY <span class="up">+62.2%</span>, GAAP 매출총이익률은 70.3%, TTM 잉여현금흐름은 $163.0M이다 (10-Q 2Q26, 8-K, 지표).
+- 수익성 추세는 약하다. GAAP 영업이익은 QoQ −14.3%, 영업이익률은 15.3%에서 11.1%로 떨어졌다. 연구개발비와 판관비 증가율(QoQ 약 +25~26%)이 매출 증가율(<span class="up">+17.7%</span>)을 웃돌았고, AMI 인수 이후 비용 구조는 아직 확인되지 않았다.
+- 밸류에이션 여유가 작다. 시가총액 $15.44B은 TTM 잉여현금흐름의 약 95배이다(계산값).
+- 오늘 상승은 확인된 촉매가 없는 수급성 움직임일 가능성이 높다. 52주 고점 대비 −30%라는 위치는 매력 요인이지만, 3분기 실적으로 마진 반등을 확인하기 전에는 의미 있는 비중을 싣기 어렵다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong>
+- 최근 4일 내 SEC 공시가 없다. 가장 최근 회사 발표는 2Q26 실적 보도자료(8/4)로, 오늘 기준 약 2개월 반 전의 정보다.
+- 뉴스 헤드라인 5건은 주가 흐름 해설이나 옵션 차트, 밸류에이션 기사이며, 신규 계약이나 가이던스 변경을 담은 헤드라인은 없다.
+- 거래량은 20일 중앙값 대비 1.5배, 거래대금은 $292.1M이다. 20일 −12.3%, 60일 −12.6% 하락 이후의 반등이므로 낙폭 되돌림 성격일 가능성이 있다(추정).
+- 동종 업종 지수나 동료 종목 데이터가 제공되지 않아 섹터 동조 여부는 검증하지 못했다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<blockquote>
+<p>제공된 10-K 발췌에는 Item 1(사업) 본문이 없고 목차와 전망진술만 있다. 아래 내용은 10-Q(1Q26·2Q26) MD&amp;A의 사업 개요와 부문 설명에 근거한다.</p>
+</blockquote>
+<ul>
+<li><strong>제품:</strong> 프로그래머블 로직(FPGA) 반도체가 핵심이다. 회사는 실리콘 제품, 시스템 솔루션, 설계 서비스, 기술 라이선스로 수익을 낸다고 밝혔다. IP 라이선싱도 제공한다. 제품군별 매출 비중은 공시상 확인 불가.</li>
+<li><strong>자기 규정:</strong> 회사는 자사를 "low power programmable leader"로 소개한다(회사 주장). 저전력, 소형, 사용 편의성이 전략의 중심이다.</li>
+<li><strong>응용처:</strong> 회사는 Edge AI, 무선·유선 인프라, 플랫폼 보안, 팩토리 오토메이션을 주요 성장 영역으로 든다(10-Q 2Q26).</li>
+<li><strong>부문 구성(2026년부터 재분류):</strong></li>
+<li>Compute &amp; Communications: 데이터센터 서버·스토리지·네트워킹, 클라이언트 컴퓨팅, 무선·유선 통신 인프라. 2Q26 매출 $125.9M(62.6%).</li>
+<li>Industrial &amp; Embedded: 팩토리 오토메이션, 로보틱스, 자동차 전장, 산업용 IoT, 스마트홈 등. 2Q26 매출 $75.1M(37.4%).</li>
+<li><strong>유통:</strong> 10-Q(1Q26)는 유통업체가 매출의 상당 부분을 차지한다고 밝혔다. 비중 수치는 발췌에 없어 확인 불가.</li>
+<li><strong>지역:</strong> 1Q26 아시아 매출은 YoY <span class="up">+71%</span>였다(10-Q 1Q26, 원인 문장은 발췌에서 잘림). 2Q26 지역별 비중은 확인 불가.</li>
+<li><strong>경쟁 위치:</strong> 경쟁사명과 점유율은 제공 자료에 없어 확인 불가. 10-K 전망진술은 "더 많은 자원을 가진 경쟁사"의 가격 경쟁 가능성을 리스크로 든다.</li>
+<li><strong>AI 노출:</strong> 회사는 AI 응용이 여러 최종시장에 걸쳐 있어 별도 시장으로 보지 않는다고 밝혔다. 또 AI 관련 매출이 향후 수년간 늘어날 것이라고 기대를 표명했다(10-Q 1Q26). AI 매출 규모는 공시되지 않았다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<h3>4-1. 분기 추이 ($M)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>YoY</th>
+<th>QoQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>124.0</td>
+<td>170.9</td>
+<td>201.1</td>
+<td>+62.2%</td>
+<td>+17.7%</td>
+</tr>
+<tr>
+<td>매출총이익률(GAAP)</td>
+<td>68.4%</td>
+<td>68.8%</td>
+<td>70.3%</td>
+<td>+1.9%p</td>
+<td>+1.5%p</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>43.5</td>
+<td>50.8</td>
+<td>64.2</td>
+<td>+47.6%</td>
+<td>+26.3%</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>34.8</td>
+<td>40.1</td>
+<td>50.3</td>
+<td>+44.4%</td>
+<td>+25.4%</td>
+</tr>
+<tr>
+<td>영업이익(GAAP)</td>
+<td>4.7</td>
+<td>26.1</td>
+<td>22.4</td>
+<td>+375%</td>
+<td>−14.3%</td>
+</tr>
+<tr>
+<td>영업이익률(GAAP)</td>
+<td>3.8%</td>
+<td>15.3%</td>
+<td>11.1%</td>
+<td>+7.3%p</td>
+<td>−4.2%p</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>지표 파일의 영업이익률 13.3%(YoY <span class="up">+8.1%</span>p)는 10-Q의 2Q26 GAAP 영업이익률 11.1%(YoY <span class="up">+7.3%</span>p), 상반기 13.0%와 일치하지 않는다. 산출 기준은 확인 불가이므로 본 리포트는 10-Q 수치를 사용한다.</li>
+</ul>
+<h3>4-2. 성장의 질</h3>
+<ul>
+<li><strong>부문 기여:</strong> 2Q26 YoY 매출 증가 $77.1M 중 C&amp;C가 $57.3M으로 약 74%를 차지한다(계산값). C&amp;C는 YoY <span class="up">+83.4%</span>, I&amp;E는 <span class="up">+35.9%</span>다.</li>
+<li><strong>1Q26 설명:</strong> 회사는 C&amp;C 성장이 데이터센터(범용·AI 서버 포함)와 유선 네트워킹 부품 수요에서 나왔다고 밝혔다(10-Q 1Q26). 2Q26의 성장 동인 서술은 발췌가 잘려 확인 불가.</li>
+<li><strong>I&amp;E 회복:</strong> 1Q26 YoY <span class="up">+2%</span>에서 2Q26 <span class="up">+35.9%</span>로 가속했다. 회사는 산업·항공 고객의 수요 회복을 원인으로 들었다(10-Q 1Q26).</li>
+<li><strong>물량·단가·믹스:</strong> 출하량과 ASP가 공시되지 않아 확인 불가. 따라서 가격 인상과 물량 증가 중 어느 쪽이 성장을 이끌었는지 판단할 수 없다.</li>
+</ul>
+<h3>4-3. 마진 방향</h3>
+<ul>
+<li><strong>매출총이익률:</strong> GAAP 기준으로 68.4% → 68.8% → 70.3%로 상승 추세다. 비GAAP은 71.7%다(8-K). 상승 요인의 세부 내역은 확인 불가.</li>
+<li><strong>영업비용:</strong> 2Q26 R&amp;D와 SG&amp;A 합계는 $114.5M으로 QoQ <span class="up">+25.9%</span>였다. 매출 증가율 <span class="up">+17.7%</span>를 웃돌았다. 2Q26에는 인수 관련 비용 $4.4M이 포함되었다.</li>
+<li><strong>영업 레버리지:</strong> YoY로는 R&amp;D와 SG&amp;A 비율이 합계 63.2%에서 56.9%로 낮아졌다. 그러나 QoQ로는 53.2%에서 56.9%로 올랐다. 연간 레버리지는 개선됐지만 최근 분기에는 비용이 먼저 늘어난 구간이다.</li>
+<li><strong>이익의 질:</strong> GAAP 희석 EPS는 $0.14, 비GAAP EPS는 $0.53이다(8-K). GAAP 순이익은 $19.4M, 순이익률 9.6%다. 두 기준의 차이를 설명하는 조정 항목은 발췌에 없어 확인 불가.</li>
+</ul>
+<h3>4-4. 현금흐름</h3>
+<ul>
+<li>2Q26 영업현금흐름은 $88.3M(마진 43.9%), 비GAAP 잉여현금흐름은 $81.3M(마진 40.4%)이다(8-K).</li>
+<li>두 값의 차이 약 $7.0M(계산값)은 설비투자 등으로 보이지만 내역은 확인 불가.</li>
+<li>TTM 잉여현금흐름은 $163.0M(지표)이다. 조정 EBITDA는 $86.4M(마진 43.0%)다(8-K).</li>
+</ul>
+<h3>4-5. 재무 건전성과 밸류에이션</h3>
+<ul>
+<li><strong>유동성:</strong> 현금 및 단기 자산, 총부채, 인수 재원 조달 방식은 제공 자료에 없어 확인 불가.</li>
+<li><strong>부채:</strong> 10-K 전망진술은 기존 부채가 전략적 유연성에 미치는 영향과 대출 약정 위반 시 영향을 언급한다. 부채 존재는 확인되지만 규모, 만기, 약정 조건은 확인 불가.</li>
+<li><strong>주식수:</strong> 10-K 표지 기준 136,786,203주(2026-02-09)다. 지표의 시가총액과 현재가로 역산하면 약 142M주다(계산값). 차이의 원인(주식 발행 등)은 확인 불가.</li>
+<li><strong>밸류에이션(계산값):</strong></li>
+<li>시가총액 ÷ TTM 잉여현금흐름 ≈ 95배.</li>
+<li>TTM FCF 수익률 ≈ 1.1%.</li>
+<li>2Q26 비GAAP EPS를 단순 연환산(×4)하면 P/E ≈ 51배. 계절성은 반영하지 않은 추정치다.</li>
+<li>GAAP 기준 TTM EPS는 제공되지 않아 P/E는 확인 불가.</li>
+<li>52주 고점 대비 −30%에서 역산한 고점은 약 $155이다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>AI 데이터센터·네트워킹(C&amp;C)</strong>
+   - 회사 제시: AI 관련 설계 수주 파이프라인이 늘고 있으며 AI 매출이 향후 수년간 성장할 것이라고 기대(10-Q 1Q26).
+   - 실현 조건: C&amp;C 매출의 지속 성장과 데이터센터 비중 확대.
+   - 검증 포인트: 3분기 C&amp;C 매출이 QoQ로 성장을 이어가는지, 데이터센터 관련 설명이 구체화되는지.</p>
+</li>
+<li>
+<p><strong>산업·임베디드 회복(I&amp;E)</strong>
+   - 회사 제시: 산업·항공 고객의 수요 회복(10-Q 1Q26).
+   - 실현 조건: 2Q26 QoQ <span class="up">+16.9%</span>의 성장 지속.
+   - 검증 포인트: 3분기 I&amp;E 매출의 QoQ 방향과 팩토리 오토메이션·자동차 수요 언급.</p>
+</li>
+<li>
+<p><strong>3분기 FPGA 매출 <span class="up">+65%</span> YoY 가이던스</strong>
+   - 회사 제시: 8-K 보도자료 헤드라인에서 3Q26 FPGA 매출 YoY <span class="up">+65%</span>와 "더 빠른 EPS 성장"을 제시.
+   - 실현 조건: 3분기 실적으로 확인.
+   - 검증 포인트: 3분기 실적 발표 때 FPGA 매출 YoY가 가이던스에 부합하는지, 제공 자료에 3Q26 실적이 없으므로 발표 이후 직접 대조가 필요. 3Q25 매출 기준이 제공되지 않아 가이던스의 절대 금액은 계산할 수 없다.</p>
+</li>
+<li>
+<p><strong>AMI 인수 시너지</strong>
+   - 회사 제시: 인수가 완료되어 "가장 완전한 보안 관리·제어 플랫폼"을 갖추게 됐다고 밝힘(회사 주장).
+   - 실현 조건: 인수 기업의 매출·이익 기여와 통합 비용 관리. 인수가, 재원, 기여 규모는 공시상 확인 불가.
+   - 검증 포인트: 10-Q의 인수 관련 주석(인수가 배분, 매출 기여분), 인수 관련 비용이 일회성인지 반복되는지.</p>
+</li>
+<li>
+<p><strong>응용 다각화(Edge AI·플랫폼 보안·자동차 전장)</strong>
+   - 회사는 Edge AI, 플랫폼 보안, 자동차를 고성장 응용으로 든다(10-Q 2Q26).
+   - 검증 포인트: 부문 내 응용별 매출은 공시되지 않으므로, 향후 공시 변경 여부를 확인해야 한다.</p>
+</li>
+</ol>
+<h2>5-1. (생략)</h2>
+<h2>6. 리스크</h2>
+<blockquote>
+<p>10-K Item 1A(리스크 요인) 본문은 발췌에 없다. 아래 리스크는 10-K 전망진술 목록과 10-Q MD&amp;A에 근거한다.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>아시아·지정학 집중</strong>
+   - 10-K는 아시아태평양 매출 집중, 대만-중국 관계, 관세와 수출 규제를 전망진술 리스크로 명시한다.
+   - 1Q26 아시아 매출은 YoY <span class="up">+71%</span>로, 집중도가 올라가는 추세로 보인다. 비중 수치는 확인 불가.</p>
+</li>
+<li>
+<p><strong>비용 선행에 따른 영업이익 후퇴</strong>
+   - 2Q26 GAAP 영업이익은 QoQ −14.3%, 영업이익률은 15.3%에서 11.1%로 떨어졌다.
+   - 연구개발비와 판관비의 QoQ 증가율이 매출 증가율을 상회한 것이 원인이다. 이 추세가 지속되는지가 핵심이다.</p>
+</li>
+<li>
+<p><strong>인수 통합과 공시 불투명성</strong>
+   - AMI 인수가 완료되었지만 인수 규모, 재원, 재무 영향은 제공 자료에 없다.
+   - 10-K는 전략적 거래의 영향을 리스크로 든다. 2Q26 인수 관련 비용은 $4.4M이다.</p>
+</li>
+<li>
+<p><strong>유통·고객 재고 사이클</strong>
+   - 10-K는 유통·고객의 구매 패턴, 재고 수준, 주문 시기의 변동을 리스크로 명시한다.
+   - 유통 비중이 높다고 회사가 밝힌 만큼(10-Q 1Q26), 채널 재고 변화가 분기 실적을 크게 흔들 수 있다. 채널 재고 수치는 확인 불가.</p>
+</li>
+<li>
+<p><strong>조정 이익 의존과 높은 밸류에이션</strong>
+   - GAAP EPS $0.14 대비 비GAAP EPS $0.53으로 차이가 크다. 조정 항목 내역은 확인 불가.
+   - 시가총액은 TTM FCF의 약 95배다(계산값). 10-K는 주가 변동성 자체를 리스크로 든다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>판단 근거(정량)</h3>
+<ul>
+<li><strong>성장:</strong> 매출 YoY <span class="up">+62.2%</span>, C&amp;C YoY <span class="up">+83.4%</span>.</li>
+<li><strong>수익성:</strong> GAAP 매출총이익률 70.3%, GAAP 영업이익률 11.1%(QoQ −4.2%p).</li>
+<li><strong>현금:</strong> TTM 잉여현금흐름 $163.0M, FCF 수익률 약 1.1%(계산값).</li>
+<li><strong>주가 위치:</strong> 52주 고점 대비 −30%, 20일 수익률 −12.3%.</li>
+<li><strong>유동성:</strong> 거래대금 $292.1M, 거래량 20일 중앙값 대비 1.5배.</li>
+<li><strong>결론:</strong> 성장과 현금창출은 확인되지만, 이익률 하락과 밸류에이션 부담으로 관망이 적절하다.</li>
+</ul>
+<h3>진입 전 확인할 3가지</h3>
+<ol>
+<li><strong>3분기 실적:</strong> FPGA 매출 <span class="up">+65%</span> YoY 가이던스 달성 여부와 GAAP 영업이익률이 2Q26의 11.1%를 회복하는지.</li>
+<li><strong>AMI 인수 세부:</strong> 인수가, 현금·주식 재원, 매출·이익 기여, 통합 비용, 주식수 변화(10-Q 주석).</li>
+<li><strong>지역·유통·조정 항목:</strong> 아시아 매출 비중, 채널 재고 추이, GAAP과 비GAAP의 차이를 만드는 항목 내역.</li>
+</ol>
+<h3>관망을 바꾸는 조건</h3>
+<ul>
+<li><strong>보통으로 상향:</strong></li>
+<li>3분기에 FPGA 가이던스를 달성하고 GAAP 영업이익률이 2Q26 수준(11.1%)을 넘어 회복된다.</li>
+<li>연구개발비와 판관비 증가율이 매출 증가율 이하로 떨어진다.</li>
+<li>인수 기업의 기여와 통합 비용이 공시로 확인되고, 비용 항목이 일회성으로 정리된다.</li>
+<li><strong>회피로 하향:</strong></li>
+<li>3분기 FPGA 성장이 가이던스를 하회하거나, C&amp;C 매출이 QoQ로 역성장한다.</li>
+<li>GAAP 영업이익률이 11.1%를 밑도는 상태가 계속된다.</li>
+<li>10-K가 리스크로 든 대만·중국 관련 관세나 수출 규제가 실제로 발동된다.</li>
+<li>유통 채널 재고가 늘어났다는 공시나 실적 설명이 나온다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926004100/lscc20260103_10k.htm">10-K — 2026-01-03_0001437749-26-004100</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025657/lscc20260704_10q.htm">10-Q — 2026-07-04_0001437749-26-025657</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926014686/lscc20260404_10q.htm">10-Q — 2026-04-04_0001437749-26-014686</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025650/ex_971139.htm">8-K — 2026-08-04_0001437749-26-025650__EX-99.1__ex_971139</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926025650/lscc20260602_8k.htm">8-K — 2026-08-04_0001437749-26-025650</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/ex_993320.htm">8-K — 2026-07-27_0001437749-26-024519__EX-99.1__ex_993320</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/ex_993742.htm">8-K — 2026-07-27_0001437749-26-024519__EX-10.1__ex_993742</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/855658/000143774926024519/lscc20260723_8k.htm">8-K — 2026-07-27_0001437749-26-024519</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

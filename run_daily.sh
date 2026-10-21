@@ -38,9 +38,10 @@ echo "Step 1: Collecting daily market data..."
 echo "Step 1b: Caching market cap snapshot..."
 /home/inhyuk/projects/ExportImportAutomation/venv/bin/python weekly_sector_data.py --collect-mcap
 
-# 1c. 섹터 Daily Data(bio/tech/battery) — 당일 KRX 종가 + 전날 미국 종가 기준 PDF 발송. 장 마감 후로 이동(2026-10-19, 기존 화~토 07:30 크론 폐지)
-echo "Step 1c: Sector daily data report..."
-/home/inhyuk/projects/ExportImportAutomation/venv/bin/python weekly_sector_data.py --mode daily >> data_kr/weekly_data/run.log 2>&1
+# 1c. 섹터 Daily Data(bio/tech/battery) — 당일 KRX 종가 + 전날 미국 종가 기준 PDF+엑셀 발송, 섹터별·종목별 LLM 코멘트 포함(2026-10-20, 섹터당 1.5~3분). 장 마감 후로 이동(2026-10-19, 기존 화~토 07:30 크론 폐지)
+# DISABLED 2026-10-21: 한국장 마감 직후(16:05 --kr-close, 엑셀) / 미국장 마감 직후(06:45 --us-close, 엑셀+PDF+코멘트) 크론으로 이동 (사용자 요청)
+# echo "Step 1c: Sector daily data report..."
+# /home/inhyuk/projects/ExportImportAutomation/venv/bin/python weekly_sector_data.py --mode daily >> data_kr/weekly_data/run.log 2>&1
 
 # 2. Run telegram reporter to update charts, upload and forward them
 # DISABLED 2026-07-29: 종목별 주체 수급 차트 전송 중지 (사용자 요청)

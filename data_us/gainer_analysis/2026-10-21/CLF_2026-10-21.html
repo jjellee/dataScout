@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLF — Cleveland-Cliffs Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CLF — Cleveland-Cliffs Inc. Common Stock</h1>
+<div class="sub">2026-10-21 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CLF</span><span class="badge">+16.34%</span><span class="badge">거래량 5.05배</span><span class="badge">$8.04B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li><strong>실적 개선은 확인됐다.</strong> Q3 조정 EBITDA는 $612M으로 Q2($286M)의 두 배를 넘었고, 회사 가이던스($575M)도 웃돌았다 [공시: 8-K EX-99.1].</li>
+<li><strong>이익의 지속성은 아직 검증되지 않았다.</strong> GAAP 흑자는 Q3 단일 분기($165M)이고, TTM 잉여현금흐름은 -$857M이다 [지표]. 2027년 조정 EBITDA "$4B 이상"은 회사가 "현재 시장 상황이 유지될 경우"를 전제로 제시한 전망이다 [실적콜, 회사 주장].</li>
+<li><strong>가격 레버리지는 지수에 의존한다.</strong> 계약 전면을 인덱스 연동으로 전환하는 방향이라 가격 상승 시 수혜가 크지만 하락 시 노출도 같이 커진다 [실적콜, 회사 발언].</li>
+<li><strong>단기 과열과 회계 품질 우려가 있다.</strong> 당일 <span class="up">+16.34%</span>, 거래량 5.05배, 거래대금 $1.25B(시총의 약 15.5%, 계산값)다. 과거 기간 COGS 과소계상 정정(immaterial error)도 있었다 [공시: 10-Q]. Q4 가이던스 달성과 2027 계약 가격·물량 확정을 확인한 뒤 비중을 정하는 것이 합리적이다.</li>
+</ul>
+<p><em>표기: [공시]=SEC 원문, [실적콜]=transcript(요약은 stockanalysis 자동 생성, 발췌에 중략 구간 있음), [지표]=제공 시장지표, [뉴스]=헤드라인, [계산]=제공값으로 산출, [추정]=근거 부족한 해석</em></p>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>가장 유력한 촉매는 2026-10-19 실적 발표다</strong> [공시: 8-K]. 근거는 다음과 같다.</li>
+<li>발표 내용: Q3 조정 EBITDA $612M(가이던스 $575M 상회), Q4 조정 EBITDA $715M 전망, 2027년 조정 EBITDA $4B 이상 언급 [공시·실적콜].</li>
+<li>뉴스: CNBC 프리마켓 급등 종목에 CLF 포함, IBD "$4 Bil Outlook" 헤드라인 [뉴스].</li>
+<li><strong>확인 불가:</strong> 제공 자료에는 <span class="up">+16.34%</span>가 어느 거래일에 발생했는지, 실적 발표 당일 반응과 같은 날인지가 없다.</li>
+<li><strong>상반된 시각 존재:</strong> Simply Wall St는 "Q3 실적이 의구심을 자극해 주가 하락"이라고 보도했다 [뉴스]. 시장이 실적의 질을 두고 엇갈린다는 뜻이다.</li>
+<li><strong>보조 요인 (공시·뉴스):</strong></li>
+<li>2027년 계약 재협상 호조를 회사가 주장 [실적콜].</li>
+<li>캐나다 TRQ가 2027년 6월까지 연장됐다고 10-Q(Q2)에 기재 [공시].</li>
+<li>2026년 4월까지 누적 철강 수입이 전년 대비 29% 감소 [공시: 10-Q].</li>
+<li><strong>수급 특성 [지표]:</strong> 20일 수익률 <span class="up">+8.9%</span>, 60일 <span class="up">+11.4%</span>로 당일 급등 이전부터 상승 추세였다. 52주 고점 대비 <span class="down">-6.6%</span>이므로 고점은 약 $15.1로 역산된다 [계산]. 공매도 잔고는 제공되지 않아 숏커버 기여 여부는 [추정]이다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><em>주의: 10-K 사업 섹션 원문은 제공되지 않았다(표지·정의만 제공). 아래는 10-Q MD&amp;A와 실적콜 기준이다.</em></p>
+<ul>
+<li><strong>사업 구조 [공시: 10-Q]:</strong> 북미 기반 철강사로, 자동차용 고부가 판재에 초점을 맞춘다. 철광석 채광, 펠렛·DRI 생산, 스크랩 처리, 1차 제강, 후공정(마감·스탬핑·툴링·튜빙)까지 수직 통합되어 있다. 약 25,000명을 고용한다.</li>
+<li><strong>원료 기반:</strong> 고로(BF) 중심 구조로 철광석·펠렛을 자체 조달한다 [공시: 10-Q]. 10-Q는 이를 두고 스크랩 가격 상승이 경쟁 우위로 작용한다고 설명한다 [공시·회사 주장].</li>
+<li><strong>광산 자산 [공시: 10-K 정의]:</strong> Northshore, Minorca, Empire, Hibbing(U.S. Steel과의 합작).</li>
+<li><strong>제품:</strong> 자동차용 열연·냉연·도금강판(Galvanneal 포함), 방향성 전기강판(GOES, Butler Works 25% 확장 계획) [실적콜], HBI.</li>
+<li><strong>고객군:</strong></li>
+<li>자동차 OEM: 북미 최대 수요처 [공시: 10-Q]. 다년 계약이 있으며 첫 번째 만기는 1월 1일이다 [실적콜].</li>
+<li>서비스센터·최종 수요자: 연간 고정가 또는 인덱스 연동 계약 [실적콜].</li>
+<li><strong>캐나다:</strong> Stelco 인수로 확보 [공시: 10-K 정의 — Arrangement Agreement 2024년 7월]. Galvanneal은 Stelco 생산량의 20% 미만이다 [실적콜].</li>
+<li><strong>사업 정리:</strong> FPT Florida를 2025년 12월 5일 매각 [공시: 10-K 정의]. 부동산 매각 대금이 부채 상환에 쓰인다 [실적콜].</li>
+<li><strong>매출 구성(제품·지역·고객별 비중):</strong> 확인 불가.</li>
+<li><strong>경쟁 위치:</strong> 회사는 "북미 최대 자동차용 강재 공급사"라고 주장한다 [실적콜, 회사 주장]. 캐나다 Galvanneal에서는 ArcelorMittal Dofasco와 경쟁한다 [실적콜].</li>
+</ul>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질 (단가·물량·원가)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Q2 2026</th>
+<th>Q3 2026</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>~$5.2B</td>
+<td>$5.6B</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>출하량(순톤)</td>
+<td>4.0M</td>
+<td>4.2M</td>
+<td>8-K·실적콜</td>
+</tr>
+<tr>
+<td>평균 순판매단가($/nt)</td>
+<td>~$1,124 [계산]</td>
+<td>$1,177 (+$53)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>단위원가</td>
+<td>—</td>
+<td>-$17/t (가이던스 -$10)</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$286M</td>
+<td>$612M</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>조정 EBITDA 마진</td>
+<td>~5.5% [계산]</td>
+<td>~10.9% [계산]</td>
+<td>계산</td>
+</tr>
+<tr>
+<td>GAAP 순이익 / EPS</td>
+<td>-$134M / -$0.25</td>
+<td>+$165M / +$0.26</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>조정 EPS</td>
+<td>-$0.20</td>
+<td>+$0.28</td>
+<td>8-K</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>단순 분해 [추정]:</strong> 조정 EBITDA +$326M 중 가격 효과는 약 $223M($53×4.2M nt), 원가 개선은 약 $71M($17×4.2M nt)으로 추산된다. 합계 약 $294M이며, 나머지 약 $32M은 물량과 기타로 추정된다. 회사가 제시한 분해가 아니다.</li>
+<li><strong>성장의 성격:</strong> 단가 주도 성장이 중심이다. 물량은 4.2M nt로 소폭 증가했다. 실적콜에서 애널리스트는 Q3 물량이 기대(약 30만 톤 증가)에 못 미쳐 약 12.5만 톤 증가에 그쳤다고 지적했다 [실적콜, 애널리스트 발언].</li>
+</ul>
+<p><strong>마진 방향성</strong>
+- 조정 기준 마진은 Q2 대비 크게 개선됐다 [계산].
+- 지표표의 매출총이익률 2.5%, 영업이익률 <span class="down">-0.9%</span>(YoY <span class="up">+6.7%</span>p)는 기간이 명시되지 않았다. Q2 GAAP 적자와 방향이 맞아 Q2 기준으로 보이나 [추정], 확인이 필요하다.
+- Q4 비용은 정비·에너지·합금·디젤 상승으로 소폭 증가할 것으로 회사가 전망했다 [실적콜].</p>
+<p><strong>회계 품질</strong>
+- 10-Q는 2025년 3분기에 직원 비용 충당금 누락(COGS 과소계상)을 식별해 과거 기간을 정정했다고 밝혔다. 대상은 2025년 1·2분기와 2022~2024년 연·분기다 [공시: 10-Q]. 과거 이익이 과대 계상되었을 가능성이 있으므로 개선폭의 기준선으로 쓸 때 유의해야 한다.
+- 10-K 표지에서 오류 정정과 경영진 성과보상 회수 분석(recovery analysis) 체크박스가 모두 표시되어 있다 [공시: 10-K]. 세부 내용은 원문에 없으므로 확인이 필요하다.</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름 -$857M [지표].
+- Q3 운전자본 +$160M(재고 +$170M, 매출채권 +$115M, 매입채무 +$135M 상쇄). Q4는 중립 전망 [실적콜].
+- 2026년 CapEx 약 $7억 유지, 2027년 CapEx 약 $10억 이상 [실적콜].
+- FCF 전환 시점은 제공 자료로 확인 불가.</p>
+<p><strong>재무 건전성</strong>
+- 유동성 $3.2B(9/30 기준) [공시: 8-K].
+- 레버리지 목표는 2.5배 이하로, 2027년 중반 달성을 목표로 한다 [실적콜]. 현재 레버리지와 총부채 잔액은 확인 불가.
+- 부채 상환 우선순위는 ABL 다음 채권이며, 증자 계획은 없다고 밝혔다 [실적콜 요약 — 원문 대조 필요].</p>
+<p><strong>밸류에이션 참고 [계산]</strong>
+- 시총 $8.04B, 종가 $14.10 기준 발행주식은 약 570M주로 10-K(570,390,499주, 2026-02-09) 수치와 맞는다.
+- Q4 가이던스 $715M을 단순 연환산하면 약 $2.9B다(계절성 무시).
+- 2027년 $4B 전망을 가정하면 시총 대비 약 2.0배다. 순부채를 반영하지 않은 참고치이므로 EV 기준 배수는 산출할 수 없다.
+- 참고: GAAP EPS $0.26과 순이익 $165M으로 역산한 희석주식수는 약 635M주로, 570M주와 차이가 난다. 최신 희석주식수 확인이 필요하다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 2027년 계약 리셋 (가격·물량)</strong>
+- 회사 제시: 계약 갱신으로 전년 대비 조정 EBITDA 10억 달러 이상 개선 기대(지수 변동 전) [실적콜, 회사 주장]. 대부분 고객이 2026년보다 2027년 물량 확대를 원한다고 밝혔다.
+- 실현 조건: 인덱스 연동 전환에 따른 할인 축소, 최소 물량 계약(take-or-pay) 확대.
+- 검증 포인트: 1월 계약 리셋 후 실제 수주 물량과 가격, Q4 실적에서 ASP가 +$45~55/t 상승하는지.</p>
+<p><strong>② 가격 환경 (HRC·수입 억제)</strong>
+- 회사 제시: 2026년 2분기 HRC 평균 $1,079/nt(전년 대비 <span class="up">+19%</span>, 2022년 이후 최고치) [공시: 10-Q]. 수입은 사전 232조 수준 대비 35~40% 낮다고 주장 [실적콜].
+- 실현 조건: 관세(Section 232 50%) 유지, 캐나다 TRQ 시행.
+- 검증 포인트: 월간 미국 인덱스 가격 추이(회사는 2026년 대부분 기간 월 약 $40/t 상승이라고 설명), 수입 통계, 관세 정책 변경 여부.</p>
+<p><strong>③ 자동차 물량 회복 및 Dearborn 재가동</strong>
+- 회사 제시: 미국 자동차 생산 정상화와 수입 차량의 국내 생산 전환으로 수요 증가 기대 [공시: 10-Q, 실적콜].
+- 실현 조건: OEM 생산 일정의 안정화. Dearborn 재가동은 고객의 물량 약정에 달려 있다고 회사가 설명했다 [실적콜].
+- 검증 포인트: Q4 자동차 출하량, 1월 OEM 다년 계약 갱신 결과, Dearborn 재가동 결정 공시.</p>
+<p><strong>④ 캐나다 Stelco 정상화</strong>
+- 회사 제시: 핫롤 사업은 TRQ 효과로 흑자 전환, 백로그가 출하로 전환되며 기여 확대 기대 [실적콜].
+- 실현 조건: TRQ 유지와 Galvanneal 수입 통제. 회사는 Galvanneal 사업이 여전히 위험하다고 밝혔다 [실적콜].
+- 검증 포인트: Stelco 출하량과 분기별 수익, 캐나다 정부의 Galvanneal 수입 조치 여부.</p>
+<p><strong>⑤ 설비 투자 조정과 디레버리징</strong>
+- 회사 제시: Burns Harbor C 고로 리라인을 2028년 4월로 연기해 약 50만 톤 생산을 보존하고, 중요 설비투자(Middletown 10억 달러, DOE 지원 5억 달러)는 2030년 1분기 완료 예정 [실적콜].
+- 실현 조건: 부동산 매각 closing, 영업현금흐름 개선.
+- 검증 포인트: 2027년 CapEx 집행 규모, 레버리지 2.5배 하회 시점, 부동산 매각 완료 여부.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><em>transcript는 발췌본이며 중략 구간이 있다. 요약은 자동 생성이므로 원문과 대조가 필요하다.</em></p>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- CEO는 "회복이 본격화됐다"고 강조했다. 근거로 Q3 실적, 계약 재협상, 2027년 전망을 들었다 [실적콜].
+- 정책 긍정론이 강하다. 트럼프 행정부의 통상 정책을 치켜세우고, 수입 감소와 국내 수요 증가를 반복해서 말했다 [실적콜]. 정책이 바뀌면 가장 먼저 흔들릴 전제라는 점에서 객관성은 제한적이다.
+- 가이던스 화법은 "가능하다(could)"·"예상된다(expected)"처럼 조건부 표현이 많다. 2027년 $4B 전망은 "현재 시장이 지속될 경우"로 명시되어 있다 [실적콜].</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 회피·방어 지점</strong>
+- <strong>물량 미달:</strong> 애널리스트가 Q3 물량 미달을 지적하자, CEO는 자동차 OEM의 생산 일정 문제와 "just-in-time이 생각만큼 작동하지 않는다"는 점을 원인으로 돌렸다 [실적콜]. 미달 수치 자체를 반박하지는 않았다.
+- <strong>repricing 규모:</strong> 애널리스트가 $500M에서 약 $850M으로 늘어난 이유를 묻자, CEO는 구체적 수치 설명을 거부하고 "협상이 잘 진행 중"이라고만 답했다 [실적콜]. 정량 근거는 확인할 수 없다.
+- <strong>출하 성장률:</strong> 시장 성장 대비 점유율 변화를 묻자, 수치 없이 정책 환경과 수입 감소를 설명했다 [실적콜].
+- <strong>캐나다 밸류애드 스프레드:</strong> 수치 질문에 "나머지는 당신의 스프레드시트에 있다"며 답을 피했다 [실적콜].
+- <strong>Dearborn:</strong> 재가동 시점을 고객이 결정한다고 했다. 자동차 업체의 알루미늄 차량 전환을 비판하는 발언도 있었다 [실적콜].</p>
+<p><strong>공시에 없고 콜에서만 드러난 정보</strong>
+- 계약 조건 변화: 최소 물량이 take-or-pay로 바뀌었고, 고객 다수가 최소 물량을 오히려 올리려 한다고 주장했다. 고정가 계약은 사라지고 전면 인덱스 연동으로 가며, 할인은 최소화하거나 없애고 운송비도 고객에게 전가한다고 밝혔다 [실적콜].
+- 슬래브 공급 계약(ArcelorMittal Calvert 대상) 종료 효과가 실적에 반영되고 있다고 설명했다 [실적콜].
+- 캐나다 TRQ는 핫롤에는 효과가 있었으나 Galvanneal에는 효과가 없었다는 입장을 밝혔다. Fortress North America 방안을 정부에 제안했으나 수용되지 않았고, 정부 지원금은 "시장이 아니다"라고 평가했다 [실적콜].
+- 미국 철강 노조(USW) 협상이 기한을 넘겨 계속 중이라고 언급했다 [실적콜 요약]. 노사 갈등 가능성을 완전히 배제할 수 없다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>가격 인덱스 노출과 정책 의존</strong>
+   - 전 고객 인덱스 전환으로 가격 상승 시 수혜가 크지만, 하락 시 직격탄이다. 회사도 고객들이 "가격이 정점에 달했다"고 보고 할인을 원한다고 언급했다 [실적콜].
+   - 수익 구조가 Section 232 관세와 캐나다 TRQ(2027년 6월까지 연장)에 의존한다 [공시: 10-Q]. 정책 축소 시 가격 프리미엄이 사라질 수 있다.</p>
+</li>
+<li>
+<p><strong>자동차 수요·물량 변동성</strong>
+   - 2026년 2분기 북미 경량차 생산은 약 390만 대로 전년 대비 감소했다 [공시: 10-Q]. Q3 물량도 기대에 못 미쳤다 [실적콜].
+   - 다년 자동차 계약 갱신이 불확실하다.</p>
+</li>
+<li>
+<p><strong>현금흐름과 레버리지</strong>
+   - TTM FCF -$857M [지표]. 2027년 CapEx 10억 달러 이상이 예정되어 있어 디레버리징 속도가 실적 개선에 달려 있다.
+   - 부동산 매각 closing이 지연되는 사례도 있었다 [실적콜].</p>
+</li>
+<li>
+<p><strong>회계 품질</strong>
+   - 과거 기간 COGS 과소계상 정정(immaterial error) [공시: 10-Q]. 10-K 표지의 정정·성과보상 회수 체크박스 표시 [공시: 10-K]. 개선 추세의 기준선이 흔들릴 수 있다.</p>
+</li>
+<li>
+<p><strong>노무·캐나다 사업 리스크</strong>
+   - USW 협상 지연 [실적콜 요약]. Stelco Galvanneal 사업과 고용이 캐나다 수입 정책에 노출되어 있다 [실적콜].
+   - 중동 전쟁으로 인한 에너지·운송비 상승도 언급되었다 [공시: 10-Q].</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>판단 근거 (관망)</strong>
+- Q3 조정 EBITDA $612M, Q4 가이던스 $715M으로 실적 모멘텀은 강하다 [공시·실적콜].
+- 그러나 GAAP 흑자는 Q3 단일 분기이고, TTM FCF -$857M이다 [지표]. 레버리지는 목표(2.5배) 대비 높은 수준에 있을 것으로 보이나 현재 수치는 확인 불가다.
+- 당일 거래대금이 시총의 약 15.5%에 달해 단기 과열 구간이다 [계산]. 조정 대기가 합리적이다.
+- 2027년 $4B 전망과 계약 리셋 효과는 회사 주장으로, 아직 공시로 확인되지 않았다 [실적콜].</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>Q3 10-Q 원문:</strong> 2026-10-20 제출분 원문은 제공되지 않았다. 세그먼트·고객 믹스, 총부채, 현재 레버리지, 희석주식수, 현금흐름표를 확인한다.
+2. <strong>Q4 실적과 가이던스 달성:</strong> 조정 EBITDA $715M, ASP +$45~55/t, 단위원가 가이던스 준수 여부. 실적 발표 일정은 별도 확인이 필요하다.
+3. <strong>2027 계약 확정 내용:</strong> 1월 계약 리셋의 가격·물량·할인 조건, 자동차 OEM 다년 계약 갱신, USW 협상 타결 여부.</p>
+<p><strong>관망 → 적극으로 바꾸는 조건</strong>
+- Q4 조정 EBITDA가 $715M 이상으로 확인되고, 2027년 계약 가격·물량이 공시나 실적콜에서 구체적 수치로 확인됨.
+- TTM FCF가 개선 추세로 전환되고, 레버리지가 2.5배 목표 궤도에 있음이 확인됨.
+- USW 협상 타결과 Dearborn 재가동 결정이 나옴.</p>
+<p><strong>관망 → 회피로 바꾸는 조건</strong>
+- Q4 가이던스 하회, 또는 미국 인덱스 가격이 하락으로 전환됨.
+- 캐나다 TRQ 완화, 또는 관세 정책 후퇴가 발표됨.
+- 자동차 물량이 추가로 미달되거나 OEM 계약이 축소됨.
+- 추가 회계 정정이 나오거나 부동산 매각 지연으로 차입이 늘어남.
+- 증자 가능성이 제기됨(회사는 계획이 없다고 밝힘 [실적콜 요약]).
+- USW 파업 또는 장기 생산 중단이 발생함.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000025/clf-20251231.htm">10-K — 2025-12-31_0000764065-26-000025</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000100/clf-20260630.htm">10-Q — 2026-06-30_0000764065-26-000100</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000070/clf-20260331.htm">10-Q — 2026-03-31_0000764065-26-000070</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000112/clf-202609308xkex991.htm">8-K — 2026-10-19_0000764065-26-000112__EX-99.1__clf-202609308xkex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000112/clf-20261019.htm">8-K — 2026-10-19_0000764065-26-000112</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000097/clf-202606308xkex991.htm">8-K — 2026-07-23_0000764065-26-000097__EX-99.1__clf-202606308xkex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000097/clf-20260723.htm">8-K — 2026-07-23_0000764065-26-000097</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/764065/000076406526000102/clf-20260721.htm">8-K — 2026-07-21_0000764065-26-000102</a></li>
+<li>Transcript — 2026-10-19 Q3 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
