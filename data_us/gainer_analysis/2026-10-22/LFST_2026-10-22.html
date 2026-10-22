@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LFST — LifeStance Health Group Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>LFST — LifeStance Health Group Inc. Common Stock</h1>
+<div class="sub">2026-10-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">LFST</span><span class="badge">+3.82%</span><span class="badge">거래량 0.58배</span><span class="badge">$4.67B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>2분기 매출은 $435.4M(YoY <span class="up">+26.1%</span>)으로 성장이 뚜렷하고, 영업이익률은 7.0%로 전년 대비 7.9%p 개선됐으며 TTM 잉여현금흐름은 $173.9M이다.</li>
+<li>오늘 상승(<span class="up">+3.82%</span>)의 확인된 촉매는 없다. 거래량은 20일 중앙값의 0.58배로 오히려 평소보다 적었다.</li>
+<li>경영진은 가이던스 상향을 밝혔지만(헤드라인 기준), SA 기준 선행 PER은 약 77.6배로 높고, 52주 고점(약 $13.4) 대비 8.7% 아래에 있다. 밸류에이션 부담이 있는 상태에서 의미 있는 비중을 실을 근거는 부족하다.</li>
+<li>10/14 8-K는 본문이 제공되지 않아 내용을 확인할 수 없다. 이 공시를 확인하기 전에는 비중을 늘릴 근거가 부족하다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>전제 정정</strong>
+- 제공된 지표상 거래량 배수는 <strong>0.58배</strong>(20일 중앙 대비)로, "거래량 급증"이라는 전제와 맞지 않는다. 거래대금 $24.0M은 종가 $12.22 기준 약 196만 주(계산)에 해당한다.
+- 지표의 기준 시점이 명시되지 않았다. SA 실적 페이지에 표시된 주가(11.50, <span class="down">-3.36%</span>)는 2026-08-06~08-11 구간의 데이터로, 오늘 지표와 다른 시점이다.</p>
+<p><strong>촉매 판단</strong>
+- <strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong> 당일 등락폭(<span class="up">+3.82%</span>)은 거래량 뒷받침 없이 나타났다.
+- 최근 4일 내 공시는 없다. 다만 <strong>10/14 8-K</strong>(당일로부터 8일 전)가 존재하나, 제공된 문서에는 표지만 있고 Item 번호와 본문이 없어 <strong>공시상 내용 확인 불가</strong>다.
+- 헤드라인으로 확인되는 긍정 요인은 다음과 같다(본문 미확인, 제목 기준).
+  - 헤지아이(Hedgeye)의 신규 롱 아이디어 편입
+  - FY26 매출 가이던스 $16.85B~$17.25B 제시 및 FY26 전망 상향(회사 발표 기준)
+  - $100M 자사주 매입 승인
+- 실적 요약(SA)에 따르면 2분기 EPS는 $0.11로 컨센서스 $0.03을 상회했고, 매출은 약 $20.8M 상회했다. 다만 이는 8/6 실적 발표 때 나온 내용으로, 오늘 상승과의 직접 연결은 확인되지 않는다.</p>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>사업 모델 [10-K]</strong>
+- 정신건강 외래 진료 플랫폼이다. 2025년 말 기준 8,040명, 2026년 6월 말 기준 8,542명의 임상의(정신과 의사, APN, 심리학자, 치료사)를 고용하고 있으며, 33개 주에서 운영하고 있다.
+- 진료는 대면과 가상(virtual) 방식으로 제공되며, 불안, 우울, 양극성 장애, 섭식장애, 정신병적 장애, PTSD 등을 다룬다.
+- 수익은 <strong>진료 건당(visit) 기준</strong>으로 발생한다. 회사가 정의한 TRPV(total revenue per visit)가 핵심 단가 지표다.</p>
+<p><strong>고객군과 지불 구조</strong>
+- 환자 측면에서는 <strong>보험사 네트워크 내(in-network) 계약</strong>을 강조한다(10-Q). 보험 적용이 가능하면 환자의 자기부담이 줄어드는 구조다.
+- 보험사(payor), 1차 진료의(primary care), 전문의 그룹과도 협력한다. 병원 시스템, 1차 진료 그룹과의 파트너십 확대를 전망에 포함했다(10-K 전망진술).
+- Medicaid 환자를 서비스하고 있으며, OBBBA의 Medicaid 조항이 2027~2028년에 시행될 예정이다. 회사는 이 법이 "중대한 영향이 없을 것으로 예상"한다고 밝혔다(회사 주장, 10-Q).</p>
+<p><strong>고용 모델의 특징 [10-K]</strong>
+- 임상의를 <strong>자회사 및 "supported practices"</strong> 를 통해 고용한다. 10-K 리스크 요약에는 회사가 소유하지 않은 supported practices와의 관계가 중단되거나 법적 도전을 받으면 사업이 손상될 수 있다는 내용이 포함되어 있다.
+- 회사는 이 모델이 독립 개업보다 "우월한 가치 제안"이라고 주장한다(회사 주장).</p>
+<p><strong>경쟁 위치</strong>
+- 경쟁사 목록과 시장점유율은 제공된 발췌에 없다. <strong>공시상 확인 불가.</strong> 회사는 "미국 최대 규모의 외래 정신건강 플랫폼 중 하나"라고 자평한다(회사 주장).</p>
+<p><strong>매출 구성</strong>
+- 보험/자기부담 비중, 서비스 유형별 매출, 지역별 매출은 제공된 문서에 없다. <strong>공시상 확인 불가.</strong></p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>2분기 핵심 지표 [10-Q 2Q, 시장지표]</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$435.4M</td>
+<td>YoY <span class="up">+26.1%</span>, QoQ <span class="up">+7.9%</span></td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>35.2%</td>
+<td>매출총이익 약 $153M(계산)</td>
+</tr>
+<tr>
+<td>영업이익률</td>
+<td>7.0%</td>
+<td>약 $30.5M(계산), 전년 약 <span class="down">-0.9%</span>(계산)</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>$173.9M</td>
+<td>시총 대비 약 3.7%(계산)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>전년 2분기 매출은 약 $345M(계산), 1분기 매출은 약 $404M(계산)으로 추정된다.</li>
+</ul>
+<p><strong>성장의 질</strong>
+- <strong>물량(임상의 수)</strong>: 임상의는 2025년 말 8,040명 → 2026년 3월 말 8,349명(<span class="up">+3.8%</span>) → 6월 말 8,542명(<span class="up">+2.3%</span>)으로 증가했다(10-K, 10-Q). 분기 평균 매출을 분기 말 임상의 수로 나누면 임상의 1인당 분기 매출은 약 $52K(계산)다. 평균 임상의 수가 아니라 기말 수치 기준이라 참고용이다.
+- <strong>단가(TRPV)와 진료 건수</strong>: 10-Q MD&amp;A가 중간에서 잘려 있어 TRPV, 연간 방문 수, 환자 수의 실제 수치는 <strong>공시상 확인 불가</strong>다. 따라서 성장이 단가에서 나왔는지, 물량에서 나왔는지 분해할 수 없다.
+- 임상의 증가율(약 2~4%/분기)과 매출 증가율(YoY 26%) 사이의 차이는 단가 개선이나 활용률 향상에서 왔을 가능성이 있다. 이는 <strong>추측</strong>이며 확인되지 않았다.</p>
+<p><strong>마진 방향</strong>
+- 영업이익률 개선(YoY <span class="up">+7.9%</span>p)은 긍정적이다. 다만 분기 단위 시계열이 없어 지속성은 판단할 수 없다.
+- 매출총이익률 35.2%의 전년 비교치는 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>현금흐름과 밸류에이션</strong>
+- TTM FCF가 $173.9M으로 흑자이며, 자사주 매입 $100M 승인이 헤드라인에 있다.
+- 시가총액 $4.67B 기준 FCF 수익률은 약 3.7%(계산)다.
+- SA 기준 선행 PER은 77.55배로 표시되어 있다. 이는 $11.50 기준이며, $12.22 기준으로 환산하면 약 82배(계산)다.
+- GuruFocus 헤드라인의 GF Value는 $8.88로, 현재가보다 낮다. 이는 제3자 모델 추정치로, 사실로 취급하지 않는다.</p>
+<p><strong>재무 건전성</strong>
+- 대차대조표(현금, 총부채, 이자비용)는 제공되지 않았다. <strong>공시상 확인 불가.</strong>
+- 10-K 리스크 요약에 "기존 부채가 사업과 성장에 악영향을 줄 수 있다"는 문구가 있다. 부채 규모는 확인되지 않았다.</p>
+<p><strong>가이던스 점검 (계산·해석)</strong>
+- 헤드라인 기준 FY26 매출 가이던스는 $1,685M~$1,725M이다. 상단이든 하단이든 상반기 매출(약 $839M, 계산)을 빼면 하반기는 분기당 약 $423M~$443M 수준이 필요하다(계산).
+- 이는 2분기 매출($435M) 수준의 유지로도 가이던스 범위에 들어간다는 뜻이다. 가이던스가 보수적인지, 하반기 계절성이 있는지는 <strong>확인 불가</strong>다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 제시 내용 (출처)</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 임상의 확충</td>
+<td>임상의 기반 확대를 "상당한 기회"로 밝힘(10-Q)</td>
+<td>채용·유지 속도가 신규 센터 확장과 맞아야 함</td>
+<td>분기 말 임상의 수가 8,542명보다 늘었는지, 순증 폭이 2~4%대를 유지하는지</td>
+</tr>
+<tr>
+<td>② 기존 센터 내 방문 증가</td>
+<td>"기존 센터 내 유기적 성장 엔진"(10-Q)</td>
+<td>일정 채움률과 신규 환자 유입</td>
+<td>방문 건수, 임상의당 방문 수, TRPV 추이(10-Q MD&amp;A에서 확인)</td>
+</tr>
+<tr>
+<td>③ 신규 센터·인수</td>
+<td>신규 센터 개설과 인수 계획(10-K 전망진술)</td>
+<td>인수 후 통합과 마진 유지</td>
+<td>센터 수 변화, 인수 공시, 인수 후 마진 흐름</td>
+</tr>
+<tr>
+<td>④ 파트너십 확장</td>
+<td>병원 시스템, 1차 진료, 전문의 그룹과의 파트너십 확대(10-K)</td>
+<td>협력 기관의 의뢰 전환</td>
+<td>신규 파트너 발표, 의뢰 기반 환자 비중</td>
+</tr>
+<tr>
+<td>⑤ 가상 진료</td>
+<td>물리적 공간 투자 없이 방문 용량 확대(10-Q)</td>
+<td>가상 진료 이용 확대와 수가 유지</td>
+<td>가상 진료 비중, 가상 방문 단가</td>
+</tr>
+<tr>
+<td>⑥ 마진 개선과 자본 환원</td>
+<td>영업이익률 YoY <span class="up">+7.9%</span>p, 자사주 $100M(헤드라인)</td>
+<td>단가 상승과 운영 레버리지</td>
+<td>분기 영업이익률이 7% 이상 유지되는지, 자사주 실제 집행 규모</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 자료에는 실적콜의 <strong>본문 transcript가 없고</strong>, SA 실적 페이지의 요약과 슬라이드 덱 제목만 있다. 따라서 경영진의 톤, 가이던스 화법의 변화, Q&amp;A에서 반복된 질문과 회피 지점은 <strong>판단할 수 없다.</strong></p>
+<p>콜 요약 페이지에서 확인 가능한 내용은 다음과 같다.
+- 2분기 EPS와 매출이 컨센서스를 상회했다(SA 요약).
+- FY26 매출 가이던스 상향과 $100M 자사주 매입 승인(헤드라인 기준). 실제 콜 발언에서 어떤 표현을 썼는지는 확인되지 않았다.
+- 실적콜 본문이 필요하면 원문 확보 후 톤과 Q&amp;A를 다시 검토해야 한다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<p><strong>1) 보험 수가와 제3자 지불자의 제약 [10-K 리스크 요약]</strong>
+- 제3자 보험사의 지급률이 낮아지거나 보험사가 치료 제공을 제약하면 사업이 악화될 수 있다. 이 회사는 정신건강 보험 수가가 낮다는 시장 구조적 문제를 스스로 언급하고 있다(10-K 사업 섹션).
+- 매출이 건당 수가에 직접 연동되어 있어 영향이 빠르게 나타난다.</p>
+<p><strong>2) 임상의 채용과 유지 [10-K, 10-Q]</strong>
+- 성장이 임상의 확보에 달려 있다. 임상의 수가 분기별로 증가하고 있지만, 증가율이 둔화되거나 이탈이 늘면 성장 가정이 흔들린다.
+- 임상의 보상이 방문 수에 연동되어 있어, 생산성 압박이 보상 비용 증가로 이어질 수 있다(10-Q).</p>
+<p><strong>3) Supported practices 구조 [10-K]</strong>
+- 회사가 소유하지 않은 진료 조직과의 계약에 의존한다. 계약 중단이나 법적 도전이 발생하면 사업 영향이 크다.</p>
+<p><strong>4) 규제와 Medicaid 법안 [10-K, 10-Q]</strong>
+- 고도로 규제된 산업이다. OBBBA의 Medicaid 조항(2027~2028 시행)에 대해 회사는 중대한 영향이 없다고 밝혔다(회사 주장). 다만 세부 가이던스는 아직 나오지 않았다.</p>
+<p><strong>5) 부채와 사이버 보안 [10-K 리스크 요약]</strong>
+- 기존 부채가 사업과 성장에 부담이 될 수 있다. 부채 규모는 확인되지 않는다.
+- 보안 사고 시 환자 데이터 유출, 소송, 규제 조치 가능성이 있다.</p>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 성장: 매출 YoY <span class="up">+26.1%</span>, 분기 매출 QoQ <span class="up">+7.9%</span>, 임상의 수 분기 증가(8,349 → 8,542명).
+- 수익성: 영업이익률 7.0%(YoY <span class="up">+7.9%</span>p), 매출총이익률 35.2%, TTM FCF $173.9M(시총 대비 약 3.7%, 계산).
+- 밸류에이션: 선행 PER 약 77~82배(SA 기준 계산). GF Value $8.88 대비 현재가 약 38% 높음(계산).
+- 수급: 거래량 0.58배, 거래대금 $24.0M/일. 유동성은 기관 규모 진입이 가능한 수준이지만, 큰 비중을 한 번에 실으면 시장 충격이 생긴다. 분할 진입이 필요하다.</p>
+<p><strong>판단 논리</strong>
+- 펀더멘털은 성장과 흑자 전환이 확인되어 긍정적이다. 그러나 오늘 상승에는 확인된 촉매가 없고, 거래량이 평소보다 적다. 밸류에이션은 높은 편이다.
+- 10/14 8-K 내용을 확인하지 못했고, 10-K·10-Q의 핵심 MD&amp;A(TRPV, 방문 수, 대차대조표)도 확인되지 않았다. 이 정보가 채워지기 전에는 의미 있는 비중을 실을 근거가 부족하다.
+- 따라서 <strong>"관망"</strong> 으로 판단한다. 소액 탐색 포지션은 가능하나, 의미 있는 비중은 아래 체크포인트 확인 후 재검토한다.</p>
+<p><strong>진입 전 확인할 3가지</strong>
+1. <strong>10/14 8-K 본문</strong>: 어떤 Item인지, 실적·지배구조·재무 관련 내용인지 확인한다.
+2. <strong>다음 분기 실적(3분기)</strong>: 매출 성장률이 20% 중반 이상을 유지하는지, 임상의 수 순증이 이어지는지, 영업이익률이 7% 이상을 유지하는지 확인한다.
+3. <strong>10-Q MD&amp;A 전문과 대차대조표</strong>: TRPV, 방문 수, 부채 규모와 만기, 현금 잔액을 확인해 성장이 단가에서 나오는지 물량에서 나오는지 분해한다.</p>
+<p><strong>판단을 뒤집을 조건 (관망 → 보통 / 회피)</strong>
+- <strong>관망 → 보통 (상향)</strong>: (a) 8-K 내용이 중립 이상이고, (b) 3분기 매출 성장이 유지되며, (c) 임상의 순증이 계속되고, (d) 가이던스가 상향 유지되거나 자사주 매입이 실제로 집행되는 경우. 이때 선행 PER이 성장률 대비 합리적인 수준으로 내려와야 한다. 이 기준은 본 분석의 판단 기준이며 공시 사실이 아니다.
+- <strong>관망 → 회피 (하향)</strong>: (a) 가이던스 하향이나 매출 성장 둔화가 나타나는 경우, (b) 임상의 수가 감소로 전환되는 경우, (c) 보험 수가 축소나 Medicaid 관련 구체적 영향이 공시되는 경우, (d) 8-K 내용이 부정적이거나 supported practices 관계에 법적 분쟁이 생기는 경우, (e) 영업이익률이 전년 수준으로 되돌아가는 경우.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm">10-K — 2025-12-31_0001193125-26-071462</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526338107/lfst-20260630.htm">10-Q — 2026-06-30_0001193125-26-338107</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526211814/lfst-20260331.htm">10-Q — 2026-03-31_0001193125-26-211814</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526424294/d133750d8k.htm">8-K — 2026-10-14_0001193125-26-424294</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526389315/d116139d8k.htm">8-K — 2026-09-09_0001193125-26-389315</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-ex99_2.htm">8-K — 2026-08-06_0001193125-26-336057__EX-99.2__lfst-ex99_2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-ex99_1.htm">8-K — 2026-08-06_0001193125-26-336057__EX-99.1__lfst-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1845257/000119312526336057/lfst-20260806.htm">8-K — 2026-08-06_0001193125-26-336057</a></li>
+<li>Transcript — 2026-08-06 LifeStance Health Group, Inc. 2026 Q2 - Results - Earnings Call Presentation</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

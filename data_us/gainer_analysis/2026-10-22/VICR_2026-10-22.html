@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICR — Vicor Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>VICR — Vicor Corporation Common Stock</h1>
+<div class="sub">2026-10-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">VICR</span><span class="badge">+7.06%</span><span class="badge">거래량 2.32배</span><span class="badge">$9.41B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong> (분할 진입, 풀 비중 아님)</p>
+<ul>
+<li>3Q26 실적(8-K)은 매출 $197.1M(QoQ <span class="up">+37.5%</span>, YoY <span class="up">+78.5%</span>), 매출총이익률 68.3%, 순이익 $63.3M으로 2Q 가이던스(3Q 매출 약 10% 증가)를 크게 상회했다. 백로그는 $406M(<span class="up">+7%</span> QoQ)이며 현금은 $513.1M으로 차입금은 확인되지 않는다.</li>
+<li>다만 매출의 약 34%(66.6/197.1, 실적콜 요약 기준)가 VPD 라이선스 로열티이고, 4Q 로열티 기준선 $43M도 "신규 계약 없음" 전제다. 이익의 질이 신규 라이선스 체결과 ITC 절차에 좌우된다.</li>
+<li>의결권 약 77%가 Class B(10표)에 집중되어 있고(계산값), 시가총액 $9.41B 대비 TTM FCF는 $51.3M(수익률 약 0.5%)이다. 밸류에이션은 로열티 지속성에 대한 신뢰를 전제로 한다.</li>
+<li>따라서 펀더멘털 전환은 확인되었으나, 로열티 반복성과 법적 절차가 확인되기 전까지는 목표 비중의 일부만 분할로 싣는 것이 합리적이다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>확인된 촉매: 3Q26 실적 발표(8-K, 2026-10-20).</strong> 헤드라인(Yahoo Finance, MarketBeat 등)도 "Q3 실적과 AI 로열티 논쟁"을 상승 이유로 묶고 있다.</li>
+<li><strong>날짜 특정 불가:</strong> 제공된 등락률(<span class="up">+7.06%</span>)의 거래일이 명시되지 않았다. GuruFocus 기사는 <span class="up">+4.5%</span>로 보도해 매체별 집계 시점이 다르다. 실적 발표 당일 반응인지 이후 추가 상승인지는 확인 불가.</li>
+<li><strong>거래 특성:</strong> 거래량 배수 2.32배, 거래대금 $404.9M. 20일 수익률 <span class="down">-24.6%</span>, 52주 고점 대비 <span class="down">-46.2%</span>로 낙폭 이후 반등 성격이 강하다. 실적 전 하락 원인(ITC 관련 뉴스, 로열티 논쟁 등)은 제공된 자료에서 확인 불가.</li>
+<li><strong>판단:</strong> 실적 발표가 1차 촉매로 보이나, 낙폭에 따른 기술적 반등과 수급 요인이 결합됐을 가능성이 있다(추정).</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품 (10-K)</strong>
+- 전력 변환용 모듈형 부품·시스템을 설계·제조·판매한다. 제품은 <strong>Advanced Products</strong>(독자 FPA 아키텍처, 고효율·고밀도)와 <strong>Brick Products</strong>(표준 DC-DC 모듈 계열)로 나뉜다.
+- 핵심 강점은 효율, 전력밀도, 노이즈 특성, 열 관리다. 회사는 자사 고유 스위칭 토폴로지와 패키징을 IP로 보호한다.
+- 회사는 주력 전압을 48V(통신 인프라 출발점)로 두며, 380V(데이터센터), 28V(군/항공), 24V(산업자동화)도 다룬다.</p>
+<p><strong>매출 구성 (3Q26, 8-K 및 실적콜)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>3Q26</th>
+<th>2Q26</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출(제품+로열티)</td>
+<td>$197.1M</td>
+<td>$143.4M</td>
+<td>QoQ <span class="up">+37.5%</span></td>
+</tr>
+<tr>
+<td>Advanced(로열티 포함)</td>
+<td>$138.9M (70.4%)</td>
+<td>$94.2M (65.7%)</td>
+<td>QoQ <span class="up">+47.5%</span></td>
+</tr>
+<tr>
+<td>Brick</td>
+<td>$58.3M (29.6%)</td>
+<td>$49.2M (34.3%)</td>
+<td>QoQ <span class="up">+18.4%</span></td>
+</tr>
+<tr>
+<td>로열티</td>
+<td>$66.6M (약 34%)</td>
+<td>약 $15M 기여(라이선스 1건)</td>
+<td>요약 기준</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군</strong>
+- 10-K는 소수의 대형 고객 중심으로 사업 구조를 전환 중이라고 밝힌다(미래진술 목록).
+- ATE(자동 테스트 장비) 고객의 연간 매출은 $100M 이상(실적콜 요약)이며, 실적콜에서 ATE 수요가 AI 빌드아웃으로 과거보다 크게 늘었다고 언급했다.
+- 수출 비중은 2Q26 약 46%(전 분기 48.9%).</p>
+<p><strong>경쟁 위치 (10-K)</strong>
+- 반도체·집적회로 기반 모듈 업체와 경쟁(FPA 제품). 집적형 전원공급장치 업체와 경쟁(Brick 제품).
+- 로열티 사업은 자사 특허 기반 라이선스이며, 회사는 미국 특허권의 수입 배제권을 근거로 ITC 조사를 진행 중이다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>데이터 정합성 점검 (반드시 확인)</strong>
+- 제공된 "오늘의 시장 지표" 표의 <strong>매출($143.4M), 매출 YoY(<span class="up">+1.6%</span>), QoQ(<span class="up">+26.9%</span>), 영업이익률(24.3%)은 모두 2Q26 기준</strong>이다. 3Q26 실적(8-K)으로 갱신해서 봐야 한다.
+- 2Q26 영업이익률 24.3%는 매출총이익 $83.1M에서 영업비용 $48.2M을 뺀 $34.9M을 $143.4M으로 나눈 값과 일치한다. 3Q26 영업이익률은 $134.7M − $62.5M = $72.2M, 즉 36.6%(계산값).
+- 3Q26 로열티 $66.6M이 QoQ <span class="up">+119.1%</span>라면 2Q 로열티는 약 $30M이다. 그러나 2Q 실적콜은 해당 라이선스의 2Q 기여를 $15M으로 언급했다. 두 수치의 차이(약 $15M)는 제공 자료만으로는 설명되지 않는다. 3Q 로열티의 정확한 구성은 10-Q 공시 전까지 확인이 필요하다.</p>
+<p><strong>성장의 질 (단가·물량·믹스)</strong>
+- 3Q26 매출 증가는 로열티(라이선스 신규 체결, 초기 지급 포함)와 Advanced 제품 수요가 주도했다. 로열티를 제외한 제품 매출은 약 $130.5M(계산값)으로, 2Q 제품 매출(약 $143.4M − 로열티 $15M로 추정하면 $128M대) 대비 약간 늘어난 수준으로 보인다(추정, 정확한 2Q 로열티 구성 확인 필요).
+- 회사는 Brick 매출도 18.4% 늘었다고 밝혔다. 물량 증가와 수요 회복이 함께 나타났다고 읽힌다.
+- 2Q 실적콜은 2026년 매출 "$600M 이상"을 제시했다(회사 주장). 1~3Q 누계는 $453.5M(113 + 143.4 + 197.1)이다. 달성하려면 4Q 약 $146.5M이 필요하며, 4Q 가이던스(제품 <span class="up">+10%</span>, 로열티 최소 $43M)를 단순 적용하면 약 $187M이 되어 연간 약 $640M이 나온다(추정, 회사 가이던스 아님).</p>
+<p><strong>마진</strong>
+- 매출총이익률: 2Q 58.0% → 3Q 68.3%(+1,030bp). 실적콜은 로열티 증가와 제품 원가 개선(볼륨·효율·믹스)을 원인으로 들었다. 3Q25 57.5%와 비교하면 +1,080bp다.
+- 영업비용은 $62.5M(QoQ <span class="up">+29.6%</span>)으로 증가했다. 법률비용은 $11.1M 늘어 $16.1M이 됐고, 회사는 근시일 내 로열티의 약 20% 수준으로 예상한다고 밝혔다.
+- 유효세율은 3Q 19.6%(세금 $15.4M)이며, 2Q는 세금 혜택으로 순이익이 증가했다. 2Q 순이익 $49.8M에는 세금 효과가 포함되어 있어 3Q와 단순 비교하기 어렵다.</p>
+<p><strong>현금흐름·재무 건전성</strong>
+- 3Q 영업현금흐름 $69.7M, 자본지출 $16.1M, 잉여현금흐름 약 $53.6M(계산값). TTM 잉여현금흐름은 $51.3M.
+- 현금성자산 $513.1M(QoQ +$59.6M). 2Q 말 총부채는 $59.6M으로 대부분 유동부채이며 차입금은 확인되지 않는다. 2Q 말 기준 리스부채는 약 $7.6M이다.
+- 재고 $110.9M(QoQ <span class="up">+6.2%</span>), 연간 재고회전율 2.3회(2Q 2.1회). 매출채권 DSO 34일(2Q 37일).
+- 법적 충당부채는 2025년 말 $28.3M에서 2026년 6월 말 0으로 줄었다. 정산 내용은 발췌 범위에서 확인 불가.
+- 발행주식: 보통주 34.39M + Class B 11.72M = 약 46.1M주(10-Q). 시가총액 $9.41B은 이 주식 수와 $204.14 종가로 맞아떨어진다.</p>
+<p><strong>밸류에이션(추정)</strong>
+- 3Q 희석 EPS $1.33을 단순 연환산하면 약 $5.32이고, 종가 기준 P/E는 약 38배다. 3Q 로열티가 일회성 요소를 포함하므로 참고치로만 쓴다.
+- 현금을 빼면 EV는 약 $8.9B(추정)이다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사가 제시한 내용</th>
+<th>실현 조건</th>
+<th>검증 포인트 (다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① VPD 라이선스 로열티</td>
+<td>1호 순수 VPD 라이선스(AI OEM, 2단계 단가) 체결. 같은 고객의 대형 구매주문이 4Q 초 추가 접수됐다고 회사가 밝힘</td>
+<td>로열티 구조(단위당 또는 all-inclusive)가 실제 사용량에 비례해 지급되는지</td>
+<td>4Q 로열티 ≥ $43M 달성 여부. 신규 라이선스 체결 공시·콜 언급</td>
+</tr>
+<tr>
+<td>② ITC 집행</td>
+<td>2차 ITC 사건의 최종 결정은 2027년으로 예상(2Q 콜). 제한적 수입배제명령(LEO)을 요청</td>
+<td>ITC 판정과 집행 결과</td>
+<td>판정 일정 변동, 추가 라이선스 체결 속도</td>
+</tr>
+<tr>
+<td>③ 백로그·주문</td>
+<td>1년 백로그 $406M(<span class="up">+7%</span> QoQ). 4Q 첫 2주 수주 $100M(대형 2세대 VPD 모듈 포함, 콜 요약)</td>
+<td>주문이 실제 출하·매출로 전환</td>
+<td>4Q 백로그 유지·증가, book-to-bill 1 이상 유지</td>
+</tr>
+<tr>
+<td>④ 용량 확대(Fab-2)</td>
+<td>메리맥(Merrimack) 신규 설비, 2027년 2분기 장비 도입 예정. Fab-1 제약 공정을 우선 이전. 잠재 용량 Fab-1 대비 5배 이상(회사 "보수적 추정")</td>
+<td>설비투자 집행, 자체 현금흐름으로 조달</td>
+<td>CIP 잔액 증가, 자본지출 추이, 2027년 2분기 착수 여부</td>
+</tr>
+<tr>
+<td>⑤ Fab-3</td>
+<td>부지 매입 완료. 건설 시점은 미정(CEO 발언)</td>
+<td>대형 고객의 용량 예약</td>
+<td>용량 예약 계약 공시 여부. 건설 착수 공시</td>
+</tr>
+<tr>
+<td>⑥ 다각화 수요</td>
+<td>ATE(연간 $100M 이상), 산업, A&amp;D(자율기술 신규 진입자 확대)</td>
+<td>제품 믹스의 Brick 대비 Advanced 비중 상승 유지</td>
+<td>Advanced 비중(3Q 70.4%) 유지, 수출 비중 추이</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Fab-1 가동률 한계:</strong> 실적콜에서 CEO는 Fab-1 완전 가동에 "점점 가까워지고 있다"고 답했다. 이는 정확한 시점을 제시한 것이 아니다.</li>
+</ul>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- 3Q 콜의 CEO·CFO는 라이선스 로열티를 "반복 수익(recurring)"으로 명확히 규정했다. CFO는 "몇 분기의 캐치업을 거친 후 이제는 반복 수익으로 봐야 한다"고 말했다.
+- 2Q 콜에서는 신규 라이선스가 2027년 ITC 최종 결정 이후에야 나올 수 있다고 보고 가이던스를 "보수적"으로 짰다고 밝혔다. 3Q에 신규 라이선스가 체결된 만큼 가이던스가 상향 조정되는 흐름이다.
+- 근거로 제시된 수치는 AI 프로세서 전력 손실 10~15% 감소, 40배 이상의 IVR 전류 이득, 3배의 VR 전류밀도 등이다. 모두 회사 주장이며 독립 검증은 확인되지 않는다.
+- 요약본(자동 생성)이라는 점을 감안해 인용 발언은 전문 기준으로 확인했다.</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 2026년 초 "일회성(non-recurring)"이라는 표현을 쓰다가 3Q 콜에서는 "반복적"으로 입장이 바뀌었다. CEO는 "일회성이라는 것이 계속 반복되고 있다"고 자조적으로 표현했다.
+- 최혜 라이선시(MFN) 조항을 설명하면서, 이후 라이선시는 선행 라이선시보다 유리한 조건을 받을 수 없도록 설계되어 있다고 말했다. 이는 로열티 단가를 단계별로 정한 구조라는 뜻이며, 당분간 단가 하락 방향의 압력이 있을 수 있다는 의미로도 읽힌다(추정).</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 회사 답변</strong>
+- <strong>로열티 일회성 여부</strong> (Richard Shannon, Craig-Hallum): 회사는 "일회성이 아니다"라고 답했다. 다만 Q3 로열티의 일부가 신규 라이선시의 초기 지급이라는 점을 콜에서 인정했다.
+- <strong>Fab-3 투자 의도</strong> (Justin Clare, ROTH): 부지 매입은 "지금 당장 건물을 짓는 것이 아니다"라고 설명했다. 고객 용량 예약 논의가 투자 결정을 앞당길 수 있다고 덧붙였다.
+- <strong>용량 예약 상대방:</strong> CEO는 "주요 고객사 CEO와 용량 예약 논의"라고 답했고, CFO가 "AI 고객이 아니었다"고 정정했다. 공시 기준 AI 수요와 비AI 수요를 구분해 보려면 이 정정이 중요하다.
+- <strong>Fab-1 완전 가동 시점:</strong> 시점을 특정하지 않고 "점점 가까워진다"고 답했다. 방어적인 응답으로 읽힌다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 4Q 로열티 기준선 $43M은 "신규 계약 없음" 가정임을 명시했다.
+- 세금 환급: 2Q 콜에서 CHIPS법 투자세액공제 환급 $14.3M을 수령했다고 밝혔다. 이후 세금 환급이 현금에 추가된다고 말했다.
+- 수요 측면: 주요 고객의 수요가 매년 두 배씩 늘어날 것이라는 전망을 언급했다(회사 전망).</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>로열티의 반복성과 집중도</strong>
+   - 3Q 로열티 $66.6M(매출의 약 34%)과 4Q 기준선 $43M은 모두 라이선스 계약 체결에 달려 있다. 로열티 이후 수익의 지속 여부는 아직 2분기 이상 검증되지 않았다.
+   - 로열티 단위가 특정 고객 몇 곳에 집중되어 있다. 10-K도 소수 대형 고객 중심으로 전환한다고 명시했다.</p>
+</li>
+<li>
+<p><strong>ITC·법적 절차와 비용</strong>
+   - 2차 ITC 사건의 최종 결정은 2027년으로 예상된다(2Q 콜). 결과에 따라 라이선스 협상력이 크게 바뀔 수 있다.
+   - 법률비용은 3Q $16.1M으로 급증했고, 근시일 내 로열티의 약 20% 수준으로 예상된다. 법률 비용 구조가 영업이익률을 누른다.
+   - 2025년 말 법적 충당부채 $28.3M이 2026년 6월 말 0으로 줄었다. 정산 내용은 확인 불가이며 추가 분쟁 가능성은 열려 있다.</p>
+</li>
+<li>
+<p><strong>용량 제약과 실행 리스크</strong>
+   - 현재 제약은 특정 공정 단계에 묶여 있으며, 회사는 용량 부족으로 관심 있는 하이퍼스케일러·OEM 모두를 받을 수 없다고 밝혔다.
+   - Fab-2 장비 도입은 2027년 2분기로 예상된다. 일정이 밀리면 2027년 성장률과 로열티 기대에 영향을 줄 수 있다.</p>
+</li>
+<li>
+<p><strong>지배구조와 의결권 집중</strong>
+   - 10-Q 기준 보통주 34.39M주(1표), Class B 11.72M주(10표)다. 계산하면 Class B 의결권은 약 77%다.
+   - 발췌 범위에서 Class B 보유자와 경영진 지분율은 확인되지 않는다. 주주 권리와 의사결정 구조는 10-K Part III(위임장)에서 추가 확인이 필요하다.</p>
+</li>
+<li>
+<p><strong>밸류에이션과 현금 창출 불확실성</strong>
+   - TTM 잉여현금흐름 $51.3M은 시가총액 $9.41B 대비 약 0.5%다. 현재 주가는 로열티 지속과 용량 확대 성공을 상당 부분 선반영한 것으로 보인다(추정).
+   - 재고 $110.9M(회전율 2.3회)과 수출 비중 약 46%는 수요 둔화나 관세 변동 시 운전자본 부담으로 이어질 수 있다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거 (보통 판단을 뒷받침)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+<th>판단 함의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3Q 매출 YoY</td>
+<td>+78.5%</td>
+<td>성장 확인</td>
+</tr>
+<tr>
+<td>3Q 매출총이익률</td>
+<td>68.3% (QoQ +1,030bp)</td>
+<td>믹스·볼륨 개선 확인</td>
+</tr>
+<tr>
+<td>1년 백로그</td>
+<td>$406M (QoQ <span class="up">+7%</span>)</td>
+<td>가시성 양호</td>
+</tr>
+<tr>
+<td>현금</td>
+<td>$513.1M, 차입금 확인 불가</td>
+<td>재무 안정</td>
+</tr>
+<tr>
+<td>로열티 비중</td>
+<td>약 34%</td>
+<td>이익 질 집중 리스크</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>$51.3M (시총 대비 약 0.5%)</td>
+<td>밸류에이션 부담</td>
+</tr>
+<tr>
+<td>의결권 집중</td>
+<td>Class B 약 77%(계산)</td>
+<td>지배구조 할인 요인</td>
+</tr>
+<tr>
+<td>낙폭</td>
+<td>20일 <span class="down">-24.6%</span>, 고점 대비 <span class="down">-46.2%</span></td>
+<td>기술적 반등 가능성, 추가 변동성</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>10-Q(3Q26) 공시에서 로열티 세부 구성 확인:</strong> 2Q 로열티 $15M 대비 3Q $66.6M의 차이를 설명하는 항목(초기 지급, 일괄 지급, 기타 라이선스)과 수익 인식 시기를 확인한다. 실적콜 요약은 자동 생성 문서이므로 이 대조가 우선이다.
+2. <strong>ITC 절차 일정과 추가 라이선스 협상 상태:</strong> 최종 결정 시점과 LEO 요청 현황을 확인하고, 4Q 중 추가 라이선스 공시가 나오는지 본다.
+3. <strong>4Q 실적에서 로열티 기준선과 백로그 전환:</strong> 로열티 ≥ $43M 달성 여부, 4Q 백로그 유지, 2026년 연간 $600M 이상 매출 가이던스의 달성 여부를 확인한다.</p>
+<p><strong>판단을 "관망"으로 낮춰야 하는 조건</strong>
+- 4Q 로열티가 $43M 기준선을 밑돌고, 신규 라이선스 공시가 없을 때.
+- ITC 판정이 지연되거나 불리하게 나와 라이선스 협상이 멈출 때.
+- 백로그가 감소하거나 book-to-bill이 1 아래로 떨어질 때.
+- 매출총이익률이 2Q 수준(58%)으로 되돌아갈 때.
+- 법률비용이 로열티 대비 20%를 크게 넘어서거나 신규 소송이 확인될 때.
+- 재고가 매출 증가보다 빠르게 쌓이고 DSO가 다시 늘어날 때.
+- Fab-2 장비 도입 일정이 2027년 2분기 이후로 밀릴 때.</p>
+<p><strong>판단을 "적극"으로 올릴 수 있는 조건(참고)</strong>
+- 4Q 로열티가 기준선을 크게 넘고 신규 라이선스가 연속 체결될 때.
+- 대형 고객과의 용량 예약 계약이 공시로 확인될 때.
+- 로열티 비중이 높은 상태에서도 제품 매출이 두 자릿수로 성장하고 영업이익률이 유지될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526085102/vicr-20251231.htm">10-K — 2025-12-31_0001193125-26-085102</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526322462/vicr-20260630.htm">10-Q — 2026-06-30_0001193125-26-322462</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526194947/vicr-20260331.htm">10-Q — 2026-03-31_0001193125-26-194947</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526425697/d153882dex991.htm">8-K — 2026-10-20_0001193125-26-425697__EX-99.1__d153882dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526425697/d153882d8k.htm">8-K — 2026-10-20_0001193125-26-425697</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526387927/d539177d8k.htm">8-K — 2026-09-09_0001193125-26-387927</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526370420/d161606d8k.htm">8-K — 2026-08-25_0001193125-26-370420</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/751978/000119312526309538/d115827dex991.htm">8-K — 2026-07-21_0001193125-26-309538__EX-99.1__d115827dex991</a></li>
+<li>Transcript — 2026-10-20 Q3 2026 Transcript</li>
+<li>Transcript — 2026-07-21 Vicor Corporation (VICR) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

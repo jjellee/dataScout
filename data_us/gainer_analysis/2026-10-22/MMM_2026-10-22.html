@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MMM — 3M Company Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>MMM — 3M Company Common Stock</h1>
+<div class="sub">2026-10-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">MMM</span><span class="badge">+5.78%</span><span class="badge">거래량 2.8배</span><span class="badge">$88.38B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>Q3 조정 EPS는 $2.50(<span class="up">+12%</span> YoY)이고 조정 organic 매출은 <span class="up">+3.3%</span>로, 실적 개선 신호는 확인된다. 2026 조정 EPS 가이던스는 $9.10~9.15로 상향됐다.</li>
+<li>다만 GAAP EPS <span class="up">+70%</span>는 Solventum 지분 평가이익 $0.60이 포함된 수치이고, GAAP organic 매출 성장은 <span class="up">+0.2%</span>에 그쳤다. 실질 성장 품질은 아직 확인이 덜 된 상태다.</li>
+<li>지표표 수치(매출·영업이익률)가 8-K 공시치와 불일치하고, 실적콜 transcript와 10-K 사업·리스크 본문이 제공되지 않아 핵심 검증이 끝나지 않았다.</li>
+<li>당일 <span class="up">+5.78%</span>는 거래량 2.8배를 동반한 이벤트성 반응이며, 60일 수익률(<span class="down">-4.2%</span>)과 52주 고점 대비(<span class="down">-6.8%</span>)를 감안하면 추세 전환이 확인된 상태는 아니다. 검증 완료 전 추격 매수보다는 관망이 적절하다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매: 2026년 3분기 실적 발표 및 가이던스 상향 (10/20 8-K, Ex.99.1)</strong>
+- 회사는 Q3 조정 EPS $2.50(<span class="up">+12%</span>), 조정 영업이익률 26.2%(+110bp), 조정 FCF $1.2B를 발표했다.
+- 회사는 2026 조정 EPS 가이던스를 $9.10~9.15로 상향했다고 밝혔다. 단, 이는 신기준(무형자산 상각을 특별항목으로 처리) 반영치다.
+- 뉴스 헤드라인 "3M Analysts Boost Their Forecasts Following Strong Q3 Earnings"(Benzinga)가 실적 이후 애널리스트 전망 상향을 보도했다.</p>
+<p><strong>보조 촉매: Amazon 전략적 파트너십 확대 (10/19 8-K, 10/20 Ex.99.1)</strong>
+- 회사는 Amazon과 광학 연결(optical connectivity) 및 데이터센터 관련 제품의 확대 공급 관계를 맺었다고 밝혔다.
+- Amazon에 최대 320만 주 워런트를 발행했으며, 이는 7년간 $60억 누적 매출 달성 등 이벤트 기반 마일스톤에 연동된다.</p>
+<p><strong>헤드라인만 확인된 요인 (본문 미제공, 세부 확인 불가)</strong>
+- Yahoo Finance "Why Is 3M (MMM) Stock Rocketing Higher Today", RBC 목표 주가 상향 보도(MarketBeat)</p>
+<p><strong>판단</strong>
+- 당일 날짜가 명시되지 않아 촉매 시점을 10/19~10/20 공시와 정확히 매칭하지는 못했다. 다만 실적 관련 촉매가 가장 유력하다.
+- 섹터(Health Care) 동조나 수급 요인의 기여도는 공시상 확인 불가다.</p>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>공시 기반 확인 범위의 한계</strong>
+- 제공된 10-K 발췌문은 표지와 목차까지만 포함되어 있어 사업 섹션(Item 1) 본문은 확인할 수 없다. 세그먼트별 매출 비중, 경쟁 구도, 고객 구성은 <strong>공시상 확인 불가</strong>다.
+- 10-Q(6/30, 9/30)도 목차만 제공되었다.</p>
+<p><strong>8-K에서 확인되는 사업 영역 (회사 발표 사례 기준)</strong>
+| 영역 | 공시 내용 | 고객군 |
+|---|---|---|
+| 데이터센터 광학 연결 | Amazon 파트너십, GSEO와 EBO(Expanded Beam Optics) 기술 공동개발 | 클라우드·데이터센터 |
+| 열관리 소재 | 차량 지붕용 Cooling Film, 철도·플릿 적용 | 운송 고객 |
+| 디스플레이 소재 | BOE와 LCD·OLED·MLED 공동 혁신 연구소 | 디스플레이 제조사 |
+| 정부·공공 | 미국·해외 정부 계약 (국방, 헬스케어, 응급대응 언급) | 공공 부문 |
+| 소재 협업 | PING 골프 장비 소재 협업 | 소비재 |</p>
+<ul>
+<li>GSEO 지분 약 4.7% 취득을 발표했으나 투자 금액은 <strong>공시상 확인 불가</strong>다.</li>
+</ul>
+<p><strong>Solventum 관계</strong>
+- 8-K 특별항목에서 Solventum 지분 가치 변동이 별도로 반영되고 있어, 3M이 Solventum 지분을 보유하고 있음을 알 수 있다.
+- [외부 일반지식, 공시 미확인] 3M은 2024년 헬스케어 사업을 Solventum으로 분리했다. 지분 보유 비율과 세부 조건은 확인 불가다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>매출 — 성장의 질</strong>
+| 항목 | GAAP | 조정(Adjusted) | 출처 |
+|---|---|---|---|
+| Q3 매출 | $6.6B, <span class="up">+1.0%</span> | $6.6B, <span class="up">+4.2%</span> | 8-K Ex.99.1 |
+| Organic 성장 | <span class="up">+0.2%</span> | <span class="up">+3.3%</span> | 8-K Ex.99.1 |
+| 인수·매각 기여 | <span class="up">+0.9%</span>p | <span class="up">+0.9%</span>p | 8-K Ex.99.1 |
+| 환율 | <span class="down">-0.1%</span>p | — | 8-K Ex.99.1 |</p>
+<ul>
+<li>GAAP organic(<span class="up">+0.2%</span>)과 조정 organic(<span class="up">+3.3%</span>)의 차이는 PFAS 제조 제품 매출 제외에서 발생한다. 이 차이가 PFAS 사업 축소의 영향인지 정확한 규모는 <strong>공시상 확인 불가</strong>다.</li>
+<li>가격·물량·믹스 분해는 8-K에 없어 <strong>확인 불가</strong>다.</li>
+</ul>
+<p><strong>지표 불일치 (사용 전 재확인 필요)</strong>
+| 항목 | 지표표 | 8-K 공시 |
+|---|---|---|
+| 분기 매출 | $6.50B | $6.6B |
+| 매출 YoY | 2.5% | GAAP 1.0% / 조정 4.2% |
+| 영업이익률 | 20.3% | GAAP 23.7% / 조정 26.2% |
+| 영업이익률 YoY | <span class="up">+2.3%</span>p | GAAP +150bp / 조정 +110bp |</p>
+<ul>
+<li>지표표는 산출 기준(GAAP·조정, TTM 여부 등)이 명시되지 않아 어느 기준인지 판단할 수 없다. 본 리포트는 <strong>공시 수치를 우선</strong>한다.</li>
+<li>매출총이익률 41.3%는 제공 자료에서 교차 확인되지 않아 <strong>확인 불가</strong>다.</li>
+</ul>
+<p><strong>이익의 질</strong>
+- GAAP EPS $2.63(<span class="up">+70%</span>) 중 Solventum 지분 평가이익 $0.60이 포함되어 있다. 특별항목 합계(-0.13)를 반영하면 조정 EPS는 $2.50이다.
+- 조정 EPS 증가(<span class="up">+12%</span>)가 주로 영업 개선에서 왔는지, 비용 절감에서 왔는지는 분해 자료가 없어 <strong>확인 불가</strong>다.
+- 신기준 변경의 영향: 회사는 Q3 조정 영업이익률을 약 40bp, 조정 EPS를 약 $0.04 상향시켰다고 밝혔다. 가이던스 상향분 중 이 기준 변경 효과의 비중은 <strong>확인 불가</strong>다.</p>
+<p><strong>현금흐름</strong>
+- Q3 영업현금흐름 $0.5B, 조정 FCF $1.2B(회사 정의).
+- Q3 주주환원(배당+자사주) $0.6B.
+- TTM FCF $3.98B(지표표).
+- 영업현금흐름과 조정 FCF 간 차이의 구성 항목(설비투자 등)은 <strong>공시상 확인 불가</strong>다.</p>
+<p><strong>재무 건전성</strong>
+- 10-K 기준 발행주식 526.7M주(2026.1.31), 비관계사 시가총액 약 $80.7B.
+- 8-K 증권 목록에는 10-K 목록(1.5% 2026, 1.75% 2030, 1.5% 2031) 외에 3.5% 2028, 3.9% 2031, 4.1% 2034 채권이 추가로 나타난다. 발행 시기·규모·목적은 <strong>확인 불가</strong>다.
+- 총부채, 순부채, 이자보상배율은 제공 자료에 없어 <strong>확인 불가</strong>다.</p>
+<p><strong>밸류에이션 (계산값, 제공 수치 기반)</strong>
+- 시가총액 $88.38B 기준 TTM FCF 수익률 ≈ 4.5%(3.98 ÷ 88.38).
+- 가이던스 중간값 $9.125 기준 현재가 $171.37의 조정 P/E ≈ 18.8배.
+- 시가총액 $88.38B를 종가 $171.37로 나누면 약 515.7M주로, 10-K 발행주식(526.7M)과 약 2% 차이가 난다. 산출 기준 확인이 필요하다.</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장·근거</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>데이터센터 광학 연결</strong></td>
+<td>회사는 Amazon과의 확대 관계를 밝힘. 워런트는 $60억 누적 매출 달성 시 최대 320만 주 발행</td>
+<td>7년간 누적 $60억은 연평균 약 $8.6억 수준(단순 환산). 워런트 희석은 발행주식 대비 약 0.6%</td>
+<td>데이터센터 관련 매출이 분기 공시나 설명에서 수치로 확인되는지, 마일스톤 진척이 공개되는지</td>
+</tr>
+<tr>
+<td><strong>구조적 전환 (생산성)</strong></td>
+<td>회사는 "structural transformation"을 통한 생산성 개선을 강조</td>
+<td>조정 영업이익률 상승 지속, 변혁 비용 축소</td>
+<td>조정 영업이익률 추가 개선 여부, Transformation 비용(Q3 $0.08, 전년 $0.02)의 감소 여부</td>
+</tr>
+<tr>
+<td><strong>신제품 파이프라인</strong></td>
+<td>회사는 "stronger pipeline of differentiated technologies" 언급. 열관리 필름, EBO, 디스플레이 공동연구</td>
+<td>조정 organic 성장 유지, GAAP organic과 격차 축소</td>
+<td>조정 organic 3% 이상 유지 여부, PFAS 영향을 제외한 organic 성장률</td>
+</tr>
+<tr>
+<td><strong>가이던스 달성</strong></td>
+<td>2026 조정 EPS $9.10~9.15</td>
+<td>하반기 실적 달성, 신기준 효과 분리</td>
+<td>직전 가이던스 대비 상향분의 기준 변경 효과 분리(직전 수치 미제공으로 확인 불가)</td>
+</tr>
+<tr>
+<td><strong>자본 배분</strong></td>
+<td>Q3 주주환원 $0.6B, 조정 FCF $1.2B</td>
+<td>FCF 범위 내 주주환원 유지</td>
+<td>신규 채권 발행 목적과 순부채 추이</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>GAAP-조정 괴리와 비영업 이익 의존</strong>
+   - Q3 GAAP EPS의 $0.60이 Solventum 지분 평가이익이다. 지분 가치 변동에 따라 GAAP 실적이 크게 흔들릴 수 있다.
+   - 특별항목이 매분기 반복되면 조정 지표의 신뢰도가 낮아진다. 조정 기준을 무형자산 상각 포함으로 바꾼 점도 과거 비교의 해석을 어렵게 한다.</p>
+</li>
+<li>
+<p><strong>PFAS 및 소송 비용의 반복성</strong>
+   - 8-K에서 "Net costs for significant litigation and PFAS exit" 항목이 Q3 2026과 Q3 2025 모두 $0.19로 같다. 일회성보다 구조적 비용으로 볼 여지가 있다.
+   - GAAP organic <span class="up">+0.2%</span>는 PFAS 제외 전 기준의 실제 체력을 보여준다.
+   - 소송 규모와 잠재 부채는 <strong>공시상 확인 불가</strong>다. 10-K 리스크 본문 미제공으로 추가 리스크 확인은 불가능하다.</p>
+</li>
+<li>
+<p><strong>포트폴리오 재편 관련 손실</strong>
+   - Q3 2025에 사업 매각 손실 $0.30이 있었다. 매각·구조조정이 계속되면 실적 비교 자체가 어려워진다.</p>
+</li>
+<li>
+<p><strong>전략적 파트너십 의존 및 희석</strong>
+   - Amazon 워런트는 발행주식 대비 약 0.6%로 희석 폭은 작다. 다만 특정 고객과의 관계가 데이터센터 성장 스토리의 핵심이므로 집중도 리스크가 있다.
+   - 마일스톤 조건 변경이나 계약 조건은 <strong>공시상 확인 불가</strong>다.</p>
+</li>
+<li>
+<p><strong>분석 데이터 정합성 (투자 리스크)</strong>
+   - 지표표와 8-K 공시치 간 불일치가 여러 항목에서 확인된다. 기준이 불명확한 상태에서 밸류에이션을 판단하면 오판할 수 있다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>판단 근거 (정량)</strong>
+| 항목 | 수치 | 해석 |
+|---|---|---|
+| 조정 EPS 성장 | <span class="up">+12%</span> (2.23→2.50) | 긍정 |
+| 조정 organic 성장 | <span class="up">+3.3%</span> | 긍정 |
+| GAAP organic 성장 | <span class="up">+0.2%</span> | 부정 (PFAS 영향 포함) |
+| TTM FCF 수익률 | 약 4.5% | 긍정 |
+| 2026 조정 P/E(가이던스 중간값) | 약 18.8배 | 중립 |
+| 당일 등락 / 거래량 | <span class="up">+5.78%</span> / 2.8배 | 이벤트 반응 |
+| 20일 / 60일 / 52주 고점 대비 | <span class="up">+2.6%</span> / <span class="down">-4.2%</span> / <span class="down">-6.8%</span> | 추세 약세 |</p>
+<ul>
+<li>펀더멘털 개선 신호는 있으나 GAAP 성장이 약하고, 지표 불일치와 특별항목 반복으로 이익의 질 검증이 끝나지 않았다. 단기 급등 후 추세가 아직 약세이므로 <strong>관망</strong>이 적절하다.</li>
+</ul>
+<p><strong>진입 전 확인할 3가지</strong>
+1. <strong>지표 재조정</strong>: 지표표의 매출($6.50B)·영업이익률(20.3%) 산출 기준을 8-K 수치와 맞춰 확인한다.
+2. <strong>10-Q(9/30) MD&amp;A 확인</strong>: 세그먼트별 organic 성장, 가격·물량·믹스, PFAS 매출 제외 규모, 총부채와 신규 채권의 목적을 확인한다. 실적콜 transcript는 제공되지 않아 경영진 Q&amp;A는 확인하지 못했으므로 별도 확보가 필요하다.
+3. <strong>가이던스 분해</strong>: 상향분 중 신기준 효과(약 $0.04 수준으로 회사가 언급한 Q3 기준)와 실질 영업 개선분을 분리하고, 하반기 실적이 가이던스를 달성하기 위한 전제를 확인한다.</p>
+<p><strong>판단을 뒤집을 조건</strong>
+- <strong>관망 → 보통 (상향)</strong>: 다음 분기에도 조정 organic 성장 3% 이상이 유지되고, GAAP organic 격차가 축소되며, 데이터센터 관련 매출이 수치로 확인될 때.
+- <strong>관망 → 적극 (상향)</strong>: 위 조건에 더해 가이던스가 추가 상향되고, TTM FCF가 유지·증가하며, 60일 추세가 양의 전환을 보일 때.
+- <strong>관망 → 회피 (하향)</strong>: 가이던스 하향, 조정 영업이익률 하락 전환, PFAS·소송 관련 특별비용의 급증, FCF 감소, 또는 워런트 마일스톤이 상향 조정될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000014/mmm-20251231.htm">10-K — 2025-12-31_0000066740-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000311/mmm-20260930.htm">10-Q — 2026-09-30_0000066740-26-000311</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm">10-Q — 2026-06-30_0000066740-26-000246</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000308/q32026-8kerexx991.htm">8-K — 2026-10-20_0000066740-26-000308__EX-99.1__q32026-8kerexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000308/mmm-20261020.htm">8-K — 2026-10-20_0000066740-26-000308</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000303/mmm-20261019.htm">8-K — 2026-10-19_0000066740-26-000303</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000110465926106710/tm2624999d1_8k.htm">8-K — 2026-09-10_0001104659-26-106710</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/66740/000006674026000268/mmm-20260817.htm">8-K — 2026-08-17_0000066740-26-000268</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

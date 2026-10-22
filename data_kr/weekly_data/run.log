@@ -34,3 +34,104 @@ KRX 로그인 시도...
 KRX 로그인 완료.
   로그인 시간: 2026-10-21 16:05:03
   만료 시간: 2026-10-21 17:05:03
+2026-10-22 06:45:01,412 INFO 모드 daily 기준일 20261021 앵커 21개
+2026-10-22 06:45:16,477 WARNING yfinance 데이터 없음: ['IMVT', 'MNKD', '6857.T']
+2026-10-22 06:45:16,478 INFO 섹터 bio 집계
+2026-10-22 06:45:16,817 INFO 섹터 tech 집계
+2026-10-22 06:45:16,989 INFO 섹터 battery 집계
+2026-10-22 06:45:17,081 INFO KRX 호출 0회
+2026-10-22 06:46:38,080 INFO 코멘트[us] bio: 섹터 5불릿 · 종목 12개
+2026-10-22 06:48:01,588 INFO 코멘트[us] tech: 섹터 5불릿 · 종목 13개
+2026-10-22 06:49:05,917 INFO 코멘트[us] battery: 섹터 5불릿 · 종목 13개
+2026-10-22 06:49:06,211 INFO 저장 /home/inhyuk/projects/dataScout/data_kr/weekly_data/sector_daily_20261021.xlsx
+2026-10-22 06:49:07,484 INFO PDF /home/inhyuk/projects/dataScout/data_kr/weekly_data/sector_daily_20261021.pdf (13쪽)
+2026-10-22 06:49:11,631 INFO Telegram upload OK
+2026-10-22 06:49:13,659 INFO Telegram upload OK
+2026-10-22 06:49:15,629 INFO Telegram message OK
+2026-10-22 06:49:16,882 INFO Telegram message OK
+2026-10-22 16:05:09,375 INFO 시총 캐시 생성 /home/inhyuk/projects/dataScout/data_kr/20261022/market_cap.csv (2868종목)
+2026-10-22 16:05:09,378 INFO 모드 daily 기준일 20261022 앵커 21개
+2026-10-22 16:05:09,389 INFO 20261022 수급 CSV 없음 → market_cap.csv 종가 + 20261021 종목명 사용
+2026-10-22 16:05:23,917 WARNING yfinance 데이터 없음: ['TECH']
+2026-10-22 16:05:23,918 INFO 섹터 bio 집계
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1116, in json
+    return complexjson.loads(self.text, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 10, in wrapper
+    return func(*args, **kwargs)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/wrap.py", line 964, in get_index_ohlcv_by_date
+    df = 개별지수시세().fetch(ticker[1:], ticker[0], fromdate, todate)
+         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/market/core.py", line 811, in fetch
+    result = self.read(
+        indIdx2=ticker, indIdx=group_id, strtDd=fromdate, endDd=todate
+    )
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/krx/krxio.py", line 55, in read
+    result = resp.json()
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/requests/models.py", line 1120, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+  File "/usr/lib/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/inhyuk/projects/dataScout/weekly_sector_data.py", line 1306, in <module>
+    main()
+  File "/home/inhyuk/projects/dataScout/weekly_sector_data.py", line 1267, in main
+    results.append(build_sector(cfg, a.mode, kr, anchors, dates, yclose))
+  File "/home/inhyuk/projects/dataScout/weekly_sector_data.py", line 428, in build_sector
+    s = krx_index_close(code, anchors[-2], anchors[-1])
+  File "/home/inhyuk/projects/dataScout/weekly_sector_data.py", line 182, in krx_index_close
+    df = stock.get_index_ohlcv_by_date(ymd(need[0]), ymd(end), code)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/stock/stock_api.py", line 1466, in get_index_ohlcv_by_date
+    df = krx.get_index_ohlcv_by_date(fromdate, todate, ticker)
+  File "/home/inhyuk/projects/ExportImportAutomation/venv/lib/python3.13/site-packages/pykrx/website/comm/util.py", line 19, in wrapper
+    logging.info(args, kwargs)
+Message: ('20261022', '20261022', '1011')
+Arguments: ({},)
+2026-10-22 16:07:33,374 INFO Expecting value: line 1 column 1 (char 0)
+2026-10-22 16:07:34,076 WARNING KRX 지수 1011 보충 실패(캐시 3일로 진행): 빈 응답
+2026-10-22 16:08:11,044 INFO 섹터 tech 집계
+2026-10-22 16:08:14,591 INFO 섹터 battery 집계
+2026-10-22 16:08:16,440 INFO KRX 호출 54회
+2026-10-22 16:09:46,271 INFO 코멘트[kr] bio: 섹터 4불릿 · 종목 13개
+2026-10-22 16:10:55,311 INFO 코멘트[kr] tech: 섹터 4불릿 · 종목 13개
+2026-10-22 16:12:13,539 INFO 코멘트[kr] battery: 섹터 4불릿 · 종목 13개
+2026-10-22 16:12:13,820 INFO 저장 /home/inhyuk/projects/dataScout/data_kr/weekly_data/sector_daily_20261022.xlsx
+2026-10-22 16:12:15,796 INFO Telegram upload OK
+2026-10-22 16:12:17,597 INFO Telegram message OK
+2026-10-22 16:12:18,915 INFO Telegram message OK
+KRX 로그인 시도...
+  로그인 ID: heyork1
+KRX 로그인 완료.
+  로그인 시간: 2026-10-22 16:05:04
+  만료 시간: 2026-10-22 17:05:04
+Error occurred in get_index_ohlcv_by_date: Expecting value: line 1 column 1 (char 0)

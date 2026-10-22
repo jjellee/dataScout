@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANDG — Andersen Group Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ANDG — Andersen Group Inc. Class A Common Stock</h1>
+<div class="sub">2026-10-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ANDG</span><span class="badge">+3.41%</span><span class="badge">거래량 1.22배</span><span class="badge">$6.91B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>펀더멘털은 양호하다. 2Q26 매출은 <span class="up">+23.7%</span>(회사 기준 유기적 <span class="up">+20.6%</span>)였고, TTM 잉여현금흐름은 $167.6M이며, GAAP 영업이익률은 전년 대비 55.7%p 개선됐다. 다만 여전히 <span class="down">-4.1%</span>다.</li>
+<li>가이던스의 상당 부분이 유기적 성장에 기대고 있다. 인수 매출 기대치는 약 $55M에서 $25~30M으로 낮아졌다(콜). 가이던스를 유지하려면 하반기 유기적 성장이 둔화된 상태에서도 가이던스 달성이 필요하다(계산, 4장 참고).</li>
+<li>조정 EBITDA(2Q 약 $46M)와 GAAP 적자 사이 괴리를 제공된 자료만으로 설명할 수 없다. 최신 분기 재무도 2Q26이 마지막이다.</li>
+<li>유통 Class A 주식은 약 12.65M주이고 일 거래대금은 $19.4M 수준이라, 의미 있는 비중을 쌓는 데 유동성 제약이 크다. 60일 수익률 <span class="up">+30.9%</span>에 52주 고점 근처라 진입 매력도 낮다.</li>
+<li>결론: 사업 질은 긍정적이나, 지금 의미 있는 비중을 실을 근거는 부족하다. 3Q 실적과 GAAP-조정 괴리 설명을 확인한 뒤 재평가한다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>판정: 확인된 촉매 없음 — 수급/모멘텀 가능성</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시는 없다. 10/13 8-K는 표지만 제공되어 내용을 확인할 수 없다.</li>
+<li>뉴스 헤드라인 "1년 신고가 도달"(MarketBeat)은 가격 움직임의 결과이지 원인이 아니다.</li>
+<li>"Four consulting buyouts"(Yahoo Finance)는 인수 확대 성격이라 후보 촉매다. 다만 발표 시점과 대상이 제공되지 않아 당일 촉매로 단정할 수 없다.</li>
+<li>거래량은 20일 중앙값 대비 1.22배다. "거래량 급증"이라고 보기 어려운 수준이라, 상승이 거래 동반 없이 나타났다.</li>
+<li>맥락: 20일 <span class="up">+12.9%</span>, 60일 <span class="up">+30.9%</span>, 종가는 52주 고점의 <span class="down">-0.4%</span>다. 당일 <span class="up">+3.41%</span>는 기존 추세의 연장으로 보인다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 사업 섹션 발췌가 표지와 용어집까지만 제공되어, 사업 설명은 10-Q MD&amp;A와 콜 기준이다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서비스</td>
+<td>독립 세무·가치평가·금융 자문</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>서비스 라인(2Q26 매출 비중)</td>
+<td>개인자산관리 47.1%(2Q25 49.8%), 기업세무 39.2%(35.5%), 대체투자펀드 8.1%(8.5%), 가치평가 5.6%(6.2%)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>과금 방식</td>
+<td>대다수 시간·실비(T&amp;M), 일부 정액·성과보수</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>고객군</td>
+<td>개인·부유 가문·기업·기관·대체투자펀드(PE/VC/헤지펀드/REIT 포함)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>고객 규모(상반기 누적)</td>
+<td>고객 그룹 13,500(전년 11,300), 계약 23,800건(20,600건)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>인력·사무소</td>
+<td>임직원 2,690명(6/30/26, 12/31/25 대비 2,296명 증가), 사무소 27개(3/31/26)</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>네트워크</td>
+<td>Andersen Global(스위스 협회, 회원사 300개 이상)과 연계. 파트너 관계 400여 곳</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>지역 매출(1Q26)</td>
+<td>동부 42.1%, 중부 16.4%, 서부 41.5%</td>
+<td>10-Q</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>회사는 인수 대상을 "acquisition"이 아니라 "partner"라고 부르며, 문화와 가치 적합성을 강조한다(콜).</li>
+<li>경쟁 위치: 회사는 약 60개 세무법인 대비 전년 전문인력당 매출 1위라고 주장한다(콜, 독립 검증 불가).</li>
+<li>인재 경쟁 상대에는 회계법인뿐 아니라 로펌도 포함된다(콜). 샌프란시스코 채용의 약 70~75%가 변호사다.</li>
+</ul>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<h3>4-1. 성장의 질</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>증감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$217.7M</td>
+<td>$176.0M</td>
+<td>+23.7%(10-Q)</td>
+</tr>
+<tr>
+<td>유기적 매출</td>
+<td>—</td>
+<td>—</td>
+<td>+20.6%(콜, 인수 기여 $5.5M 제외)</td>
+</tr>
+<tr>
+<td>1Q26 매출</td>
+<td>$240.7M</td>
+<td>$208.1M</td>
+<td>+15.7%(10-Q)</td>
+</tr>
+<tr>
+<td>상반기 매출</td>
+<td>$458.4M</td>
+<td>$384.1M</td>
+<td>+19.4%, 유기적 <span class="up">+17.9%</span>(10-Q, 콜)</td>
+</tr>
+<tr>
+<td>LTM 매출</td>
+<td>$913M</td>
+<td>—</td>
+<td>+18%, 유기적 <span class="up">+17.2%</span>(콜)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>드라이버(상반기 기준, 콜): 요율 <span class="up">+10.1%</span>, 청구 가능 시간 <span class="up">+5%</span>, 생산성 <span class="up">+3.9%</span>, 전문인력당 매출 <span class="up">+16.4%</span>. 2026년 계약부터 적용된 3% 기술 서차지가 있다.</li>
+<li>단가 × 물량은 약 <span class="up">+15.6%</span>(계산)로, 유기적 <span class="up">+17.9%</span>와 대략 맞는다. 나머지는 서차지와 믹스로 보이나, 회사는 정확한 분해를 공시하지 않았다.</li>
+<li>서비스 라인 검산(계산): 2Q26 개인자산관리 매출은 약 $102.5M(2Q25 약 $87.6M)으로 약 <span class="up">+17%</span>, 기업세무는 약 $85.3M(2Q25 약 $62.5M)으로 약 <span class="up">+36%</span>다. 콜의 <span class="up">+17%</span>, <span class="up">+36.9%</span>와 맞는다. 성장을 기업세무가 이끌고 있다.</li>
+<li>고객: 총 신규 고객 1,300명 이상(<span class="up">+10.6%</span>)이며, 순증은 "modest"하다고 밝혔다. 회사는 영업개발을 더 잘해야 한다고 인정했다(콜).</li>
+<li>계절성: 1Q→2Q 매출은 <span class="down">-9.6%</span>다. 2025년 동기 하락폭은 <span class="down">-15.4%</span>(계산)였으므로, 올해 하락은 계절성 범위 안이다. 회사는 3분기가 연중 최대 분기이며 9월이 가장 바쁜 달이라고 밝혔다(콜).</li>
+</ul>
+<h3>4-2. 마진과 이익 품질</h3>
+<ul>
+<li>GAAP 영업이익률: <span class="down">-4.1%</span>, 전년 대비 <span class="up">+55.7%</span>p 개선(지표).</li>
+<li>2Q 순손실: $10.1M, EPS -$0.08(기본)/-$0.09(희석). 2Q25 순손실은 $96M이었다(콜).</li>
+<li>조정 EBITDA: 2Q 약 $46M으로 전년 약 $30M 대비 <span class="up">+54%</span>(콜). 2Q 매출 대비 약 21%(계산).</li>
+<li>CEO는 6/30 기준 마진이 26.8%(전년 22.6%)라고 언급했다. 산출 기간이 명시되지 않았다(콜).</li>
+<li>괴리: GAAP 영업이익률 <span class="down">-4.1%</span> 대비 조정 EBITDA 마진 약 21%(2Q 계산)로 차이가 약 25%p다. 조정 항목 내역은 제공 자료에 없어 확인할 수 없다. 10-K 용어집에 LTIP/Aggregator LTIP 유닛(옵션과 경제적으로 유사)이 있어, 보상비용이 주요 요인일 가능성이 있다(추정, 금액 확인 불가).</li>
+<li>매출총이익률 20.3%(지표)는 정의를 확인할 수 없다. 매출에 실비 등 청구 비용이 포함되어 있어(10-Q) 이 비율의 해석에 주의가 필요하다.</li>
+<li>공시 표현 변화: 1Q 10-Q는 실비를 "여행·실비 등"으로, 2Q 10-Q는 "제3자 계약비용의 고객 청구분"으로 설명했다. 영향 금액은 제시되지 않았다.</li>
+</ul>
+<h3>4-3. 현금흐름과 재무 건전성</h3>
+<ul>
+<li>TTM 잉여현금흐름: $167.6M(지표). 시가총액 $6.91B 대비 수익률 약 2.4%(계산). 정의는 확인할 수 없다.</li>
+<li>GAAP 순손실 상태에서도 현금흐름이 양수다. 비현금 비용의 영향일 가능성이 있다(추정).</li>
+<li>부채 총액과 현금 잔고는 발췌에 없어 확인할 수 없다.</li>
+<li>용어집의 채무성 항목(명목 원금): HO Note $162.3M(8년 상환, 은퇴 파트너의 퇴직 후 의무), CA Notes $187.8M(2~7년). 합계 $350.1M은 TTM 잉여현금흐름의 약 2.1배다(계산).</li>
+<li>밸류에이션(계산): 시가총액 $6.91B ÷ LTM 매출 $913M ≈ 7.6배, 잉여현금흐름 기준 약 41배다. 순차입금을 알 수 없어 EV는 산출하지 않았다. 제공 주가($60.65)와 공시 주식수(2026.3.20 기준 약 111.5M주)로 역산하면 시가총액은 약 $6.76B로, $6.91B와 차이가 있다. 기준일 차이로 보인다.</li>
+<li>인수 배수: CEO는 영국 인수를 이익의 12배, 대부분을 10배 수준으로 언급했다(콜). 시장 기준 잉여현금흐름 배수가 약 41배라 주식 대가 인수는 희석 여부에 따라 이익 기여가 될 수 있다(추정). 다만 이익 정의와 대가 구성을 확인할 수 없다.</li>
+</ul>
+<h3>4-4. 가이던스 산술 (계산, 가정 명시)</h3>
+<ul>
+<li>2025 매출 추정: LTM 913 − 상반기 2026 458.4 + 상반기 2025 384.1 ≈ $838.7M. 회사의 "체결 8건 매출 $130M은 2025 매출 대비 약 15.5%"라는 발언과 맞는다(130 ÷ 838.7 = 15.5%).</li>
+<li>가이던스 $980~1,000M은 2026 매출 <span class="up">+16.8%</span>~19.2%에 해당한다.</li>
+<li>가정: 2026 인수 매출은 CEO 발언대로 $25~30M, 상반기 인수 매출은 $5.5M이다. 이 경우 유기적 2026 매출은 $950~975M(<span class="up">+13.3%</span>~16.3%)이다.</li>
+<li>상반기 유기적 매출은 약 $452.9M(<span class="up">+17.9%</span>)이다. 하반기 유기적 성장률은 <strong>약 <span class="up">+9%</span>~<span class="up">+15%</span></strong>로 계산되어, 상반기보다 둔화한다.</li>
+<li>해석: 회사는 가이던스를 유지하면서 유기적 성장이 당초 예상보다 높을 것이라고 밝혔다(콜). 인수 매출이 줄어든 만큼 유기적 목표가 사실상 상향된 셈이다. 당초 가이던스가 인수 $55M을 포함했는지는 발췌에서 확인할 수 없다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사가 제시한 내용</th>
+<th>실현 조건</th>
+<th>다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 요율 인상·서차지</td>
+<td>상반기 요율 <span class="up">+10.1%</span>, 7월 추가 인상, 3% 기술 서차지(콜)</td>
+<td>고객 이탈 없이 요율 유지</td>
+<td>3Q 요율 상승률이 한 자릿수로 떨어지는지, 서차지 기여가 유지되는지</td>
+</tr>
+<tr>
+<td>2. 생산성(AI·정액 전환)</td>
+<td>상반기 생산성 <span class="up">+3.9%</span>, 주당 1시간 증가 시 약 $40M 이익(회사 산식, 근거 미공개). 50건 가치평가를 정액으로 전환(콜)</td>
+<td>정액 전환이 효율을 이익으로 바꿈</td>
+<td>3Q 생산성이 4%를 넘는지(CEO는 "증가율이 높아지고 있다"고 말함). 전문인력당 매출 <span class="up">+16%</span> 유지 여부</td>
+</tr>
+<tr>
+<td>3. 기업세무·컨설팅·모빌리티</td>
+<td>기업세무 2Q <span class="up">+36.9%</span>, 컨설팅·모빌리티 매출 증가(콜)</td>
+<td>고성장 서비스 라인 확대</td>
+<td>기업세무 성장률 둔화 여부(분석자 기준 제안: 20%대 초반 이하면 경계)</td>
+</tr>
+<tr>
+<td>4. 인수 파이프라인</td>
+<td>체결 16건, 종료 8건, 나머지 8건은 4Q26 예정. 2027년 $100M 이상 이월 예정(회사)</td>
+<td>대가 구조 유지, 규제 절차 완료</td>
+<td>4Q 종료 건수, 8-K·10-Q의 실제 매출 반영, 영국 컨설팅 8곳 통합과 로펌 추가 계획</td>
+</tr>
+<tr>
+<td>5. 지역 확장</td>
+<td>플로리다 3개 사무소 확대 계획(회사는 현재 "충분히 서비스하지 못함"이라고 함), 텍사스·시애틀 성장 여력(콜). 상속 자산 이전 규모 $125조는 회사 인용</td>
+<td>신규 사무소 채용과 파트너 합류</td>
+<td>사무소 수 증가(27개 기준), 서부·동부 매출 비중 변화</td>
+</tr>
+<tr>
+<td>6. 마진 확장</td>
+<td>조정 EBITDA 마진 26.8%(전년 22.6%), 사무소 마진 27.7%~38.8%(콜, 기간 정의 불명)</td>
+<td>규모의 경제, 사무소 성숙</td>
+<td>GAAP 영업이익률의 흑자 전환 경로, 조정-GAAP 괴리 축소</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- 자신감과 단서가 함께 나온다. CEO는 "glass is half full, but it's half empty"라고 말했고, "discipline"이라는 단어를 반복했다.
+- 2분기 매출이 5월 가이던스 $190~205M을 $217.7M으로 넘었다고 밝혔다. 상단 대비 약 6%, 중간값 대비 약 10% 높다(계산, CFO의 "약 10%"와 일치).
+- CEO는 2분기를 24년 중 가장 높은 성장률 분기라고 주장했다(회사 주장).</p>
+<p><strong>가이던스 화법의 변화</strong>
+- 인수 매출 목표가 $55M에서 $25~30M으로 낮아졌다. CEO는 "far short"라고 직접 인정했다.
+- 가이던스는 "not changing"이라며 유지했다. 근거는 유기적 성장이 더 강하다는 것이다. 이 때문에 가이던스의 신뢰도는 유기적 성장의 지속성에 달려 있다.
+- 지연 원인으로 국가별 규제 절차와 "prototype" 구축을 들었다. 이는 추가 지연 가능성을 열어 둔 발언이다.
+- 일부 미결 인수건은 2027년으로 넘어갈 수 있다고 인정했다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 회피 지점</strong>
+- 반복 질문: (1) 인수 지연과 실질 성장률(Baird), 콜 전 사전 질문이 있었다는 발언도 나왔다. (2) 인수 조건과 현금·주식·성과보수 구성(Baird). (3) AI 영향(Wells Fargo).
+- 회피 또는 답변 부족: 개별 인수의 성장률, 총 대가 규모, 주식 비중에 대한 수치 답변은 없었다. CEO는 "기본 구조는 동일하다"고만 답했다. 희석 규모는 확인할 수 없다.
+- 방어 지점: 영업개발이 부족하다고 인정했고, 생산성은 "modest", 가격은 "개선 영역"이라고 말했다.
+- 발췌 중 일부 Q&amp;A가 "…(중략)…"으로 생략되어, Morgan Stanley와 Truist 질문의 상당 부분은 확인할 수 없다.</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 전문인력 인력 채용 수락률 약 73%(WTAS 시절 36%, 브랜드 전환 후 65%)
+- 내부 AI 교육 프로그램: 500명 이상 교육, 2026년 5월 8일 가동
+- 영국 세무 매출 약 $20M, 세무·법률·컨설팅 합산 잠재 시장 $600M(회사 추정)
+- 이직의 약 70%가 평가 1~3등급이라는 CEO의 해석
+- 10/15 이후 AI 전략 본격 시행, 이사회에서 영업개발 논의 예정</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>인수 실행과 가이던스 의존</strong>
+   - 근거: 인수 매출 $55M → $25~30M 하향(콜), 체결 16건 중 종료 8건, 나머지는 4Q 집중(콜), 2027년 이월 $100M 이상(콜).
+   - 영향: 가이던스 유지가 하반기 유기적 성장 9~15%(계산)에 기댄다. 3Q 유기적 성장이 둔화되면 하향 리스크가 크다.</p>
+</li>
+<li>
+<p><strong>이익 품질과 GAAP 괴리</strong>
+   - 근거: 2Q GAAP 영업이익률 <span class="down">-4.1%</span>, 순손실 $10.1M, 조정 EBITDA 약 $46M과의 괴리(약 25%p), 매출총이익률 정의 불명, 실비 정의 변경(10-Q).
+   - 영향: 현금흐름은 양수지만, 보상비용과 조정 항목이 실제 주주이익을 얼마나 줄이는지 확인할 수 없다.</p>
+</li>
+<li>
+<p><strong>채무성 부채와 지배구조</strong>
+   - 근거: HO Note $162.3M, CA Notes $187.8M(용어집). Class B 약 98.8M주 대 Class A 약 12.65M주(10-K). Class B 비중 약 89%(계산).
+   - 영향: 의결권과 전환 조건은 발췌에 없다. Aggregator 지분자가 현 Managing Director라는 점(용어집)을 보면 내부자 영향력이 클 가능성이 있다(추정).</p>
+</li>
+<li>
+<p><strong>유동성과 상장 이력</strong>
+   - 근거: 뉴욕증시 상장일 2025.12.17(10-K), Class A 유통 약 11%(계산), 일 거래대금 $19.4M, 60일 수익률 <span class="up">+30.9%</span>.
+   - 영향: $10M 포지션은 일 거래대금의 약 52%다(계산). 락업 해제와 추가 발행 일정은 발췌에 없어 확인할 수 없다.</p>
+</li>
+<li>
+<p><strong>과금 구조의 AI 전환과 인재 부담</strong>
+   - 근거: 대다수가 T&amp;M(10-Q). 회사는 고정가 전환과 생산성 향상을 강조하고(콜), AI를 "tailwind"로 본다고 말했다.
+   - 영향: 시간 기반 매출이 줄면 이익 구조가 바뀔 수 있다(추정). 인력은 2,296명에서 2,690명으로 약 17% 늘었고(계산), 미국 이직률은 14.2%에서 15.7%로 올랐다(10-Q).</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>유기적 매출 성장(2Q)</td>
+<td>+20.6%(콜)</td>
+<td>긍정</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>-4.1%, 전년 대비 <span class="up">+55.7%</span>p(지표)</td>
+<td>개선 중이나 적자</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름 수익률</td>
+<td>약 2.4%(계산)</td>
+<td>중립 — 성장주로서 밸류 부담</td>
+</tr>
+<tr>
+<td>매출 대비 시가총액</td>
+<td>약 7.6배(계산)</td>
+<td>중립</td>
+</tr>
+<tr>
+<td>잉여현금흐름 대비 시가총액</td>
+<td>약 41배(계산)</td>
+<td>부담</td>
+</tr>
+<tr>
+<td>가격 모멘텀</td>
+<td>60일 <span class="up">+30.9%</span>, 52주 고점 <span class="down">-0.4%</span>, 거래량 1.22배(지표)</td>
+<td>과열 가능성, 거래량 확인 안 됨</td>
+</tr>
+<tr>
+<td>일 거래대금 대비 Class A 유통</td>
+<td>거래대금 $19.4M, 유통 약 $0.77B(계산)</td>
+<td>유동성 제약</td>
+</tr>
+<tr>
+<td>하반기 유기적 성장 함축치</td>
+<td>약 <span class="up">+9%</span>~<span class="up">+15%</span>(계산)</td>
+<td>가이던스 검증 필요</td>
+</tr>
+</tbody>
+</table></div>
+<h3>진입 전 확인할 3가지</h3>
+<ol>
+<li><strong>3Q26 실적</strong>: 유기적 성장이 하반기 함축치(9~15%) 이상인지, 요율·생산성 지표가 유지되는지, 인수 종료 건수가 늘었는지 확인한다. 현재 제공 자료의 최신 분기는 2Q26이다.</li>
+<li><strong>이익 품질</strong>: 10-Q 재무제표 주석에서 조정 EBITDA와 GAAP 간 차이 항목(주식보상, 인수 비용 등), 순손실 구조, 부채와 현금 잔고를 확인한다.</li>
+<li><strong>지배구조와 유통</strong>: Class B 의결권과 전환 조건, 락업 해제 일정, 인수 대가 중 주식 비중(희석 규모), 10/13 8-K 본문을 확인한다.</li>
+</ol>
+<h3>판단을 뒤집을 조건</h3>
+<ul>
+<li><strong>관망 → 보통</strong>: 3Q 유기적 성장이 상반기 수준(약 18%) 근처를 유지하고, 요율·생산성 지표가 지속되고, 조정-GAAP 괴리가 설명되거나 GAAP 흑자 전환 경로가 제시되고, 유통 주식이 늘어날 때.</li>
+<li><strong>관망 → 적극</strong>: 위 조건이 모두 충족되고, 가이던스가 상향되고, 4Q 인수 종료가 완료되고, 주식 희석이 제한적으로 확인될 때.</li>
+<li><strong>관망 → 회피</strong>: 3Q 유기적 성장이 15% 미만으로 떨어져 하반기 함축치 하단을 이탈하거나, 가이던스가 하향되거나, 인수 추가 지연이 확인되거나, 순손실이 재확대되거나, 대규모 주식 발행·부채 증가로 인수 자금을 조달할 때.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526128949/d63874d10k.htm">10-K — 2025-12-31_0001193125-26-128949</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526346921/d67081d10q.htm">10-Q — 2026-06-30_0001193125-26-346921</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526219544/d54667d10q.htm">10-Q — 2026-03-31_0001193125-26-219544</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000206570826000003/andg-20261013.htm">8-K — 2026-10-13_0002065708-26-000003</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526346839/d122909dex991.htm">8-K — 2026-08-12_0001193125-26-346839__EX-99.1__d122909dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526346839/d122909d8k.htm">8-K — 2026-08-12_0001193125-26-346839</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000206570826000005/andg-20260811.htm">8-K — 2026-08-11_0002065708-26-000005</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2065708/000119312526288725/d31545dex101.htm">8-K — 2026-06-25_0001193125-26-288725__EX-10.1__d31545dex101</a></li>
+<li>Transcript — 2026-08-12 Andersen Group Inc. (ANDG) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

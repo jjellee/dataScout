@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBWI — Bath &amp; Body Works Inc.</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BBWI — Bath &amp; Body Works Inc.</h1>
+<div class="sub">2026-10-22 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">BBWI</span><span class="badge">+3.58%</span><span class="badge">거래량 1.01배</span><span class="badge">$4.14B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>밸류에이션은 낮은 편이다. 조정 EPS 가이던스 중간값 $2.70 기준 주가수익비율은 약 7.6배이고, 2026년 FCF 가이던스 $650M은 시가총액 $4.14B 대비 약 15.7%다(계산).</li>
+<li>매출은 2분기 연속 역성장 중이다. 1Q <span class="down">-3.2%</span>, 2Q <span class="down">-2.3%</span>이며, 3Q 가이던스는 <span class="down">-5%</span>~<span class="down">-2.5%</span>다. 회사도 매장 트래픽 압박을 인정했다(실적콜 2Q).</li>
+<li>2Q 이익 개선의 상당 부분은 일회성이다. 약 $80M의 IEEPA 관세 환급이 조정 EPS $0.62에 포함됐고, 회사 발표 기준 환급을 제외하면 $0.31이다(전년 2Q $0.37).</li>
+<li>오늘의 <span class="up">+3.58%</span>는 거래량 1.01배 수준이며 확인된 촉매가 없다. 20일 <span class="up">+20%</span> 급등 후에도 52주 고점 대비 <span class="down">-24%</span>라 추격 매수의 근거가 부족하다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>제공된 공시 중 최근 4일 내 공시는 없다[지표·SEC 목록].</li>
+<li>가장 최근 공시는 2026-09-21자 8-K 첨부(CEO Daniel Heaf에 대한 주가 허들형 PSU 부여 계약, 목표 591,366주, 최대 200%)다[8-K]. 경영진 보상 구조이며 그 자체로 펀더멘털 호재는 아니다. 허들 가격 수준은 발췌문에서 확인 불가다.</li>
+<li>2Q 실적은 2026-08-26 콜에서 발표됐고, 오늘 기준 20일 수익률 구간보다 앞서 있다[실적콜 2Q].</li>
+<li>뉴스 헤드라인 중 "Shifts Store Formats, Is The 31% Undervaluation Enough?"는 제3자 기사 제목이며 본문과 주장의 근거는 확인하지 못했다[뉴스]. 이사의 0.692주 매도 헤드라인도 원문이 제공되지 않아 확인 불가다[뉴스].</li>
+<li><strong>데이터 불일치:</strong> 요청서에는 "거래량 급증"으로 적혀 있으나 지표상 거래량 배수는 1.01배로 평시 수준이다[지표]. 거래대금 $144.9M은 기관 거래가 가능한 규모지만 급증으로 보기는 어렵다.</li>
+<li>20일 <span class="up">+20%</span>와 60일 <span class="down">-0.4%</span>를 함께 보면, 상승은 최근 한 달 사이에 집중됐다. 이 기간의 구체적 원인은 제공 자료로 특정할 수 없다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품</strong>
+- 바디케어(파인 프래그런스 미스트, 바디 크림, 로션, 오드퍼퓸, 바디워시), 핸드솝·샌태타이저, 홈 프래그런스(3-wick 캔들)를 판매한다[10-K].</p>
+<p><strong>채널</strong>
+- 북미 자사 매장 1,927개(미국 1,814, 캐나다 113)이며, 2025년 개설 94개, 폐점 62개다[10-K].
+- 해외 매장 573개와 45개국 이상의 프랜차이즈·라이선스·도매 채널이 있다[10-K].
+- 이커머스는 미국·캐나다 사이트와 해외 34개 사이트다. Amazon과 Ulta(약 600개 매장 입점, 2Q 기준)도 채널에 포함된다[10-K·실적콜 2Q].
+- 로열티 프로그램 활성 회원은 4천만 명이라고 회사는 밝힘[10-K].</p>
+<p><strong>매출 구성</strong>
+- 카테고리별 매출 비중은 발췌된 공시에서 확인 불가다.
+- 1Q 기준으로 직접판매 $246M(약 18%), 해외·기타 $70M(약 5%)이며, 나머지는 북미 매장 중심이다(계산; 1Q 총매출 $1,378M 기준)[실적콜 1Q].</p>
+<p><strong>고객과 경쟁 위치</strong>
+- 회사는 젊은 소비자 유입을 목표로 한다고 밝힘[10-K]. 회사는 "시장 리더", "글로벌 인지도 있는 브랜드", "국내 중심 수직통합 공급망"을 강점으로 주장한다[10-K]. 이는 회사 주장이며, 외부 검증 자료는 제공되지 않았다.
+- 매장은 쇼핑몰 중심에서 오프몰로 옮기는 중이다. 오프몰 비중은 60%이고 목표는 75%다[10-K]. 실적콜에서는 대부분 매장이 수익성 있다고 언급됐다[실적콜 2Q].</p>
+<p><strong>회계연도 주의:</strong> 10-K의 "2025년"은 2026년 1월 31일로 끝난 52주를 의미한다[10-K].</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1Q26</th>
+<th>2Q26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순매출 (YoY)</td>
+<td>$1,378M (<span class="down">-3.2%</span>)</td>
+<td>$1,514M (<span class="down">-2.3%</span>)</td>
+</tr>
+<tr>
+<td>보고 영업이익</td>
+<td>$231M</td>
+<td>$216M (전년 $157M, <span class="up">+37%</span>)</td>
+</tr>
+<tr>
+<td>조정 영업이익 (전년)</td>
+<td>$151M (전년 $209M, <span class="down">-28%</span>)</td>
+<td>$225M (전년 $172M, <span class="up">+31%</span>)</td>
+</tr>
+<tr>
+<td>조정 영업이익률</td>
+<td>11.0%</td>
+<td>14.8%</td>
+</tr>
+<tr>
+<td>조정 EPS (전년)</td>
+<td>$0.32 ($0.49)</td>
+<td>$0.62 ($0.37), 환급 제외 $0.31</td>
+</tr>
+</tbody>
+</table></div>
+<p>[10-Q 1Q·2Q, 실적콜]</p>
+<p><strong>성장의 질</strong>
+- 2Q 북미 매출 감소는 거래 건수와 평균 객단가 감소가 주된 원인이라고 10-Q는 설명한다. 1Q에는 거래 건수 감소를 객단가 증가가 일부 상쇄했다[10-Q 1Q·2Q]. 믹스 조정 AUR은 1Q에 보합이었다[실적콜 1Q]. 즉 성장 둔화는 물량(트래픽) 주도다.
+- 채널은 대비가 뚜렷하다. 직접판매는 2Q에 <span class="up">+3%</span>로 돌아섰고(1Q <span class="down">-1.5%</span>), 국제·기타 매출은 2Q에 <span class="up">+24.9%</span>였다[실적콜 2Q].
+- 카테고리는 바디케어가 1Q 중반대 감소에서 2Q 중간 한 자릿수 감소로 개선됐다. 홈 프래그런스는 낮은 한 자릿수 감소다[실적콜].
+- 2Q 매출의 QoQ <span class="up">+9.9%</span>는 소매업의 계절성 영향이 크다고 해석하는 것이 합리적이다. 개선 신호로 보기는 어렵다(해석).</p>
+<p><strong>마진 방향성</strong>
+- 2Q 매출총이익률은 45.7%다. 환급을 제외하면 40.4%이며 전년 대비 -90bp다[실적콜 2Q]. 환급을 걷어내면 기초 마진은 압박을 받고 있다.
+- 1Q 조정 매출총이익률은 42.7%로 전년 대비 -270bp였다[실적콜 1Q].
+- 조정 SG&amp;A 비율은 1Q 31.7%(전년 대비 +100bp)에서 2Q 30.8%로 개선됐다[실적콜]. 비용 효율이 마진을 지지하고 있다.
+- 1H 조정 EPS는 $0.94로 전년 $0.86보다 높다. 그러나 2Q 환급 효과 $0.31을 제외하면 $0.63으로 약 <span class="down">-27%</span> 감소다(계산).</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름은 $1.03B다[지표]. 반면 2026년 FCF 가이던스는 $650M으로 상향됐다[실적콜 2Q]. 두 수치의 차이는 상당히 크다. 원인은 발췌 자료에서 확인할 수 없으므로 원문 검증이 필요하다.
+- 2026년 자본지출 가이던스는 $240M으로 기존 $270M에서 낮아졌다[실적콜 2Q]. 2Q 누계 자본지출은 $98M이다.
+- 분기 배당은 $40M이다[실적콜]. 연간 약 $160M으로, 시가총액 대비 약 3.9%다(계산).
+- 재무 건전성: 1Q에 2027년 만기 채권 $284M, 2Q에 2029년 만기 채권 $250M을 상환했다[실적콜]. 전체 부채, 현금, 순부채는 발췌문에서 확인 불가다.
+- 재고는 두 분기 모두 전년 대비 10% 감소해 건전하다[실적콜].</p>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① Consumer First Formula — 혁신 제품과 핵심 카테고리 회복</strong>
+- 회사는 핵심 카테고리 중심의 제품 혁신을 추진한다고 밝힘[10-K]. 1Q에 출시한 핸드솝 신제품은 AUR과 SKU 생산성이 모두 두 자릿수 증가했다고 언급됐다[실적콜 1Q]. 2Q에는 Fruit Fusion이 판매 기대를 넘었다고 언급됐다[실적콜 2Q].
+- 실현 조건: 혁신 SKU의 비중이 아직 작다. 실적콜에서도 "작은 비중"이라고 답변했다[실적콜 1Q].
+- <strong>검증 포인트:</strong> 3Q 바디케어 감소폭이 중간 한 자릿수에서 더 줄어드는지, 그리고 신제품 재구매(리플레니시먼트) 매출이 유지되는지.</p>
+<p><strong>② 채널 확장 — Amazon, Ulta, 국제사업</strong>
+- Amazon 매출은 2Q에 전 분기 대비 3배가 됐다. Ulta는 약 600개 매장에 입점했다. 회사는 자사 채널 잠식은 관찰되지 않았다고 밝힘[실적콜 2Q].
+- 국제 소매는 2Q에 <span class="up">+9%</span>였다[실적콜 2Q].
+- <strong>검증 포인트:</strong> 국제·기타 매출의 두 자릿수 성장이 지속되는지, 직접판매의 성장률이 다음 분기에도 플러스인지.</p>
+<p><strong>③ 매장 트래픽 회복 — 리머천다이징과 마케팅</strong>
+- 전체 매장의 리머천다이징이 완료됐고 전환율이 올랐다고 회사는 밝힘[실적콜 2Q]. 하반기에는 수백 개 매장에서 테스트 후 수천 개 매장으로 확대할 계획이라고 언급했다[실적콜 2Q].
+- 실현 조건: 트래픽 감소 자체는 아직 반전되지 않았다. 경영진도 이를 최우선 과제로 꼽았다[실적콜 2Q].
+- <strong>검증 포인트:</strong> 북미 거래 건수가 전년 대비 플러스로 전환되는지.</p>
+<p><strong>④ 오프몰 전환과 매장 포트폴리오</strong>
+- 오프몰 비중을 75%까지 높이는 것이 목표다[10-K]. 2026년 북미 면적 증가율은 약 1%로 가이던스가 나왔다[10-K].
+- <strong>검증 포인트:</strong> 신규 매장의 생산성과 쇼핑몰 매장의 폐점이 매출 감소를 상쇄하는지.</p>
+<p><strong>⑤ 비용 효율과 SKU 축소</strong>
+- 회사는 SKU 축소를 "숫자 목표가 아니라 소비자 반응"을 위한 것이라고 설명했다[실적콜 1Q]. 2Q에는 "전체 SKU 합리화 계획은 대체로 예상대로"라고 답했다[실적콜 2Q]. 홈케어 카테고리는 퇴출했다고 요약에 적혀 있다[실적콜 2Q 요약].
+- <strong>검증 포인트:</strong> 3Q 조정 SG&amp;A 비율이 30%대 초반을 유지하는지. 마케팅 투자가 늘었는데도 비율이 유지되는지.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<blockquote>
+<p>참고: 실적콜 2Q 자료의 제목에는 "Q2 2027"이라고 적혀 있으나 본문은 2026년 2분기 콜이다. 또한 제공된 전문에는 "…(중략)…"이 있어 일부만 확인된다. 요약은 자동 생성된 것이다.</p>
+</blockquote>
+<p><strong>경영진의 톤과 자신감의 근거</strong>
+- 2Q에 대해 CEO는 "기대를 상회했다"고 말했다. 그러나 "기본 사업은 여전히 압박받고 있다", "변곡점 신호를 보이기에는 아직 충분히 넓지 않다"고도 했다[실적콜 2Q]. 낙관과 신중함을 함께 보여준 톤이다.
+- 가이던스 화법에 변화가 있다. 1Q에는 "재확인(reaffirm)"이었으나 2Q에는 조정 EPS를 상향했다. 다만 1Q 가이던스는 환급을 포함하지 않았다고 명시됐다[실적콜 1Q].
+- 2026년은 "투자의 해"라고 명시했고, 다년간의 변혁이라고 강조했다[실적콜 2Q]. 성장 목표는 2027년으로 미뤄진 듯한 뉘앙스다.
+- <strong>추정(계산):</strong> 환급 효과 $0.31을 제외하면 FY 조정 EPS 중간값은 약 $2.39로 계산된다(= $2.70 - $0.31). 이는 종전 중간값 $2.525 대비 하향에 해당한다. 회사는 이를 하향이라고 표현하지 않았다. 따라서 상향 가이던스의 상당 부분은 일회성 환급에 기인한다고 해석하는 것이 합리적이다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 답변의 방어 지점</strong>
+- <strong>매장 트래픽:</strong> Morgan Stanley의 질문에 CEO는 "거시 환경을 핑계로 삼지 않는다"고 답했다. 또 "거시 환경이 개선될 것으로 보지 않으며 이는 가이던스에 반영되지 않았다"고 밝혔다[실적콜 2Q]. 매장 규모 질문에는 CFO가 "대부분의 매장이 수익성이 있다"고 답했다[실적콜 2Q].
+- <strong>세일과 프로모션:</strong> Goldman Sachs의 질문에 CEO는 6월 세미애뉴얼 세일에서 재고 청산이 적었던 것이 2Q의 역풍이었다고 인정했다. 하반기에는 전년보다 프로모션을 늘리지 않겠다고 밝혔다[실적콜 2Q]. 프로모션 축소와 트래픽 회복이 동시에 필요한 상황에서 3Q 매출 가이던스가 낮은 이유로 읽힌다(해석).
+- <strong>SKU 축소 목표:</strong> Telsey의 질문에 대해 회사는 숫자 목표를 두지 않는다고 답했다[실적콜 1Q]. 2Q에도 구체적 수치는 제시되지 않았다. 목표가 공개되지 않은 점은 검증을 어렵게 만든다.
+- <strong>AUR 생산성:</strong> Jefferies의 질문에 대해 신제품이 "작은 비중"이라고만 답하고 구체적 비중을 밝히지 않았다[실적콜 1Q].</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- CFO Eva Boratto가 퇴임하고 Tom Javitch가 임시 CFO로 선임됐다. 후임 검색이 진행 중이다[실적콜 1Q·2Q].
+- 3Q 매출 가이던스는 <span class="down">-5%</span>~<span class="down">-2.5%</span>, 조정 EPS는 $0.07~$0.12다[실적콜 2Q].
+- 캐나다 보복 관세 가능성이 위험으로 언급됐다[실적콜 2Q].
+- 7월 마케팅 투자 확대가 언급됐다[실적콜 2Q].
+- "6대 전략 지표"가 언급됐으나 발췌문에서 세부 항목은 확인 불가다[실적콜 2Q].</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>매출과 트래픽의 구조적 하락.</strong> 2Q 북미 매출은 거래 건수 감소가 주도했다[10-Q 2Q]. 회사는 쇼핑몰 트래픽 압박이 지속된다고 인정했다[실적콜 2Q]. 3Q 가이던스가 <span class="down">-5%</span>~<span class="down">-2.5%</span>인 상황에서 트래픽 회복이 지연되면 하향 리스크가 크다.</p>
+</li>
+<li>
+<p><strong>이익의 질.</strong> 2Q 조정 EPS에는 약 $80M의 IEEPA 환급이 포함됐다[10-Q 2Q]. 1Q 조정 영업이익은 $88M의 카드수수료 소송 이익을 제외하면 전년 대비 감소했다[10-Q 1Q]. 1H 기준 환급을 제외한 흐름은 약화되고 있다(계산). 환급 금액과 시기는 공시상 불확실하다고 10-Q는 설명했다[10-Q 1Q].</p>
+</li>
+<li>
+<p><strong>하반기 가이던스의 가파른 상승 요구.</strong> 1H 조정 EPS는 $0.94이고, FY 가이던스 $2.60~$2.80을 충족하려면 하반기에 $1.66~$1.86이 필요하다(계산). 3Q 가이던스가 $0.07~$0.12이므로 4Q에 약 $1.54~$1.74가 필요하다(계산). 4Q 전년 실적은 발췌문에 없어 비교가 불가능하다. 연말 시즌 실행이 실패하면 가이던스가 흔들린다.</p>
+</li>
+<li>
+<p><strong>경영진 공백과 투자 부담.</strong> 임시 CFO 체제로 전환됐고 후임 검색이 진행 중이다[실적콜 1Q·2Q]. 2026년은 투자 연도라고 회사가 밝혔으므로, 마케팅과 매장 리뉴얼 비용이 마진을 압박할 수 있다[실적콜 2Q]. 또 중동 긴장에 따른 에너지와 원자재 가격 상승을 10-Q가 언급했다[10-Q 1Q·2Q].</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 주가수익비율: 조정 EPS 가이던스 $2.60~$2.80 기준 약 7.3~7.9배. 환급 제외 중간값 $2.39 기준 약 8.6배(계산).
+- FCF 수익률: FY 가이던스 $650M 기준 약 15.7%. TTM $1.03B 기준 약 24.9%(계산). 두 수치의 차이는 검증이 필요하다.
+- 배당 수익률: 연 약 $160M 기준 약 3.9%(계산).
+- 주가 위치: 52주 고점 대비 <span class="down">-24%</span>이므로 고점은 약 $27 수준이다(계산). 20일 <span class="up">+20%</span>이므로 한 달 전 가격은 약 $17.1이다(계산).
+- 매출: 1Q <span class="down">-3.2%</span>, 2Q <span class="down">-2.3%</span>, 3Q 가이던스 <span class="down">-5%</span>~<span class="down">-2.5%</span>.
+- 유동성: 일 거래대금 $144.9M으로 기관 포지션 구축이 가능한 수준이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. <strong>3Q 실적:</strong> 순매출이 <span class="down">-5%</span>~<span class="down">-2.5%</span> 범위 안에 들어오는지, 북미 거래 건수가 개선됐는지.
+2. <strong>환급 제외 이익:</strong> 3Q 조정 EPS가 $0.07~$0.12 범위에 드는지, 환급 제외 매출총이익률이 40.4% 이상을 유지하는지.
+3. <strong>현금흐름과 재무:</strong> TTM FCF $1.03B와 FY 가이던스 $650M의 차이를 원문으로 확인하고, 전체 부채·현금·순부채를 확인하며, 후임 CFO 선임 여부를 확인한다. 발췌문에서는 이 항목들을 확인할 수 없다.</p>
+<p><strong>관망을 뒤집을 조건</strong>
+- <strong>보통으로 상향:</strong> 3Q 순매출이 가이던스 상단 이상이고 북미 거래 건수가 전년 대비 플러스로 전환되며, 환급 제외 조정 EPS가 성장으로 돌아설 때.
+- <strong>적극으로 상향:</strong> 2분기 연속 매출이 플러스로 전환되고, 바디케어가 플러스 성장하며, 환급 없이도 EPS가 성장할 때.
+- <strong>회피로 하향:</strong> 3Q 조정 EPS가 $0.07 하단을 밑돌거나, FY 가이던스가 환급 제외 기준으로 추가 하향될 때. 또는 프로모션 확대로 마진이 추가로 악화될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000008/bbwi-20260131.htm">10-K — 2026-01-31_0000701985-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000029/bbwi-20260801.htm">10-Q — 2026-08-01_0000701985-26-000029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000014/bbwi-20260502.htm">10-Q — 2026-05-02_0000701985-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000119312526399454/d130416dex101.htm">8-K — 2026-09-21_0001193125-26-399454__EX-10.1__d130416dex101</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000119312526399454/d130416d8k.htm">8-K — 2026-09-21_0001193125-26-399454</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000025/ex991bbwi-20262qearningsre.htm">8-K — 2026-08-26_0000701985-26-000025__EX-99.1__ex991bbwi-20262qearningsre</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000025/bbwi-20260826.htm">8-K — 2026-08-26_0000701985-26-000025</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/701985/000070198526000021/bbwi-20260720.htm">8-K — 2026-07-20_0000701985-26-000021</a></li>
+<li>Transcript — 2026-08-26 Q2 2027 Transcript</li>
+<li>Transcript — 2026-05-27 Q1 2027 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
