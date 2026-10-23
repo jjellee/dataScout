@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VECO — Veeco Instruments Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>VECO — Veeco Instruments Inc. Common Stock</h1>
+<div class="sub">2026-10-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">VECO</span><span class="badge">+4.69%</span><span class="badge">거래량 1.17배</span><span class="badge">$2.85B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>2분기 매출은 $193.5M으로 전년 대비 <span class="up">+16.5%</span>였다. 회사는 시장 기대를 상회했다고 밝혔고, 3분기 매출 가이던스($200~220M)와 FY26 매출 가이던스($780~810M)를 제시했다 [8-K 보도자료].</li>
+<li>그러나 Non-GAAP 영업이익은 $23.1M으로 전년과 같아 영업이익률이 약 2%p 하락했고, Non-GAAP EPS는 $0.36에서 $0.33으로 줄었다. 매출 성장이 이익으로 이어지지 않고 있다.</li>
+<li>Axcelis와의 합병은 규제 승인(중국 포함)을 기다리는 상태다. 거래 조건은 공시상 확인 불가이므로, 주가가 독립 펀더멘털로 움직이는지 딜 구조에 묶여 있는지 판단하기 어렵다.</li>
+<li>지표표의 최근 분기 매출($158.3M, YoY <span class="down">-5.4%</span>)이 8-K의 2분기 매출($193.5M, <span class="up">+16.5%</span>)과 충돌한다. 실적콜 transcript도 확보되지 않았다. 데이터가 정합성을 확인하기 전까지는 의미 있는 비중을 싣기 어렵다.</li>
+<li>오늘 <span class="up">+4.69%</span>는 확인된 촉매 없이 거래량 1.17배 수준에서 나온 움직임이다.</li>
+<li>본 리포트의 최신 실적 공시는 2026-08-05 8-K이며, 3분기 실적 발표 일정은 공시상 확인 불가다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<ul>
+<li>최근 4일 내 SEC 공시가 없다 [지표].</li>
+<li>가장 최근 실적 공시(8-K, 8월 5일)는 오늘로부터 약 2.5개월 전 자료라 당일 촉매로 보기 어렵다.</li>
+<li>뉴스 헤드라인은 대부분 시세 페이지이며, "Stock Up 4.7% but GF Value Says Ove…" 헤드라인은 잘려 있어 내용을 확인할 수 없다. MarketBeat 헤드라인은 sell-side 평가가 "Hold"라는 점만 전한다 [헤드라인].</li>
+<li>거래량은 20일 중앙값 대비 1.17배, 거래대금 $38.0M으로 급증이라고 부르기 어려운 수준이다 [지표].</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>제품·기술 [10-K]</strong>
+- 반도체 공정 장비 제조사다(1989년 설립 델라웨어 법인, 뉴욕 Plainview 본사).
+- 기술 포트폴리오는 이온빔, 레이저 어닐링, MOCVD, CVD, 첨단 패키징 리소그래피, 싱글 웨이퍼 웨트 프로세싱, MBE, ALD다.
+- 응용처로는 AI 칩용 고급 노드 AP, HPC, 모바일, 5G RF 필터·파워앰프, 3D 센싱 포토닉스, 디스플레이, HDD용 박막 자기헤드를 들었다.</p>
+<p><strong>고객군 [10-K]</strong>
+- 4개 end market으로 나뉜다: Semiconductor, Compound Semiconductor, Data Storage, Scientific &amp; Other.
+- 매출의 end market별 비중은 공시상 확인 불가다.
+- 10-K 리스크 목록에 "고객 집중(concentrated customer base)"이 명시되어 있으나, 특정 고객의 매출 비중은 확인할 수 없다.</p>
+<p><strong>매출 구조</strong>
+- 장비 판매와 서비스 사업을 함께 운영한다는 점은 보도자료 소개문으로 확인된다. 서비스 매출 비중은 확인 불가다.</p>
+<p><strong>경쟁 위치</strong>
+- 10-K는 "significant third party competition"만 언급하며, 경쟁사 명과 점유율은 제시하지 않는다. 확인 불가.
+- "leading technology positions"는 회사가 스스로 밝힌 평가다 [8-K 보도자료 소개문].</p>
+<p><strong>공급망</strong>
+- 아웃소싱 파트너와 일부 단일 공급처(sole source)에 의존한다고 10-K가 명시한다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>분기 실적 (8-K 보도자료 기준)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2Q26</th>
+<th>2Q25</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td>$193.5M</td>
+<td>$166.1M</td>
+<td>+16.5%</td>
+</tr>
+<tr>
+<td>순이익(GAAP)</td>
+<td>$11.9M</td>
+<td>$11.7M</td>
+<td>+1.7%</td>
+</tr>
+<tr>
+<td>순이익(Non-GAAP)</td>
+<td>$21.8M</td>
+<td>$21.5M</td>
+<td>+1.4%</td>
+</tr>
+<tr>
+<td>영업이익(Non-GAAP)</td>
+<td>$23.1M</td>
+<td>$23.1M</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>Non-GAAP 영업이익률(계산)</td>
+<td>11.9%</td>
+<td>13.9%</td>
+<td>-2.0%p</td>
+</tr>
+<tr>
+<td>EPS(GAAP)</td>
+<td>$0.18</td>
+<td>$0.20</td>
+<td>-10.0%</td>
+</tr>
+<tr>
+<td>EPS(Non-GAAP)</td>
+<td>$0.33</td>
+<td>$0.36</td>
+<td>-8.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>데이터 정합성 경고</strong>
+- 지표표의 "최근 분기 매출" $158.3M(YoY <span class="down">-5.4%</span>, QoQ <span class="down">-4.0%</span>)은 8-K의 2분기 매출 $193.5M(YoY <span class="up">+16.5%</span>)과 맞지 않는다. 어느 분기 수치인지 확인되지 않았다.
+- 지표표의 GAAP 영업이익률 <span class="down">-0.4%</span>(YoY <span class="down">-8.9%</span>p)는 GAAP 순이익 흑자($11.9M)와 방향이 맞지 않는다. 8-K 보도자료에는 GAAP 영업이익 수치가 없어 교차 검증이 불가능하다.
+- 10-Q 2건은 목차 발췌만 제공되어 MD&amp;A 내용을 근거로 쓸 수 없었다.</p>
+<p><strong>성장의 질</strong>
+- 단가, 물량, 믹스 분해는 공시상 확인 불가다.
+- 회사는 주문 모멘텀이 모든 주요 end market에서 가속되고 있다고 밝혔다. 또한 $200M 규모의 첨단 패키징 수주를 확보했다고 밝혔다 [8-K 슬라이드]. 다만 수주의 기간, 확정성, 매출 전환 시점은 확인되지 않는다.</p>
+<p><strong>마진 방향성</strong>
+- 매출총이익률은 35.3%다(지표표, 기간 미표기).
+- 매출은 늘었으나 Non-GAAP 영업이익이 정체되어 영업이익률이 약 2%p 낮아졌다(계산값).</p>
+<p><strong>EPS와 희석 (추정)</strong>
+- 순이익은 소폭 늘었는데 EPS는 줄었다. 순이익과 EPS로 역산한 희석 주식 수는 약 58~60M주에서 약 66M주로 10%대 증가한 것으로 계산된다. 이는 계산에 따른 추정이며, 공시된 주식 수로 직접 확인해야 한다.</p>
+<p><strong>현금흐름</strong>
+- TTM 잉여현금흐름은 $42.9M이다. 시가총액 $2.85B 기준 FCF 수익률은 약 1.5%다(계산값).
+- 증설 투자 규모는 공시상 확인 불가다. 회사는 2027년 매출에 앞선 "deliberate investments"를 진행한다고 밝혔다 [8-K 슬라이드]. 이것이 FCF를 압박할 가능성은 추측이다.</p>
+<p><strong>재무 건전성</strong>
+- 2029년 만기 전환사채(Convertible Senior Notes)와 캡드콜(Capped Call)을 보유하고 있다 [8-K·10-K 언급]. 잔액, 이자율, 현금 보유액은 공시상 확인 불가다.
+- 10-K는 부채 약정(covenant) 제약, 전환 시 주식 발행으로 인한 R&amp;D 세액공제 이월분 활용 제약 가능성을 리스크로 명시한다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>1. AI·HPC 수요 확대</strong>
+- 회사는 AI 확산이 "robust order activity"를 만들고 있다고 밝혔다 [8-K 보도자료].
+- 실현 조건: 고급 노드 및 첨단 패키징 투자가 지속되어야 한다.
+- 검증 포인트: 3분기 매출이 가이던스 $200~220M에 들어오는지, 주문 확대가 매출로 전환되는지.</p>
+<p><strong>2. 첨단 패키징 수주 $200M</strong>
+- 회사는 $200M 규모 수주를 확보했다고 밝혔다 [8-K 슬라이드].
+- 실현 조건: 수주가 확정 주문이고 매출로 인식되어야 한다.
+- 검증 포인트: 다음 10-Q에서 수주잔고(backlog) 또는 해당 매출의 인식 시점이 드러나는지.</p>
+<p><strong>3. 차세대 NSA 프로그램</strong>
+- 회사는 주요 마일스톤을 달성했다고 밝혔다 [8-K 슬라이드]. NSA의 세부 내용, 고객, 매출 규모는 공시상 확인 불가다.
+- 검증 포인트: 상용 수주 또는 출하가 공식 발표되는지.</p>
+<p><strong>4. 제조 능력 확장</strong>
+- 회사는 2027년 매출에 대비한 선투자를 집행 중이라고 밝혔다 [8-K 슬라이드].
+- 실현 조건: 2027년 수요가 가시화되고 마진이 회복되어야 한다.
+- 검증 포인트: Non-GAAP 영업이익률이 2분기 11.9%보다 개선되는지, 설비투자 규모가 얼마인지.</p>
+<p><strong>5. FY26 가이던스 (수정 발표)</strong>
+- 회사는 FY26 가이던스를 "revised"했다고 밝혔다 [8-K 보도자료]. 이전 가이던스 값은 확인 불가이므로 상향인지 하향인지 판단할 수 없다.
+- 계산 참고: FY26 매출 중간값 $795M에서 2분기 $193.5M과 3분기 중간값 $210M을 빼면, 1분기와 4분기의 합은 약 $391.5M이다. 지표표의 1분기 매출 $158.3M이 맞다면 4분기는 약 $233M이어야 하며, 이는 3분기 중간값 대비 약 11% 증가다. 1분기 수치의 정합성이 먼저 확인되어야 한다.
+- 검증 포인트: 3·4분기 실적이 가이던스 중간값을 충족하는지.</p>
+<h2>6. 리스크</h2>
+<p><strong>1. Axcelis 합병 미완료</strong>
+- 2025년 9월 30일 합병계약을 체결했고, 2026년 2월 6일 양사 주주가 승인했다. 그러나 규제 승인이 남아 있다 [10-K]. 8월 5일 8-K는 중국 규제 승인 실패가 거래 지연 또는 불성립의 사유가 될 수 있다고 명시했다.
+- 거래 조건(주당 대가, 교환비율)과 현재 진행 상태는 공시상 확인 불가다. 거래가 완료되면 Veeco는 Axcelis의 완전 자회사가 된다 [10-K].
+- 합병 기간 동안 인재 이탈과 경영진 주의 분산 리스크도 10-K에 명시되어 있다.</p>
+<p><strong>2. 미·중 무역 및 수출 라이선스</strong>
+- 관세 강화, 미·중 무역 분쟁, 수출 라이선스 취득 실패가 10-K에 주요 위험 요인으로 명시되어 있다 [10-K]. 중국 시장 비중은 공시상 확인 불가다.</p>
+<p><strong>3. 고객 집중과 수요 사이클</strong>
+- 10-K는 고객 집중, 소비자 전자제품 및 자동차 수요 의존, 산업 사이클성을 명시한다 [10-K].
+- 8-K 면책 문구에는 "U.S. Customers" 또는 "U.S. Customs"가 보유한 출하분이 언급되는데, 두 문서의 표기가 다르다. 보류 중인 출하가 있다면 매출 인식 시점 리스크가 된다. 실제 규모와 성격은 확인 불가다 [8-K 보도자료·슬라이드].</p>
+<p><strong>4. 마진 압박과 희석</strong>
+- 매출이 16.5% 늘었음에도 Non-GAAP 영업이익은 정체되었고 EPS는 줄었다(섹션 4 참조).
+- 전환사채 전환에 따른 주식 발행 희석과 R&amp;D 세액공제 이월분 활용 제약이 10-K에 명시되어 있다 [10-K].</p>
+<p><strong>5. 공시 데이터 불일치</strong>
+- 최근 분기 매출과 GAAP 영업이익률이 지표와 8-K 사이에서 맞지 않는다(섹션 4 참조). 10-Q 원문 확인 전까지 재무 판단의 신뢰도가 낮다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 주가는 52주 고점 대비 <span class="down">-43.8%</span>, 20일 <span class="down">-10.4%</span>, 60일 <span class="down">-9.9%</span>로 약세 추세다. 당일 <span class="up">+4.7%</span>는 추세 전환의 근거로 보기 어렵다 [지표].
+- 밸류에이션(계산값): 종가 $46.66 기준 FY26 Non-GAAP EPS 가이던스($1.36~1.61)로는 약 29~34배, GAAP EPS 가이던스($0.78~1.02)로는 약 46~60배다.
+- FCF 수익률은 약 1.5%다(TTM FCF $42.9M, 시가총액 $2.85B 기준).
+- 시가총액 검산: 2026년 2월 19일 기준 발행주식 60.39M주 × $46.66 ≈ $2.82B로 지표표의 $2.85B와 대체로 맞는다. 이후 주식 수 변동은 확인 불가다 [10-K 표지, 지표].
+- 매출 성장(<span class="up">+16.5%</span>)에 비해 Non-GAAP 영업이익은 0%, EPS는 <span class="down">-8%</span>다.</p>
+<p><strong>진입 전 확인할 3가지</strong>
+1. 데이터 정합성: 최근 분기 매출이 $158.3M인지 $193.5M인지, GAAP 영업이익률 <span class="down">-0.4%</span>의 산출 근거가 무엇인지 10-Q MD&amp;A 원문으로 확인한다.
+2. Axcelis 합병 상태: 중국 승인 여부, 예상 종결 시점, 주당 거래 조건, 종결 시 상장폐지 여부를 확인한다. 딜 조건이 확인되지 않으면 독립 밸류에이션이 불가능하다.
+3. 3분기 실적(발표 일정은 공시상 확인 불가): 매출이 $200~220M 가이던스에 들어오는지, Non-GAAP EPS가 $0.35~0.49인지, 영업이익률이 2분기 11.9%보다 회복되는지, 희석 주식 수가 얼마나 늘었는지 본다.</p>
+<p><strong>판단을 바꿔야 하는 조건</strong>
+- 관망에서 보통으로 올릴 조건: 합병 조건과 승인 경로가 명확해져 독립 가치 산정이 가능해지고, 3분기 매출이 가이던스 상단 이상이며 Non-GAAP 영업이익률이 11.9% 이상으로 회복되고, 데이터 정합성 문제가 해소될 때.
+- 관망에서 회피로 내릴 조건: 중국 승인이 거절되거나 합병이 파기될 가능성이 커질 때, 3분기 매출이 $200M을 밑돌면서 FY26 매출 가이던스가 하향될 때, 또는 전환사채 희석 규모가 크게 확인될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926019711/veco-20251231x10k.htm">10-K — 2025-12-31_0001104659-26-019711</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926091158/veco-20260630x10q.htm">10-Q — 2026-06-30_0001104659-26-091158</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926055672/veco-20260331x10q.htm">10-Q — 2026-03-31_0001104659-26-055672</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926091118/veco-20260805xex99d2.htm">8-K — 2026-08-05_0001104659-26-091118__EX-99.2__veco-20260805xex99d2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926091118/veco-20260805xex99d1.htm">8-K — 2026-08-05_0001104659-26-091118__EX-99.1__veco-20260805xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/103145/000110465926091118/veco-20260805x8k.htm">8-K — 2026-08-05_0001104659-26-091118</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

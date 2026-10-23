@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTMI — TTM Technologies Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TTMI — TTM Technologies Inc. Common Stock</h1>
+<div class="sub">2026-10-23 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">TTMI</span><span class="badge">+6.95%</span><span class="badge">거래량 2.04배</span><span class="badge">$10.76B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>펀더멘털 방향은 강하다. 보도자료 기준 3Q26 매출은 $1.2B(YoY <span class="up">+60%</span>, 사상 최대), 조정 EBITDA 마진은 20.1%, 북투빌은 2.13, A&amp;D 백로그는 $2.0B다.</li>
+<li>재무 여력은 약해지고 있다. 9/30 기준 프로포마 순레버리지는 2.8x(회사 목표 1.5~2.0x)이고, TTM 잉여현금흐름은 -$15.1M이다. Ophir 인수($650M 현금)도 현금과 리볼빙 차입으로 조달할 예정이다.</li>
+<li>주가는 20일 <span class="down">-41.3%</span>, 52주 고점 대비 <span class="down">-53.9%</span>로, 호실적 공시와 괴리가 크다. 당일 <span class="up">+6.95%</span> 상승의 직접 촉매는 공시로 확인되지 않는다.</li>
+<li>지표표와 보도자료의 매출·영업이익률이 불일치하고, 헤드라인도 상반된 등락을 전한다. 데이터 검증 전에는 비중을 실을 근거가 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>확인된 공시:</strong> 10/22 8-K로 3Q26 실적을 발표했고, 회사는 매출과 비GAAP EPS가 모두 분기 사상 최대라고 밝혔다. 10/19 8-K로는 Ophir Optics 인수($650M)를 발표했다.</li>
+<li><strong>추정:</strong> 10/23 상승은 10/22 실적 발표에 대한 반응일 가능성이 있다. 발표 시각이 공시상 확인되지 않아 인과는 단정할 수 없다.</li>
+<li><strong>불일치:</strong> "Why TTM stock is trading lower today", "Plunged 30% Today" 헤드라인은 지표표의 <span class="up">+6.95%</span> 상승과 방향이 반대다. 기사 날짜가 공시되지 않아 어느 날의 움직임인지 확인할 수 없다.</li>
+<li><strong>결론:</strong> 단일 촉매는 특정하지 못했다. 실적 반응 또는 Ophir 인수에 대한 재평가 가능성이 있으나 확인되지 않았다. 수급·섹터 동조 가능성도 배제할 수 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품:</strong> 미션 시스템(engineered systems), RF 부품, RF 마이크로웨이브/마이크로일렉트로닉 어셈블리, 고급 인터커넥트(HDI, SLP, 리지드-플렉스 PCB, 기판). [10-K]</li>
+<li><strong>규모:</strong> FY2025 순매출 약 $2.9B, 직원 약 18,200명, 북미·아시아 24개 시설, 고객 약 1,300곳. [10-K]</li>
+<li><strong>세그먼트:</strong></li>
+<li>A&amp;D: 국내 시스템·서브시스템·PCB 공장 13곳</li>
+<li>Commercial: 국내 PCB 3곳, 중국 4곳, 말레이시아 1곳, 캐나다 1곳</li>
+<li>RF&amp;S Components: 국내 1곳, 중국 1곳 [10-K]</li>
+<li><strong>고객군:</strong> OEM, EMS, ODM, 유통업체, 정부기관(국내 및 동맹국). 최종 시장은 항공우주·방산, 데이터센터 컴퓨팅, 자동차, 의료, 산업·계측, 네트워킹이다. [10-K]</li>
+<li><strong>매출 구성(3Q26):</strong> 데이터센터·네트워킹 41%, A&amp;D 34%, 나머지 약 25%(산출). [보도자료]</li>
+<li><strong>경쟁 위치:</strong> 경쟁사 및 점유율 관련 내용은 제공된 발췌 범위에 없어 공시상 확인 불가다.</li>
+<li><strong>규제:</strong> 용어집에 ITAR, EAR, NISPOM, SSA, DCSA 등이 있어 방산 보안·수출 규제 대상임을 알 수 있다. 세부 리스크는 확인 불가다.</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3Q26 매출</td>
+<td>$1.2B, YoY <span class="up">+60%</span> (3Q25 $752.7M)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>3Q26 매출 (지표표)</td>
+<td>$1.00B, YoY <span class="up">+37.4%</span>, QoQ <span class="up">+18.7%</span></td>
+<td>지표표 — <strong>보도자료와 불일치</strong></td>
+</tr>
+<tr>
+<td>GAAP 영업이익</td>
+<td>$162.3M (3Q25 $71.9M)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>GAAP 영업이익률</td>
+<td>약 13.5% (3Q25 약 9.6%)</td>
+<td>산출</td>
+</tr>
+<tr>
+<td>영업이익률 (지표표)</td>
+<td>10.9%, YoY <span class="up">+2.3%</span>p</td>
+<td>지표표 — <strong>산출치와 불일치</strong></td>
+</tr>
+<tr>
+<td>조정 EBITDA</td>
+<td>$242.3M, 20.1% (3Q25 16.1%)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>GAAP 순이익</td>
+<td>$84.8M, $0.79/주 (3Q25 $53.1M, $0.50)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>비GAAP 순이익</td>
+<td>$157.8M, $1.46/주 (3Q25 $71.0M, $0.67)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>21.1%</td>
+<td>지표표 (SEC 발췌에서 확인 불가)</td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>$154.7M (매출의 12.9%)</td>
+<td>보도자료</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>-$15.1M</td>
+<td>지표표</td>
+</tr>
+<tr>
+<td>북투빌</td>
+<td>2.13</td>
+<td>보도자료</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>데이터 충돌:</strong> 지표표의 매출 $1.00B와 YoY <span class="up">+37.4%</span>는 보도자료의 $1.2B, <span class="up">+60%</span>와 맞지 않는다. 지표표 기준 전년 매출은 약 $728M으로 계산되는데, 보도자료의 3Q25 매출은 $752.7M이다. 이 글은 보도자료를 우선 사용했다.</li>
+<li><strong>성장의 질:</strong> 단가·물량·믹스 분해는 3Q 10-Q MD&amp;A가 확보되지 않아 확인 불가다. 발췌된 10-Q는 목차뿐이다. 회사는 세그먼트별 성장률을 밝혔다. DC&amp;N <span class="up">+115%</span>, MI&amp;I <span class="up">+97%</span>, A&amp;D <span class="up">+21%</span>다. A&amp;D 성장률이 가장 낮다.</li>
+<li><strong>인수 기여:</strong> STG와 Epiq 인수가 가이던스에 포함되어 있어 유기적 성장과 인수 성장을 구분할 수 없다.</li>
+<li><strong>마진:</strong> 조정 EBITDA 마진이 <span class="up">+4.0%</span>p 개선됐다(산출). 회사는 조정 EBITDA 마진이 처음으로 20%를 넘었다고 밝혔다. GAAP 영업이익률은 지표표(10.9%)와 산출치(약 13.5%)가 다르므로 기준을 확인해야 한다.</li>
+<li><strong>현금흐름:</strong> 3Q 영업현금흐름은 양호하지만 TTM 잉여현금흐름은 음수다. 설비투자, 운전자본, 인수 관련 지출이 원인일 가능성이 있으나(추정), 구성은 확인 불가다. 회사는 아시아에 $400M 규모의 자본·생산능력 확대를 계획하고 있다고 밝혔다.</li>
+<li><strong>재무 건전성:</strong> 회사는 Epiq 인수 후 9/30 기준 프로포마 순레버리지가 2.8x라고 밝혔다. 회사는 Ophir 인수 완료 시점(예상 2027년 2분기)까지 1.5~2.0x 범위에 들어올 것으로 기대한다고 밝혔다. 목표 도달이 약 1년 뒤로 밀려 있다. 총부채, 현금 잔액, 리볼빙 한도 사용액은 확인 불가다.</li>
+<li><strong>가이던스(회사 제시):</strong> 4Q26 매출 $1.42~1.44B, FY26 매출 $4.47~4.49B, FY26 비GAAP EPS $4.97~5.03이다. 가이던스에는 STG·Epiq가 포함되고 Ophir는 제외된다. FY26 매출 중간값 $4.48B은 FY25 약 $2.9B 대비 약 <span class="up">+54%</span>다(산출, 근사치).</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>
+<p><strong>AI·데이터센터 수요</strong>
+   - 회사 주장: 3Q 매출의 41%를 차지하며 AI 수요가 주도한다고 밝힘. 세그먼트 성장률은 <span class="up">+115%</span>다.
+   - 검증 포인트: 다음 분기 DC&amp;N 비중과 성장률이 둔화되는지, 북투빌이 1.0 이상을 유지하는지 확인한다.</p>
+</li>
+<li>
+<p><strong>A&amp;D(방산) 수주 및 백로그</strong>
+   - 회사 주장: 백로그 $2.0B, 3Q 성장률 <span class="up">+21%</span>다. 10-K는 국방 예산이 전자장비 쪽으로 향한다고 설명한다.
+   - 검증 포인트: 백로그 대비 매출 전환 속도와 A&amp;D 성장률의 개선 여부를 본다.</p>
+</li>
+<li>
+<p><strong>인수를 통한 포트폴리오 확장</strong>
+   - 현황: STG·Epiq 완료(가이던스 포함), ILFA GmbH와 영국 Merlin 공장은 4Q26 완료 예정, Ophir($650M, 10.3x FY27 조정 EBITDA 기준, 산출 EBITDA 약 $63M)는 2027년 2분기 예정이다.
+   - 검증 포인트: 인수 완료 일정, 통합 후 마진 유지 여부, 레버리지 경로를 확인한다.</p>
+</li>
+<li>
+<p><strong>아시아 증설($400M)</strong>
+   - 회사 주장: 자본·생산능력 확대를 위한 투자이며, 자금은 현금과 리볼빙으로 조달한다고 밝힘.
+   - 검증 포인트: 설비투자 집행 속도와 TTM 잉여현금흐름이 양전환하는 시점을 확인한다.</p>
+</li>
+<li>
+<p><strong>마진 확대</strong>
+   - 회사 주장: 조정 EBITDA 마진 20.1%, 마진 개선 노력의 결과라고 밝힘.
+   - 검증 포인트: 4Q26 실적 발표에서 마진이 20% 이상을 유지하고, 인수 효과 제외 기준으로도 개선되는지 확인한다.</p>
+</li>
+</ol>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>레버리지와 자금 조달 부담</strong>
+   - 프로포마 순레버리지 2.8x, TTM FCF 음수, $650M 인수와 $400M 증설을 현금·리볼빙으로 조달 예정이다. 헤드라인 중 "expanding debt load"가 같은 우려를 반영한다.
+   - 리볼빙이 더 많이 쓰이면 이자 부담과 재무 유연성이 줄어든다.</p>
+</li>
+<li>
+<p><strong>다수 인수의 실행 리스크</strong>
+   - 동시에 여러 건이 진행 중이다(ILFA, Merlin, Ophir). Merlin과 Ophir는 규제 승인이 필요하다.
+   - 보도자료 면책 문구는 "consummate the acquisition"(인수 완료 능력)을 리스크로 명시한다.</p>
+</li>
+<li>
+<p><strong>고객 집중도</strong>
+   - 보도자료의 면책 문구가 "TTM's dependence upon a small number of customers"를 리스크로 명시한다. 상위 고객 비중은 확인 불가다.</p>
+</li>
+<li>
+<p><strong>수요의 집중과 변동성</strong>
+   - 데이터센터·네트워킹이 41%로, AI 투자 사이클에 민감하다. 면책 문구는 가격 압력, 보증 청구, 제품 믹스 변화를 리스크로 열거한다.
+   - 북투빌 2.13은 수주가 한두 분기에 몰린 결과일 수 있어(추정) 지속성을 확인해야 한다.</p>
+</li>
+<li>
+<p><strong>시장 신호와 실적의 괴리</strong>
+   - 실적이 사상 최대인데도 20일 <span class="down">-41.3%</span>, 고점 대비 <span class="down">-53.9%</span>다. 시장이 레버리지와 인수 가치에 회의적이라는 신호일 수 있다(추정). 원인은 공시로 확인되지 않는다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 긍정: 3Q 매출 <span class="up">+60%</span>, 조정 EBITDA 마진 20.1%(<span class="up">+4.0%</span>p), 북투빌 2.13, A&amp;D 백로그 $2.0B.
+- 부정: TTM FCF -$15.1M, 프로포마 순레버리지 2.8x, 20일 <span class="down">-41.3%</span>, 52주 고점 대비 <span class="down">-53.9%</span>.
+- 밸류에이션(산출): 시가총액 $10.76B, 현재가 $102.15 기준 FY26 비GAAP EPS 중간값 $5.00으로 나누면 약 20배다. EV는 부채 정보가 없어 계산할 수 없다.</p>
+<p><strong>진입 전 확인 3가지</strong>
+1. 매출·영업이익률 데이터 충돌 해소: 3Q 10-Q 전문과 MD&amp;A로 매출 $1.2B와 영업이익률 기준을 확정한다.
+2. 부채·유동성 확인: 3Q 10-Q에서 총부채, 리볼빙 사용액, 설비투자, FCF 구성을 확인한다.
+3. 오늘의 움직임 원인: 헤드라인 날짜와 10/22 발표 시각을 확인하고, 실적 콜 transcript를 확보한다(현재 미확보).</p>
+<p><strong>판단을 바꿀 조건</strong>
+- <strong>보통으로 상향:</strong> 순레버리지가 2.0x 아래로 내려가는 경로가 확인되고, TTM FCF가 양전환하며, 북투빌이 1.0 이상을 유지할 때.
+- <strong>적극으로 상향:</strong> 위 조건에 더해 A&amp;D 성장이 DC&amp;N 수준으로 가속하고, 4Q 실적이 가이던스 상단을 달성할 때.
+- <strong>회피로 하향:</strong> 4Q 가이던스 하향, 유상증자 등 희석, 리볼빙 사용 급증으로 레버리지가 2.8x 이상으로 유지되거나 악화될 때, 또는 Ophir·Merlin 인수가 무산될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526051976/ttmi-20251229.htm">10-K — 2025-12-29_0001193125-26-051976</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526335107/ttmi-20260629.htm">10-Q — 2026-06-29_0001193125-26-335107</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526201403/ttmi-20260330.htm">10-Q — 2026-03-30_0001193125-26-201403</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526428263/d282109dex991.htm">8-K — 2026-10-22_0001193125-26-428263__EX-99.1__d282109dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526428263/d282109d8k.htm">8-K — 2026-10-22_0001193125-26-428263</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526424707/d187690dex991.htm">8-K — 2026-10-19_0001193125-26-424707__EX-99.1__d187690dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526424707/d187690d8k.htm">8-K — 2026-10-19_0001193125-26-424707</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1116942/000119312526419614/d38382dex991.htm">8-K — 2026-10-12_0001193125-26-419614__EX-99.1__d38382dex991</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
