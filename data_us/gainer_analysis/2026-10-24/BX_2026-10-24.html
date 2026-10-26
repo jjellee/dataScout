@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BX — Blackstone Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>BX — Blackstone Inc. Common Stock</h1>
+<div class="sub">2026-10-24 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">BX</span><span class="badge">+8.38%</span><span class="badge">거래량 2.07배</span><span class="badge">$89.14B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>매출 성장(YoY <span class="up">+32.5%</span>, QoQ <span class="up">+39.5%</span>)과 TTM 잉여현금흐름 $5.49B(시가총액 대비 약 6.2%, 단순 계산)는 긍정 요인이다. 8-K에서 회사는 3분기 유입이 $63B였다고 밝혔다.</li>
+<li>그러나 영업이익률·매출총이익률이 제공되지 않아 "성장의 질"과 마진 방향을 검증할 수 없다. 핵심 투자 논리를 확인할 재료가 부족하다.</li>
+<li>오늘 상승은 거래량 2.07배를 동반한 단일 이벤트성 급등이다. 60일 수익률은 <span class="down">-7.9%</span>, 52주 고점 대비 <span class="down">-27.4%</span>이므로 추세 전환은 아직 확인되지 않았다.</li>
+<li>마진 수치와 성과보수 구성이 확인되면 '보통'으로 상향을 검토할 수 있다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 후보: 2026년 3분기 실적 발표(2026-10-22, 8-K)</strong></p>
+<ul>
+<li>8-K는 3분기 실적 발표와 분기 배당 $1.12 선언을 담고 있다 [8-K].</li>
+<li>뉴스 헤드라인 "Q3 Results Put Margins Center Stage"는 실적과 마진이 주가 반응의 초점이었음을 시사한다 [뉴스]. 다만 헤드라인 본문을 확보하지 못해 마진 수치는 확인 불가다.</li>
+<li>8-K 본문에는 매출·이익 수치가 없다. 상세 프레젠테이션은 회사 웹사이트에 있다고만 안내되어 있어 이번 분석에 포함되지 않았다 [8-K].</li>
+<li>주가 반응 시점과 발표 시점의 정확한 정합성은 제공된 지표만으로 확정할 수 없다.</li>
+<li>헤드라인 중 "Zurich Insurance Group – BX:ZFIN" 주식 발행/소각 자동 헤드라인은 BX와 무관한 것으로 보여 촉매 근거에서 제외했다 [뉴스].</li>
+<li>"Rare Buying Opportunity" 류의 외부 의견은 사실 근거로 쓰지 않았다 [뉴스].</li>
+</ul>
+<p><strong>결론:</strong> 실적 발표가 가장 유력한 촉매 후보이나, 마진 개선이 실제로 확인되었는지는 본 자료로 판단할 수 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>수익 구조 (10-Q MD&amp;A [10-Q 1Q26, 2Q26])</strong>
+- 펀드·펀드 투자자·포트폴리오 기업으로부터 받는 관리보수, 거래·모니터링 수수료
+- 자본시장 서비스(BXCM) 수수료
+- 성과보수(Performance Allocations, 캐리) 및 인센티브 수수료(Performance Revenues)
+- 자사가 펀드에 투자한 지분의 비례 수익(pro-rata allocation)
+- 10-Q는 매출 구성이 시장 상황과 사업부 경기순환성에 따라 달라진다고 명시한다.</p>
+<p><strong>사업부 (10-Q MD&amp;A [10-Q 1Q26, 2Q26])</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업부</th>
+<th>발췌에 나온 주요 전략</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real Estate</td>
+<td>BREP(기회주의 부동산), Core+(BPP, BREIT, BEPIF, 데이터센터 상장 REIT BXDC), BREDS(부동산 부채, 상장 mortgage REIT BXMT 포함)</td>
+</tr>
+<tr>
+<td>Private Equity</td>
+<td>Corporate PE(BCP, BCP Asia, BETP, BCEP), Tactical Opportunities, BXLS(생명과학), BXG(성장주), BXPE(개인 대상), 인프라(BIP, BXINFRA), Secondaries(Strategic Partners, BXGP), BXCM, BTAS</td>
+</tr>
+<tr>
+<td>Credit &amp; Insurance</td>
+<td>발췌에 세부 내용 없음 (공시상 확인 불가)</td>
+</tr>
+<tr>
+<td>네 번째 사업부</td>
+<td>발췌에 명칭 없음 (공시상 확인 불가)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고객군:</strong> 기관투자자, 개인(사모 웰스 플랫폼: BREIT, BXPE, BTAS 등), 펀드 포트폴리오 기업.</p>
+<p><strong>매출 구성 비중:</strong> 사업부·수수료 유형별 매출 비중은 제공 자료에 없어 확인 불가다.</p>
+<p><strong>경쟁 위치:</strong> 회사는 자사를 "세계 최대 대체투자 운용사"라고 밝힘 [10-Q 1Q26, 2Q26]. 10-K는 자산운용 사업이 제3자 자금 조달에 의존하며 경쟁이 매우 치열하다고 명시한다 [10-K FY25].</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>제공된 지표</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최근 분기 매출</td>
+<td>$4.19B</td>
+<td>분기 특정은 지표표 기준</td>
+</tr>
+<tr>
+<td>매출 YoY</td>
+<td>+32.5%</td>
+<td>지표 제공값</td>
+</tr>
+<tr>
+<td>매출 QoQ</td>
+<td>+39.5%</td>
+<td>지표 제공값</td>
+</tr>
+<tr>
+<td>영업이익률 / YoY 변화</td>
+<td>확인 불가</td>
+<td>미제공</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td>확인 불가</td>
+<td>미제공</td>
+</tr>
+<tr>
+<td>TTM 잉여현금흐름</td>
+<td>$5.49B</td>
+<td></td>
+</tr>
+<tr>
+<td>3분기 유입</td>
+<td>$63B</td>
+<td>회사 발표 [8-K]</td>
+</tr>
+<tr>
+<td>분기 배당</td>
+<td>$1.12/주</td>
+<td>회사 발표 [8-K]</td>
+</tr>
+<tr>
+<td>발행주식수</td>
+<td>742,180,737주 (2026-02-20 기준)</td>
+<td>[10-K FY25]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>파생 계산 (단순 계산이며 회사 발표값이 아님)</strong>
+- FCF 수익률: $5.49B ÷ 시가총액 $89.14B ≈ 6.2%
+- 배당수익률: 분기 배당 $1.12 × 4 = $4.48 ÷ 주가 $118.75 ≈ 3.8%
+- 시가총액 $89.14B를 주가 $118.75로 나누면 약 7.5억 주로, 10-K 발행주식수와 약 1% 차이가 난다. 집계 기준일 차이로 보이나 확인 불가다.</p>
+<p><strong>성장의 질</strong>
+- 매출 성장률은 높으나 단가·물량·믹스는 분해할 수 없다. 운용자산(AUM), 수수료율, 성과보수 금액 자료가 없다.
+- 10-Q가 매출이 성과보수에 따라 변동한다고 밝히고 있어, 분기 매출 급증이 성과보수에 의한 것인지는 확인 불가다.
+- 유입 $63B 대비 AUM 증가율도 AUM 기준치가 없어 계산할 수 없다.</p>
+<p><strong>마진 방향성:</strong> 영업이익률과 매출총이익률 자료가 없어 방향성을 판단할 수 없다. 이것이 이번 판단에서 가장 큰 공백이다.</p>
+<p><strong>현금흐름:</strong> TTM 잉여현금흐름 $5.49B는 양호한 수준으로 보이나, 배당 지급 능력과 분기별 변동은 확인 불가다.</p>
+<p><strong>재무 건전성:</strong> 총부채, 자기자본, 유동성 자료가 없어 확인 불가다. 10-K 리스크에 운영 목적 차입과 펀드 레버리지 노출이 언급되어 있다 [10-K FY25].</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사 주장 / 근거</th>
+<th>검증 포인트 (다음 분기에 확인할 것)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>펀드레이징 유입</td>
+<td>회사는 3분기 유입이 $63B였고 주요 모금 채널 전반에서 모멘텀이 있다고 밝힘 [8-K]</td>
+<td>유입의 지속성, 채널별 구성(기관 vs 개인), 환매·상환 규모</td>
+</tr>
+<tr>
+<td>AI·에너지 인프라</td>
+<td>회사는 AI와 에너지 인프라를 핵심 투자 테마로 제시 [8-K]. 사업부로 BIP, BXINFRA, 데이터센터 REIT BXDC 보유 [10-Q 2Q26]</td>
+<td>인프라 펀드의 신규 모금·투자 실행 공시, 데이터센터 관련 자산 실현</td>
+</tr>
+<tr>
+<td>자산 실현(Exit)</td>
+<td>10-K는 투자 실현 기회가 금리 인하 속도와 자본시장 상황에 좌우된다고 명시 [10-K FY25]</td>
+<td>매각 실현 규모, 실현 이익이 성과보수로 이어지는 비중</td>
+</tr>
+<tr>
+<td>개인투자자 채널</td>
+<td>BREIT, BXPE, BTAS 등 개인 대상 플랫폼 운영 [10-Q 2Q26]</td>
+<td>개인 채널 유입 비중과 환매 추이</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>회사 주장에 대한 주의:</strong> 8-K의 "플래그십 전략이 공개 시장 지수를 상회했다"는 표현은 회사 주장이며, 독립적으로 검증된 수치는 없다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>성과보수 의존과 환수 가능성 (10-K FY25):</strong> 펀드 투자 속도·규모 감소 또는 성과 악화는 매출을 줄이고, 기 지급된 성과보수를 반환할 의무로 이어질 수 있다고 명시되어 있다. 매출 급증분 중 성과보수 비중이 높다면 이 리스크가 더 크다.</li>
+<li><strong>지배구조와 의결권 (10-K FY25):</strong> Series I·II 우선주의 의결권이 크고, 회사는 통제회사(controlled company)에 해당한다고 밝혔다. 보통주 주주의 경영 영향력이 제한될 수 있다. Series II 보유자의 권리가 다른 주주 이익과 충돌할 수 있다고도 명시되어 있다.</li>
+<li><strong>자산 가치 평가의 주관성 (10-K FY25):</strong> 평가 방법론에 상당한 판단이 들어가며, 기대 공정가치가 실현되지 않을 수 있다고 명시되어 있다. 성과보수와 수익의 인식 시점에 영향을 준다.</li>
+<li><strong>금리·자본시장 경로 (10-K FY25):</strong> 금리 인하가 예상보다 느리거나 자본시장 여건이 악화되면 자산 가치와 투자·실현 기회가 줄 수 있다.</li>
+<li><strong>세무 부담 (10-K FY25):</strong> 세법 변경이 실효세율과 세금 부담을 높일 수 있다. 또한 고위 임원에게 세무 공제 혜택에 해당하는 금액을 지급할 의무가 있다고 명시되어 있다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 긍정: 매출 YoY <span class="up">+32.5%</span>, 3분기 유입 $63B [8-K], TTM FCF $5.49B(수익률 약 6.2%, 계산값), 배당 수익률 약 3.8%(단순 환산).
+- 부정: 52주 고점 대비 <span class="down">-27.4%</span>, 60일 <span class="down">-7.9%</span>, 20일 <span class="down">-0.4%</span>. 1일 <span class="up">+8.38%</span> 상승은 거래량 2.07배, 거래대금 $1.41B를 동반했으나, 추세 전환은 아직 확인되지 않았다.
+- 결정적 공백: 영업이익률·매출총이익률 미제공으로 마진 판단 불가.</p>
+<p><strong>진입 전 확인할 것 3가지</strong>
+1. 3분기 상세 프레젠테이션 또는 실적 공시에서 영업이익률, 성과보수 금액, 매출 구성 비율.
+2. 유입 대비 환매·상환 규모와 관리자산(AUM) 추이.
+3. 1일 급등 이후 거래량 유지 여부와 주가가 60일 기준 회복되는지 여부.</p>
+<p><strong>관망 → 보통 상향 조건</strong>
+- 영업이익률 개선이 확인되고, 성과보수 의존도가 과도하지 않다.
+- 다음 분기에도 유입이 유지되고 상환이 흡수된다.</p>
+<p><strong>관망 → 회피 전환 조건</strong>
+- 유입 감소 또는 상환 증가가 확인된다.
+- 펀드 성과 악화로 성과보수 환수 가능성이 구체화된다.
+- 1일 급등분이 반납되고 거래량이 줄어든 상태에서 주가가 약세로 전환된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526082531/d48618d10k.htm">10-K — 2025-12-31_0001193125-26-082531</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526340208/d158269d10q.htm">10-Q — 2026-06-30_0001193125-26-340208</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526214609/d60424d10q.htm">10-Q — 2026-03-31_0001193125-26-214609</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526428297/d160590dex991.htm">8-K — 2026-10-22_0001193125-26-428297__EX-99.1__d160590dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526428297/d160590d8k.htm">8-K — 2026-10-22_0001193125-26-428297</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526422888/d59966d8k.htm">8-K — 2026-10-09_0001193125-26-422888</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526398100/d92415dex991.htm">8-K — 2026-09-22_0001193125-26-398100__EX-99.1__d92415dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1393818/000119312526398100/d92415d8k.htm">8-K — 2026-09-22_0001193125-26-398100</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
