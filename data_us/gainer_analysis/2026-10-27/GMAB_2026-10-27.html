@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GMAB — Genmab A/S ADS</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GMAB — Genmab A/S ADS</h1>
+<div class="sub">2026-10-27 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GMAB</span><span class="badge">+9.47%</span><span class="badge">거래량 3.12배</span><span class="badge">$27.33B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>분기 매출 <span class="up">+24.9%</span> YoY, 영업이익률 35.2%, TTM 잉여현금흐름 $868.0M은 사업의 수익 창출력을 뒷받침한다.</li>
+<li>반면 최근 20일 <span class="up">+26.4%</span>, 60일 <span class="up">+54.8%</span> 상승했고 종가는 52주 고점보다 2.0% 낮아 단기 기대가 주가에 상당 부분 반영됐을 수 있다.</li>
+<li>오늘 거래량은 20일 중앙값의 3.12배지만, 제공된 자료만으로 상승 촉매의 실질적 영향을 확인하기 어렵다.</li>
+<li>핵심 제품별 매출 구성과 최신 분기 MD&amp;A, 10월 23일 6-K 본문이 제공되지 않아 큰 비중을 정당화할 근거는 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>제공된 헤드라인에는 Genmab과 Incyte의 KRAS G12D 대장암 치료제 임상 협력 및 시험 개시 관련 보도가 있다. 이것이 오늘 주가 상승의 촉매였을 가능성은 있으나, 헤드라인만으로는 임상 단계·데이터·공시 시점과 당일 주가 반응의 인과관계를 확인할 수 없다. 2026년 10월 23일 6-K도 링크만 제시되어 본문을 확인할 수 없다.</p>
+<p>따라서 <strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong>으로 판단한다. 오늘 <span class="up">+9.47%</span> 상승과 거래량 급증은 확인되지만, 제공 자료로는 이를 특정 임상 뉴스에 귀속할 수 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>20-F에 따르면 Genmab은 항체 기반 의약품을 개발하는 바이오기업이다. 2025년 연례보고서에 포함된 회사 설명은 이중특이항체, 항체약물접합체(ADC), 면역조절 항체 등 차세대 항체 기술과 자체 후기 임상 파이프라인을 사업 축으로 제시한다. 다만 이 설명은 회사의 사업 소개이며, 시장 지위나 임상 성공을 독립적으로 입증하는 자료는 아니다.</p>
+<p>제공된 2026년 10월 13일 6-K 첨부 발표에 따르면 Genmab은 다라투무맙(DARZALEX)의 독점적 전 세계 라이선스 계약에 따라 Johnson &amp; Johnson(J&amp;J)으로부터 해당 제품의 전 세계 순매출에 대한 로열티를 받는다. J&amp;J가 발표한 2026년 3분기 DARZALEX 순매출은 $4,239M이다. 이는 제품의 판매액이지 Genmab이 인식한 매출액이 아니며, Genmab의 로열티 금액은 제공 자료에서 확인할 수 없다.</p>
+<p>회사는 항체 의약품 8개가 승인됐다고 소개한다. 그러나 제품별 매출·로열티 비중, 고객 및 계약 상대별 매출 구성, 경쟁 제품과 점유율은 제공된 SEC 발췌만으로 <strong>공시상 확인 불가</strong>다. 최근 분기 매출 $1.16B 가운데 DARZALEX 로열티와 다른 제품·협업 수익이 각각 얼마인지는 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>제공된 분기 지표상 매출은 $1.16B로 전년 동기 대비 24.9%, 전분기 대비 28.9% 증가했다. 매출총이익률은 92.7%로 높지만, 품목별 가격·판매량·환율·제품 믹스 자료가 없어 매출 성장의 원인을 단가, 물량, 믹스로 나눠 설명할 수 없다. 분기 비교에는 계절성이나 계약상 수익 인식 시점이 영향을 줬는지도 확인할 수 없다.</p>
+<p>영업이익률은 35.2%로 제시됐으며 전년 대비 3.7%포인트 하락했다. 매출총이익률이 높더라도 영업이익률이 낮아진 만큼 연구개발비, 판매관리비 등 비용 증가 여부가 중요하지만, 최신 MD&amp;A 수치가 제공되지 않아 하락 원인을 특정할 수 없다.</p>
+<p>TTM 잉여현금흐름은 $868.0M이다. 현금·차입금·투자자산 잔액 및 분기별 현금흐름표가 없어 순현금 여부, 유동성 여력, FCF의 반복 가능성은 판단할 수 없다. 따라서 수익성과 현금 창출은 긍정적 지표로 볼 수 있지만 재무 건전성 전반을 확정하기에는 자료가 부족하다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li>
+<p><strong>DARZALEX 로열티 기반 수익:</strong> 10월 13일 6-K 발표에서 J&amp;J가 공개한 2026년 3분기 DARZALEX 순매출은 $4,239M이며, Genmab은 전 세계 매출에 대한 로열티를 받는다. 이는 협업 제품의 판매가 Genmab 수익에 기여하는 구조를 보여준다. 다만 로열티율과 Genmab 인식액은 제공 자료에서 확인되지 않는다. <strong>검증 포인트:</strong> 다음 공시에서 DARZALEX 매출과 Genmab의 로열티·협업 수익이 각각 어떻게 반영되는지 확인해야 한다.</p>
+</li>
+<li>
+<p><strong>자체 후기 임상 파이프라인의 상업화:</strong> 회사는 2025년 연례보고서 사업 소개에서 자체 후기 임상 프로그램을 포함한 파이프라인을 제시한다. 임상 진전이 승인과 출시로 이어지면 협업 로열티 외 성장 축이 될 수 있지만, 제공 자료만으로 후보물질별 성공 가능성이나 매출 잠재력을 평가할 수 없다. <strong>검증 포인트:</strong> 다음 공시에서 핵심 프로그램의 임상 단계, 주요 결과, 규제 일정 및 개발비 변화를 확인해야 한다.</p>
+</li>
+<li>
+<p><strong>Incyte와의 KRAS G12D 대장암 치료제 개발:</strong> 제공된 뉴스 헤드라인은 양사의 개발 협력과 임상 개시를 언급한다. 이는 초기 개발 기회로 볼 수 있으나, 헤드라인 외 임상 설계·단계·결과·경제적 권리는 확인되지 않는다. <strong>검증 포인트:</strong> 회사의 SEC 공시에서 임상 단계와 권리·비용 분담을 확인하고, 이후 실제 임상 데이터가 공개되는지 살펴야 한다.</p>
+</li>
+</ul>
+<h2>6. 리스크</h2>
+<ul>
+<li><strong>협업 제품 매출 의존과 파트너 영향력:</strong> DARZALEX는 J&amp;J가 개발·제조·상업화하고 Genmab은 전 세계 순매출에 대한 로열티를 받는다. 판매 실적과 상업화 실행이 파트너에 달린 구조다. 제품별 매출 비중이 제공되지 않아 의존도 규모는 확인할 수 없지만, 파트너의 판매 둔화나 계약 관련 변화가 수익에 영향을 줄 수 있다.</li>
+<li><strong>임상·승인 불확실성:</strong> 20-F가 연례보고서인 것은 확인되나, 리스크 섹션의 구체적인 내용은 발췌에 포함되지 않았다. 제공된 6-K 발표는 임상 개발과 시험 결과, 예기치 않은 안전성 문제를 위험 요인으로 열거한다. 자체 파이프라인과 새 협력 프로그램은 임상 성공이나 허가가 보장되지 않는다.</li>
+<li><strong>수익성 둔화:</strong> 매출이 성장했는데도 영업이익률은 전년 대비 3.7%포인트 하락했다. 최신 MD&amp;A의 비용 내역이 없어 원인을 분해할 수 없으며, 비용 증가가 계속되면 매출 성장의 이익 기여가 약해질 수 있다.</li>
+<li><strong>최근 주가 상승에 따른 진입 위험:</strong> 20일·60일 수익률이 각각 26.4%, 54.8%이며 종가는 52주 고점에서 2.0% 낮은 수준이다. 촉매가 확인되지 않은 상황에서 가격 기대가 추가로 높아지면 임상이나 실적의 작은 실망에도 변동성이 커질 수 있다.</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>정량적으로는 분기 매출 $1.16B와 24.9% YoY 성장, 매출총이익률 92.7%, 영업이익률 35.2%, TTM 잉여현금흐름 $868.0M이 사업의 수익성을 지지한다. 반면 영업이익률이 전년 대비 3.7%포인트 낮아졌고, 최근 주가가 20일 <span class="up">+26.4%</span>, 60일 <span class="up">+54.8%</span> 상승해 기대와 가격 부담도 커졌다. 시가총액은 $27.33B지만 제공된 정보만으로 미래 실적과 비교한 적정 가치나 목표 주가를 산정할 수 없다.</p>
+<p>진입 전에는 다음을 확인해야 한다.</p>
+<ol>
+<li>2026년 10월 23일 6-K 본문에서 당일 주가에 영향을 줄 구체적 공시 내용이 있는지 확인한다.</li>
+<li>다음 분기 자료에서 매출 증가가 DARZALEX 로열티, 기타 협업 수익, 자체 제품 중 어디에서 발생했는지와 영업이익률 하락 원인을 확인한다.</li>
+<li>KRAS G12D 프로그램을 포함한 후기 임상 파이프라인의 단계·일정·데이터와 개발 비용을 공시로 확인한다.</li>
+</ol>
+<p><strong>관망으로 판단을 낮출 조건:</strong> 다음 자료에서 매출 증가가 이어지지 않거나 영업이익률이 추가 하락하고, 이를 상쇄할 임상 진전이나 제품 매출의 근거도 확인되지 않는 경우다. 또한 10월 23일 공시나 후속 자료에서 기대를 뒷받침할 내용이 없는데도 주가 상승만 지속된다면 비중 확대를 재검토해야 한다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000014/gmab-20251231_d2.htm">20-F — 2025-12-31_0001434265-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000136/gmab_20261013xex99d1.htm">8-K — 2026-10-13_0001434265-26-000136__EX-99.1__gmab_20261013xex99d1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000136/gmab_20261013x6k.htm">8-K — 2026-10-13_0001434265-26-000136</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab_20260908xex99d3.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.3__gmab_20260908xex99d3</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab20260908xex99d2.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.2__gmab20260908xex99d2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1434265/000143426526000116/gmab_20260908xex99d1.htm">8-K — 2026-09-08_0001434265-26-000116__EX-99.1__gmab_20260908xex99d1</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
