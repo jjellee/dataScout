@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FN — Fabrinet Ordinary Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FN — Fabrinet Ordinary Shares</h1>
+<div class="sub">2026-10-29 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FN</span><span class="badge">+5.53%</span><span class="badge">거래량 0.86배</span><span class="badge">$12.30B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong>
+- 최근 분기 매출은 전년 대비 44.6% 증가했고, 실적콜에서 회사는 데이터센터와 통신 인프라 수요가 여러 고객과 제품군에서 늘고 있다고 설명했다.
+- 다만 오늘 거래량은 20일 중앙값의 0.86배로, 제공된 지표상 거래량 급증은 확인되지 않는다. 당일 상승의 직접 촉매도 특정하기 어렵다.
+- TTM 잉여현금흐름은 300만 달러로 매출 규모에 비해 낮고, 주가는 20일·60일 수익률과 52주 고점 대비 큰 폭의 하락을 기록했다.
+- 성장 전망은 긍정적이지만 고객 집중, 설비투자 부담, 밸류에이션 정보 부재를 감안하면 현 자료만으로 큰 비중을 정당화하기 어렵다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p>최근 4일 내 SEC 공시는 없다고 제공됐다. 최근 뉴스 헤드라인도 급락 후 매수·보유 논의나 주가 상승 보도 등으로, 오늘 상승을 일으킨 구체적인 기업 촉매를 확인해 주지는 않는다. 8월 17일 실적 발표와 실적콜에서는 강한 실적 및 FY2027 1분기 전망을 제시했지만, 오늘 움직임의 원인이라고 연결할 근거는 없다.</p>
+<p>따라서 <strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong>. 특히 오늘 등락률은 <span class="up">+5.53%</span>지만 거래량 배수는 0.86배이므로, 제공된 지표만으로 거래량 급증을 동반한 상승이라고 보기는 어렵다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K 및 8-K에 담긴 회사 설명에 따르면 Fabrinet은 복잡한 제품을 만드는 OEM 고객에게 첨단 광학 패키징과 정밀 광학·전기기계·전자 제조 서비스를 제공한다. 공정 설계와 엔지니어링부터 공급망 관리, 제조, 통합, 최종 조립·검사까지 수행하며, 광통신 부품·모듈·하위 시스템 외에 자동차 부품, 의료기기, 산업용 레이저·센서 등을 취급한다. 태국·미국·중국·이스라엘에 제조 및 엔지니어링 자원을 보유한다고 회사는 설명한다.</p>
+<p>실적콜에서 회사는 매출 보고를 최종 수요처 기준의 세 범주로 바꿨다고 밝혔다. FY2026 4분기 기준 데이터센터 매출은 6억6,900만 달러(전체의 51%), 통신 인프라는 4억1,300만 달러(31%), 자동차·산업·기타는 2억3,400만 달러(18%)였다. 회사는 이 분류 변경이 표시 방식의 변경일 뿐 전체 매출에는 영향을 주지 않는다고 설명했다.</p>
+<p>고객군은 데이터센터·하이퍼스케일 사업자와 통신·기업 네트워크 고객, 자동차·산업 고객 등이다. 실적콜에서 FY2026 매출의 10% 이상을 차지한 고객으로 Cisco 20%, Nvidia 16%, Nokia 11%, Amazon 11%를 공개했다. 고복잡도 제품을 다양한 생산량과 제품 조합으로 제조하는 역량이 사업의 경쟁 기반이라고 회사는 설명하지만, 제공 자료에는 경쟁사별 점유율이나 비교 우위의 정량 자료가 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>제공 지표상 최근 분기 매출은 13억2,000만 달러로 전년 대비 44.6%, 전분기 대비 8.4% 증가했다. 8월 17일 발표된 FY2026 4분기 매출은 13억1,580만 달러, 전년 동기 9억970만 달러였으며, 연간 매출은 46억4,000만 달러로 전년 34억2,000만 달러보다 증가했다. 성장 폭은 강하지만, 제공 자료만으로 가격·물량·제품 믹스가 각각 성장에 기여한 정도를 분리할 수는 없다.</p>
+<p>수익성은 지표 간 기준 차이를 감안해야 한다. 제공 지표의 영업이익률은 10.2%, 매출총이익률은 12.0%이며, 실적콜에서 회사는 비GAAP 기준 FY2026 4분기 매출총이익률 12.2%, 전분기 대비 0.1%포인트 상승·전년 동기 대비 0.3%포인트 하락, 영업이익률 10.9%라고 밝혔다. 두 자료의 기간·기준 차이는 제공 정보만으로 확인되지 않는다. 따라서 마진 방향은 콜 기준으로는 순차 개선, 전년 대비 매출총이익률 하락으로 읽히며, 지표상 연간 영업이익률 변화는 <span class="up">+0.4%</span>포인트다.</p>
+<p>현금흐름은 매출 성장에 비해 점검이 필요하다. 제공 지표의 TTM 잉여현금흐름은 300만 달러다. 실적콜에서 회사는 FY2026 4분기 영업현금흐름 5,500만 달러, 자본적 지출 9,200만 달러, 잉여현금흐름 -3,700만 달러를 밝혔고, 연간 영업현금흐름은 2억5,700만 달러, 잉여현금흐름은 400만 달러라고 했다. 회사는 설비 확장에 따른 자본적 지출이 현금흐름에 영향을 줬다고 설명했다.</p>
+<p>유동성으로는 4분기 말 현금 및 단기투자자산 8억7,600만 달러가 실적콜에서 언급됐다. 한편 8월 17일 8-K에 따르면 태국 자회사는 시설약정 아래 25억 바트(당시 약 7,500만 달러)의 기간대출을 실행했고, 회사 보유 현금과 함께 설비투자에 사용했다. 제공 자료에는 현재 총차입금, 순현금, 만기 구조가 없어 재무 건전성을 전반적으로 확정하기 어렵다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li><strong>데이터센터 광통신·상호연결 제품</strong>: 실적콜에서 회사는 데이터센터 매출이 전년 대비 68%, 전분기 대비 13% 증가했다고 밝혔다. DCI 제품의 연환산 매출 규모는 10억 달러를 넘었고, HPC와 트랜시버도 성장에 기여했다고 설명했다. 회사는 FY2027에도 모멘텀이 이어질 것으로 기대한다고 밝혔다. <strong>검증 포인트:</strong> 다음 분기 데이터센터 매출과 고객별·제품별 수요 흐름, 신규 트랜시버 프로그램의 매출 기여를 확인할 필요가 있다. 회사가 향후 세부 제품별 매출을 공개하지 않겠다고 밝혀 제품별 정량 검증은 제한될 수 있다.</li>
+<li><strong>통신 인프라와 위성통신</strong>: 통신 인프라 매출은 전년 대비 40%, 전분기 대비 1% 증가했다. 실적콜에서 CEO는 LEO 위성 사업에서 주요 고객 두 곳과 그 외 고객을 상대하고 있으며 제품이 회사 역량에 잘 맞는다고 언급했다. <strong>검증 포인트:</strong> 통신 인프라 매출의 순차 성장과 위성통신 고객 수요가 실제 매출로 이어지는지 확인한다.</li>
+<li><strong>자동차·산업·기타</strong>: 해당 범주 매출은 전년 대비 8%, 전분기 대비 9% 증가했다. 회사는 전기차 충전 인프라 제품이 순차 증가의 주된 배경이고 일부 LiDAR 고객도 기여했다고 설명했다. <strong>검증 포인트:</strong> 다음 분기 매출이 성장세를 유지하는지, 증가가 특정 고객이나 프로그램에 집중되는지 살핀다.</li>
+<li><strong>생산능력 확장</strong>: 실적콜에서 회사는 태국 촌부리 Building 10, 나바나콘 시설, 실리콘밸리 Santa Clara 캠퍼스 확장을 설명했다. 회사는 촌부리 Building 10을 2027년 초까지 완료할 계획이라고 밝혔고, 일부 공간은 이미 자격 승인을 받았다고 설명했다. <strong>검증 포인트:</strong> 신규 공간의 고객 인증과 가동이 계획대로 진행되는지, 자본적 지출이 매출·현금흐름으로 이어지는지 확인한다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>경영진은 실적콜에서 성장세가 특정 제품이나 고객 하나에만 의존하지 않고 여러 고객·시장에 걸쳐 있다고 강조했다. 그 근거로 4분기 매출 기록, 세 범주 모두의 성장, 데이터센터 제품군의 강한 수요, 생산능력 확대를 들었다. 회사는 고객들이 2027년 말 이후까지 수요 가시성을 제공한다고 언급하면서도, 그 가시성이 확정 주문을 의미하지는 않는다고 선을 그었다.</p>
+<p>가이던스는 한 분기씩 제시하겠다는 원칙을 유지했다. 회사는 FY2027 1분기 매출 13억7,500만~14억2,500만 달러와 비GAAP 주당순이익 4.10~4.25달러를 제시했다. 연간 성장 가속 가능성 질문에는 현재 수요를 근거로 그 가능성을 배제할 수 없다고 답했지만, 연간 전망을 공식 가이던스로 확정하지 않았다.</p>
+<p>Q&amp;A에서는 1.6T 트랜시버 램프의 시점과 대형 고객의 제품 출시 계획, 레이저 공급 확보 여부가 질문됐다. CEO는 고객의 제품 출시 시점은 해당 고객에게 문의해야 한다며 구체적 공개를 거절했고, 공급 상황은 가이던스에 반영돼 있다고만 답했다. 중국산 트랜시버 규제 가능성에 대해서는 아직 확정되지 않았고, 부품 공급이 가능할 경우 회사에 기회가 될 수 있지만 업계 전체에 영향을 줄 수 있다고 설명했다.</p>
+<p>공시 발췌만으로 확인하기 어려운 내용으로는 데이터센터 범주의 제품별 성장 기여, LEO 위성 고객 관계, 고객 수요 가시성, 1.6T 및 OCS 기회에 대한 경영진의 견해가 있다. 실적콜에서 CEO는 OCS가 현재는 작지만 회사 역량과 맞고 향후 더 의미 있는 범주가 될 수 있다고 언급했다. 이는 회사의 기대이며, 제공 자료에는 해당 기회의 매출 규모나 구체적인 램프 일정이 확인되지 않는다.</p>
+<h2>6. 리스크</h2>
+<ul>
+<li><strong>고객 집중 및 주문 가시성의 한계</strong>: 10-K 위험요약은 소수 고객 의존, 고객의 가격·마진 압박, 주문 취소·지연·감소와 짧은 주문 약정 기간을 위험으로 든다. 실적콜에서 FY2026 매출의 10% 이상 고객이 네 곳이었고, 데이터센터 성장도 소수 대형 고객 및 프로그램의 실행에 영향을 받을 수 있다. 고객이 제공하는 장기 수요 가시성은 확정 주문이 아니라고 회사도 밝혔다.</li>
+<li><strong>매출 변동과 마진 압박</strong>: 10-K는 분기 매출·매출총이익률·영업실적의 변동성이 크다고 명시한다. 현재 지표의 매출총이익률은 12.0%이고, 실적콜의 비GAAP 4분기 매출총이익률은 전년 동기보다 0.3%포인트 낮았다. 빠른 매출 성장이 수익성 개선으로 같은 폭 이어진다고 단정하기 어렵다.</li>
+<li><strong>수요 및 시장 성장 전망의 불확실성</strong>: 10-K는 데이터센터·통신 인프라 시장이 회사 기대만큼 성장하지 않을 경우 사업 성장에 악영향을 줄 수 있다고 적었다. 실적콜의 수요 전망은 경영진의 판단이며, 확정 주문과는 구분된다.</li>
+<li><strong>공급망과 규제 변수</strong>: 8-K의 전망 관련 위험에는 공급망 차질과 부품 조달 비용·가용성 문제가 포함된다. 실적콜에서 CEO는 트랜시버 부품 공급을 가이던스에 반영했다고만 밝혔고, 중국산 트랜시버 규제는 확정되지 않았다고 했다. 따라서 규제 기대를 확정적인 수혜로 반영하기 어렵다.</li>
+<li><strong>설비투자와 현금 전환</strong>: 실적콜에서 FY2026 연간 잉여현금흐름은 400만 달러, 4분기 자본적 지출은 9,200만 달러였다. 생산능력 확장이 계속되는 만큼 투자 지출이 커질 수 있지만, 제공 자료만으로 향후 지출 규모나 현금 회수 시점을 확인할 수 없다.</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>매출 성장률은 최근 분기 전년 대비 44.6%, 전분기 대비 8.4%이고, 영업이익률은 10.2%, 전년 대비 0.4%포인트 개선됐다. 실적콜에서는 FY2026 4분기 매출 13억1,580만 달러와 비GAAP 주당순이익 4.10달러, FY2027 1분기 매출 가이던스 13억7,500만~14억2,500만 달러를 제시했다. 반면 TTM 잉여현금흐름은 300만 달러, 오늘 거래량은 20일 중앙값의 0.86배이며 주가는 20일 <span class="down">-13.4%</span>, 60일 <span class="down">-30.8%</span>, 52주 고점 대비 <span class="down">-54.0%</span>다. 현재 시가총액은 123억 달러로 제공됐지만, 적정가치 판단에 필요한 밸류에이션 비교 자료는 공시상 확인 불가다.</p>
+<p>진입 전 확인할 것 3가지:</p>
+<ol>
+<li>다음 분기 매출과 회사 가이던스가 제시한 범위의 달성 여부, 특히 데이터센터 매출의 증가 지속 여부.</li>
+<li>매출 성장에 비해 매출총이익률과 영업이익률이 유지되는지, 설비투자 이후 잉여현금흐름이 개선되는지.</li>
+<li>신규 생산능력의 고객 인증·가동 진행과 대형 고객 주문이 실제 매출로 이어지는지.</li>
+</ol>
+<p><strong>판단을 관망으로 바꿀 조건:</strong> 다음 분기 매출이 회사 가이던스 범위를 하회하거나 핵심 데이터센터 수요가 약화되고, 동시에 마진이 더 낮아지거나 현금흐름 부진이 지속되는 경우다. 반대로 성장과 현금 전환이 확인되더라도, 제공된 자료에는 밸류에이션 비교 기준이 없어 그 자체로 적극 비중을 정하기에는 근거가 부족하다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000028/fn-20260626.htm">10-K — 2026-06-26_0001408710-26-000028</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000016/fn-20260327.htm">10-Q — 2026-03-27_0001408710-26-000016</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000008/fn-20251226.htm">10-Q — 2025-12-26_0001408710-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-2026811xex991q426.htm">8-K — 2026-08-11_0001408710-26-000026__EX-99.1__fn-2026811xex991q426</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-2026811xex101cfaamendme.htm">8-K — 2026-08-11_0001408710-26-000026__EX-10.1__fn-2026811xex101cfaamendme</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1408710/000140871026000026/fn-20260811.htm">8-K — 2026-08-11_0001408710-26-000026</a></li>
+<li>Transcript — 2026-08-17 Q4 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

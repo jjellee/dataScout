@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAT — Caterpillar Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>CAT — Caterpillar Inc. Common Stock</h1>
+<div class="sub">2026-10-29 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">CAT</span><span class="badge">+3.06%</span><span class="badge">거래량 0.97배</span><span class="badge">$327.89B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>2분기 매출은 전년 동기 대비 24%, 영업이익률은 3.6%p 상승했고, 회사는 주요 사업 전반에서 판매 증가를 보고했다.</li>
+<li>다만 최근 주가 흐름은 20일 <span class="down">-12.0%</span>, 60일 <span class="down">-18.6%</span>로 약세다. 오늘 <span class="up">+3.06%</span> 상승만으로 추세 전환을 확인하기 어렵다.</li>
+<li>거래량은 20일 중앙값의 0.97배여서 거래량 급증이 뒷받침된 상승으로 보기 어렵다. 제공 자료로 오늘 상승의 확정 촉매도 확인되지 않는다.</li>
+<li>성장 전망은 데이터센터 전력 수요와 장비 판매 증가에 기대고 있지만, 지정학적 불확실성 및 관세 비용 영향이 남아 있어 적극 비중 근거는 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>제공 자료상 오늘 상승을 설명하는 당일 공시는 없고, 최근 4일 내 공시도 없다. 뉴스 헤드라인은 수주잔고 우려와 주가 가치평가 등을 언급하지만, 구체적인 새 정보나 당일 촉매를 확인할 수 없다. 실적콜 transcript도 제공되지 않았다.</p>
+<p>따라서 <strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong>으로 판단한다. 거래량 배수 0.97배는 거래량 급증이 동반되지 않았음을 시사한다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>2025년 10-K에 따르면 Caterpillar는 건설·광산 장비, 오프하이웨이 디젤·천연가스 엔진, 산업용 가스터빈, 디젤 전기 기관차를 제조한다. 주요 사업 부문은 Power &amp; Energy, Construction Industries, Resource Industries이며, 글로벌 딜러 네트워크와 Cat Financial을 통한 금융 서비스도 사업 기반에 포함된다.</p>
+<p>주요 고객군은 건설·광산 사업자, 전력·에너지 사업자, 산업 고객 및 기관차 관련 고객으로 볼 수 있다. 다만 제공된 10-K 발췌에는 부문별 매출 비중이나 고객별 매출 구성 정보가 없어 구체적 구성은 <strong>공시상 확인 불가</strong>다.</p>
+<p>회사는 자신을 세계 선도 건설·광산 장비 제조업체라고 설명한다. 이는 회사의 서술이며, 제공된 자료에는 경쟁사 대비 점유율이나 순위 산정 근거가 없다. 장비 판매와 함께 엔진·터빈 서비스 및 금융이 사업을 뒷받침하지만, 이들 사업의 수익 비중은 발췌 자료에서 확인되지 않는다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>2분기 2026년 매출은 205.43억 달러로 전년 동기 대비 24%, 전분기 대비 18% 증가했다. 10-Q는 전년 동기 대비 증가액 39.74억 달러 중 판매량 증가가 31억 달러, 우호적 가격 실현이 5.95억 달러라고 설명한다. 따라서 성장은 가격보다 판매량 기여가 컸다. 다만 지역·제품 믹스의 기여도는 제공 자료에서 확인되지 않는다.</p>
+<p>영업이익률은 20.9%로 전년 동기 17.3%보다 3.6%p 높았다. 조정 영업이익률은 21.9%였다. 2분기 주당이익은 7.77달러, 구조조정 항목 등을 제외한 조정 주당이익은 8.17달러다. 실적 개선은 매출 증가와 함께 나타났지만, 일회성 항목이 포함돼 있어 조정 수치와 함께 볼 필요가 있다.</p>
+<p>현금 측면에서 회사는 2분기 말 기업 현금 67억 달러, 상반기 영업현금흐름 62억 달러를 보고했다. 제공 지표의 TTM 잉여현금흐름은 89.9억 달러다. 다만 부채 규모, 만기 구조, 현금흐름의 운전자본 기여는 발췌 자료에서 확인되지 않아 재무 건전성을 완전히 평가하기 어렵다.</p>
+<p>비교 시점에 유의해야 한다. 시장 지표의 최근 분기 매출은 205.4억 달러로 2분기 10-Q 수치와 일치하지만, 10-Q는 2026년 6월 30일 종료 분기 자료다. 오늘의 주가 지표와 이 분기 실적 사이에 새 공시가 있었는지는 제공 자료만으로 확인할 수 없다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li><strong>Power &amp; Energy: 데이터센터 전력 수요와 발전 설비</strong></li>
+</ul>
+<p>2026년 2분기 10-Q에서 회사는 클라우드 컴퓨팅·생성형 AI 데이터센터 확장에 따른 전력 수요가 왕복동 엔진, 터빈 및 관련 서비스 수요를 이끌 것으로 전망했다. 회사는 프라임 전력 수요도 상승하고 있다고 밝혔다.<br>
+<strong>다음 분기 검증 포인트:</strong> Power &amp; Energy의 실제 판매량, 수주잔고와 서비스 매출이 전망을 따라가는지 확인한다. 데이터센터 수요가 실제 출하·매출로 이어졌는지는 별도 확인이 필요하다.</p>
+<ul>
+<li><strong>Construction Industries: 북미 인프라·데이터센터 건설과 장비 수요</strong></li>
+</ul>
+<p>회사는 북미 장비 최종 고객 판매 증가를 예상하며, 인프라 투자법(IIJA) 관련 지출과 주요 인프라·데이터센터 투자를 수요 기반으로 제시했다. 딜러 렌털 장비 적재도 2026년에 증가할 것으로 전망했다.<br>
+<strong>다음 분기 검증 포인트:</strong> 최종 고객 장비 판매와 딜러 재고 변화를 함께 확인한다. 딜러 재고만 늘고 최종 고객 판매가 뒤따르지 않으면 성장의 지속성을 낮게 평가해야 한다.</p>
+<ul>
+<li><strong>Resource Industries: 광산 장비·서비스 수요</strong></li>
+</ul>
+<p>회사는 구리·금 수요, 높은 장비 이용률과 노후한 광산 장비군을 근거로 2026년 장비 판매 증가를 전망했다. 재건 작업도 전년보다 소폭 증가할 것으로 예상했다.<br>
+<strong>다음 분기 검증 포인트:</strong> 광산 장비 최종 고객 판매, 재건 활동 및 부문 수주잔고가 실제로 개선되는지 확인한다. 원자재 가격 변동에도 고객 투자가 이어지는지도 살펴야 한다.</p>
+<ul>
+<li><strong>생산능력 확대</strong></li>
+</ul>
+<p>회사는 생산능력 확대를 진행하고 있으며 2026년 하반기 처리량 증가를 예상한다고 밝혔다.<br>
+<strong>다음 분기 검증 포인트:</strong> 처리량 증가가 출하와 매출로 연결되는지, 동시에 제조 비용이나 납기 문제가 악화하지 않는지 확인한다.</p>
+<h2>6. 리스크</h2>
+<ul>
+<li><strong>관세와 제조 원가:</strong> 2026년 1분기 10-Q는 높은 관세 비용이 불리한 제조 비용의 주요 원인이라고 설명했다. 판매량·가격 개선이 이어져도 비용 전가가 늦거나 불완전하면 마진이 압박될 수 있다.</li>
+<li><strong>지정학적·거시경제 불확실성:</strong> 회사는 2분기에도 지정학적 사건에 따른 불확실성을 언급했다. 아시아태평양 지역에서 중국을 제외한 경제 여건이 약할 것으로 전망했고, 중동 건설 여건도 어려운 상태라고 설명했다.</li>
+<li><strong>전력 수요 기대의 실현 위험:</strong> 회사의 Power &amp; Energy 전망은 데이터센터 증설과 전력 수요 증가를 전제로 한다. 관련 주문이 실제 출하와 서비스 매출로 전환되는 속도와 규모는 제공 자료로 확인되지 않는다.</li>
+<li><strong>딜러 재고와 최종수요의 괴리:</strong> 회사는 건설 장비 수요 전망에서 최종 고객 판매와 딜러 렌털 장비 적재를 함께 언급했다. 판매 증가가 최종수요보다 딜러 재고 확대에 의존하면 이후 주문 조정 위험이 커질 수 있다.</li>
+<li><strong>실적 변동과 구조조정 항목:</strong> 분기 주당이익에는 구조조정 관련 항목이 포함됐고, 10-Q는 조정 수치를 별도로 제시했다. 향후 이 항목의 반복 여부 및 영업 실적과의 차이를 확인할 필요가 있다.</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>보통 비중 판단의 정량 근거는 양호한 분기 성장과 개선된 수익성이다. 2분기 매출 205.43억 달러는 전년 동기 대비 24% 증가했고, 영업이익률은 20.9%로 3.6%p 상승했다. TTM 잉여현금흐름은 89.9억 달러다. 반면 주가는 20일 <span class="down">-12.0%</span>, 60일 <span class="down">-18.6%</span>, 52주 고점 대비 <span class="down">-33.0%</span>이며, 당일 거래량은 20일 중앙값의 0.97배다. 이 조합은 실적 개선만으로 주가 바닥이나 추세 전환을 확인하기 어렵다는 뜻이다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>다음 분기 매출 증가가 최종 고객 판매와 출하로 뒷받침되는지, 딜러 재고 증가가 과도하지 않은지 확인한다.</li>
+<li>가격 실현과 판매량 증가가 관세 등 제조 비용을 상쇄해 영업이익률을 유지하는지 확인한다.</li>
+<li>Power &amp; Energy와 Resource Industries의 수주잔고가 실제 매출·현금흐름으로 전환되는지 확인한다.</li>
+</ol>
+<p><strong>관망으로 판단을 낮출 조건:</strong> 매출 또는 수주잔고가 약화하고, 최종 고객 판매 둔화나 딜러 재고 증가가 확인되며, 동시에 관세·제조 비용 부담으로 영업이익률이 하락하면 현재의 보통 판단을 관망으로 바꿀 근거가 된다. 제공 자료에는 이 조건들의 다음 분기 결과가 아직 없다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm">10-K — 2025-12-31_0000018230-26-000008</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000001823026000046/cat-20260630.htm">10-Q — 2026-06-30_0000018230-26-000046</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000001823026000021/cat-20260331.htm">10-Q — 2026-03-31_0000018230-26-000021</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000110465926116198/tm2627668d1_ex99-1.htm">8-K — 2026-10-14_0001104659-26-116198__EX-99.1__tm2627668d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000110465926116198/tm2627668d1_8k.htm">8-K — 2026-10-14_0001104659-26-116198</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000110465926104197/tm2624321d1_ex10-1.htm">8-K — 2026-08-27_0001104659-26-104197__EX-10.1__tm2624321d1_ex10-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000110465926104197/tm2624321d1_8k.htm">8-K — 2026-08-27_0001104659-26-104197</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/18230/000001823026000040/ex992toformcat2q2026retail.htm">8-K — 2026-08-04_0000018230-26-000040__EX-99.2__ex992toformcat2q2026retail</a></li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
