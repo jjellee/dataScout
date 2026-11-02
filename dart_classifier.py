@@ -10,6 +10,7 @@ import time
 import datetime
 import logging
 import argparse
+import collections
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -416,6 +417,147 @@ def resolve_option_dates(call_text, put_text, regex_call, regex_put, rcept_no=No
     return call_start, put_start, call_end, put_end, llm_used
 
 
+def resolve_amendments(parsed_records):
+    """정정공시를 원공시 레코드에 병합한다(병합된 정정은 merged_into가 채워진다). 정렬된 목록을 돌려준다."""
+    # Sort records chronologically so that amendments filed later overwrite earlier ones correctly
+    parsed_records = sorted(parsed_records, key=lambda x: (x['rcept_dt'], x['rcept_no']))
+
+    # 2026-11-02 재작성 (사피엔반도체 중복·누락 건):
+    #  · '정정관련 공시서류제출일'은 최초 공시가 아니라 **직전 판**(앞선 정정일 수 있음)의 제출일이다.
+    #    그날 접수된 레코드(정정 포함)를 찾은 뒤 merged_into 사슬을 따라 원공시(root)로 올라가 병합한다.
+    #    전엔 이미 병합돼 숨겨진 정정 레코드에 붙어 값이 사라졌다.
+    #  · 같은 날 같은 유형 공시가 여럿이면 날짜만으로 고르지 않고 내용(계약내용·시작일·상대방 등)이 가장 닮은 것을 고른다.
+    #    전엔 같은 날 신규 계약(5/27 Japan BigTech 41억)이 다른 계약의 정정에 덮여 시트에서 사라졌다.
+    #  · 원공시 날짜를 알았는데 데이터셋에 없으면(2024년 이전 원공시 등) 아무 데나 붙이지 않는다.
+    #    날짜를 못 읽은 경우에만 '가장 닮은 직전 공시'로 폴백하고, 공급계약은 내용이 맞아야 붙인다.
+    # (회사, 유형) → 앞서 접수된 레코드 목록. 전 레코드 선형 탐색은 36만 건×정정 수만 건이라 못 쓴다.
+    _groups = collections.defaultdict(list)
+
+    def _root(rec):
+        seen = set()
+        while rec.get("_merged_obj") is not None and id(rec) not in seen:
+            seen.add(id(rec))
+            rec = rec["_merged_obj"]
+        return rec
+
+    def _norm(v):
+        return re.sub(r"[\s\(\)\[\]ㆍ·.,\-_/]", "", str(v or "")).lower()
+
+    def _report_key(rec):
+        nm = re.sub(r"^\s*(\[[^\]]*\]\s*)+", "", rec.get("report_nm") or "")
+        nm = re.sub(r"\s*\(정정: \d{8}\)$", "", nm)
+        return _norm(nm)
+
+    def _similarity(a, b):
+        da, db = a.get("data") or {}, b.get("data") or {}
+        # 보고서명이 다르면(같은 '기타' 유형 안의 서로 다른 공시) 사실상 후보에서 뺀다
+        score = 5 if _report_key(a) == _report_key(b) else 0
+        for k, w in (("start_date", 3), ("content", 2), ("counterparty", 1), ("region", 1),
+                     ("purpose", 1), ("asset_name", 2), ("target", 2)):
+            va, vb = _norm(da.get(k)), _norm(db.get(k))
+            if va and vb and va not in ("", "na") and va == vb:
+                score += w
+            elif k == "counterparty" and va and vb and (va in vb or vb in va):
+                score += w
+        return score
+
+    for record in parsed_records:
+        _gkey = (record["corp_code"], record["base_type"])
+        same = _groups[_gkey]          # 이 레코드보다 앞선 같은 회사·유형 레코드
+        if record["is_amended"]:
+            orig_date = record["original_date"]
+            base_type = record["base_type"]
+            # '정정관련 공시서류제출일'에 정정 자기 날짜를 적는 회사가 많다(금화피에스시·HD현대일렉트릭 등) → 모르는 것으로 본다
+            # (같은 날짜는 원공시·정정을 하루에 낸 경우가 있어 살린다 — 아래 내용 비교로 거른다)
+            if orig_date and orig_date > record["rcept_dt"]:
+                orig_date = None
+            original_match = None
+            if orig_date:
+                cands = [p for p in same if p["rcept_dt"] == orig_date]
+                if base_type == "공급계약":
+                    # 그날 다른 계약 공시만 있으면(회사가 날짜를 잘못 적음 — 남광토건 2025-03-26 정정이 다른 공사의
+                    # 01-16 정정을 가리킴) 날짜를 믿지 않고 내용으로 찾는다. 보고서명 + 시작일 또는 계약내용
+                    _rd = record.get("data") or {}
+                    if _norm(_rd.get("content")) or _norm(_rd.get("start_date")):
+                        cands = [p for p in cands if _similarity(record, p) >= 7]
+                    # 정정 본문이 파싱되지 않아(계약내용·시작일 공란) 비교할 수 없으면 날짜를 그대로 믿는다
+                if cands:
+                    # 동점이면 원공시(정정 아닌 것) → 접수번호 앞선 것
+                    best = max(cands, key=lambda p: (_similarity(record, p), not p["is_amended"]))
+                    original_match = _root(best)
+                else:
+                    # 원공시가 데이터셋 밖(2024년 이전)이면, 같은 원공시를 가리키는 앞선 정정끼리 묶는다
+                    # (매 정정마다 최초 제출일을 적는 회사가 있어 날짜 사슬로는 안 이어진다)
+                    sib = [p for p in same if p.get("original_date") == orig_date and p["is_amended"]]
+                    if sib:
+                        best = max(sib, key=lambda p: _similarity(record, p))
+                        if base_type != "공급계약" or _similarity(record, best) >= 8:
+                            original_match = _root(best)
+            if original_match is None and same and (not orig_date or base_type == "공급계약"):
+                # 원공시 날짜를 못 읽음(또는 공급계약인데 그날 공시가 데이터셋에 없음) → 가장 닮은 최근 공시
+                roots, _rid = [], set()
+                for p in reversed(same[-300:]):
+                    rp = _root(p)
+                    if rp is not record and id(rp) not in _rid:
+                        _rid.add(id(rp))
+                        roots.append(rp)
+                if roots:
+                    best = max(roots, key=lambda p: _similarity(record, p))  # 동점이면 최근(앞쪽)
+                    # 보고서명 일치(5) 필수. 공급계약은 보고서명+시작일+계약내용(10↑)까지 같아야 같은 계약으로 본다
+                    if _similarity(record, best) >= (10 if base_type == "공급계약" else 5):
+                        original_match = best
+            if original_match is record:
+                original_match = None
+            if original_match is not None and not orig_date:
+                orig_date = original_match["rcept_dt"]
+
+            if original_match:
+                logger.info(f"Merging amendment {record['rcept_no']} into original {original_match['rcept_no']}")
+                # Overwrite original data with corrected amendment data, but only if the new data is not empty
+                for k, v in record["data"].items():
+                    if v not in [None, "-", ""]:
+                        original_match["data"][k] = v
+
+                # 콜/풋옵션은 최신 정정의 판정이 원공시보다 항상 우선한다.
+                # (정정으로 '실제 계약한 사실이 없습니다'처럼 옵션이 부인되면 '-'가 정답이므로
+                #  위의 '비어있으면 덮어쓰지 않음' 규칙을 적용하면 안 됨.)
+                # 단, 정정 HTML이 실제로 파싱된 경우에만 — 파싱 실패로 인한 '-'가 원본을 지우면 안 된다.
+                if base_type in ("CB", "BW", "EB"):
+                    amend_d = record["data"]
+                    _ci = amend_d.get("call_option_info") or ""
+                    _pi = amend_d.get("put_option_info") or ""
+                    if _ci and not _ci.startswith("N/A"):
+                        original_match["data"]["call_start"] = amend_d.get("call_start", "-")
+                        original_match["data"]["call_end"] = amend_d.get("call_end", "-")
+                    if _pi and not _pi.startswith("N/A"):
+                        original_match["data"]["put_start"] = amend_d.get("put_start", "-")
+                        original_match["data"]["put_end"] = amend_d.get("put_end", "-")
+
+                _base_nm = re.sub(r"\s*\(정정: \d{8}\)$", "", original_match['report_nm'])
+                original_match["report_nm"] = f"{_base_nm} (정정: {record['rcept_dt']})"
+                
+                # Update date display to show amendment history
+                orig_date_fmt = f"{original_match['rcept_dt'][:4]}-{original_match['rcept_dt'][4:6]}-{original_match['rcept_dt'][6:]}"
+                amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
+                original_match["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
+                
+                # Overwrite receipt number to the latest one so that link points to the corrected version
+                original_match["rcept_no"] = record["rcept_no"]
+                original_match["collected_date"] = record["collected_date"]
+                
+                # Mark amendment as merged so we exclude it from the final sheet rows (avoid double counts)
+                record["merged_into"] = original_match["rcept_no"]
+                record["_merged_obj"] = original_match
+            else:
+                # If original not found in current dataset (e.g. original was 2025), format its date showing it is an amendment
+                orig_date_fmt = f"{orig_date[:4]}-{orig_date[4:6]}-{orig_date[6:]}" if orig_date else "과거공시"
+                amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
+                record["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
+        same.append(record)
+
+    return parsed_records
+
+
 def find_original_date_from_html(html_path):
     """Parses the HTML to find the original filing date of an amended ('정정') disclosure."""
     if not os.path.exists(html_path):
@@ -433,7 +575,9 @@ def find_original_date_from_html(html_path):
                     key = cols[0].replace(" ", "").replace("ㆍ", "").replace(".", "")
                     if any(pat in key for pat in ["정정관련공시서류제출일", "최초제출일"]):
                         val = cols[1]
-                        date_match = re.search(r'(\d{4})[-년\s]*(\d{1,2})[-월\s]*(\d{1,2})', val)
+                        # '2024-08-26' / '2024년 8월 26일' / '2024.08.26'(점 구분 — 2026-11-02 전엔 못 읽어
+                        # 정정 1천여 건이 원공시와 병합되지 않고 별도 행으로 남았다)
+                        date_match = re.search(r'(\d{4})[-.년\s]*(\d{1,2})[-.월\s]*(\d{1,2})', val)
                         if date_match:
                             y, m, d = date_match.groups()
                             return f"{y}{int(m):02d}{int(d):02d}"
@@ -2226,7 +2370,16 @@ def build_excel_summary(workspace_dir, parse_only=False):
             if record_detail.get("category") != current_category:
                 record_detail["category"] = current_category
             record_detail["base_type"] = base_type
-            
+
+            # 정정공시 원공시 날짜 재판독 — 2026-11-02 전 정규식이 '2024.08.26'(점 구분)을 못 읽어
+            # original_date=None으로 캐시된 정정이 1천여 건이다. HTML 표 한 번 읽는 비용이라 매번 시도한다.
+            if record_detail.get("is_amended") and not record_detail.get("original_date"):
+                _hp = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                _od = find_original_date_from_html(_hp)
+                if _od:
+                    record_detail["original_date"] = _od
+                    cache[rcept_no] = record_detail
+
             # Auto-healing cache: if it is a treasury share disclosure but is classified as "기타" or "기타공시",
             # or has empty data dictionary, re-parse and update it.
             is_treasury = base_type in ["자기주식취득", "자기주식신탁", "자기주식소각"]
@@ -2677,75 +2830,13 @@ def build_excel_summary(workspace_dir, parse_only=False):
     # -------------------------------------------------------------
     logger.info("Resolving and merging amendment ('정정') disclosures...")
     
-    # Sort records chronologically so that amendments filed later overwrite earlier ones correctly
-    parsed_records = sorted(parsed_records, key=lambda x: x['rcept_dt'])
-    
-    for idx, record in enumerate(parsed_records):
-        if record["is_amended"] and record["original_date"]:
-            orig_date = record["original_date"]
-            corp_code = record["corp_code"]
-            base_type = record["base_type"]
-            
-            # Find the original disclosure: same company, same base type, filed on original_date
-            # Or if original_date is slightly off, we check nearby.
-            original_match = None
-            for prev_record in parsed_records[:idx]:
-                if prev_record["corp_code"] == corp_code and prev_record["base_type"] == base_type:
-                    # Match date
-                    if prev_record["rcept_dt"] == orig_date:
-                        original_match = prev_record
-                        break
-            
-            # If still not matched, fallback to matching the most recent report of same type
-            if not original_match:
-                for prev_record in reversed(parsed_records[:idx]):
-                    if prev_record["corp_code"] == corp_code and prev_record["base_type"] == base_type:
-                        # Ensure it's not already merged
-                        if not prev_record["merged_into"]:
-                            original_match = prev_record
-                            break
-                            
-            if original_match:
-                logger.info(f"Merging amendment {record['rcept_no']} into original {original_match['rcept_no']}")
-                # Overwrite original data with corrected amendment data, but only if the new data is not empty
-                for k, v in record["data"].items():
-                    if v not in [None, "-", ""]:
-                        original_match["data"][k] = v
+    _dump = os.environ.get("DART_PARSED_DUMP")
+    if _dump:
+        import pickle
+        with open(_dump, "wb") as _f:
+            pickle.dump(parsed_records, _f)
+    parsed_records = resolve_amendments(parsed_records)
 
-                # 콜/풋옵션은 최신 정정의 판정이 원공시보다 항상 우선한다.
-                # (정정으로 '실제 계약한 사실이 없습니다'처럼 옵션이 부인되면 '-'가 정답이므로
-                #  위의 '비어있으면 덮어쓰지 않음' 규칙을 적용하면 안 됨.)
-                # 단, 정정 HTML이 실제로 파싱된 경우에만 — 파싱 실패로 인한 '-'가 원본을 지우면 안 된다.
-                if base_type in ("CB", "BW", "EB"):
-                    amend_d = record["data"]
-                    _ci = amend_d.get("call_option_info") or ""
-                    _pi = amend_d.get("put_option_info") or ""
-                    if _ci and not _ci.startswith("N/A"):
-                        original_match["data"]["call_start"] = amend_d.get("call_start", "-")
-                        original_match["data"]["call_end"] = amend_d.get("call_end", "-")
-                    if _pi and not _pi.startswith("N/A"):
-                        original_match["data"]["put_start"] = amend_d.get("put_start", "-")
-                        original_match["data"]["put_end"] = amend_d.get("put_end", "-")
-
-                original_match["report_nm"] = f"{original_match['report_nm']} (정정: {record['rcept_dt']})"
-                
-                # Update date display to show amendment history
-                orig_date_fmt = f"{original_match['rcept_dt'][:4]}-{original_match['rcept_dt'][4:6]}-{original_match['rcept_dt'][6:]}"
-                amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
-                original_match["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
-                
-                # Overwrite receipt number to the latest one so that link points to the corrected version
-                original_match["rcept_no"] = record["rcept_no"]
-                original_match["collected_date"] = record["collected_date"]
-                
-                # Mark amendment as merged so we exclude it from the final sheet rows (avoid double counts)
-                record["merged_into"] = original_match["rcept_no"]
-            else:
-                # If original not found in current dataset (e.g. original was 2025), format its date showing it is an amendment
-                orig_date_fmt = f"{orig_date[:4]}-{orig_date[4:6]}-{orig_date[6:]}" if orig_date else "과거공시"
-                amend_date_fmt = f"{record['rcept_dt'][:4]}-{record['rcept_dt'][4:6]}-{record['rcept_dt'][6:]}"
-                record["rcept_dt_display"] = f"{amend_date_fmt} (원공시: {orig_date_fmt})"
-                
     # Filter out merged amendments
     active_records = [r for r in parsed_records if r["merged_into"] is None]
     logger.info(f"Filtered {len(parsed_records) - len(active_records)} merged amendment disclosures.")
