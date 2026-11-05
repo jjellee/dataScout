@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COHR — Coherent Corp. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>COHR — Coherent Corp. Common Stock</h1>
+<div class="sub">2026-11-05 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">COHR</span><span class="badge">+3.77%</span><span class="badge">거래량 0.77배</span><span class="badge">$40.86B</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<p>AI 데이터센터 광통신 수요와 최근 분기 매출·영업이익률 개선은 실적 뒷받침이 있는 성장 신호다.<br>
+회사는 데이터센터·통신 수요가 강하다고 밝히고, 인듐인화물 생산능력 확대와 PhotonLink 고객 참여를 성장 축으로 제시했다.<br>
+다만 TTM 잉여현금흐름은 <strong>-$1.03B</strong>이고, 주가는 최근 20일 <strong>-41.7%</strong>, 52주 고점 대비 <strong>-51.4%</strong>로 큰 폭 하락했다.<br>
+제공된 자료만으로는 현금 소진의 원인과 부채 부담을 충분히 계량할 수 없고, 오늘 상승을 설명하는 구체적 당일 촉매도 확인되지 않는다. 핵심 성장 논리는 유효해 보이나 큰 비중을 뒷받침할 현금전환과 수요 지속성의 확인이 더 필요하다.</p>
+<h2>2. 오늘 상승의 원인</h2>
+<p>제공된 자료에서 확인되는 당일 상승 촉매는 <strong>특정할 수 없다 — 수급/섹터 동조 가능성</strong>. 11월 4일 10-Q와 8-K가 제출됐고, 뉴스 헤드라인은 2027 회계연도 1분기 실적과 다음 분기 매출 전망을 언급하지만, 발췌된 공시 내용만으로는 당일 주가 상승의 직접 원인을 단정할 수 없다.</p>
+<p>당일 주가는 <strong>+3.77%</strong> 상승했지만 거래량은 20일 중앙값의 <strong>0.77배</strong>다. 큰 폭의 거래량 급증이 동반된 상승으로 보기는 어렵다. 한편 20일 수익률 <strong>-41.7%</strong>, 60일 수익률 <strong>-40.6%</strong>여서 오늘 상승만으로 추세가 반전됐다고 판단하기도 어렵다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K에 따르면 Coherent는 레이저, 트랜시버, 기타 광전자 부품·모듈·시스템, 엔지니어드 소재를 개발·제조·판매하는 수직계열화 제조업체다. 데이터센터·통신과 산업 시장을 대상으로 하며, 산업 응용에는 정밀 제조, 에너지, 반도체·디스플레이 장비, 계측 등이 포함된다. 세계 각지에서 연구개발, 제조, 판매, 서비스 및 유통을 운영한다.</p>
+<p>10-Q는 사업을 <strong>Datacenter &amp; Communications</strong>와 <strong>Industrial</strong> 두 보고 부문으로 설명한다. 제공된 발췌에는 이번 분기의 부문별 매출 비중이 없어 각 부문의 매출 구성을 정량 비교할 수 없다. 최근 분기 매출은 제공 지표상 <strong>$2.05B</strong>다.</p>
+<p>10-K와 10-Q가 밝힌 경쟁 기반은 소재 성장·가공부터 반도체 및 고출력 레이저, 수동 광학, 트랜시버와 전송 장비까지 이어지는 기술 스택이다. 회사는 자체 통합 소프트웨어와 폭넓은 광소자·시스템 포트폴리오도 보유하고 있다고 설명한다. 다만 경쟁사 대비 점유율이나 가격 우위는 제공 자료에서 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>제공 지표상 최근 분기 매출은 <strong>$2.05B</strong>, 전년 동기 대비 <strong>33.7%</strong>, 전분기 대비 <strong>13.3%</strong> 증가했다. 영업이익률은 <strong>14.9%</strong>로 전년 대비 <strong>5.4%p 개선</strong>됐고, 매출총이익률은 <strong>38.5%</strong>다. 매출과 이익률이 함께 개선된 점은 긍정적이다.</p>
+<p>다만 성장의 원인이 단가·물량·제품 믹스 중 무엇인지 분리할 세부 수치가 제공되지 않았다. 따라서 매출 증가를 가격 인상이나 고마진 제품 비중 확대의 결과로 단정할 수 없다. 10-Q MD&amp;A는 데이터센터·통신 시장의 강한 수요와 고객 약정·장기 계약이 수요 가시성을 제공한다고 설명하지만, 이는 회사의 시장 평가와 사업 전망이다.</p>
+<p>현금흐름은 주의가 필요하다. 제공 지표상 TTM 잉여현금흐름은 <strong>-$1.03B</strong>다. 10-Q는 데이터센터·통신 생산능력 확대, 특히 텍사스 Sherman 및 스웨덴의 인듐인화물 생산 확대를 언급한다. 투자 확대가 현금흐름에 부담을 줄 수 있지만, 제공 자료에는 잉여현금흐름 적자의 구체적 구성이나 투자 회수 일정이 없어 원인을 확정할 수 없다.</p>
+<p>10-K는 상당한 부채와 차입계약상 제한 조항을 위험요인으로 든다. 현재 부채 규모, 순부채, 만기 및 유동성 세부 수치는 발췌 자료에서 <strong>공시상 확인 불가</strong>하므로 재무 건전성을 종합 판정하기에는 정보가 부족하다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li>
+<p><strong>AI 데이터센터 광연결 수요:</strong> 10-Q에서 회사는 AI 데이터센터 투자, 구리에서 광 연결로의 전환, 대역폭·전력 효율 요구가 Datacenter &amp; Communications 수요를 뒷받침한다고 밝혔다. 고객 약정과 장기 계약이 수요 가시성을 제공한다는 것도 회사의 설명이다.<br>
+<strong>다음 분기 검증:</strong> 데이터센터·통신 매출 증가가 이어지는지, 관련 수요가 실적과 마진으로 연결되는지 확인한다.</p>
+</li>
+<li>
+<p><strong>인듐인화물 생산능력 확대:</strong> 회사는 Sherman과 스웨덴의 생산능력을 확대해 고객 수요와 업계 공급 부족에 대응하고 있다고 밝혔다.<br>
+<strong>다음 분기 검증:</strong> 증설이 실제 출하 증가로 이어지는지, 공급 제약이나 제조라인 인증 지연이 나타나는지 살핀다.</p>
+</li>
+<li>
+<p><strong>산업 부문의 반도체 장비 수요:</strong> 10-Q에서 회사는 산업 시장 중 반도체 자본장비 수요가 강하다고 밝혔다.<br>
+<strong>다음 분기 검증:</strong> 산업 부문 수요가 유지되고 전체 성장에서 기여하는 정도가 확대되는지 확인한다. 부문별 수치는 제공 자료상 확인할 수 없다.</p>
+</li>
+<li>
+<p><strong>PhotonLink 및 통합 광학:</strong> 실적콜 발췌에서 경영진은 AI 데이터센터의 전기 연결을 광 연결로 전환하는 PhotonLink 플랫폼을 소개했다. CPO, NPO, 칩 간 연결을 여러 고객과 논의 중이며, 각 아키텍처의 생산 전개 시점도 제시했다. 이는 콜에서 언급된 회사 전망으로, 매출 실현이 확인된 것은 아니다.<br>
+<strong>다음 분기 검증:</strong> 고객 참여가 양산 수주·출하로 전환되는지, 제시된 일정이 유지되는지 확인한다.</p>
+</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript는 2026년 9월 21일 ECOC 행사 발표와 8월 26일 업계 대담이다. <strong>11월 4일 실적콜 transcript나 애널리스트 Q&amp;A는 제공되지 않았다.</strong> 따라서 이번 실적 발표에서의 가이던스 화법 변화나 Q&amp;A에서 반복된 질문, 경영진의 회피·방어 지점은 평가할 수 없다.</p>
+<p>ECOC 발표에서 경영진은 PhotonLink를 AI 데이터센터에서 전기 연결을 광 연결로 전환하기 위한 통합 플랫폼으로 설명하며 자신감을 보였다. 자신감의 근거로는 고객 참여, 여러 광학 기술을 포괄하는 제품군, 제조 확장 능력을 들었다. 다만 시장 규모와 고객 참여 건수, 제품별 성능 및 생산 일정은 <strong>경영진이 행사에서 제시한 내용</strong>이며, 공시에서 확정된 매출이나 실적으로 취급할 수 없다.</p>
+<p>콜에서만 드러난 구체 정보로는 CPO와 NPO 각각 10건 이상의 고객 참여, 칩 간 연결 5건 이상의 참여, CPO의 2026년 4분기 스케일아웃 전개 기대, NPO의 2027년 하반기 전개 기대, 칩 간 연결의 2029~2030년 배치 전망이 있다. 경영진은 CPO에 대해 NVIDIA 계약을 공개된 기준 고객 계약으로 언급했다. 이 일정과 고객 참여가 실제 양산 및 매출로 이어지는지는 후속 확인이 필요하다.</p>
+<h2>6. 리스크</h2>
+<ul>
+<li>
+<p><strong>현금흐름 및 투자 회수:</strong> TTM 잉여현금흐름이 <strong>-$1.03B</strong>인 가운데 회사는 광통신 생산능력 확대를 진행 중이다. 증설이 수요와 현금 창출로 이어지지 않으면 투자 부담이 커질 수 있다. 적자 원인과 회수 시점은 제공 자료상 확인되지 않는다.</p>
+</li>
+<li>
+<p><strong>대형 고객 의존 및 주문 변동:</strong> 10-K는 대형 고객의 구매 취소·감소·지연이 사업에 해를 줄 수 있고, 대형 고객의 협상력이 강하다고 명시한다. AI 데이터센터 수요가 강하다는 회사 설명과 별개로, 고객 주문이 변하면 성장 경로가 달라질 수 있다.</p>
+</li>
+<li>
+<p><strong>공급망 및 제조 전환:</strong> 10-K는 복잡한 제조공정, 제한된 공급처에 대한 의존, 희토류·희소가스의 가용성 및 가격 변동을 위험으로 든다. 10-Q는 인듐인화물 생산능력 확대와 제조시설의 이전·재인증을 언급한다. 증설 또는 라인 인증이 지연되면 고객 수요를 충족하지 못할 가능성이 있다.</p>
+</li>
+<li>
+<p><strong>부채와 차입계약 제약:</strong> 10-K는 상당한 부채와 신용계약·2029년 만기 5.000% 선순위채 관련 약정이 사업 운영을 제한할 수 있다고 밝힌다. 부채의 현재 규모와 만기별 부담은 제공 발췌에서 공시상 확인 불가이므로 상세한 상환 위험 평가는 어렵다.</p>
+</li>
+<li>
+<p><strong>경기순환·경쟁·기술 변화:</strong> 10-K는 사업의 상당 부분이 경기순환 요인에 노출되고, 경쟁 심화 및 고객의 자체 내재화가 시장 지위를 약화할 수 있다고 경고한다. PhotonLink가 겨냥하는 신흥 광학 아키텍처의 고객 참여가 실제 채택으로 이어질지는 아직 검증 대상이다.</p>
+</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>정량적으로는 매출 <strong>$2.05B</strong>, 매출 YoY <strong>+33.7%</strong>, QoQ <strong>+13.3%</strong>, 영업이익률 <strong>14.9%</strong>, 전년 대비 <strong>+5.4%p</strong>, 매출총이익률 <strong>38.5%</strong>가 실적의 긍정적 근거다. 반면 TTM 잉여현금흐름 <strong>-$1.03B</strong>, 최근 20일 수익률 <strong>-41.7%</strong>, 60일 <strong>-40.6%</strong>, 52주 고점 대비 <strong>-51.4%</strong>는 현금전환과 주가 변동성에 대한 우려를 키운다. 오늘 상승률 <strong>+3.77%</strong>에도 거래량이 20일 중앙값의 <strong>0.77배</strong>인 점은 추세 반전 신호로 보기 어렵다.</p>
+<p>진입 전 확인할 것 3가지:</p>
+<ol>
+<li><strong>성장 지속성:</strong> 다음 분기 매출에서 데이터센터·통신 수요가 계속 증가하는지, 경영진 전망과 실제 실적이 부합하는지 확인한다.</li>
+<li><strong>현금전환과 재무 부담:</strong> 잉여현금흐름 적자가 축소되는지, 증설 투자와 운전자본 변화가 현금흐름에 미친 영향을 확인한다. 부채·만기·유동성 세부 수치는 추가 공시로 확인한다.</li>
+<li><strong>증설 및 고객 전환:</strong> 인듐인화물 증설이 출하로 이어지는지, PhotonLink 고객 참여가 양산·매출로 전환되는지 확인한다.</li>
+</ol>
+<p><strong>판단을 관망으로 바꿀 조건:</strong> 매출 증가세나 영업이익률 개선이 꺾이고, 잉여현금흐름 적자가 지속되거나 확대되며, 증설·고객 양산 일정이 지연되는 징후가 겹쳐 확인되면 비중 확대보다 관망이 타당하다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000020/iivi-20260630.htm">10-K — 2026-06-30_0000820318-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000023/iivi-20260930.htm">10-Q — 2026-09-30_0000820318-26-000023</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000082031826000013/iivi-20260331.htm">10-Q — 2026-03-31_0000820318-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526447200/d176836dex992.htm">8-K — 2026-11-04_0001193125-26-447200__EX-99.2__d176836dex992</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526447200/d176836dex991.htm">8-K — 2026-11-04_0001193125-26-447200__EX-99.1__d176836dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526447200/d176836d8k.htm">8-K — 2026-11-04_0001193125-26-447200</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526375462/d110649d8k.htm">8-K — 2026-08-27_0001193125-26-375462</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/820318/000119312526346860/d128030dex992.htm">8-K — 2026-08-12_0001193125-26-346860__EX-99.2__d128030dex992</a></li>
+<li>Transcript — 2026-09-21 European Conference on Optical Communication 2026 (ECOC 2026) Transcript</li>
+<li>Transcript — 2026-08-26 The Six Five Summit: AI Unleashed 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

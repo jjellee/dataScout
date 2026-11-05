@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOPN — Kopin Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>KOPN — Kopin Corporation Common Stock</h1>
+<div class="sub">2026-11-05 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">KOPN</span><span class="badge">+4.65%</span><span class="badge">거래량 0.84배</span><span class="badge">$669.1M</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>사업은 방산용 디스플레이·광학 솔루션을 기반으로 하며, MicroLED·FPV 드론·AI 인프라가 성장 선택지를 넓히고 있다.</li>
+<li>다만 최근 분기 제품 매출은 거의 정체였고, 매출 증가에는 정부 보조금·협업·개발 매출이 크게 기여했다. 제공 지표상 영업이익률은 음수이고 TTM 잉여현금흐름도 적자다.</li>
+<li>회사의 2027~2028년 성장·수익성 전망은 실적콜 발언에 근거한 계획과 기대이며, 양산 매출이나 이익으로 확인된 실적은 아니다.</li>
+<li>오늘 주가는 4.65% 올랐지만 거래량은 20일 중앙값의 0.84배다. 유의미한 촉매나 거래량 급증이 확인되지 않아 현 시점에서 큰 비중을 정당화하기 어렵다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>확인된 촉매 없음 — 수급/섹터 동조 가능성. 최근 4일 내 SEC 공시는 없고, 제공된 헤드라인도 11월 10일 예정된 3분기 실적 발표 안내와 주가·옵션 관련 페이지가 대부분이다. 당일 거래량은 20일 중앙값의 0.84배로, 거래량 급증은 확인되지 않는다. 따라서 오늘 상승을 실적 개선이나 신규 수주에 대한 시장 반응으로 특정할 근거가 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>10-K에 따르면 Kopin은 AMLCD, LCOS, OLED, 개발 중인 MicroLED 마이크로디스플레이와 광학·전자 부품을 설계·제조·판매한다. 제품은 단품 디스플레이뿐 아니라 모듈, 광학 부품, 응용특화 광학 솔루션(ASOS), 헤드셋 등으로 제공된다. 지식재산권 라이선스 수익도 있다. 회사는 부품 판매에서 더 높은 부가가치의 통합 솔루션으로 확장하는 전략을 제시했다.</p>
+<p>주요 고객·수요처는 방산, 산업, 의료, 소비자 시장이다. 방산 제품은 열영상 조준경, 헬멧 장착 디스플레이, 훈련·시뮬레이션 시스템 등에 쓰이며, 회사는 미 국방부 및 해외 고객을 대상으로 개발·생산 프로그램을 진행한다고 설명한다. 산업 제품은 제조·물류·공공안전용 헤드셋과 3D 계측 장비 등에 들어간다. 의료 분야에는 수술용 3D 헤드셋 등이 포함된다.</p>
+<p>2026년 2분기 10-Q의 매출 표에서 방산 제품 매출은 731만 달러, 전체 제품 매출은 764만 달러였다. 여기에 R&amp;D 217만 달러, 보조금 260만 달러, 협업 27만 달러 등이 더해져 총매출은 1,273만 달러였다. 즉 이 분기 매출은 제품 판매뿐 아니라 연구개발·보조금·협업 수익의 영향을 받았다.</p>
+<p>경쟁 측면에서 회사는 200개가 넘는 특허·특허출원과 고해상도·저전력·내구성 기술, 고객별 맞춤 설계를 강점으로 내세운다. 다만 10-Q는 산업용 3D 계측 시장에 신규 진입자가 늘어 가격 경쟁이 심해졌고, 이에 저가 제품을 출시했지만 이 시장의 경쟁 압력이 지속될 것으로 예상한다고 설명한다. 경쟁 우위가 전체 시장에서 어느 정도의 점유율이나 가격 결정력으로 이어지는지는 제공 자료만으로 확인하기 어렵다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>제공된 시장 지표상 최근 분기 매출은 1,010만 달러, 전년 대비 19.9%, 전분기 대비 42.6% 증가했다. 다만 이 매출 지표는 제공된 10-Q의 2026년 2분기 총매출 1,273만 달러와 일치하지 않는다. 10-Q상 1분기 총매출은 1,055만 달러다. 기준 분기나 집계 방식은 제공 자료만으로 확인할 수 없어, 성장률 비교에는 주의가 필요하다.</p>
+<p>10-Q 기준 2분기 총매출은 전년 동기 846만 달러에서 1,273만 달러로 증가했지만, 제품 매출은 750만 달러에서 764만 달러로 소폭 증가하는 데 그쳤다. 반면 비제품 매출은 보조금과 협업을 포함해 증가했다. 회사는 방산 제품 매출 증가의 배경으로 열영상 조준경용 제품과 LCD의 생산량 증가를 들었다. 동시에 상반기 방산 매출은 전년 동기보다 감소했다고 밝혔다. 분기 매출 증가를 곧바로 제품 수요의 광범위한 회복으로 해석하기보다는, 제품·개발·보조금 수익을 나눠 추적할 필요가 있다.</p>
+<p>제공 지표의 매출총이익률은 35.0%, 영업이익률은 <span class="down">-34.6%</span>이며, 영업이익률은 전년 대비 30.0%p 개선된 것으로 제시됐다. 손실 폭의 방향은 개선됐지만 영업 적자는 남아 있다. 실적콜 요약에 따르면 2분기 영업손실은 350만 달러로 전년 동기 550만 달러에서 축소됐고, 순이익 90만 달러에는 투자 이익과 세금 혜택이 영향을 줬다. 따라서 순이익만으로 본업의 흑자 전환을 판단하기 어렵다.</p>
+<p>현금흐름은 제공 지표상 TTM 잉여현금흐름 -1,840만 달러다. 실적콜에서 경영진은 현금 및 현금성 자산 2,430만 달러, 제한성 현금과 유가증권을 포함한 금액 5,030만 달러를 언급했다. 다만 제한성 현금 2,420만 달러는 BlueRadios 소송 항소 관련 채권을 담보한다고 콜에서 설명했다. 보유 현금 총액과 자유롭게 사용할 수 있는 유동성을 동일시해서는 안 된다. 최신 현금흐름표와 순현금 수치는 제공 발췌에서 확인되지 않는다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li>
+<p><strong>방산 프로그램과 생산 확대:</strong> 10-K는 방산용 디스플레이 및 ASOS 공급과 개발 프로그램을 사업 기반으로 설명한다. 실적콜에서 CEO는 연초 이후 방산 주문이 4,500만 달러를 넘었다고 밝혔고, 일부 계약은 단독 공급 또는 IDIQ 방식이라고 설명했다. 이는 경영진 발언이며, 주문액의 매출 전환 시기와 취소·납품 조건은 제공 자료만으로 확인할 수 없다. <strong>검증 포인트:</strong> 후속 공시에서 방산 제품 매출과 생산량이 늘어나는지, 수주가 실제 납품·현금 회수로 이어지는지 확인한다.</p>
+</li>
+<li>
+<p><strong>미 육군 Color MicroLED 및 국내 생산:</strong> 10-K는 IBAS 보조금으로 병사용 컬러 MicroLED 기술을 개발 중이라고 설명한다. 2분기 8-K는 회사가 MicroLED 프로그램에서 기술·제조 이정표를 달성했고 2027년 중반 국내 생산을 목표로 한다고 밝혔다. 실적콜에서 CEO는 초기 저율 생산은 2027년 가능성이 있지만 주된 생산은 2028년 예정이라고 말했다. <strong>검증 포인트:</strong> 고객 평가와 후속 정부 자금 지원, 생산라인 가동, 실제 양산 주문 및 매출 인식이 확인되는지 본다.</p>
+</li>
+<li>
+<p><strong>Sentinel FPV 드론용 고글:</strong> 실적콜에서 회사는 여러 시제품 주문을 받았으며, 정부 Drone Dominance 프로그램 진전에 따라 2026년 4분기 후반 대량 주문을 기대한다고 밝혔다. 2027년 매출 규모는 프로그램 수상 기업과 물량에 달렸다고도 설명했다. 이는 기대이며, 확정된 양산 매출로 확인된 내용은 아니다. <strong>검증 포인트:</strong> 시제품 주문이 양산 발주로 전환되는지, 고객별 물량과 납기가 공시되는지 확인한다.</p>
+</li>
+<li>
+<p><strong>Neural I/O 및 AI 인프라:</strong> 10-K는 NeuralDisplay를 개발 중이라고 설명하고, 실적콜은 Fabric.AI와의 개발 협력 및 AI 인프라용 광학·칩셋 기회를 제시했다. CEO는 2027년 개발 매출이 2,000만~3,000만 달러 수준일 수 있다고 말했지만, 생산 매출은 2028년 가능성이 높다고 덧붙였다. <strong>검증 포인트:</strong> 개발 계약의 확정 규모와 매출 인식, 고객 검증·칩 테이프아웃, 2028년 생산 주문으로의 전환 여부를 본다.</p>
+</li>
+<li>
+<p><strong>OLED 자체 증착과 수직 통합:</strong> 회사는 OLED 증착 설비를 내재화해 외부 파트너에 지급하던 마진을 줄일 계획이라고 실적콜에서 설명했다. CEO는 2027년 매출총이익률이 최소 15%p 개선될 수 있다고 주장했지만, 이는 전망이다. <strong>검증 포인트:</strong> 설비 가동 시점, 수율과 생산능력, 실제 외주비 감소 및 제품 매출총이익률 개선이 후속 분기에서 확인되는지 본다.</p>
+</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>CEO는 MicroLED 기술 이정표, 드론 고글 주문, AI 인프라 기회를 근거로 성장과 수익성에 강한 자신감을 보였다. 2분기 실적콜에서는 기존 연간 매출 가이던스 5,200만~6,000만 달러를 초과할 것으로 기대하고, 2026년 4분기 GAAP 흑자와 플러스 잉여현금흐름을 전망했다고 요약돼 있다. 2027년에는 큰 폭의 매출 성장을, 2028년에는 1억 달러 매출을 목표·가능성으로 언급했다. 모두 회사 전망이며, 확정 실적이나 주문 잔고로 검증된 수치는 아니다.</p>
+<p>콜에서 투자자의 질문은 드론 프로그램에서 기대하는 2027년 주문 규모, MicroLED의 2027년 매출 발생 여부, Neural I/O의 생산 매출 시점, OLED 설비의 수익성·생산능력에 집중됐다. 경영진은 드론 매출이 Drone Dominance 프로그램의 수상 업체와 배분 물량에 달렸다고 인정했다. MicroLED는 2027년 초기 생산 가능성을 제시하면서도 주된 생산 시점은 2028년이라고 구분했다. Neural I/O는 2027년 생산 매출 가능성을 낮게 보고 개발 매출을 예상한다고 답했다. OLED의 마진 개선 전망은 구체적이었지만, 실적콜 발언만으로 설비의 가동률이나 실제 원가 절감이 입증된 것은 아니다.</p>
+<p>공시 발췌에는 없는 내용으로, 실적콜에서 CEO는 BlueRadios 소송 항소를 위해 2,420만 달러의 제한성 현금이 담보로 묶여 있고, 결과를 2027년 중반까지 기다릴 수 있다고 언급했다. 또한 OLED 자체 증착으로 2027년 매출총이익률이 최소 15%p 개선될 수 있다는 주장과 Neural I/O의 2027년 개발 매출 2,000만~3,000만 달러 예상도 콜에서 제시됐다. 이 발언들은 전망 또는 경영진 설명으로 취급해야 한다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>적자와 현금 소진:</strong> 제공 지표에서 영업이익률은 <span class="down">-34.6%</span>, TTM 잉여현금흐름은 -1,840만 달러다. 회사는 10-K에서 매출 성장, 플러스 현금흐름, 수익성 달성이 중요 위험이라고 명시했다. 4분기 흑자·현금흐름 전망이 실현되지 않으면 성장 투자와 자금 여력에 부담이 생길 수 있다.</p>
+</li>
+<li>
+<p><strong>매출의 프로젝트·보조금 의존과 분기 변동:</strong> 2분기 10-Q에서 제품 매출 증가는 제한적이었던 반면 보조금·협업·R&amp;D 매출이 총매출 증가에 기여했다. 회사는 중간 기간 실적이 미래 영업성과를 나타내지 않을 수 있다고 경고했다. 프로그램 일정과 정부 자금 집행에 따라 분기별 매출 구성이 흔들릴 수 있다.</p>
+</li>
+<li>
+<p><strong>방산 고객의 생산 일정과 주문 전환:</strong> 방산 매출은 일회성 구매 또는 수년 프로그램에 따른 매출일 수 있다고 10-Q는 설명한다. 실제로 상반기 방산 매출은 전년 동기보다 감소했고, 회사는 열영상 조준경 제품 및 LCD 생산량 변동을 원인으로 들었다. 수주와 개발 단계가 반복 매출로 전환되는 시점이 불확실하다.</p>
+</li>
+<li>
+<p><strong>산업 시장의 가격 경쟁과 공급망:</strong> 10-Q는 산업용 3D 계측 시장에서 신규 진입자와 가격 경쟁이 심해졌다고 밝힌다. 10-K와 10-Q는 반도체 부품·원재료의 간헐적 부족 및 공급망 지연도 위험으로 명시한다. 저가 대응은 판매 방어에 도움이 될 수 있지만 마진을 압박할 수 있고, 부품 수급 문제는 납기와 생산을 흔들 수 있다.</p>
+</li>
+<li>
+<p><strong>소송 담보금 및 경영진 전망의 실행 위험:</strong> 실적콜에 따르면 BlueRadios 항소 관련 2,420만 달러가 제한성 현금으로 묶여 있고, 결론 시점도 불확실하다. 또한 MicroLED, FPV, Neural I/O, OLED 마진 개선의 주요 수치와 일정은 상당 부분 경영진 발언에 기반한다. 특히 Neural I/O의 생산 매출은 경영진도 2028년 가능성이 더 높다고 답했다.</p>
+</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>정량적으로 긍정적인 점은 제공 지표상 최근 분기 매출이 전년 대비 19.9%, 전분기 대비 42.6% 증가했고 매출총이익률이 35.0%라는 것이다. 10-Q 기준 2분기 총매출도 전년 동기 대비 증가했고 영업손실은 실적콜 요약 기준 축소됐다. 반면 제품 매출은 2분기 전년 대비 거의 제자리였고, 제공 지표의 영업이익률은 <span class="down">-34.6%</span>, TTM 잉여현금흐름은 -1,840만 달러다. 시장 지표도 20일 수익률 <span class="down">-26.7%</span>, 60일 수익률 <span class="down">-35.6%</span>, 52주 고점 대비 <span class="down">-43.7%</span>이며, 오늘 거래량은 중앙값보다 낮다. 성장 기대만으로 의미 있는 비중을 싣기에는 실적 확인이 더 필요하다.</p>
+<p>진입 전 확인할 것 3가지:</p>
+<ol>
+<li><strong>제품 매출의 질:</strong> 다음 실적에서 제품 매출, 특히 방산 제품 매출이 실제로 증가하는지, 보조금·협업·R&amp;D를 제외한 매출 흐름이 개선되는지 확인한다.</li>
+<li><strong>수익성과 현금흐름:</strong> 영업손실 축소가 이어지고 회사가 제시한 2026년 4분기 GAAP 흑자·플러스 잉여현금흐름 전망이 실적으로 확인되는지 본다. 제한성 현금을 제외한 유동성도 함께 점검한다.</li>
+<li><strong>성장 프로그램의 계약·양산 전환:</strong> FPV 양산 주문, MicroLED의 후속 자금·생산 주문, Neural I/O 개발 계약과 OLED 설비 가동이 공시 또는 매출로 확인되는지 확인한다.</li>
+</ol>
+<p><strong>관망 판단을 강화하거나 회피로 바꿀 조건:</strong> 제품 매출이 다시 감소하거나, 보조금·개발 매출이 줄면서 영업손실과 현금 유출이 확대되거나, 회사가 제시한 4분기 수익성 목표가 미뤄지는 경우다. 반대로 의미 있는 비중을 재검토하려면 제품 매출의 지속 증가, 손실·현금흐름의 실제 개선, 주요 성장 프로그램의 확정 주문과 생산 매출 전환이 함께 확인돼야 한다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226016338/form10-k.htm">10-K — 2025-12-27_0001493152-26-016338</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226037194/form10-q.htm">10-Q — 2026-06-27_0001493152-26-037194</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226022534/form10-q.htm">10-Q — 2026-03-28_0001493152-26-022534</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226036857/ex99-1.htm">8-K — 2026-08-10_0001493152-26-036857__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226036857/form8-k.htm">8-K — 2026-08-10_0001493152-26-036857</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226029262/form8-k.htm">8-K — 2026-06-15_0001493152-26-029262</a></li>
+<li>Transcript — 2026-08-10 Q2 2026 Transcript</li>
+<li>Transcript — 2026-07-02 Kopin Corporation (KOPN) Discusses AI Infrastructure Catalysts and Expanding Defense Opportunities Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

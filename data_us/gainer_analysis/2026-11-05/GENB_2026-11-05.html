@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GENB — Generate Biomedicines Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>GENB — Generate Biomedicines Inc. Common Stock</h1>
+<div class="sub">2026-11-05 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">GENB</span><span class="badge">+4.84%</span><span class="badge">거래량 0.87배</span><span class="badge">$1.78B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>GB-0895의 임상 3상 진입과 2026년 6월 말 현금·유가증권 4억5,740만 달러는 사업 지속성과 핵심 촉매 측면에서 긍정적이다.</li>
+<li>반면 제품 매출은 없고, 최근 분기 매출 630만 달러는 Amgen·Novartis 연구 프로그램에서 발생했다. 분기 순손실은 6,730만 달러다.</li>
+<li>현재 가치는 임상 결과와 플랫폼의 상업적 검증에 크게 의존한다. 제공된 자료만으로는 성공 가능성이나 적정가치를 산정하기 어렵다.</li>
+<li>하루 주가는 4.84% 올랐지만 거래량은 20일 중앙값의 0.87배다. 거래량 급증이 동반된 움직임으로 보기는 어렵다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong> 제공된 자료에는 오늘 발표된 공시·실적·뉴스 촉매가 없다. 최근 확인 가능한 공시는 8월 25일 포스터 공개 관련 8-K이며, 9월 실적콜 transcript는 오늘의 촉매로 확인되지 않는다. 제공된 뉴스 헤드라인도 경쟁사 목록 기사로, 당일 상승을 설명하는 구체적 내용은 없다.</p>
+<p>또한 거래량은 20일 중앙값의 0.87배로, 제공된 지표상 거래량 급증은 확인되지 않는다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 발췌문은 10-K 사업 섹션이 아니라 10-Q의 사업 개요와 MD&amp;A다. 따라서 10-K에 기재된 전체 제품·서비스, 고객군 및 경쟁 위치는 <strong>공시상 확인 불가</strong>다.</p>
+<p>회사는 임상 단계의 생성생물학 기업으로, 계산 모델과 실험실 검증을 연결하는 Generate Platform을 개발한다고 설명한다. 회사에 따르면 플랫폼은 기존 단백질을 바탕으로 후보를 설계하거나, 참조 단백질 없이 새 단백질을 설계하는 데 쓰인다.</p>
+<p>회사는 판매 승인 제품이 없고 제품 판매 매출도 없다고 밝혔다. 2026년 2분기 매출은 630만 달러로, 8월 6일 실적 발표에 따르면 Amgen 및 Novartis와 진행 중인 연구 프로그램에서 발생했다. 과거에는 협업·라이선스 관련 지급과 비용 분담금도 자금 조달의 일부였지만, 제공된 자료만으로 각 협업의 현재 수익 구조와 매출 기여도를 나누어 확인할 수는 없다.</p>
+<p>회사가 공개한 주요 후보물질은 중증 천식용 항-TSLP 항체 GB-0895, ADC 관련 독성 완화를 목표로 하는 MMAE 중화제 GB-4362, Roswell Park와 공동 개발하는 CAR-T 후보 GB-5267이다. 경쟁사별 점유율이나 제품 우위에 대한 독립 비교 자료는 제공되지 않았다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>2026년 2분기 매출은 630만 달러다. 회사의 실적 발표에 따르면 전년 동기 1,010만 달러보다 감소했고, 제공된 시장 지표상 전분기 대비로도 12.6% 감소했다. 매출 YoY 지표는 제공되지 않았다. 매출이 협업 연구 프로그램에서 발생한다는 점은 확인되지만, 단가·물량·프로그램 믹스별 증감은 <strong>공시상 확인 불가</strong>다. 따라서 매출 감소 원인을 수요 변화나 단가 변화로 분해할 수 없다.</p>
+<p>영업이익률은 -1,134.2%, 매출총이익률은 제공되지 않았다. 연구개발비는 2분기 6,430만 달러로 전년 동기 5,970만 달러보다 늘었으며, 회사는 주된 이유로 GB-0895 천식 임상 3상 투자를 들었다. 일반관리비는 1,360만 달러로 전년 동기 1,050만 달러보다 증가했고, 회사는 주된 원인으로 주식보상비용 증가를 들었다. 분기 순손실은 6,730만 달러였다. 제품 매출이 없는 가운데 임상 개발비가 큰 구조여서, 현재 수익성은 상업화보다 임상 투자 단계의 부담을 반영한다.</p>
+<p>2026년 6월 말 현금·현금성 자산·시장성 증권은 4억5,740만 달러로, 3월 말 5억1,660만 달러에서 감소했다. 상반기 영업활동 현금 유출은 1억3,830만 달러로 전년 동기 1억190만 달러보다 컸다. 별도 시장 지표상 TTM 잉여현금흐름은 -2억4,590만 달러다. 회사는 현재 운영 계획에 필요한 자금이 2028년 상반기까지 충분하다고 밝혔지만, 장기 운영에는 추가 자본이 필요할 것으로 예상했다. 이 자금 전망은 회사의 추정이며, 현금 소진이 이어지면 증자 등 외부 조달에 따른 희석 위험이 남는다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li><strong>GB-0895의 중증 천식 임상 3상:</strong> 회사는 SOLAIRIA-1·2 두 건의 글로벌 임상 3상을 진행 중이며, 8월 6일 자료에서 42개국 개발 계획 중 33개국의 규제 승인을 받았고 6개 글로벌 권역에서 환자 모집 중이라고 밝혔다. 실현 조건은 임상 완료와 유효성·안전성 결과, 규제 승인이다. 다음 확인 포인트는 모집 진척, 임상 일정 변경, 후속 공개 데이터다.</li>
+<li><strong>GB-0895의 투여 편의성 및 적응증 확장:</strong> 회사가 8월 25일 제출한 포스터에는 천식 1상에서 약 98일 반감기와 바이오마커 억제가 보고됐다. 회사는 이를 6개월 간격 투여 가능성을 뒷받침하는 결과로 제시했다. 회사는 COPD 1b상 자료도 ERS에서 공개할 예정이라고 8월 6일 밝혔다. 바이오마커 및 약동학 결과가 환자 임상 효과와 안전성으로 이어지는지, 그리고 COPD 후속 임상으로 진전되는지가 검증 포인트다. 포스터 결과는 임상 3상 성공을 입증하는 자료가 아니다.</li>
+<li><strong>GB-4362의 ADC 독성 완화 가능성:</strong> 회사는 1상 첫 코호트 환자 등록과 초기 투약을 발표했고, FDA Fast Track 지정을 받았다고 밝혔다. 실현 조건은 MMAE 관련 독성이 줄면서 항암 효과가 유지되는지 확인하는 것이다. 다음 확인 포인트는 1상 안전성·약동학 및 개념 입증 데이터다.</li>
+<li><strong>GB-5267 및 플랫폼 협업:</strong> 회사는 Roswell Park와 공동 진행하는 CAR-T 임상이 모집 중이며 2026년 첫 환자 투약을 예상한다고 밝혔다. 또 Novartis가 플랫폼 설계 생물학적 제제를 전임상 파이프라인으로 진전시켰다고 발표했다. 검증 포인트는 실제 투약 진행, 추가 협업의 구체적 조건 및 수익 구조, 협업 프로그램의 임상 진입 여부다.</li>
+<li><strong>Generate Platform의 확장성:</strong> 회사는 계산 설계와 실험 검증을 결합해 여러 프로그램을 병행하고 새로운 후보를 만들 수 있다고 설명한다. 다만 플랫폼의 기술적 생산성이 지속적인 매출·마일스톤·로열티로 전환되는지는 별도 검증이 필요하다. 다음 분기에는 새 후보 공개와 협업 진전이 구체적인 계약 또는 개발 단계로 이어지는지 확인할 필요가 있다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>실적콜 발췌문은 8월 분기 실적 발표 콜이 아니라 9월 16일·23일 투자자 행사 transcript다. 따라서 이 발언만으로 2분기 실적콜의 가이던스 변화나 반복된 애널리스트 질문을 판단할 수는 없다. 발췌된 대화에서는 회사 경영진의 발언이 중심이며, 정량적 전망은 회사의 전망으로 구분해야 한다.</p>
+<ul>
+<li><strong>경영진 톤과 자신감:</strong> 9월 16일 CFO는 회사가 모델뿐 아니라 대규모 실험 검증 능력에 투자했고, GB-0895를 통해 플랫폼의 임상 가능성을 보여주려 한다고 설명했다. 9월 23일 CEO는 계산·실험실 통합과 데이터 축적을 차별점으로 강조했다. 자신감의 근거는 플랫폼의 작동 방식과 초기 임상·바이오마커 결과에 대한 회사 설명이다. 그러나 이는 경영진 발언이며 임상 3상 성공을 입증하지 않는다.</li>
+<li><strong>전망 화법과 자본 배분:</strong> CEO는 장기적으로 발견 단계와 후기 임상·상업화가 분리될 가능성을 언급했지만, 현재 경제 구조에서는 후보물질을 자체 개발해야 한다고 말했다. CFO는 GB-0895 모집이 2027년 말까지 완료될 것으로 회사가 믿는다고 밝혔으며, COPD의 등록 임상 진입 가능성 및 향후 협업도 언급했다. 이 일정과 가능성은 회사 전망이다.</li>
+<li><strong>Q&amp;A에서 드러난 핵심 쟁점:</strong> 발췌된 Q&amp;A에서는 임상 개발 기간을 줄일 수 있는지, 플랫폼의 경쟁 우위가 무엇인지, 장기적으로 자체 개발과 파트너십 중 어디서 가치를 회수할지가 주요 질문으로 다뤄졌다. GB-0895에서는 효능의 신규성보다 6개월 투여 간격과 지속성이 가치 동인이라는 답변이 나왔다. 단, 전체 질의응답이 제공되지 않아 질문의 빈도나 회사가 회피한 지점은 판단하기 어렵다.</li>
+<li><strong>공시보다 구체적인 발언:</strong> CFO는 GB-0895 천식 임상의 모집 완료 목표 시점을 2027년 말로 제시하고, COPD의 등록 임상 진입 가능성과 GB-4362·CAR-T의 향후 개념 입증 데이터를 언급했다. CEO는 임상시험 환자·사이트 모집과 규제 제출 과정의 비효율을 줄일 수 있다는 견해를 밝혔다. 이 내용은 발췌 transcript에서 확인되는 회사 경영진의 발언이며, 확정된 실적이나 일정으로 볼 수 없다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ul>
+<li><strong>임상 개발 및 규제 리스크:</strong> 회사는 GB-0895를 중증 천식 임상 3상에서 평가 중이다. 제공된 자료의 천식 포스터는 1상 안전성·약동학·바이오마커 결과이며, 임상 3상 유효성 결과가 아니다. 회사가 개발한 후보가 승인을 받을지, 또는 임상 일정이 유지될지는 불확실하다.</li>
+<li><strong>현금 소진과 추가 조달:</strong> 2026년 상반기 영업활동 현금 유출은 1억3,830만 달러였고, 회사는 장기 운영에 추가 자본이 필요하다고 밝혔다. 회사가 예상한 2028년 상반기까지의 자금 여력은 현재 운영 계획을 전제로 한 전망이다. 조달 조건에 따라 기존 주주 지분이 희석될 수 있다.</li>
+<li><strong>협업 매출의 변동성:</strong> 회사는 제품 판매 매출이 없으며, 2분기 매출은 Amgen·Novartis 연구 프로그램에서 발생했다. 협업 프로그램의 진행 및 지급 조건에 따라 분기 매출이 흔들릴 수 있고, 이 매출이 반복적 제품 매출로 대체될 시점은 제공된 자료에서 확인되지 않는다.</li>
+<li><strong>플랫폼의 경제적 가치 회수 불확실성:</strong> 회사는 플랫폼의 설계·실험 검증 능력을 차별점으로 제시하지만, 실제 가치는 후보물질의 임상 성공, 협업 계약, 승인 및 상업화로 이어져야 한다. CEO도 장기적으로 후기 임상·상업화를 파트너에게 맡길 가능성을 언급했으나, 회사가 가치사슬에서 어느 정도의 경제적 몫을 확보할지는 확정되지 않았다.</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>정량적으로는 시가총액 17억8,000만 달러에 최근 분기 매출 630만 달러, TTM 잉여현금흐름 -2억4,590만 달러, 영업이익률 -1,134.2%다. 제품 판매 매출은 없고, 회사가 보고한 현금·현금성 자산·시장성 증권은 2026년 6월 말 4억5,740만 달러다. 임상 3상 자산과 현금 보유는 긍정 요소지만, 현재 매출 및 현금흐름이 시가총액을 뒷받침한다고 보기 어렵다. 따라서 결과 확인 전 의미 있는 비중을 싣기보다 임상·현금 소진·플랫폼 수익화의 진행을 확인하는 관망이 적절하다.</p>
+<p>진입 전 확인할 것 3가지:</p>
+<ol>
+<li><strong>GB-0895 임상 3상:</strong> 환자 모집과 일정이 회사 전망대로 진행되는지, 임상 3상 결과가 효능·안전성을 뒷받침하는지 확인한다.</li>
+<li><strong>현금과 조달:</strong> 분기별 현금 잔액과 영업활동 현금 유출을 추적하고, 추가 자금 조달이 필요한 시점과 조건을 확인한다.</li>
+<li><strong>협업·후속 파이프라인의 검증:</strong> Novartis 프로그램의 후속 진전, GB-4362 및 GB-5267의 환자 투약과 데이터 공개, COPD 후속 임상 계획이 구체화되는지 확인한다.</li>
+</ol>
+<p><strong>판단을 관망으로 유지하거나 낮출 조건:</strong> 현재 판단은 관망이다. GB-0895 임상 일정의 중대한 지연, 임상 결과의 유효성·안전성 우려, 현금 소진 가속 또는 불리한 조건의 자금 조달이 확인되면 보유·진입 판단을 더 보수적으로 바꿔야 한다. 반대로 임상 진전과 데이터, 현금 관리, 협업 수익화가 구체적으로 확인되기 전에는 하루 주가 상승만으로 비중 확대를 정당화하기 어렵다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336437/ck0002100782-20260630.htm">10-Q — 2026-06-30_0001193125-26-336437</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526210059/ck0002100782-20260331.htm">10-Q — 2026-03-31_0001193125-26-210059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526365556/ck0002100782-ex99_1.htm">8-K — 2026-08-25_0001193125-26-365556__EX-99.1__ck0002100782-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526365556/ck0002100782-20260825.htm">8-K — 2026-08-25_0001193125-26-365556</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336462/ck0002100782-ex99_1.htm">8-K — 2026-08-06_0001193125-26-336462__EX-99.1__ck0002100782-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2100782/000119312526336462/ck0002100782-20260806.htm">8-K — 2026-08-06_0001193125-26-336462</a></li>
+<li>Transcript — 2026-09-23 Bernstein Insights: Healthcare Leaders and Disruptors – 3rd Annual Healthcare Forum Transcript</li>
+<li>Transcript — 2026-09-16 H.C. Wainwright 28th Annual Global Investment Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
