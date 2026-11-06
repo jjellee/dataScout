@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAPL — Apple Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>AAPL — Apple Inc. Common Stock</h1>
+<div class="sub">2026-11-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">AAPL</span><span class="badge">+5.31%</span><span class="badge">거래량 2.25배</span><span class="badge">$5.08T</span><span class="badge">S&amp;P500</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>매출과 iPhone·서비스 매출이 분기 기록을 세웠고, TTM 잉여현금흐름도 $136.06B로 제시돼 사업의 현금창출력은 강하다.</li>
+<li>다만 최근 분기 영업이익률은 31.1%로 전년 대비 0.5%p 낮아졌고, 4분기 총마진에는 관세 환급 효과가 포함됐다. 메모리 비용과 공급 제약도 부담이다.</li>
+<li>주가는 당일 5.31% 올라 52주 고점에 도달했다. 상승 추세를 인정하더라도, 제공 자료만으로 추가 상승 여력이나 밸류에이션 매력을 확인하기 어려워 적극 비중 근거는 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>최근 확인 가능한 실적 촉매는 <strong>11월 2일 발표된 2026 회계연도 4분기 실적</strong>이다. 회사는 분기 매출 $114.5B, 전년 대비 12% 증가, iPhone 분기 기록, 서비스 매출 사상 최고치를 발표했다. 제공된 시장 지표의 분기 매출 증가율은 11.7%다. 실적콜 요약에서는 중국 매출이 21% 늘고 Mac 매출은 24% 증가했다고 제시했다.</p>
+<p>다만 당일 상승을 직접 유발한 뉴스나 공시는 제공 자료에서 특정되지 않는다. 11월 3일 10-K와 11월 5일 424B2의 구체적인 내용도 발췌되어 있지 않아 당일 촉매로 판정할 근거가 없다. 따라서 <strong>실적 호조가 배경일 가능성은 있지만, 당일 상승의 직접 원인은 확인 불가</strong>다. 거래량은 20일 중앙값의 2.25배로 평소보다 컸다. 최근 헤드라인에는 고평가·매도 의견과 중국 성장 둔화 우려도 함께 있어, 헤드라인만으로 상승 원인을 단정하기 어렵다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 10-K 사업 섹션 발췌에 따르면 Apple은 스마트폰, 개인용 컴퓨터 등 제품을 설계·제조·판매한다. 실적콜 수치에서 제품 매출은 $82.9B, 서비스 매출은 $31.6B로, 총매출 $114.5B에서 각각 약 72%, 28%를 차지한다. 비중은 제공된 금액으로 계산한 근삿값이다.</p>
+<p>제품 매출은 iPhone $57.6B, Mac $10.8B, iPad $6.2B, 웨어러블·홈·액세서리 $8.3B였다. 서비스는 $31.6B로 전년 대비 10% 성장해 사상 최고치를 기록했다. 회사는 영상, 클라우드, 결제, 광고 서비스에서 기록을 세웠고 Music도 9월 분기 기록을 달성했다고 실적콜에서 밝혔다.</p>
+<p>고객군별 매출 구성과 시장점유율은 제공 자료에서 확인할 수 없다. 경쟁 위치를 보여주는 독립적인 점유율 자료도 없다. 경영진은 실적콜에서 자사 조사·시장조사업체 자료를 인용해 중국 도시 지역 스마트폰 판매 상위 3개 모델이 iPhone이었다고 주장했으나, 이는 회사가 콜에서 제시한 내용이다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p>최근 분기 매출은 $114.48B로 전년 대비 11.7%, 전분기 대비 4.6% 증가했다. 8-K 발표문은 매출을 $114.5B, 전년 대비 12% 증가로 반올림해 제시한다. 실적콜에 따르면 iPhone은 17%, Mac은 24%, 서비스는 10% 증가한 반면 iPad는 10%, 웨어러블·홈·액세서리는 8% 감소했다. 따라서 성장은 iPhone과 서비스 중심이며 전 제품군의 동반 성장은 아니다.</p>
+<p>가격·물량·믹스별 기여도는 공시상 확인 불가다. 실적콜에서 회사는 iPhone 성장이 공급 제약과 환율 역풍에도 이뤄졌다고 설명했지만, 판매량과 평균판매가격의 분해 수치는 제공되지 않았다. 4분기 총마진은 47.9%였고, 회사 발표에 따르면 관세 환급이 약 1%p의 우호적 효과를 줬다. 제공된 지표의 영업이익률은 31.1%로 전년 대비 0.5%p 하락했다. 실적콜에서는 두 분기의 관세 환급을 제외할 경우 총마진이 전분기 대비 약 1%p 낮아졌으며, 주된 원인은 메모리 비용이라고 설명했다.</p>
+<p>TTM 잉여현금흐름은 $136.06B다. 실적콜상 4분기 영업현금흐름은 $28.1B이며, 분기 중 주주환원은 $28B(배당 및 이에 준하는 지급 $3.9B, 자사주 매입 $24B)였다. 콜에서 제시된 기말 현금·유가증권은 $137B, 총부채는 $80B다. 현금흐름과 유동성은 강한 편으로 보이지만, TTM 현금흐름의 산출 기준과 현금성 자산의 세부 구성은 제공 자료만으로 확인할 수 없다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li><strong>iPhone 신제품과 교체 수요:</strong> 실적콜에서 회사는 iPhone 분기 기록과 신제품 출시를 성장 배경으로 들었다. 실현에는 고객 반응이 판매로 이어지고 공급 제약이 완화되는 것이 필요하다. <strong>검증 포인트:</strong> 다음 분기 iPhone 매출 성장률과 공급 제약 지속 여부.</li>
+<li><strong>서비스 매출과 설치 기반:</strong> 서비스 매출은 $31.6B로 10% 성장했고, 회사는 유료 구독자 15억 명 초과와 두 자릿수 성장률을 콜에서 언급했다. 이 구독자 수치는 콜 발언이며 제공된 SEC 발췌에서 검증되지 않는다. <strong>검증 포인트:</strong> 서비스 매출 성장률과 마진, 회사가 언급한 구독자 추세의 후속 확인.</li>
+<li><strong>AI 기능과 기기 교체:</strong> 회사는 Siri AI와 기기 내 처리·Private Cloud Compute를 신제품 경험의 축으로 제시했다. 실적콜에서 서버 측 AI 사용은 서비스 원가에 반영되고 비용 규모를 예측하기 어렵다고 언급했다. <strong>검증 포인트:</strong> AI 기능이 매출·교체 수요를 높이는지, 서비스 비용과 총마진에 어떤 영향을 주는지.</li>
+<li><strong>중국 및 신흥시장 회복:</strong> 회사는 실적콜에서 Greater China 매출이 4분기 21%, 연간 28% 증가했다고 밝혔고, 인도도 연간 최고 기록을 달성했다고 설명했다. <strong>검증 포인트:</strong> 중국 매출 성장의 지속성과 지역별 매출 구성. 경영진은 중국 성장을 제품 경쟁력에 귀속했지만, 성장 요인별 기여도는 제공 자료에서 확인 불가다.</li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>경영진은 사상 최고 매출과 iPhone·서비스 기록, 중국 회복, 신제품 라인업을 강조했다. 다만 가이던스에는 조건이 붙었다. 회사는 12월 분기 매출이 전년 대비 7~10% 성장하고 총마진은 45~46%일 것으로 전망했으며, 전망은 현행 관세율·정책과 글로벌 거시환경 악화가 없다는 전제에 기반한다고 밝혔다. 서비스 매출 성장 전망은 8~9%다. 이는 회사 전망이며 확정 실적이 아니다.</p>
+<p>메모리 비용과 공급 문제가 Q&amp;A의 주요 방어 지점이었다. CFO는 메모리 가격이 전례 없는 수준이라고 했고, COO는 12월 분기에도 Mac과 iPad 공급 제약이 이어질 것으로 예상하며 수요가 회사 예상을 웃돈 것이 주된 이유라고 답했다. 12월 이후 공급 전망은 제시하지 않았다. 가격 인상에 대한 수요 탄력성을 묻는 질문에도 회사는 아직 판단하기 이르다는 취지로 답했다.</p>
+<p>AI 투자 비용에 대해 CFO는 12월 분기 영업비용이 전년 대비 11~13% 늘고, 특히 AI를 포함한 R&amp;D 투자가 증가할 것이라고 밝혔다. 증가율은 FY2026보다 낮아질 전망이라고 설명했지만, 투자수익이나 AI 매출 기여의 정량 전망은 제시하지 않았다. 실적콜에서만 드러난 정보로는 AI 서버 추론 비용이 서비스 원가로 처리되며, 기기 내 처리와 Private Cloud Compute 간 사용 비중을 초기 단계에서 예측하기 어렵다는 점이 있다.</p>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>메모리 비용과 공급 제약:</strong> 2026년 6월 27일 기준 10-Q 발췌는 첨단 반도체·NAND·DRAM의 공급 부족과 비용 상승이 심화할 수 있다고 회사가 밝혔다. 실적콜에서도 메모리 비용이 마진을 낮추고 Mac·iPad 제약이 12월 분기까지 이어질 수 있다고 언급했다.</li>
+<li><strong>관세와 무역 정책:</strong> 10-Q는 관세가 부품·공급망·가격·총마진에 중대한 악영향을 줄 수 있으며, 최종 영향은 정책과 상대국 대응에 따라 불확실하다고 설명한다. 4분기 총마진에 관세 환급 약 1%p 효과가 있었다는 점은 해당 기간 마진의 일부가 일회성 환급에 힘입었음을 보여준다.</li>
+<li><strong>마진 압박과 가격 인상의 수요 영향:</strong> 회사는 비용 상승에 대응해 가격을 인상할 수 있지만, 그 조치가 비용을 상쇄하지 못하거나 수요를 낮출 수 있다고 10-Q에서 밝혔다. 실제로 제공된 지표의 영업이익률은 전년 대비 0.5%p 하락했다.</li>
+<li><strong>제품군별 성장 편차와 출시 시점:</strong> 실적콜에서 iPad와 웨어러블·홈·액세서리 매출이 감소했다. 10-Q는 신제품 출시와 계절성이 매출·원가·영업비용 및 유통 재고에 영향을 준다고 설명한다.</li>
+<li><strong>서비스 규제·비용과 환율:</strong> 실적콜에서 회사는 서비스 전망에 제3자 라이선스와 환율의 순차적 역풍이 있다고 밝혔고, 앱스토어·모바일 게임 관련 압력과 AI 서버 비용도 언급했다. 관련 소송·규제의 구체적 재무 영향은 제공 발췌로 확인할 수 없다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>보통 비중 근거:</strong> 매출은 전년 대비 11.7% 늘었고, 총마진은 47.9%, TTM 잉여현금흐름은 $136.06B로 사업 규모와 현금창출력이 강하다. 반면 영업이익률은 전년 대비 0.5%p 하락했고, 4분기 총마진은 관세 환급의 도움을 받았다. 당일 주가는 52주 고점 수준까지 올라 추가 매수의 가격 안전마진을 제공 자료에서 확인할 수 없다. 시가총액 $5.08T와 주가 $349.51만으로 밸류에이션을 판단할 이익배수·현금흐름 배수는 공시상 확인 불가다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>다음 분기 매출이 회사의 전년 대비 7~10% 성장 전망에 부합하는지, 특히 iPhone 성장과 공급 제약이 어떻게 나타나는지.</li>
+<li>관세 환급 효과를 제외한 총마진 흐름과 메모리 비용 상승이 영업이익률에 미치는 영향.</li>
+<li>서비스 매출 성장률이 회사 전망인 8~9%에 부합하는지, AI 관련 비용이 서비스 마진을 압박하는지.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건:</strong> 관세 환급을 제외한 마진 하락이 이어지면서 매출 성장까지 둔화하거나, 공급 제약이 수요 이탈로 이어지는 신호가 확인되면 관망으로 낮춘다. 반대로 공급이 개선되고 환급 효과 없이도 마진이 안정되며 iPhone·서비스 성장이 이어지는 것이 확인되면 적극 비중을 재검토할 수 있다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm">10-K — 2025-09-27_0000320193-25-000079</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm">10-Q — 2026-06-27_0000320193-26-000020</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm">10-Q — 2026-03-28_0000320193-26-000013</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/a8-kex991q4202609262026.htm">8-K — 2026-11-02_0000320193-26-000024__EX-99.1__a8-kex991q4202609262026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/aapl-20261102.htm">8-K — 2026-11-02_0000320193-26-000024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/a8-kex991q3202606272026.htm">8-K — 2026-07-30_0000320193-26-000018__EX-99.1__a8-kex991q3202606272026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/aapl-20260730.htm">8-K — 2026-07-30_0000320193-26-000018</a></li>
+<li>Transcript — 2026-11-02 Q4 2026 Transcript</li>
+<li>Transcript — 2026-09-09 Product Launch Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SII — Sprott Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SII — Sprott Inc. Common Shares</h1>
+<div class="sub">2026-11-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SII</span><span class="badge">+7.22%</span><span class="badge">거래량 3.02배</span><span class="badge">$2.91B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>3분기 평균 AUM이 전년 동기 대비 39% 늘었고, 관리보수 매출도 40% 증가했다. 자산운용 사업의 규모 확대가 실적 성장을 뒷받침한다.</li>
+<li>다만 분기 AUM은 전년 말보다 4% 감소했고, 귀금속 전략에서 순환매가 이어졌다. 자산가치와 자금 유입에 민감한 사업 구조라 실적 변동성이 크다.</li>
+<li>주어진 시장 지표의 당일 급등만으로는 상승 촉매를 확정하기 어렵다. 실적 발표와 배당 인상은 확인된 긍정 재료지만, 거래량 급증의 직접 원인인지는 공시로 확인되지 않는다.</li>
+<li>금속 가격과 AUM 흐름이 확인되기 전까지 의미 있는 비중 확대는 보류하는 편이 타당하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>11월 4일 3분기 실적 발표와 11월 3일 분기 배당 25% 인상이 최근의 확인된 촉매다. 회사는 3분기 평균 AUM이 전년 동기 대비 39% 증가했고 관리보수 매출이 40% 늘었다고 발표했다. 배당은 주당 US$0.50로 인상됐다.</p>
+<p>다만 제공된 자료만으로는 이 재료들이 오늘의 <span class="up">+7.22%</span> 상승과 거래량 20일 중앙값 대비 3.02배를 직접 유발했다고 단정할 수 없다. 시장 지표상 주가는 20일간 2.5%, 60일간 4.6% 하락했고 52주 고점보다 32.2% 낮다. <strong>당일 급등의 직접 원인은 확인되지 않으며, 실적 재평가와 수급 또는 섹터 동조가 함께 작용했을 가능성은 있으나 추정이다.</strong></p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>제공된 자료에는 10-K 사업 섹션 원문이 포함되어 있지 않다. 따라서 고객군, 전체 매출 구성, 경쟁 위치를 10-K 근거로 상세히 확정할 수는 없다. 회사가 6-K 실적자료에서 밝힌 사업 소개에 따르면 Sprott는 귀금속과 핵심소재 투자에 집중하는 글로벌 자산운용사이며, 전략은 <strong>상장 상품(Exchange Listed Products), 운용주식(Managed Equities), 사모 전략(Private Strategies)</strong>으로 나뉜다.</p>
+<p>수익의 핵심은 운용자산에 연동되는 관리보수다. 3분기 관리보수는 $70.8M, 순보수는 $64.5M이었다. 사모 전략에서는 성과보수와 캐리드 인터레스트가 발생할 수 있지만, 3분기 해당 수익은 $0.1M에 그쳤다. 운용자산과 시장가격 상승은 보수 기반을 키우고, 자금 유입·유출은 그 기반을 보강하거나 약화시킨다.</p>
+<p>실적자료는 핵심소재 전략에서 순유입, 귀금속 전략에서 순유출이 있었다고 밝혔다. Q2 실적콜에서 경영진은 ETF의 고정비가 자산 규모가 커질수록 AUM 대비 낮아져 수익성에 도움이 된다고 설명했다. 다만 이는 회사의 설명이며, 개별 상품의 손익분기 자산 규모는 상품과 지역에 따라 다르다고 덧붙였다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장과 매출의 질.</strong> 제공된 시장 지표상 최근 분기 매출은 $79.5M으로 전년 동기 대비 27.8% 증가했으나 전분기 대비 44.0% 감소했다. 회사 실적자료에서 관리보수는 $70.8M으로 전년 동기 대비 40% 증가했다. 회사는 평균 AUM 상승이 매출 증가의 주된 요인이었다고 밝혔다. 이는 가격 인상이나 순수 물량 증가만으로 설명되는 성장이 아니라, 시장가격 상승과 자금 흐름이 함께 반영되는 운용자산 규모의 영향을 크게 받는 성장이다.</p>
+<p>3분기 말 AUM은 $57.3B으로 전분기 말 대비 3% 증가했지만 2025년 말 대비 4% 감소했다. 회사는 분기 중 대부분의 상품에서 시장가치가 상승했고, 핵심소재 전략 순유입이 있었으나 귀금속 전략에서는 순유출이 있었다고 밝혔다. 분기 말 AUM 개선을 지속적 순유입만의 결과로 해석하기 어렵다.</p>
+<p><strong>마진.</strong> 시장 지표상 영업이익률은 56.4%, 전년 동기 대비 25.2%p 상승했고 매출총이익률은 63.6%다. 다만 계산 기준과 세부 MD&amp;A가 제공되지 않아 이 마진 수치의 변동 원인을 정확히 분해할 수 없다. 회사 실적자료에 따르면 순보수는 37% 증가한 반면 순보상비용은 16% 증가했다. 한편 주식기준보상비용은 분기 $16.5M으로 전년 동기보다 26% 감소했다. 따라서 보고된 수익성 개선에는 운용 규모 확대뿐 아니라 보상·주식기준보상 비용 변화도 영향을 줬을 가능성이 있다.</p>
+<p><strong>현금흐름과 재무 건전성.</strong> TTM 잉여현금흐름은 시장 지표상 $139.7M이다. Q2 실적콜에서 CEO는 회사가 무차입 상태이며 상당한 잉여현금흐름을 창출한다고 말했다. 이는 콜 발언으로 확인되는 내용이며, 제공된 자료에는 해당 분기말 현금·부채 내역과 잉여현금흐름 산식이 없어 독립적으로 대조할 수 없다. 배당 인상은 현금창출력에 대한 회사의 자신감을 시사하지만, 그 자체가 향후 현금흐름을 보장하지는 않는다.</p>
+<h2>5. 성장 드라이버</h2>
+<ul>
+<li><strong>핵심소재 ETF와 투자수요 확대:</strong> 회사는 구리·우라늄·희토류 등 핵심소재 상품의 투자자 관심을 성장 축으로 제시했다. 실현 조건은 상품의 순유입이 지속되고, 기초자산 가격 조정에도 AUM이 유지되는 것이다. <strong>다음 분기에는 핵심소재 상품의 순유입과 평균·기말 AUM 변화를 확인해야 한다.</strong></li>
+<li><strong>ETF 규모의 경제:</strong> 회사는 상품 규모가 커질수록 고정비 부담이 AUM 대비 낮아진다고 설명했다. 실현 조건은 신규 상품이 자산을 모으고 비용 증가를 통제하는 것이다. <strong>다음 분기에는 상장 상품의 순보수 증가와 비용 증가율을 비교할 필요가 있다.</strong></li>
+<li><strong>사모 전략의 확장:</strong> Q2 실적콜에서 CEO는 네 번째 사모대출 펀드 모집이 진행 중이며 2027년 중 마감을 예상한다고 밝혔다. 이는 회사 전망이다. <strong>모집 진행 상황, 실제 마감 여부, 사모 전략의 AUM과 성과보수 발생 여부를 확인해야 한다.</strong></li>
+<li><strong>배당 확대와 자본 배분:</strong> 이사회는 분기 배당을 25% 인상했다. 지속 가능성은 향후 이익·현금흐름과 배당 부담에 달려 있다. <strong>다음 분기에는 잉여현금흐름과 배당 규모를 함께 점검해야 한다.</strong></li>
+</ul>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript는 2026년 8월 5일 Q2 실적콜이다. 11월 4일 Q3 실적콜 transcript는 제공되지 않아 최신 분기 경영진의 톤과 Q&amp;A를 평가할 수 없다.</p>
+<p>Q2 콜에서 경영진은 귀금속의 급격한 조정을 인정하면서도 장기 펀더멘털은 훼손되지 않았다고 평가했다. 핵심소재에서는 전력 수요, 공급망 안보, 서구권의 채굴·정제 역량 확충을 장기 성장 논리로 제시했다. 이는 회사의 견해와 전망이며, 시장가격이나 투자자 배분을 보장하지 않는다.</p>
+<p>애널리스트 질문은 금속 가격이 정체될 때 ETF AUM 성장, 상장상품 사업의 수익성, 자사주 매입 기준, 귀금속 신탁의 상대적 자금 유출 등에 집중됐다. 회사는 금속 가격이 정체될 경우의 구체적인 AUM 성장률을 제시하지 않았고, 대신 장기적인 핵심소재 투자 흐름을 설명했다. ETF 손익분기 규모에 대해서는 북미 일부 상품에서 약 $25M 수준일 수 있다고 답했으나, 상품별 차이가 있다고 명시했다.</p>
+<p>콜에서만 확인되는 정보로는 Q2 귀금속 실물 신탁 AUM이 $8.2B, 16% 감소했다는 설명, 일부 금·은 신탁이 복합 금속 상품이라는 점이 상대적으로 높은 환매 취약성의 한 원인이라는 설명, 그리고 자사주 매입이 주가 하락 시 더 적극적이 될 수 있다는 경영진 발언이 있다. 회사는 Q2에 자사주 매입을 집행했고 Q3에도 진행 중이라고 답했다.</p>
+<h2>6. 리스크</h2>
+<ul>
+<li><strong>금속 가격과 AUM의 동반 변동:</strong> 회사 실적자료는 2026년 누적 기준으로 귀금속 상품의 시장가치 하락과 순유출이 AUM에 부담이었다고 설명한다. 금속 가격이 하락하면 보수 기반이 줄고 환매가 겹칠 수 있다.</li>
+<li><strong>귀금속 전략의 환매 위험:</strong> Q2 실적콜에서 회사는 귀금속 실물 신탁의 큰 폭 AUM 감소와 수익실현성 환매를 언급했다. 금·은 복합 신탁은 단일 금속 상품을 선호하는 투자자와 기관에 덜 매력적일 수 있다는 설명도 제시했다.</li>
+<li><strong>성과보수의 변동성:</strong> 3분기 캐리드 인터레스트와 성과보수는 $0.1M으로 전년 동기보다 95% 감소했다. 회사는 2026년 누적 성과보수 증가가 1분기 사모 전략의 캐리드 인터레스트 실현에 일부 기인했다고 밝혔다. 분기 실적이 일회성 실현에 좌우될 수 있다.</li>
+<li><strong>주식기준보상과 비용 변동:</strong> 회사는 주식기준보상 비용이 주가 변동에 따라 움직인다고 설명했다. 2026년 누적 비용은 전년 동기보다 증가했으며, 향후 주가와 보상 정산 시점에 따라 보고이익 변동이 생길 수 있다.</li>
+<li><strong>핵심소재 성장 논리의 실행 불확실성:</strong> 경영진은 서구권의 채굴·정제 확대와 전력·안보 수요를 장기 성장 배경으로 제시했지만, 구체적인 AUM 성장률은 제시하지 않았다. Q2 콜에서 금속 가격이 보합일 경우의 성장 질문에도 정량 전망 대신 장기 추세를 설명했다.</li>
+</ul>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p>정량적으로는 3분기 평균 AUM이 전년 동기 대비 39% 증가했고, 관리보수 매출은 40%, 순보수는 37% 늘었다. 시장 지표상 영업이익률은 56.4%이며 TTM 잉여현금흐름은 $139.7M이다. 반면 분기 말 AUM은 전년 말보다 4% 낮고, 당일 급등 전 주가의 20일·60일 수익률은 각각 <span class="down">-2.5%</span>, <span class="down">-4.6%</span>였다. 이 자료는 성장성과 현금창출력을 뒷받침하지만, 귀금속 가격과 환매에 대한 민감성을 상쇄한다고 보기엔 부족하다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>다음 분기 귀금속과 핵심소재 전략의 순유입·순유출 및 기말 AUM.</li>
+<li>평균 AUM 증가가 관리보수·순보수로 이어지는지, 비용 증가가 그 성장을 잠식하는지.</li>
+<li>잉여현금흐름과 배당 확대가 함께 유지되는지, 성과보수 실현을 제외해도 현금창출이 견조한지.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건:</strong> 다음 분기에도 귀금속 순유출이 이어지고 기말 AUM이 다시 감소하며, 평균 AUM·관리보수 성장까지 둔화되는 조합이 확인되면 <strong>관망</strong>으로 낮출 근거가 된다. 반대로 핵심소재 순유입이 지속되고 보수 성장과 현금흐름이 유지되더라도, 금속 가격 상승에 따른 AUM 효과와 순유입 효과는 분리해 판단해야 한다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926122007/tm2628635d2_ex99-1.htm">8-K — 2026-11-03_0001104659-26-122007__EX-99.1__tm2628635d2_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926122007/tm2628635d2_6k.htm">8-K — 2026-11-03_0001104659-26-122007</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926120679/tm2628635d1_ex99-1.htm">8-K — 2026-10-30_0001104659-26-120679__EX-99.1__tm2628635d1_ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000110465926120679/tm2628635d1_6k.htm">8-K — 2026-10-30_0001104659-26-120679</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512920/000162828026069784/pressrelease2026q3.htm">8-K — 2026-09-30_0001628280-26-069784__EX-99.4__pressrelease2026q3</a></li>
+<li>Transcript — 2026-08-05 Sprott Inc. (SII:CA) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

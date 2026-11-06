@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVM — Silvercorp Metals Inc. Common Shares</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SVM — Silvercorp Metals Inc. Common Shares</h1>
+<div class="sub">2026-11-06 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">SVM</span><span class="badge">+8.68%</span><span class="badge">거래량 1.4배</span><span class="badge">$1.91B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>Q2 FY2027에는 중국 광산 안전 개선 공사로 은 판매량이 전년 동기 대비 47% 감소했고, 은 가격 상승에도 조정 순이익은 19% 줄었다.</li>
+<li>안전 개선 공사는 정부 점검·승인을 거쳐 재개됐지만, 생산 정상화 속도와 연간 생산 가이던스는 제공 자료에서 확인되지 않는다.</li>
+<li>현금·단기투자 $383.7M와 투자자산 시가 $428.0M은 완충재지만, 광산 건설 투자와 차입 실행이 병행되고 있다.</li>
+<li>당일 상승은 실적 발표와 시점이 겹치지만, 제공된 자료만으로 당일 주가 상승의 직접 촉매라고 단정할 수 없다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>11월 5일 회사는 Q2 FY2027 실적을 발표했다. 발표에는 중국 Ying 광산 안전 개선 공사의 실질적 완료와 정부 승인 후 운영 재개가 포함됐다. 이는 생산 차질 완화 기대를 뒷받침할 수 있는 내용이다. 다만 당일 상승률(<span class="up">+8.68%</span>)과 거래량 급증의 직접 원인이 실적 발표였는지는 제공 자료로 확인되지 않는다. <strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></p>
+<p>제공된 헤드라인에는 실버 가격 상승에도 조정 이익이 감소했다는 평가와 El Domo 지연·비용 부담 우려가 함께 있다. 헤드라인만으로 시장의 당일 반응이나 각 이슈의 주가 영향은 판단할 수 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>요청된 10-K 사업 섹션 원문은 제공되지 않았다. 따라서 고객군, 계약 구조, 사업별 매출 구성과 경쟁 위치는 <strong>공시상 확인 불가</strong>다.</p>
+<p>다만 2026년 11월 5일 실적 자료상 회사는 중국 사업에서 은·금·납·아연을 판매하고 있으며, 에콰도르 El Domo와 키르기스스탄 Chaarat ZAAV 광산 개발을 진행한다. Q2 FY2027 은 판매량은 0.9M oz, 금은 1,574 oz, 납은 7.5M lb, 아연은 1.1M lb였다. 판매처별 고객 구성과 금속별 매출 비중은 제공 발췌에서 확인할 수 없다.</p>
+<h2>4. 실적·재무 분석</h2>
+<h3>성장의 질: 가격이 물량 감소를 상쇄하지 못함</h3>
+<p>Q2 FY2027 매출은 $72.1M으로 전년 동기 대비 13% 감소했다. 은 평균 실현가격은 82% 오른 $61.83/oz였지만 은 판매량은 47% 감소했다. 금 가격은 32% 상승했지만 금 판매량도 23% 줄었다. 납과 아연 판매량 역시 각각 49%, 81% 감소했다. 실적은 금속 가격 상승의 도움을 받았지만, 생산·판매량 감소가 매출을 압박했다.</p>
+<p>제공된 시장 지표의 최근 분기 매출 $138.7M 및 매출 YoY <span class="up">+70.5%</span>는 회사 Q2 실적자료의 매출 $72.1M, 전년 동기 대비 <span class="down">-13%</span>와 서로 맞지 않는다. 기간이나 집계 기준을 대조할 자료가 없으므로 함께 해석하지 않는다. 이 차이는 투자 판단 전에 원자료에서 확인할 필요가 있다.</p>
+<h3>이익과 마진</h3>
+<p>Q2 광산 영업이익은 $39.9M으로 전년 동기 대비 2% 감소했다. 조정 순이익은 $18.4M, 주당 $0.08로 전년 동기 $22.6M, 주당 $0.10보다 줄었다. 조정 EBITDA는 $37.7M으로 2% 감소했다. 반면 지표로 제공된 영업이익률 54.4%, 전년 대비 <span class="up">+16.5%</span>p와 매출총이익률 61.1%는 Q2 회사 실적자료와 계산 기준·기간을 확인할 수 없어 그대로 비교하기 어렵다.</p>
+<p>은 온스당 현금원가(부산물 크레딧 차감)는 $2.14, AISC는 $24.13이었다. 회사는 안전 개선 공사로 생산·판매량이 줄어 단위 원가에 영향을 줬다고 설명했다. 가격이 높아진 만큼의 이익 개선이 실현됐다고 보기 어려운 분기다.</p>
+<h3>현금흐름과 재무 여력</h3>
+<p>영업활동 현금흐름은 $62.7M으로 전년 동기 $39.2M보다 증가했다. 다만 회사는 이 금액에 7월 Wheaton 인출분 $43.9M이 포함됐다고 밝혔다. 분기 잉여현금흐름은 $4.7M으로 전년 동기 $11.4M보다 감소했고, 회사는 광산 건설 투자 증가를 주요 원인으로 들었다.</p>
+<p>분기 말 현금·현금성자산과 단기투자는 $383.7M이었으며, 회사가 보유한 지분투자 포트폴리오의 시가총액은 $428.0M이었다. 분기 중 광산 건설 등에 $50.5M을 지출했다. 분기 말 이후 회사는 운전자금과 일반 기업 목적을 위해 RMB750M, 약 $112M의 대출을 최초 인출했다. 차입금 총액·이자율·상환 일정은 제공 자료에서 확인되지 않는다. 시장 지표의 TTM 잉여현금흐름 $79.1M은 분기 자료와 기간·산출 기준이 달라 직접 대조할 수 없다.</p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사가 밝힌 내용</th>
+<th>실현 조건 및 다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>중국 Ying·GC 운영 정상화와 Kuanping·신규 제분소</td>
+<td>안전 개선 공사는 실질적으로 완료돼 정부 점검과 운영 재개 승인을 받았다. Q1 FY2027 콜에서 회사는 Ying의 생산능력 확장과 Kuanping 개발을 언급했고, 신규 #3 제분소는 FY2028 Q1 가동을 목표로 제시했다.</td>
+<td>안전 개선 후 실제 채굴·판매량이 회복되는지, 생산 지연이 비용에 미치는 영향이 줄어드는지, 제분소 건설 일정이 유지되는지 확인해야 한다.</td>
+</tr>
+<tr>
+<td>에콰도르 El Domo</td>
+<td>Q2에 El Domo 개발·건설에 $14.6M을 지출했다. Q1 콜에서 회사는 우기에도 공사를 진행 중이며 공장·수처리 설비 장비를 조달했다고 밝혔다.</td>
+<td>건설 진척, 자본 지출, 인허가 및 공기 변동을 확인해야 한다. 제공 자료에는 최신 공정률·완공 일정·총사업비 전망이 없다.</td>
+</tr>
+<tr>
+<td>키르기스스탄 Chaarat ZAAV</td>
+<td>Q2에 광산 건설과 시추 활동에 $9.2M을 지출했다. Q1 콜에서 회사는 Tulkubash 건설과 Kyzyltash 시추를 설명했다.</td>
+<td>자금 집행, 건설·시추 진행 상황, 향후 개발 일정과 추가 자금 수요를 확인해야 한다. 실제 생산 시점과 최신 사업 경제성은 제공 자료에서 확인되지 않는다.</td>
+</tr>
+<tr>
+<td>Condor 탐사</td>
+<td>Q1 콜에서 회사는 허가 취득 후 탐사 터널 두 곳을 개발하고 초기 소규모 처리시설 계획을 검토한다고 밝혔다.</td>
+<td>허가 취득 여부와 상세 설계·예산 공개가 확인돼야 한다. 콜 당시 회사는 처리 규모와 비용을 검토 중이라고 했으며 이는 확정 투자계획이 아니다.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p>제공된 transcript는 <strong>2026년 8월 11일 Q1 FY2027 콜</strong>이다. 이번 Q2 실적콜 transcript는 제공되지 않았으므로 Q2 경영진의 톤이나 최신 Q&amp;A를 평가할 수 없다.</p>
+<ul>
+<li><strong>톤과 자신감:</strong> Q1 콜에서 사장 Lon Shaver는 안전 개선으로 생산이 일시 둔화했지만 안전한 광산을 위한 투자라고 설명했다. 회사가 제시한 생산 목표 범위의 40~50%를 해당 분기 목표로 유지하고 있다고 밝혔다.</li>
+<li><strong>가이던스 화법:</strong> 연간 생산·원가 전망을 즉시 조정하지 않았다. 회사는 “한 분기만으로 연간 추세를 판단하기 이르다”는 취지로 답했고, 해당 분기의 생산 회복 가시성을 얻은 뒤 연간 전망을 언급하겠다고 했다. 이는 조기 확정보다 관찰을 우선한 답변이다.</li>
+<li><strong>Q&amp;A의 쟁점과 방어:</strong> 애널리스트는 안전 개선에 따른 생산·원가 가이던스, El Domo의 지출 일정과 진행 속도를 물었다. 회사는 생산 재개가 점진적이라고 했고, 연간 가이던스 재검토는 미뤘다. El Domo 관련 상세 공정·비용 질문에는 제공된 transcript 발췌가 중간 생략돼 있어 답변을 평가할 수 없다.</li>
+<li><strong>콜에서만 드러난 내용:</strong> 회사는 Q1 당시 안전 개선 후 생산량이 분기 목표의 40~50% 수준일 것으로 예상한다고 언급했다. 또한 Condor에서 약 900~1,000 t/d 규모의 초기 표면 처리시설을 검토하며, 소규모 광산의 광석 위탁 처리도 고려한다고 설명했다. 이는 Q1 콜 시점의 계획·검토 내용이며 확정 일정이나 투자 승인을 뜻하지 않는다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>중국 안전 규제와 생산 차질:</strong> 회사는 신규 안전 규제에 대응해 Ying에서 대규모 안전 개선 작업을 진행했고, 그 영향으로 Q2 은 판매량은 전년 동기 대비 47%, 납은 49%, 아연은 81% 감소했다. 운영 재개 승인은 긍정적이나 생산 회복 속도는 아직 확인이 필요하다.</li>
+<li><strong>금속 가격과 물량 동시 변동:</strong> 은 실현가격은 82% 올랐지만 매출은 13%, 조정 순이익은 19% 감소했다. 가격 상승만으로 생산량 감소의 영향을 상쇄하지 못했다. 가격 하락 시 수익성 민감도는 제공 자료에서 확인되지 않는다.</li>
+<li><strong>성장 투자와 현금흐름 부담:</strong> Q2 성장 자본지출은 $43.4M이었고 분기 잉여현금흐름은 $4.7M으로 감소했다. 중국·에콰도르·키르기스스탄 개발을 병행하고 있어 투자 집행 규모와 현금흐름 변화가 핵심 변수다.</li>
+<li><strong>차입 및 환율 노출:</strong> 회사는 분기 이후 RMB750M, 약 $112M을 인출했다. Q1 콜에서 회사는 위안화 강세가 원가에 영향을 줬다고 설명했다. 차입 조건, 향후 추가 인출 계획 및 통화별 부채·현금 흐름 민감도는 제공 자료에서 확인되지 않는다.</li>
+<li><strong>프로젝트 실행 위험:</strong> El Domo, Chaarat ZAAV, Kuanping 및 Condor 계획은 공사·허가·시추 등 실행 단계에 있다. 최신 일정 변경, 총사업비 초과 여부, 프로젝트별 수익성은 제공 발췌만으로 확인할 수 없다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<ul>
+<li>Q2 매출은 전년 동기 대비 13% 감소했고, 조정 순이익은 19% 감소했다. 은 가격이 82% 상승했음에도 물량 감소와 안전 공사 영향이 컸다.</li>
+<li>은 판매량은 1.7M oz에서 0.9M oz로 감소했다. 회사가 운영 재개 승인을 받았지만, 회복 정도를 보여주는 다음 분기 실적은 아직 없다.</li>
+<li>분기 잉여현금흐름은 $4.7M이며, 현금·단기투자 $383.7M과 투자자산 $428.0M은 재무 완충력을 제공한다. 동시에 성장 자본지출과 신규 차입 실행도 진행 중이다.</li>
+<li>시장 지표상 주가는 당일 8.68% 상승했지만 20일 <span class="down">-19.1%</span>, 60일 <span class="down">-31.1%</span>, 52주 고점 대비 <span class="down">-45.0%</span>다. 당일 상승만으로 추세 반전을 판단할 근거는 부족하다.</li>
+</ul>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>생산 정상화:</strong> 다음 분기 은·납·아연 생산 및 판매량이 회복되는지, 안전 개선 이후 추가 가동 중단이나 규제 문제가 없는지 확인한다.</li>
+<li><strong>현금흐름과 투자 집행:</strong> 영업현금흐름에서 일회성 인출 효과를 분리하고, 잉여현금흐름·자본지출·차입 조건 및 사용처를 확인한다.</li>
+<li><strong>성장 프로젝트 진척:</strong> El Domo와 Chaarat ZAAV의 최신 공정·예산·일정을 확인하고, 회사가 투자 계획과 생산 목표를 구체화하는지 본다.</li>
+</ol>
+<h3>관망을 유지하거나 판단을 더 보수적으로 바꿀 조건</h3>
+<p>다음 분기에도 중국 생산·판매량 회복이 확인되지 않거나, 안전 규제에 따른 추가 중단이 발생하면 관망을 유지해야 한다. 잉여현금흐름 악화와 차입 증가가 함께 이어지거나, 주요 성장 프로젝트의 일정·비용 부담이 확대되는 경우에도 비중 확대 근거는 약해진다. 반대로 생산 회복과 현금창출이 확인되고 프로젝트 일정·자금 조달이 구체화되면 비중 판단을 재검토할 수 있다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000127956926001051/ex991.htm">8-K — 2026-11-05_0001279569-26-001051__EX-99.1__ex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000127956926001051/silvercorp6k.htm">8-K — 2026-11-05_0001279569-26-001051</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926123461/tm2629085d1_ex99-5.htm">8-K — 2026-11-05_0001104659-26-123461__EX-99.5__tm2629085d1_ex99-5</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926123461/tm2629085d1_ex99-4.htm">8-K — 2026-11-05_0001104659-26-123461__EX-99.4__tm2629085d1_ex99-4</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1340677/000110465926123461/tm2629085d1_ex99-3.htm">8-K — 2026-11-05_0001104659-26-123461__EX-99.3__tm2629085d1_ex99-3</a></li>
+<li>Transcript — 2026-08-11 Silvercorp Metals Inc. (SVM:CA) Q1 2027 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
