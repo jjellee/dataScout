@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SITM — SiTime Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>SITM — SiTime Corporation Common Stock</h1>
+<div class="sub">2026-11-10 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · OpenAI Codex · gpt-5.6-sol (reasoning max)</div>
+<div class="badges"><span class="badge">SITM</span><span class="badge">+17.44%</span><span class="badge">거래량 2.65배</span><span class="badge">$12.59B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>Q3 핵심 SiTime 매출이 154% 증가했고 CED 매출도 202% 성장해, TPD 인수를 제외해도 펀더멘털 모멘텀은 강하다.</li>
+<li>다만 연결 매출 257% 증가와 QoQ 90% 증가는 TPD가 처음으로 완전 반영된 영향이 크므로 정상화 성장률로 보기 어렵다.</li>
+<li>현재 시가총액은 Q3 매출 단순 연율화의 약 10.5배인 반면, TTM FCF 수익률은 약 0.31%에 불과하다.</li>
+<li>GAAP 영업이익률은 SEC 8-K 수치로 계산하면 2.8%로, 비GAAP 43%와 격차가 매우 크다. Q3 10-Q와 현금전환 확인 전에는 의미 있는 비중 투입을 보류하는 것이 타당하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<ul>
+<li>최근 4일 내 신규 SEC 공시는 없다. 제공된 뉴스도 가격정보 페이지와 Q3 실적 평가 제목뿐이어서, 당일 <span class="up">+17.44%</span> 상승을 특정 뉴스와 직접 연결할 근거가 없다.</li>
+<li>가장 가까운 펀더멘털 이벤트는 11월 4일 Q3 실적이다. 매출 $298.7M, 핵심 사업 매출 <span class="up">+154%</span> YoY, Q4 매출 가이던스 $331M~$341M, TPD 통합 진전이 재평가의 배경일 가능성은 있다.</li>
+<li>실적콜에서 발표된 3대 1 주식분할도 투자자 관심과 유동성 기대를 높일 수 있지만, 기업가치나 주당 경제적 가치를 직접 높이는 요인은 아니다.</li>
+<li>거래량이 20일 중앙값의 2.65배였지만, 20일 수익률 <span class="down">-19.8%</span>, 60일 <span class="down">-35.8%</span>, 52주 고점 대비 <span class="down">-53.8%</span>라는 점에서 이날 움직임은 낙폭 회복 성격일 수도 있다. 이는 추정이며 제공 자료로는 원인을 확정할 수 없다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>핵심 제품</td>
+<td>오실레이터, 클록 IC, 공진기, 동기화 소프트웨어</td>
+</tr>
+<tr>
+<td>제품 역할</td>
+<td>오실레이터가 기준 주파수를 생성하고 클록 IC가 이를 시스템 내부에 분배한다. 해당 설명은 경영진이 컨퍼런스에서 언급했다.</td>
+</tr>
+<tr>
+<td>주요 가치</td>
+<td>고성능·고내환경성·신뢰성에 더해 프로그래머빌리티, 소형화, 저전력을 제공하는 반도체 기반 정밀 타이밍</td>
+</tr>
+<tr>
+<td>최종시장</td>
+<td>AI 시스템, 데이터센터, 통신·엔터프라이즈, 자동차, 산업, 항공우주·방산, 모바일, IoT, 소비자</td>
+</tr>
+<tr>
+<td>적용 범위</td>
+<td>10-Q에서 400개 이상의 애플리케이션에 설계 채택됐다고 공시</td>
+</tr>
+<tr>
+<td>시장 위치</td>
+<td>회사는 자신을 Precision Timing 분야의 선도업체이자 해당 범주를 만든 업체라고 설명한다. 실제 시장점유율과 경쟁사별 비교는 제공 공시상 확인 불가</td>
+</tr>
+<tr>
+<td>시장 규모</td>
+<td>회사는 전체 타이밍 시장이 약 $11B이며 성장 중이라고 밝힘</td>
+</tr>
+</tbody>
+</table></div>
+<p>Q3 매출 구조는 다음과 같다.</p>
+<ul>
+<li>기존 SiTime 사업: $212.4M, 연결 매출의 71.1%, <span class="up">+154%</span> YoY.</li>
+<li>TPD: $86.3M, 연결 매출의 28.9%, <span class="up">+67%</span> YoY. Q3가 인수 후 첫 완전 연결 분기다.</li>
+<li>핵심 CED: $127.3M, <span class="up">+202%</span> YoY·<span class="up">+26%</span> QoQ.</li>
+<li>자동차·산업·항공우주·방산: $35.5M, <span class="up">+76%</span> YoY·<span class="up">+43%</span> QoQ.</li>
+<li>모바일·IoT·소비자: $49.5M, <span class="up">+133%</span> YoY·<span class="up">+58%</span> QoQ.</li>
+<li>TPD 매출도 80% 이상이 CED에서 발생한다고 실적콜에서 언급했다. 따라서 연결 기준 CED 의존도는 핵심 사업의 $127.3M보다 높지만 정확한 비중은 공시상 확인 불가다.</li>
+</ul>
+<p>TPD 인수로 오실레이터와 클록 IC를 함께 제안할 수 있게 됐다. 경영진은 실적콜에서 이를 통해 기존 클록 업체와 경쟁할 수 있는 완성형 포트폴리오를 갖췄다고 주장했다. 다만 고객별 시장점유율, 경쟁사 대비 가격 및 교체비용은 제공 자료에서 확인되지 않는다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">확인된 수치</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 매출</td>
+<td style="text-align: right;">$298.7M, <span class="up">+257.4%</span> YoY·<span class="up">+89.7%</span> QoQ</td>
+<td>강한 성장이나 TPD 첫 완전 연결로 전년·전분기 비교가 왜곡된다. 핵심 사업만으로도 <span class="up">+154%</span>라는 점은 긍정적이다.</td>
+</tr>
+<tr>
+<td>GAAP 매출총이익률</td>
+<td style="text-align: right;">51.6%</td>
+<td>전통적 회계 기준 수익성은 비GAAP 수치보다 크게 낮다.</td>
+</tr>
+<tr>
+<td>비GAAP 매출총이익률</td>
+<td style="text-align: right;">70.7%</td>
+<td>실적콜에서 믹스와 생산 흡수 개선이 원인이며 가격 인상 때문은 아니라고 설명했다.</td>
+</tr>
+<tr>
+<td>GAAP 영업이익</td>
+<td style="text-align: right;">$8.3M</td>
+<td>매출 대비 2.8%다. 제공 시장지표의 영업이익률 9.9%와 불일치하며, 기간 또는 정의 차이는 제공 자료로 해소할 수 없다.</td>
+</tr>
+<tr>
+<td>비GAAP 영업이익</td>
+<td style="text-align: right;">$129.5M, 마진 43%</td>
+<td>GAAP 영업이익보다 $121.2M 많다. 조정 항목의 상세 구성은 제공된 8-K 발췌에 없어 공시상 확인 불가다.</td>
+</tr>
+<tr>
+<td>GAAP 순이익</td>
+<td style="text-align: right;">$4.4M, 희석 EPS $0.14</td>
+<td>GAAP 순이익률은 약 1.5%다.</td>
+</tr>
+<tr>
+<td>비GAAP 순이익</td>
+<td style="text-align: right;">$130.3M, 희석 EPS $4.01</td>
+<td>GAAP 순이익과의 차이가 $125.9M에 달한다.</td>
+</tr>
+<tr>
+<td>Q3 영업현금흐름</td>
+<td style="text-align: right;">-$6.6M</td>
+<td>회계상 이익이 현금으로 전환되지 않았다.</td>
+</tr>
+<tr>
+<td>Q3 설비투자</td>
+<td style="text-align: right;">$11.2M</td>
+<td>영업현금흐름에서 단순 차감한 분기 FCF는 약 -$17.8M다.</td>
+</tr>
+<tr>
+<td>TTM FCF</td>
+<td style="text-align: right;">$39.6M</td>
+<td>현재 시가총액 대비 FCF 수익률은 약 0.31%다.</td>
+</tr>
+<tr>
+<td>DSO·재고</td>
+<td style="text-align: right;">DSO 61일, QoQ +10일; 재고 $112M</td>
+<td>운전자본 부담이 증가했다. 회사는 TPD 대금 회수 시점 때문이며 일부가 Q4 초 회수됐다고 실적콜에서 설명했다.</td>
+</tr>
+<tr>
+<td>현금성 자산</td>
+<td style="text-align: right;">$324.3M</td>
+<td>단기 투자 여력은 있으나 부채까지 고려해야 한다.</td>
+</tr>
+<tr>
+<td>전환사채</td>
+<td style="text-align: right;">5년 만기, 제로쿠폰, 액면 $1.35B</td>
+<td>정확한 현재 순부채 및 레버리지는 제공 자료상 확인 불가다. 회사는 24개월 안에 순부채를 2배 미만으로 낮추겠다고 밝힘.</td>
+</tr>
+</tbody>
+</table></div>
+<p>성장 폭은 양호하지만 질을 나눠 볼 필요가 있다.</p>
+<ul>
+<li>연결 성장에는 TPD $86.3M이 신규 편입됐다. 따라서 <span class="up">+257%</span>를 전부 유기적 성장으로 해석하면 안 된다.</li>
+<li>반면 기존 사업만으로도 <span class="up">+154%</span> 성장했고 세 개 사업군 모두 75% 이상 성장해, 단일 시장만의 성장은 아니다.</li>
+<li>정확한 단가·출하량별 성장 기여도는 공시상 확인 불가다. 경영진은 데이터센터에서 물량, ASP, 시스템당 칩 수, 신규 애플리케이션이 모두 성장 축이라고 설명했다.</li>
+<li>모바일·IoT·소비자 매출 $49.5M 가운데 $42.7M이 단일 대형 소비자 고객에서 발생했다. 해당 고객은 이 사업부 매출의 약 86%, 전체 매출의 약 14%를 차지한다.</li>
+</ul>
+<p>회사는 Q4 매출을 $331M~$341M으로 제시했다. Q3 대비 10.8%~14.2% 증가하는 수준이며, 기존 사업과 TPD 모두 순차 성장을 예상했다. 비GAAP 매출총이익률 가이던스는 약 70%±1%이고 Q4 비용은 Q3와 대체로 비슷하다고 밝혔다. 다만 2027년 Q1과 Q2에는 인프라·영업 인력 확충으로 비용이 순차 증가할 전망이라고 언급했다.</p>
+<p>현재 시가총액 $12.59B을 기준으로 계산하면:</p>
+<ul>
+<li>Q3 매출 단순 연율화 $1.195B 대비 시가총액은 약 10.5배.</li>
+<li>Q4 가이던스 중간값을 단순 연율화한 $1.344B 대비로도 약 9.4배.</li>
+<li>이는 기업가치 배수가 아닌 시가총액/매출이며, 공식적인 향후 12개월 매출 전망도 아니다.</li>
+</ul>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li>AI·데이터센터 CED 성장</li>
+</ol>
+<p>핵심 CED 매출은 $127.3M으로 <span class="up">+202%</span> YoY·<span class="up">+26%</span> QoQ였다. 회사는 GPU·CPU·TPU, 스위치, NIC, 광모듈 등 여러 부품에 설계 채택이 진행 중이라고 밝힘.</p>
+<p>검증 포인트: Q4 CED 순차 성장, 대형 고객 출하 시점에 따른 변동, 신규 설계 채택이 실제 매출로 전환되는지 확인해야 한다.</p>
+<ol start="2">
+<li>TPD 통합과 교차판매</li>
+</ol>
+<p>TPD는 첫 완전 연결 분기에 $86.3M을 기록했다. 경영진은 기존 SiTime 오실레이터와 TPD 클록 IC를 결합한 양방향 교차판매가 시작됐다고 실적콜에서 언급했다.</p>
+<p>검증 포인트: Q4 TPD 순차 성장, Renesas TSA 의존도 축소, 공급부족 완화, 통합 이후 GAAP 마진과 비용 구조를 확인해야 한다.</p>
+<ol start="3">
+<li>차세대 광통신 전환</li>
+</ol>
+<p>실적콜에서 경영진은 400Gb에서 800Gb, 1.6Tb로 전환될수록 단위당 타이밍 부품 수, 시장점유율, ASP가 상승한다고 설명했다. 정확한 점유율과 ASP 상승 폭은 공시상 확인 불가다.</p>
+<p>검증 포인트: 1.6Tb 관련 매출 또는 제품 믹스의 정량 공개, CED 내 광모듈 매출 증가 여부가 필요하다.</p>
+<ol start="4">
+<li>AI 외 시장 다변화</li>
+</ol>
+<p>자동차·산업·항공우주·방산 매출은 <span class="up">+76%</span>, 모바일·IoT·소비자는 <span class="up">+133%</span> 성장했다. 회사는 스마트 안경과 펜던트형 AI 기기 설계가 2027년부터 확대될 것으로 전망했다.</p>
+<p>검증 포인트: 단일 대형 소비자 고객 $42.7M의 지속성, 그 고객을 제외한 모바일·IoT 성장, 자동차·산업 부문의 연속 성장을 봐야 한다.</p>
+<ol start="5">
+<li>장기 설계 파이프라인</li>
+</ol>
+<p>실적콜에서 회사는 전체 설계 퍼널이 $10B, 반도체 관련 퍼널이 $4B 이상이며 상당 부분이 2028~2029년부터 확대될 것으로 예상했다. 항공우주·방산 $0.9B, 자동차 약 $1B, 산업 $1.4B도 회사가 제시한 퍼널 수치다.</p>
+<p>검증 포인트: 퍼널은 수주잔고나 확정 매출이 아니다. 전환율, 매출 인식 시기, 취소율이 공시상 확인 불가이므로 향후 실제 디자인윈과 매출 기여를 구분해 확인해야 한다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<h3>경영진의 톤과 가이던스</h3>
+<ul>
+<li>경영진은 회사를 “새로운 규모와 재무성과 단계”에 진입했다고 표현하며 매우 자신감 있는 톤을 보였다.</li>
+<li>자신감의 근거로 핵심 사업 <span class="up">+154%</span>, CED <span class="up">+202%</span>, 상승한 book-to-bill, 커진 평균 주문 규모, 목표보다 낮은 유통재고를 들었다. 다만 뒤의 세 지표는 구체 수치가 제시되지 않았다.</li>
+<li>Q4에는 기존 사업과 TPD 모두 순차 성장한다고 명시했다. 반면 2027년 CED는 성장 방향을 제시하면서도 대형 고객의 선적 시점 때문에 분기별 성장률이 흔들릴 수 있다는 단서를 달았다.</li>
+<li>“연율화 매출 $1B 초과”는 Q3 매출을 연율화한 표현이지 연간 실적 가이던스가 아니다.</li>
+</ul>
+<h3>Q&amp;A에서 반복된 쟁점</h3>
+<ul>
+<li>CED 고객 다변화: 회사는 custom XPU를 포함해 복수 디자인윈이 있다고 답했지만 고객·플랫폼별 매출과 점유율은 공개하지 않았다.</li>
+<li>TPD 공급부족: 기존 SiTime 사업은 관리 가능하지만 TPD는 Renesas TSA 때문에 더 어려웠다고 인정했다. 심한 부족은 Q4를 지나 Q1에 완화될 것으로 답했으나 부족 물량은 공개하지 않았다.</li>
+<li>통합 비용: CFO는 TPD에 부족한 영업·재무·인사·법무 인프라를 구축해야 하므로 2027년 Q1과 Q2까지 비용이 순차 증가한다고 설명했다. 증가 폭은 제시하지 않았다.</li>
+<li>광통신 점유율: 400Gb보다 800Gb, 1.6Tb에서 점유율과 ASP가 높아진다고 답했지만 정확한 시장점유율은 공개하지 않았다.</li>
+</ul>
+<h3>공시 발췌보다 콜에서 더 구체적으로 드러난 정보</h3>
+<ul>
+<li>대형 소비자 고객 매출 $42.7M.</li>
+<li>DSO 상승의 원인이 TPD 대금 회수 시점이며 일부 현금이 Q4 초 유입됐다는 설명.</li>
+<li>TPD 공급망의 Renesas TSA 의존과 Q1 완화 예상.</li>
+<li>주요 계정의 2027년 전망치가 디자인윈 기회를 반영해 2~5배 증가했다는 주장. 이는 고객 주문이나 확정 매출과 동일하지 않다.</li>
+<li>2027년 상반기 비용 증가 계획과 자사주 매입보다 R&amp;D·성장투자를 우선한다는 자본배분 방침.</li>
+</ul>
+<h2>6. 리스크</h2>
+<p>제공된 10-K에는 Risk Factors 목차와 선행전망 목록만 있고 개별 리스크 본문은 포함되지 않았다. 따라서 구체적인 위험 수치나 법적 문구는 재구성하지 않고, 10-Q·8-K·실적콜에서 현재 확인되는 위험만 선별했다.</p>
+<ol>
+<li>고객 및 출하 시점 집중</li>
+</ol>
+<p>10-Q는 제한된 고객·최종고객에 대한 의존을 주요 불확실성으로 제시한다. 실제로 단일 소비자 고객이 Q3 전체 매출의 약 14%를 차지했고, CED도 대형 고객의 선적 시점에 따라 분기 매출이 이동할 수 있다고 회사가 인정했다.</p>
+<ol start="2">
+<li>TPD 공급망과 통합 리스크</li>
+</ol>
+<p>TPD는 Renesas TSA에 의존했고 수요 증가 과정에서 공급 제약이 기존 사업보다 심했다. 회사는 심한 부족이 Q1에 완화될 것으로 전망하지만, 일반적인 웨이퍼 제약은 2027년에도 이어질 수 있다고 실적콜에서 언급했다.</p>
+<ol start="3">
+<li>GAAP와 비GAAP 이익의 큰 괴리</li>
+</ol>
+<p>GAAP 영업이익 $8.3M과 비GAAP 영업이익 $129.5M 사이에 $121.2M의 차이가 있다. Q3 10-Q와 상세 조정표가 제공되지 않아 반복성 비용과 인수 관련 조정의 구성을 판단할 수 없다.</p>
+<ol start="4">
+<li>현금전환과 레버리지</li>
+</ol>
+<p>Q3 영업현금흐름은 -$6.6M, DSO는 61일로 10일 늘었다. 동시에 $1.35B 전환사채가 있다. 회사의 조기 회수 및 향후 현금흐름 개선 주장은 Q4 현금흐름표로 검증돼야 한다.</p>
+<ol start="5">
+<li>장기 기대가 반영된 밸류에이션</li>
+</ol>
+<p>시가총액은 Q3 매출 단순 연율화의 약 10.5배이고 TTM FCF 수익률은 약 0.31%다. $10B 설계 퍼널의 상당 부분은 2028~2029년을 목표로 하므로 전환 지연이나 마진 정상화만으로도 밸류에이션 조정 위험이 크다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정 근거</th>
+<th>경계 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>핵심 사업 매출 <span class="up">+154%</span> YoY</td>
+<td>TPD가 연결 매출의 28.9%를 차지해 비교 가능성이 낮음</td>
+</tr>
+<tr>
+<td>핵심 CED <span class="up">+202%</span> YoY·<span class="up">+26%</span> QoQ</td>
+<td>GAAP 영업이익률은 SEC 수치 기준 2.8%</td>
+</tr>
+<tr>
+<td>Q4 매출 가이던스가 Q3 대비 <span class="up">+10.8%</span>~<span class="up">+14.2%</span></td>
+<td>비GAAP 영업이익과 GAAP 영업이익 차이 $121.2M</td>
+</tr>
+<tr>
+<td>비GAAP 매출총이익률 70.7%</td>
+<td>Q3 영업현금흐름 -$6.6M, DSO 61일</td>
+</tr>
+<tr>
+<td>세 개 핵심 사업군 모두 75% 이상 성장</td>
+<td>시가총액/연율화 Q3 매출 약 10.5배, TTM FCF 수익률 약 0.31%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li>
+<p>Q3 10-Q와 비GAAP 조정표에서 인수 관련 비용, 무형자산 상각, 주식보상 등 GAAP·비GAAP 격차의 구성을 확인해야 한다. 정확한 순부채와 전환사채 조건도 함께 점검해야 한다.</p>
+</li>
+<li>
+<p>Q4 매출이 $331M~$341M에 도달하고 기존 사업과 TPD가 모두 순차 성장하는지 확인해야 한다. 비GAAP 매출총이익률도 회사가 제시한 69%~71% 범위에 머무는지 봐야 한다.</p>
+</li>
+<li>
+<p>Q4 영업현금흐름이 플러스로 전환되고 DSO가 61일에서 하락하는지 확인해야 한다. 동시에 TPD 공급부족과 Renesas TSA 의존이 실제로 Q1부터 완화되는지 점검해야 한다.</p>
+</li>
+</ol>
+<h3>판단을 뒤집을 조건</h3>
+<p>현재 판단이 이미 관망이므로 상향·하향 조건을 모두 적용한다.</p>
+<ul>
+<li>관망에서 보통으로 상향: Q4 가이던스 충족, 기존 사업과 TPD의 동반 순차 성장, 영업현금흐름 흑자 전환, DSO 하락, GAAP 영업이익률 개선이 동시에 확인될 때.</li>
+<li>관망에서 적극으로 상향: 위 조건이 최소 2개 분기 이어지고, GAAP·비GAAP 이익 격차가 축소되면서 매출 성장이 실제 FCF 증가로 연결될 때.</li>
+<li>관망에서 회피로 하향: Q4 매출이 $331M을 하회하거나 비GAAP 매출총이익률이 69% 아래로 하락하고, DSO·재고 증가와 영업현금 유출이 반복될 때. TPD 공급부족이 회사가 제시한 Q1~Q2 완화 시점을 넘기는 경우도 회피 조건이다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000012/sitm-20251231.htm">10-K — 2025-12-31_0001451809-26-000012</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000060/sitm-20260630.htm">10-Q — 2026-06-30_0001451809-26-000060</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000041/sitm-20260331.htm">10-Q — 2026-03-31_0001451809-26-000041</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000076/sitm-q326x8kxexx991.htm">8-K — 2026-11-04_0001451809-26-000076__EX-99.1__sitm-q326x8kxexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000076/sitm-20261104.htm">8-K — 2026-11-04_0001451809-26-000076</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000070/sitm-20261019.htm">8-K — 2026-10-19_0001451809-26-000070</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000059/sitm-q226x8kxexx991.htm">8-K — 2026-08-05_0001451809-26-000059__EX-99.1__sitm-q226x8kxexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1451809/000145180926000059/sitm-20260805.htm">8-K — 2026-08-05_0001451809-26-000059</a></li>
+<li>Transcript — 2026-11-04 Q3 2026 Transcript</li>
+<li>Transcript — 2026-09-09 Goldman Sachs Communacopia + Technology Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
