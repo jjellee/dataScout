@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTD — The Trade Desk Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>TTD — The Trade Desk Inc. Class A Common Stock</h1>
+<div class="sub">2026-11-11 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · OpenAI Codex · gpt-5.6-sol (reasoning max)</div>
+<div class="badges"><span class="badge">TTD</span><span class="badge">+15.47%</span><span class="badge">거래량 6.88배</span><span class="badge">$7.06B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>3분기 매출은 $736.0M으로 0.5% 감소했고, 기존 고객의 플랫폼 총지출도 줄었다. 비반복 매출 $15M을 제외한 단순 계산상 매출은 약 2.5% 감소한다.</li>
+<li>영업이익률은 12.6%로 9.2%p 하락했고, 조정 EBITDA도 16% 감소했다. 15% 인력 감축은 아직 성장 회복보다 비용 재조정 단계임을 보여준다.</li>
+<li>시가총액/TTM FCF 기준 8.3배, 현금·단기투자자산 $1.65B와 무차입 재무구조는 하방 완충재다.</li>
+<li>다만 높은 주식보상비용, 옵션 재가격 조정, 4분기 가이던스 하단 기준 두 자릿수 매출 감소 가능성을 감안하면 아직 의미 있는 비중을 실을 근거가 부족하다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인 가능한 핵심 촉매는 11월 9일 실적 발표와 자사주 매입 한도 확대다.</strong></p>
+<ul>
+<li>회사는 3분기 실적이 분기 진입 당시 자체 예상치를 의미 있게 웃돌았다고 밝혔다. 다만 이전 가이던스의 정확한 수치가 제공되지 않아 서프라이즈 규모는 확인할 수 없다.</li>
+<li>회사는 4분기 매출을 최소 $755M, 조정 EBITDA를 최소 $280M으로 제시했다. 이는 3분기 대비 각각 최소 2.6%, 5.3% 증가하고 조정 EBITDA 마진 하단은 약 37.1%라는 의미다.</li>
+<li>자사주 매입 가능 금액을 $731M 늘려 총 $1.0B로 확대했다. 현재 시가총액의 약 14.2%에 해당한다. 다만 이사회 승인 한도일 뿐 실제 매입 의무는 없다.</li>
+<li>고객 유지율이 95% 이상으로 유지됐고 Zuma·Audience Unlimited·Netflix 연동 등 제품 및 파트너십 발표도 투자심리 개선에 기여했을 가능성이 있다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000115/ttd-20261109x8kexx991.htm">2026년 3분기 8-K 첨부 실적자료</a></li>
+</ul>
+<p>당일 15.47% 상승과 평소의 6.88배 거래량은 실적·자사주 발표에 대한 이벤트성 재평가로 해석된다. 다만 이미 20일간 26.7% 상승했고 여전히 52주 고점 대비 66.2% 낮다. 제공된 뉴스는 헤드라인뿐이므로 개별 기사나 숏커버가 상승에 기여한 정도는 확인할 수 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품:</strong> 광고주와 광고대행사가 CTV·비디오·모바일·디스플레이·오디오 등 디지털 광고를 기획·구매·최적화·측정하는 셀프서비스 DSP 플랫폼이다. Koa 등 AI 기반 의사결정 도구, 데이터·측정 기능, 외부 시스템과 연결되는 기업용 API를 제공한다.</li>
+<li><strong>고객:</strong> 광고대행사, 광고주 및 관련 서비스 사업자다. 계약은 통상 1년 단위로 자동 갱신되지만 고객의 최소 사용 의무가 없고, 양측이 60일 전에 통지하면 해지할 수 있다.</li>
+<li><strong>수익모델:</strong> 고객의 플랫폼 총지출에 연동된 플랫폼 수수료와 부가 서비스·데이터 판매가 매출원이다. 광고 인벤토리와 외부 데이터 비용을 공급업체에 지급한 뒤 대체로 순액으로 매출을 인식한다.</li>
+<li><strong>생태계:</strong> 2025년 말 기준 430개 이상의 광고거래소·퍼블리셔·SSP, 370개 이상의 외부 데이터 공급업체와 연동돼 있다. 회사는 독립적인 매수자 중심 플랫폼, 투명성, 오픈 API, 자체 광고 인벤토리를 보유하지 않는 점을 차별화 요소라고 밝힌다.</li>
+<li><strong>경쟁:</strong> Google·Amazon 계열을 포함한 DSP와 경쟁한다. 회사 주장과 달리, 자사 인벤토리·퍼스트파티 데이터를 보유한 대형 경쟁사와 폐쇄형 플랫폼에는 TTD가 접근할 수 없는 영역이 존재한다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000014/ttd-20251231.htm">2025년 10-K 사업 부문</a></li>
+</ul>
+<p>3분기 SEC 기준 지역별 매출은 미국 84%, 해외 16%였다. 실적콜에서 회사는 비디오·CTV가 3분기 비즈니스의 50% 초반, 모바일이 20% 후반, 디스플레이가 10% 초반, 오디오가 약 7%라고 언급했다. 이는 실적콜상 비즈니스 믹스이며 GAAP 매출 구성으로 공시된 값은 아니다.</p>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">3Q26</th>
+<th style="text-align: right;">3Q25</th>
+<th style="text-align: right;">변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출</td>
+<td style="text-align: right;">$736.0M</td>
+<td style="text-align: right;">$739.4M</td>
+<td style="text-align: right;">-0.5%</td>
+</tr>
+<tr>
+<td>매출총이익률</td>
+<td style="text-align: right;">72.8%</td>
+<td style="text-align: right;">약 78.1%*</td>
+<td style="text-align: right;">약 <span class="down">-5.3%</span>p</td>
+</tr>
+<tr>
+<td>영업이익 / 영업이익률</td>
+<td style="text-align: right;">$92.6M / 12.6%</td>
+<td style="text-align: right;">$161.2M / 21.8%</td>
+<td style="text-align: right;">이익 <span class="down">-43%</span></td>
+</tr>
+<tr>
+<td>순이익 / 순이익률</td>
+<td style="text-align: right;">$38.1M / 5.2%</td>
+<td style="text-align: right;">$115.5M / 15.6%</td>
+<td style="text-align: right;">이익 <span class="down">-67%</span></td>
+</tr>
+<tr>
+<td>조정 EBITDA / 마진</td>
+<td style="text-align: right;">$265.8M / 36.1%</td>
+<td style="text-align: right;">$317.5M / 42.9%</td>
+<td style="text-align: right;">이익 <span class="down">-16%</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>* 전년 매출과 플랫폼 운영비를 이용한 단순 역산이다. 회사는 플랫폼 운영비를 영업비용으로 분류하며, 비용 인식 방식 변경도 있어 경제적 매출총이익률과 완전히 동일한 비교는 아니다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000116/ttd-20260930.htm">2026년 3분기 10-Q</a></p>
+<p><strong>성장의 질</strong></p>
+<ul>
+<li><strong>물량:</strong> SEC MD&amp;A에 따르면 기존 고객의 총지출 감소를 신규 고객 지출이 일부만 상쇄했다. 고객 유지율은 95% 이상이지만, 이는 고객의 지출 유지율이라고 공시된 지표가 아니다. 고객은 남아 있어도 지갑점유율이 줄고 있는 구도다.</li>
+<li><strong>단가:</strong> 부가 서비스 가격 인상은 매출에 긍정적이었지만, JBP와 전략적 파트너십 관련 할인 확대가 반대 방향으로 작용했다.</li>
+<li><strong>믹스·회계 표시:</strong> 일부 공급업체 비용을 매출 차감이 아니라 플랫폼 운영비로 인식하면서 표시 매출은 높아지고 비용률은 상승했다. 따라서 9개월 누적 매출 성장률 4% 전체를 수요 성장으로 해석하기 어렵다.</li>
+<li><strong>일회성:</strong> SEC는 재발하지 않을 전략적 파트너 매출을 $15M으로 명시했다. 이를 제외하면 3분기 매출은 약 $721.0M, 단순 YoY는 약 <span class="down">-2.5%</span>다. 실적콜의 “약 3%p 기여”보다 SEC 금액을 우선 적용한 계산이며, 회사가 공시한 공식 유기적 성장률은 아니다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000116/ttd-20260930.htm">2026년 3분기 10-Q MD&amp;A</a></li>
+</ul>
+<p><strong>마진</strong></p>
+<p>플랫폼 운영비는 23% 증가했다. 호스팅비, AI·머신러닝 활용, 데이터센터 투자, 외부 부가 서비스·데이터 비용이 주된 원인이다. 비용 분류 변경 영향을 감안해도 조정 EBITDA 마진이 43%에서 36%로 하락했기 때문에 기초 수익성도 악화됐다. 15% 인력 감축에 따른 구조조정비 $44.3M을 제외해도 이익 감소가 남는다.</p>
+<p><strong>현금흐름과 재무 건전성</strong></p>
+<ul>
+<li>실적콜에서 회사는 3분기 영업현금흐름 $258M, FCF $153M을 언급했다. 제공된 TTM FCF $847M 기준 시가총액/FCF는 약 8.3배, FCF 수익률은 약 12.0%다.</li>
+<li>9개월 영업현금흐름은 $803.7M으로 전년 $681.1M보다 늘었지만, 운전자본에서 $203M의 현금 유입이 발생했고 주식보상비용 $313.7M이 비현금비용으로 가산됐다. FCF의 반복성과 주당가치 증가를 별도로 확인해야 한다.</li>
+<li>9월 말 현금·현금성자산과 단기투자자산은 $1.65B, 운전자본은 $2.1B였다. 리볼빙 차입 잔액은 없고 사용 가능 한도는 $745M이었다.</li>
+<li>9개월간 1,000만 주를 $233M에 매입했지만 총 발행주식은 2025년 말 약 475.9M주에서 2026년 9월 말 약 472.9M주로 0.6% 감소하는 데 그쳤다. 자사주 매입의 상당 부분이 주식보상 희석 상쇄에 쓰인 셈이다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000116/ttd-20260930.htm">2026년 3분기 10-Q 재무제표</a></li>
+</ul>
+<p><strong>가이던스의 함의</strong></p>
+<p>2025년 연간 매출 $2.896B에서 9개월 매출 $2.049B을 차감하면 4분기 매출은 약 $846.8M이다. 따라서 2026년 4분기 가이던스 하단 $755M은 약 10.8% YoY 감소를 뜻한다. 하단 기준 2026년 연간 매출도 약 $2.895B으로 2025년과 사실상 동일하다. 이는 2025년 연간 18% 성장에서 급격히 둔화된 수준이다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000014/ttd-20251231.htm">2025년 10-K</a>, <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000115/ttd-20261109x8kexx991.htm">2026년 3분기 8-K</a></p>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축</th>
+<th>회사가 제시한 근거</th>
+<th>실현 조건 및 다음 분기 검증 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>대형 고객 지갑점유율·JBP</td>
+<td>실적콜에서 JBP가 9개월간 30% 이상 증가했고 참여 고객이 기존 MSA 고객보다 빠르게 성장했다고 언급</td>
+<td>할인 확대가 실제 기존 고객 총지출 증가로 연결돼야 한다. 기존 고객 gross spend, JBP 고객군 성장률과 매출/고객지출 비율 확인</td>
+</tr>
+<tr>
+<td>Zuma·Koa·Audience Unlimited</td>
+<td>실적콜에서 Koa의 CPA가 62개 캠페인 A/B 테스트에서 중앙값 21% 개선됐고, Audience Unlimited는 CPA 30% 이상 개선됐다고 언급</td>
+<td>제한된 테스트를 넘어 유료 캠페인·광고주 수와 플랫폼 지출이 증가하는지 확인. 테스트 성과만으로 매출 전환을 가정할 수 없음</td>
+</tr>
+<tr>
+<td>데이터·측정</td>
+<td>회사는 오픈 측정을 4분기 출시하고 2027년 성장에 기여시킬 계획이라고 밝힘</td>
+<td>실제 출시 여부, 측정 기능 이용 고객 수, 하락했던 데이터 서비스 이용률의 반등 확인</td>
+</tr>
+<tr>
+<td>CTV·글로벌</td>
+<td>Netflix 데이터 타기팅 연동, APAC·EMEA 성장, 오디오의 높은 성장률을 제시</td>
+<td>해외 매출 비중 16%의 추가 상승, Netflix를 통한 실제 지출, CTV 성장률 및 미국·CPG·자동차 부진 상쇄 여부 확인</td>
+</tr>
+<tr>
+<td>비용 구조 재편</td>
+<td>실적콜에서 인력 조치가 연간 총 $100M 이상의 절감 효과를 낼 것으로 전망</td>
+<td>일부 절감액을 재투자할 예정이므로 순절감액은 공시상 확인 불가. 플랫폼 운영비 증가율, GAAP 영업이익률과 고객지원 품질을 확인해야 함</td>
+</tr>
+</tbody>
+</table></div>
+<p>회사는 글로벌 확장, CTV를 포함한 옴니채널, 리테일·퍼스트파티 데이터, 측정, AI를 장기 성장축으로 밝히고 있다. 다만 최신 10-Q는 AI가 추가 인프라 투자와 플랫폼 운영비 상승을 요구하며 경쟁사의 AI 구현이 더 우수할 가능성도 명시한다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>경영진 톤:</strong> CEO는 3분기를 “의미 있는 진전”으로 평가하면서도 자체 기대 성장률에 미달하고 있으며 할 일이 더 남았다고 인정했다. 실적 회복을 선언하는 톤보다는 실행 실패를 인정하고 재정비를 설명하는 톤에 가깝다.</li>
+<li><strong>자신감의 근거:</strong> 자신감은 현재 매출 증가보다 Zuma 작업시간 단축, Koa·Audience Unlimited의 캠페인 성과, JBP 파이프라인, APAC·EMEA 성장 같은 선행지표에 기반한다. 아직 회사 전체 매출로 검증된 수치는 아니다.</li>
+<li><strong>가이던스 화법:</strong> 이전 실적콜 원문이 제공되지 않아 화법의 시계열 변화는 확인할 수 없다. 이번 콜에서는 “긍정적 지표가 즉시 매출로 전환된다고 가정하지 않는다”, “통상적인 3분기→4분기 계절적 상승을 기대하지 않는다”고 강조했다. 의도적인 보수적 가이던스인지 여부는 확인 불가하다.</li>
+<li><strong>Q&amp;A 방어 지점:</strong> 반복적으로 제기되는 take rate·성과 기반 가격 질문에 CEO는 고객 데이터 소유권과 플랫폼 객관성을 강조했지만, take rate 추이나 성과 기반 가격모델의 구체적 경제성은 제시하지 않았다.</li>
+<li><strong>Q4 성장 질문:</strong> 애널리스트는 정치광고와 일회성을 제외하면 3분기 약 <span class="down">-8%</span>, 4분기 약 <span class="down">-16%</span>라고 추산했다. CFO는 이 계산을 확인하지 않고 대형 글로벌 광고주의 외부 압력과 어려운 시장을 언급했다.</li>
+<li><strong>콜에서만 확인되는 정보:</strong> 정치광고는 3분기 비즈니스의 한 자릿수 중반 비중이며 4분기에 소폭 높아질 전망이다. 회사는 선거연도 4분기에서 다음 해 1분기로 정치광고 지출이 역사적으로 약 25% 감소했다고 언급했다. 또한 2027년 비용 증가율 둔화, $100M 이상의 총비용 절감, 성장팀 고객 수 200% 이상 증가와 3분기 신규 고객 23개를 언급했다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>기존 고객 지출과 매출 전환율 하락</strong></li>
+</ol>
+<p>기존 고객 총지출이 감소했고 데이터 서비스 이용률도 낮아졌다. JBP 할인, 가격경쟁, 채널·고객 믹스 변화로 고객 지출이 늘어도 매출이 같은 속도로 증가하지 않을 수 있다는 점을 회사도 10-K에서 명시한다. 정치광고의 1분기 역기저와 CPG·자동차 업종 압력도 단기 리스크다.</p>
+<ol start="2">
+<li><strong>고객 집중과 약한 계약 구속력</strong></li>
+</ol>
+<p>2025년 두 광고대행사 지주회사가 합산 총청구액의 30%를 차지했다. 개별 MSA에는 최소 지출 약정이 없고 60일 통지로 해지가 가능하다. 높은 고객 유지율만으로 집중 위험과 지출 변동성을 상쇄할 수 없다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000014/ttd-20251231.htm">2025년 10-K</a></p>
+<ol start="3">
+<li><strong>대형 플랫폼·데이터 접근·규제</strong></li>
+</ol>
+<p>Google·Amazon과 같은 대형 사업자는 더 많은 자원과 퍼스트파티 데이터를 보유하고 있으며 폐쇄형 인벤토리는 TTD가 경쟁할 수 없다. 쿠키·모바일 식별자 제한과 개인정보보호 규제는 타기팅·측정 기능을 약화시키거나 비용을 높일 수 있다. <a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000116/ttd-20260930.htm">2026년 3분기 10-Q 위험요인</a></p>
+<ol start="4">
+<li><strong>구조조정 이후 실행력</strong></li>
+</ol>
+<p>글로벌 인력의 약 15%를 감축했고 $44.3M의 비용을 인식했다. SEC는 사기 저하, 기관 지식 손실, 인력 재배치 실패, 고객지원과 생산성 악화를 구조조정의 잠재적 부작용으로 직접 명시한다. AI·데이터센터 투자비가 계속 증가하면 절감액이 마진 개선으로 이어지지 않을 수 있다.</p>
+<ol start="5">
+<li><strong>주식보상·옵션 재가격·지배구조</strong></li>
+</ol>
+<p>9개월 주식보상비용은 $313.7M으로 매출의 14.7%다. 약 1,440만 개 옵션의 행사가격이 $12.26으로 재조정됐으며, SEC는 6개월 보유기간 이후 옵션 행사와 매도가 주가에 압력을 줄 수 있다고 밝혔다. Class B 주주와 임직원·이사 등이 의결권의 약 50.1%를 보유해 일반 Class A 주주의 영향력도 제한된다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<ul>
+<li>긍정적 요인은 TTM FCF $847M, 시가총액/FCF 8.3배, FCF 수익률 12.0%, 현금·단기투자자산 $1.65B, 리볼빙 차입 잔액 없음이다.</li>
+<li>총 $1.0B의 자사주 매입 한도는 시가총액의 14.2%에 해당한다. 그러나 3분기 실제 매입은 없었고, 9개월 1,000만 주 매입에도 총 발행주식 감소는 0.6%에 그쳤다.</li>
+<li>부정적 요인은 일회성 제외 단순 매출 성장률 약 <span class="down">-2.5%</span>, 영업이익률 <span class="down">-9.2%</span>p, 조정 EBITDA 마진 <span class="down">-6.8%</span>p, 순이익 <span class="down">-67%</span>다.</li>
+<li>4분기 가이던스 하단은 약 <span class="down">-10.8%</span> YoY이며, 하단 기준 2026년 연간 매출은 사실상 무성장이다.</li>
+<li>당일 상승 후 20일 수익률이 26.7%에 달해 단기적으로는 실적 회복보다 기대 재조정이 먼저 진행된 상태다.</li>
+</ul>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li>4분기 매출에서 정치광고·비반복 파트너 매출을 제외해도 기존 고객 총지출과 데이터 서비스 이용률이 반등하는지 확인한다.</li>
+<li>플랫폼 운영비 증가율이 둔화되고 GAAP 영업이익률·조정 EBITDA 마진이 실제로 개선되는지 확인한다. $100M 비용 절감의 순효과도 필요하다.</li>
+<li>Zuma·Audience Unlimited·오픈 측정의 유료 사용 확대와 JBP의 실제 지출 증가, 자사주 매입 후 순발행주식 감소를 함께 확인한다.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건</strong></p>
+<ul>
+<li><strong>관망→보통:</strong> 비반복·정치광고 효과를 제외한 매출이 연속 분기 성장하고, 기존 고객 총지출이 증가하며, 영업이익률이 반등하고 순발행주식이 실제로 감소할 경우다.</li>
+<li><strong>관망→회피:</strong> 4분기 가이던스 하단을 하회하거나 기존 고객 총지출 감소가 확대되고, 비용 절감에도 마진·FCF가 악화되거나 옵션 행사와 주식보상이 자사주 매입 효과를 지속적으로 상쇄할 경우다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000014/ttd-20251231.htm">10-K — 2025-12-31_0001671933-26-000014</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000116/ttd-20260930.htm">10-Q — 2026-09-30_0001671933-26-000116</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000086/ttd-20260630.htm">10-Q — 2026-06-30_0001671933-26-000086</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000115/ttd-20261109x8kexx991.htm">8-K — 2026-11-09_0001671933-26-000115__EX-99.1__ttd-20261109x8kexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000115/ttd-20261109.htm">8-K — 2026-11-09_0001671933-26-000115</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000108/ttd-20261019.htm">8-K — 2026-10-19_0001671933-26-000108</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000167193326000099/ttd-20260914.htm">8-K — 2026-09-14_0001671933-26-000099</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1671933/000119312526382690/d118889d8k.htm">8-K — 2026-09-03_0001193125-26-382690</a></li>
+<li>Transcript — 2026-11-09 Q3 2026 Transcript</li>
+<li>Transcript — 2026-10-19 EGM 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

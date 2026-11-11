@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QBTS — D-Wave Quantum Inc. Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>QBTS — D-Wave Quantum Inc. Common Stock</h1>
+<div class="sub">2026-11-11 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · OpenAI Codex · gpt-5.6-sol (reasoning max)</div>
+<div class="badges"><span class="badge">QBTS</span><span class="badge">+7.40%</span><span class="badge">거래량 1.51배</span><span class="badge">$4.35B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>Q3 매출은 $4.5M으로 21% 증가했고 QCaaS와 RPO도 확대됐지만, 아직 매출 규모가 시가총액 $4.35B를 정당화하기에는 작다.</li>
+<li>9개월 bookings 급증은 긍정적이나 $20M 단일 시스템 계약의 영향이 크며, Q3 bookings는 오히려 19% 감소했다.</li>
+<li>GAAP 매출총이익률 하락, 영업비용 84% 증가, TTM 잉여현금흐름 $-119.8M은 상업화 속도보다 비용 증가가 빠르다는 증거다.</li>
+<li>현금·시장성증권 $503.4M이 단기 재무위험을 완충하므로 회피까지는 아니지만, 반복 매출과 수익성 검증 전에는 의미 있는 비중을 싣기 어렵다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<p>가장 가까운 기업 이벤트는 11월 10일 <a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000180/qbts-20261110.htm">8-K</a>와 Q3 실적콜이다. 다만 제공된 8-K 발췌에는 새로운 대형 계약이나 확정 지원금 수령처럼 오늘 주가 상승을 직접 설명할 단일 공시는 없다.</p>
+<p>Q3 실적은 혼재돼 있다.</p>
+<ul>
+<li>긍정적 요인: 매출 $4.5M 및 21% 성장, QCaaS 56% 성장, 9개월 bookings 611% 증가, RPO $38.3M.</li>
+<li>부정적 요인: Q3 bookings 19% 감소, 이익 예상치 미달을 지적한 뉴스 헤드라인, 매출총이익률 하락 및 현금소진.</li>
+<li>제공된 헤드라인들은 실적 발표 당일 주가 하락을 주로 설명한다. 따라서 오늘의 7.40% 상승은 실적 악재 소화 후 반등일 가능성이 있지만 이는 추정이다.</li>
+</ul>
+<p>거래량은 20일 중앙값의 1.51배로 증가했지만, 주가는 여전히 20일 <span class="down">-21.7%</span>, 60일 <span class="down">-49.8%</span>, 52주 고점 대비 <span class="down">-64.4%</span>다. 현재 자료만으로는 추세 전환을 동반한 신규 펀더멘털 재평가로 단정할 수 없다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>2025년 10-K와 2026년 10-Q에 따르면 D-Wave는 양자컴퓨팅 시스템, 클라우드 접속, 응용개발 서비스를 판매한다. 회사는 자신을 어닐링과 게이트 모델을 모두 제공하는 최초의 이중 플랫폼 공급자로 설명하지만, 이는 회사의 경쟁 포지셔닝이며 외부 검증 결과는 아니다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>수익원</th>
+<th>사업·회계 구조</th>
+<th style="text-align: right;">Q3 실적콜에서 확인된 규모</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QCaaS</td>
+<td>Leap 클라우드를 통한 양자컴퓨팅 접속. 계약기간은 통상 1개월~2년이며 기간에 걸쳐 매출 인식</td>
+<td style="text-align: right;">$2.2M, <span class="up">+56%</span> YoY</td>
+<td>가장 반복성이 높은 수익원</td>
+</tr>
+<tr>
+<td>전문서비스</td>
+<td>고객의 양자 응용 발굴·구현 및 교육. 진행률 기준으로 매출 인식</td>
+<td style="text-align: right;">$2.0M, <span class="up">+318%</span></td>
+<td>수요 검증에는 긍정적이나 인력집약적이고 상대적으로 마진이 낮음</td>
+</tr>
+<tr>
+<td>시스템·기타</td>
+<td>Advantage2 등 초전도 어닐링 시스템 판매 및 업그레이드</td>
+<td style="text-align: right;">약 $0.36M</td>
+<td>거래당 금액은 크지만 계약·납품 시점에 따른 변동성이 매우 큼</td>
+</tr>
+<tr>
+<td>게이트 모델</td>
+<td>Quantum Circuits 인수 후 dual-rail 기반 시스템과 시뮬레이터 개발</td>
+<td style="text-align: right;">매출 기여는 공시상 확인 불가</td>
+<td>현재는 투자·기술검증 단계에 가까움</td>
+</tr>
+</tbody>
+</table></div>
+<p>Q3 매출은 QCaaS와 전문서비스가 사실상 대부분을 차지했다. 실적콜에서는 100곳 이상의 고객이 매출에 기여했고, 상업기업 비중이 전년 동기 31%에서 52%로 높아졌다고 언급했다. 고객군은 기업, 정부기관, 대학·연구기관으로 구성된다.</p>
+<p>경쟁력의 핵심은 다음과 같다.</p>
+<ul>
+<li>이미 여섯 세대의 어닐링 시스템을 개발·운영한 경험</li>
+<li>클라우드, 소프트웨어, 전문서비스까지 포함한 풀스택 제공</li>
+<li>최적화 문제에서 생산환경 적용 사례 보유</li>
+<li>Quantum Circuits 인수로 게이트 모델까지 확장</li>
+</ul>
+<p>반면 10-K는 전통적 컴퓨팅과 다른 양자컴퓨팅 방식 모두를 경쟁자로 명시한다. 현재 매출 규모만으로 지속 가능한 경쟁우위나 경제성이 입증됐다고 보기는 어렵다.</p>
+<h2>4. 실적·재무 분석</h2>
+<h3>최신 분기 자료의 정합성</h3>
+<p>제공된 시장지표의 최근 분기 매출 $3.1M은 2026년 Q2 수치와 일치한다. 11월 10일 Q3 실적콜에서 발표된 최신 매출은 $4.5M, 전년 동기 대비 21% 증가다. 따라서 시장지표의 매출 YoY <span class="down">-0.6%</span>는 Q3 실적을 반영하지 않은 것으로 판단한다.</p>
+<p>Q2 대비 Q3 매출은 단순 계산상 약 45% 증가했다. 다만 성장을 주도한 것은 전문서비스와 QCaaS였으며 시스템 매출은 아직 약 $0.36M에 불과했다.</p>
+<h3>성장의 질</h3>
+<p>긍정적인 부분은 QCaaS 매출이 $2.2M으로 56% 증가했다는 점이다. Q2 실적콜에서는 상반기 QCaaS 매출의 37% 이상이 생산환경 응용에서 발생했다고 언급했다. 단순 실험을 넘어 실제 운영으로 이동하고 있다는 신호다.</p>
+<p>반면 전체 성장 중 전문서비스가 $2.0M, 318% 증가하며 큰 비중을 차지했다. 전문서비스는 고객 진입과 응용 발굴에는 필요하지만 반복성이 낮고, Q3 매출총이익률 하락의 주요 믹스 요인으로 언급됐다. 서비스 매출이 향후 QCaaS 구독으로 전환되는지가 성장의 질을 결정한다.</p>
+<p>Bookings도 집중도를 고려해야 한다.</p>
+<ul>
+<li>9개월 bookings: $37.4M, <span class="up">+611%</span></li>
+<li>상반기 bookings: $35.5M</li>
+<li>Q3 bookings: $1.9M, <span class="down">-19%</span></li>
+<li>상반기 bookings에는 Florida Atlantic University의 $20M 시스템 판매가 포함</li>
+</ul>
+<p>즉, 9개월 bookings 급증은 상당 부분 단일 시스템 계약과 상반기에 집중됐다. Q3 자체의 신규 수주는 둔화했다.</p>
+<h3>수주잔고와 매출 가시성</h3>
+<p>Q3 말 RPO는 $38.3M으로 전년 동기의 13배 이상이며, 회사는 이 중 59%를 12개월 내, 71%를 24개월 내 인식할 것으로 예상한다고 밝혔다. 단순 계산하면 향후 12개월 인식 예정분은 약 $22.6M이다.</p>
+<p>다만 RPO는 Q2 말 $40.7M에서 Q3 말 $38.3M으로 $2.4M 감소했다. 기존 수주잔고가 매출로 전환되는 동안 이를 상쇄할 만큼 신규 계약이 들어오지 않았다는 의미일 수 있다. 정확한 감소 원인별 분해는 제공 자료에서 확인되지 않는다.</p>
+<h3>마진과 비용</h3>
+<p>Q3 GAAP 매출총이익은 $2.4M으로 11% 감소했고, 매출총이익률은 52.9%로 전년 동기 대비 18.5%포인트 하락했다. 매출이 21% 증가했는데도 매출총이익이 감소했다는 점은 현재 성장의 수익성이 약하다는 의미다.</p>
+<p>동시에:</p>
+<ul>
+<li>GAAP 영업비용: $55.9M, <span class="up">+84%</span></li>
+<li>조정 영업비용: $40.5M, <span class="up">+72%</span></li>
+<li>조정 EBITDA 손실: $37.7M, 전년보다 손실 $17M 확대</li>
+<li>Q3 순손실: $48.2M</li>
+</ul>
+<p>순손실이 전년보다 줄어든 것은 주로 비현금성 워런트부채 평가손실이 $122M 감소한 영향이다. 본업의 손익 개선으로 해석하기 어렵다. 제공된 Q3 수치상 정확한 영업이익률은 별도로 제시되지 않았지만, $2.4M의 매출총이익에 비해 $55.9M의 영업비용이 발생해 영업 레버리지는 아직 형성되지 않았다.</p>
+<h3>현금흐름과 재무 건전성</h3>
+<ul>
+<li>현금·시장성증권: $503.4M</li>
+<li>TTM 잉여현금흐름: $-119.8M</li>
+<li>2026년 6월 누적결손: $1.0B</li>
+<li>Quantum Circuits 인수: 현금 $250M 및 보통주 10,430,444주</li>
+<li>CHIPS Act 지원금: 최대 $100M이나 Q3 말까지 수령액 없음</li>
+</ul>
+<p>현금·시장성증권은 TTM 잉여현금흐름 적자액의 약 4.2배다. 이는 즉각적인 유동성 위기는 아니라는 의미지만, 영업비용 증가율이 높아 현재 적자가 그대로 유지된다는 보장은 없다. 제공된 발췌만으로 총부채, 순현금 및 실제 현금 런웨이는 공시상 확인 불가하다.</p>
+<p>현재 시가총액 $4.35B는 Q3 매출을 단순 연율화한 $18M의 약 242배다. 시스템 매출의 분기 변동성이 커 공식적인 매출배수로 보기는 어렵지만, 현재 기업가치가 장기간의 고성장과 기술 상용화를 이미 상당 부분 반영하고 있음을 보여준다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>어닐링 시스템 판매 확대</strong></li>
+</ol>
+<p>실적콜에서 회사는 FAU의 $20M 시스템 판매 중 상당 부분을 Q4에 인식하고, 설치 관련 매출은 2027년 초에 인식할 것으로 예상한다고 밝혔다. Q2 실적콜에서는 시스템 가격이 통상 $20M~$40M이며 연간 2~3건의 거래를 기대한다고 언급했다.</p>
+<p><strong>검증 포인트:</strong> Q4 시스템 매출의 실제 인식액, 현금 회수, 시스템 매출 포함 후 매출총이익률, 추가 계약 체결 여부.</p>
+<ol start="2">
+<li><strong>QCaaS의 생산환경 침투</strong></li>
+</ol>
+<p>Q3 QCaaS 매출은 56% 증가했고, Q2 실적콜에서는 생산환경 응용 비중이 확대됐다고 언급했다. 구독 매출은 시스템 판매보다 반복성과 예측 가능성이 높다.</p>
+<p><strong>검증 포인트:</strong> QCaaS 성장률 유지, 생산환경 고객 비중, 기존 고객의 계약 갱신·사용량 확대. 고객 유지율은 현재 제공 자료상 확인 불가하다.</p>
+<ol start="3">
+<li><strong>전문서비스에서 반복 매출로의 전환</strong></li>
+</ol>
+<p>실적콜에서 회사는 Fortune 100 고객과 2년간 $10M 규모로 여러 응용을 개발 중이며, 첫 응용은 이미 생산환경에 들어갔다고 언급했다. 다른 응용들도 생산 전환이 가능할 것으로 회사는 보고 있다.</p>
+<p><strong>검증 포인트:</strong> 전문서비스 매출만 증가하는지, 개발된 응용이 추가 QCaaS 매출과 장기계약으로 전환되는지.</p>
+<ol start="4">
+<li><strong>게이트 모델 상용화와 Quantum Circuits 통합</strong></li>
+</ol>
+<p>회사는 dual-rail 방식의 게이트 모델 시뮬레이터 베타를 시작했고, 기존 고객과 신규 고객 모두와 17-qubit 시스템 판매를 논의 중이라고 밝혔다. 장기적으로 회사는 2028년 첫 오류보정 논리 큐비트, 2032년 100개 논리 큐비트와 100만 회 이상 연산을 목표로 제시했다.</p>
+<p><strong>검증 포인트:</strong> 17-qubit 시스템의 실제 가용·납품 시점, 유료 주문, 공개된 성능 검증, 인수 전후 R&amp;D 일정 준수 여부.</p>
+<ol start="5">
+<li><strong>정부·파트너 채널</strong></li>
+</ol>
+<p>회사는 CHIPS and Science Act를 통해 최대 $100M에 접근할 수 있으며, 2027년 정부사업 비중이 크게 증가할 것으로 전망한다고 밝혔다. CGI 및 LG CNS와의 협력도 발표했지만, 파트너 매출은 아직 중요한 사업 구성요소가 아니라고 설명했다.</p>
+<p><strong>검증 포인트:</strong> 조건부 지원금의 실제 수령액과 조건, 정부계약의 bookings 전환, MOU·협력 발표가 유료 계약으로 이어지는지.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<h3>경영진의 톤과 가이던스</h3>
+<p>경영진의 톤은 기술과 수주잔고에 대해서는 자신감이 높았다. 근거로 9개월 bookings, RPO, 생산환경 고객, Fortune 100 프로젝트 및 시스템 판매를 반복해서 제시했다.</p>
+<p>다만 재무 가이던스는 정량적 범위보다 방향성 중심이었다. 회사는 시스템 판매, QCaaS, 전문서비스 및 파트너 판매가 2027년에 성장할 것으로 전망한다고 밝혔지만, 2027년 매출·손실의 구체적인 범위는 제시하지 않았다. Q4 역시 FAU 매출의 “상당 부분”을 인식한다는 표현에 그쳤다.</p>
+<h3>Q&amp;A에서 반복된 질문과 방어 지점</h3>
+<ul>
+<li>애널리스트들은 RPO 전환 속도와 파이프라인을 반복적으로 질문했다.</li>
+<li>회사는 진행 중인 거래의 규모와 체결 시점을 공개하지 않겠다고 명시적으로 답했다. 현재 bookings 성장의 지속성을 외부에서 검증하기 어려운 지점이다.</li>
+<li>17-qubit 시스템 수요에 대해서는 기존 어닐링 고객과 신규 고객 모두와 논의 중이라고 답했지만, 확정 주문 수량이나 금액은 밝히지 않았다.</li>
+<li>CHIPS 지원금은 어닐링과 게이트 모델에 대체로 공통 활용할 수 있다고 설명했지만, 지급 시점과 실제 수령 가능 금액은 구체화하지 않았다.</li>
+<li>공급망과 관련해 회사는 모든 부품을 미국에서 조달하지 않으며, 미국과 아시아는 관리 가능하지만 유럽의 자국기업 우선 정책은 더 어려운 문제라고 인정했다.</li>
+</ul>
+<h3>공시 외에 콜에서 드러난 정보</h3>
+<ul>
+<li>실적콜에서 시스템 가격은 대체로 $20M~$40M이며, 보수적으로는 하단을 적용해야 한다고 언급했다.</li>
+<li>사이트가 준비된 뒤에도 제작·설치·보정과 매출 인식에 약 두 분기가 걸릴 수 있다고 설명했다.</li>
+<li>Fortune 100 고객과의 계약은 2년간 $10M 규모이며 첫 응용은 생산환경에 진입했다고 언급했다.</li>
+<li>Q2 실적콜에서는 17-qubit 시스템을 2026년 말 이전 제공할 계획이라고 밝혔고, Q3에는 2027년 고객 주문 논의와 2028년 로드맵을 강조했다. 일정 지연으로 단정할 수는 없지만, 내부 시스템 가용 시점과 외부 고객 납품 시점을 구분해 확인할 필요가 있다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>대형 시스템 계약에 따른 실적 변동성</strong></li>
+</ol>
+<p>상반기 매출은 전년의 $13.7M 시스템 판매 기저 때문에 67% 감소했다. 2026년 bookings 급증 역시 $20M FAU 계약의 영향이 크다. 시스템 계약 한두 건의 체결·납품 지연이 연간 실적을 크게 바꿀 수 있다.</p>
+<ol start="2">
+<li><strong>성장보다 빠른 비용 증가</strong></li>
+</ol>
+<p>Q3 매출은 21% 증가했지만 영업비용은 84% 증가했고, 조정 EBITDA 손실은 $37.7M으로 확대됐다. 10-K도 상당한 비용과 손실이 당분간 계속될 것으로 예상한다고 명시한다. 전문서비스 중심 성장이 지속되면 매출 성장에도 마진 개선이 지연될 수 있다.</p>
+<ol start="3">
+<li><strong>Quantum Circuits 인수 및 기술 로드맵 실행</strong></li>
+</ol>
+<p>회사는 현금 $250M과 주식 10.43M주를 투입했다. 10-K는 통합 비용, 운영상 어려움, 예상한 시너지와 상용화 일정이 실현되지 않을 위험을 명시한다. 게이트 모델은 아직 매출 기여가 확인되지 않아 인수 성과가 기술 마일스톤 중심으로만 평가되고 있다.</p>
+<ol start="4">
+<li><strong>공급망과 생산능력</strong></li>
+</ol>
+<p>실적콜에서 희석냉동기의 리드타임이 기대보다 길다고 인정했고, 추가 공급사를 인증하고 장기납기 부품을 선구매하기 시작했다고 언급했다. 시스템 판매가 증가해도 제조·설치 역량이 따라오지 못하면 매출 인식이 지연될 수 있다.</p>
+<ol start="5">
+<li><strong>추가 자본과 희석 가능성</strong></li>
+</ol>
+<p>현재 현금은 충분하지만 10-K는 사업목표 달성을 위해 예상보다 빨리 추가 자본이 필요할 수 있다고 명시한다. CHIPS 지원금은 조건부이며 아직 수령되지 않았다. 손실과 R&amp;D 투자가 현재 속도로 확대되면 추가 주식 발행 가능성을 배제할 수 없다.</p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>긍정 요인</th>
+<th>부정 요인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 매출 $4.5M, <span class="up">+21%</span></td>
+<td>시가총액 $4.35B, Q3 매출 단순 연율화 대비 약 242배</td>
+</tr>
+<tr>
+<td>QCaaS $2.2M, <span class="up">+56%</span></td>
+<td>GAAP 매출총이익률 52.9%, 전년 대비 18.5%p 하락</td>
+</tr>
+<tr>
+<td>RPO $38.3M, 전년 대비 13배 이상</td>
+<td>Q3 bookings $1.9M, <span class="down">-19%</span></td>
+</tr>
+<tr>
+<td>현금·시장성증권 $503.4M</td>
+<td>TTM FCF $-119.8M, 조정 EBITDA 손실 $37.7M</td>
+</tr>
+<tr>
+<td>12개월 내 예상 RPO 전환 약 $22.6M</td>
+<td>GAAP 영업비용 $55.9M, <span class="up">+84%</span></td>
+</tr>
+<tr>
+<td>생산환경 및 상업기업 매출 비중 확대</td>
+<td>주가 60일 <span class="down">-49.8%</span>, 고점 대비 <span class="down">-64.4%</span>로 추세 전환 미확인</td>
+</tr>
+</tbody>
+</table></div>
+<p>기술과 초기 상업화의 실체는 있으나, 현재 가격은 향후 수년간 시스템 판매, QCaaS 성장 및 게이트 모델 상용화가 동시에 성공할 가능성을 선반영하고 있다. 따라서 기관 포트폴리오에서 의미 있는 비중을 부여하기보다 실적 확인이 우선이다.</p>
+<h3>진입 전 확인할 것 3가지</h3>
+<ol>
+<li><strong>Q4 시스템 매출 검증:</strong> FAU 매출이 회사 전망대로 인식되고 현금 회수와 매출총이익이 동반되는지 확인한다.</li>
+<li><strong>반복 매출과 마진:</strong> QCaaS 성장률이 유지되고 전문서비스·시스템 믹스 변동에도 매출총이익률이 안정되는지 확인한다.</li>
+<li><strong>비용과 기술 일정:</strong> 영업비용 및 현금소진 증가가 둔화되고, 17-qubit 시스템의 실제 가용·유료 주문 및 CHIPS 지원금 수령이 확인되는지 본다.</li>
+</ol>
+<h3>판단을 뒤집을 조건</h3>
+<p>현재 판단이 이미 관망이므로 상향과 하향 조건을 함께 둔다.</p>
+<ul>
+<li><strong>관망 → 보통:</strong> FAU 매출과 현금 회수가 계획대로 이뤄지고, 이후 신규 시스템 계약이 추가되며, QCaaS 고성장과 매출총이익률 안정이 최소 두 분기 연속 확인될 경우.</li>
+<li><strong>관망 → 회피:</strong> FAU 매출 인식이 설명 없이 지연되거나 RPO와 bookings가 계속 감소하고, QCaaS 성장 둔화·마진 추가 하락·현금소진 가속 또는 대규모 증자가 나타날 경우.</li>
+<li><strong>적극 판단의 선결조건:</strong> 시스템 판매를 제외해도 반복 매출만으로 비용 증가를 흡수하는 경로와 게이트 모델의 유료 상용화가 확인돼야 한다. 현재 자료로는 이 조건을 충족하지 못한다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000026/qbts-20251231.htm">10-K — 2025-12-31_0001907982-26-000026</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000129/qbts-20260630.htm">10-Q — 2026-06-30_0001907982-26-000129</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000059/qbts-20260331.htm">10-Q — 2026-03-31_0001907982-26-000059</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000180/d-wavequantum3q26earning.htm">8-K — 2026-11-10_0001907982-26-000180__EX-99.2__d-wavequantum3q26earning</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000180/qbts-20261110xexx991.htm">8-K — 2026-11-10_0001907982-26-000180__EX-99.1__qbts-20261110xexx991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000180/qbts-20261110.htm">8-K — 2026-11-10_0001907982-26-000180</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000172/d-waveboostsstridehybridso.htm">8-K — 2026-11-04_0001907982-26-000172__EX-99.1__d-waveboostsstridehybridso</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1907982/000190798226000172/qbts-20261104.htm">8-K — 2026-11-04_0001907982-26-000172</a></li>
+<li>Transcript — 2026-11-10 Q3 2026 Transcript</li>
+<li>Transcript — 2026-08-06 Q2 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

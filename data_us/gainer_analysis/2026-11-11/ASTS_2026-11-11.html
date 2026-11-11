@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTS — AST SpaceMobile Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ASTS — AST SpaceMobile Inc. Class A Common Stock</h1>
+<div class="sub">2026-11-11 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · OpenAI Codex · gpt-5.6-sol (reasoning max)</div>
+<div class="badges"><span class="badge">ASTS</span><span class="badge">+14.11%</span><span class="badge">거래량 1.77배</span><span class="badge">$14.36B</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>일본 J-LEO와 정부·MNO 사업은 실재하는 성장 옵션이지만, 핵심 SpaceMobile 상용 서비스 매출은 아직 $0이다.</li>
+<li>Q3 매출은 187.1% 성장했으나 영업이익률은 <span class="down">-398.5%</span>, TTM 잉여현금흐름은 $-1.89B로 의미 있는 비중을 정당화할 수익성이 없다.</li>
+<li>$3.23B의 유동성을 보유했지만 이 중 $434.6M은 제한 현금이며, 장기부채 순액은 $4.08B이다. J-LEO·Blacklift 관련 추가 자금 부담도 크다.</li>
+<li>시가총액은 FY2026 매출 가이던스의 단순 72~96배다. 25기 위성 가동, 첫 상용 서비스 매출, 현금소진 안정화를 확인하기 전까지 기관 포트폴리오의 의미 있는 비중은 이르다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<p>가장 직접적인 촉매 후보는 <a href="https://www.sec.gov/Archives/edgar/data/1780312/000149315226050865/form8-k.htm">11월 10일 8-K</a>를 통한 <strong>Rakuten AST 합작법인과 일본 정부 J-LEO 지원의 재부각</strong>이다.</p>
+<ul>
+<li>Rakuten과 ASTS는 각각 51%, 49%의 의결권을 보유하며, 합작사는 일본 총무성으로부터 3년에 걸쳐 최대 JPY 148.0B를 지원받을 예정이다. 10-Q 적용환율 기준 약 $938M이며, 보도자료는 이를 약 $1B로 표현했다.</li>
+<li>다만 핵심 조건은 이미 11월 9일 실적자료와 <a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453759/asts-20260930.htm">3분기 10-Q</a>에 공개됐다. 따라서 11월 10일 8-K가 완전히 새로운 정보였다고 보기는 어렵다.</li>
+<li>제공된 뉴스 헤드라인은 오히려 실적 예상치 하회, 높은 투자지출, 목표주가 하향을 지적한다. <strong>실적 서프라이즈에 따른 상승은 아니다.</strong></li>
+<li>해석상, J-LEO의 장기 경제성 재평가와 최근 급락에 대한 기술적 반등이 함께 작용했을 가능성이 있다. 거래량 1.77배는 관심 증가를 보여주지만, 그것만으로 기관 매집이나 추세 전환을 확정할 수 없다.</li>
+</ul>
+<p>중요한 점은 ‘약 $1B 비희석성 자금’의 실질이다. 10-Q상 보조금은 ASTS가 아니라 합작사에 지급되며, ASTS도 합작사 무이표 우선주에 약 3년간 예비 추정치 $1.4B를 투자한다. 합작사는 이 자금으로 ASTS의 위성·발사 지원·소프트웨어를 구매한다. 따라서 이는 단순한 $1B 현금 유입이 아니라 <strong>보조금과 ASTS 자금이 합작사를 거쳐 매출·자산으로 순환하는 구조</strong>다.</p>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>ASTS는 저궤도의 대형 위상배열 위성을 이용해 기존 2G·4G LTE·5G 스마트폰에 직접 연결되는 위성 셀룰러망을 구축하고 있다. 회사는 이를 “first and only”라고 설명하지만, 이는 회사의 경쟁력 주장이지 독립적으로 검증된 사실은 아니다. <a href="https://www.sec.gov/Archives/edgar/data/1780312/000178031226000006/asts-20251231.htm">2025년 10-K</a></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>사업 축</th>
+<th>제품·서비스</th>
+<th>고객</th>
+<th>수익 구조 및 현재 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SpaceMobile 상용 서비스</td>
+<td>기존 스마트폰 대상 음성·데이터 연결</td>
+<td>MNO의 최종 가입자</td>
+<td>MNO가 판매·과금하고 ASTS와 매출을 배분하는 모델. Q3 말까지 관련 매출은 $0</td>
+</tr>
+<tr>
+<td>게이트웨이 제품</td>
+<td>지상 게이트웨이 장비, 소프트웨어, 설치·지원</td>
+<td>MNO 및 JV</td>
+<td>장비 인도·소프트웨어 활성화 시점에 주로 매출 인식. Q3 제품 매출 $20.6M</td>
+</tr>
+<tr>
+<td>정부 사업</td>
+<td>위성 기반 시험·개발·센싱·통신 서비스</td>
+<td>미국 정부 및 프라임 계약자</td>
+<td>고정가격 마일스톤 달성·고객 승인에 따라 매출 인식. Q3 서비스 매출 $21.8M</td>
+</tr>
+<tr>
+<td>주권 위성망/JV</td>
+<td>위성, 발사 지원, 관제 소프트웨어</td>
+<td>Rakuten AST 등 국가·JV</td>
+<td>향후 위성 공급과 라이선스 매출. J-LEO 관제 소프트웨어의 일회성 계약대가는 $75M이나 매출 인식 시점은 공시상 확정 불가</td>
+</tr>
+</tbody>
+</table></div>
+<p>핵심 모델은 직접 소비자를 확보하는 것이 아니라 MNO의 가입자·주파수·과금망을 활용하는 B2B2C 구조다. 이는 고객획득비와 청구 인프라를 줄이는 장점이 있지만, 최종 가격·마케팅·가입자 전환은 MNO에 의존한다. Q3 기준 회사는 60개 이상의 MNO 파트너와 30억 명 이상의 가입자 접점을 언급했지만, <strong>60개 파트너가 모두 확정 매출 계약이라는 의미는 아니다.</strong> 2025년 말 확정 상업계약은 AT&amp;T·Verizon·STC·Vodafone 등이었고, 나머지 상당수는 예비 합의였다.</p>
+<p>경쟁사는 10-K상 Starlink의 직접단말 서비스, Inmarsat, Globalstar, Thuraya, Iridium, Skylo와 지역 위성사업자이며, 지상망 확장도 간접 경쟁이다. 회사가 주장하는 차별점은 다음과 같다.</p>
+<ul>
+<li>별도 위성단말 없이 기존 스마트폰을 사용</li>
+<li>MNO의 저·중대역 주파수와 자체 통제 MSS 주파수의 결합</li>
+<li>최대 약 2,400제곱피트 대형 배열과 ASIC 기반 처리용량</li>
+<li>상업·정부 용도를 동일 위성 인프라에서 지원</li>
+<li>Q3 기준 약 3,500개의 특허·출원 청구항</li>
+</ul>
+<p>다만 기술적 차별성이 상업적 단가, 가입률, 위성당 현금수익으로 전환되는지는 아직 검증되지 않았다.</p>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>성장의 질</strong></p>
+<p>Q3 매출은 $42.3M으로 YoY 187.1%, QoQ 34.3% 증가했다. 그러나 매출 증가는 가입자 사용량이 아니라 게이트웨이 인도와 미국 정부 마일스톤에서 발생했다.</p>
+<ul>
+<li>제품 매출: $20.6M, 전체의 약 48.6%</li>
+<li>정부 중심 서비스 매출: $21.8M, 전체의 약 51.4%</li>
+<li>핵심 SpaceMobile 서비스 매출: $0</li>
+</ul>
+<p>단가·물량별 증감은 공시상 확인 불가하다. 제품 매출은 인도 시점, 정부 매출은 마일스톤 승인 시점에 영향을 받기 때문에 분기 변동성이 크다. 기존 계약의 잔여수행의무는 약 $1.3B이지만, 회사가 향후 12개월 내 인식을 예상한 비중은 10.1%에 불과하며 MNO 최종 가입자 사용량에 따른 변동대가는 포함되지 않았다. <a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453759/asts-20260930.htm">3분기 10-Q 매출인식 주석</a></p>
+<p><strong>마진</strong></p>
+<p>제공 지표상 총매출총이익률은 40.2%다. SEC 수치로 단순 계산하면 질적 차이가 크다.</p>
+<ul>
+<li>제품 매출 $20.6M 대비 제품 원가 $22.5M: 약 <strong>-$1.9M의 매출총손실</strong>, 제품 총이익률 약 <span class="down">-9%</span></li>
+<li>서비스 매출 $21.8M 대비 서비스 원가 $2.9M: 서비스 총이익률 약 87%</li>
+<li>즉, 전체 총이익은 정부 서비스의 고마진 마일스톤이 제품 손실을 상쇄한 결과다.</li>
+</ul>
+<p>영업이익률은 전년 대비 142.1%p 개선됐지만 여전히 <span class="down">-398.5%</span>다. Q3 엔지니어링 비용은 $95.8M, 판관비는 $55.7M으로 각각 전년보다 $55.0M, $25.9M 늘었다. 절대 영업비용은 $211.0M으로 매출의 약 5배이며, 세전손실도 $175.6M으로 전년 $163.5M보다 확대됐다. 따라서 마진 개선은 비용 레버리지보다 매출 분모 확대와 서비스 믹스 효과가 크다.</p>
+<p><strong>가이던스 난이도</strong></p>
+<p>9개월 누적 매출은 $88.6M이다. FY2026 가이던스 $150~200M을 달성하려면 Q4 매출이 필요하다.</p>
+<ul>
+<li>하단 달성: $61.4M, Q3 대비 약 <span class="up">+45%</span></li>
+<li>상단 달성: $111.4M, Q3 대비 약 <span class="up">+163%</span></li>
+</ul>
+<p>회사는 가이던스를 유지했지만, 실적콜에서 Q4 마일스톤과 J-LEO 시점에 따라 달라진다고 밝혔다. 가이던스의 상단은 특히 높은 실행 강도를 전제로 한다.</p>
+<p><strong>현금흐름과 재무 건전성</strong></p>
+<ul>
+<li>제공 지표상 TTM 잉여현금흐름은 $-1.89B이다.</li>
+<li>2026년 9개월 영업현금유출은 $314.5M, 유형자산 취득은 $1.15B, 총 투자현금유출은 $1.29B였다.</li>
+<li>같은 기간 재무활동 현금유입은 $2.06B였다. 현재 유동성은 내부 현금창출보다 신규 부채·자본조달에 의존해 형성됐다.</li>
+<li>9월 말 현금·현금성자산·제한현금은 $3.23B이며 이 중 $434.6M이 제한현금이다. 장기부채 순액은 $4.08B, 유동성 장기부채는 $8.8M이다.</li>
+<li>회사는 향후 12개월 자금이 충분하며 약 90기 위성의 제조·발사에 필요한 자금을 확보했다고 밝힘. 동시에 같은 10-Q에서 향후 추가 주식·전환사채·대출 조달 계획도 명시했다.</li>
+<li>9월 말 제3자 계약약정은 $840~860M이다. 이후 Firefly 계약이 종결될 경우 Blacklift 관련 계약대가는 현금 $900M과 Class A 주식 10~14M주이며, 지급 시점은 계약별로 나뉜다.</li>
+</ul>
+<p>따라서 단기 유동성 위기는 아니지만, 순현금 기업도 아니다. 서비스 개시가 늦어질수록 부채 또는 주식 희석 가능성이 다시 커지는 구조다.</p>
+<h2>5. 성장 드라이버</h2>
+<ol>
+<li><strong>상용 서비스 개시</strong></li>
+</ol>
+<p>회사는 2026년 말까지 미국 등 주요 시장에서 전국 단위 간헐적 서비스를 시작하고, 2027년 초 소비자 베타를 진행할 계획이라고 밝힘. 회사 기준 간헐적 서비스에는 총 25기, 핵심 시장의 연속 서비스에는 45~60기, 추가 글로벌 시장에는 약 90기가 필요하다.</p>
+<p><strong>검증 포인트:</strong> 실제 서비스 활성화 국가, 첫 SpaceMobile 서비스 매출, 25기 정상 궤도·가동 여부, 베타 이용시간과 품질.</p>
+<ol start="2">
+<li><strong>위성 생산과 ASIC 전환</strong></li>
+</ol>
+<p>회사는 BB34부터 ASIC 통합을 앞당기고 2026년 12월 월 6기 생산률을 목표로 한다고 밝힘. ASIC은 기존 궤도상 Block 1 대비 처리 대역폭을 최대 10배 높이는 설계다. Q3 10-Q상 BB51까지의 마이크론은 조립됐지만 BB17~51은 다양한 생산·통합 단계에 있어 완성 위성 수와는 다르다.</p>
+<p><strong>검증 포인트:</strong> 월별 완성·출하 대수, 수율과 재작업, BB34 이후 ASIC 위성의 실제 궤도상 성능, 위성당 $21~23M 원가 목표 유지 여부.</p>
+<ol start="3">
+<li><strong>MNO 계약의 매출 전환</strong></li>
+</ol>
+<p>60개 이상의 MNO 접점과 $1.3B의 잔여수행의무는 사업 기반을 제공한다. 다만 핵심 매출배분 조건, 최소보장액, 국가별 가격과 가입률은 공시상 확인 불가다.</p>
+<p><strong>검증 포인트:</strong> 예비 합의의 확정계약 전환, 잔여수행의무의 실제 매출 인식, 일회성 게이트웨이보다 반복 서비스 매출의 비중 상승.</p>
+<ol start="4">
+<li><strong>미국 정부 사업</strong></li>
+</ol>
+<p>회사는 약 $100M의 Space Force 첨단 센싱 계약과 누적 16건의 미국 정부 수주를 발표했다. 상업망 구축 이전에도 위성 자산을 활용해 매출을 낼 수 있다는 점은 긍정적이다.</p>
+<p><strong>검증 포인트:</strong> 계약금액 중 실제 자금이 배정된 부분, 분기별 마일스톤 매출, 후속 태스크오더, 서비스 총이익률의 지속 가능성.</p>
+<ol start="5">
+<li><strong>J-LEO와 주권 위성망</strong></li>
+</ol>
+<p>일본 정부 지원금은 위성 제조와 발사 비용 일부를 외부에서 보조하고, ASTS에는 위성·소프트웨어 공급 매출을 만들 수 있다. 실적콜에서 회사는 총투자와 상호 현금흐름을 감안해도 ASTS에 대한 순보조 효과가 약 $1B라고 설명했다.</p>
+<p><strong>검증 포인트:</strong> 보조금 실제 수령 일정, ASTS의 $1.4B 우선주 투자 일정, 합작사에서 ASTS로 유입되는 위성·발사·라이선스 대금, $75M 라이선스 매출 인식, 거래의 순현금효과.</p>
+<ol start="6">
+<li><strong>발사 역량과 Blacklift</strong></li>
+</ol>
+<p>회사는 제3자 발사계약과 DPAS 우선순위를 통해 2027~2028년 누적 100기 이상 배치를 목표로 한다고 밝힘. Blacklift는 2028년 말부터 자체 발사 선택권과 비용 통제를 확보하려는 장기 수단이다.</p>
+<p><strong>검증 포인트:</strong> BB14~25의 실제 발사 일정, 2027년 중반 45기 목표, Firefly 계약 종결, Blacklift 시험 일정과 2027년 추가 투자지출. Blacklift가 2028년 말 계획이므로 당장의 발사지연을 해결하는 수단은 아니다.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진의 톤과 가이던스</strong></p>
+<ul>
+<li>실적콜에서 경영진은 MNO 수요, 주권 위성망, ASIC 생산과 Blacklift에 대해 매우 자신감 있는 톤을 유지했다. 생산대수·위성번호·발사 목표는 구체적이었다.</li>
+<li>반면 재무 가이던스는 조건부 표현이 강했다. FY2026 매출 $150~200M을 유지하면서도 Q4 마일스톤과 J-LEO 시점에 따라 달라진다고 언급했다.</li>
+<li>실적콜에서 경영진은 상용 서비스 개시 후 12개월 매출이 $1B에 접근할 수 있다고 언급했지만, 달력 기준 2027년 가이던스는 제시하지 않았다. 이는 공식 2027년 매출 전망이 아니라 <strong>서비스 개시 시점에 연동된 경영진의 조건부 기대</strong>다.</li>
+</ul>
+<p><strong>Q&amp;A의 방어 지점</strong></p>
+<ul>
+<li>애널리스트는 ‘$1B 비희석성 자금’과 10-Q의 약 $1.4B 우선주 투자 사이의 차이를 반복적으로 질문했다. 회사는 공시가 완벽하지 않다고 인정하며 순보조 효과가 약 $1B라고 답했지만, 연도별 총현금 유출입과 순현금 효과는 제시하지 않았다.</li>
+<li>미국의 미계약 주요 MNO가 포함되는지 묻자 CEO는 미래 관계를 언급하지 않겠다며 전 세계 주요 사업자가 관심을 보인다는 일반론으로 답했다. 신규 확정계약 여부는 확인되지 않았다.</li>
+<li>주권 위성망 파이프라인에 대해서는 국제적으로 “소수의 적극적 대화”가 있다고 했지만 규모와 계약 시점은 제시하지 않았다. 주파수 투자 역시 정해진 자본 배정액이 없다고 답했다.</li>
+</ul>
+<p><strong>공시보다 콜에서 더 선명해진 정보</strong></p>
+<ul>
+<li>Q3 투자지출은 약 $310M으로 기존 전망 $350~425M보다 낮았지만, 주된 이유는 발사대금 지급 시점 이연이었다. 구조적 절감으로 보기 어렵다.</li>
+<li>실적콜에서 회사는 Q4 투자지출을 $400~500M, 매출원가 제외 조정 영업비용을 $130~140M으로 전망했다. Q3의 해당 비용 $109.4M보다 증가하는 방향이다.</li>
+<li>실적콜에서 Blacklift에 2027년 수억 달러의 추가 투자지출이 필요하다고 언급했다.</li>
+<li>소비자 베타는 2027년 초를 예상하며, 약 25기가 바람직하지만 일부 유연성이 있다고 밝혔다. 이는 2026년 말 ‘서비스 개시’가 곧바로 연속 커버리지나 대규모 매출을 의미하지 않는다는 신호다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>핵심 수익모델 미검증</strong></li>
+</ol>
+<p>Q3까지 SpaceMobile 서비스 매출은 $0이며 현재 매출은 장비 인도와 정부 마일스톤이다. 제품 부문은 Q3 매출총손실을 기록했다. 가입률·가격·ARPU·MNO 배분율은 공시상 확인 불가다.</p>
+<ol start="2">
+<li><strong>발사·궤도·생산 일정</strong></li>
+</ol>
+<p>상업화에는 최소 25기의 정상 가동이 필요하며, 핵심 시장 연속 서비스에는 45~60기가 필요하다. BB7은 목표보다 낮은 궤도에 투입돼 폐기됐고, 10-Q는 모든 계획 위성에 장기 발사계약을 확보한 것은 아니라고 명시한다. 발사 지연 하나가 매출, 가이던스와 현금소진을 동시에 악화시킬 수 있다.</p>
+<ol start="3">
+<li><strong>자본집약도와 희석</strong></li>
+</ol>
+<p>TTM 잉여현금흐름은 $-1.89B이며 현재 현금은 외부 조달의 결과다. J-LEO 우선주 투자, Blacklift 현금대가 $900M, 추가 시설·시험 투자와 전환사채는 향후 부채 또는 지분 희석 위험을 높인다. Firefly에 지급될 10~14M주도 잠재 희석 요인이다.</p>
+<ol start="4">
+<li><strong>J-LEO·Blacklift의 복잡성 확대</strong></li>
+</ol>
+<p>J-LEO는 보조금이 있지만 위성 성능·납기·지속성 기준을 충족해야 하며, 비용 추정은 예비치다. Blacklift는 설계·시험·허가·공급망을 처음부터 수행해야 하는 별도 대형 개발사업이다. 위성통신망이 본격 상용화되기 전에 로켓 개발까지 병행하면 자본과 경영자원이 분산될 수 있다.</p>
+<ol start="5">
+<li><strong>규제·MNO·경쟁 의존성</strong></li>
+</ol>
+<p>국가별 주파수 승인과 MNO 주파수 접근 계약이 필요하다. MNO가 가격과 판매를 결정하며 경쟁사 서비스도 함께 판매할 수 있다. Starlink를 포함한 자본력이 큰 경쟁사와 지상망 확장은 서비스 개시가 늦어질수록 위협이 커진다. <a href="https://www.sec.gov/Archives/edgar/data/1780312/000178031226000006/asts-20251231.htm">10-K 리스크 요인</a></p>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>판단 요소</th>
+<th style="text-align: right;">수치</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>단순 시총/FY2026 매출 가이던스</td>
+<td style="text-align: right;">약 72~96배</td>
+<td>대규모 상용화 성공을 이미 반영한 수준</td>
+</tr>
+<tr>
+<td>Q4 필요 매출</td>
+<td style="text-align: right;">$61.4~111.4M</td>
+<td>Q3 대비 약 45~163% 증가 필요</td>
+</tr>
+<tr>
+<td>핵심 서비스 매출</td>
+<td style="text-align: right;">$0</td>
+<td>현재 성장률이 최종 사업모델을 검증하지 못함</td>
+</tr>
+<tr>
+<td>영업이익률 / TTM FCF</td>
+<td style="text-align: right;">-398.5% / $-1.89B</td>
+<td>의미 있는 비중을 싣기 어려운 손실·현금소진</td>
+</tr>
+<tr>
+<td>현금·제한현금 / 장기부채 순액</td>
+<td style="text-align: right;">$3.23B / $4.08B</td>
+<td>단기 유동성은 충분하나 순현금 구조가 아님</td>
+</tr>
+<tr>
+<td>가격 흐름</td>
+<td style="text-align: right;">당일 <span class="up">+14.11%</span>, 60일 <span class="down">-52.6%</span>, 고점 대비 <span class="down">-72.3%</span></td>
+<td>강한 반등이지만 추세 전환과는 구분 필요</td>
+</tr>
+</tbody>
+</table></div>
+<p>단순 매출배수는 제공된 시가총액과 회사 가이던스를 나눈 값이다. 전환사채·잠재주식·비지배지분을 모두 반영한 완전희석 기업가치는 제공 자료만으로 정확히 산출하기 어렵다.</p>
+<p><strong>진입 전 확인할 것 3가지</strong></p>
+<ol>
+<li><strong>상용화:</strong> 2026년 말 간헐적 서비스가 실제 활성화되고, 2027년 초 첫 SpaceMobile 서비스 매출과 사용량 지표가 공개되는지.</li>
+<li><strong>제조·발사:</strong> BB14~25 발사, 25기 정상 가동 경로, 월 6기 실제 완성률과 ASIC 위성의 궤도상 성능이 확인되는지.</li>
+<li><strong>현금 브리지:</strong> Q4 매출·투자지출 실적, J-LEO의 보조금/우선주/ASTS 매출 일정, Blacklift 자금조달이 추가 대규모 희석 없이 집행되는지.</li>
+</ol>
+<p><strong>판단을 뒤집을 조건</strong></p>
+<p>현재 판단이 이미 관망이므로 양방향 전환 조건은 다음과 같다.</p>
+<ul>
+<li><strong>관망 → 보통:</strong> 25기 가동과 상용 매출 개시, 반복 서비스 매출의 분기 연속 성장, FY 가이던스 달성, 90기 구축과 J-LEO·Blacklift를 감당할 현금계획이 추가 대규모 조달 없이 확인될 때.</li>
+<li><strong>관망 → 회피:</strong> 연말 서비스 개시 지연, FY2026 가이던스 하단 미달, 반복적인 발사·ASIC 생산 차질, J-LEO 순현금효과의 악화, 서비스 매출 검증 전에 추가 대규모 전환사채·주식 발행이 확인될 때.</li>
+<li>향후 <strong>보통</strong>으로 올린 뒤에도 상용 매출이 장비·정부 마일스톤에 머물거나 현금소진이 개선되지 않으면 즉시 다시 <strong>관망</strong>으로 낮춰야 한다.</li>
+</ul>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000178031226000006/asts-20251231.htm">10-K — 2025-12-31_0001780312-26-000006</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453759/asts-20260930.htm">10-Q — 2026-09-30_0001193125-26-453759</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526342550/asts-20260630.htm">10-Q — 2026-06-30_0001193125-26-342550</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453758/asts-ex99_2.htm">8-K — 2026-11-09_0001193125-26-453758__EX-99.2__asts-ex99_2</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453758/asts-ex99_1.htm">8-K — 2026-11-09_0001193125-26-453758__EX-99.1__asts-ex99_1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000119312526453758/asts-20261109.htm">8-K — 2026-11-09_0001193125-26-453758</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000149315226050513/ex99-1.htm">8-K — 2026-11-05_0001493152-26-050513__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1780312/000149315226050513/form8-k.htm">8-K — 2026-11-05_0001493152-26-050513</a></li>
+<li>Transcript — 2026-11-09 Q3 2026 Transcript</li>
+<li>Transcript — 2026-08-10 AST SpaceMobile, Inc. (ASTS) Q2 2026 Earnings Call Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
