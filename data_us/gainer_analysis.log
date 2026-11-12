@@ -23038,3 +23038,33 @@
 2026-11-11 09:31:24,545 - INFO - RDNT: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-11/RDNT_2026-11-11.html
 2026-11-11 09:31:24,545 - INFO - 발송 보류 9종목(판정 미달): TTD(관망), ASTS(관망), ONTO(보통), QUBT(관망), QBTS(관망), TGTX(보통), SEPN(관망), PLUG(관망), RDNT(보통)
 2026-11-11 09:31:26,483 - INFO - 완료: 9종목 리포트 생성 · 텔레그램 발송
+2026-11-12 08:50:02,724 - INFO - Nasdaq 스크리너 수신: 7212종목
+2026-11-12 08:50:03,257 - INFO - 1차(상승률·시총·거래대금) 통과: 21종목
+2026-11-12 08:50:04,504 - INFO - 2차(거래량 급증 2.0배↑) 통과: 8종목
+/home/inhyuk/projects/dataScout/us_gainer_analyzer.py:1158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow()
+2026-11-12 08:50:04,554 - INFO - 전체시장 트랙: 신규 전문 관문 8 → 0종목
+2026-11-12 08:50:04,554 - INFO - 3차(펀더멘털) 통과: 0종목
+/home/inhyuk/projects/dataScout/us_gainer_analyzer.py:1158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow()
+2026-11-12 08:50:04,618 - INFO - 워치리스트 트랙: 신규 전문 관문 14 → 2종목 (ATRO[stockanalysis 2026-11-10], NESR[stockanalysis 2026-11-09])
+2026-11-12 08:50:05,405 - INFO - 워치리스트 트랙: 2종목 (ATRO +5.1%, NESR +4.2%)
+2026-11-12 08:50:08,698 - INFO - 최종 선정: 2종목 (워치리스트 2 + 전체시장 0)
+
+선정 종목
+  ★WL ATRO   +  5.10%  vol× 1.7     $2.67B  score=0.486  매출 YoY +27.0%, QoQ +12.7%, TTM FCF 흑자
+  ★WL NESR   +  4.25%  vol× 0.9     $2.08B  score=0.591  매출 YoY +59.1%, QoQ +28.7%, 영업이익률 12.5%
+
+2026-11-12 08:50:08,698 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-11-12 08:50:09,641 - INFO - [1/2] ATRO 분석 시작
+2026-11-12 08:50:55,022 - INFO - ATRO: transcript 2건 확보 — 2026-11-10 Q3 2026 Transcript, 2026-09-09 Jefferies Global Industrials Conference 2026 
+2026-11-12 08:50:55,022 - INFO - ATRO: LLM 분석 요청 [claude-cli claude-opus-5-5] (SEC 40,000자 + transcript 30,000자)
+2026-11-12 08:52:29,435 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-12 08:52:29,465 - INFO - ATRO: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-12/ATRO_2026-11-12.html
+2026-11-12 08:52:29,465 - INFO - [2/2] NESR 분석 시작
+2026-11-12 08:52:38,076 - INFO - NESR: transcript 2건 확보 — 2026-11-09 Q3 2026 Transcript, 2026-08-10 Q2 2026 Transcript
+2026-11-12 08:52:38,076 - INFO - NESR: LLM 분석 요청 [claude-cli claude-opus-5-5] (SEC 40,000자 + transcript 30,000자)
+2026-11-12 08:54:13,665 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-12 08:54:13,672 - INFO - NESR: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-12/NESR_2026-11-12.html
+2026-11-12 08:54:13,672 - INFO - 발송 보류 2종목(판정 미달): ATRO(관망), NESR(관망)
+2026-11-12 08:54:15,641 - INFO - 완료: 2종목 리포트 생성 · 텔레그램 발송
