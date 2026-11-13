@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIGR — Figure Technology Solutions Inc. Class A Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>FIGR — Figure Technology Solutions Inc. Class A Common Stock</h1>
+<div class="sub">2026-11-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">FIGR</span><span class="badge">+3.64%</span><span class="badge">거래량 1.13배</span><span class="badge">$5.43B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>Q3 실적의 질은 강하다. 순매출 $287M(<span class="up">+84%</span> YoY), 조정 EBITDA $164M(<span class="up">+91%</span>, 마진 58%), 순이익 $89M(마진 31%)을 기록했다 [8-K 11/12, 실적콜 요약]. 성장은 Kiavi 1개월분($677M)과 standalone 물량(<span class="up">+107%</span>) 양쪽에서 나왔다.</li>
+<li>다만 Q4 가이던스는 약하다. 물량은 $6.2~6.7B, take rate는 3.1~3.4%(Q3 3.5%)로 제시됐고, 조정 마진 하락이 예고됐다 [실적콜]. TTM 잉여현금흐름은 -$109.9M이고 [지표표], 2026년 들어 $600M 시니어노트 발행과 $465M 리볼빙 예정으로 차입이 늘었다.</li>
+<li>오늘 <span class="up">+3.64%</span> 상승의 확인된 촉매는 Q3 실적 발표뿐이다. 거래량은 1.13배로 '급증'이라 부르기 어렵고, 주가가 52주 고점 대비 <span class="down">-67.3%</span>인 이유는 제공 자료에서 확인되지 않는다.</li>
+<li>최근 분기 매출 지표($222.0M)와 8-K 순매출($287M)이 불일치해 밸류에이션을 확정하기 어렵다. 본격 비중은 Q4 결과와 현금흐름 확인 후 싣는 것이 합리적이다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>확인된 촉매: 2026-11-12 Q3 실적 발표.</strong> 8-K(Exhibit 99.1)와 실적콜이 같은 날 이뤄졌고, 헤드라인은 "Tops Q3 Earnings and Revenue Estimates"였다. 다만 컨센서스 수치가 제공되지 않아 상회 폭은 확인 불가다.</li>
+<li><strong>부가 촉매 후보: 자사주 매입 확대.</strong> 실적콜 요약은 $400M 규모의 확대된 매입 계획이 발표됐고 10b5-1 플랜으로 집행된다고 기재했다. 8-K 원문 발췌에는 이 내용이 없어 원문 대조는 불가하다.</li>
+<li><strong>시간 정합성 확인 불가.</strong> 분봉이나 장중 데이터가 없어 상승 시점과 발표 시점이 일치하는지 확인할 수 없다.</li>
+<li><strong>거래량 해석.</strong> 거래량 배수 1.13배는 평소 수준이며, 거래대금 $141.0M도 대규모 수급 유입 신호로 보기 어렵다.</li>
+<li><strong>기술적 반등 가능성(추정).</strong> 20일 <span class="down">-7.2%</span>, 60일 <span class="down">-30.3%</span> 하락 이후의 반등이라 기술적 요인이 섞였을 가능성이 있다. 섹터 동조 여부는 확인 불가다.</li>
+</ul>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p><strong>자료 한계:</strong> 제공된 10-K 발췌에는 Item 1(사업) 본문이 없어 10-Q(3/31, 6/30)의 Business Overview와 실적콜·GS 컨퍼런스 발언으로 보완했다.</p>
+<p><strong>사업 정의 (10-Q 3/31 MD&amp;A):</strong> 회사는 블록체인 기반 자본시장 플랫폼을 표방하며, 대출(주로 HELOC, 개인대출, DSCR)을 온체인에 올려 유동성을 만든다고 설명한다.</p>
+<p><strong>수익 구조</strong>
+- <strong>Ecosystem fee(수수료):</strong> 대출 원천 파트너가 물량 비율로 내는 수수료가 핵심이다. 실적콜 요약은 ecosystem 및 technology fee가 매출의 약 40%이며 YoY로 3배 이상 늘었다고 기재했다.
+- <strong>Figure Connect(자본경량 마켓플레이스):</strong> Q3 standalone 물량의 72%, Kiavi 포함 시 74%를 차지한다 [8-K, 실적콜]. 회사는 이를 가장 낮은 take rate이지만 가장 높은 마진의 채널로 설명한다.
+- <strong>Figure-branded 직접 대출:</strong> Q2 물량 $723M(6/30 10-Q)로 Connect보다 작은 비중이다.</p>
+<p><strong>고객군</strong>
+- 원천 파트너: 약 500곳(GS 9월 발언). Depository 20곳 이상, SMB 150곳 이상(실적콜).
+- 투자자: AAA 등급 기관(New York Life, Nationwide 신규 추가, 실적콜). 대출을 직접 매입하거나 증권화로 소화한다.</p>
+<p><strong>신규 제품</strong>
+- <strong>OPEN:</strong> 2026년 2월 출시된 온체인 공개주식 네트워크. 발행·거래·담보를 블록체인 위에서 처리하는 구조다(10-Q 3/31).
+- <strong>Blockchain Common Stock:</strong> 24/7 ATS에서 거래되는 별도 클래스 주식(10-Q 3/31).
+- <strong>Kiavi:</strong> RTL·DSCR 투자자 대출 플랫폼. 6월 인수 계약, 9월 1일 종결(10-Q 6/30, 8-K, 실적콜). 현금 대가는 약 $532.4M이었다(10-Q 6/30).</p>
+<p><strong>경쟁 위치 (회사 주장, 독립 검증 불가)</strong>
+- 회사는 홈에쿼티 분야 선도 기업이며 RWA 토큰화 시장의 리더라고 주장한다.
+- 대출 원가를 $12,000에서 $1,000 수준으로, 처리 기간을 45일에서 5일로 줄였다고 밝혔다(GS 9월).
+- 회사는 자신의 우위를 표준화, 유동성, 파트너십에서 찾는다.</p>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<h3>분기 지표 요약</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1'26 Ecosystem volume</td>
+<td>$3.72B (YoY <span class="up">+136%</span>)</td>
+<td>10-Q 3/31</td>
+</tr>
+<tr>
+<td>Q1'26 순매출 / 순이익</td>
+<td>$167.0M (<span class="up">+98%</span>) / $45.0M (전년 -$0.6M)</td>
+<td>10-Q 3/31</td>
+</tr>
+<tr>
+<td>Q1'26 조정 EBITDA</td>
+<td>$82.7M (전년 $28.3M), 마진 약 50%(추정)</td>
+<td>10-Q 3/31</td>
+</tr>
+<tr>
+<td>Q2'26 Ecosystem volume</td>
+<td>$4.95B (YoY <span class="up">+157%</span>)</td>
+<td>10-Q 6/30</td>
+</tr>
+<tr>
+<td>Q2'26 Figure-branded volume</td>
+<td>$723M (YoY <span class="up">+68%</span>)</td>
+<td>10-Q 6/30</td>
+</tr>
+<tr>
+<td>Q3'26 Loan marketplace volume</td>
+<td>$5.8B (YoY <span class="up">+135%</span>, Kiavi $677M 포함), standalone $5.1B(<span class="up">+107%</span>)</td>
+<td>8-K, 실적콜</td>
+</tr>
+<tr>
+<td>Q3'26 순매출 / 조정순매출</td>
+<td>$287M (<span class="up">+84%</span>) / $283M (<span class="up">+83%</span>)</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>Q3'26 순이익</td>
+<td>$89M (전년 동일, 전년에 일회성 세금이익 $31M 포함)</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>Q3'26 조정 EBITDA</td>
+<td>$164M (<span class="up">+91%</span>), 마진 58%</td>
+<td>실적콜 요약</td>
+</tr>
+<tr>
+<td>Q3'26 net take rate</td>
+<td>3.5% (Kiavi 1개월 포함), standalone 3.7%</td>
+<td>실적콜 요약</td>
+</tr>
+<tr>
+<td>지표표 "최근 분기 매출"</td>
+<td>$222.0M (YoY <span class="up">+97.2%</span>, QoQ <span class="up">+37.8%</span>)</td>
+<td>지표표</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>데이터 정합성 주의:</strong> 지표표의 최근 분기 매출 $222.0M은 8-K 순매출 $287M과 맞지 않는다. 정의 차이(총액 대 순액 등)이거나 집계 오류일 수 있으며, 원인은 확인 불가다. 이 리포트는 8-K 수치를 기준으로 쓴다.</p>
+<h3>성장의 질 (단가·물량·믹스)</h3>
+<ul>
+<li><strong>물량:</strong> 물량 성장은 두 자릿수 중반에서 세 자릿수 초반까지 나왔다. 다만 Q1 이후 물량 성장률은 standalone 기준 Q3에 <span class="up">+107%</span>로 둔화됐다(10-Q 3/31 대비 추정). 이는 기저 효과와 시장 환경의 영향으로 보인다(추정).</li>
+<li><strong>단가(take rate):</strong> Q1 3.8%에서 Q3 standalone 3.7%, 포함 시 3.5%로 낮아졌다. 회사는 이를 Connect 확대에 따른 자본경량 전환의 결과라고 설명하며, 물량이 늘면서 파트너가 상위 볼륨 구간에 들어가는 효과도 있다고 밝혔다(GS 9월).</li>
+<li><strong>믹스:</strong> 물량이 늘고 단가가 낮아지는 조합이다. 매출 증가율(<span class="up">+84%</span>)이 물량 증가율(standalone <span class="up">+107%</span>)보다 낮은 것도 이 믹스 변화와 일관된다.</li>
+<li><strong>Kiavi 효과:</strong> Kiavi 편입 전후 비교는 제공 자료만으로 분리가 어렵다.</li>
+</ul>
+<h3>마진 방향성</h3>
+<ul>
+<li>조정 EBITDA 마진은 Q1 약 50%(추정), Q2 55%, Q3 58%로 상승했다. 회사는 중기 목표를 60% 이상으로 제시했다(GS 9월, 실적콜).</li>
+<li>Q4에는 계절성 물량 감소(10~15%)와 Kiavi 통합 비용 $18~23M 추가로 마진이 하락할 것이라고 회사가 예고했다(실적콜).</li>
+<li>영업이익률 43.5%(<span class="up">+6.6%</span>p YoY)와 매출총이익률 96.1%는 지표표 값이다. 공시 원문과 대조할 수 없어 확인 불가 항목으로 둔다.</li>
+</ul>
+<h3>현금흐름</h3>
+<ul>
+<li><strong>TTM FCF -$109.9M</strong> (지표표). 원인은 공시상 확인 불가다. 추정으로는 대출채권 증가, 즉 운전자본 투입이 주된 원인일 가능성이 있다. 실적콜에서는 조정 EBITDA의 약 50%가 세금과 무담보 이자 지급 후 현금으로 전환된다고 회사가 주장했다. 이 주장이 맞다면 음수 FCF는 자산 성장에 따른 일시적 현상일 수 있으나, 검증은 필요하다.</li>
+</ul>
+<h3>재무 건전성</h3>
+<ul>
+<li><strong>현금:</strong> Kiavi 인수 후 $1.59B (실적콜).</li>
+<li><strong>부채:</strong> 2031년 만기 8.5% 시니어노트 $600M 발행, 순수익 $586.5M(10-Q 6/30). 기존 브릿지론은 종료됐다. 이자 부담이 커졌고, 이는 향후 순이익 마진에 직접 영향을 준다.</li>
+<li><strong>추가 차입:</strong> $465M 리볼빙 완료가 11월 예정(실적콜). Prime 부문은 대출자 공급 $825M, 매칭 잔액 $588M이며, 이 중 약 $200M이 제3자 차입이다(실적콜).</li>
+<li><strong>주식 수:</strong> Class A 177.4M주, Class B 37.9M주(2026-03-10 기준, 10-K). 지표표 시가총액 $5.43B와 주가 $24.19를 감안하면 대략 부합한다(추정).</li>
+<li><strong>단순 밸류에이션(추정):</strong> Q3 순이익 $89M을 단순 연환산하면 약 $356M이며, 시가총액 기준 P/E는 약 15배다. Kiavi 1개월분만 포함된 데다 Q4 마진 하락이 예고되어 있어 참고용으로만 본다.</li>
+</ul>
+<h3>주주환원</h3>
+<ul>
+<li>2026년 2월 $200M 자사주 매입 프로그램(10-Q 3/31)이 Q3에 $400M으로 확대됐다고 실적콜 요약에 기재됐다. 8-K 원문에서는 확인되지 않는다.</li>
+<li>2월 secondary 수반 자사주 매입은 $32.00에 실시됐다(10-Q 3/31). 현재 주가 $24.19는 그 가격보다 낮다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>성장 축 (회사 제시)</th>
+<th>실현 조건</th>
+<th>검증 포인트 (다음 분기)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 기존 파트너 물량 확대 및 Connect 확장</strong></td>
+<td>기존 파트너 물량 증가(회사: Q3 2025 활성 파트너가 Q3 2026 물량 40% 이상 증가), 신규 대형 파트너 온보딩</td>
+<td>Q4 물량 $6.2~6.7B 달성 여부, 계절성 하락이 10~15% 내에서 그치는지</td>
+</tr>
+<tr>
+<td><strong>② 신규 자산군(RTL·DSCR·SMB·자동차)</strong></td>
+<td>Kiavi RTL 물량 유지 및 증가(9월 약 $600M), SMB 물량 $500M 런레이트 유지, Agora 자동차 대출 첫 증권화(Q4 초 예정, GS 9월)</td>
+<td>Kiavi RTL 월간 물량 추이, 자동차 증권화 실행 여부</td>
+</tr>
+<tr>
+<td><strong>③ 비용 시너지 및 운영 레버리지</strong></td>
+<td>시너지 $35M 중 $30M 집행 완료, 나머지 12개월 내 집행. 회사는 2027년 마진 개선을 주장</td>
+<td>Q4 조정 마진이 가이던스 범위 내인지, 2027 마진 개선이 실현되는지</td>
+</tr>
+<tr>
+<td><strong>④ 자본시장 확장 (기관 투자자·온체인 ABS)</strong></td>
+<td>AAA 기관 매수자 확대, 온체인 AAA ABS 발행 계획, 증권화 실행(Q3 8건, $2.7B 판매)</td>
+<td>온체인 ABS 발행 완료, 증권화 건수 및 규모 증가</td>
+</tr>
+<tr>
+<td><strong>⑤ Depository 파트너 확대</strong></td>
+<td>Flagstar 등 대형 은행 온보딩, depository 20곳 이상</td>
+<td>신규 depository 추가 속도(회사는 영업 사이클이 길다고 인정, 실적콜)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>참고:</strong> OPEN과 Blockchain Common Stock의 거래량·발행 건수는 제공 자료에 수치가 없어 확인 불가다.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>경영진 톤과 자신감</strong>
+- CEO는 "record quarter"와 "100% 이상 물량 성장"을 강조하며 자신감을 드러냈다. 2027년을 "파트너 업셀의 해"로 제시했다(실적콜 요약).
+- 반면 Q4 가이던스는 마진 하락을 명시했다. 긍정 톤과 보수적 가이던스가 함께 나타난다.
+- GS 컨퍼런스(9월)에서 경영진은 "Q3 실적 발표에서 take rate에 대한 명확성을 제공하겠다"고 약속했다. 실적콜에서 3.5%/3.7%와 Q4 3.1~3.4%를 제시한 것은 그 약속을 이행한 것이다.
+- GS에서 경영진은 "중기 60% 이상 마진 목표를 유지한다"고 했다. Q4 마진 하락 예고는 이 목표 도달 시점이 늦춰질 가능성을 시사한다(추정).</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 답변 방어 지점</strong>
+- <strong>G&amp;A 비율 (Randy Binner, Texas Capital):</strong> CFO는 Kiavi 인수 관련 법률·회계 비용이 Q2·Q3에 약 $22M 반영됐고, 임원 보상(주식보상) 비용은 절대액이 안정적이라고 답했다. 또 SOX 통제 도입으로 전문가 비용이 추가된다고 설명했다. 2027년 비용 최적화는 "계속 검토한다"는 수준에 그쳤다. 일회성 비용을 제외한 정상화 수치는 제시하지 않았다.
+- <strong>Kiavi 런레이트 EBITDA (Dan Fannon, Jefferies):</strong> CFO는 인수 전 Kiavi 조정 EBITDA를 "$100M"이라고 언급한 사실은 인정했지만, 현재 가이던스는 제시하지 않았다. 다음 실적콜에서 정보를 주겠다고 답했다. 이 부분은 명확한 답변을 피한 것으로 볼 수 있다.
+- <strong>파이프라인 (Dan Fannon):</strong> CEO는 더 큰 파트너와의 대화가 늘었다고 답했다. 다만 depository 영업 사이클이 더 길다고 인정했고, 핀테크 부문은 다른 성과에 밀려 우선순위에서 밀렸다고 설명했다.</p>
+<p><strong>공시에는 없고 콜에서만 드러난 정보</strong>
+- Kiavi 온보딩 현황: 12개 기존 파트너 온보딩, 30여 곳 파이프라인(실적콜 요약).
+- Kiavi 인수 전 조정 EBITDA 마진 40% 이하(실적콜 요약). 통합 후 전체 마진 희석의 원인이다.
+- Sierra AI 어시스턴트 도입 후 승인 건당 자금 집행액 29% 증가, Sierra 관여 대출 약 $260M 집행(실적콜 요약).
+- 주택담보대출 중간 자금 집행 기간 10일(업계 45일 대비, 실적콜 요약).
+- 경영진 Navra 신규 벤처에 10% 지분 보유(실적콜 요약).
+- 주의: 실적콜 요약은 stockanalysis 자동 생성물이며 전문 중 일부만 원문이 제공됐다. 요약 수치는 원문으로 재확인이 필요하다.
+- GS 컨퍼런스 발언 중 "Kiavi at 40% of our volume" 표현은 Q3 Kiavi 물량 $677M ÷ 총 $5.8B ≈ 12%와 맞지 않는다. 발언 맥락이 불분명하므로 인용하지 않는 것이 안전하다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<ol>
+<li>
+<p><strong>Take rate 하락과 Q4 마진 압축.</strong> Q3 3.5%에서 Q4 3.1~3.4%로 낮아질 것으로 가이던스가 나왔다. 회사는 이를 자본경량 전환의 결과라고 설명하지만, 단가 하락이 물량 증가를 완전히 상쇄하지 못하면 이익 성장이 둔화된다. 3자 자산 증권화 시 ecosystem fee 구조도 바뀔 수 있다(실적콜, GS).</p>
+</li>
+<li>
+<p><strong>레버리지 증가와 음수 FCF.</strong> 8.5% 시니어노트 $600M, 리볼빙 $465M 예정, Prime 제3자 차입 약 $200M이 쌓였다. TTM FCF -$109.9M도 함께 봐야 한다. 금리 급변 시 소비자 대출 펀널이 흔들릴 수 있다는 점을 회사도 언급했다(실적콜 요약).</p>
+</li>
+<li>
+<p><strong>Kiavi 통합과 마진 희석.</strong> Kiavi 인수 전 마진이 40% 이하였다(실적콜 요약). 통합 비용이 Q4에 $18~23M 추가되고, 시너지 잔여분 $5M은 12개월 내 집행 예정이다. Kiavi의 과거 EBITDA $100M은 회사 발언이며 현재 수치는 제시되지 않았다. 10-Q 6/30은 인수 조건으로 규제·인허가 승인을 명시했다. 인수 종결 후에도 규제 관련 공시 추이를 확인해야 한다.</p>
+</li>
+<li>
+<p><strong>온체인 유동성 의존.</strong> 실적콜 요약에 따르면 스테이블코인 차입 가능 규모는 약 $6.5B인 데 비해 월간 온체인 배치는 $2.5B를 넘는다. 온체인 구조는 자본 효율성을 높이지만, 디지털 자산 시장과 규제 환경의 변화에 노출된다. 10-K FLS에서도 라이선스와 규제 승인 유지를 리스크로 명시했다.</p>
+</li>
+<li>
+<p><strong>계절성과 금리 양방향 영향.</strong> Q4 계절성으로 물량이 10~15% 줄어들 수 있다. 금리 상승은 HELOC 수요를 높이는 측면도 있지만, 급격한 금리 변동은 펀널을 압박한다. 회사는 이 양면성을 모두 언급했다.</p>
+</li>
+</ol>
+<p><strong>자료 한계:</strong> 제공된 10-K 발췌에는 Item 1A(리스크 요인) 본문이 없다. 리스크 항목은 10-Q, 8-K, 실적콜 중심으로 구성했으며, 10-K 리스크 섹션 전문 확인이 추가로 필요하다.</p>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<h3>정량 근거</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>지표</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>성장</td>
+<td>순매출 <span class="up">+84%</span>, 조정 EBITDA <span class="up">+91%</span>(Q3)</td>
+<td>강함</td>
+</tr>
+<tr>
+<td>수익성</td>
+<td>조정 EBITDA 마진 58%, 순이익률 31%</td>
+<td>양호하나 Q4 하락 예고</td>
+</tr>
+<tr>
+<td>현금흐름</td>
+<td>TTM FCF -$109.9M, 전환율 약 50%(회사 주장)</td>
+<td>검증 필요</td>
+</tr>
+<tr>
+<td>재무</td>
+<td>현금 $1.59B vs 노트 $600M + 리볼빙 $465M(예정)</td>
+<td>유동성은 충분, 레버리지는 증가</td>
+</tr>
+<tr>
+<td>밸류에이션</td>
+<td>P/E 약 15배(Q3 연환산, 추정)</td>
+<td>낮아 보이나 Kiavi 1개월만 반영</td>
+</tr>
+<tr>
+<td>주가</td>
+<td>52주 고점 대비 <span class="down">-67.3%</span>, 20일 <span class="down">-7.2%</span>, 60일 <span class="down">-30.3%</span></td>
+<td>하락 추세 속 반등</td>
+</tr>
+<tr>
+<td>수급</td>
+<td>거래량 1.13배, 거래대금 $141.0M</td>
+<td>특이 수급 신호 없음</td>
+</tr>
+</tbody>
+</table></div>
+<h3>판단 논리</h3>
+<ul>
+<li><strong>적극이 아닌 이유:</strong> Q4 가이던스 하락, 음수 FCF, 차입 증가, 촉매 확인 불가, 자료 간 수치 불일치가 겹쳐 있다.</li>
+<li><strong>관망이 아닌 이유:</strong> 매출과 EBITDA 성장률이 높고 마진이 개선됐다. 현금도 충분하며 자사주 매입으로 하방을 지지한다. 밸류에이션 부담도 크지 않아 보인다.</li>
+</ul>
+<h3>진입 전 확인할 3가지</h3>
+<ol>
+<li><strong>Q4 실적:</strong> 물량이 $6.2B 하한 이상인지, take rate가 3.1~3.4% 범위 안인지, 조정 마진 하락이 가이던스 내에 머무는지 확인한다.</li>
+<li><strong>현금흐름:</strong> 영업현금흐름과 대출채권 증가분을 분리해 FCF 음수의 원인을 확인한다. 회사가 주장한 약 50% 현금 전환이 실제로 나타나는지 검증한다.</li>
+<li><strong>Kiavi 통합:</strong> 다음 실적콜에서 약속한 Kiavi 조정 EBITDA 공식 수치가 제시되는지, 시너지 잔여분이 집행되는지, 인수 전 마진 40%를 넘어서는지 확인한다.</li>
+</ol>
+<h3>판단을 뒤집을 조건</h3>
+<p><strong>보통 → 관망으로 낮춰야 할 때</strong>
+- Q4 물량이 $6.2B를 밑돌거나 take rate가 3.1%를 하회해 압축이 가이던스를 넘어설 때.
+- FCF 음수가 지속되면서 리볼빙·제3자 차입이 확대될 때.
+- Kiavi 통합 비용이 예정보다 커지거나 시너지 집행이 지연될 때.
+- 규제·라이선스 관련 공시에서 온체인 사업이나 Kiavi 운영에 제약이 확인될 때.
+- 자사주 매입이 집행되지 않은 채 현금이 줄어들 때.</p>
+<p><strong>보통 → 적극으로 올려도 될 때</strong>
+- Q4 물량이 상단($6.7B) 부근에서 나오고 take rate 3.4%가 방어될 때.
+- FCF가 양전환하거나 영업현금흐름 전환율이 회사 주장 수준으로 확인될 때.
+- Kiavi 조정 EBITDA가 공식 제시되고 2027 마진 개선 경로가 구체화될 때.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000206412426000009/figr-20251231.htm">10-K — 2025-12-31_0002064124-26-000009</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000162828026057061/figr-20260630.htm">10-Q — 2026-06-30_0001628280-26-057061</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000206412426000029/figr-20260331.htm">10-Q — 2026-03-31_0002064124-26-000029</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000162828026073077/ex991-pressrelease3q26.htm">8-K — 2026-11-10_0001628280-26-073077__EX-99.1__ex991-pressrelease3q26</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000162828026073077/ex101-creditandguaranteeag.htm">8-K — 2026-11-10_0001628280-26-073077__EX-10.1__ex101-creditandguaranteeag</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000162828026073077/figr-20261110.htm">8-K — 2026-11-10_0001628280-26-073077</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000149315226046036/ex99-1.htm">8-K — 2026-10-06_0001493152-26-046036__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/2064124/000149315226046036/form8-k.htm">8-K — 2026-10-06_0001493152-26-046036</a></li>
+<li>Transcript — 2026-11-12 Q3 2026 Transcript</li>
+<li>Transcript — 2026-09-10 Goldman Sachs Communacopia + Technology Conference 2026 Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>

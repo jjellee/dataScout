@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOPN — Kopin Corporation Common Stock</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>KOPN — Kopin Corporation Common Stock</h1>
+<div class="sub">2026-11-13 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">KOPN</span><span class="badge">+12.05%</span><span class="badge">거래량 1.3배</span><span class="badge">$691.9M</span><span class="badge">비중 판단 관망</span></div>
+</header>
+<h2>1. 결론 — 비중 판단</h2>
+<p><strong>비중 판단: 관망</strong></p>
+<ul>
+<li>3Q26 영업손실은 $0.5M으로 2Q26($3.5M 손실) 대비 크게 줄었고, 회사는 4Q26 GAAP 흑자전환이 "달성 가능"하다고 밝혔다(실적콜). 다만 4Q 매출·이익 수치는 제시되지 않았다.</li>
+<li>3Q26 매출 $18.2M 중 제품매출은 $8.8M(약 48%)이고, 나머지 $9.4M은 R&amp;D·정부 보조금·라이선스 등 비제품 매출이다. 9M26 ASC 606 매출은 전년 동기 대비 <span class="up">+2.5%</span>에 그쳐, 52% 성장률은 계약성·보조금 수익에 크게 기대고 있다.</li>
+<li>제품매출은 9M26 기준 <span class="down">-20.3%</span> YoY이며, 열화상 조준기(thermal weapon sight) 감소와 드론 프로그램 일정 지연이 주요 원인이다. 드론 고글 매출 전망은 8월 컨퍼런스에서 차년도 $10–50M이었으나 11월 콜에서는 2027년 약 $10M으로 제시되어, 상단이 사실상 낮아진 것으로 읽힌다.</li>
+<li>TTM 잉여현금흐름은 -$17.2M이고, 현금성자산 $25.8M 중 $24.2M은 BlueRadios 소송 항소 관련 보증금으로 묶여 있다. 자본 여력 검증이 선행되어야 한다.</li>
+<li>성장 기대의 핵심인 Neural I/O·컬러 MicroLED는 2027년 1월 CES 시연이 분기점이다. 현 시점 공시만으로는 기술 가치를 확인할 수 없으므로 관망하고, 1Q27 확인 후 재판단한다.</li>
+</ul>
+<h2>2. 오늘 상승의 원인</h2>
+<ul>
+<li><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성.</strong></li>
+<li>가장 가까운 확인된 기업 이벤트는 2026-11-10 실적 발표(8-K)다. 실적은 매출 전년 대비 52% 증가, 영업손실 축소, 추가 IBAS 수주 $18.6M(누적 $34M)을 포함한다. 다만 상승일과 시차가 있고, 당일 촉매로 단정할 근거는 없다.</li>
+<li>2026-11-10 SCHEDULE 13G 공시와 "5% 이상 지분 보고" 헤드라인, Canaccord의 긍정적 전망 헤드라인은 날짜와 내용이 확인되지 않아 촉매로 단정하지 않는다.</li>
+<li>거래량은 20일 중앙값 대비 1.3배, 거래대금 $16.4M으로 폭발적 수급이라고 보기 어렵다. 20일 <span class="down">-11%</span>, 60일 <span class="down">-31.2%</span> 하락 후의 기술적 반등 성격이 섞여 있을 가능성이 있다.</li>
+</ul>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<ul>
+<li><strong>제품:</strong> 마이크로디스플레이(AMLCD, LCOS/FLCOS, OLED, MicroLED)와 광학·전자·하우징을 포함한 서브시스템(ASOS). 헤드셋 완제품(훈련·시뮬레이션, 의료용)도 제공한다. 차세대 NeuralDisplay(양방향 디스플레이)를 개발 중이며, 특허 200건 이상을 보유했다고 10-K에 기재되어 있다.</li>
+<li><strong>고객군과 매출 구성(3Q26 제품매출 $8.8M 기준):</strong> 방산이 $8.5M으로 대부분이다. 산업용은 $0.05M으로 급감했고(3Q25 $0.75M), 의료는 $0.28M, 소비자용은 0이다. 10-Q는 산업용 시장의 신규 진입자에 따른 가격 경쟁을 언급하며, 회사는 산업용을 우선순위에서 낮추고 있다.</li>
+<li><strong>비제품 매출:</strong> R&amp;D 수익 $5.7M(Fabric.AI 개발 프로그램 등), 보조금 $3.1M(컬러 MicroLED, IBAS 관련), 라이선스 $0.6M이다.</li>
+<li><strong>수익 구조의 특징:</strong> 10-K는 방산 및 의료·산업 부문의 제품 개발–양산 전환 주기가 길어, 고객 지원 개발 프로그램 파이프라인이 성장의 핵심이라고 설명한다. 생산은 Westborough(MA), 대만(AMLCD 초기 공정), 한국(OLED 초기 공정), Dalgety Bay(스코틀랜드, FLCOS)에 분산되어 있다.</li>
+<li><strong>경쟁 위치:</strong> 실적콜과 컨퍼런스 콜에서 경영진은 MicroLED 경쟁사로 Plessey, ams OSRAM, Mojo Vision을 언급했고, 18–24개월 기술 우위를 주장했다(회사 주장, 독립 검증 불가).</li>
+</ul>
+<h2>4. 실적·재무 분석</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>3Q26</th>
+<th>2Q26</th>
+<th>3Q25</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총매출</td>
+<td>$18.2M</td>
+<td>$12.7M</td>
+<td>$12.0M</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>ASC 606 매출</td>
+<td>$15.1M</td>
+<td>$9.9M</td>
+<td>$12.0M</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>제품매출</td>
+<td>$8.8M</td>
+<td>$7.6M</td>
+<td>$10.7M</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>R&amp;D 매출</td>
+<td>$5.7M</td>
+<td>$2.2M</td>
+<td>$1.2M</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>보조금·협력 등 비606</td>
+<td>$3.1M</td>
+<td>$2.9M</td>
+<td>—</td>
+<td>10-Q</td>
+</tr>
+<tr>
+<td>영업손익</td>
+<td>$(0.5)M</td>
+<td>$(3.5)M</td>
+<td>$4.5M*</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>순손익</td>
+<td>$(3.4)M</td>
+<td>$0.8M</td>
+<td>$4.1M</td>
+<td>8-K</td>
+</tr>
+<tr>
+<td>제품 원가율</td>
+<td>73%</td>
+<td>86%</td>
+<td>79%</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>$12.3M</td>
+<td>$9.7M</td>
+<td>$4.1M</td>
+<td>8-K</td>
+</tr>
+</tbody>
+</table></div>
+<p>*3Q25에는 $5.1M 법률 충당금 환입과 약 $3.3M 법률비용 감소가 포함되어 있어 YoY 이익 비교는 의미가 제한적이다.</p>
+<p><strong>성장의 질</strong>
+- 단가·물량·믹스로 보면, 제품 물량과 단가는 방산 열화상 조준기 중심으로 감소했다. 9M26 방산 제품매출은 $21.1M(9M25 $24.6M)이다. 성장은 R&amp;D·보조금 등 비제품 매출에서 나왔다.
+- 3Q26 제품 원가율 개선(86%→73%)에는 일회성 항목과 스크랩 감소가 기여했고, 회사도 이 혜택이 전부 반복되지는 않는다고 밝혔다. 회사는 정상화된 생산 매출총이익률을 "20%대 초반"으로 제시했다(회사 주장).</p>
+<p><strong>마진 방향</strong>
+- 영업비용은 3Q26에 $12.3M으로 2Q26 대비 증가했다. 연구개발비 중 과제 수탁분을 제외하면 영업비용은 매출의 43%다(실적콜).
+- 공시 수치로 재계산하면 영업손실률은 총매출 기준 약 <span class="down">-2.7%</span>, ASC 606 매출 기준 약 <span class="down">-3.3%</span>다. 지표의 영업이익률 <span class="down">-3.4%</span>는 이 중 어느 기준과도 정확히 일치하지 않는다.
+- 지표의 "영업이익률 YoY <span class="up">+1.3%</span>p"는 3Q25 영업이익률이 법률 환입 때문에 약 37%로 높았던 점과 맞지 않아 재계산되지 않는다. 산출 기준 확인이 필요하다.
+- 지표의 매출 QoQ <span class="up">+48.8%</span>는 ASC 606 기준 <span class="up">+52.9%</span>, 총매출 기준 <span class="up">+42.8%</span>와 맞지 않는다(실적콜 QoQ 43%와 일치). 지표 수치는 보정이 필요하다.</p>
+<p><strong>현금흐름과 건전성</strong>
+- 3Q26 영업현금흐름은 +$2.4M이나, 9M26 영업현금흐름은 -$2.7M이다.
+- 3Q26 자본적지출은 $1.4M이며, 잔여 2026년 자본적지출은 $1.0–1.5M으로 예상된다.
+- 현금성자산 $25.8M, 제한현금 $25.5M(이 중 $24.2M은 소송 보증 담보), 현금·제한현금·유가증권 합계 $51.3M이다. 합계에서 현금과 제한현금을 빼면 유가증권은 사실상 0에 가깝다.
+- 회사는 현재 유동성으로 2027년 4분기 이후까지 운영이 가능하다고 밝혔다(회사 주장). 실제 가용 현금은 명목상 합계보다 적다.
+- 3Q26 순손실 $3.4M 중 약 $2.7M은 전략적 지분 투자의 공정가치 평가손실로, 대부분 비현금이다.
+- 2026년 4월 기준 발행주식 수는 183.4M주이며, 지표 시가총액 $691.9M과 $3.72 종가는 대략 일치한다.</p>
+<h2>5. 성장 드라이버</h2>
+<p><strong>① 방산 디스플레이(열화상 조준기·FPV 드론 고글·헤드셋)</strong>
+- 회사 주장: 드론 고글 매출은 2027년 약 $10M, 8월에는 차년도 $10–50M으로 언급. 드론 도미넌스 프로그램에서 헤드셋을 공급하는 업체 중 하나이며, 현재 상위 10개 중 5개 업체에 공급 중이라고 밝힘.
+- 실현 조건: Gauntlet 2.5 테스트 완료와 물량 배정 시점.
+- 검증 포인트: 4Q26 방산 제품매출이 3Q26($8.5M)을 회복하는지, 드론 고글 매출이 2027년 $10M 수준으로 재확인되는지.</p>
+<p><strong>② 컬러 MicroLED(IBAS 기반 국내 생산)</strong>
+- 누적 IBAS 자금 $34M(3Q26 추가 $18.6M). 미국 내 양산 목표는 2027년 중반. 회사는 최대 연 16만 웨이퍼 생산 능력을 주장했다.
+- 검증 포인트: 2027년 중반 양산 개시 여부, Westborough 생산라인 설치 진행, 보조금 매출의 지속성(9M26 보조금 수익 $9.1M은 일회성 성격 여부 확인 필요).</p>
+<p><strong>③ Neural I/O(Fabric.AI 공동 개발, AI 데이터센터 광 인터커넥트)</strong>
+- 회사 주장: 1.6Tb 대역폭, 2027년 1월 CES와 Photonics West 시연, 2028년 상용 제품화 매출 목표. 프로젝트 파이프라인이 "수억 달러" 규모라고 밝힘.
+- 현재 확인된 것: 3Q26 Fabric.AI 관련 R&amp;D 매출 $5.4M, 2차 백서에서 GPU당 학습 처리량 1.3–1.6배 개선 주장.
+- 검증 포인트: CES 시연 실제 진행 여부와 공개 사양, 모놀리식 설계 전환 일정, 2028년 제품화 매출 확정 여부. 이 항목은 가장 큰 상방이지만, 현재 매출 기여는 R&amp;D 수익에 한정된다.</p>
+<p><strong>④ OLED 방산 및 유럽 수주</strong>
+- 2.4M달러 규모 유럽 열화상 조준기 프로그램, 유럽 방산 수주 약 $8.5M(연초 대비). 2027년 초 OLED 증착 라인 가동 예정.
+- 검증 포인트: 4Q26 유럽 인도 실적과 OLED 증착 라인 가동 시점.</p>
+<p><strong>⑤ 국내 생산 전환(공급망 리스크 감소)</strong>
+- 회사는 OLED 증착을 2027년에 국내에서 수행하고, 2028년까지 완전 국내 소싱을 목표로 한다고 밝힘. 디지털 ASIC은 대만에서 2027년 말~2028년까지 생산될 수 있다고 언급.
+- 검증 포인트: 증착 라인 가동 시점과 ASIC 이전 일정.</p>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<ul>
+<li><strong>톤과 자신감:</strong> 11월 실적콜의 경영진 톤은 자신감이 높다. CFO는 GAAP 흑자전환과 2027년 지속 가능성을 "현재 모델에서 그렇게 구성 중"이라고 답했다. 다만 구체적 4Q 수치나 가이던스 범위는 없었다. 8월 컨퍼런스 대비 드론 고글 매출 상단이 낮아졌고, 드론 프로그램 "Phase 추가로 물량 시점 지연"이라는 표현이 새로 등장했다. 가이던스 화법은 "범위 제시"에서 "방향성 강조"로 바뀌었다.</li>
+<li><strong>애널리스트 Q&amp;A 반복 질문:</strong> 11월 콜에서는 국내 소싱 목표와 GAAP 흑자 지속성, Neural I/O의 전력·물 절감 효과가 반복됐다. 회사 답변은 방향성과 정치·국가안보 맥락 중심이었고, 정량 근거는 "백서 참조"로 대체되었다.</li>
+<li><strong>방어 지점:</strong> 8월 컨퍼런스에서 한 애널리스트는 구리 연결 대비 1.6Tb 광 인터커넥트의 적용 거리(약 1피트 수준)가 실제 랙 시장의 작은 부분만 커버한다고 지적했다. CEO는 "아직 판단하기 이르다"고 답했고, 수요 구조 질문에는 "하이퍼스케일러에 따라 다르다"는 식으로 답했다. 이 지점은 회사가 실질적으로 답하지 않은 대목이다.</li>
+<li><strong>공시에 없고 콜에서만 드러난 정보:</strong> 드론 도미넌스 관련 6,000대 분 헤드셋 공급 언급(8월), 1 피트 이하 드론 기준 헤드셋 대 드론 비율 1:10 주장, 회사가 주장하는 $63B 광 인터커넥트 시장 규모, 25–35% 비용 우위 주장, 랙당 연간 냉각 절감 추정치(모두 회사 주장). 이 숫자들은 독립적으로 검증되지 않았다.</li>
+</ul>
+<h2>6. 리스크</h2>
+<ol>
+<li><strong>제품매출 감소와 매출 질:</strong> 9M26 제품매출 <span class="down">-20%</span>, 3Q26 비제품 매출이 전체의 약 52%. 성장 수치의 지속성이 낮을 수 있다(10-Q MD&amp;A, 8-K).</li>
+<li><strong>원가·마진 일회성 요인:</strong> 3Q26 제품 원가율 73%에는 일회성 항목이 포함되어 있으며, 정상화 시 마진은 20%대 초반 수준으로 회사가 제시했다. 4Q 흑자 전환이 일회성 효과에 의존할 가능성(실적콜).</li>
+<li><strong>소송과 유동성:</strong> BlueRadios 연방 항소가 2027년 중반까지 계류되며, 관련 충당금은 변동 없음. $24.2M이 보증으로 묶여 가용 유동성을 제약한다(실적콜, 현금 구성 공시).</li>
+<li><strong>방산 프로그램 일정 리스크:</strong> 드론 도미넌스 물량 배정과 Gauntlet 2.5 테스트 결과에 따라 매출 시점이 달라지며, 회사도 "불확실"을 명시했다(실적콜). 10-K는 미국 정부 정책과 공급망 지정학 리스크를 명시하고 있다.</li>
+<li><strong>관세 및 공급망:</strong> 10-Q에 따르면 IEEPA 관세 환급은 승인액 약 $0.2M에 그쳤고 수령액은 0이며, 정부 항소로 불확실하다. 새로운 관세 체계가 일부 제품에 적용될 수 있다. 10-K는 반도체 부품 간헐적 부족을 공급 리스크로 명시했다.</li>
+</ol>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>정량 근거</strong>
+- 시가총액 $691.9M 대비 TTM 잉여현금흐름 -$17.2M. 현금 및 제한현금 합계 $51.3M이지만 $24.2M이 묶여 있다.
+- 3Q26 영업손실 $0.5M으로 손익분기 근접. 하지만 3Q26 제품 원가율·비제품 매출에 일회성 요인이 포함.
+- 제품매출 9M26 <span class="down">-20%</span>, ASC 606 매출 9M26 <span class="up">+2.5%</span>. 성장 근거가 아직 제품 수요로 입증되지 않음.
+- 20일 <span class="down">-11%</span>, 60일 <span class="down">-31.2%</span>, 52주 고점 대비 <span class="down">-41.8%</span>. 상승일 거래량 1.3배로 강한 수급 신호는 아님.</p>
+<p><strong>진입 전 확인할 3가지</strong>
+1. <strong>4Q26 실적(2027년 초):</strong> 제품매출이 3Q26 $8.8M을 회복하고, 원가율이 20%대 중반 이상의 정상화 수준에 근접하는지. GAAP 흑자 전환 달성 여부.
+2. <strong>CES 2027(2027년 1월) Neural I/O 시연:</strong> 1.6Tb 사양과 신뢰성 데이터 공개 여부, 고객 바인딩 발표 여부.
+3. <strong>현금 및 소송 구조:</strong> 제한현금 해제 시점과 BlueRadios 항소 진행 상황, 유동성 체계 및 추가 자본 조달 필요성 여부(희석 리스크).</p>
+<p><strong>관망을 보통 이상으로 올릴 조건</strong>
+- 4Q26 GAAP 흑자가 보고되고, 제품매출이 전년 대비 성장으로 전환된다.
+- CES 시연에서 공개 사양이 회사 주장과 일치하고, 고객 계약(LOI 또는 구매 주문)이 확인된다.
+- 드론 고글 매출이 2027년 가이던스(약 $10M) 이상으로 확정 수주된다.</p>
+<p><strong>관망을 회피로 내릴 조건</strong>
+- 4Q26 제품매출이 계속 감소하고 영업손실이 재확대된다.
+- 자본 조달(유상증자·전환사채 등)이 필요해지거나 제한현금 구조가 추가로 악화된다.
+- 드론 프로그램 물량 배정이 탈락하거나 2027년 가이던스가 추가로 하향된다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226016338/form10-k.htm">10-K — 2025-12-27_0001493152-26-016338</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226050991/form10-q.htm">10-Q — 2026-09-26_0001493152-26-050991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226037194/form10-q.htm">10-Q — 2026-06-27_0001493152-26-037194</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226050970/ex99-1.htm">8-K — 2026-11-10_0001493152-26-050970__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226050970/form8-k.htm">8-K — 2026-11-10_0001493152-26-050970</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226036857/ex99-1.htm">8-K — 2026-08-10_0001493152-26-036857__EX-99.1__ex99-1</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/771266/000149315226036857/form8-k.htm">8-K — 2026-08-10_0001493152-26-036857</a></li>
+<li>Transcript — 2026-11-10 Q3 2026 Transcript</li>
+<li>Transcript — 2026-08-11 Canaccord Genuity's 46th Annual Growth Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
