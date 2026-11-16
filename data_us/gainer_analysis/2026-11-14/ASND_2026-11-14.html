@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASND — Ascendis Pharma A/S Ordinary Share</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1d21; --muted: #6b7280; --line: #e5e7eb;
+  --accent: #1d4ed8; --accent-soft: #eff6ff; --th-bg: #f8fafc;
+  --up: #d12c2c; --down: #1558d6; --code-bg: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b3138;
+    --accent: #7aa5ff; --accent-soft: #1b2432; --th-bg: #1b1f24;
+    --up: #ff6b6b; --down: #6ea8ff; --code-bg: #1f242a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+               "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+header.doc { border-bottom: 2px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; }
+header.doc h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.35; letter-spacing: -0.01em; }
+header.doc .sub { color: var(--muted); font-size: 0.9rem; }
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+}
+h1, h2, h3, h4 { line-height: 1.4; letter-spacing: -0.01em; }
+h2 {
+  margin: 34px 0 12px; padding-left: 11px; font-size: 1.22rem;
+  border-left: 4px solid var(--accent);
+}
+h3 { margin: 24px 0 8px; font-size: 1.05rem; color: var(--accent); }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+li > strong:first-child { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: var(--accent); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--line);
+  background: var(--th-bg); color: var(--muted); border-radius: 0 6px 6px 0;
+}
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+}
+pre { background: var(--code-bg); padding: 14px; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 12px auto; }
+.tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tbl td, .tbl th { white-space: nowrap; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+th { background: var(--th-bg); font-weight: 700; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+footer.doc {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.8rem;
+}
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .wrap { padding: 20px 14px 56px; }
+  header.doc h1 { font-size: 1.35rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .wrap { max-width: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+<h1>ASND — Ascendis Pharma A/S Ordinary Share</h1>
+<div class="sub">2026-11-14 미국장 상승 종목 심층분석 · SEC 공시 + 실적콜 + 뉴스 기반 · Claude Code CLI · claude-opus-5-5</div>
+<div class="badges"><span class="badge">ASND</span><span class="badge">+3.00%</span><span class="badge">거래량 2.01배</span><span class="badge">$17.60B</span><span class="badge">비중 판단 보통</span></div>
+</header>
+<p><strong>비중 판단: 보통</strong></p>
+<ul>
+<li>Q3 제품매출은 €366M(YoY <span class="up">+89%</span>)이고 IFRS 영업이익률은 34%, 영업현금흐름은 €189M이다. 성장과 현금창출이 함께 확인된다.</li>
+<li>시가총액 $17.60B 대비 TTM 잉여현금흐름 $346.1M은 약 2.0%(추정)다. 20일 <span class="up">+22.3%</span> 상승 뒤라 밸류에이션 여유는 크지 않다.</li>
+<li>제품매출의 약 79.5%(€291M/€366M, 추정)가 YORVIPATH에 집중되어 있고, YUVIWEL의 EU 최종 승인(2026 Q4 예상)과 2027년 임상 결과 등 이벤트 의존도가 높다.</li>
+<li>시장지표 영업이익률 65.0%는 보도자료의 IFRS 34%, 비IFRS 42%와 맞지 않는다. 정의가 확인되기 전까지 적극 비중의 근거로 쓰지 않는다.</li>
+</ul>
+<hr>
+<h2>2. 오늘 상승의 원인</h2>
+<p><strong>확인된 촉매 없음 — 수급/섹터 동조 가능성</strong></p>
+<p>당일 <span class="up">+3.00%</span>를 특정 공시·뉴스에 연결할 근거는 제공 자료에 없다. 다만 직전 재료는 아래와 같다.</p>
+<ul>
+<li><strong>11/12 Q3 실적 발표 (6-K, EX-99.1)</strong>: 제품매출 <span class="up">+89%</span> YoY, QoQ +€51M, 비IFRS 영업이익률 42%, 자사주 매입 진행.</li>
+<li><strong>10/16 CHMP 긍정 의견 (6-K)</strong>: YUVIWEL의 EU 판매허가 권고.</li>
+<li><strong>11/6 COMP 긍정 의견 (6-K)</strong>: 희귀의약품 지정 유지 권고. 회사는 EC 최종 채택 시 10년 독점 시장권이 부여된다고 밝힘.</li>
+</ul>
+<p>20일 수익률 <span class="up">+22.3%</span>는 이 재료들이 발표된 구간과 겹친다. 다만 뉴스 헤드라인의 "18% Rise"는 기간과 원인이 확인되지 않으므로 사실 근거로 쓰지 않는다.</p>
+<hr>
+<h2>3. 사업 구조 — 무엇을 팔아 어디서 돈을 버는가</h2>
+<p>회사는 덴마크 기업(Ascendis Pharma A/S)이며 나스닥에 ADS로 상장되어 있다. 20-F와 6-K 기준 IFRS로 보고하고 금액은 유로 기준이다. 원문 발췌에는 Item 4(사업 상세)와 경쟁 섹션이 없어, 시장점유율 등 세부 경쟁 정보는 <strong>공시상 확인 불가</strong>다.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>제품 (성분명 / 개발명)</th>
+<th>적응증</th>
+<th>Q3 매출</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YORVIPATH (palopegteriparatide / TransCon PTH)</td>
+<td>부갑상선기능저하증</td>
+<td>€291M (<span class="up">+103%</span> YoY)</td>
+<td>제품매출의 약 80%. 40개국 이상에서 상업 또는 named patient 프로그램으로 제공</td>
+</tr>
+<tr>
+<td>SKYTROFA (lonapegsomatropin / TransCon hGH)</td>
+<td>성장호르몬 결핍</td>
+<td>€59M</td>
+<td>회사는 미국 장기지속형 성장호르몬 중 금액 기준 선두라고 실적콜에서 언급 (회사 주장)</td>
+</tr>
+<tr>
+<td>YUVIWEL (navepegritide / TransCon CNP)</td>
+<td>연골무형성증(소아)</td>
+<td>€16M (QoQ 2배)</td>
+<td>미국 누적 약 340명 등록, 처방의 약 150명. EU 승인 절차 진행 중</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>고객과 수요 구조</strong>: 희귀내분비 환자와 소아 환자가 대상이다. 전문의 처방과 보험 급여 승인이 매출의 관문이다.</li>
+<li><strong>매출 구조</strong>: 미국은 직접 판매 중심이고 해외는 직접 판매와 유통 계약을 혼합해 사용한다(MS 컨퍼런스에서 경영진 설명). 미국과 해외의 매출 비중은 <strong>공시상 확인 불가</strong>다.</li>
+<li><strong>경쟁 위치</strong>: YUVIWEL은 BioMarin의 vosoritide와 경쟁한다. 실적콜에서 경영진은 vosoritide에서 전환한 환자가 있다고 언급했다. 시장점유율은 확인 불가다.</li>
+<li><strong>파이프라인</strong>: TransCon CNP+hGH 병용요법(COACH 2상 78주 데이터, cAtCH 3상 등록 중), 저신장 소아 대상 hypochondroplasia 3상(2026 Q4 착수 예정), 신규 화학물질(NCE)을 매년 1개 이상 개발에 진입시킨다는 회사 계획이 있다.</li>
+</ul>
+<hr>
+<h2>4. 실적·재무 분석</h2>
+<p><strong>Q3 2026 주요 수치 (보도자료 및 실적콜 기준, 유로)</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제품매출</td>
+<td>€366M (YoY <span class="up">+89%</span>, QoQ +€51M)</td>
+<td>추정 Q2 €315M</td>
+</tr>
+<tr>
+<td>총매출</td>
+<td>€370M</td>
+<td></td>
+</tr>
+<tr>
+<td>영업비용</td>
+<td>€217M (QoQ −€32M)</td>
+<td>회사는 소송비용 감소와 상업 활동 시기 조정을 원인으로 설명</td>
+</tr>
+<tr>
+<td>영업이익 (IFRS)</td>
+<td>€125M (마진 34%)</td>
+<td>€125M/€370M과 일치</td>
+</tr>
+<tr>
+<td>영업이익 (비IFRS)</td>
+<td>€156M (마진 42%)</td>
+<td></td>
+</tr>
+<tr>
+<td>순이익 (IFRS / 비IFRS)</td>
+<td>€74M (EPS €1.08) / €117M (EPS €1.71)</td>
+<td></td>
+</tr>
+<tr>
+<td>영업현금흐름</td>
+<td>€189M</td>
+<td>실적콜</td>
+</tr>
+<tr>
+<td>기말 현금</td>
+<td>€964M (QoQ +€152M)</td>
+<td>자사주 매입 €52M 차감 후</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>성장의 질</strong></p>
+<ul>
+<li><strong>제품별 기여</strong>: QoQ 증가분 €51M 중 YORVIPATH가 €39M, SKYTROFA가 €4M, YUVIWEL이 €8M이다. 세 제품의 합계는 Q2와 Q3 모두 맞아떨어진다.</li>
+<li><strong>가격·물량·믹스</strong>: 환자 수, 순가격, gross-to-net은 <strong>공시상 확인 불가</strong>다. 경영진은 MS 컨퍼런스에서 gross-to-net을 공개하지 않는다고 답했다. 회사 설명은 신규 환자 수요 증가이며, 이는 물량 측면의 주장이다.</li>
+<li><strong>비용 구조</strong>: 영업비용 감소분 일부는 소송비용 감소다. 이것이 일회성인지 반복될 성격인지는 확인 불가다.</li>
+</ul>
+<p><strong>마진 방향성</strong></p>
+<ul>
+<li>IFRS 영업이익률 34%와 비IFRS 42%는 보도자료에 있다. 실적콜에서 경영진은 최근 영업이익률이 40%대 초중반이라고 언급했다.</li>
+<li>시장지표의 영업이익률 65.0%와 전년 대비 98.5%p 변화는 보도자료와 맞지 않는다. 계산 기준이 확인되지 않아 <strong>사용하지 않는다</strong>.</li>
+<li>매출총이익률은 91.8%(지표)다.</li>
+</ul>
+<p><strong>현금흐름과 재무 건전성</strong></p>
+<ul>
+<li>TTM 잉여현금흐름은 $346.1M(지표)다.</li>
+<li>회사는 FY2026 영업현금흐름이 최소 €600M일 것이라고 밝혔다(실적콜). 9월 MS 컨퍼런스에서는 €500M 초과를 언급했으므로 가이던스가 상향되었다.</li>
+<li>부채 규모와 만기 구조는 <strong>공시상 확인 불가</strong>다.</li>
+<li>자사주 매입은 $400M 프로그램 중 약 $330M을 집행했다고 실적콜에서 언급했다. 연초 이후 누적은 약 200만 주, 약 $460M이다.</li>
+</ul>
+<p><strong>데이터 정합성 메모</strong></p>
+<ul>
+<li>지표 매출 $339.3M은 보도자료의 €370M과 통화와 정의가 달라 직접 대조할 수 없다.</li>
+<li>지표 시가총액 $17.60B를 종가 $267.07로 나누면 약 65.9M주다. 20-F 기준 2025년 말 발행주식은 61.98M주이고 이후 자사주 매입으로 줄었을 것이므로 맞지 않는다. 데이터 제공사 기준을 확인해야 한다.</li>
+</ul>
+<hr>
+<h2>5. 성장 드라이버</h2>
+<p><strong>(1) 기존 3제품의 적응증 내 확대 — 특히 YORVIPATH</strong>
+- 회사 주장: 2026년 말까지 ex-US 신규 환자 수요 가속, 2027년 15개 국가 추가 완전 상업화 예정.
+- 검증 포인트: 다음 분기 YORVIPATH 매출이 QoQ +€39M 수준의 증가를 유지하는지, 해외 매출 비중이 공개되는지.</p>
+<p><strong>(2) YUVIWEL 출시와 EU 진출</strong>
+- 회사 예상: EC 최종 결정 2026 Q4, 독일 출시 2027 Q1, 일부 국가는 조기접근 프로그램으로 매출 인식 예정.
+- 검증 포인트: 4분기 YUVIWEL 매출이 €16M에서 얼마나 늘어나는지, EC 승인이 연내 확정되는지, 보험 급여 승인 비율(현재 80% 이상 주장)이 유지되는지.</p>
+<p><strong>(3) 라벨 확대와 병용요법</strong>
+- 회사 계획: hypochondroplasia 3상(2026 Q4 착수), COACH 78주 데이터 공개, cAtCH 3상 등록 2027 Q2 완료 예상, infant 3상 topline 2027 Q3.
+- 검증 포인트: 등록 완료 일정 준수, MS 컨퍼런스에서 언급된 2027년 중 3상 결과 2~3건의 실제 결과.</p>
+<p><strong>(4) 해외 시장 확대</strong>
+- 회사 목표: 2030년 제품매출 €5B, 2035년 €10B.
+- 계산(추정): Q3 제품매출을 단순 연환산하면 약 €1.46B다. 2030년 €5B를 달성하려면 연평균 30%대 중반 성장이 필요하다. 연환산은 계절성을 무시한 단순 계산이다.
+- 검증 포인트: 연간 10~20개국 완전 상업화 계획의 실행 여부와 해외 매출 증가 추이.</p>
+<p><strong>(5) 신규 NCE와 신규 치료영역</strong>
+- 회사 계획: 연 1개 이상 NCE 진입, 신규 치료영역은 다음 해에 공개 예정(실적콜). 세부 시기와 규모는 <strong>공시상 확인 불가</strong>다.
+- 검증 포인트: 임상 진입 공시와 실제 신규 치료영역 발표 여부.</p>
+<hr>
+<h2>5-1. 실적콜에서 읽히는 것</h2>
+<p><strong>톤과 자신감의 근거</strong>
+- 경영진의 표현은 "transformation", "blockbuster", "durable growth"처럼 강하다. 근거는 제품매출 증가, 현금흐름 가이던스 상향, 자사주 매입 등 수치 중심이다.
+- 가이던스 화법은 연간 목표는 구체적이고 분기 전망은 정성적이다. 실적콜에서 Q4에 대해 YORVIPATH는 "이전 분기와 일관된 성장", SKYTROFA는 "미국에서 상대적으로 안정", YUVIWEL은 "수요 성장 추세 지속"이라고 언급했다. 정량 가이던스는 없다.
+- 9월 MS 컨퍼런스의 OCF €500M 초과에서 11월 실적콜의 ≥€600M으로 올라간 점은 가이던스가 상향되었음을 보여준다.</p>
+<p><strong>애널리스트 Q&amp;A에서 반복된 질문과 회사의 답변 방식</strong>
+- <strong>cAtCH 임상 설계 변경</strong>: 실적콜에서 Jefferies가 단일요법 성장호르몬 암을 왜 넣었는지 질문했다. CEO는 규제 당국의 피드백 때문이라고 답했다. 세 개의 활성 암으로 확대되었고 일정이 몇 개월 지연되었다고 설명했다. 일정 지연은 회사가 직접 인정했다.
+- <strong>DTC 캠페인의 효과와 질병 중증도 변화</strong>: Wolfe 질문에 대해 경영진은 중증도의 의학적 정의가 없다고 답했다. 캠페인 효과는 "초기의 고무적 신호"와 일화적·정성적 근거에 머물렀다. 정량 분석에는 시간이 필요하다고 덧붙였다. 효과를 수치로 입증하지 못했다는 방어적 답변으로 읽힌다.
+- <strong>Hypochondroplasia 시장 규모</strong>: Morgan Stanley 질문에 CEO는 FGFR3 변이와 표현형을 모두 요구하는 좁은 정의를 설명했다. 보험 급여 기준과도 연계된다고 말했다. 잠재 환자 규모가 제한적이라는 인정으로 읽힌다(추정).
+- <strong>gross-to-net과 로열티</strong>: MS 질문에 gross-to-net 추이는 공개하지 않는다고 답했다. BioMarin 로열티 영향은 CFO가 "immaterial"이라고 했다. CEO는 실효 로열티율이 한 자릿수일 것이라고 주장했다(회사 주장, 독립 검증 불가).</p>
+<p><strong>공시 문서에는 없고 콜에서만 드러난 정보</strong>
+- 미국 YORVIPATH 질환인식 TV 캠페인은 9월에 시작되었고 2027년에 추가 계획이 있다.
+- 미국 소아 연골무형성증 환자의 약 70%가 미치료 상태라는 회사 추정이 있다.
+- YUVIWEL 신규 환자는 vosoritide 전환 환자, 중단 환자, 치료를 망설였던 환자 세 집단에서 나온다고 설명했다.
+- 소아 치료에서 안전성이 가장 중요하다고 강조했다. CEO는 CNP 기반 치료에서 안전성 신호가 없다고 주장했다. 이 주장의 근거 데이터는 발췌에 없다.
+- 실적콜 Q&amp;A와 MS 컨퍼런스 transcript는 일부 발췌만 확인 가능하다(중략 구간 존재). 따라서 위 내용은 확인 가능한 범위에서만 기술했다.</p>
+<hr>
+<h2>6. 리스크</h2>
+<p>20-F의 리스크 요인 섹션은 발췌에 포함되지 않았다. 아래는 6-K의 전망 경고문, 실적콜, MS 컨퍼런스 내용을 근거로 한다.</p>
+<ol>
+<li>
+<p><strong>매출 집중도</strong>: YORVIPATH가 제품매출의 약 80%다. 이 제품의 미국 수요 둔화나 해외 출시 지연은 전체 성장률에 직접 영향을 준다. 미국 수요는 "기존 추세와 일관"이라는 정성적 설명만 있다.</p>
+</li>
+<li>
+<p><strong>규제와 임상 일정</strong>: YUVIWEL의 EC 결정은 회사 예상으로 연내이고 독일 출시는 2027년 1분기다. 6-K 전망 경고문은 "이전 데이터가 후속 시험에서 확인되지 않을 수 있다"고 명시한다. cAtCH는 이미 지연되었다.</p>
+</li>
+<li>
+<p><strong>가격과 경쟁</strong>: vosoritide와의 경쟁이 있다. gross-to-net이 공개되지 않아 순가격 추세를 확인할 수 없다. 보험 급여 기준이 hypochondroplasia 확장을 제약할 수 있다.</p>
+</li>
+<li>
+<p><strong>안전성과 제조 의존</strong>: 성장기 소아 장기 치료에서 안전 신호가 나오면 라벨 변경이 가능하다. 6-K는 제3자 제조·유통 의존 리스크를 명시한다.</p>
+</li>
+<li>
+<p><strong>법적 비용과 로열티</strong>: 소송비용 감소가 Q3 비용 개선에 기여했다. 소송이 재발하면 비용이 다시 늘 수 있다. BioMarin 로열티는 일부 국가에서 2030년 5월까지 지급된다.</p>
+</li>
+</ol>
+<hr>
+<h2>7. 비중 판단의 근거와 체크포인트</h2>
+<p><strong>판단을 뒷받침하는 정량 근거</strong>
+- 제품매출 YoY <span class="up">+89%</span>, QoQ +€51M(약 <span class="up">+16%</span>, 추정).
+- IFRS 영업이익률 34%, 비IFRS 42%. Q3 영업현금흐름 €189M.
+- TTM FCF $346.1M → 시가총액 대비 약 2.0%(추정). 밸류에이션 여유가 제한적이다.
+- 기말 현금 €964M, 2026년 영업현금흐름 최소 €600M 가이던스. 자본 여력은 충분하다.
+- 주가는 52주 고점 대비 −3.6%(고점 약 $277, 지표에서 역산한 추정). 20일 <span class="up">+22.3%</span>, 60일 <span class="up">+8.1%</span>. 거래량은 평소의 2.01배.</p>
+<p><strong>비중 판단 이유</strong>
+- 적극이 아닌 이유: 밸류에이션 여유가 작고, YORVIPATH 집중도가 높으며, 승인과 임상 등 이벤트가 몰려 있다. 지표 영업이익률의 정합성도 미해결이다.
+- 관망이 아닌 이유: 매출 성장, 현금창출, 가이던스 상향, 자본 여력이 모두 확인된다.</p>
+<p><strong>진입 전 확인할 3가지</strong>
+1. 4분기 실적에서 YORVIPATH 매출이 QoQ 증가를 유지하는지, 미국과 해외 매출 비중을 공개하는지.
+2. EC 최종 승인 시점과 독일 출시 일정, 그리고 YUVIWEL 매출이 €16M에서 증가하는지.
+3. 영업이익률 정의를 정리하는 것. 지표 65%와 보도자료 34%의 차이를 데이터 제공사 기준으로 확인하고, IFRS와 비IFRS 격차(약 €31M)가 지속되는지 본다.</p>
+<p><strong>판단을 관망으로 바꿔야 하는 조건</strong>
+- 4분기 YORVIPATH 매출이 QoQ 정체 또는 감소하는 경우.
+- EC 결정이 지연되거나 부정적으로 나오는 경우.
+- cAtCH, hypochondroplasia 등에서 추가 지연이나 안전성 신호가 나오는 경우.
+- 자사주 매입으로 현금이 줄면서 FY2026 영업현금흐름 가이던스(≥€600M)가 하향되는 경우.
+- 20일 상승분을 반납하면서 거래량이 줄어드는 경우.</p>
+<p><strong>출처 한계</strong>
+- 제공된 SEC 원문은 10-K가 아니라 FY2025 20-F이며, 리스크 요인과 사업 상세 섹션의 발췌가 제한적이다.
+- 실적콜과 MS 컨퍼런스 transcript는 일부만 제공되었다.
+- 회사 주장(목표, 가이던스, 시장 규모 추정)은 독립적으로 검증되지 않았다.</p>
+<hr>
+<h2>분석에 사용한 원문</h2>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526046590/asnd-20251231.htm">20-F — 2025-12-31_0001193125-26-046590</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526456989/d80569dex991.htm">8-K — 2026-11-12_0001193125-26-456989__EX-99.1__d80569dex991</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526456989/d80569d6k.htm">8-K — 2026-11-12_0001193125-26-456989</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526451904/d117407d6k.htm">8-K — 2026-11-06_0001193125-26-451904</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000119312526423938/d167361d6k.htm">8-K — 2026-10-16_0001193125-26-423938</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1612042/000161204226000024/asnd-20260930.htm">8-K — 2026-09-30_0001612042-26-000024</a></li>
+<li>Transcript — 2026-11-12 Q3 2026 Transcript</li>
+<li>Transcript — 2026-09-15 Morgan Stanley 24th Annual Global Healthcare Conference Transcript</li>
+</ul>
+<footer class="doc">본 리포트는 SEC 공시 원문과 시장 데이터를 LLM으로 정리한 자동 생성물입니다. 투자 판단의 참고자료이며 투자 권유가 아닙니다.</footer>
+</div>
+</body>
+</html>
