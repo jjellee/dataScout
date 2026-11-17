@@ -2360,8 +2360,21 @@ def build_excel_summary(workspace_dir, parse_only=False):
         collected_date = row['collected_date']
         report_nm = row['report_nm']
         
+        # 원문 없이 파싱된 캐시(다운로드 실패 회차)는 원문이 생기면 처음부터 다시 파싱한다 — FAST 모드 포함.
+        # 2026-11-16 지니언스 5%(20261116000842) 등 24건: 16:20 회차 원문 다운로드 실패 → 17:24 --parse-only가
+        # 빈 결과로 캐시 → 21시에 원문을 받았지만 --fast 빌드는 치유를 건너뛰어 21시 엑셀에서 통째로 빠졌다.
+        _cached = cache.get(rcept_no)
+        if _cached is not None:
+            _cd = _cached.get("data")
+            _parsed_blind = _cached.get("html_missing") or (
+                _cached.get("category") == "지분공시" and isinstance(_cd, dict)
+                and _cd.get("officer_reports") == [])
+            if _parsed_blind and os.path.exists(
+                    os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")):
+                _cached = None
+
         # Check cache
-        if rcept_no in cache:
+        if _cached is not None:
             record_detail = cache[rcept_no]
             
             # Always re-apply current classification logic to cached records
@@ -2812,7 +2825,9 @@ def build_excel_summary(workspace_dir, parse_only=False):
         if cat == "영업활동_계약" and dt.get("amount") is None: is_bad = True
         if cat == "신규시설투자" and dt.get("amount") is None: is_bad = True
         if cat == "자산취득_처분" and dt.get("amount") is None: is_bad = True
-        
+        if not os.path.exists(html_path):
+            record_detail["html_missing"] = True  # 원문이 생기면 위에서 재파싱
+
         if not is_bad:
             cache[rcept_no] = record_detail
             
