@@ -17,7 +17,8 @@ from bs4 import BeautifulSoup
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
-from dart_officer_parser import parse_officer_report_html
+from dart_officer_parser import (parse_officer_report_html, parse_trade_plan_html,
+                                 parse_trade_plan_withdraw_html)
 from pykrx import stock as pykrx_stock
 import warnings
 from bs4 import XMLParsedAsHTMLWarning
@@ -84,6 +85,10 @@ def classify_disclosure(report_nm):
     if any(k in nm for k in ["사업보고서", "반기보고서", "분기보고서"]):
         return "정기공시"
         
+    # 1-1. 임원ㆍ주요주주 특정증권등 거래계획(사전공시, 2024-07 시행) — 계획·정정·철회 (2026-11-20)
+    if "거래계획" in nm and "특정증권" in nm:
+        return "임원_거래계획"
+
     # 2. 지분공시
     if any(k in nm for k in ["주식등의대량보유상황보고서", "임원ㆍ주요주주소유주식변동보고서", "임원.주요주주소유주식변동보고서", "최대주주등소유주식변동신고서", "임원ㆍ주요주주특정증권등소유상황보고서", "특정증권등소유상황보고서", "소유주식변동", "소유주식보고서"]):
         return "지분공시"
@@ -161,11 +166,22 @@ def identify_base_report_type(report_nm):
         return "타법인증권처분"
     elif "중요한자산양수도결정" in nm:
         return "중요자산양수도"
+    elif "거래계획" in nm and "특정증권" in nm:
+        return "거래계획철회" if "철회" in nm else "거래계획"
     return "기타"
 
 
 # 자산 취득·처분 서식 (유형자산 / 타법인주식 / 중요한 자산양수도)
 ASSET_BASE_TYPES = ("유형자산취득", "유형자산처분", "타법인증권취득", "타법인증권처분", "중요자산양수도")
+
+# 임원ㆍ주요주주 특정증권등 거래계획보고서 / 거래계획철회보고서
+TRADE_PLAN_TYPES = ("거래계획", "거래계획철회")
+
+
+def parse_trade_plan_record(html_path, base_type):
+    if base_type == "거래계획철회":
+        return parse_trade_plan_withdraw_html(html_path)
+    return parse_trade_plan_html(html_path)
 
 
 def asset_deal_side(base_type, report_nm):
@@ -2452,6 +2468,15 @@ def build_excel_summary(workspace_dir, parse_only=False):
                         record_detail["data"] = a_data
                         cache[rcept_no] = record_detail
 
+            # 임원 거래계획: 시트 신설(2026-11-20) 이전 캐시는 '기타공시'로 data가 비어 있다.
+            # 로컬 원문만 읽으므로 FAST 모드에서도 채운다(원문이 없으면 다음 실행에서 재시도).
+            if base_type in TRADE_PLAN_TYPES and not (record_detail.get("data") or {}).get("plan_v1"):
+                html_path = os.path.join(workspace_dir, "data_dart", collected_date, f"{rcept_no}.html")
+                if os.path.exists(html_path):
+                    record_detail["data"] = parse_trade_plan_record(html_path, base_type)
+                    record_detail.pop("html_missing", None)
+                    cache[rcept_no] = record_detail
+
             # 공급계약: 판매ㆍ공급지역 열 신설(2026-09-01) 이전 캐시는 region 키가 없다.
             # HTML이 있으면 1회 재파싱해 region만 보충한다 (없으면 다음 실행에서 재시도).
             if not FAST_MODE and base_type == "공급계약":
@@ -2790,6 +2815,11 @@ def build_excel_summary(workspace_dir, parse_only=False):
             a_data["asset_v1"] = True
             record_detail["data"] = a_data
 
+        # 6-3. 임원ㆍ주요주주 거래계획 / 철회
+        elif base_type in TRADE_PLAN_TYPES:
+            if os.path.exists(html_path):
+                record_detail["data"] = parse_trade_plan_record(html_path, base_type)
+
         # 7. Officer reports / 5% report parsing (지분공시)
         elif row['category'] == "지분공시":
             rn = report_nm
@@ -2850,7 +2880,11 @@ def build_excel_summary(workspace_dir, parse_only=False):
         import pickle
         with open(_dump, "wb") as _f:
             pickle.dump(parsed_records, _f)
-    parsed_records = resolve_amendments(parsed_records)
+    # 거래계획 정정·철회는 build_trade_plan_rows가 (회사, 원 제출일)로 직접 묶는다 —
+    # 일반 병합은 원공시 날짜를 못 읽으면 같은 회사의 다른 보고자 계획에 붙일 수 있다.
+    _plan_recs = [r for r in parsed_records if r["base_type"] in TRADE_PLAN_TYPES]
+    parsed_records = resolve_amendments([r for r in parsed_records if r["base_type"] not in TRADE_PLAN_TYPES])
+    parsed_records += _plan_recs
 
     # Filter out merged amendments
     active_records = [r for r in parsed_records if r["merged_into"] is None]
@@ -3174,9 +3208,16 @@ def build_excel_summary(workspace_dir, parse_only=False):
         df_officer_raw.to_excel(writer, sheet_name="5%_임원보고 원본", index=False)
         format_officer_sheet(writer.sheets["5%_임원보고 원본"])
 
+        # Sheet 10: 임원_거래계획 (계획 1행, 정정은 대체·철회는 원 계획 행에 합침)
+        plan_rows = build_trade_plan_rows(active_records, map_market)
+        df_plan = pd.DataFrame(plan_rows, columns=TRADE_PLAN_COLUMNS)
+        logger.info(f"Excel: writing sheet [임원_거래계획] ... {len(df_plan)} rows")
+        df_plan.to_excel(writer, sheet_name="임원_거래계획", index=False)
+        format_trade_plan_sheet(writer.sheets["임원_거래계획"])
+
         # 탭 순서 재배열: 신규시설투자 → 5%_임원보고 → 재무_자기주식 순
         desired_order = ["자금조달_증자", "영업활동_계약", "신규시설투자", "자산_취득처분", "5%_임원보고",
-                         "5%_임원보고 원본", "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
+                         "5%_임원보고 원본", "임원_거래계획", "재무_자기주식", "재무_채무보증", "경영권_지배구조", "기타공시"]
         wb = writer.book
         ordered = [wb[name] for name in desired_order if name in wb.sheetnames]
         # desired_order에 없는 시트(향후 추가분)는 기존 순서대로 뒤에 붙인다
@@ -3189,6 +3230,244 @@ def build_excel_summary(workspace_dir, parse_only=False):
     logger.info(f"Excel file built successfully: {excel_path}")
     # 실제 저장 경로를 반환 — 자정 넘김 시 업로드 단계에서 날짜를 재계산하면 파일을 못 찾는다
     return excel_path
+
+TRADE_PLAN_COLUMNS = [
+    "접수일자", "회사명", "시장구분", "종목코드", "상태", "보고자", "관계", "구분", "거래방법", "증권종류",
+    "예정수량(주)", "예정단가(원)", "예정금액(원)", "발행주식대비(%)", "거래개시일", "거래종료일",
+    "거래목적", "보유비율 전(%)", "보유비율 후(%)", "직전6개월 거래(주)", "단가 산출근거", "계약 내용", "비고",
+    "정정", "철회일", "철회사유", "철회 전 체결(주)", "체결 평균단가(원)", "철회수량(주)",
+    "접수번호", "DART링크",
+]
+
+
+def _party_key(s):
+    s = re.sub(r"\(주\)|㈜|주식회사|\s", "", str(s or ""))
+    return s.lower()
+
+
+def _ymd(s):
+    """'20261119' / '2026-11-19' → '2026-11-19'."""
+    s = str(s or "")
+    if re.fullmatch(r"\d{8}", s):
+        return f"{s[:4]}-{s[4:6]}-{s[6:]}"
+    return s[:10] if s else ""
+
+
+def build_trade_plan_rows(records, map_market, today=None):
+    """임원ㆍ주요주주 거래계획 시트 행.
+
+    - 계획 1건(표의 계획 줄 1개) = 1행.
+    - [기재정정]은 같은 회사·원 제출일(서식의 '최초제출일')의 계획을 대체한다.
+    - 철회보고서는 같은 회사·원 제출일('거래계획보고서 제출일')의 계획 행에 철회일·사유·철회 전 체결을 붙인다.
+      같은 날 계획이 여럿이면 제출인 → 계획 줄(개시일·수량)로 좁힌다. 원 계획이 데이터에 없으면(2024-07 이전 접수 등)
+      철회 행을 따로 남긴다.
+    """
+    today = today or datetime.date.today().isoformat()
+    plans = sorted([r for r in records if r["base_type"] == "거래계획"], key=lambda r: (r["rcept_dt"], r["rcept_no"]))
+    wds = sorted([r for r in records if r["base_type"] == "거래계획철회"], key=lambda r: (r["rcept_dt"], r["rcept_no"]))
+
+    entries = []
+    by_corp = collections.defaultdict(list)     # corp_code → entries
+
+    def _narrow(cands, rec, d):
+        if len(cands) > 1:
+            fk = _party_key(rec.get("flr_nm"))
+            c2 = [e for e in cands if _party_key(e["rec"].get("flr_nm")) == fk
+                  or _party_key(e["data"].get("reporter")) in (fk, _party_key(d.get("reporter")))]
+            cands = c2 or cands
+        if len(cands) > 1 and d.get("lines"):
+            l0 = d["lines"][0]
+            c3 = [e for e in cands if any(l.get("start") == l0.get("start") and l.get("qty") == l0.get("qty")
+                                          for l in e["data"].get("lines") or [])]
+            cands = c3 or cands
+        return cands
+
+    for r in plans:
+        d = r.get("data") or {}
+        if "정정" in r["report_nm"]:
+            od = d.get("original_date")
+            cands = [e for e in by_corp[r["corp_code"]] if od and e["first_dt"] == od]
+            if not cands and not od:
+                cands = [e for e in by_corp[r["corp_code"]]
+                         if _party_key(e["rec"].get("flr_nm")) == _party_key(r.get("flr_nm"))][-1:]
+            cands = _narrow(cands, r, d)
+            if cands:
+                e = cands[-1]
+                if d.get("lines"):          # 정정 본문을 못 읽었으면 원 계획 값을 지킨다
+                    e["data"] = d
+                e["amends"].append(_ymd(r["rcept_dt"]))
+                continue
+        e = {"rec": r, "data": d, "first_dt": _ymd(r["rcept_dt"]), "amends": [], "wd": None, "wd_rec": None}
+        if "정정" in r["report_nm"]:
+            e["amends"].append(_ymd(r["rcept_dt"]) + " (원 계획 미수록)")
+        by_corp[r["corp_code"]].append(e)
+        entries.append(e)
+
+    for r in wds:
+        d = r.get("data") or {}
+        od = d.get("original_date")
+        wdt = _ymd(r["rcept_dt"])
+        open_entries = [e for e in by_corp[r["corp_code"]] if e["wd"] is None and e["first_dt"] <= wdt]
+        # 철회보고서의 '거래계획보고서 제출일'은 자주 틀린다(철회일·다른 계획 날짜를 적음 — 질경이 7/28 철회가
+        # 5/28 계획을 가리킴, 윙스풋·씨엑스아이는 철회 당일) → 철회 대상 계획 줄(개시일·수량)이 같은 계획을 먼저 찾는다
+        l0 = (d.get("lines") or [{}])[0]
+        cands = []
+        if l0.get("start") and l0.get("qty"):
+            cands = [e for e in open_entries
+                     if any(l.get("start") == l0["start"] and l.get("qty") == l0["qty"]
+                            for l in e["data"].get("lines") or [])]
+            cands = _narrow(cands, r, d)[-1:]
+        if not cands:
+            cands = [e for e in open_entries if od and e["first_dt"] == od]
+            cands = _narrow(cands, r, d)
+        if cands:
+            cands[0]["wd"], cands[0]["wd_rec"] = d, r
+        else:
+            entries.append({"rec": r, "data": d, "first_dt": _ymd(r["rcept_dt"]), "amends": [],
+                            "wd": d, "wd_rec": r, "orphan_wd": True})
+
+    rows = []
+    for e in entries:
+        r, d, wd = e["rec"], e["data"], e["wd"]
+        lines = d.get("lines") or [{}]
+        total = d.get("total_shares")
+        for ln in lines:
+            if wd is not None:
+                status = "철회"
+            elif not ln.get("start"):
+                status = "-"
+            elif today < ln["start"]:
+                status = "예정"
+            elif ln.get("end") and today <= ln["end"]:
+                status = "거래 중"
+            else:
+                status = "기간 종료"
+            sign = -1 if ln.get("side") == "처분" else 1
+            qty, amt = ln.get("qty"), ln.get("amount")
+            wd_rcept = e["wd_rec"]["rcept_no"] if e.get("wd_rec") else None
+            rows.append({
+                "접수일자": e["first_dt"],
+                "회사명": r["corp_name"],
+                "시장구분": map_market(r["corp_cls"]),
+                "종목코드": r["stock_code"],
+                "상태": status,
+                "보고자": d.get("reporter") or r.get("flr_nm"),
+                "관계": d.get("relation"),
+                "구분": ln.get("side"),
+                "거래방법": ln.get("method"),
+                "증권종류": ln.get("kind"),
+                "예정수량(주)": sign * qty if qty is not None else None,
+                "예정단가(원)": ln.get("price"),
+                "예정금액(원)": sign * amt if amt is not None else None,
+                "발행주식대비(%)": round(qty / total * 100, 2) if qty and total else None,
+                "거래개시일": ln.get("start"),
+                "거래종료일": ln.get("end"),
+                "거래목적": d.get("purpose"),
+                "보유비율 전(%)": d.get("pct_before"),
+                "보유비율 후(%)": d.get("pct_after"),
+                "직전6개월 거래(주)": d.get("prior6m_qty"),
+                "단가 산출근거": d.get("price_basis"),
+                "계약 내용": d.get("contract"),
+                "비고": ("원 계획 미수록(철회보고서만 있음)" if e.get("orphan_wd") else ln.get("note")) or None,
+                "정정": ", ".join(e["amends"]) or None,
+                "철회일": (wd.get("withdraw_date") or _ymd(e["wd_rec"]["rcept_dt"])) if wd is not None else None,
+                "철회사유": wd.get("withdraw_reason") if wd is not None else None,
+                "철회 전 체결(주)": wd.get("exec_qty") if wd is not None else None,
+                "체결 평균단가(원)": wd.get("exec_avg_price") if wd is not None else None,
+                "철회수량(주)": wd.get("withdraw_qty") if wd is not None else None,
+                "접수번호": r["rcept_no"],
+                "DART링크": f'=HYPERLINK("https://dart.fss.or.kr/dsaf001/main.do?rcpNo={r["rcept_no"]}", "공시열람")',
+                "_wd_rcept": wd_rcept,
+            })
+    rows.sort(key=lambda x: (x["접수일자"], x["접수번호"]), reverse=True)
+    for x in rows:
+        x.pop("_wd_rcept", None)
+    return rows
+
+
+def format_trade_plan_sheet(ws):
+    """임원_거래계획 시트 서식 — 취득(+) 빨강·처분(-) 파랑(한국 관례), 상태별 배경."""
+    header_font = Font(name="Malgun Gothic", size=10, bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid")
+    data_font = Font(name="Malgun Gothic", size=9)
+    link_font = Font(name="Malgun Gothic", size=9, color="0000FF", underline="single")
+    font_neg = Font(name="Malgun Gothic", size=9, color="0000FF")
+    font_pos = Font(name="Malgun Gothic", size=9, color="FF0000")
+    font_wd = Font(name="Malgun Gothic", size=9, color="808080", strike=True)
+    side = Side(border_style="thin", color="D3D3D3")
+    border = Border(left=side, right=side, top=side, bottom=side)
+    a_c = Alignment(horizontal="center", vertical="center")
+    a_r = Alignment(horizontal="right", vertical="center")
+    a_l = Alignment(horizontal="left", vertical="center")
+    status_fill = {
+        "거래 중": PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid"),
+        "예정": PatternFill(start_color="E2EFDA", end_color="E2EFDA", fill_type="solid"),
+        "철회": PatternFill(start_color="EDEDED", end_color="EDEDED", fill_type="solid"),
+    }
+
+    max_row, max_col = ws.max_row, ws.max_column
+    headers = {}
+    for c in range(1, max_col + 1):
+        cell = ws.cell(row=1, column=c)
+        headers[str(cell.value or "").strip()] = c
+        cell.font, cell.fill, cell.alignment = header_font, header_fill, a_c
+
+    def cols(*names):
+        return {headers[n] for n in names if n in headers}
+
+    center = cols("접수일자", "시장구분", "종목코드", "상태", "구분", "증권종류", "거래개시일", "거래종료일",
+                  "철회일", "접수번호")
+    signed = cols("예정수량(주)", "예정금액(원)")
+    ints = cols("예정단가(원)", "직전6개월 거래(주)", "철회 전 체결(주)", "체결 평균단가(원)", "철회수량(주)")
+    pcts = cols("발행주식대비(%)", "보유비율 전(%)", "보유비율 후(%)")
+    links = cols("DART링크")
+    c_status, c_side = headers.get("상태"), headers.get("구분")
+
+    for r in range(2, max_row + 1):
+        st = ws.cell(row=r, column=c_status).value if c_status else None
+        for c in range(1, max_col + 1):
+            cell = ws.cell(row=r, column=c)
+            cell.font, cell.border = data_font, border
+            if c in center:
+                cell.alignment = a_c
+            elif c in links:
+                cell.alignment, cell.font = a_c, link_font
+            elif c in signed:
+                cell.number_format, cell.alignment = '#,##0', a_r
+                if isinstance(cell.value, (int, float)):
+                    cell.font = font_neg if cell.value < 0 else font_pos
+            elif c in ints:
+                cell.number_format, cell.alignment = '#,##0', a_r
+            elif c in pcts:
+                cell.number_format, cell.alignment = '0.00', a_r
+            else:
+                cell.alignment = a_l
+        if c_status and st in status_fill:
+            ws.cell(row=r, column=c_status).fill = status_fill[st]
+        if c_side:
+            v = ws.cell(row=r, column=c_side).value
+            if v in ("취득", "처분"):
+                ws.cell(row=r, column=c_side).font = font_pos if v == "취득" else font_neg
+        if st == "철회":
+            for name in ("예정수량(주)", "예정금액(원)"):
+                if name in headers:
+                    ws.cell(row=r, column=headers[name]).font = font_wd
+
+    widths = {
+        "접수일자": 11, "회사명": 16, "시장구분": 8, "종목코드": 9, "상태": 9, "보고자": 16, "관계": 22,
+        "구분": 6, "거래방법": 14, "증권종류": 9, "예정수량(주)": 13, "예정단가(원)": 11, "예정금액(원)": 16,
+        "발행주식대비(%)": 9, "거래개시일": 11, "거래종료일": 11, "거래목적": 30, "보유비율 전(%)": 9,
+        "보유비율 후(%)": 9, "직전6개월 거래(주)": 12, "단가 산출근거": 30, "계약 내용": 30, "비고": 24,
+        "정정": 14, "철회일": 11, "철회사유": 30, "철회 전 체결(주)": 12, "체결 평균단가(원)": 11,
+        "철회수량(주)": 12, "접수번호": 16, "DART링크": 10,
+    }
+    for name, c in headers.items():
+        ws.column_dimensions[get_column_letter(c)].width = widths.get(name, 12)
+    ws.row_dimensions[1].height = 25
+    ws.freeze_panes = "C2"
+    if max_row > 1:
+        ws.auto_filter.ref = f"A1:{get_column_letter(max_col)}{max_row}"
+
 
 def dedup_officer_rows(rows):
     """5%_임원보고 사실상 동일 거래 행 중복 제거.

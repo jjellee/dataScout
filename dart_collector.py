@@ -80,6 +80,7 @@ def classify_for_download(report_nm):
         "소유주식변동보고서",       # 임원ㆍ주요주주소유주식변동보고서
         "소유상황보고서",           # 임원ㆍ주요주주특정증권등소유상황보고서
         "기업설명회",               # IR 개최·안내공시 — ir_events.py (엑셀·캘린더)
+        "거래계획",                 # 임원ㆍ주요주주특정증권등거래계획(철회)보고서 — 요약 엑셀 '임원_거래계획'
     ]
     if any(kw in nm for kw in important_keywords):
         return "important"
