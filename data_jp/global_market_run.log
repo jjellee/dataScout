@@ -10261,3 +10261,97 @@ KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았�
 2026-11-23 15:30:02,356 - INFO -  Starting Daily JP Market Monitor (Test: False)
 2026-11-23 15:30:02,356 - INFO - ==================================================
 2026-11-23 15:30:02,868 - INFO - JP market was closed on expected trading date 2026-11-23. Skipping report.
+KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다.
+2026-11-24 15:30:02,314 - INFO - Loading environment variables from .env file...
+2026-11-24 15:30:02,316 - INFO - ==================================================
+2026-11-24 15:30:02,316 - INFO -  Starting Daily JP Market Monitor (Test: False)
+2026-11-24 15:30:02,316 - INFO - ==================================================
+2026-11-24 15:30:02,854 - INFO - Processing trading date: 2026-11-24
+2026-11-24 15:30:02,854 - INFO - Scraping JPX listed issues Excel URL...
+2026-11-24 15:30:03,125 - INFO - Downloading JPX listed issues from: https://www.jpx.co.jp/english/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_e.xlsx
+2026-11-24 15:30:03,446 - INFO - Total metadata stocks loaded: 3698
+2026-11-24 15:30:03,446 - INFO - Downloading daily prices for 3698 tickers in chunks of 300...
+2026-11-24 15:30:54,099 - ERROR - $2780.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:30:55,818 - ERROR - $2975.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:30:55,863 - ERROR - $3070.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:30:55,866 - ERROR - 
+3 Failed downloads:
+2026-11-24 15:30:55,866 - ERROR - ['2780.T', '2975.T', '3070.T']: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:31:44,972 - ERROR - $3494.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:31:44,979 - ERROR - 
+1 Failed download:
+2026-11-24 15:31:44,979 - ERROR - ['3494.T']: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:34:02,389 - ERROR - $5588.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:34:02,397 - ERROR - 
+1 Failed download:
+2026-11-24 15:34:02,397 - ERROR - ['5588.T']: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:37:15,105 - ERROR - $7523.T: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:37:15,538 - ERROR - 
+1 Failed download:
+2026-11-24 15:37:15,539 - ERROR - ['7523.T']: possibly delisted; no price data found  (period=5d)
+2026-11-24 15:39:38,451 - INFO - Successfully downloaded price changes for 3692 stocks.
+2026-11-24 15:39:38,464 - INFO - Fetching news for sharp movers (±5%)...
+2026-11-24 15:40:06,591 - INFO - Got news for 0 out of 321 sharp movers
+2026-11-24 15:40:06,592 - INFO - Saving formatted Excel to /home/inhyuk/projects/dataScout/data_jp/daily_prices/jp_prices_20261124.xlsx...
+2026-11-24 15:40:18,326 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-24 15:40:18,330 - INFO - Sending daily report text to Telegram chat -1003877753638...
+2026-11-24 15:40:19,450 - INFO - Report text sent successfully to Telegram.
+2026-11-24 15:40:19,450 - INFO - Uploading Excel document to Telegram chat -1003877753638...
+2026-11-24 15:40:22,018 - INFO - Excel document sent successfully to Telegram.
+2026-11-24 15:40:22,019 - INFO - Generating AI market analysis...
+2026-11-24 15:40:31,168 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-24 15:40:31,168 - INFO - Sending AI market analysis to Telegram...
+2026-11-24 15:40:32,252 - INFO - AI market analysis sent.
+
+--- Generated Report Summary ---
+🇯🇵 *[일본 증시 마감 일일 리포트]* 🇯🇵
+📅 *기준일자: 2026-11-24*
+
+🔥 *주요 상승 섹터/산업 TOP 5*
+1. *Banks* (+3.71%)
+2. *Electric Appliances* (+3.59%)
+3. *Precision Instruments* (+3.03%)
+4. *Machinery* (+2.75%)
+5. *Glass and Ceramics Products* (+2.33%)
+
+❄️ *주요 하락 섹터/산업 BOTTOM 5*
+1. *Land Transportation* (-0.27%)
+2. *Fishery, Agriculture and Forestry* (-0.25%)
+3. *Foods* (-0.17%)
+4. *Retail Trade* (-0.10%)
+5. *Electric Power and Gas* (-0.03%)
+
+💬 *섹터별 주목 종목 (AI)*
+- Banks: FIDEA Holdin(+8.3%)과 The Ogaki Ky(+8.2%)가 상승을 주도했고, 대형주 JAPAN POST B(+4.3%)도 강세를 보여 섹터 전반의 매수세가 확인된다.
+- Electric Appliances: Murata Manuf(+14.9%)과 KOKUSAI ELEC(+14.3%)의 급등이 섹터를 끌어올렸으나, SONY GROUP C(+0.3%)는 보합에 그쳐 종목별 온도차가 크다.
+- Precision Instruments: Rigaku Holdi(+12.4%)가 선두이고 SEIKO GROUP(+8.4%)도 강세지만, TERUMO CORPO(-0.5%)는 섹터 흐름과 반대로 움직였다.
+- Machinery: NIPPON THOMP(+13.0%), Nomura Micro(+12.8%), Harmonic Dri(+12.3%)의 두 자릿수 상승이 섹터를 견인했고, Mitsubishi H(+3.2%)는 상대적으로 완만한 상승이었다.
+- Glass and Ceramics Products: NITTO BOSEKI(+13.9%)의 급등이 두드러지며, NGK Corporat(+5.3%)는 과도한 변동 없이 안정적으로 오른 종목으로 볼 수 있다.
+- Electric Power and Gas: HOKURIKU GAS(-2.2%)와 SHIZUOKA GAS(-2.1%)의 하락이 두드러졌고, KYUDEN Holdi(+0.6%)만 플러스를 기록해 가스 관련주의 약세가 눈에 띈다.
+- Retail Trade: Seria Co.,Lt(-7.9%)와 SEKIDO CO.,L(-7.8%)의 급락이 섹터 하락을 주도했고, FOOD & LIFE(+2.1%)만 역행해 강세를 보였다.
+- Foods: Yamami Compa(-4.9%)의 약세와 Ajinomoto Co(+5.5%)의 강세가 대비되어 종목 간 양극화가 뚜렷하며, 시총 상위권 Ajinomoto가 섹터를 방어했다.
+- Fishery, Agriculture and Forestry: 세 종목 모두 -1.1%~-1.4%의 소폭 하락을 보였고 뚜렷한 차별화 없이 섹터 전반이 약세였다.
+- Land Transportation: Daiwa Motor(-3.2%)의 하락 폭이 가장 컸고, Odakyu Elect(-0.7%)와 SBS Holdings(-0.6%)는 상대적으로 낙폭이 작았다.
+
+📌 *나의 관심 섹터/산업 현황*
+- *Electric Appliances*: +3.59% (상위: Murata M(+14.9%), KOKUSAI (+14.3%))
+- *Chemicals*: +1.67% (상위: DKS Co.L(+12.5%), OSAKA YU(+11.9%))
+- *Transportation Equipment*: +1.17% (상위: Namura S(+6.1%), DAIHATSU(+5.5%))
+- *Pharmaceutical*: +0.92% (상위: MediciNo(+22.4%), Modalis (+10.7%))
+- *Information & Communication*: +0.58% (상위: Monstarl(+40.9%), HODL1,in(+30.6%))
+
+🚀 *개별 종목 상승 TOP 5*
+1. *6573.T* (CRAVIA Inc.) | ¥26 (*+52.94%*)
+2. *3237.T* (INTRANCE CO.,LTD.) | ¥76 (*+46.15%*)
+3. *5255.T* (Monstarlab Inc.) | ¥62 (*+40.91%*)
+4. *6190.T* (PhoenixBio Co.,Ltd.) | ¥291 (*+32.88%*)
+5. *2345.T* (HODL1,inc.) | ¥128 (*+30.61%*)
+
+📉 *개별 종목 하락 TOP 5*
+1. *4165.T* (PLAID,Inc.) | ¥278 (*-17.75%*)
+2. *5138.T* (Rebase,Inc.) | ¥496 (*-16.36%*)
+3. *130A.T* (Veritas In Silico In) | ¥252 (*-15.15%*)
+4. *7077.T* (ALiNK Internet,INC.) | ¥922 (*-14.87%*)
+5. *4575.T* (CanBas Co.,Ltd.) | ¥687 (*-13.15%*)
+
+📂 *전체 3,692개 종목의 마감 등락폭 상세 정보가 담긴 엑셀 파일을 첨부합니다.*
