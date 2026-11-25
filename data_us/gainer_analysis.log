@@ -23289,3 +23289,33 @@
 2026-11-24 08:52:25,633 - INFO - GAP: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-24/GAP_2026-11-24.html
 2026-11-24 08:52:25,633 - INFO - 발송 보류 1종목(판정 미달): GAP(관망)
 2026-11-24 08:52:27,647 - INFO - 완료: 1종목 리포트 생성 · 텔레그램 발송
+2026-11-25 08:50:04,876 - INFO - Nasdaq 스크리너 수신: 7343종목
+2026-11-25 08:50:05,483 - INFO - 1차(상승률·시총·거래대금) 통과: 440종목
+2026-11-25 08:50:08,013 - INFO - 2차(거래량 급증 2.0배↑) 통과: 12종목
+/home/inhyuk/projects/dataScout/us_gainer_analyzer.py:1158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow()
+2026-11-25 08:50:08,069 - INFO - 전체시장 트랙: 신규 전문 관문 12 → 2종목 (SMTC[stockanalysis 2026-11-23], HPE[stockanalysis 2026-11-23])
+2026-11-25 08:50:09,785 - INFO - 3차(펀더멘털) 통과: 2종목
+/home/inhyuk/projects/dataScout/us_gainer_analyzer.py:1158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow()
+2026-11-25 08:50:12,435 - INFO - 워치리스트 트랙: 신규 전문 관문 192 → 2종목 (SMTC[stockanalysis 2026-11-23], HPE[stockanalysis 2026-11-23])
+2026-11-25 08:50:13,171 - INFO - 워치리스트 트랙: 2종목 (SMTC +18.8%, HPE +18.1%)
+2026-11-25 08:50:14,557 - INFO - 최종 선정: 2종목 (워치리스트 2 + 전체시장 0)
+
+선정 종목
+  ★WL SMTC   + 18.83%  vol× 2.0     $9.72B  score=0.774  매출 YoY +32.7%, QoQ +17.5%, 영업이익률 16.2%
+  ★WL HPE    + 18.09%  vol× 3.2    $64.13B  score=0.814  매출 YoY +33.7%, QoQ +14.4%, 영업이익률 12.0%
+
+2026-11-25 08:50:14,557 - INFO - 텔레그램 발송 대상: sa-transcripts 채널
+2026-11-25 08:50:15,513 - INFO - [1/2] SMTC 분석 시작
+2026-11-25 08:52:51,987 - INFO - SMTC: transcript 2건 확보 — 2026-11-23 Q3 2027 Transcript, 2026-10-15 Analyst Day 2026 Transcript
+2026-11-25 08:52:51,993 - INFO - SMTC: LLM 분석 요청 [claude-cli claude-opus-5-5] (SEC 40,000자 + transcript 30,000자)
+2026-11-25 08:54:47,071 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-25 08:54:47,091 - INFO - SMTC: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-25/SMTC_2026-11-25.html
+2026-11-25 08:54:47,091 - INFO - [2/2] HPE 분석 시작
+2026-11-25 08:55:49,397 - INFO - HPE: transcript 2건 확보 — 2026-11-23 Q4 2026 Transcript, 2026-09-30 Investor Day 2026 Transcript
+2026-11-25 08:55:49,397 - INFO - HPE: LLM 분석 요청 [claude-cli claude-opus-5-5] (SEC 40,000자 + transcript 30,000자)
+2026-11-25 08:56:51,231 - INFO - Claude CLI response generated (subscription, haiku).
+2026-11-25 08:56:51,237 - INFO - HPE: HTML 저장 /home/inhyuk/projects/dataScout/data_us/gainer_analysis/2026-11-25/HPE_2026-11-25.html
+2026-11-25 08:56:51,237 - INFO - 발송 보류 2종목(판정 미달): SMTC(관망), HPE(보통)
+2026-11-25 08:56:53,163 - INFO - 완료: 2종목 리포트 생성 · 텔레그램 발송
